@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>language test</title>
-    <url>/en/language-test.html</url>
-    <content><![CDATA[<p>Test for new english website!</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Purpose</title>
     <url>/en/Purpose.html</url>
     <content><![CDATA[<h3 id="01"><a href="#01" class="headerlink" title="01"></a>01</h3><p>The purpose of this blog is to record some problems I have faced and make sure I will not struggle with them in the future.</p>
