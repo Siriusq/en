@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://siriusq.github.io/404/index.html</loc>
+    <loc>https://siriusq.github.io/404.html</loc>
     
     <lastmod>2022-05-13</lastmod>
     
@@ -366,13 +366,6 @@
   </url>
   
   <url>
-    <loc>https://siriusq.github.io/tags/ITX/</loc>
-    <lastmod>2022-05-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://siriusq.github.io/tags/Software/</loc>
     <lastmod>2022-05-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -388,6 +381,13 @@
   
   <url>
     <loc>https://siriusq.github.io/tags/C/</loc>
+    <lastmod>2022-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.github.io/tags/ITX/</loc>
     <lastmod>2022-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -464,14 +464,14 @@
   </url>
   
   <url>
-    <loc>https://siriusq.github.io/tags/%E7%95%99%E5%AD%A6/</loc>
+    <loc>https://siriusq.github.io/tags/%E8%BD%AC%E4%B8%93%E4%B8%9A/</loc>
     <lastmod>2022-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://siriusq.github.io/tags/%E8%BD%AC%E4%B8%93%E4%B8%9A/</loc>
+    <loc>https://siriusq.github.io/tags/%E7%95%99%E5%AD%A6/</loc>
     <lastmod>2022-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

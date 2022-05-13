@@ -235,6 +235,85 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo Next 7.7 双语切换</title>
+    <url>/Hexo-Next-7-7-%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">一年前通过在Google的疯狂查找和尝试，实现了在7.1版本的Next主题上进行中英双语的切换。但是Bug多多（切换到英文界面后点击关于、归档等标签还会跳转回中文界面），而我本人又是拖延症+懒癌晚期，一直没有尝试修复。最近借着给Next主题升级的机会顺便解决这个问题。折腾了两天，终于成功实现了理想中的中英双语切换效果，搞得毕设都没怎么做。</blockquote>
+
+<span id="more"></span>
+
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>我最初的想法是：在Github上新建一个仓库，然后开启新仓库的 Github Pages 作为英文网站使用，这样中英文的网站就可以相互独立，互不干扰，只需要在两个网站上添加一个切换按钮就可以了。但是查询后发现每个 Github 账号只能拥有一个个人主页，这就很尴尬了，难不成要再注册一个账号来作为英文网站使用吗？未免太过麻烦。就在我一筹莫展的时候，发现了<strong>chitanda</strong>大佬的文章<a href="https://segmentfault.com/a/1190000003946969">单个GitHub帐号下添加多个GitHub Pages的相关问题</a>。</p>
+<blockquote>
+<p>根据官方文档，GitHub Pages分为两类:个人&#x2F;组织主页以及项目主页，两者基本上没啥区别，但是有以下几点不同:（该文场景下个人和组织帐号没什么区别，所以下文为了行文方便将统一用个人主页代指）</p>
+<ul>
+<li>个人主页必须要和用户的GitHub帐号同名，所以每个用户有且只能有一个repo作为个人主页，且必须是<username>&#x2F;<username>.github.io的形式；而项目主页的命名则没有这种限制，且数量有任意多个。</li>
+<li>不考虑绑定的自定义域名的前提下，个人主页的GitHub二级域名为<username>.github.io;项目主页的GitHub二级域名为<username>.github.io&#x2F;<projectname>,没有<projectname>.<username>.github.io这种方式</li>
+<li>个人主页的展示内容以master分支里的文件为准；而项目主页的展示内容以gh-pages分支内的文件为准</li>
+</ul>
+</blockquote>
+<p>这样的话，如果在Github里新建一个仓库，用项目主页的方式来部署英文网站，中英文网站应该还是相互独立的，英文网站的的域名格式是<code>中文域名/仓库名/</code>，也就不用再单独配置新的域名，听起来好像能行？那就试一下吧</p>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>这里以我自己的域名<code>siriusq.top</code>和英文网站仓库名<code>en</code>为例</p>
+<h2 id="创建项目主页"><a href="#创建项目主页" class="headerlink" title="创建项目主页"></a>创建项目主页</h2><ul>
+<li>在 Github 新建一个名为<code>en</code>的<code>Repositories</code></li>
+<li>进入新建的<code>Repositories</code>，点击<code>Settings</code></li>
+<li>下拉到<code>Github Pages</code>选项</li>
+<li>点击<code>Choose a theme</code>，然后随便选一个主题</li>
+<li>成功建立项目主页和后<code>Github Pages</code>选项会显示<code>Your site is published at https://siriusq.top/en/</code></li>
+<li>至此英文网站的项目主页创建成功</li>
+</ul>
+<h2 id="建立本地英文网站目录"><a href="#建立本地英文网站目录" class="headerlink" title="建立本地英文网站目录"></a>建立本地英文网站目录</h2><p>复制现在的中文博客文件夹并重命名，名字随意，这里以我自己的中文文件夹名<code>Hexo</code>和复制出来的英文文件夹名<code>Hexoen</code>为例</p>
+<ul>
+<li>打开<code>./Hexoen/_config.yml</code>文件，依次修改配置如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">language: en</span><br><span class="line">url: https://siriusq.top/en/ # 用自己的 域名/仓库名/ 替换 siriusq.top/en/</span><br><span class="line">root: /en/ # 用自己的仓库名替换 en</span><br><span class="line">repo: git@github.com:Siriusq/en.git # 用自己的 用户名/仓库名 替换 Siriusq/en</span><br></pre></td></tr></table></figure></li>
+<li>删除<code>./Hexoen/source</code>下的<code>CNAME</code>文件（如果有的话）</li>
+</ul>
+<h2 id="加入中文切换按钮"><a href="#加入中文切换按钮" class="headerlink" title="加入中文切换按钮"></a>加入中文切换按钮</h2><ul>
+<li>打开<code>./Hexoen/source/_data/next.yml</code>文件<ul>
+<li>在<code>Menu Settings</code>下的<code>menu：</code>中加入<code>switch_lang</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: / || home</span><br><span class="line">about: /about/ || user</span><br><span class="line">tags: /tags/ || tags</span><br><span class="line">categories: /categories/ || th</span><br><span class="line">archives: /archives/ || archive</span><br><span class="line">switch_lang: https://siriusq.top || language # 将siriusq.top替换成你的中文网站域名</span><br><span class="line">#schedule: /schedule/ || calendar</span><br><span class="line">#sitemap: /sitemap.xml || sitemap</span><br><span class="line">#commonweal: /<span class="number">404</span>/ || heartbeat</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>打开<code>./Hexoen/themes/next/languages/en.yml</code>文件<ul>
+<li>在<code>menu:</code>下添加<code> switch_lang: 简体中文</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: Home</span><br><span class="line">archives: Archives</span><br><span class="line">categories: Categories</span><br><span class="line">tags: Tags</span><br><span class="line">about: About</span><br><span class="line">switch_lang: 简体中文</span><br><span class="line">search: Search</span><br><span class="line">schedule: Schedule</span><br><span class="line">sitemap: Sitemap</span><br><span class="line">commonweal: Commonweal <span class="number">404</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="加入英文切换按钮"><a href="#加入英文切换按钮" class="headerlink" title="加入英文切换按钮"></a>加入英文切换按钮</h2><ul>
+<li>打开<code>./Hexo/source/_data/next.yml</code>文件<ul>
+<li>在<code>Menu Settings</code>下的<code>menu：</code>中加入<code>switch_lang</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: / || home</span><br><span class="line">about: /about/ || user</span><br><span class="line">tags: /tags/ || tags</span><br><span class="line">categories: /categories/ || th</span><br><span class="line">archives: /archives/ || archive</span><br><span class="line">switch_lang: https://siriusq.top/en/ || language # 将siriusq.top/en/替换成你的英文网站域名</span><br><span class="line">#schedule: /schedule/ || calendar</span><br><span class="line">#sitemap: /sitemap.xml || sitemap</span><br><span class="line">#commonweal: /<span class="number">404</span>/ || heartbeat</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>打开<code>./Hexoen/themes/next/languages/en.yml</code>文件<ul>
+<li>在<code>menu:</code>下添加<code> switch_lang: 简体中文</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: 首页</span><br><span class="line">archives: 归档</span><br><span class="line">categories: 分类</span><br><span class="line">tags: 标签</span><br><span class="line">about: 关于</span><br><span class="line">switch_lang: English</span><br><span class="line">search: 搜索</span><br><span class="line">schedule: 日程表</span><br><span class="line">sitemap: 站点地图</span><br><span class="line">commonweal: 公益 <span class="number">404</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="添加切换判断条件"><a href="#添加切换判断条件" class="headerlink" title="添加切换判断条件"></a>添加切换判断条件</h2><p><strong>中文网站</strong><br>打开<code>./Hexo/themes/next/layout/_partials/head/head-unique.swig</code>，在最下方粘贴代码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">  <span class="comment">// Wait for the page to load first</span></span><br><span class="line">  <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">      switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">          <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">          <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en/&#x27;</span>);</span><br><span class="line">          <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">              <span class="title function_">_prevOnload</span>();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;j</span><br></pre></td></tr></table></figure>
+
+<p><strong>英文网站</strong><br>打开<code>./Hexoen/themes/next/layout/_partials/head/head-unique.swig</code>，在最下方粘贴代码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">  <span class="comment">// Wait for the page to load first</span></span><br><span class="line">  <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">      switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">          <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">          <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en/&#x27;</span>);</span><br><span class="line">          <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">              <span class="title function_">_prevOnload</span>();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>分别在两个文件夹执行hexo三连操作，将网站部署到Github，过一会就能访问了</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><ul>
+<li>由于两个网站是相互独立的，所以给两个网站用不同的主题在理论上也是可行的，我只给英文网站修改了下404页面</li>
+<li>一点瑕疵：开启PJAX的话，在页面完全加载之前点击切换按钮的话会卡一下才跳转</li>
+<li>二点瑕疵：网站相互独立，所以跳转的时候网页是完全重新加载的，PJAX无效</li>
+<li>注意事项：写博客的时候，中英文目录下的markdown文件名请保持一致，否则切换的时候会跳转到404页面</li>
+</ul>
+<p>折腾这些东西真的太费时间了，毕设一点没动，现在很慌张。有问题欢迎评论区留言，最近可能回复不及时。</p>
+<p>不多说了，我要滚去做毕设了</p>
+<p>ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;┌(;￣◇￣)┘</p>
+]]></content>
+      <categories>
+        <category>Blog</category>
+      </categories>
+      <tags>
+        <tag>HEXO</tag>
+        <tag>English</tag>
+        <tag>Next</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo博客踩坑指北</title>
     <url>/Hexo%E5%8D%9A%E5%AE%A2%E8%B8%A9%E5%9D%91%E6%8C%87%E5%8C%97.html</url>
     <content><![CDATA[<p>记录总结用HEXO和Github Page搭建博客时踩过的坑，主要包括以下</p>
@@ -393,82 +472,36 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo Next 7.7 双语切换</title>
-    <url>/Hexo-Next-7-7-%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">一年前通过在Google的疯狂查找和尝试，实现了在7.1版本的Next主题上进行中英双语的切换。但是Bug多多（切换到英文界面后点击关于、归档等标签还会跳转回中文界面），而我本人又是拖延症+懒癌晚期，一直没有尝试修复。最近借着给Next主题升级的机会顺便解决这个问题。折腾了两天，终于成功实现了理想中的中英双语切换效果，搞得毕设都没怎么做。</blockquote>
-
-<span id="more"></span>
-
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>我最初的想法是：在Github上新建一个仓库，然后开启新仓库的 Github Pages 作为英文网站使用，这样中英文的网站就可以相互独立，互不干扰，只需要在两个网站上添加一个切换按钮就可以了。但是查询后发现每个 Github 账号只能拥有一个个人主页，这就很尴尬了，难不成要再注册一个账号来作为英文网站使用吗？未免太过麻烦。就在我一筹莫展的时候，发现了<strong>chitanda</strong>大佬的文章<a href="https://segmentfault.com/a/1190000003946969">单个GitHub帐号下添加多个GitHub Pages的相关问题</a>。</p>
-<blockquote>
-<p>根据官方文档，GitHub Pages分为两类:个人&#x2F;组织主页以及项目主页，两者基本上没啥区别，但是有以下几点不同:（该文场景下个人和组织帐号没什么区别，所以下文为了行文方便将统一用个人主页代指）</p>
+    <title>Hexo添加Google收录</title>
+    <url>/Hexo%E6%B7%BB%E5%8A%A0Google%E6%94%B6%E5%BD%95.html</url>
+    <content><![CDATA[<p>目前网站还不能够通过搜索引擎搜索到，想要被搜到的话需要添加搜索引擎收录，这里以我添加的Google为例。<br><strong>步骤包括：</strong></p>
 <ul>
-<li>个人主页必须要和用户的GitHub帐号同名，所以每个用户有且只能有一个repo作为个人主页，且必须是<username>&#x2F;<username>.github.io的形式；而项目主页的命名则没有这种限制，且数量有任意多个。</li>
-<li>不考虑绑定的自定义域名的前提下，个人主页的GitHub二级域名为<username>.github.io;项目主页的GitHub二级域名为<username>.github.io&#x2F;<projectname>,没有<projectname>.<username>.github.io这种方式</li>
-<li>个人主页的展示内容以master分支里的文件为准；而项目主页的展示内容以gh-pages分支内的文件为准</li>
+<li>生成站点地图</li>
+<li>验证站点<span id="more"></span>
+<h3 id="生成站点地图"><a href="#生成站点地图" class="headerlink" title="生成站点地图"></a>生成站点地图</h3></li>
 </ul>
-</blockquote>
-<p>这样的话，如果在Github里新建一个仓库，用项目主页的方式来部署英文网站，中英文网站应该还是相互独立的，英文网站的的域名格式是<code>中文域名/仓库名/</code>，也就不用再单独配置新的域名，听起来好像能行？那就试一下吧</p>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>这里以我自己的域名<code>siriusq.top</code>和英文网站仓库名<code>en</code>为例</p>
-<h2 id="创建项目主页"><a href="#创建项目主页" class="headerlink" title="创建项目主页"></a>创建项目主页</h2><ul>
-<li>在 Github 新建一个名为<code>en</code>的<code>Repositories</code></li>
-<li>进入新建的<code>Repositories</code>，点击<code>Settings</code></li>
-<li>下拉到<code>Github Pages</code>选项</li>
-<li>点击<code>Choose a theme</code>，然后随便选一个主题</li>
-<li>成功建立项目主页和后<code>Github Pages</code>选项会显示<code>Your site is published at https://siriusq.top/en/</code></li>
-<li>至此英文网站的项目主页创建成功</li>
-</ul>
-<h2 id="建立本地英文网站目录"><a href="#建立本地英文网站目录" class="headerlink" title="建立本地英文网站目录"></a>建立本地英文网站目录</h2><p>复制现在的中文博客文件夹并重命名，名字随意，这里以我自己的中文文件夹名<code>Hexo</code>和复制出来的英文文件夹名<code>Hexoen</code>为例</p>
-<ul>
-<li>打开<code>./Hexoen/_config.yml</code>文件，依次修改配置如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">language: en</span><br><span class="line">url: https://siriusq.top/en/ # 用自己的 域名/仓库名/ 替换 siriusq.top/en/</span><br><span class="line">root: /en/ # 用自己的仓库名替换 en</span><br><span class="line">repo: git@github.com:Siriusq/en.git # 用自己的 用户名/仓库名 替换 Siriusq/en</span><br></pre></td></tr></table></figure></li>
-<li>删除<code>./Hexoen/source</code>下的<code>CNAME</code>文件（如果有的话）</li>
-</ul>
-<h2 id="加入中文切换按钮"><a href="#加入中文切换按钮" class="headerlink" title="加入中文切换按钮"></a>加入中文切换按钮</h2><ul>
-<li>打开<code>./Hexoen/source/_data/next.yml</code>文件<ul>
-<li>在<code>Menu Settings</code>下的<code>menu：</code>中加入<code>switch_lang</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: / || home</span><br><span class="line">about: /about/ || user</span><br><span class="line">tags: /tags/ || tags</span><br><span class="line">categories: /categories/ || th</span><br><span class="line">archives: /archives/ || archive</span><br><span class="line">switch_lang: https://siriusq.top || language # 将siriusq.top替换成你的中文网站域名</span><br><span class="line">#schedule: /schedule/ || calendar</span><br><span class="line">#sitemap: /sitemap.xml || sitemap</span><br><span class="line">#commonweal: /<span class="number">404</span>/ || heartbeat</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>打开<code>./Hexoen/themes/next/languages/en.yml</code>文件<ul>
-<li>在<code>menu:</code>下添加<code> switch_lang: 简体中文</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: Home</span><br><span class="line">archives: Archives</span><br><span class="line">categories: Categories</span><br><span class="line">tags: Tags</span><br><span class="line">about: About</span><br><span class="line">switch_lang: 简体中文</span><br><span class="line">search: Search</span><br><span class="line">schedule: Schedule</span><br><span class="line">sitemap: Sitemap</span><br><span class="line">commonweal: Commonweal <span class="number">404</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h2 id="加入英文切换按钮"><a href="#加入英文切换按钮" class="headerlink" title="加入英文切换按钮"></a>加入英文切换按钮</h2><ul>
-<li>打开<code>./Hexo/source/_data/next.yml</code>文件<ul>
-<li>在<code>Menu Settings</code>下的<code>menu：</code>中加入<code>switch_lang</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: / || home</span><br><span class="line">about: /about/ || user</span><br><span class="line">tags: /tags/ || tags</span><br><span class="line">categories: /categories/ || th</span><br><span class="line">archives: /archives/ || archive</span><br><span class="line">switch_lang: https://siriusq.top/en/ || language # 将siriusq.top/en/替换成你的英文网站域名</span><br><span class="line">#schedule: /schedule/ || calendar</span><br><span class="line">#sitemap: /sitemap.xml || sitemap</span><br><span class="line">#commonweal: /<span class="number">404</span>/ || heartbeat</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>打开<code>./Hexoen/themes/next/languages/en.yml</code>文件<ul>
-<li>在<code>menu:</code>下添加<code> switch_lang: 简体中文</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: 首页</span><br><span class="line">archives: 归档</span><br><span class="line">categories: 分类</span><br><span class="line">tags: 标签</span><br><span class="line">about: 关于</span><br><span class="line">switch_lang: English</span><br><span class="line">search: 搜索</span><br><span class="line">schedule: 日程表</span><br><span class="line">sitemap: 站点地图</span><br><span class="line">commonweal: 公益 <span class="number">404</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h2 id="添加切换判断条件"><a href="#添加切换判断条件" class="headerlink" title="添加切换判断条件"></a>添加切换判断条件</h2><p><strong>中文网站</strong><br>打开<code>./Hexo/themes/next/layout/_partials/head/head-unique.swig</code>，在最下方粘贴代码</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">  <span class="comment">// Wait for the page to load first</span></span><br><span class="line">  <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">      switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">          <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">          <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en/&#x27;</span>);</span><br><span class="line">          <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">              <span class="title function_">_prevOnload</span>();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;j</span><br></pre></td></tr></table></figure>
-
-<p><strong>英文网站</strong><br>打开<code>./Hexoen/themes/next/layout/_partials/head/head-unique.swig</code>，在最下方粘贴代码</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">  <span class="comment">// Wait for the page to load first</span></span><br><span class="line">  <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">      switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">          <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">          <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en/&#x27;</span>);</span><br><span class="line">          <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">              <span class="title function_">_prevOnload</span>();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>分别在两个文件夹执行hexo三连操作，将网站部署到Github，过一会就能访问了</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><ul>
-<li>由于两个网站是相互独立的，所以给两个网站用不同的主题在理论上也是可行的，我只给英文网站修改了下404页面</li>
-<li>一点瑕疵：开启PJAX的话，在页面完全加载之前点击切换按钮的话会卡一下才跳转</li>
-<li>二点瑕疵：网站相互独立，所以跳转的时候网页是完全重新加载的，PJAX无效</li>
-<li>注意事项：写博客的时候，中英文目录下的markdown文件名请保持一致，否则切换的时候会跳转到404页面</li>
-</ul>
-<p>折腾这些东西真的太费时间了，毕设一点没动，现在很慌张。有问题欢迎评论区留言，最近可能回复不及时。</p>
-<p>不多说了，我要滚去做毕设了</p>
-<p>ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;┌(;￣◇￣)┘</p>
+<ol>
+<li>在博客根目录下打开Git bash</li>
+<li>执行命令<code>npm install hexo-generator-sitemap --save</code>安装站点地图生成插件</li>
+<li>在博客根目录下的配置文件<code>_config.yml</code>中添加下列内容 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># 自动生成sitemap</span><br><span class="line"><span class="attr">sitemap</span>:</span><br><span class="line">	<span class="attr">path</span>: sitemap.<span class="property">xml</span></span><br></pre></td></tr></table></figure></li>
+<li>执行<code>hexo g</code>即可在<code>博客根目录/public</code>中生成<code>sitemap.xml</code>文件</li>
+</ol>
+<h3 id="验证站点"><a href="#验证站点" class="headerlink" title="验证站点"></a>验证站点</h3><ol>
+<li>打开<a href="https://www.google.com/webmasters/">Google网站站长</a>,点击右上角登陆</li>
+<li>选择网址前缀并输入站点域名，点击继续</li>
+<li>下载Google的验证文件并存放在<code>博客根目录/themes/next/source</code>中</li>
+<li>执行<code>hexo cl</code>,<code>hexo g</code>,<code>hexo d</code>三连</li>
+<li>回到Google网站站长进行验证</li>
+<li>在Google中搜索<code>site：域名</code>就可以看到自己的网站了</li>
+</ol>
+<hr>
+<p>现在已经可以在Google上搜索到自己的文章和网站了，填坑结束~~~</p>
 ]]></content>
       <categories>
         <category>Blog</category>
       </categories>
       <tags>
         <tag>HEXO</tag>
-        <tag>English</tag>
-        <tag>Next</tag>
       </tags>
   </entry>
   <entry>
@@ -528,6 +561,46 @@
       </categories>
       <tags>
         <tag>HEXO</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java与C的环境变量配置</title>
+    <url>/Java%E4%B8%8EC%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">昨天又把系统重装了，升级到了2004，本以为能凭借记忆配置好Java和C的环境变量，然鹅最后还是找了百度，所以就再记录一遍吧</blockquote>
+
+<span id="more"></span>
+
+<h1 id="Java环境变量配置"><a href="#Java环境变量配置" class="headerlink" title="Java环境变量配置"></a>Java环境变量配置</h1><ol>
+<li>直接在任务栏搜索框搜索<code>环境变量</code>，会出现<code>编辑系统环境变量</code></li>
+<li>在弹出的窗口中点击右下角的<code>环境变量</code></li>
+<li>在下面的<code>系统变量</code>中新建系统变量，变量名<code>JAVA_HOME</code>，变量值为JDK的安装路径，默认是<code>C:\Program Files\Java\jdk-14.0.2</code></li>
+<li>再新建一个系统变量<code>CLASSPATH</code>，变量值为<code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></li>
+<li>双击系统变量中的<code>path</code>，点击右上角的<code>新建</code></li>
+<li>分别加入<code>%JAVA_HOME%\bin</code>与<code>%JAVA_HOME%\jre\bin</code></li>
+<li>确定三连回到桌面</li>
+<li>打开终端，输入<code>java -version</code>检查是否成功，成功的话会显示java版本号</li>
+<li>不成功的话重启一遍，并检查一下变量是否输入正确</li>
+</ol>
+<h1 id="C环境变量配置"><a href="#C环境变量配置" class="headerlink" title="C环境变量配置"></a>C环境变量配置</h1><ol>
+<li>在mingw中勾选<code>mingw32-base</code>和<code>mingw-gcc-g++</code>就行，选择多了会装到天荒地老。。。勾选方式是<code>右键 - Mark for Installation</code></li>
+<li>点击右上角的<code>Installation - Apply Changes</code></li>
+<li>在弹出的窗口中点击<code>Apply</code>确认</li>
+<li>漫长的等待。。。。。。土豆服务器经常会报错安装失败</li>
+<li>安装完成后同上打开系统变量</li>
+<li>双击系统变量中的<code>path</code>，点击右上角的<code>新建</code></li>
+<li>加入mingw的安装路径，默认是<code>C:\MinGW\bin</code></li>
+<li>打开终端，输入<code>gcc -v</code>检查是否成功</li>
+<li>不成功同样重启试试</li>
+</ol>
+<p>设置完成后的环境变量大概是这个亚子<br><img data-src="https://s2.loli.net/2022/05/13/O49gVDEHBFZ2kzm.png" alt="1"><br><img data-src="https://s2.loli.net/2022/05/13/uLJnsPYEIiHSA1t.png" alt="2"></p>
+]]></content>
+      <categories>
+        <category>Tech</category>
+      </categories>
+      <tags>
+        <tag>Software</tag>
+        <tag>Java</tag>
+        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -670,79 +743,6 @@
       </categories>
       <tags>
         <tag>ITX</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo添加Google收录</title>
-    <url>/Hexo%E6%B7%BB%E5%8A%A0Google%E6%94%B6%E5%BD%95.html</url>
-    <content><![CDATA[<p>目前网站还不能够通过搜索引擎搜索到，想要被搜到的话需要添加搜索引擎收录，这里以我添加的Google为例。<br><strong>步骤包括：</strong></p>
-<ul>
-<li>生成站点地图</li>
-<li>验证站点<span id="more"></span>
-<h3 id="生成站点地图"><a href="#生成站点地图" class="headerlink" title="生成站点地图"></a>生成站点地图</h3></li>
-</ul>
-<ol>
-<li>在博客根目录下打开Git bash</li>
-<li>执行命令<code>npm install hexo-generator-sitemap --save</code>安装站点地图生成插件</li>
-<li>在博客根目录下的配置文件<code>_config.yml</code>中添加下列内容 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># 自动生成sitemap</span><br><span class="line"><span class="attr">sitemap</span>:</span><br><span class="line">	<span class="attr">path</span>: sitemap.<span class="property">xml</span></span><br></pre></td></tr></table></figure></li>
-<li>执行<code>hexo g</code>即可在<code>博客根目录/public</code>中生成<code>sitemap.xml</code>文件</li>
-</ol>
-<h3 id="验证站点"><a href="#验证站点" class="headerlink" title="验证站点"></a>验证站点</h3><ol>
-<li>打开<a href="https://www.google.com/webmasters/">Google网站站长</a>,点击右上角登陆</li>
-<li>选择网址前缀并输入站点域名，点击继续</li>
-<li>下载Google的验证文件并存放在<code>博客根目录/themes/next/source</code>中</li>
-<li>执行<code>hexo cl</code>,<code>hexo g</code>,<code>hexo d</code>三连</li>
-<li>回到Google网站站长进行验证</li>
-<li>在Google中搜索<code>site：域名</code>就可以看到自己的网站了</li>
-</ol>
-<hr>
-<p>现在已经可以在Google上搜索到自己的文章和网站了，填坑结束~~~</p>
-]]></content>
-      <categories>
-        <category>Blog</category>
-      </categories>
-      <tags>
-        <tag>HEXO</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java与C的环境变量配置</title>
-    <url>/Java%E4%B8%8EC%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">昨天又把系统重装了，升级到了2004，本以为能凭借记忆配置好Java和C的环境变量，然鹅最后还是找了百度，所以就再记录一遍吧</blockquote>
-
-<span id="more"></span>
-
-<h1 id="Java环境变量配置"><a href="#Java环境变量配置" class="headerlink" title="Java环境变量配置"></a>Java环境变量配置</h1><ol>
-<li>直接在任务栏搜索框搜索<code>环境变量</code>，会出现<code>编辑系统环境变量</code></li>
-<li>在弹出的窗口中点击右下角的<code>环境变量</code></li>
-<li>在下面的<code>系统变量</code>中新建系统变量，变量名<code>JAVA_HOME</code>，变量值为JDK的安装路径，默认是<code>C:\Program Files\Java\jdk-14.0.2</code></li>
-<li>再新建一个系统变量<code>CLASSPATH</code>，变量值为<code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></li>
-<li>双击系统变量中的<code>path</code>，点击右上角的<code>新建</code></li>
-<li>分别加入<code>%JAVA_HOME%\bin</code>与<code>%JAVA_HOME%\jre\bin</code></li>
-<li>确定三连回到桌面</li>
-<li>打开终端，输入<code>java -version</code>检查是否成功，成功的话会显示java版本号</li>
-<li>不成功的话重启一遍，并检查一下变量是否输入正确</li>
-</ol>
-<h1 id="C环境变量配置"><a href="#C环境变量配置" class="headerlink" title="C环境变量配置"></a>C环境变量配置</h1><ol>
-<li>在mingw中勾选<code>mingw32-base</code>和<code>mingw-gcc-g++</code>就行，选择多了会装到天荒地老。。。勾选方式是<code>右键 - Mark for Installation</code></li>
-<li>点击右上角的<code>Installation - Apply Changes</code></li>
-<li>在弹出的窗口中点击<code>Apply</code>确认</li>
-<li>漫长的等待。。。。。。土豆服务器经常会报错安装失败</li>
-<li>安装完成后同上打开系统变量</li>
-<li>双击系统变量中的<code>path</code>，点击右上角的<code>新建</code></li>
-<li>加入mingw的安装路径，默认是<code>C:\MinGW\bin</code></li>
-<li>打开终端，输入<code>gcc -v</code>检查是否成功</li>
-<li>不成功同样重启试试</li>
-</ol>
-<p>设置完成后的环境变量大概是这个亚子<br><img data-src="https://s2.loli.net/2022/05/13/O49gVDEHBFZ2kzm.png" alt="1"><br><img data-src="https://s2.loli.net/2022/05/13/uLJnsPYEIiHSA1t.png" alt="2"></p>
-]]></content>
-      <categories>
-        <category>Tech</category>
-      </categories>
-      <tags>
-        <tag>Software</tag>
-        <tag>Java</tag>
-        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -1702,6 +1702,29 @@
       </tags>
   </entry>
   <entry>
+    <title>Purpose</title>
+    <url>/Purpose.html</url>
+    <content><![CDATA[<h3 id="01"><a href="#01" class="headerlink" title="01"></a>01</h3><p>建立博客的初衷是记录一些自己踩过的坑，防止以后踩相同的坑无法自拔。</p>
+<h3 id="02"><a href="#02" class="headerlink" title="02"></a>02</h3><p>博客主要记录的领域有：</p>
+<ul>
+<li>C&#x2F;C++编写的PTA算法题</li>
+<li>闲的蛋疼写的小游戏</li>
+<li>Echats的模板文件（主要给建筑狗用）</li>
+<li>PTE相关的经验</li>
+<li>CS出国留学的准备工作</li>
+<li>Python爬虫</li>
+<li>一些偏技术的教程（比如搭建这个博客）</li>
+</ul>
+<h3 id="03"><a href="#03" class="headerlink" title="03"></a>03</h3><p>目前就想到这些，有空再更新（咕咕咕）</p>
+]]></content>
+      <categories>
+        <category>Dairy</category>
+      </categories>
+      <tags>
+        <tag>Record</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Next主题美化(仅7.1版本)</title>
     <url>/Next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96.html</url>
     <content><![CDATA[<p>2020年更新：此方法不适用于新版本Next主题！！！</p>
@@ -2175,6 +2198,252 @@
       </tags>
   </entry>
   <entry>
+    <title>PTE不完全指南</title>
+    <url>/PTE%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">我12月27日在武汉湖北大学考场考完了PTE，等了三天之后出了成绩，成绩单在下面，顺利达到格拉的入学要求。记录一下备考的经验，祝大家早日和语言考试分手（雅思就是个死渣男）</blockquote>
+
+<p><img data-src="https://s2.loli.net/2022/05/13/X3K2jQ8mRNSeMY5.png" alt="PTE"></p>
+<span id="more"></span>
+
+<p>首先讲一下大概的时间线，我是今年5月份开始了解PTE。因为4月考的雅思没有达到录取要求，更主要的是复习一个月去考和第一次裸考的成绩基本一样，只有阅读涨了0.5分。。。</p>
+<ul>
+<li>5月在B站稍微了解了下PTE，然后就在准备研究生申请的事情</li>
+<li>十月底格拉来了offer，con雅思6.5（写作6.5，其他6.0）或者PTE68（62），虽然他官网些写的是PTE60(59)</li>
+<li>双十一开始复习，双十一在淘宝买了Voucher报了名，然后主要练习口语，每天大概2个小时，中间忙着订格拉的宿舍，大部分时间在摸鱼</li>
+<li>十二月之后开始练所有的题型，每天大概4-6个小时</li>
+<li>12月11号做了官方模考A卷，总分66，听62 说70 读65 写64，然后格拉要求总分68，就跟慌，11号以后每天复习时间大概在6-8小时</li>
+<li>12月21号做了模考C卷，总分67，都说C卷最接近真实考试难度，所以我更慌了</li>
+<li>12月25号做了模考B卷，总分70</li>
+<li>12月26号飞去武汉，27号上午9点考试</li>
+<li>12月30号中午1点收到出成绩的邮件（这里不得不吐槽武汉考场，出成绩是真的慢，我同学29号下午在广州白云考的，30号早上7点多就出分了）</li>
+</ul>
+<h1 id="关于PTE"><a href="#关于PTE" class="headerlink" title="关于PTE"></a>关于PTE</h1><p>PTE是英国培生教育集团推出的英语语言能力考试，全程机考，程序自动评分，目前英国大部分学校是认可的</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
+<li>PTE不会像雅思那样人为压分，只要下功夫练习就一定会有进步，不像雅思，花老大的力气也不涨分</li>
+<li>PTE出分速度快，一般1-5个工作日</li>
+<li>PTE考位相对宽松，不用担心抢不到位置</li>
+</ol>
+<h2 id="适合人群"><a href="#适合人群" class="headerlink" title="适合人群"></a>适合人群</h2><p>PTE适合听力&#x2F;阅读比较好的考生，因为它的听力和阅读难度比较大，尤其是听力<br>PTE的写作和口语比雅思要简单，也适合雅思一直卡口语&#x2F;写作小分的考生</p>
+<h1 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h1><p>题型上次介绍过，再列个表概括一下</p>
+<table>
+<thead>
+<tr>
+<th align="center">部分</th>
+<th align="center">题型</th>
+<th>要求</th>
+<th align="center">题目数量</th>
+<th>交叉评分</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Speaking</td>
+<td align="center">RA</td>
+<td>朗读屏幕上的一段话，40s准备40s朗读，短句子给的时间会相应减少</td>
+<td align="center">6-7</td>
+<td>Reading and speaking &#x2F; Oral fluency, pronunciation</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">RS</td>
+<td>电脑播放一句话的录音，听完后马上复述出来</td>
+<td align="center">10-12</td>
+<td>Listening and speaking &#x2F; Oral fluency, pronunciation</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">DI</td>
+<td>描述给出的图片，25s准备，40s叙述</td>
+<td align="center">6-7</td>
+<td>Speaking &#x2F; Oral fluency, pronunciation</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">RL</td>
+<td>听一段录音，然后简单复述录音讲了什么，需要做笔记</td>
+<td align="center">3-4</td>
+<td>Listening and speaking &#x2F; Oral fluency, pronunciation</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">ASQ</td>
+<td>回答听到的问题，一般答案是一个单词，都是常识性问题</td>
+<td align="center">10-12</td>
+<td>Listening and speaking &#x2F; Vocabulary</td>
+</tr>
+<tr>
+<td align="center">Writing</td>
+<td align="center">SWT</td>
+<td>给出一段文章，用5-75个单词概括这段话，只能写一句话，每题10min</td>
+<td align="center">2-3</td>
+<td>Reading and writing &#x2F; Grammar, vocabulary</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">WE</td>
+<td>类似雅思大作文，每题20min</td>
+<td align="center">1-2</td>
+<td>Writing &#x2F; Grammar, vocabulary, spelling, written discourse</td>
+</tr>
+<tr>
+<td align="center">Reading</td>
+<td align="center">FIBW</td>
+<td>完形填空的变种，将合适的单词拖拽到文章的空里</td>
+<td align="center">5-6</td>
+<td>Reading and writing</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">FIB</td>
+<td>类似完形填空，从下拉菜单里选择缺少的单词</td>
+<td align="center">4-5</td>
+<td>Reading</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">RO</td>
+<td>给几句打乱顺序的话，重新排序</td>
+<td align="center">2-3</td>
+<td>Reading</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">MCM</td>
+<td>多选题</td>
+<td align="center">2-3</td>
+<td>Reading</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">MCS</td>
+<td>单选题</td>
+<td align="center">2-3</td>
+<td>Reading</td>
+</tr>
+<tr>
+<td align="center">Listening</td>
+<td align="center">SST</td>
+<td>听一段录音，然后总结一段50-70词的小文章，需要做笔记</td>
+<td align="center">2-3</td>
+<td>Listening and writing &#x2F; Grammar, vocabulary, spelling</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">FIB</td>
+<td>听录音，然后拼写出缺少的单词</td>
+<td align="center">2-3</td>
+<td>Listening and writing</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">WFD</td>
+<td>听一句话，然后拼写出来</td>
+<td align="center">3-4</td>
+<td>Listening and writing</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">MCS</td>
+<td>单选题</td>
+<td align="center">2-3</td>
+<td>Listening</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">MCM</td>
+<td>多选题</td>
+<td align="center">2-3</td>
+<td>Listening</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">SMW</td>
+<td>播放一段录音，最后几个单词会剪掉，选择被剪掉的单词</td>
+<td align="center">2-3</td>
+<td>Listening</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">HIW</td>
+<td>播放一段录音，录音和下面的文章有不一样的词，点选出不同的词</td>
+<td align="center">2-3</td>
+<td>Listening and reading</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">HCS</td>
+<td>播放一段录音，选出最能概括录音的总结</td>
+<td align="center">2-3</td>
+<td>Listening and reading</td>
+</tr>
+</tbody></table>
+<h1 id="答题经验"><a href="#答题经验" class="headerlink" title="答题经验"></a>答题经验</h1><h2 id="Speaking"><a href="#Speaking" class="headerlink" title="Speaking"></a>Speaking</h2><p><strong>口语部分最重要的就是流利度，我的经验就是一直说不要停，念错了也不要倒回去重新念，一直往下说就好，注意意群和停顿，另外录音开始后要及时说，3s内不说的话系统会自动关闭麦克风并跳到下一题</strong></p>
+<h3 id="RA"><a href="#RA" class="headerlink" title="RA"></a>RA</h3><p>在准备时间里小声读一遍，不会念的词猜一下，数字年份之类的提前多念几遍</p>
+<h3 id="RS"><a href="#RS" class="headerlink" title="RS"></a>RS</h3><p>我是鱼的记忆，长的句子记不住，只能记住一半多，能说多少说多少吧，不要卡壳就好<br>这个部分我个人来不及记笔记，也不是很建议记笔记，来不及反应</p>
+<h3 id="RL-x2F-DI"><a href="#RL-x2F-DI" class="headerlink" title="RL&#x2F;DI"></a>RL&#x2F;DI</h3><p>这两个题就是套模板保证流利度，把模板记熟练，考试的时候无脑说。不用纠结语法，这俩题目不考语法<br>RL来不及记句子的话就记关键词，然后往模板里套就行</p>
+<h3 id="ASQ"><a href="#ASQ" class="headerlink" title="ASQ"></a>ASQ</h3><p>这个题很蛋疼，对词汇量要求挺高，最好在考试之前过一遍机经，分值不高不必太纠结</p>
+<h2 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h2><p><strong>写作要注意拼写，打字的时候打错的概率还是挺大的，每道题最好留2分钟检查一下拼写</strong><br>吐槽一下考场的键盘，武汉考场用的是那种巧克力键盘，真的难用，建议练习的时候找那种廉价的薄膜键盘就行，用机械键盘练习的话考试会很不习惯的</p>
+<h3 id="SWT"><a href="#SWT" class="headerlink" title="SWT"></a>SWT</h3><p>一般第一句话就是关键句，文章里面举得例子可以无视，注意只能有1个句号</p>
+<h3 id="WE"><a href="#WE" class="headerlink" title="WE"></a>WE</h3><p>从雅思转过来可能很不习惯这道题，200-300词的文章却要20分钟写完，莫得办法，只能用模板。模板百度就有，也可以去知乎豆瓣上找或者留邮箱要，拿到模板要看一下有没有错误，有些无良机构给的模板真的是无法直视。<br>留邮箱的话注意拿到资料后及时删除留下的邮箱，不然某垃圾机构会一直给你发垃圾邮件（没错说的就是你PTE在线学院）等offer的时候看见垃圾邮件恨不得想吃了他，每次来邮件都以为是来Offer了</p>
+<h2 id="Reading"><a href="#Reading" class="headerlink" title="Reading"></a>Reading</h2><p>阅读的重点就是词汇量，多背单词<br><strong>做题的时候注意时间，阅读是整体计时，在低分值的单选多选题目上不用纠结，给其他题目留足时间</strong></p>
+<h3 id="RO"><a href="#RO" class="headerlink" title="RO"></a>RO</h3><p>这部分有点玄学，经验就是找一下句子前后的逻辑和连接词，实在找不出来就背机经吧</p>
+<h3 id="MCM-x2F-MCS"><a href="#MCM-x2F-MCS" class="headerlink" title="MCM&#x2F;MCS"></a>MCM&#x2F;MCS</h3><p>多选和单选都很直接，不会像雅思那样故意挖坑，不要在这两道题上浪费太多时间，分值不高。<br>多选拿不准的话就选最确定的那一个，选错的话倒扣分的</p>
+<h3 id="FIB-x2F-FIBW"><a href="#FIB-x2F-FIBW" class="headerlink" title="FIB&#x2F;FIBW"></a>FIB&#x2F;FIBW</h3><p>这两道题最考验词汇量，一开始练的时候真的是一脸懵逼，不过可以根据词性排除一些选项，增加蒙对的概率。。。</p>
+<h2 id="Listening"><a href="#Listening" class="headerlink" title="Listening"></a>Listening</h2><p><strong>听力部分除SST外也是整体计时，注意合理分配时间，因为分值最大的WFD是最后才出现的，有很多人来不及做完WFD就被系统强制交卷了，建议给WFD留3-4分钟</strong></p>
+<h3 id="SWT-1"><a href="#SWT-1" class="headerlink" title="SWT"></a>SWT</h3><p>这部分是单独计时的，播放录音的时间也包含在里面<br>一般第一句话会是主题句，另外反复出现的词也要留意<br>记笔记的话尽量记完整的句子，最好不要用模板，因为有词数限制，模板就是浪费宝贵的空间<br>同样建议留出时间检查拼写</p>
+<h3 id="FIB"><a href="#FIB" class="headerlink" title="FIB"></a>FIB</h3><p>这道题主要考察拼写，建议用笔把词语记下来<br>亲测武汉考场不能用<code>tab</code>键切换到下一个空，直接打的话需要另一只手操作鼠标，来不及</p>
+<h3 id="WFD"><a href="#WFD" class="headerlink" title="WFD"></a>WFD</h3><p>这道题是重头戏，建议考试之前背机经，一个单词就是一分<br>听的时候注意单复数和时态，听完后先回想一下大概意思<br>记笔记的话建议练习首字母法，即记下来每个单词的首字母，然后再把其他的字母填上<br>做完后检查一遍拼写</p>
+<h3 id="MCM"><a href="#MCM" class="headerlink" title="MCM"></a>MCM</h3><p>同阅读多选，选对一个1分，选错倒扣分<br>不确定的话不要选</p>
+<h3 id="HIW"><a href="#HIW" class="headerlink" title="HIW"></a>HIW</h3><p>这个题选错的话也是倒扣分，所以没听清楚的就不要选了</p>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><h2 id="报名注意事项"><a href="#报名注意事项" class="headerlink" title="报名注意事项"></a>报名注意事项</h2><ol>
+<li>报名的时候名字全部大写，名在前面姓在后面，中间空格，和身份证上的拼写一致</li>
+<li>留常用的邮箱，出成绩的话会发邮件通知你的</li>
+</ol>
+<h2 id="Voucher"><a href="#Voucher" class="headerlink" title="Voucher"></a>Voucher</h2><p>官方的优惠券，能省点钱，淘宝可入，会发给你一个优惠码，报名缴费的时候填写优惠码就行了<br>淘宝上的仅限中国大陆考区使用，有效期一般12个月，退考后可以继续用</p>
+<h2 id="练习平台"><a href="#练习平台" class="headerlink" title="练习平台"></a>练习平台</h2><p>现在主流的联系平台主要有羊驼、黑科技和猩际，我三家都有用，各有千秋，每家平台都有不少水军。豆瓣一搜索PTE全是某科技的回答，知乎就是某驼的多，每家平台都说自己评分准，但是不要过于相信他们的评分，仅供参考，目前羊驼的口语打分偏低，猩际的偏高，某科技口语是5分制，不好评价</p>
+<ul>
+<li>羊驼 - 在它家买的Voucher，送了一个半月会员，刚好够用，优点是口语练习实时出成绩，口语成绩是90分制，比较直观，有手机APP和网页版</li>
+<li>黑科技 - 开了1个月的会员，主要练习作文，优点是可以查看其他人的优秀作文，有微信小程序和网页版</li>
+<li>猩际 - 白嫖的，也用来练习写作，优点是会标出写作错误的地方，它家的公开课可以看一下，适合入门</li>
+</ul>
+<h2 id="机经"><a href="#机经" class="headerlink" title="机经"></a>机经</h2><p>PTE的一个神器就是机经，尤其是前几年题库少的时候，不过培生一直在更新题库，所以不建议过于依赖机经<br>有几家机构会有预测题，据说准确率蛮高的，后悔没有背<br>我知道的有下面两家，具体不作评价，没怎么看</p>
+<ul>
+<li>羊驼 - 它家的在APP里或者微信公众号里可以找到下载链接</li>
+<li>萤火虫 - 它家的在微信公众号里有下载链接</li>
+</ul>
+<h2 id="模考"><a href="#模考" class="headerlink" title="模考"></a>模考</h2><p>PTE官方推出了三套模考，和考试的时候使用的是一套打分模式，有ABC三套，强烈建议考试之前做几套官方模拟，要不然就是在烧钱，<br>一般最后考试的分数都会比模考高几分的，因为考场耳机的收音效果比较好<br>模考的时候不要使用蓝牙耳机，录音效果差，很容易出现口语10分的情况。<br>有条件的买一个带麦的头戴式耳机，不放心的可以去闲鱼收一个二手的官方考试同款耳机，不过没太大必要，一个耳机四五百，拿来买排骨吃它不香吗<br>淘宝上可以买到模考的账号，可以单个买也可以买套装，套装价格大概430元</p>
+<ul>
+<li>A卷 - 难度最大，不太适合一开始就做，容易打击信心</li>
+<li>B卷 - 难度最低</li>
+<li>C卷 - 难度最接近真实考试</li>
+</ul>
+<p>另外这几家机构也有自己的模拟考试，价格比较便宜，可以练手用</p>
+<h2 id="考试当天注意事项"><a href="#考试当天注意事项" class="headerlink" title="考试当天注意事项"></a>考试当天注意事项</h2><ol>
+<li>提前半小时到达考场，可以带点材料，在休息室可以看材料</li>
+<li>考场有专门存包的柜子，柜子很大，小号的行李箱也能塞进去，每个人会给一把钥匙，这个柜子中途是不允许开的，可以提前把水杯拿出来，考场提供饮用水，可以自己接</li>
+<li>电子设备都要关机放进柜子里</li>
+<li>考场桌子上有3M的耳塞，做写作和阅读的时候可以带上，因为你做到写作的时候可能还有人在做口语</li>
+<li>国内考生带身份证就行，没必要带护照，我两个都带了，然后只拿了身份证进去</li>
+<li>考试之前不要喝太多水，因为考完 口语、写作和阅读之后才会有10分钟的休息时间，大概在11点左右，憋两个小时很酸爽</li>
+<li>中间的10分钟休息是可选的，建议休息，休息的时候举手找考官来帮你暂停考试，休息的时候注意时间，因为入场的时候要重新检查，记得出去的时候带着证件</li>
+<li>电脑有异常及时找考官记录，要不然考完就没办法了，武汉考场的考官很nice，态度很友好</li>
+<li>口语部分不要念太大声，一是保护自己的嗓子；二是会干扰别人，别人举报你的话会被写报告的（当然其他人声音太大的话你也可以举报）；考场的耳机收音效果都是不错的，没必要喊太大声，武汉考场的话你自己在说的时候基本听不到别人说话的声音</li>
+<li>口语部分说完之后就可以点<code>Next</code>,避免录进去别人的声音，虽然概率不大</li>
+<li>耳机麦克的位置我是放在上嘴唇和鼻尖中间，距离脸部大概2-3指的距离</li>
+<li>试音的时候不要跟着别人念<code>Testing testing one two three</code>，找几个爆破音念或者念屏幕上的注意事项，看看会不会喷麦</li>
+<li>考试的笔不用的时候一定要扣好笔帽，要不然干了就写不出字来了，考场记笔记用的本子是塑料材质，比较滑</li>
+<li>耳机一旦调好就不要再动了</li>
+</ol>
+<p>需要模板的可以给我发邮件，我当时找了不少，虽然没用到几个<br>要说的就这么多了，祝大家早日通过考试~~~<br>BTW，2020新年快乐~~~</p>
+]]></content>
+      <categories>
+        <category>PTE</category>
+      </categories>
+      <tags>
+        <tag>English</tag>
+        <tag>PTE</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PTE题型</title>
     <url>/PTE%E9%A2%98%E5%9E%8B.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">被雅思恶心到了（~~口语万年5.5~~），转战PTE，开个坑记录下PTE的题型，文章的题型顺序是按照考试的时间先后顺序排列的。另外[送上PTE官网](https://pearsonpte.com/)，可以在官[这里](https://pearsonpte.com/the-test/who-accepts-it/)查询下自己想申请的学校接不接受PTE成绩，另外也可以到学校官网查询，例如我要申请的UCD是要达到总分63小分不低于59，对应雅思就是总分6.5小分6.0的水平，但是PTE是全机器判卷，排除掉了人为因素的影响，更为客观，AI才是未来~~</blockquote>
@@ -2547,275 +2816,6 @@
       <tags>
         <tag>English</tag>
         <tag>PTE</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PTE不完全指南</title>
-    <url>/PTE%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">我12月27日在武汉湖北大学考场考完了PTE，等了三天之后出了成绩，成绩单在下面，顺利达到格拉的入学要求。记录一下备考的经验，祝大家早日和语言考试分手（雅思就是个死渣男）</blockquote>
-
-<p><img data-src="https://s2.loli.net/2022/05/13/X3K2jQ8mRNSeMY5.png" alt="PTE"></p>
-<span id="more"></span>
-
-<p>首先讲一下大概的时间线，我是今年5月份开始了解PTE。因为4月考的雅思没有达到录取要求，更主要的是复习一个月去考和第一次裸考的成绩基本一样，只有阅读涨了0.5分。。。</p>
-<ul>
-<li>5月在B站稍微了解了下PTE，然后就在准备研究生申请的事情</li>
-<li>十月底格拉来了offer，con雅思6.5（写作6.5，其他6.0）或者PTE68（62），虽然他官网些写的是PTE60(59)</li>
-<li>双十一开始复习，双十一在淘宝买了Voucher报了名，然后主要练习口语，每天大概2个小时，中间忙着订格拉的宿舍，大部分时间在摸鱼</li>
-<li>十二月之后开始练所有的题型，每天大概4-6个小时</li>
-<li>12月11号做了官方模考A卷，总分66，听62 说70 读65 写64，然后格拉要求总分68，就跟慌，11号以后每天复习时间大概在6-8小时</li>
-<li>12月21号做了模考C卷，总分67，都说C卷最接近真实考试难度，所以我更慌了</li>
-<li>12月25号做了模考B卷，总分70</li>
-<li>12月26号飞去武汉，27号上午9点考试</li>
-<li>12月30号中午1点收到出成绩的邮件（这里不得不吐槽武汉考场，出成绩是真的慢，我同学29号下午在广州白云考的，30号早上7点多就出分了）</li>
-</ul>
-<h1 id="关于PTE"><a href="#关于PTE" class="headerlink" title="关于PTE"></a>关于PTE</h1><p>PTE是英国培生教育集团推出的英语语言能力考试，全程机考，程序自动评分，目前英国大部分学校是认可的</p>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
-<li>PTE不会像雅思那样人为压分，只要下功夫练习就一定会有进步，不像雅思，花老大的力气也不涨分</li>
-<li>PTE出分速度快，一般1-5个工作日</li>
-<li>PTE考位相对宽松，不用担心抢不到位置</li>
-</ol>
-<h2 id="适合人群"><a href="#适合人群" class="headerlink" title="适合人群"></a>适合人群</h2><p>PTE适合听力&#x2F;阅读比较好的考生，因为它的听力和阅读难度比较大，尤其是听力<br>PTE的写作和口语比雅思要简单，也适合雅思一直卡口语&#x2F;写作小分的考生</p>
-<h1 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h1><p>题型上次介绍过，再列个表概括一下</p>
-<table>
-<thead>
-<tr>
-<th align="center">部分</th>
-<th align="center">题型</th>
-<th>要求</th>
-<th align="center">题目数量</th>
-<th>交叉评分</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Speaking</td>
-<td align="center">RA</td>
-<td>朗读屏幕上的一段话，40s准备40s朗读，短句子给的时间会相应减少</td>
-<td align="center">6-7</td>
-<td>Reading and speaking &#x2F; Oral fluency, pronunciation</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">RS</td>
-<td>电脑播放一句话的录音，听完后马上复述出来</td>
-<td align="center">10-12</td>
-<td>Listening and speaking &#x2F; Oral fluency, pronunciation</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">DI</td>
-<td>描述给出的图片，25s准备，40s叙述</td>
-<td align="center">6-7</td>
-<td>Speaking &#x2F; Oral fluency, pronunciation</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">RL</td>
-<td>听一段录音，然后简单复述录音讲了什么，需要做笔记</td>
-<td align="center">3-4</td>
-<td>Listening and speaking &#x2F; Oral fluency, pronunciation</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">ASQ</td>
-<td>回答听到的问题，一般答案是一个单词，都是常识性问题</td>
-<td align="center">10-12</td>
-<td>Listening and speaking &#x2F; Vocabulary</td>
-</tr>
-<tr>
-<td align="center">Writing</td>
-<td align="center">SWT</td>
-<td>给出一段文章，用5-75个单词概括这段话，只能写一句话，每题10min</td>
-<td align="center">2-3</td>
-<td>Reading and writing &#x2F; Grammar, vocabulary</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">WE</td>
-<td>类似雅思大作文，每题20min</td>
-<td align="center">1-2</td>
-<td>Writing &#x2F; Grammar, vocabulary, spelling, written discourse</td>
-</tr>
-<tr>
-<td align="center">Reading</td>
-<td align="center">FIBW</td>
-<td>完形填空的变种，将合适的单词拖拽到文章的空里</td>
-<td align="center">5-6</td>
-<td>Reading and writing</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">FIB</td>
-<td>类似完形填空，从下拉菜单里选择缺少的单词</td>
-<td align="center">4-5</td>
-<td>Reading</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">RO</td>
-<td>给几句打乱顺序的话，重新排序</td>
-<td align="center">2-3</td>
-<td>Reading</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">MCM</td>
-<td>多选题</td>
-<td align="center">2-3</td>
-<td>Reading</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">MCS</td>
-<td>单选题</td>
-<td align="center">2-3</td>
-<td>Reading</td>
-</tr>
-<tr>
-<td align="center">Listening</td>
-<td align="center">SST</td>
-<td>听一段录音，然后总结一段50-70词的小文章，需要做笔记</td>
-<td align="center">2-3</td>
-<td>Listening and writing &#x2F; Grammar, vocabulary, spelling</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">FIB</td>
-<td>听录音，然后拼写出缺少的单词</td>
-<td align="center">2-3</td>
-<td>Listening and writing</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">WFD</td>
-<td>听一句话，然后拼写出来</td>
-<td align="center">3-4</td>
-<td>Listening and writing</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">MCS</td>
-<td>单选题</td>
-<td align="center">2-3</td>
-<td>Listening</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">MCM</td>
-<td>多选题</td>
-<td align="center">2-3</td>
-<td>Listening</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">SMW</td>
-<td>播放一段录音，最后几个单词会剪掉，选择被剪掉的单词</td>
-<td align="center">2-3</td>
-<td>Listening</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">HIW</td>
-<td>播放一段录音，录音和下面的文章有不一样的词，点选出不同的词</td>
-<td align="center">2-3</td>
-<td>Listening and reading</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">HCS</td>
-<td>播放一段录音，选出最能概括录音的总结</td>
-<td align="center">2-3</td>
-<td>Listening and reading</td>
-</tr>
-</tbody></table>
-<h1 id="答题经验"><a href="#答题经验" class="headerlink" title="答题经验"></a>答题经验</h1><h2 id="Speaking"><a href="#Speaking" class="headerlink" title="Speaking"></a>Speaking</h2><p><strong>口语部分最重要的就是流利度，我的经验就是一直说不要停，念错了也不要倒回去重新念，一直往下说就好，注意意群和停顿，另外录音开始后要及时说，3s内不说的话系统会自动关闭麦克风并跳到下一题</strong></p>
-<h3 id="RA"><a href="#RA" class="headerlink" title="RA"></a>RA</h3><p>在准备时间里小声读一遍，不会念的词猜一下，数字年份之类的提前多念几遍</p>
-<h3 id="RS"><a href="#RS" class="headerlink" title="RS"></a>RS</h3><p>我是鱼的记忆，长的句子记不住，只能记住一半多，能说多少说多少吧，不要卡壳就好<br>这个部分我个人来不及记笔记，也不是很建议记笔记，来不及反应</p>
-<h3 id="RL-x2F-DI"><a href="#RL-x2F-DI" class="headerlink" title="RL&#x2F;DI"></a>RL&#x2F;DI</h3><p>这两个题就是套模板保证流利度，把模板记熟练，考试的时候无脑说。不用纠结语法，这俩题目不考语法<br>RL来不及记句子的话就记关键词，然后往模板里套就行</p>
-<h3 id="ASQ"><a href="#ASQ" class="headerlink" title="ASQ"></a>ASQ</h3><p>这个题很蛋疼，对词汇量要求挺高，最好在考试之前过一遍机经，分值不高不必太纠结</p>
-<h2 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h2><p><strong>写作要注意拼写，打字的时候打错的概率还是挺大的，每道题最好留2分钟检查一下拼写</strong><br>吐槽一下考场的键盘，武汉考场用的是那种巧克力键盘，真的难用，建议练习的时候找那种廉价的薄膜键盘就行，用机械键盘练习的话考试会很不习惯的</p>
-<h3 id="SWT"><a href="#SWT" class="headerlink" title="SWT"></a>SWT</h3><p>一般第一句话就是关键句，文章里面举得例子可以无视，注意只能有1个句号</p>
-<h3 id="WE"><a href="#WE" class="headerlink" title="WE"></a>WE</h3><p>从雅思转过来可能很不习惯这道题，200-300词的文章却要20分钟写完，莫得办法，只能用模板。模板百度就有，也可以去知乎豆瓣上找或者留邮箱要，拿到模板要看一下有没有错误，有些无良机构给的模板真的是无法直视。<br>留邮箱的话注意拿到资料后及时删除留下的邮箱，不然某垃圾机构会一直给你发垃圾邮件（没错说的就是你PTE在线学院）等offer的时候看见垃圾邮件恨不得想吃了他，每次来邮件都以为是来Offer了</p>
-<h2 id="Reading"><a href="#Reading" class="headerlink" title="Reading"></a>Reading</h2><p>阅读的重点就是词汇量，多背单词<br><strong>做题的时候注意时间，阅读是整体计时，在低分值的单选多选题目上不用纠结，给其他题目留足时间</strong></p>
-<h3 id="RO"><a href="#RO" class="headerlink" title="RO"></a>RO</h3><p>这部分有点玄学，经验就是找一下句子前后的逻辑和连接词，实在找不出来就背机经吧</p>
-<h3 id="MCM-x2F-MCS"><a href="#MCM-x2F-MCS" class="headerlink" title="MCM&#x2F;MCS"></a>MCM&#x2F;MCS</h3><p>多选和单选都很直接，不会像雅思那样故意挖坑，不要在这两道题上浪费太多时间，分值不高。<br>多选拿不准的话就选最确定的那一个，选错的话倒扣分的</p>
-<h3 id="FIB-x2F-FIBW"><a href="#FIB-x2F-FIBW" class="headerlink" title="FIB&#x2F;FIBW"></a>FIB&#x2F;FIBW</h3><p>这两道题最考验词汇量，一开始练的时候真的是一脸懵逼，不过可以根据词性排除一些选项，增加蒙对的概率。。。</p>
-<h2 id="Listening"><a href="#Listening" class="headerlink" title="Listening"></a>Listening</h2><p><strong>听力部分除SST外也是整体计时，注意合理分配时间，因为分值最大的WFD是最后才出现的，有很多人来不及做完WFD就被系统强制交卷了，建议给WFD留3-4分钟</strong></p>
-<h3 id="SWT-1"><a href="#SWT-1" class="headerlink" title="SWT"></a>SWT</h3><p>这部分是单独计时的，播放录音的时间也包含在里面<br>一般第一句话会是主题句，另外反复出现的词也要留意<br>记笔记的话尽量记完整的句子，最好不要用模板，因为有词数限制，模板就是浪费宝贵的空间<br>同样建议留出时间检查拼写</p>
-<h3 id="FIB"><a href="#FIB" class="headerlink" title="FIB"></a>FIB</h3><p>这道题主要考察拼写，建议用笔把词语记下来<br>亲测武汉考场不能用<code>tab</code>键切换到下一个空，直接打的话需要另一只手操作鼠标，来不及</p>
-<h3 id="WFD"><a href="#WFD" class="headerlink" title="WFD"></a>WFD</h3><p>这道题是重头戏，建议考试之前背机经，一个单词就是一分<br>听的时候注意单复数和时态，听完后先回想一下大概意思<br>记笔记的话建议练习首字母法，即记下来每个单词的首字母，然后再把其他的字母填上<br>做完后检查一遍拼写</p>
-<h3 id="MCM"><a href="#MCM" class="headerlink" title="MCM"></a>MCM</h3><p>同阅读多选，选对一个1分，选错倒扣分<br>不确定的话不要选</p>
-<h3 id="HIW"><a href="#HIW" class="headerlink" title="HIW"></a>HIW</h3><p>这个题选错的话也是倒扣分，所以没听清楚的就不要选了</p>
-<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><h2 id="报名注意事项"><a href="#报名注意事项" class="headerlink" title="报名注意事项"></a>报名注意事项</h2><ol>
-<li>报名的时候名字全部大写，名在前面姓在后面，中间空格，和身份证上的拼写一致</li>
-<li>留常用的邮箱，出成绩的话会发邮件通知你的</li>
-</ol>
-<h2 id="Voucher"><a href="#Voucher" class="headerlink" title="Voucher"></a>Voucher</h2><p>官方的优惠券，能省点钱，淘宝可入，会发给你一个优惠码，报名缴费的时候填写优惠码就行了<br>淘宝上的仅限中国大陆考区使用，有效期一般12个月，退考后可以继续用</p>
-<h2 id="练习平台"><a href="#练习平台" class="headerlink" title="练习平台"></a>练习平台</h2><p>现在主流的联系平台主要有羊驼、黑科技和猩际，我三家都有用，各有千秋，每家平台都有不少水军。豆瓣一搜索PTE全是某科技的回答，知乎就是某驼的多，每家平台都说自己评分准，但是不要过于相信他们的评分，仅供参考，目前羊驼的口语打分偏低，猩际的偏高，某科技口语是5分制，不好评价</p>
-<ul>
-<li>羊驼 - 在它家买的Voucher，送了一个半月会员，刚好够用，优点是口语练习实时出成绩，口语成绩是90分制，比较直观，有手机APP和网页版</li>
-<li>黑科技 - 开了1个月的会员，主要练习作文，优点是可以查看其他人的优秀作文，有微信小程序和网页版</li>
-<li>猩际 - 白嫖的，也用来练习写作，优点是会标出写作错误的地方，它家的公开课可以看一下，适合入门</li>
-</ul>
-<h2 id="机经"><a href="#机经" class="headerlink" title="机经"></a>机经</h2><p>PTE的一个神器就是机经，尤其是前几年题库少的时候，不过培生一直在更新题库，所以不建议过于依赖机经<br>有几家机构会有预测题，据说准确率蛮高的，后悔没有背<br>我知道的有下面两家，具体不作评价，没怎么看</p>
-<ul>
-<li>羊驼 - 它家的在APP里或者微信公众号里可以找到下载链接</li>
-<li>萤火虫 - 它家的在微信公众号里有下载链接</li>
-</ul>
-<h2 id="模考"><a href="#模考" class="headerlink" title="模考"></a>模考</h2><p>PTE官方推出了三套模考，和考试的时候使用的是一套打分模式，有ABC三套，强烈建议考试之前做几套官方模拟，要不然就是在烧钱，<br>一般最后考试的分数都会比模考高几分的，因为考场耳机的收音效果比较好<br>模考的时候不要使用蓝牙耳机，录音效果差，很容易出现口语10分的情况。<br>有条件的买一个带麦的头戴式耳机，不放心的可以去闲鱼收一个二手的官方考试同款耳机，不过没太大必要，一个耳机四五百，拿来买排骨吃它不香吗<br>淘宝上可以买到模考的账号，可以单个买也可以买套装，套装价格大概430元</p>
-<ul>
-<li>A卷 - 难度最大，不太适合一开始就做，容易打击信心</li>
-<li>B卷 - 难度最低</li>
-<li>C卷 - 难度最接近真实考试</li>
-</ul>
-<p>另外这几家机构也有自己的模拟考试，价格比较便宜，可以练手用</p>
-<h2 id="考试当天注意事项"><a href="#考试当天注意事项" class="headerlink" title="考试当天注意事项"></a>考试当天注意事项</h2><ol>
-<li>提前半小时到达考场，可以带点材料，在休息室可以看材料</li>
-<li>考场有专门存包的柜子，柜子很大，小号的行李箱也能塞进去，每个人会给一把钥匙，这个柜子中途是不允许开的，可以提前把水杯拿出来，考场提供饮用水，可以自己接</li>
-<li>电子设备都要关机放进柜子里</li>
-<li>考场桌子上有3M的耳塞，做写作和阅读的时候可以带上，因为你做到写作的时候可能还有人在做口语</li>
-<li>国内考生带身份证就行，没必要带护照，我两个都带了，然后只拿了身份证进去</li>
-<li>考试之前不要喝太多水，因为考完 口语、写作和阅读之后才会有10分钟的休息时间，大概在11点左右，憋两个小时很酸爽</li>
-<li>中间的10分钟休息是可选的，建议休息，休息的时候举手找考官来帮你暂停考试，休息的时候注意时间，因为入场的时候要重新检查，记得出去的时候带着证件</li>
-<li>电脑有异常及时找考官记录，要不然考完就没办法了，武汉考场的考官很nice，态度很友好</li>
-<li>口语部分不要念太大声，一是保护自己的嗓子；二是会干扰别人，别人举报你的话会被写报告的（当然其他人声音太大的话你也可以举报）；考场的耳机收音效果都是不错的，没必要喊太大声，武汉考场的话你自己在说的时候基本听不到别人说话的声音</li>
-<li>口语部分说完之后就可以点<code>Next</code>,避免录进去别人的声音，虽然概率不大</li>
-<li>耳机麦克的位置我是放在上嘴唇和鼻尖中间，距离脸部大概2-3指的距离</li>
-<li>试音的时候不要跟着别人念<code>Testing testing one two three</code>，找几个爆破音念或者念屏幕上的注意事项，看看会不会喷麦</li>
-<li>考试的笔不用的时候一定要扣好笔帽，要不然干了就写不出字来了，考场记笔记用的本子是塑料材质，比较滑</li>
-<li>耳机一旦调好就不要再动了</li>
-</ol>
-<p>需要模板的可以给我发邮件，我当时找了不少，虽然没用到几个<br>要说的就这么多了，祝大家早日通过考试~~~<br>BTW，2020新年快乐~~~</p>
-]]></content>
-      <categories>
-        <category>PTE</category>
-      </categories>
-      <tags>
-        <tag>English</tag>
-        <tag>PTE</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Purpose</title>
-    <url>/Purpose.html</url>
-    <content><![CDATA[<h3 id="01"><a href="#01" class="headerlink" title="01"></a>01</h3><p>建立博客的初衷是记录一些自己踩过的坑，防止以后踩相同的坑无法自拔。</p>
-<h3 id="02"><a href="#02" class="headerlink" title="02"></a>02</h3><p>博客主要记录的领域有：</p>
-<ul>
-<li>C&#x2F;C++编写的PTA算法题</li>
-<li>闲的蛋疼写的小游戏</li>
-<li>Echats的模板文件（主要给建筑狗用）</li>
-<li>PTE相关的经验</li>
-<li>CS出国留学的准备工作</li>
-<li>Python爬虫</li>
-<li>一些偏技术的教程（比如搭建这个博客）</li>
-</ul>
-<h3 id="03"><a href="#03" class="headerlink" title="03"></a>03</h3><p>目前就想到这些，有空再更新（咕咕咕）</p>
-]]></content>
-      <categories>
-        <category>Dairy</category>
-      </categories>
-      <tags>
-        <tag>Record</tag>
       </tags>
   </entry>
   <entry>
@@ -3337,6 +3337,48 @@
       </tags>
   </entry>
   <entry>
+    <title>添加 Windows Terminal 至右键菜单</title>
+    <url>/%E6%B7%BB%E5%8A%A0-Windows-Terminal-%E8%87%B3%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Windows Terminal 已经在微软应用商店上架了，所以我把终端从 Fluent Terminal 换成了 Windows Terminal，记录一下将它添加到右键菜单的过程</blockquote>
+
+<span id="more"></span>
+
+<h1 id="添加图标"><a href="#添加图标" class="headerlink" title="添加图标"></a>添加图标</h1><p>首先在<code>C:\Users\[YOUR_USER_NAME]\AppData\Local</code>新建文件夹<code>Terminal</code>，可以直接使用下面的命令创建，<strong>记得把[YOUR_USER_NAME]换成自己的用户名！</strong></p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> C:\Users\[YOUR_USER_NAME]\AppData\Local\Terminal</span><br></pre></td></tr></table></figure>
+
+<p>然后下载 Windows Terminal 图标到刚才创建的文件夹，如果浏览器没有自动下载的话就右键另存为terminal.ico</p>
+<a class="btn" href="https://raw.githubusercontent.com/microsoft/terminal/master/res/terminal.ico"><i class="fa fa-arrow-right fa-fw"></i>terminal.ico 下载</a>
+
+<h1 id="注册表写入"><a href="#注册表写入" class="headerlink" title="注册表写入"></a>注册表写入</h1><p>新建一个txt文件，添加下面的内容，然后把文件后缀改为<code>.reg</code>。<strong>记得把[YOUR_USER_NAME]换成自己的用户名！</strong></p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">Windows Registry Editor Version <span class="number">5</span>.<span class="number">00</span></span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt]</span><br><span class="line">@=&quot;Windows terminal here&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Terminal\\terminal.ico&quot;</span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt\command]</span><br><span class="line">@=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe&quot;</span><br></pre></td></tr></table></figure>
+
+<p>完成后双击文件，合并到注册表中</p>
+<h1 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h1><p>这个时候右键菜单中已经出现了<code>Windows terminal here</code>的选项，但是点击后所在的目录并不是当前的目录，这就需要修改<code>Windows Terminal</code>的配置文件了</p>
+<p>打开<code>Windows Terminal</code>，点击顶部的下拉菜单，打开<code>设置</code>，此时会打开名为<code>settings.json</code>的配置文件，要修改的部分是这个亚子</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>要想在当前文件夹启动<code>Windows Terminal</code>，需要在每一段的下面添加<code>&quot;startingDirectory&quot;: &quot;./&quot;</code>，修改完成后是这个亚子</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>保存后就能够使用右键菜单在当前文件夹运行<code>Windows Terminal</code>了</p>
+<h1 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h1><p>在使用Powershell的时候可能会出现报错<code>无法加载文件balabala.ps1，因为在此系统上禁止执行脚本，有关详细信息，请参阅balabala</code>，这是因为默认的<code>ExecutionPolicy</code>是<code>Restricted</code>，即不允许执行任何脚本。解决方法是以管理员身份运行，并输入命令<code>set-executionpolicy remotesigned</code>即可解除限制</p>
+<blockquote>
+<p>参考：</p>
+<ol>
+<li><a href="https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461">https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461</a></li>
+<li><a href="https://blog.csdn.net/Jioho_chen/article/details/101159291">https://blog.csdn.net/Jioho_chen/article/details/101159291</a></li>
+</ol>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Tech</category>
+      </categories>
+      <tags>
+        <tag>Software</tag>
+        <tag>Win10</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Win10重装指北</title>
     <url>/Win10%E9%87%8D%E8%A3%85%E6%8C%87%E5%8C%97.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">写一个Win10重装教程，另外偷个懒，把office的安装教程也合进来了hhh</blockquote>
@@ -3706,48 +3748,6 @@
         <category>Tech</category>
       </categories>
       <tags>
-        <tag>Win10</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>添加 Windows Terminal 至右键菜单</title>
-    <url>/%E6%B7%BB%E5%8A%A0-Windows-Terminal-%E8%87%B3%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Windows Terminal 已经在微软应用商店上架了，所以我把终端从 Fluent Terminal 换成了 Windows Terminal，记录一下将它添加到右键菜单的过程</blockquote>
-
-<span id="more"></span>
-
-<h1 id="添加图标"><a href="#添加图标" class="headerlink" title="添加图标"></a>添加图标</h1><p>首先在<code>C:\Users\[YOUR_USER_NAME]\AppData\Local</code>新建文件夹<code>Terminal</code>，可以直接使用下面的命令创建，<strong>记得把[YOUR_USER_NAME]换成自己的用户名！</strong></p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> C:\Users\[YOUR_USER_NAME]\AppData\Local\Terminal</span><br></pre></td></tr></table></figure>
-
-<p>然后下载 Windows Terminal 图标到刚才创建的文件夹，如果浏览器没有自动下载的话就右键另存为terminal.ico</p>
-<a class="btn" href="https://raw.githubusercontent.com/microsoft/terminal/master/res/terminal.ico"><i class="fa fa-arrow-right fa-fw"></i>terminal.ico 下载</a>
-
-<h1 id="注册表写入"><a href="#注册表写入" class="headerlink" title="注册表写入"></a>注册表写入</h1><p>新建一个txt文件，添加下面的内容，然后把文件后缀改为<code>.reg</code>。<strong>记得把[YOUR_USER_NAME]换成自己的用户名！</strong></p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">Windows Registry Editor Version <span class="number">5</span>.<span class="number">00</span></span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt]</span><br><span class="line">@=&quot;Windows terminal here&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Terminal\\terminal.ico&quot;</span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt\command]</span><br><span class="line">@=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe&quot;</span><br></pre></td></tr></table></figure>
-
-<p>完成后双击文件，合并到注册表中</p>
-<h1 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h1><p>这个时候右键菜单中已经出现了<code>Windows terminal here</code>的选项，但是点击后所在的目录并不是当前的目录，这就需要修改<code>Windows Terminal</code>的配置文件了</p>
-<p>打开<code>Windows Terminal</code>，点击顶部的下拉菜单，打开<code>设置</code>，此时会打开名为<code>settings.json</code>的配置文件，要修改的部分是这个亚子</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
-
-<p>要想在当前文件夹启动<code>Windows Terminal</code>，需要在每一段的下面添加<code>&quot;startingDirectory&quot;: &quot;./&quot;</code>，修改完成后是这个亚子</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
-
-<p>保存后就能够使用右键菜单在当前文件夹运行<code>Windows Terminal</code>了</p>
-<h1 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h1><p>在使用Powershell的时候可能会出现报错<code>无法加载文件balabala.ps1，因为在此系统上禁止执行脚本，有关详细信息，请参阅balabala</code>，这是因为默认的<code>ExecutionPolicy</code>是<code>Restricted</code>，即不允许执行任何脚本。解决方法是以管理员身份运行，并输入命令<code>set-executionpolicy remotesigned</code>即可解除限制</p>
-<blockquote>
-<p>参考：</p>
-<ol>
-<li><a href="https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461">https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461</a></li>
-<li><a href="https://blog.csdn.net/Jioho_chen/article/details/101159291">https://blog.csdn.net/Jioho_chen/article/details/101159291</a></li>
-</ol>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Tech</category>
-      </categories>
-      <tags>
-        <tag>Software</tag>
         <tag>Win10</tag>
       </tags>
   </entry>
@@ -4178,310 +4178,6 @@
         <tag>MacOS</tag>
         <tag>Win10</tag>
         <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>英国留学后续日志</title>
-    <url>/%E8%8B%B1%E5%9B%BD%E7%95%99%E5%AD%A6%E5%90%8E%E7%BB%AD%E6%97%A5%E5%BF%97.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">今天终于等到了格拉的uncon，开一贴记录一下换取uncon及后续签证申请的相关事宜。另外格拉上个月正式宣布部分专业延期开学至21年1月，CS院的所有专业都包含在内，所以下半年就要上家里蹲大学了，慢慢更</blockquote>
-
-<span id="more"></span>
-
-<h1 id="预定住宿"><a href="#预定住宿" class="headerlink" title="预定住宿"></a>预定住宿</h1><p>英国留学住宿的选择主要有：校内的宿舍（或者学校官方的宿舍）、合租House、校外的学生公寓。大多数人都会选择校外的学生公寓，比较方便，不需要管水电煤等费用，相较house更加安全。公寓的房型主要分En-suite和Studio两种，En-suite一般是有4-6间卧室的套间，每个卧室内有独立卫浴，共享厨房与起居室，类似于国内的合租；Studio则是单人单间，房间内带有厨房和卫浴，类似于自己单独租的房子。Studio相对于En-suite隐私性更好，更安静，<del>也更贵。</del></p>
-<p>一般来说拿到offer之后就可以定房间了，比较想去的几个学校都可以先定上，订的越早越便宜，而且选择的空间也比较大。尽量找不需要押金的公寓，这样跑路的话直接找人转租或者取消就可以了。</p>
-<p>格拉附近比较热门的公寓有 West View（西景）、West Village（西村）、Vita、KC、TS、DM等，下边是出自格拉CS微信群的对比（图片来自某位不愿透露姓名的翟翟）</p>
-<p><img data-src="https://s2.loli.net/2022/05/13/UjZV4PTEzoOiKXk.jpg" alt="英国留学后续日志"></p>
-<p>预定的话可以直接去公寓官网订，也可以找中介，中介有异乡好居和学旅家，我找了学旅家，两家都说有（薛定谔的）返现，不知道什么时候能拿到，拿到回来更。</p>
-<h1 id="换取Uncon"><a href="#换取Uncon" class="headerlink" title="换取Uncon"></a>换取Uncon</h1><p>本科毕业之前大家的offer都是conditional offer，毕业后收集好缺少的材料并扫描成PDF，传到申请系统里去，就可以坐等发uncon了。我是6月24号上传到全部材料，7月7号在申请系统里查到了uncon，8号凌晨收到了邮件。一般毕业季换uncon的时间会长一些，因为换的人太多了。</p>
-<p>换uncon需要扫描上传的材料有</p>
-<ul>
-<li>毕业证原件</li>
-<li>学位证原件</li>
-<li>毕业证翻译件（自己翻译完盖学校的章就可以，不需要放照片）</li>
-<li>学位证翻译件（同上）</li>
-<li>包含所有课程的英文成绩单</li>
-<li>包含所有课程的中文成绩单（这个看具体学校，我在格拉只上传了英文的成绩单）</li>
-</ul>
-<p>下面是我用的毕业证与学位证的翻译件，格式没法调，需要word的康康百度云吧</p>
-<a class="btn" href="https://pan.baidu.com/s/1APNgOpkZaNnytagDF3rhYg"><i class="fa fa-arrow-right fa-fw"></i>密码uwbt</a>
-
-<div class="tabs" id="first-unique-name"><ul class="nav-tabs"><li class="tab active"><a href="#first-unique-name-1"><i class="fa fa-pencil"></i>学士学位证书翻译</a></li><li class="tab"><a href="#first-unique-name-2"><i class="fa fa-pencil"></i>毕业证书翻译</a></li></ul><div class="tab-content"><div class="tab-pane active" id="first-unique-name-1"><p><strong>学士学位证明翻译</strong></p>
-<p>Bachelor’s Degree Certificate</p>
-<p>This is to certify that XXX, male, born on June 26, 1997, has completed an undergraduate program in Architecture at XXXXX University and graduated. According to Regulations of the People’s Republic of China on Academic Degrees, he is awarded the degree of Bachelor of Science in Architecture.</p>
-<p>Chairman of Degree Evaluation Committee: Xxxxx Xxx      XXXXX University<br>Certificate No.: XXXXXXXXXXXXXX      June 18th, 2020</p></div><div class="tab-pane" id="first-unique-name-2"><p><strong>毕业证书翻译</strong></p>
-<p>Graduation Certificate</p>
-<p>XXX XXX, male, born on June 26, 1997, studied a five-year program in Architecture at our school from September 2015 to June 2020. Having completed all courses specified in the teaching plan and passed the examinations, he is allowed to graduate.</p>
-<p>School: XXXXX University      President: Xxxxx Xxx<br>Certificate No.: XXXXXXXXXXXXXXXX      June 12th, 2020</p></div></div></div>
-
-<h1 id="保证金"><a href="#保证金" class="headerlink" title="保证金"></a>保证金</h1><p>保证金是一项英国政府判断你是否有足够的经济能力完成学业的依据，具体的操作是开一个存款证明，办签证时会随机抽查存款证明，抽到了会发邮件给你。</p>
-<ul>
-<li>保证金金额大概在30w人民币，具体数额是按照学费+所在地区9个月生活费来算的，为了保险起见会在这个数额上再加几千英镑，生活费伦敦地区标准为1265镑&#x2F;月，其他地区为1015镑&#x2F;月</li>
-<li>一般存定期并设置自动转存</li>
-<li>存满28天之后就可以在网上预约签证了</li>
-<li>然后在办理签证的前几天去银行开存款证明和流水，不用开太早，因为存款证明开具日期和网上签证预约日期的间隔不能超过31天</li>
-<li>英镑和人民币可以混存，总金额够了就行</li>
-<li>最好存在自己名下，存在父母名下需要多开具亲子关系证明以及授权使用资金的证明</li>
-<li>建议存在中农工建这类大行，不建议存在农村信用社一类的地方</li>
-<li>不能用理财产品代替</li>
-</ul>
-<p><img data-src="https://s2.loli.net/2022/05/13/K2Eq8rUmZeNtBgY.png" alt="英国留学后续日志"></p>
-<h1 id="换汇"><a href="#换汇" class="headerlink" title="换汇"></a>换汇</h1><p>在去英国之前建议提前换好英镑，在常用的银行换就可以，到英国办好当地银行卡后通过跨境汇款转过去。下面是一些情报</p>
-<ul>
-<li>购买英镑的时候分为<strong>现汇</strong>和<strong>现钞</strong>两个选项，现汇就是存在银行卡里的钱，现钞就是换取的纸币</li>
-<li>换汇一般就是购买英镑现汇存在银行卡里</li>
-<li>临行前可以换一部分现钞，供落地后应急用，不用太多，海关不允许携带5000美元以上的等值外币出境</li>
-<li>每人每年的换汇额度是5万美元</li>
-<li>换汇的时候看的是<strong>购汇汇率</strong>而不是<strong>结汇汇率</strong>。购汇汇率是你向银行购买英镑的汇率，结汇汇率是你向银行出售英镑的汇率</li>
-<li>建议像我一样的贫困人口每天多看两眼汇率，万一英镑再跌到8.1呢</li>
-<li>英镑存定期的利息非常低，三个月存期利率只有0.1%，而人民币的是1.35%</li>
-<li>跨境汇款有被锁的风险，建议出国前把身份证银行卡留给父母，以防万一</li>
-<li>换汇之后可以在手机银行APP上预约到银行网点去现钞，我取了1000英镑，小城市里只有50英镑的大额纸钞，大城市可能会换到5磅10磅这样的小面值</li>
-</ul>
-<h1 id="肺结核体检"><a href="#肺结核体检" class="headerlink" title="肺结核体检"></a>肺结核体检</h1><p>肺结核体检是办理T4签证的必要材料，一般在办签证前两三个月就可以做了。</p>
-<ul>
-<li>肺结核体检需要到指定的医院做，否则无效。定点医院共有15家，医院地址以及联系方式请看<a href="https://www.gov.uk/government/publications/tuberculosis-test-for-a-uk-visa-clinics-in-china/approved-tuberculosis-testing-clinics-in-china"><strong>签证官网</strong></a></li>
-<li>费用为550元人民币，收费方式为现金或支付宝，不支持医保卡、信用卡或其他支付方式</li>
-<li>需要提前预约，通常提前一或两个工作天预约即可</li>
-<li>预约方式有电话和邮件两种，部分医院（如济南出国移民体检中心）还可以在网站上预约</li>
-<li>无需空腹，正常饮食</li>
-<li>需要携带的材料<ul>
-<li>有效期半年以上的护照原件，不接受任何其他证件</li>
-<li>护照复印件一张</li>
-<li>两张半年内35mmx45mm免冠白底彩照（需要露出眉毛及耳朵）</li>
-</ul>
-</li>
-<li>流程很快，耗时约为半小时，换上衣服拍下胸片，然后医生询问下病史就结束了</li>
-<li>体检结果正常的话，上午体检下午可以出结果并发出证书，下午体检则需第二天早上才能发出证书。</li>
-<li>凭护照取证书，如果不方便可以发快递到付，建议自取</li>
-<li>证书有效期通常为六个月，特殊情况下为三个月</li>
-<li>如果出现问题的话，医院会要求做痰培养了，这个过程就很漫长了，需要等两个月。但是如果你认为身体没有问题的话建议换一家医院重新做体检，不要说自己在其他医院做过（信息来源：知乎）</li>
-<li>英国地址填自己的学校，懒的话可以不填，没什么影响</li>
-</ul>
-<p>下面是我10月13日在济南做肺结核的记录</p>
-<ul>
-<li>济南的肺结核检测在山医大三院的出国体检中心做，地址是天桥区无影山路38号，进门后右手边红屋顶的房子就是</li>
-<li>我是七点四十五到的，医院大门口会有保安测体温。</li>
-<li>我到的时候前面只有三个人。进入体检中心后出示身份证和健康码，然后在门口机器上取号</li>
-<li>取号后领两张表，再测一次体温，工作人员会把体温写在表的右上角，过程中有什么疑问随时可以问工作人员</li>
-<li>填完表等到八点半，拿着护照去拍照，拍完给一张黑白的照片</li>
-<li>拍完照出来等待叫号，叫到自己的号就拿着材料去最里面的服务台</li>
-<li>把护照原件、复印件、刚拍的黑白照片、两张小两寸白底照片（要在背面也上自己名字）、填写的两张表格交给工作人员</li>
-<li>然后会拍照，还有在一张表上签字</li>
-<li>然后付款，支付宝现金均可</li>
-<li>付完款后工作人员把护照原件还给你，并给一个手环，手环是开储物柜用的，上面有对应的柜子编号</li>
-<li>拿着手环去玻璃门那里刷脸进去，进去之后有工作人员引导你到更衣室并给一件蓝色的上衣</li>
-<li>把上衣首饰全部摘掉，穿上那件蓝色的衣服，只带着护照和手环出去</li>
-<li>工作人员会告诉你去哪个房间做检测，在机器上做一个类似叉腰的动作，双肩向上同时贴到机器上，然后工作人员会让深吸一口气憋住，然后等工作人员喊可以了就可以出来了</li>
-<li>出来之后回到更衣室把衣服换好，然后把蓝色上衣扔进门口的回收箱</li>
-<li>走廊里的工作人员会让你到另一侧的医生室，医生会问一些问题，比如有没有得过肺结核、有没有和结合病人有过接触</li>
-<li>然后摘口罩拍照</li>
-<li>然后出去找走廊里的小姐姐把你带出去</li>
-<li>出去之后回到大门口的前台把手环还回去就可以溜了</li>
-<li>工作人员说因为疫情的原因，第二天下午三点后才能取报告，但是实测当天下午四点半就可以拿到，可以打电话问一下</li>
-</ul>
-<h1 id="国际旅行健康证"><a href="#国际旅行健康证" class="headerlink" title="国际旅行健康证"></a>国际旅行健康证</h1><p>这个健康证还有一个疫苗接种证都是很迷惑的东西，俗称小红本和小黄本。根据目前了解的信息，两者都是可做可不做的，入境时有非常小的概率抽查国际旅行健康证，被查到没有证也没什么事，只是耽误一点时间去做个免费体检，大概半小时，疫苗接种证则没听说过有被查到的。所以这俩我就不打算做了</p>
-<h1 id="签证"><a href="#签证" class="headerlink" title="签证"></a>签证</h1><h2 id="预约"><a href="#预约" class="headerlink" title="预约"></a>预约</h2><p>签证需要等CAS下来才能去办，CAS一般在入学前的3个月开始陆续发放，办理签证前需要在网上预约，最近学生签证也改名了，原来叫 Tier 4，现在直接叫 student visa。预约的时候建议挂全局代理，预约网站在国内的使用体验极差。</p>
-<a class="btn" href="https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/sort/country-nationality?p=student_out_uk&_ga=2.246378372.1460787317.1603017805-1850455343.1600247708"><i class="fa fa-home fa-fw"></i>预约网址</a>
-
-<p>预约的步骤可以去看<a href="https://weibo.com/u/7305573611">@PhD威宇</a>的微博文章<a href="https://weibo.com/ttarticle/p/show?id=2309404537047783178301">保姆级手把手教你申请T4签证</a>，大佬写的非常详细，佩服大佬的耐心。T4和现在的 student visa 稍有出入，大体的步骤都是一样的。（我才不是因为懒不想写）</p>
-<p><strong>注意下载checklist</strong></p>
-<p>按照步骤交完签证申请费和IHS之后会跳转到VFS的网站上，这个网站是用来上传材料和预约递签日期地点用的，有一些增(keng)值(qian)服务可以选。这个网站深得学校教务选课系统的真传，同款土豆服务器，而且不挂全局代理基本没法用，挂了全局代理也会有各种各样的bug。</p>
-<p>Student visa 一般只有两个材料需要上传，checklist 会有说明</p>
-<ul>
-<li>护照信息页</li>
-<li>肺结核报告</li>
-</ul>
-<p>建议提前在网站上上传好材料，如果去签证中心现场上传的话会收取100块钱的扫描费用（奸商！）。</p>
-<p>另外一些签证中心（说的就是你济南，还有西安）还会收取服务费，大概500块钱，在VFS那个网站上交。</p>
-<p>预约的时候可以隔几个小时上去一次，看看有没有更早的位置。我一开始预约的是23号递签，后来刷出来了14号和16号的，就在网站上更改了预约时间，更改免费。</p>
-<p>预约好时间、传完材料、交完钱之后会发给你一个<code>Appointment Confirmation Notice</code>，记得打印出来带着</p>
-<h2 id="递签"><a href="#递签" class="headerlink" title="递签"></a>递签</h2><p>我最终去递签的时候只带了下面几个材料</p>
-<ul>
-<li>护照原件</li>
-<li>checklist</li>
-<li>Appointment Confirmation Notice</li>
-<li>肺结核报告原件</li>
-</ul>
-<p>最后工作人员收走了这些材料</p>
-<ul>
-<li>护照原件</li>
-<li>checklist 的第一页</li>
-<li>Appointment Confirmation Notice</li>
-</ul>
-<p>下面是我在济南递签的流程，我是12:13进去的，12:25就出来了</p>
-<ul>
-<li>济南签证中心地址在济南市历下区经十路11890号北京银行5楼</li>
-<li>从北京银行大厦的南门进，进去后在右手边向保安大叔出示健康码并测量体温</li>
-<li>用微信扫描桌面立牌上的二维码，填写姓名手机号等个人信息进行登记</li>
-<li>做四号电梯（最里面右手边那个）上5楼</li>
-<li>出电梯后左手边可以看到工作人员在柜台前面，会问是不是来办签证，然后带你到签证中心门口，测量体温后经过安检门进入</li>
-<li>进入之后出示护照、checklist、notice这几个材料，然后工作人员会问姓名和出生日期，并给你一张号码纸</li>
-<li>进去等叫号，左手边有几排椅子，椅子前面的柱子上挂着电视，会显示叫号信息</li>
-<li>人少的话工作人员就让直接去柜台，去柜台交护照、checklist、notice</li>
-<li>工作人员会问你办不办加急，问护照是自取还是快递，快递的话会给你一张快递单填写，然后交现金80元，可以找零</li>
-<li>工作人员没有提起过短信服务，短信也确实没什么用</li>
-<li>等一会工作人员会把不要的材料都退给你，快递的会给一张EMS快递单回执</li>
-<li>再回去等叫号，叫到号去7号室拍照录指纹</li>
-<li>先会让你报一下姓名和出生日期，然后摘眼镜和口罩拍照</li>
-<li>然后采指纹，先是右手四个手指并排，然后左手四个手指，最后是两个大拇指一起</li>
-<li>结束之后会给你张回执，就可以走了</li>
-<li>回家默默等快递把护照寄回来</li>
-</ul>
-<h1 id="订机票"><a href="#订机票" class="headerlink" title="订机票"></a>订机票</h1><p>机票我是在携程买的，也可以直接官网购买或者打电话购买</p>
-<p>机票最好早买，早买一般都很便宜。我亲眼见证了我的机票从4200元涨价到了5500元，现在涨到了15000元。我在5500的时候买入的，买入第二天晚上就涨到了15000。</p>
-<p>我们买的一般都是留学生机票，会有额外的行李额度，一般是两件不超过23kg的28寸托运行李和一件不超过20寸的手提行李，我一开始以为需要签证才能购买留学生机票，所以错过了4200的低价，其实买的时候完全不需要签证等证明材料。携程的要求是在飞机起飞前三天上传好签证、cas、offer、护照等证明材料就可以。能早买就早买吧。</p>
-<p>另外由于今年疫情的影响，有些飞机是不一定能飞的，没有经过民航局审批，但是他也在卖票，建议买票之前先查询一下。因为有些航空公司退票只给退代金券，就很坑。</p>
-<p>飞英国的机票除了去伦敦的，基本都要转机，转机机场一般有荷兰阿姆斯特丹、芬兰赫尔辛基、阿联酋迪拜、伦敦希思罗等。购票时看好是否是行李直挂，不是直挂的话转机的时候需要重新办理行李托运手续，麻烦且耗时，要留足充分的时间。</p>
-<p>此外如果飞到大学所在城市的机票很贵的话可以看一下飞往临近城市的机票，举个栗子，我是一开始打算从上海飞格拉斯哥，但是去格拉斯哥的机票已经都在一万多了，然鹅去爱丁堡的机票只有五千多，所以我就买了去爱宝的机票，落地后再几个人一起包车直接到格拉宿舍楼下，包车大概在100胖，三四个人一起分担也不贵。</p>
-<h1 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h1><p>注册一般分为学术注册（Academic Registration）和财务注册（Financial Registration），学校会给提前发一封邮件告诉你注册的网址、用户名和密码，记得修改自己的密码。</p>
-<h2 id="学术注册"><a href="#学术注册" class="headerlink" title="学术注册"></a>学术注册</h2><p>这里以格拉为例，学术注册包含以下内容</p>
-<ul>
-<li>确认课程信息</li>
-<li>确认姓名、性别、出生日期以及学生ID</li>
-<li>填写宗教信仰与国籍</li>
-<li>填写在英国的住址（Term Address）</li>
-<li>填写个人邮箱地址与电话号码</li>
-<li>是否有残疾</li>
-<li>添加紧急联系人</li>
-<li>填写 Statistical Information，就跟查户口一样，包括性取向、有没有孩子等问题</li>
-<li>上传照片，这个照片会用在学生证上，照片的标准和护照的一样</li>
-<li>上传护照ID页</li>
-</ul>
-<p>学术注册完成后就可以选课（Enroll）了</p>
-<h2 id="财务注册"><a href="#财务注册" class="headerlink" title="财务注册"></a>财务注册</h2><p>财务注册就是交学费，常见的方式有电汇、信用卡付款等，也有部分学校支持支付宝或银联卡支付。</p>
-<p>我用的方法是信用卡分期付款，部分学校对于全款付学费会有优惠折扣，然而格拉并没有。。。如果学校对全款支付学费没有优惠的话建议使用分期付款，毕竟能把暂时不用交的前放在英国的银行账户里吃利息，几万英镑产生的利息也不少的。</p>
-<p>我交学费的过程比较曲折。。。一开始我用的信用卡是建行的VISA卡，但是这张卡只能用人民币还款，我早买下的英镑不能拿来还款，所以果断办新卡。我先把建设银行账户里的英镑跨行转账到了中国银行的账户里，然后办了中国银行的卓隽英镑卡，可以直接用英镑还款。</p>
-<p>这张卡建议在中国银行的APP上申请，下卡非常快，我从申请到拿到卡只用了3天。注意申请的时候职业不要选择学生，直接选择待业，剩下的收入啥的胡乱写就行。咱也不知道为啥，这张卡明明是给留学生用的，但是选择学生身份申请的话大概率直接秒拒，很迷惑。另外不建议到网点去办理，工作人员对这类卡不太了解，而且办卡速度很慢，我还在微博上看到有人网点办英镑卡，结果拿到手是美元卡，没法用。</p>
-<p>我当时拿到的额度是1000英镑，少得可怜，而格拉分期付款的第一笔款需要2933磅。如果不嫌麻烦的话可以分三次刷1000英镑，刷完一次就还款。然而我比较懒，就我直接向信用卡里转账了3000磅，一次划掉。</p>
-<h1 id="行李指南"><a href="#行李指南" class="headerlink" title="行李指南"></a>行李指南</h1><p>我在国内买了很多杂七杂八的行李，也不知道行李箱里能不能装得下hhh</p>
-<p>下面只是我想到的行李，到时候不一定会全带</p>
-<h2 id="登机行李"><a href="#登机行李" class="headerlink" title="登机行李"></a>登机行李</h2><h3 id="文件证件类"><a href="#文件证件类" class="headerlink" title="文件证件类"></a>文件证件类</h3><ol>
-<li>护照</li>
-<li>与护照一起寄回来的BRP说明</li>
-<li>CAS</li>
-<li>租房合同</li>
-<li>语言成绩单</li>
-<li>学术成绩单</li>
-<li>毕业证学位证（记得把外面的壳子拔下来，壳子没用）</li>
-<li>证件照</li>
-<li>入境前48小时填写的那张表</li>
-<li>肺结核报告</li>
-</ol>
-<h3 id="现金卡片"><a href="#现金卡片" class="headerlink" title="现金卡片"></a>现金卡片</h3><ol>
-<li>银行卡</li>
-<li>英国手机卡</li>
-<li>卡针</li>
-<li>英镑现金</li>
-<li>签字笔</li>
-</ol>
-<h3 id="防疫物资（少量）"><a href="#防疫物资（少量）" class="headerlink" title="防疫物资（少量）"></a>防疫物资（少量）</h3><ol>
-<li>口罩</li>
-<li>一次性手套</li>
-<li>护目镜或面罩</li>
-</ol>
-<h3 id="电子产品"><a href="#电子产品" class="headerlink" title="电子产品"></a>电子产品</h3><ol>
-<li>手机</li>
-<li>充电宝</li>
-<li>相机</li>
-<li>电脑</li>
-<li>平板</li>
-<li>充电器</li>
-<li>数据线</li>
-<li>耳机</li>
-<li>多国旅行转换插头</li>
-</ol>
-<h3 id="葛优瘫用品"><a href="#葛优瘫用品" class="headerlink" title="葛优瘫用品"></a>葛优瘫用品</h3><ol>
-<li>拖鞋</li>
-<li>颈枕</li>
-<li>眼罩</li>
-<li>耳塞</li>
-<li>旅行洗漱包</li>
-<li>小零食</li>
-</ol>
-<h2 id="托运行李"><a href="#托运行李" class="headerlink" title="托运行李"></a>托运行李</h2><h3 id="药品防疫类"><a href="#药品防疫类" class="headerlink" title="药品防疫类"></a>药品防疫类</h3><ol>
-<li>口罩</li>
-<li>一次性手套</li>
-<li>面罩</li>
-<li>创可贴</li>
-<li>酒精棉片&#x2F;酒精湿巾</li>
-<li>感冒灵</li>
-<li>藿香正气胶囊</li>
-<li>西瓜霜</li>
-<li>甲硝锉</li>
-<li>诺氟沙星</li>
-<li>皮炎平</li>
-<li>红霉素软膏</li>
-<li>体温计&#x2F;测温枪</li>
-<li>个人日常用药</li>
-<li>紫外线杀毒灯</li>
-</ol>
-<h3 id="电子产品及配件"><a href="#电子产品及配件" class="headerlink" title="电子产品及配件"></a>电子产品及配件</h3><ol>
-<li>英标转换插头</li>
-<li>插排</li>
-<li>充电电池套装</li>
-<li>鼠标键盘</li>
-<li>剃须刀</li>
-<li>各种充电器</li>
-<li>耳机</li>
-<li>计算器</li>
-<li>移动硬盘</li>
-<li>U盘&#x2F;读卡器</li>
-<li>路由器</li>
-<li>手机壳</li>
-<li>钢化膜</li>
-<li>手机平板折叠支架</li>
-<li>笔记本电脑支架</li>
-<li>相机三脚架</li>
-<li>网线</li>
-<li>鼠标垫</li>
-</ol>
-<h3 id="生活用品及工具"><a href="#生活用品及工具" class="headerlink" title="生活用品及工具"></a>生活用品及工具</h3><ol>
-<li>指甲钳挖耳勺套装</li>
-<li>无痕挂钩</li>
-<li>肥皂盒</li>
-<li>零钱包</li>
-<li>筷子</li>
-<li>饭盒</li>
-<li>保温杯</li>
-<li>折叠盆</li>
-<li>吸盘花洒支架</li>
-<li>螺丝刀</li>
-<li>瑞士军刀&#x2F;多功能工具钳</li>
-<li>洗衣袋</li>
-<li>地漏防堵塞过滤网</li>
-<li>折叠衣架</li>
-<li>镊子</li>
-<li>折叠烧水壶</li>
-<li>烘鞋器</li>
-<li>台灯</li>
-<li>USB小风扇</li>
-<li>加湿器</li>
-<li>牙刷</li>
-</ol>
-<h3 id="衣物"><a href="#衣物" class="headerlink" title="衣物"></a>衣物</h3><ol>
-<li>冲锋衣</li>
-<li>内衣内裤</li>
-<li>袜子</li>
-<li>两三双鞋子</li>
-<li>卫衣</li>
-<li>外套</li>
-<li>羽绒服</li>
-<li>毛巾</li>
-</ol>
-<h3 id="行李箱配件"><a href="#行李箱配件" class="headerlink" title="行李箱配件"></a>行李箱配件</h3><p>主要是为了让自己的箱子更醒目，在转盘领行李的时候可以一眼看到，防止拿错</p>
-<ol>
-<li>彩色行李箱绑带</li>
-<li>行李挂牌</li>
-<li>行李箱套</li>
-</ol>
-<h1 id="落地后续"><a href="#落地后续" class="headerlink" title="落地后续"></a>落地后续</h1><p>预计1月到英国更新，另开一个新的博文记录</p>
-]]></content>
-      <categories>
-        <category>Blog</category>
-      </categories>
-      <tags>
-        <tag>Record</tag>
-        <tag>留学</tag>
       </tags>
   </entry>
   <entry>
@@ -4925,55 +4621,377 @@
       </tags>
   </entry>
   <entry>
-    <title>荣耀 magic watch 表盘制作</title>
-    <url>/%E8%8D%A3%E8%80%80-magic-watch-%E8%A1%A8%E7%9B%98%E5%88%B6%E4%BD%9C.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">趁着还没开学给老爸的 Magic Watch 做了个表盘，甲方唯二的要求就是：字大+醒目</blockquote>
+    <title>英国留学后续日志</title>
+    <url>/%E8%8B%B1%E5%9B%BD%E7%95%99%E5%AD%A6%E5%90%8E%E7%BB%AD%E6%97%A5%E5%BF%97.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">今天终于等到了格拉的uncon，开一贴记录一下换取uncon及后续签证申请的相关事宜。另外格拉上个月正式宣布部分专业延期开学至21年1月，CS院的所有专业都包含在内，所以下半年就要上家里蹲大学了，慢慢更</blockquote>
 
-<p><img data-src="https://s2.loli.net/2022/05/13/fswCopBAYqjnFKl.png" alt="icon"></p>
 <span id="more"></span>
 
-<h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p>刚开始搜集材料的时候看见有人说表盘要<strong>手动</strong>编辑xml文件，这不是反人类吗。。。不过好在华为已经推出了表盘设计软件<code>HwWatchFaceDesigner</code>，整个设计过程就和用<code>PhotoShop</code>P图一样<br>首先到华为的网站去下载<code>华为手表表盘开发工具</code>并解压，然后打开<code>HwWatchFaceDesigner.exe</code></p>
-<a class="btn" href="https://developer.huawei.com/consumer/cn/doc/5050601"><i class="fa fa-download fa-fw"></i>传送门</a>
-
-<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p>在解压后的文件夹里有中英文的<code>用户手册</code>，路径是<code>.\document\用户手册.pdf</code>,也可以在<code>帮助</code>中点击<code>用户手册</code>。我就不再啰嗦了，只记录一些注意事项</p>
+<h1 id="预定住宿"><a href="#预定住宿" class="headerlink" title="预定住宿"></a>预定住宿</h1><p>英国留学住宿的选择主要有：校内的宿舍（或者学校官方的宿舍）、合租House、校外的学生公寓。大多数人都会选择校外的学生公寓，比较方便，不需要管水电煤等费用，相较house更加安全。公寓的房型主要分En-suite和Studio两种，En-suite一般是有4-6间卧室的套间，每个卧室内有独立卫浴，共享厨房与起居室，类似于国内的合租；Studio则是单人单间，房间内带有厨房和卫浴，类似于自己单独租的房子。Studio相对于En-suite隐私性更好，更安静，<del>也更贵。</del></p>
+<p>一般来说拿到offer之后就可以定房间了，比较想去的几个学校都可以先定上，订的越早越便宜，而且选择的空间也比较大。尽量找不需要押金的公寓，这样跑路的话直接找人转租或者取消就可以了。</p>
+<p>格拉附近比较热门的公寓有 West View（西景）、West Village（西村）、Vita、KC、TS、DM等，下边是出自格拉CS微信群的对比（图片来自某位不愿透露姓名的翟翟）</p>
+<p><img data-src="https://s2.loli.net/2022/05/13/UjZV4PTEzoOiKXk.jpg" alt="英国留学后续日志"></p>
+<p>预定的话可以直接去公寓官网订，也可以找中介，中介有异乡好居和学旅家，我找了学旅家，两家都说有（薛定谔的）返现，不知道什么时候能拿到，拿到回来更。</p>
+<h1 id="换取Uncon"><a href="#换取Uncon" class="headerlink" title="换取Uncon"></a>换取Uncon</h1><p>本科毕业之前大家的offer都是conditional offer，毕业后收集好缺少的材料并扫描成PDF，传到申请系统里去，就可以坐等发uncon了。我是6月24号上传到全部材料，7月7号在申请系统里查到了uncon，8号凌晨收到了邮件。一般毕业季换uncon的时间会长一些，因为换的人太多了。</p>
+<p>换uncon需要扫描上传的材料有</p>
 <ul>
-<li><code>荣耀 Magic Watch</code>的分辨率是<code>390*390</code></li>
-<li>新建工程的时候<code>表盘效果图</code>先空着，设计完成之后再截图到PS里，导出不同分辨率的效果图</li>
-<li>图层最多25个</li>
-<li>一些位置固定的图标可以到最后在PS里和背景图合成为一张图片，节省图层</li>
-<li><code>星期</code>的<code>选图</code>里面第一张图是无效的，随便添加一张，从第二张图开始才是周一</li>
-<li><code>上午下午</code>的<code>选图</code>里面第三张图要找一张空白的png图</li>
-<li><code>撤销</code>不能使用<code>ctrl+z</code>的快捷键，只能点击上面菜单栏的返回图标，而且一经保存就不能再撤回</li>
+<li>毕业证原件</li>
+<li>学位证原件</li>
+<li>毕业证翻译件（自己翻译完盖学校的章就可以，不需要放照片）</li>
+<li>学位证翻译件（同上）</li>
+<li>包含所有课程的英文成绩单</li>
+<li>包含所有课程的中文成绩单（这个看具体学校，我在格拉只上传了英文的成绩单）</li>
 </ul>
-<h1 id="素材"><a href="#素材" class="headerlink" title="素材"></a>素材</h1><p>制作表盘需要用到各种png格式的图片素材，下面是我使用到的素材网站<br><a href="https://www.freepik.com/">freepik</a> - 背景图片素材，未注册的话每天有下载数量限制，注册的时候需要科学上网，因为需要用到谷歌的验证服务，注册完成后不需要<br><a href="https://webgradients.com/">webgradients</a> - 渐变色配色<br><a href="https://www.iconfinder.com/">iconfinder</a> - 图标素材，这个网站有在线编辑器，点开图片后有一个<code>Open in icon editor</code>，可以在线调整好素材的颜色，省下PS的过程</p>
-<p>部分素材是需要付费的，筛选的时候勾上<code>free</code>就好了</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>目前版本的<code>华为运动健康</code>软件是不能自定义添加表盘的，需要下载老版本，百度云自取</p>
-<a class="btn" href="https://pan.baidu.com/s/1Pg0lIOtRS3fmXG8kvMkNDA"><i class="fa fa-download fa-fw"></i>提取码: mpbm</a>
+<p>下面是我用的毕业证与学位证的翻译件，格式没法调，需要word的康康百度云吧</p>
+<a class="btn" href="https://pan.baidu.com/s/1APNgOpkZaNnytagDF3rhYg"><i class="fa fa-arrow-right fa-fw"></i>密码uwbt</a>
 
-<p>安装的具体操作步骤如下</p>
+<div class="tabs" id="first-unique-name"><ul class="nav-tabs"><li class="tab active"><a href="#first-unique-name-1"><i class="fa fa-pencil"></i>学士学位证书翻译</a></li><li class="tab"><a href="#first-unique-name-2"><i class="fa fa-pencil"></i>毕业证书翻译</a></li></ul><div class="tab-content"><div class="tab-pane active" id="first-unique-name-1"><p><strong>学士学位证明翻译</strong></p>
+<p>Bachelor’s Degree Certificate</p>
+<p>This is to certify that XXX, male, born on June 26, 1997, has completed an undergraduate program in Architecture at XXXXX University and graduated. According to Regulations of the People’s Republic of China on Academic Degrees, he is awarded the degree of Bachelor of Science in Architecture.</p>
+<p>Chairman of Degree Evaluation Committee: Xxxxx Xxx      XXXXX University<br>Certificate No.: XXXXXXXXXXXXXX      June 18th, 2020</p></div><div class="tab-pane" id="first-unique-name-2"><p><strong>毕业证书翻译</strong></p>
+<p>Graduation Certificate</p>
+<p>XXX XXX, male, born on June 26, 1997, studied a five-year program in Architecture at our school from September 2015 to June 2020. Having completed all courses specified in the teaching plan and passed the examinations, he is allowed to graduate.</p>
+<p>School: XXXXX University      President: Xxxxx Xxx<br>Certificate No.: XXXXXXXXXXXXXXXX      June 12th, 2020</p></div></div></div>
+
+<h1 id="保证金"><a href="#保证金" class="headerlink" title="保证金"></a>保证金</h1><p>保证金是一项英国政府判断你是否有足够的经济能力完成学业的依据，具体的操作是开一个存款证明，办签证时会随机抽查存款证明，抽到了会发邮件给你。</p>
 <ul>
-<li>先将导出的<code>hwt</code>文件拷贝到手机</li>
-<li>成功连接设备后进入<code>表盘市场</code></li>
-<li>点击右上角的三个点</li>
-<li>进入<code>隐私声明</code></li>
-<li>撤销华为主题服务</li>
-<li>退出来再重新进入<code>表盘市场</code></li>
-<li>在弹出窗口中重新给华为主题服务授权</li>
-<li>再次点击右上角的三个点，会多出一个<code>添加表盘</code>选项</li>
-<li>点击后会询问你是否是开发者，点击<code>是</code></li>
-<li>找到拷贝进手机的<code>hwt</code>文件路径，点击确定并安装</li>
+<li>保证金金额大概在30w人民币，具体数额是按照学费+所在地区9个月生活费来算的，为了保险起见会在这个数额上再加几千英镑，生活费伦敦地区标准为1265镑&#x2F;月，其他地区为1015镑&#x2F;月</li>
+<li>一般存定期并设置自动转存</li>
+<li>存满28天之后就可以在网上预约签证了</li>
+<li>然后在办理签证的前几天去银行开存款证明和流水，不用开太早，因为存款证明开具日期和网上签证预约日期的间隔不能超过31天</li>
+<li>英镑和人民币可以混存，总金额够了就行</li>
+<li>最好存在自己名下，存在父母名下需要多开具亲子关系证明以及授权使用资金的证明</li>
+<li>建议存在中农工建这类大行，不建议存在农村信用社一类的地方</li>
+<li>不能用理财产品代替</li>
 </ul>
-<p>如果觉得这个表盘不满意需要卸载的话，还要重新安装最新版的<code>华为运动健康</code>，进入<code>表盘市场</code>中的<code>我的</code>里面删除，老版本的不能在表盘市场中删除自定义的表盘，这就很尴尬，所以。。。一定要设计好了检查好了再安装，要不这个过程可是太反人类了，手表安装表盘巨慢，1秒钟才安装百分之一。。。</p>
-<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>我做的表盘已经上传到我的Github了，源文件也一起上传了，有需要的自取</p>
-<a class="btn" href="https://github.com/Siriusq/Honor-Magic-Watch-Theme-Sirius"><i class="fa fa-download fa-fw"></i>源文件</a>
+<p><img data-src="https://s2.loli.net/2022/05/13/K2Eq8rUmZeNtBgY.png" alt="英国留学后续日志"></p>
+<h1 id="换汇"><a href="#换汇" class="headerlink" title="换汇"></a>换汇</h1><p>在去英国之前建议提前换好英镑，在常用的银行换就可以，到英国办好当地银行卡后通过跨境汇款转过去。下面是一些情报</p>
+<ul>
+<li>购买英镑的时候分为<strong>现汇</strong>和<strong>现钞</strong>两个选项，现汇就是存在银行卡里的钱，现钞就是换取的纸币</li>
+<li>换汇一般就是购买英镑现汇存在银行卡里</li>
+<li>临行前可以换一部分现钞，供落地后应急用，不用太多，海关不允许携带5000美元以上的等值外币出境</li>
+<li>每人每年的换汇额度是5万美元</li>
+<li>换汇的时候看的是<strong>购汇汇率</strong>而不是<strong>结汇汇率</strong>。购汇汇率是你向银行购买英镑的汇率，结汇汇率是你向银行出售英镑的汇率</li>
+<li>建议像我一样的贫困人口每天多看两眼汇率，万一英镑再跌到8.1呢</li>
+<li>英镑存定期的利息非常低，三个月存期利率只有0.1%，而人民币的是1.35%</li>
+<li>跨境汇款有被锁的风险，建议出国前把身份证银行卡留给父母，以防万一</li>
+<li>换汇之后可以在手机银行APP上预约到银行网点去现钞，我取了1000英镑，小城市里只有50英镑的大额纸钞，大城市可能会换到5磅10磅这样的小面值</li>
+</ul>
+<h1 id="肺结核体检"><a href="#肺结核体检" class="headerlink" title="肺结核体检"></a>肺结核体检</h1><p>肺结核体检是办理T4签证的必要材料，一般在办签证前两三个月就可以做了。</p>
+<ul>
+<li>肺结核体检需要到指定的医院做，否则无效。定点医院共有15家，医院地址以及联系方式请看<a href="https://www.gov.uk/government/publications/tuberculosis-test-for-a-uk-visa-clinics-in-china/approved-tuberculosis-testing-clinics-in-china"><strong>签证官网</strong></a></li>
+<li>费用为550元人民币，收费方式为现金或支付宝，不支持医保卡、信用卡或其他支付方式</li>
+<li>需要提前预约，通常提前一或两个工作天预约即可</li>
+<li>预约方式有电话和邮件两种，部分医院（如济南出国移民体检中心）还可以在网站上预约</li>
+<li>无需空腹，正常饮食</li>
+<li>需要携带的材料<ul>
+<li>有效期半年以上的护照原件，不接受任何其他证件</li>
+<li>护照复印件一张</li>
+<li>两张半年内35mmx45mm免冠白底彩照（需要露出眉毛及耳朵）</li>
+</ul>
+</li>
+<li>流程很快，耗时约为半小时，换上衣服拍下胸片，然后医生询问下病史就结束了</li>
+<li>体检结果正常的话，上午体检下午可以出结果并发出证书，下午体检则需第二天早上才能发出证书。</li>
+<li>凭护照取证书，如果不方便可以发快递到付，建议自取</li>
+<li>证书有效期通常为六个月，特殊情况下为三个月</li>
+<li>如果出现问题的话，医院会要求做痰培养了，这个过程就很漫长了，需要等两个月。但是如果你认为身体没有问题的话建议换一家医院重新做体检，不要说自己在其他医院做过（信息来源：知乎）</li>
+<li>英国地址填自己的学校，懒的话可以不填，没什么影响</li>
+</ul>
+<p>下面是我10月13日在济南做肺结核的记录</p>
+<ul>
+<li>济南的肺结核检测在山医大三院的出国体检中心做，地址是天桥区无影山路38号，进门后右手边红屋顶的房子就是</li>
+<li>我是七点四十五到的，医院大门口会有保安测体温。</li>
+<li>我到的时候前面只有三个人。进入体检中心后出示身份证和健康码，然后在门口机器上取号</li>
+<li>取号后领两张表，再测一次体温，工作人员会把体温写在表的右上角，过程中有什么疑问随时可以问工作人员</li>
+<li>填完表等到八点半，拿着护照去拍照，拍完给一张黑白的照片</li>
+<li>拍完照出来等待叫号，叫到自己的号就拿着材料去最里面的服务台</li>
+<li>把护照原件、复印件、刚拍的黑白照片、两张小两寸白底照片（要在背面也上自己名字）、填写的两张表格交给工作人员</li>
+<li>然后会拍照，还有在一张表上签字</li>
+<li>然后付款，支付宝现金均可</li>
+<li>付完款后工作人员把护照原件还给你，并给一个手环，手环是开储物柜用的，上面有对应的柜子编号</li>
+<li>拿着手环去玻璃门那里刷脸进去，进去之后有工作人员引导你到更衣室并给一件蓝色的上衣</li>
+<li>把上衣首饰全部摘掉，穿上那件蓝色的衣服，只带着护照和手环出去</li>
+<li>工作人员会告诉你去哪个房间做检测，在机器上做一个类似叉腰的动作，双肩向上同时贴到机器上，然后工作人员会让深吸一口气憋住，然后等工作人员喊可以了就可以出来了</li>
+<li>出来之后回到更衣室把衣服换好，然后把蓝色上衣扔进门口的回收箱</li>
+<li>走廊里的工作人员会让你到另一侧的医生室，医生会问一些问题，比如有没有得过肺结核、有没有和结合病人有过接触</li>
+<li>然后摘口罩拍照</li>
+<li>然后出去找走廊里的小姐姐把你带出去</li>
+<li>出去之后回到大门口的前台把手环还回去就可以溜了</li>
+<li>工作人员说因为疫情的原因，第二天下午三点后才能取报告，但是实测当天下午四点半就可以拿到，可以打电话问一下</li>
+</ul>
+<h1 id="国际旅行健康证"><a href="#国际旅行健康证" class="headerlink" title="国际旅行健康证"></a>国际旅行健康证</h1><p>这个健康证还有一个疫苗接种证都是很迷惑的东西，俗称小红本和小黄本。根据目前了解的信息，两者都是可做可不做的，入境时有非常小的概率抽查国际旅行健康证，被查到没有证也没什么事，只是耽误一点时间去做个免费体检，大概半小时，疫苗接种证则没听说过有被查到的。所以这俩我就不打算做了</p>
+<h1 id="签证"><a href="#签证" class="headerlink" title="签证"></a>签证</h1><h2 id="预约"><a href="#预约" class="headerlink" title="预约"></a>预约</h2><p>签证需要等CAS下来才能去办，CAS一般在入学前的3个月开始陆续发放，办理签证前需要在网上预约，最近学生签证也改名了，原来叫 Tier 4，现在直接叫 student visa。预约的时候建议挂全局代理，预约网站在国内的使用体验极差。</p>
+<a class="btn" href="https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/sort/country-nationality?p=student_out_uk&_ga=2.246378372.1460787317.1603017805-1850455343.1600247708"><i class="fa fa-home fa-fw"></i>预约网址</a>
 
-<a class="btn" href="https://github.com/Siriusq/Honor-Magic-Watch-Theme-Sirius/releases/download/6.0/sirius_3.1.6.hwt"><i class="fa fa-download fa-fw"></i>表盘下载</a>]]></content>
+<p>预约的步骤可以去看<a href="https://weibo.com/u/7305573611">@PhD威宇</a>的微博文章<a href="https://weibo.com/ttarticle/p/show?id=2309404537047783178301">保姆级手把手教你申请T4签证</a>，大佬写的非常详细，佩服大佬的耐心。T4和现在的 student visa 稍有出入，大体的步骤都是一样的。（我才不是因为懒不想写）</p>
+<p><strong>注意下载checklist</strong></p>
+<p>按照步骤交完签证申请费和IHS之后会跳转到VFS的网站上，这个网站是用来上传材料和预约递签日期地点用的，有一些增(keng)值(qian)服务可以选。这个网站深得学校教务选课系统的真传，同款土豆服务器，而且不挂全局代理基本没法用，挂了全局代理也会有各种各样的bug。</p>
+<p>Student visa 一般只有两个材料需要上传，checklist 会有说明</p>
+<ul>
+<li>护照信息页</li>
+<li>肺结核报告</li>
+</ul>
+<p>建议提前在网站上上传好材料，如果去签证中心现场上传的话会收取100块钱的扫描费用（奸商！）。</p>
+<p>另外一些签证中心（说的就是你济南，还有西安）还会收取服务费，大概500块钱，在VFS那个网站上交。</p>
+<p>预约的时候可以隔几个小时上去一次，看看有没有更早的位置。我一开始预约的是23号递签，后来刷出来了14号和16号的，就在网站上更改了预约时间，更改免费。</p>
+<p>预约好时间、传完材料、交完钱之后会发给你一个<code>Appointment Confirmation Notice</code>，记得打印出来带着</p>
+<h2 id="递签"><a href="#递签" class="headerlink" title="递签"></a>递签</h2><p>我最终去递签的时候只带了下面几个材料</p>
+<ul>
+<li>护照原件</li>
+<li>checklist</li>
+<li>Appointment Confirmation Notice</li>
+<li>肺结核报告原件</li>
+</ul>
+<p>最后工作人员收走了这些材料</p>
+<ul>
+<li>护照原件</li>
+<li>checklist 的第一页</li>
+<li>Appointment Confirmation Notice</li>
+</ul>
+<p>下面是我在济南递签的流程，我是12:13进去的，12:25就出来了</p>
+<ul>
+<li>济南签证中心地址在济南市历下区经十路11890号北京银行5楼</li>
+<li>从北京银行大厦的南门进，进去后在右手边向保安大叔出示健康码并测量体温</li>
+<li>用微信扫描桌面立牌上的二维码，填写姓名手机号等个人信息进行登记</li>
+<li>做四号电梯（最里面右手边那个）上5楼</li>
+<li>出电梯后左手边可以看到工作人员在柜台前面，会问是不是来办签证，然后带你到签证中心门口，测量体温后经过安检门进入</li>
+<li>进入之后出示护照、checklist、notice这几个材料，然后工作人员会问姓名和出生日期，并给你一张号码纸</li>
+<li>进去等叫号，左手边有几排椅子，椅子前面的柱子上挂着电视，会显示叫号信息</li>
+<li>人少的话工作人员就让直接去柜台，去柜台交护照、checklist、notice</li>
+<li>工作人员会问你办不办加急，问护照是自取还是快递，快递的话会给你一张快递单填写，然后交现金80元，可以找零</li>
+<li>工作人员没有提起过短信服务，短信也确实没什么用</li>
+<li>等一会工作人员会把不要的材料都退给你，快递的会给一张EMS快递单回执</li>
+<li>再回去等叫号，叫到号去7号室拍照录指纹</li>
+<li>先会让你报一下姓名和出生日期，然后摘眼镜和口罩拍照</li>
+<li>然后采指纹，先是右手四个手指并排，然后左手四个手指，最后是两个大拇指一起</li>
+<li>结束之后会给你张回执，就可以走了</li>
+<li>回家默默等快递把护照寄回来</li>
+</ul>
+<h1 id="订机票"><a href="#订机票" class="headerlink" title="订机票"></a>订机票</h1><p>机票我是在携程买的，也可以直接官网购买或者打电话购买</p>
+<p>机票最好早买，早买一般都很便宜。我亲眼见证了我的机票从4200元涨价到了5500元，现在涨到了15000元。我在5500的时候买入的，买入第二天晚上就涨到了15000。</p>
+<p>我们买的一般都是留学生机票，会有额外的行李额度，一般是两件不超过23kg的28寸托运行李和一件不超过20寸的手提行李，我一开始以为需要签证才能购买留学生机票，所以错过了4200的低价，其实买的时候完全不需要签证等证明材料。携程的要求是在飞机起飞前三天上传好签证、cas、offer、护照等证明材料就可以。能早买就早买吧。</p>
+<p>另外由于今年疫情的影响，有些飞机是不一定能飞的，没有经过民航局审批，但是他也在卖票，建议买票之前先查询一下。因为有些航空公司退票只给退代金券，就很坑。</p>
+<p>飞英国的机票除了去伦敦的，基本都要转机，转机机场一般有荷兰阿姆斯特丹、芬兰赫尔辛基、阿联酋迪拜、伦敦希思罗等。购票时看好是否是行李直挂，不是直挂的话转机的时候需要重新办理行李托运手续，麻烦且耗时，要留足充分的时间。</p>
+<p>此外如果飞到大学所在城市的机票很贵的话可以看一下飞往临近城市的机票，举个栗子，我是一开始打算从上海飞格拉斯哥，但是去格拉斯哥的机票已经都在一万多了，然鹅去爱丁堡的机票只有五千多，所以我就买了去爱宝的机票，落地后再几个人一起包车直接到格拉宿舍楼下，包车大概在100胖，三四个人一起分担也不贵。</p>
+<h1 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h1><p>注册一般分为学术注册（Academic Registration）和财务注册（Financial Registration），学校会给提前发一封邮件告诉你注册的网址、用户名和密码，记得修改自己的密码。</p>
+<h2 id="学术注册"><a href="#学术注册" class="headerlink" title="学术注册"></a>学术注册</h2><p>这里以格拉为例，学术注册包含以下内容</p>
+<ul>
+<li>确认课程信息</li>
+<li>确认姓名、性别、出生日期以及学生ID</li>
+<li>填写宗教信仰与国籍</li>
+<li>填写在英国的住址（Term Address）</li>
+<li>填写个人邮箱地址与电话号码</li>
+<li>是否有残疾</li>
+<li>添加紧急联系人</li>
+<li>填写 Statistical Information，就跟查户口一样，包括性取向、有没有孩子等问题</li>
+<li>上传照片，这个照片会用在学生证上，照片的标准和护照的一样</li>
+<li>上传护照ID页</li>
+</ul>
+<p>学术注册完成后就可以选课（Enroll）了</p>
+<h2 id="财务注册"><a href="#财务注册" class="headerlink" title="财务注册"></a>财务注册</h2><p>财务注册就是交学费，常见的方式有电汇、信用卡付款等，也有部分学校支持支付宝或银联卡支付。</p>
+<p>我用的方法是信用卡分期付款，部分学校对于全款付学费会有优惠折扣，然而格拉并没有。。。如果学校对全款支付学费没有优惠的话建议使用分期付款，毕竟能把暂时不用交的前放在英国的银行账户里吃利息，几万英镑产生的利息也不少的。</p>
+<p>我交学费的过程比较曲折。。。一开始我用的信用卡是建行的VISA卡，但是这张卡只能用人民币还款，我早买下的英镑不能拿来还款，所以果断办新卡。我先把建设银行账户里的英镑跨行转账到了中国银行的账户里，然后办了中国银行的卓隽英镑卡，可以直接用英镑还款。</p>
+<p>这张卡建议在中国银行的APP上申请，下卡非常快，我从申请到拿到卡只用了3天。注意申请的时候职业不要选择学生，直接选择待业，剩下的收入啥的胡乱写就行。咱也不知道为啥，这张卡明明是给留学生用的，但是选择学生身份申请的话大概率直接秒拒，很迷惑。另外不建议到网点去办理，工作人员对这类卡不太了解，而且办卡速度很慢，我还在微博上看到有人网点办英镑卡，结果拿到手是美元卡，没法用。</p>
+<p>我当时拿到的额度是1000英镑，少得可怜，而格拉分期付款的第一笔款需要2933磅。如果不嫌麻烦的话可以分三次刷1000英镑，刷完一次就还款。然而我比较懒，就我直接向信用卡里转账了3000磅，一次划掉。</p>
+<h1 id="行李指南"><a href="#行李指南" class="headerlink" title="行李指南"></a>行李指南</h1><p>我在国内买了很多杂七杂八的行李，也不知道行李箱里能不能装得下hhh</p>
+<p>下面只是我想到的行李，到时候不一定会全带</p>
+<h2 id="登机行李"><a href="#登机行李" class="headerlink" title="登机行李"></a>登机行李</h2><h3 id="文件证件类"><a href="#文件证件类" class="headerlink" title="文件证件类"></a>文件证件类</h3><ol>
+<li>护照</li>
+<li>与护照一起寄回来的BRP说明</li>
+<li>CAS</li>
+<li>租房合同</li>
+<li>语言成绩单</li>
+<li>学术成绩单</li>
+<li>毕业证学位证（记得把外面的壳子拔下来，壳子没用）</li>
+<li>证件照</li>
+<li>入境前48小时填写的那张表</li>
+<li>肺结核报告</li>
+</ol>
+<h3 id="现金卡片"><a href="#现金卡片" class="headerlink" title="现金卡片"></a>现金卡片</h3><ol>
+<li>银行卡</li>
+<li>英国手机卡</li>
+<li>卡针</li>
+<li>英镑现金</li>
+<li>签字笔</li>
+</ol>
+<h3 id="防疫物资（少量）"><a href="#防疫物资（少量）" class="headerlink" title="防疫物资（少量）"></a>防疫物资（少量）</h3><ol>
+<li>口罩</li>
+<li>一次性手套</li>
+<li>护目镜或面罩</li>
+</ol>
+<h3 id="电子产品"><a href="#电子产品" class="headerlink" title="电子产品"></a>电子产品</h3><ol>
+<li>手机</li>
+<li>充电宝</li>
+<li>相机</li>
+<li>电脑</li>
+<li>平板</li>
+<li>充电器</li>
+<li>数据线</li>
+<li>耳机</li>
+<li>多国旅行转换插头</li>
+</ol>
+<h3 id="葛优瘫用品"><a href="#葛优瘫用品" class="headerlink" title="葛优瘫用品"></a>葛优瘫用品</h3><ol>
+<li>拖鞋</li>
+<li>颈枕</li>
+<li>眼罩</li>
+<li>耳塞</li>
+<li>旅行洗漱包</li>
+<li>小零食</li>
+</ol>
+<h2 id="托运行李"><a href="#托运行李" class="headerlink" title="托运行李"></a>托运行李</h2><h3 id="药品防疫类"><a href="#药品防疫类" class="headerlink" title="药品防疫类"></a>药品防疫类</h3><ol>
+<li>口罩</li>
+<li>一次性手套</li>
+<li>面罩</li>
+<li>创可贴</li>
+<li>酒精棉片&#x2F;酒精湿巾</li>
+<li>感冒灵</li>
+<li>藿香正气胶囊</li>
+<li>西瓜霜</li>
+<li>甲硝锉</li>
+<li>诺氟沙星</li>
+<li>皮炎平</li>
+<li>红霉素软膏</li>
+<li>体温计&#x2F;测温枪</li>
+<li>个人日常用药</li>
+<li>紫外线杀毒灯</li>
+</ol>
+<h3 id="电子产品及配件"><a href="#电子产品及配件" class="headerlink" title="电子产品及配件"></a>电子产品及配件</h3><ol>
+<li>英标转换插头</li>
+<li>插排</li>
+<li>充电电池套装</li>
+<li>鼠标键盘</li>
+<li>剃须刀</li>
+<li>各种充电器</li>
+<li>耳机</li>
+<li>计算器</li>
+<li>移动硬盘</li>
+<li>U盘&#x2F;读卡器</li>
+<li>路由器</li>
+<li>手机壳</li>
+<li>钢化膜</li>
+<li>手机平板折叠支架</li>
+<li>笔记本电脑支架</li>
+<li>相机三脚架</li>
+<li>网线</li>
+<li>鼠标垫</li>
+</ol>
+<h3 id="生活用品及工具"><a href="#生活用品及工具" class="headerlink" title="生活用品及工具"></a>生活用品及工具</h3><ol>
+<li>指甲钳挖耳勺套装</li>
+<li>无痕挂钩</li>
+<li>肥皂盒</li>
+<li>零钱包</li>
+<li>筷子</li>
+<li>饭盒</li>
+<li>保温杯</li>
+<li>折叠盆</li>
+<li>吸盘花洒支架</li>
+<li>螺丝刀</li>
+<li>瑞士军刀&#x2F;多功能工具钳</li>
+<li>洗衣袋</li>
+<li>地漏防堵塞过滤网</li>
+<li>折叠衣架</li>
+<li>镊子</li>
+<li>折叠烧水壶</li>
+<li>烘鞋器</li>
+<li>台灯</li>
+<li>USB小风扇</li>
+<li>加湿器</li>
+<li>牙刷</li>
+</ol>
+<h3 id="衣物"><a href="#衣物" class="headerlink" title="衣物"></a>衣物</h3><ol>
+<li>冲锋衣</li>
+<li>内衣内裤</li>
+<li>袜子</li>
+<li>两三双鞋子</li>
+<li>卫衣</li>
+<li>外套</li>
+<li>羽绒服</li>
+<li>毛巾</li>
+</ol>
+<h3 id="行李箱配件"><a href="#行李箱配件" class="headerlink" title="行李箱配件"></a>行李箱配件</h3><p>主要是为了让自己的箱子更醒目，在转盘领行李的时候可以一眼看到，防止拿错</p>
+<ol>
+<li>彩色行李箱绑带</li>
+<li>行李挂牌</li>
+<li>行李箱套</li>
+</ol>
+<h1 id="落地后续"><a href="#落地后续" class="headerlink" title="落地后续"></a>落地后续</h1><p>预计1月到英国更新，另开一个新的博文记录</p>
+]]></content>
       <categories>
-        <category>Tech</category>
+        <category>Blog</category>
       </categories>
       <tags>
-        <tag>Software</tag>
-        <tag>Watch</tag>
+        <tag>Record</tag>
+        <tag>留学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>英国行李清单</title>
+    <url>/%E8%8B%B1%E5%9B%BD%E8%A1%8C%E6%9D%8E%E6%B8%85%E5%8D%95.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">结合本鸽子逛了三个月英国超市的经历，整理了一下来英国建议带的东西 && 不建议带的东西，针对不建议带的东西列出了购买方式</blockquote>
+
+<span id="more"></span>
+
+<h1 id="建议带"><a href="#建议带" class="headerlink" title="建议带"></a>建议带</h1><p>这一类一般是在英国很难买到，或者是价格高得离谱的东西</p>
+<ul>
+<li>挂钩 ⭐⭐⭐⭐⭐ 英国挂钩的价格就真的离谱，一个的价格我在淘宝能买一盒</li>
+<li>围裙 ⭐⭐⭐⭐ 价格同样离谱，一样的钱淘宝能买十条</li>
+<li>油壶 ⭐⭐⭐ 找遍了各个超市，最后在一家街角小卖店里找到了，但是非常难用，会漏油</li>
+<li>备用手机 ⭐⭐⭐⭐ 万一手机坏了还能撑一下，这边买手机可太贵了</li>
+<li>理发器 ⭐⭐⭐ 这边理一次发的价格就能买个理发器了，而且疫情期间不太敢让理发师上门，我就老老实实给自己理了一个狗啃头</li>
+<li>中标插排 ⭐⭐⭐⭐ 基本只有中超有，价格偏贵</li>
+<li>转接插头 ⭐⭐⭐⭐ 英超虽然有，但是价格离谱</li>
+<li>冲锋衣 ⭐⭐⭐⭐⭐ 妖风 + 下雨天出门必备，这边服装店目前不开门</li>
+<li>SIM卡针 ⭐⭐⭐⭐ 不占地方</li>
+<li>充电宝 ⭐⭐⭐⭐ 这边价格偏高</li>
+</ul>
+<h1 id="可带可不带"><a href="#可带可不带" class="headerlink" title="可带可不带"></a>可带可不带</h1><p>这一类一般是体积较小，重量较轻，可有可无或者在英国也能买到且价格不离谱的东西</p>
+<ul>
+<li>路由器 ⭐⭐⭐ 需要的话还是自己带一个，英国价格有点离谱</li>
+<li>网线 ⭐ 价格差不多</li>
+<li>USB小风扇 ⭐⭐⭐ 英国宿舍基本没空调，夏天还是会热的</li>
+<li>温湿度计 ⭐ 有需要可以带一个看下室内温湿度，这边价格比较高</li>
+<li>肥皂盒 ⭐ 一磅店就有，只不过款式不太好看</li>
+<li>数据线 ⭐⭐ 编织线的价格和国内差不多</li>
+<li>台灯 ⭐ 我宿舍书桌上面有两个巨亮的射灯，所以台灯就华丽丽的吃灰了，这边的台灯价格稍贵</li>
+<li>相机三脚架 ⭐⭐ 有需要的可以带一个轻便的，这边价格基本翻倍了</li>
+<li>小加湿器 ⭐⭐ 小的话可以带一个，eBay上最便宜的也要7磅，还没一卷卫生纸大</li>
+<li>筷子 ⭐ 中超就有，价格可以接受</li>
+<li>折叠盆 ⭐ 这边盆子质量稍差，但也不是不能用，而且中超也有国内那种盆子</li>
+<li>保温杯 ⭐ 价格和国内差不多</li>
+<li>指甲钳 ⭐⭐ 有得卖，但是不清楚质量如何</li>
+<li>电池 ⭐ 这边价格稍高，但也可以接受，充电电池可以带，干电池就算了吧</li>
+<li>牙杯 ⭐ 一磅店的塑料杯子就能用hhh</li>
+<li>削皮器 ⭐ 中超英超都有，价格不贵</li>
+<li>鞋刷 ⭐ 同上</li>
+<li>多功能刀 ⭐ 相当于临时的工具箱吧，这边价格很贵</li>
+<li>U盘 ⭐ 价格不算很贵</li>
+<li>拖鞋⭐⭐⭐ 这边的款式有点丑的</li>
+<li>钢化膜 ⭐⭐ 价格小贵</li>
+<li>笔记本支架 ⭐⭐ 预防颈椎病（狗头）</li>
+<li>备用眼镜 ⭐ 来了之后可以白嫖的（再次狗头）</li>
+<li>洗衣袋 ⭐⭐ 这边价格有点贵</li>
+</ul>
+<h1 id="不建议带"><a href="#不建议带" class="headerlink" title="不建议带"></a>不建议带</h1><p>这一类就是体积太大，重量太沉，或者在英国能以更低价格买到的东西</p>
+<ul>
+<li>肥皂 ❌ homebargain有的买， 80p两块</li>
+<li>电饭煲 ❌❌❌ 这个是真的没必要，收二手就可以，自己带的话又重又占地方，还要浪费一个转换插头，收不到二手网购也差不多价格，可能没有国内那么丰富的功能</li>
+<li>电吹风 ❌❌❌ 同上</li>
+<li>大加湿器 ❌❌❌ 同上</li>
+<li>折叠水壶 ❌ 用几次就吃灰的东西，落地之后直接去大点的超市买烧水壶就可以，或者提前网购</li>
+<li>菜刀 ❌❌ 太沉了，中超就有，价格可以接受</li>
+<li>电动牙刷刷头 ❌ 别的不知道，反正欧乐B的比国内便宜不少</li>
+<li>雨伞 ❌ 遇到妖风基本报废，淘宝那种抗台风的可以试一下？</li>
+<li>锅碗瓢盆 ❌❌❌ 真的没必要，大点的超市都有，样式也还行</li>
+<li>被子 ❌❌❌ 除非行李箱空一半（手动狗头）</li>
+<li>纱窗 ❌❌ 亚马逊就有，而且学生公寓的窗子基本只能开一道缝隙，根本就装不上</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Blog</category>
+      </categories>
+      <tags>
+        <tag>Record</tag>
+        <tag>留学</tag>
       </tags>
   </entry>
   <entry>
@@ -5503,73 +5521,55 @@ OFFICIAL
       </tags>
   </entry>
   <entry>
-    <title>英国行李清单</title>
-    <url>/%E8%8B%B1%E5%9B%BD%E8%A1%8C%E6%9D%8E%E6%B8%85%E5%8D%95.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">结合本鸽子逛了三个月英国超市的经历，整理了一下来英国建议带的东西 && 不建议带的东西，针对不建议带的东西列出了购买方式</blockquote>
+    <title>荣耀 magic watch 表盘制作</title>
+    <url>/%E8%8D%A3%E8%80%80-magic-watch-%E8%A1%A8%E7%9B%98%E5%88%B6%E4%BD%9C.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">趁着还没开学给老爸的 Magic Watch 做了个表盘，甲方唯二的要求就是：字大+醒目</blockquote>
 
+<p><img data-src="https://s2.loli.net/2022/05/13/fswCopBAYqjnFKl.png" alt="icon"></p>
 <span id="more"></span>
 
-<h1 id="建议带"><a href="#建议带" class="headerlink" title="建议带"></a>建议带</h1><p>这一类一般是在英国很难买到，或者是价格高得离谱的东西</p>
+<h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p>刚开始搜集材料的时候看见有人说表盘要<strong>手动</strong>编辑xml文件，这不是反人类吗。。。不过好在华为已经推出了表盘设计软件<code>HwWatchFaceDesigner</code>，整个设计过程就和用<code>PhotoShop</code>P图一样<br>首先到华为的网站去下载<code>华为手表表盘开发工具</code>并解压，然后打开<code>HwWatchFaceDesigner.exe</code></p>
+<a class="btn" href="https://developer.huawei.com/consumer/cn/doc/5050601"><i class="fa fa-download fa-fw"></i>传送门</a>
+
+<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p>在解压后的文件夹里有中英文的<code>用户手册</code>，路径是<code>.\document\用户手册.pdf</code>,也可以在<code>帮助</code>中点击<code>用户手册</code>。我就不再啰嗦了，只记录一些注意事项</p>
 <ul>
-<li>挂钩 ⭐⭐⭐⭐⭐ 英国挂钩的价格就真的离谱，一个的价格我在淘宝能买一盒</li>
-<li>围裙 ⭐⭐⭐⭐ 价格同样离谱，一样的钱淘宝能买十条</li>
-<li>油壶 ⭐⭐⭐ 找遍了各个超市，最后在一家街角小卖店里找到了，但是非常难用，会漏油</li>
-<li>备用手机 ⭐⭐⭐⭐ 万一手机坏了还能撑一下，这边买手机可太贵了</li>
-<li>理发器 ⭐⭐⭐ 这边理一次发的价格就能买个理发器了，而且疫情期间不太敢让理发师上门，我就老老实实给自己理了一个狗啃头</li>
-<li>中标插排 ⭐⭐⭐⭐ 基本只有中超有，价格偏贵</li>
-<li>转接插头 ⭐⭐⭐⭐ 英超虽然有，但是价格离谱</li>
-<li>冲锋衣 ⭐⭐⭐⭐⭐ 妖风 + 下雨天出门必备，这边服装店目前不开门</li>
-<li>SIM卡针 ⭐⭐⭐⭐ 不占地方</li>
-<li>充电宝 ⭐⭐⭐⭐ 这边价格偏高</li>
+<li><code>荣耀 Magic Watch</code>的分辨率是<code>390*390</code></li>
+<li>新建工程的时候<code>表盘效果图</code>先空着，设计完成之后再截图到PS里，导出不同分辨率的效果图</li>
+<li>图层最多25个</li>
+<li>一些位置固定的图标可以到最后在PS里和背景图合成为一张图片，节省图层</li>
+<li><code>星期</code>的<code>选图</code>里面第一张图是无效的，随便添加一张，从第二张图开始才是周一</li>
+<li><code>上午下午</code>的<code>选图</code>里面第三张图要找一张空白的png图</li>
+<li><code>撤销</code>不能使用<code>ctrl+z</code>的快捷键，只能点击上面菜单栏的返回图标，而且一经保存就不能再撤回</li>
 </ul>
-<h1 id="可带可不带"><a href="#可带可不带" class="headerlink" title="可带可不带"></a>可带可不带</h1><p>这一类一般是体积较小，重量较轻，可有可无或者在英国也能买到且价格不离谱的东西</p>
+<h1 id="素材"><a href="#素材" class="headerlink" title="素材"></a>素材</h1><p>制作表盘需要用到各种png格式的图片素材，下面是我使用到的素材网站<br><a href="https://www.freepik.com/">freepik</a> - 背景图片素材，未注册的话每天有下载数量限制，注册的时候需要科学上网，因为需要用到谷歌的验证服务，注册完成后不需要<br><a href="https://webgradients.com/">webgradients</a> - 渐变色配色<br><a href="https://www.iconfinder.com/">iconfinder</a> - 图标素材，这个网站有在线编辑器，点开图片后有一个<code>Open in icon editor</code>，可以在线调整好素材的颜色，省下PS的过程</p>
+<p>部分素材是需要付费的，筛选的时候勾上<code>free</code>就好了</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>目前版本的<code>华为运动健康</code>软件是不能自定义添加表盘的，需要下载老版本，百度云自取</p>
+<a class="btn" href="https://pan.baidu.com/s/1Pg0lIOtRS3fmXG8kvMkNDA"><i class="fa fa-download fa-fw"></i>提取码: mpbm</a>
+
+<p>安装的具体操作步骤如下</p>
 <ul>
-<li>路由器 ⭐⭐⭐ 需要的话还是自己带一个，英国价格有点离谱</li>
-<li>网线 ⭐ 价格差不多</li>
-<li>USB小风扇 ⭐⭐⭐ 英国宿舍基本没空调，夏天还是会热的</li>
-<li>温湿度计 ⭐ 有需要可以带一个看下室内温湿度，这边价格比较高</li>
-<li>肥皂盒 ⭐ 一磅店就有，只不过款式不太好看</li>
-<li>数据线 ⭐⭐ 编织线的价格和国内差不多</li>
-<li>台灯 ⭐ 我宿舍书桌上面有两个巨亮的射灯，所以台灯就华丽丽的吃灰了，这边的台灯价格稍贵</li>
-<li>相机三脚架 ⭐⭐ 有需要的可以带一个轻便的，这边价格基本翻倍了</li>
-<li>小加湿器 ⭐⭐ 小的话可以带一个，eBay上最便宜的也要7磅，还没一卷卫生纸大</li>
-<li>筷子 ⭐ 中超就有，价格可以接受</li>
-<li>折叠盆 ⭐ 这边盆子质量稍差，但也不是不能用，而且中超也有国内那种盆子</li>
-<li>保温杯 ⭐ 价格和国内差不多</li>
-<li>指甲钳 ⭐⭐ 有得卖，但是不清楚质量如何</li>
-<li>电池 ⭐ 这边价格稍高，但也可以接受，充电电池可以带，干电池就算了吧</li>
-<li>牙杯 ⭐ 一磅店的塑料杯子就能用hhh</li>
-<li>削皮器 ⭐ 中超英超都有，价格不贵</li>
-<li>鞋刷 ⭐ 同上</li>
-<li>多功能刀 ⭐ 相当于临时的工具箱吧，这边价格很贵</li>
-<li>U盘 ⭐ 价格不算很贵</li>
-<li>拖鞋⭐⭐⭐ 这边的款式有点丑的</li>
-<li>钢化膜 ⭐⭐ 价格小贵</li>
-<li>笔记本支架 ⭐⭐ 预防颈椎病（狗头）</li>
-<li>备用眼镜 ⭐ 来了之后可以白嫖的（再次狗头）</li>
-<li>洗衣袋 ⭐⭐ 这边价格有点贵</li>
+<li>先将导出的<code>hwt</code>文件拷贝到手机</li>
+<li>成功连接设备后进入<code>表盘市场</code></li>
+<li>点击右上角的三个点</li>
+<li>进入<code>隐私声明</code></li>
+<li>撤销华为主题服务</li>
+<li>退出来再重新进入<code>表盘市场</code></li>
+<li>在弹出窗口中重新给华为主题服务授权</li>
+<li>再次点击右上角的三个点，会多出一个<code>添加表盘</code>选项</li>
+<li>点击后会询问你是否是开发者，点击<code>是</code></li>
+<li>找到拷贝进手机的<code>hwt</code>文件路径，点击确定并安装</li>
 </ul>
-<h1 id="不建议带"><a href="#不建议带" class="headerlink" title="不建议带"></a>不建议带</h1><p>这一类就是体积太大，重量太沉，或者在英国能以更低价格买到的东西</p>
-<ul>
-<li>肥皂 ❌ homebargain有的买， 80p两块</li>
-<li>电饭煲 ❌❌❌ 这个是真的没必要，收二手就可以，自己带的话又重又占地方，还要浪费一个转换插头，收不到二手网购也差不多价格，可能没有国内那么丰富的功能</li>
-<li>电吹风 ❌❌❌ 同上</li>
-<li>大加湿器 ❌❌❌ 同上</li>
-<li>折叠水壶 ❌ 用几次就吃灰的东西，落地之后直接去大点的超市买烧水壶就可以，或者提前网购</li>
-<li>菜刀 ❌❌ 太沉了，中超就有，价格可以接受</li>
-<li>电动牙刷刷头 ❌ 别的不知道，反正欧乐B的比国内便宜不少</li>
-<li>雨伞 ❌ 遇到妖风基本报废，淘宝那种抗台风的可以试一下？</li>
-<li>锅碗瓢盆 ❌❌❌ 真的没必要，大点的超市都有，样式也还行</li>
-<li>被子 ❌❌❌ 除非行李箱空一半（手动狗头）</li>
-<li>纱窗 ❌❌ 亚马逊就有，而且学生公寓的窗子基本只能开一道缝隙，根本就装不上</li>
-</ul>
-]]></content>
+<p>如果觉得这个表盘不满意需要卸载的话，还要重新安装最新版的<code>华为运动健康</code>，进入<code>表盘市场</code>中的<code>我的</code>里面删除，老版本的不能在表盘市场中删除自定义的表盘，这就很尴尬，所以。。。一定要设计好了检查好了再安装，要不这个过程可是太反人类了，手表安装表盘巨慢，1秒钟才安装百分之一。。。</p>
+<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>我做的表盘已经上传到我的Github了，源文件也一起上传了，有需要的自取</p>
+<a class="btn" href="https://github.com/Siriusq/Honor-Magic-Watch-Theme-Sirius"><i class="fa fa-download fa-fw"></i>源文件</a>
+
+<a class="btn" href="https://github.com/Siriusq/Honor-Magic-Watch-Theme-Sirius/releases/download/6.0/sirius_3.1.6.hwt"><i class="fa fa-download fa-fw"></i>表盘下载</a>]]></content>
       <categories>
-        <category>Blog</category>
+        <category>Tech</category>
       </categories>
       <tags>
-        <tag>Record</tag>
-        <tag>留学</tag>
+        <tag>Software</tag>
+        <tag>Watch</tag>
       </tags>
   </entry>
   <entry>
