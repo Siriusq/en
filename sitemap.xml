@@ -331,6 +331,13 @@
   </url>
   
   <url>
+    <loc>https://siriusq.github.io/tags/HEXO/</loc>
+    <lastmod>2022-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://siriusq.github.io/tags/Grasshopper/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -339,13 +346,6 @@
   
   <url>
     <loc>https://siriusq.github.io/tags/Architecture/</loc>
-    <lastmod>2022-05-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://siriusq.github.io/tags/HEXO/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -457,14 +457,14 @@
   </url>
   
   <url>
-    <loc>https://siriusq.github.io/tags/%E8%BD%AC%E4%B8%93%E4%B8%9A/</loc>
+    <loc>https://siriusq.github.io/tags/Ubuntu/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://siriusq.github.io/tags/Ubuntu/</loc>
+    <loc>https://siriusq.github.io/tags/%E8%BD%AC%E4%B8%93%E4%B8%9A/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -494,14 +494,14 @@
   </url>
   
   <url>
-    <loc>https://siriusq.github.io/categories/Architecture/</loc>
+    <loc>https://siriusq.github.io/categories/Blog/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://siriusq.github.io/categories/Blog/</loc>
+    <loc>https://siriusq.github.io/categories/Architecture/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
