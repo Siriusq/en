@@ -235,85 +235,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo Next 7.7 双语切换</title>
-    <url>/Hexo-Next-7-7-%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">一年前通过在Google的疯狂查找和尝试，实现了在7.1版本的Next主题上进行中英双语的切换。但是Bug多多（切换到英文界面后点击关于、归档等标签还会跳转回中文界面），而我本人又是拖延症+懒癌晚期，一直没有尝试修复。最近借着给Next主题升级的机会顺便解决这个问题。折腾了两天，终于成功实现了理想中的中英双语切换效果，搞得毕设都没怎么做。</blockquote>
-
-<span id="more"></span>
-
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>我最初的想法是：在Github上新建一个仓库，然后开启新仓库的 Github Pages 作为英文网站使用，这样中英文的网站就可以相互独立，互不干扰，只需要在两个网站上添加一个切换按钮就可以了。但是查询后发现每个 Github 账号只能拥有一个个人主页，这就很尴尬了，难不成要再注册一个账号来作为英文网站使用吗？未免太过麻烦。就在我一筹莫展的时候，发现了<strong>chitanda</strong>大佬的文章<a href="https://segmentfault.com/a/1190000003946969">单个GitHub帐号下添加多个GitHub Pages的相关问题</a>。</p>
-<blockquote>
-<p>根据官方文档，GitHub Pages分为两类:个人&#x2F;组织主页以及项目主页，两者基本上没啥区别，但是有以下几点不同:（该文场景下个人和组织帐号没什么区别，所以下文为了行文方便将统一用个人主页代指）</p>
-<ul>
-<li>个人主页必须要和用户的GitHub帐号同名，所以每个用户有且只能有一个repo作为个人主页，且必须是<username>&#x2F;<username>.github.io的形式；而项目主页的命名则没有这种限制，且数量有任意多个。</li>
-<li>不考虑绑定的自定义域名的前提下，个人主页的GitHub二级域名为<username>.github.io;项目主页的GitHub二级域名为<username>.github.io&#x2F;<projectname>,没有<projectname>.<username>.github.io这种方式</li>
-<li>个人主页的展示内容以master分支里的文件为准；而项目主页的展示内容以gh-pages分支内的文件为准</li>
-</ul>
-</blockquote>
-<p>这样的话，如果在Github里新建一个仓库，用项目主页的方式来部署英文网站，中英文网站应该还是相互独立的，英文网站的的域名格式是<code>中文域名/仓库名/</code>，也就不用再单独配置新的域名，听起来好像能行？那就试一下吧</p>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>这里以我自己的域名<code>siriusq.top</code>和英文网站仓库名<code>en</code>为例</p>
-<h2 id="创建项目主页"><a href="#创建项目主页" class="headerlink" title="创建项目主页"></a>创建项目主页</h2><ul>
-<li>在 Github 新建一个名为<code>en</code>的<code>Repositories</code></li>
-<li>进入新建的<code>Repositories</code>，点击<code>Settings</code></li>
-<li>下拉到<code>Github Pages</code>选项</li>
-<li>点击<code>Choose a theme</code>，然后随便选一个主题</li>
-<li>成功建立项目主页和后<code>Github Pages</code>选项会显示<code>Your site is published at https://siriusq.top/en/</code></li>
-<li>至此英文网站的项目主页创建成功</li>
-</ul>
-<h2 id="建立本地英文网站目录"><a href="#建立本地英文网站目录" class="headerlink" title="建立本地英文网站目录"></a>建立本地英文网站目录</h2><p>复制现在的中文博客文件夹并重命名，名字随意，这里以我自己的中文文件夹名<code>Hexo</code>和复制出来的英文文件夹名<code>Hexoen</code>为例</p>
-<ul>
-<li>打开<code>./Hexoen/_config.yml</code>文件，依次修改配置如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">language: en</span><br><span class="line">url: https://siriusq.top/en/ # 用自己的 域名/仓库名/ 替换 siriusq.top/en/</span><br><span class="line">root: /en/ # 用自己的仓库名替换 en</span><br><span class="line">repo: git@github.com:Siriusq/en.git # 用自己的 用户名/仓库名 替换 Siriusq/en</span><br></pre></td></tr></table></figure></li>
-<li>删除<code>./Hexoen/source</code>下的<code>CNAME</code>文件（如果有的话）</li>
-</ul>
-<h2 id="加入中文切换按钮"><a href="#加入中文切换按钮" class="headerlink" title="加入中文切换按钮"></a>加入中文切换按钮</h2><ul>
-<li>打开<code>./Hexoen/source/_data/next.yml</code>文件<ul>
-<li>在<code>Menu Settings</code>下的<code>menu：</code>中加入<code>switch_lang</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: / || home</span><br><span class="line">about: /about/ || user</span><br><span class="line">tags: /tags/ || tags</span><br><span class="line">categories: /categories/ || th</span><br><span class="line">archives: /archives/ || archive</span><br><span class="line">switch_lang: https://siriusq.top || language # 将siriusq.top替换成你的中文网站域名</span><br><span class="line">#schedule: /schedule/ || calendar</span><br><span class="line">#sitemap: /sitemap.xml || sitemap</span><br><span class="line">#commonweal: /<span class="number">404</span>/ || heartbeat</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>打开<code>./Hexoen/themes/next/languages/en.yml</code>文件<ul>
-<li>在<code>menu:</code>下添加<code> switch_lang: 简体中文</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: Home</span><br><span class="line">archives: Archives</span><br><span class="line">categories: Categories</span><br><span class="line">tags: Tags</span><br><span class="line">about: About</span><br><span class="line">switch_lang: 简体中文</span><br><span class="line">search: Search</span><br><span class="line">schedule: Schedule</span><br><span class="line">sitemap: Sitemap</span><br><span class="line">commonweal: Commonweal <span class="number">404</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h2 id="加入英文切换按钮"><a href="#加入英文切换按钮" class="headerlink" title="加入英文切换按钮"></a>加入英文切换按钮</h2><ul>
-<li>打开<code>./Hexo/source/_data/next.yml</code>文件<ul>
-<li>在<code>Menu Settings</code>下的<code>menu：</code>中加入<code>switch_lang</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: / || home</span><br><span class="line">about: /about/ || user</span><br><span class="line">tags: /tags/ || tags</span><br><span class="line">categories: /categories/ || th</span><br><span class="line">archives: /archives/ || archive</span><br><span class="line">switch_lang: https://siriusq.top/en/ || language # 将siriusq.top/en/替换成你的英文网站域名</span><br><span class="line">#schedule: /schedule/ || calendar</span><br><span class="line">#sitemap: /sitemap.xml || sitemap</span><br><span class="line">#commonweal: /<span class="number">404</span>/ || heartbeat</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>打开<code>./Hexoen/themes/next/languages/en.yml</code>文件<ul>
-<li>在<code>menu:</code>下添加<code> switch_lang: 简体中文</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: 首页</span><br><span class="line">archives: 归档</span><br><span class="line">categories: 分类</span><br><span class="line">tags: 标签</span><br><span class="line">about: 关于</span><br><span class="line">switch_lang: English</span><br><span class="line">search: 搜索</span><br><span class="line">schedule: 日程表</span><br><span class="line">sitemap: 站点地图</span><br><span class="line">commonweal: 公益 <span class="number">404</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h2 id="添加切换判断条件"><a href="#添加切换判断条件" class="headerlink" title="添加切换判断条件"></a>添加切换判断条件</h2><p><strong>中文网站</strong><br>打开<code>./Hexo/themes/next/layout/_partials/head/head-unique.swig</code>，在最下方粘贴代码</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">  <span class="comment">// Wait for the page to load first</span></span><br><span class="line">  <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">      switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">          <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">          <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en/&#x27;</span>);</span><br><span class="line">          <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">              <span class="title function_">_prevOnload</span>();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;j</span><br></pre></td></tr></table></figure>
-
-<p><strong>英文网站</strong><br>打开<code>./Hexoen/themes/next/layout/_partials/head/head-unique.swig</code>，在最下方粘贴代码</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">  <span class="comment">// Wait for the page to load first</span></span><br><span class="line">  <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">      switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">          <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">          <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en/&#x27;</span>);</span><br><span class="line">          <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">              <span class="title function_">_prevOnload</span>();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>分别在两个文件夹执行hexo三连操作，将网站部署到Github，过一会就能访问了</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><ul>
-<li>由于两个网站是相互独立的，所以给两个网站用不同的主题在理论上也是可行的，我只给英文网站修改了下404页面</li>
-<li>一点瑕疵：开启PJAX的话，在页面完全加载之前点击切换按钮的话会卡一下才跳转</li>
-<li>二点瑕疵：网站相互独立，所以跳转的时候网页是完全重新加载的，PJAX无效</li>
-<li>注意事项：写博客的时候，中英文目录下的markdown文件名请保持一致，否则切换的时候会跳转到404页面</li>
-</ul>
-<p>折腾这些东西真的太费时间了，毕设一点没动，现在很慌张。有问题欢迎评论区留言，最近可能回复不及时。</p>
-<p>不多说了，我要滚去做毕设了</p>
-<p>ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;┌(;￣◇￣)┘</p>
-]]></content>
-      <categories>
-        <category>Blog</category>
-      </categories>
-      <tags>
-        <tag>HEXO</tag>
-        <tag>English</tag>
-        <tag>Next</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo博客踩坑指北</title>
     <url>/Hexo%E5%8D%9A%E5%AE%A2%E8%B8%A9%E5%9D%91%E6%8C%87%E5%8C%97.html</url>
     <content><![CDATA[<p>记录总结用HEXO和Github Page搭建博客时踩过的坑，主要包括以下</p>
@@ -472,6 +393,85 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo Next 7.7 双语切换</title>
+    <url>/Hexo-Next-7-7-%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">一年前通过在Google的疯狂查找和尝试，实现了在7.1版本的Next主题上进行中英双语的切换。但是Bug多多（切换到英文界面后点击关于、归档等标签还会跳转回中文界面），而我本人又是拖延症+懒癌晚期，一直没有尝试修复。最近借着给Next主题升级的机会顺便解决这个问题。折腾了两天，终于成功实现了理想中的中英双语切换效果，搞得毕设都没怎么做。</blockquote>
+
+<span id="more"></span>
+
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>我最初的想法是：在Github上新建一个仓库，然后开启新仓库的 Github Pages 作为英文网站使用，这样中英文的网站就可以相互独立，互不干扰，只需要在两个网站上添加一个切换按钮就可以了。但是查询后发现每个 Github 账号只能拥有一个个人主页，这就很尴尬了，难不成要再注册一个账号来作为英文网站使用吗？未免太过麻烦。就在我一筹莫展的时候，发现了<strong>chitanda</strong>大佬的文章<a href="https://segmentfault.com/a/1190000003946969">单个GitHub帐号下添加多个GitHub Pages的相关问题</a>。</p>
+<blockquote>
+<p>根据官方文档，GitHub Pages分为两类:个人&#x2F;组织主页以及项目主页，两者基本上没啥区别，但是有以下几点不同:（该文场景下个人和组织帐号没什么区别，所以下文为了行文方便将统一用个人主页代指）</p>
+<ul>
+<li>个人主页必须要和用户的GitHub帐号同名，所以每个用户有且只能有一个repo作为个人主页，且必须是<username>&#x2F;<username>.github.io的形式；而项目主页的命名则没有这种限制，且数量有任意多个。</li>
+<li>不考虑绑定的自定义域名的前提下，个人主页的GitHub二级域名为<username>.github.io;项目主页的GitHub二级域名为<username>.github.io&#x2F;<projectname>,没有<projectname>.<username>.github.io这种方式</li>
+<li>个人主页的展示内容以master分支里的文件为准；而项目主页的展示内容以gh-pages分支内的文件为准</li>
+</ul>
+</blockquote>
+<p>这样的话，如果在Github里新建一个仓库，用项目主页的方式来部署英文网站，中英文网站应该还是相互独立的，英文网站的的域名格式是<code>中文域名/仓库名/</code>，也就不用再单独配置新的域名，听起来好像能行？那就试一下吧</p>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>这里以我自己的域名<code>siriusq.top</code>和英文网站仓库名<code>en</code>为例</p>
+<h2 id="创建项目主页"><a href="#创建项目主页" class="headerlink" title="创建项目主页"></a>创建项目主页</h2><ul>
+<li>在 Github 新建一个名为<code>en</code>的<code>Repositories</code></li>
+<li>进入新建的<code>Repositories</code>，点击<code>Settings</code></li>
+<li>下拉到<code>Github Pages</code>选项</li>
+<li>点击<code>Choose a theme</code>，然后随便选一个主题</li>
+<li>成功建立项目主页和后<code>Github Pages</code>选项会显示<code>Your site is published at https://siriusq.top/en/</code></li>
+<li>至此英文网站的项目主页创建成功</li>
+</ul>
+<h2 id="建立本地英文网站目录"><a href="#建立本地英文网站目录" class="headerlink" title="建立本地英文网站目录"></a>建立本地英文网站目录</h2><p>复制现在的中文博客文件夹并重命名，名字随意，这里以我自己的中文文件夹名<code>Hexo</code>和复制出来的英文文件夹名<code>Hexoen</code>为例</p>
+<ul>
+<li>打开<code>./Hexoen/_config.yml</code>文件，依次修改配置如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">language: en</span><br><span class="line">url: https://siriusq.top/en/ # 用自己的 域名/仓库名/ 替换 siriusq.top/en/</span><br><span class="line">root: /en/ # 用自己的仓库名替换 en</span><br><span class="line">repo: git@github.com:Siriusq/en.git # 用自己的 用户名/仓库名 替换 Siriusq/en</span><br></pre></td></tr></table></figure></li>
+<li>删除<code>./Hexoen/source</code>下的<code>CNAME</code>文件（如果有的话）</li>
+</ul>
+<h2 id="加入中文切换按钮"><a href="#加入中文切换按钮" class="headerlink" title="加入中文切换按钮"></a>加入中文切换按钮</h2><ul>
+<li>打开<code>./Hexoen/source/_data/next.yml</code>文件<ul>
+<li>在<code>Menu Settings</code>下的<code>menu：</code>中加入<code>switch_lang</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: / || home</span><br><span class="line">about: /about/ || user</span><br><span class="line">tags: /tags/ || tags</span><br><span class="line">categories: /categories/ || th</span><br><span class="line">archives: /archives/ || archive</span><br><span class="line">switch_lang: https://siriusq.top || language # 将siriusq.top替换成你的中文网站域名</span><br><span class="line">#schedule: /schedule/ || calendar</span><br><span class="line">#sitemap: /sitemap.xml || sitemap</span><br><span class="line">#commonweal: /<span class="number">404</span>/ || heartbeat</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>打开<code>./Hexoen/themes/next/languages/en.yml</code>文件<ul>
+<li>在<code>menu:</code>下添加<code> switch_lang: 简体中文</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: Home</span><br><span class="line">archives: Archives</span><br><span class="line">categories: Categories</span><br><span class="line">tags: Tags</span><br><span class="line">about: About</span><br><span class="line">switch_lang: 简体中文</span><br><span class="line">search: Search</span><br><span class="line">schedule: Schedule</span><br><span class="line">sitemap: Sitemap</span><br><span class="line">commonweal: Commonweal <span class="number">404</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="加入英文切换按钮"><a href="#加入英文切换按钮" class="headerlink" title="加入英文切换按钮"></a>加入英文切换按钮</h2><ul>
+<li>打开<code>./Hexo/source/_data/next.yml</code>文件<ul>
+<li>在<code>Menu Settings</code>下的<code>menu：</code>中加入<code>switch_lang</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: / || home</span><br><span class="line">about: /about/ || user</span><br><span class="line">tags: /tags/ || tags</span><br><span class="line">categories: /categories/ || th</span><br><span class="line">archives: /archives/ || archive</span><br><span class="line">switch_lang: https://siriusq.top/en/ || language # 将siriusq.top/en/替换成你的英文网站域名</span><br><span class="line">#schedule: /schedule/ || calendar</span><br><span class="line">#sitemap: /sitemap.xml || sitemap</span><br><span class="line">#commonweal: /<span class="number">404</span>/ || heartbeat</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>打开<code>./Hexoen/themes/next/languages/en.yml</code>文件<ul>
+<li>在<code>menu:</code>下添加<code> switch_lang: 简体中文</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: 首页</span><br><span class="line">archives: 归档</span><br><span class="line">categories: 分类</span><br><span class="line">tags: 标签</span><br><span class="line">about: 关于</span><br><span class="line">switch_lang: English</span><br><span class="line">search: 搜索</span><br><span class="line">schedule: 日程表</span><br><span class="line">sitemap: 站点地图</span><br><span class="line">commonweal: 公益 <span class="number">404</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="添加切换判断条件"><a href="#添加切换判断条件" class="headerlink" title="添加切换判断条件"></a>添加切换判断条件</h2><p><strong>中文网站</strong><br>打开<code>./Hexo/themes/next/layout/_partials/head/head-unique.swig</code>，在最下方粘贴代码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">  <span class="comment">// Wait for the page to load first</span></span><br><span class="line">  <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">      switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">          <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">          <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en/&#x27;</span>);</span><br><span class="line">          <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">              <span class="title function_">_prevOnload</span>();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;j</span><br></pre></td></tr></table></figure>
+
+<p><strong>英文网站</strong><br>打开<code>./Hexoen/themes/next/layout/_partials/head/head-unique.swig</code>，在最下方粘贴代码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">  <span class="comment">// Wait for the page to load first</span></span><br><span class="line">  <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">      switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">          <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">          <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en/&#x27;</span>);</span><br><span class="line">          <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">              <span class="title function_">_prevOnload</span>();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>分别在两个文件夹执行hexo三连操作，将网站部署到Github，过一会就能访问了</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><ul>
+<li>由于两个网站是相互独立的，所以给两个网站用不同的主题在理论上也是可行的，我只给英文网站修改了下404页面</li>
+<li>一点瑕疵：开启PJAX的话，在页面完全加载之前点击切换按钮的话会卡一下才跳转</li>
+<li>二点瑕疵：网站相互独立，所以跳转的时候网页是完全重新加载的，PJAX无效</li>
+<li>注意事项：写博客的时候，中英文目录下的markdown文件名请保持一致，否则切换的时候会跳转到404页面</li>
+</ul>
+<p>折腾这些东西真的太费时间了，毕设一点没动，现在很慌张。有问题欢迎评论区留言，最近可能回复不及时。</p>
+<p>不多说了，我要滚去做毕设了</p>
+<p>ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;┌(;￣◇￣)┘</p>
+]]></content>
+      <categories>
+        <category>Blog</category>
+      </categories>
+      <tags>
+        <tag>HEXO</tag>
+        <tag>English</tag>
+        <tag>Next</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo添加Google收录</title>
     <url>/Hexo%E6%B7%BB%E5%8A%A0Google%E6%94%B6%E5%BD%95.html</url>
     <content><![CDATA[<p>目前网站还不能够通过搜索引擎搜索到，想要被搜到的话需要添加搜索引擎收录，这里以我添加的Google为例。<br><strong>步骤包括：</strong></p>
@@ -502,105 +502,6 @@
       </categories>
       <tags>
         <tag>HEXO</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo Next 双语切换(7.1版本)</title>
-    <url>/Hexo%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html</url>
-    <content><![CDATA[<p>2020年更新：本方法bug太多，已弃坑，只针对7.1版本的Next主题。新方法请看<a href="https://siriusq.top/Hexo-Next-7-7-%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html">Hexo Next 7.7 双语切换</a></p>
-<p><strong>以下为原内容</strong></p>
-<hr>
-<p>有英语版网站的需要，所以需要加一个双语切换功能，Hexo有对网站国际化的支持，即<a href="https://hexo.io/zh-cn/docs/internationalization.html">i18n</a>，但存在缺陷，各种语言的文章会混杂在一起显得很混乱，需要稍加改造，步骤如下：</p>
-<h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p>安装Hexo国际化插件i18n，在博客根目录执行下列命令</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-i18n</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<p>##注意事项<br>需要确保 <strong>i18n</strong> 插件位于根目录<code>package.json</code>中的所有插件的最后，每次安装新的插件时都要手动调整一次，因为每次安装新插件都会将插件按照字母顺序重新排列，目前没有发现好的方法,格式如下，注意最后一项没有逗号</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;bookmark&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.2.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;clipboard&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.4&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;gitment&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.8.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-asset-image&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-deployer-git&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-archive&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.1.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.1.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-index&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.2.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-search&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.4.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-sitemap&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-helper-live2d&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.1.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-prism-plugin&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.3.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-renderer-ejs&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-renderer-marked&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.2&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-renderer-stylus&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-server&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-symbols-count-time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.4.4&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-wordcount&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^6.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;live2d-widget-model-tororo&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;live2d-widget-model-z16&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-i18n&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.7&quot;</span></span><br><span class="line"> <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h1><p>打开博客根目录中的配置文件<code>_config.yml</code>,在<code>language</code>栏作如下修改</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># <span class="attr">language</span>:</span><br><span class="line"># - zh-<span class="variable constant_">CN</span></span><br><span class="line"># - en</span><br><span class="line"><span class="attr">language</span>: [zh-<span class="variable constant_">CN</span>,en]</span><br><span class="line"><span class="attr">i18n</span>:</span><br><span class="line">  <span class="attr">type</span>: [page, post]</span><br><span class="line">  <span class="attr">generator</span>: [index, archive, categorie, tag]</span><br></pre></td></tr></table></figure>
-<p>完成后执行<code>hexo cl</code>和<code>hexo g</code>二连重新生成<code>public</code>文件夹，此时会生成新目录<code>/en</code>用来存放英文站点文件,但此时不同语言的网站还是混合在一起的，需要添加生成条件让不同语言的页面出现在对的位置。</p>
-<h1 id="添加生成条件"><a href="#添加生成条件" class="headerlink" title="添加生成条件"></a>添加生成条件</h1><p>打开<code>.\themes\next\layout\index.swig</code>并在末尾添加如下代码</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% block content %&#125;</span><br><span class="line">  &lt;section id=<span class="string">&quot;posts&quot;</span> <span class="keyword">class</span>=<span class="string">&quot;posts-expand&quot;</span>&gt;</span><br><span class="line">    &#123;% <span class="keyword">for</span> post <span class="keyword">in</span> page.<span class="property">posts</span> %&#125;  </span><br><span class="line">      &#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">        &#123;&#123; post_template.<span class="title function_">render</span>(post, <span class="literal">true</span>) &#125;&#125;</span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line">  &lt;/section&gt;</span><br><span class="line">  &#123;% include <span class="string">&#x27;_partials/pagination.swig&#x27;</span> %&#125;</span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>此时只有页面语言与文章完全一致时文章才会被生成，同理，在<code>tag.swig</code>、<code>category.swig</code>、<code>archive.swig</code>等文件中搜索设置<code>post_template.render(post)</code>判断条件即可隐藏其他语言的文章,示例如下：<br><strong>tag</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> post <span class="keyword">in</span> page.<span class="property">posts</span> %&#125;</span><br><span class="line"> &#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">   &#123;&#123; post_template.<span class="title function_">render</span>(post) &#125;&#125;</span><br><span class="line"> &#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>archive</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">  &#123;&#123; post_template.<span class="title function_">render</span>(post) &#125;&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>category</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> post <span class="keyword">in</span> page.<span class="property">posts</span> %&#125;</span><br><span class="line"> &#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">  &#123;&#123; post_template.<span class="title function_">render</span>(post) &#125;&#125;</span><br><span class="line"> &#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="文章写作格式"><a href="#文章写作格式" class="headerlink" title="文章写作格式"></a>文章写作格式</h1><p>在博文标题栏加上<code>lang: </code>表示用来区分不同语言文章，中文为<code>lang: zh-CN</code>，英文为<code>lang: en</code>，示例如下：</p>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">title: Hexo双语切换</span><br><span class="line">date: 2019-04-09 17:12:53</span><br><span class="line">lang: zh-CN</span><br><span class="line">tags: [HEXO]</span><br><span class="line">categories: Blog</span><br></pre></td></tr></table></figure>
-
-<h1 id="添加切换按钮"><a href="#添加切换按钮" class="headerlink" title="添加切换按钮"></a>添加切换按钮</h1><p>打开Next主题配置文件<code>.\themes\next\_config.yml</code>并在<code>Menu: </code>下添加<code>switch_lang: </code>，示例如下</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu</span>:</span><br><span class="line">  <span class="attr">home</span>: / || home</span><br><span class="line">  <span class="attr">about</span>: <span class="regexp">/about/</span> || user</span><br><span class="line">  <span class="attr">tags</span>: <span class="regexp">/tags/</span> || tags</span><br><span class="line">  <span class="attr">categories</span>: <span class="regexp">/categories/</span> || th</span><br><span class="line">  <span class="attr">archives</span>: <span class="regexp">/archives/</span> || archive</span><br><span class="line">  <span class="attr">switch_lang</span>: /en || language</span><br><span class="line">  #<span class="attr">schedule</span>: <span class="regexp">/schedule/</span> || calendar</span><br><span class="line">  #<span class="attr">sitemap</span>: /sitemap.<span class="property">xml</span> || sitemap</span><br><span class="line">  #<span class="attr">commonweal</span>: <span class="regexp">/404/</span> || heartbeat</span><br></pre></td></tr></table></figure>
-
-<p>打开<code>.\themes\next\languages</code>下的<code>zh-CN.yml</code>和<code>en.yml</code>文件，分别在<code>menu: </code>下添加<code>switch_lang:</code>，示例如下</p>
-<p><strong>zh-CN</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu</span>:</span><br><span class="line">  <span class="attr">home</span>: 首页</span><br><span class="line">  <span class="attr">archives</span>: 归档</span><br><span class="line">  <span class="attr">categories</span>: 分类</span><br><span class="line">  <span class="attr">tags</span>: 标签</span><br><span class="line">  <span class="attr">switch_lang</span>: <span class="title class_">English</span></span><br><span class="line">  <span class="attr">about</span>: 关于</span><br><span class="line">  <span class="attr">search</span>: 搜索</span><br><span class="line">  <span class="attr">schedule</span>: 日程表</span><br><span class="line">  <span class="attr">sitemap</span>: 站点地图</span><br><span class="line">  <span class="attr">commonweal</span>: 公益 <span class="number">404</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>en</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu</span>:</span><br><span class="line">  <span class="attr">home</span>: <span class="title class_">Home</span></span><br><span class="line">  <span class="attr">archives</span>: <span class="title class_">Archives</span></span><br><span class="line">  <span class="attr">categories</span>: <span class="title class_">Categories</span></span><br><span class="line">  <span class="attr">tags</span>: <span class="title class_">Tags</span></span><br><span class="line">  <span class="attr">switch_lang</span>: zh-<span class="variable constant_">CN</span></span><br><span class="line">  <span class="attr">about</span>: <span class="title class_">About</span></span><br><span class="line">  <span class="attr">search</span>: <span class="title class_">Search</span></span><br><span class="line">  <span class="attr">schedule</span>: <span class="title class_">Schedule</span></span><br><span class="line">  <span class="attr">sitemap</span>: <span class="title class_">Sitemap</span></span><br><span class="line">  <span class="attr">commonweal</span>: <span class="title class_">Commonweal</span> <span class="number">404</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="添加判断条件"><a href="#添加判断条件" class="headerlink" title="添加判断条件"></a>添加判断条件</h1><p>此时链接仍然是单项可用的，只能跳转到英文页面但是不能跳转回中文页面，因此需要添加判断条件<br>在<code>.\themes\next\layout\_partials\head\head-unique.swig</code>中添加以下代码，在加载完英文页面后将页面切换按钮重定向到中文</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">    <span class="comment">// Wait for the page to load first</span></span><br><span class="line">    <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">        switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">            <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en&#x27;</span>);</span><br><span class="line">            <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">                <span class="title function_">_prevOnload</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>JavaScript萌新表示在这里卡了好久，<code>document.getElementsByClassName</code>返回的数值是数组，调试的时候一直报错，在后面加上了<code>[0]</code>才能返回<code>Class</code>的名称</p>
-<h1 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h1><p>虽然上述方法可以实现切换，但是在英文页面点击Tags、Archives、Categories等标签时会跳转中文页面，需要再跳转后的页面再点击一次英文切换按钮才能切换到相应页面的中文，如果大佬们有什么好的办法欢迎评论区留言</p>
-<blockquote>
-<p>参考<a href="https://wm4n.github.io/Hexo-NexT-%E5%90%8C%E6%99%82%E6%94%AF%E6%8F%B4%E5%A4%9A%E8%AA%9E%E7%B3%BB/">wm4n</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Blog</category>
-      </categories>
-      <tags>
-        <tag>HEXO</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java与C的环境变量配置</title>
-    <url>/Java%E4%B8%8EC%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">昨天又把系统重装了，升级到了2004，本以为能凭借记忆配置好Java和C的环境变量，然鹅最后还是找了百度，所以就再记录一遍吧</blockquote>
-
-<span id="more"></span>
-
-<h1 id="Java环境变量配置"><a href="#Java环境变量配置" class="headerlink" title="Java环境变量配置"></a>Java环境变量配置</h1><ol>
-<li>直接在任务栏搜索框搜索<code>环境变量</code>，会出现<code>编辑系统环境变量</code></li>
-<li>在弹出的窗口中点击右下角的<code>环境变量</code></li>
-<li>在下面的<code>系统变量</code>中新建系统变量，变量名<code>JAVA_HOME</code>，变量值为JDK的安装路径，默认是<code>C:\Program Files\Java\jdk-14.0.2</code></li>
-<li>再新建一个系统变量<code>CLASSPATH</code>，变量值为<code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></li>
-<li>双击系统变量中的<code>path</code>，点击右上角的<code>新建</code></li>
-<li>分别加入<code>%JAVA_HOME%\bin</code>与<code>%JAVA_HOME%\jre\bin</code></li>
-<li>确定三连回到桌面</li>
-<li>打开终端，输入<code>java -version</code>检查是否成功，成功的话会显示java版本号</li>
-<li>不成功的话重启一遍，并检查一下变量是否输入正确</li>
-</ol>
-<h1 id="C环境变量配置"><a href="#C环境变量配置" class="headerlink" title="C环境变量配置"></a>C环境变量配置</h1><ol>
-<li>在mingw中勾选<code>mingw32-base</code>和<code>mingw-gcc-g++</code>就行，选择多了会装到天荒地老。。。勾选方式是<code>右键 - Mark for Installation</code></li>
-<li>点击右上角的<code>Installation - Apply Changes</code></li>
-<li>在弹出的窗口中点击<code>Apply</code>确认</li>
-<li>漫长的等待。。。。。。土豆服务器经常会报错安装失败</li>
-<li>安装完成后同上打开系统变量</li>
-<li>双击系统变量中的<code>path</code>，点击右上角的<code>新建</code></li>
-<li>加入mingw的安装路径，默认是<code>C:\MinGW\bin</code></li>
-<li>打开终端，输入<code>gcc -v</code>检查是否成功</li>
-<li>不成功同样重启试试</li>
-</ol>
-<p>设置完成后的环境变量大概是这个亚子<br><img data-src="https://s2.loli.net/2022/05/13/O49gVDEHBFZ2kzm.png" alt="1"><br><img data-src="https://s2.loli.net/2022/05/13/uLJnsPYEIiHSA1t.png" alt="2"></p>
-]]></content>
-      <categories>
-        <category>Tech</category>
-      </categories>
-      <tags>
-        <tag>Software</tag>
-        <tag>Java</tag>
-        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -743,6 +644,105 @@
       </categories>
       <tags>
         <tag>ITX</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo Next 双语切换(7.1版本)</title>
+    <url>/Hexo%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html</url>
+    <content><![CDATA[<p>2020年更新：本方法bug太多，已弃坑，只针对7.1版本的Next主题。新方法请看<a href="https://siriusq.top/Hexo-Next-7-7-%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html">Hexo Next 7.7 双语切换</a></p>
+<p><strong>以下为原内容</strong></p>
+<hr>
+<p>有英语版网站的需要，所以需要加一个双语切换功能，Hexo有对网站国际化的支持，即<a href="https://hexo.io/zh-cn/docs/internationalization.html">i18n</a>，但存在缺陷，各种语言的文章会混杂在一起显得很混乱，需要稍加改造，步骤如下：</p>
+<h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p>安装Hexo国际化插件i18n，在博客根目录执行下列命令</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-i18n</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>##注意事项<br>需要确保 <strong>i18n</strong> 插件位于根目录<code>package.json</code>中的所有插件的最后，每次安装新的插件时都要手动调整一次，因为每次安装新插件都会将插件按照字母顺序重新排列，目前没有发现好的方法,格式如下，注意最后一项没有逗号</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;bookmark&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.2.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;clipboard&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.4&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;gitment&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.8.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-asset-image&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-deployer-git&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-archive&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.1.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.1.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-index&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.2.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-search&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.4.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-sitemap&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-helper-live2d&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.1.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-prism-plugin&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.3.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-renderer-ejs&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-renderer-marked&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.2&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-renderer-stylus&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-server&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-symbols-count-time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.4.4&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-wordcount&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^6.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;live2d-widget-model-tororo&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;live2d-widget-model-z16&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-i18n&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.7&quot;</span></span><br><span class="line"> <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h1><p>打开博客根目录中的配置文件<code>_config.yml</code>,在<code>language</code>栏作如下修改</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># <span class="attr">language</span>:</span><br><span class="line"># - zh-<span class="variable constant_">CN</span></span><br><span class="line"># - en</span><br><span class="line"><span class="attr">language</span>: [zh-<span class="variable constant_">CN</span>,en]</span><br><span class="line"><span class="attr">i18n</span>:</span><br><span class="line">  <span class="attr">type</span>: [page, post]</span><br><span class="line">  <span class="attr">generator</span>: [index, archive, categorie, tag]</span><br></pre></td></tr></table></figure>
+<p>完成后执行<code>hexo cl</code>和<code>hexo g</code>二连重新生成<code>public</code>文件夹，此时会生成新目录<code>/en</code>用来存放英文站点文件,但此时不同语言的网站还是混合在一起的，需要添加生成条件让不同语言的页面出现在对的位置。</p>
+<h1 id="添加生成条件"><a href="#添加生成条件" class="headerlink" title="添加生成条件"></a>添加生成条件</h1><p>打开<code>.\themes\next\layout\index.swig</code>并在末尾添加如下代码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% block content %&#125;</span><br><span class="line">  &lt;section id=<span class="string">&quot;posts&quot;</span> <span class="keyword">class</span>=<span class="string">&quot;posts-expand&quot;</span>&gt;</span><br><span class="line">    &#123;% <span class="keyword">for</span> post <span class="keyword">in</span> page.<span class="property">posts</span> %&#125;  </span><br><span class="line">      &#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">        &#123;&#123; post_template.<span class="title function_">render</span>(post, <span class="literal">true</span>) &#125;&#125;</span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line">  &lt;/section&gt;</span><br><span class="line">  &#123;% include <span class="string">&#x27;_partials/pagination.swig&#x27;</span> %&#125;</span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时只有页面语言与文章完全一致时文章才会被生成，同理，在<code>tag.swig</code>、<code>category.swig</code>、<code>archive.swig</code>等文件中搜索设置<code>post_template.render(post)</code>判断条件即可隐藏其他语言的文章,示例如下：<br><strong>tag</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> post <span class="keyword">in</span> page.<span class="property">posts</span> %&#125;</span><br><span class="line"> &#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">   &#123;&#123; post_template.<span class="title function_">render</span>(post) &#125;&#125;</span><br><span class="line"> &#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>archive</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">  &#123;&#123; post_template.<span class="title function_">render</span>(post) &#125;&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>category</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> post <span class="keyword">in</span> page.<span class="property">posts</span> %&#125;</span><br><span class="line"> &#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">  &#123;&#123; post_template.<span class="title function_">render</span>(post) &#125;&#125;</span><br><span class="line"> &#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="文章写作格式"><a href="#文章写作格式" class="headerlink" title="文章写作格式"></a>文章写作格式</h1><p>在博文标题栏加上<code>lang: </code>表示用来区分不同语言文章，中文为<code>lang: zh-CN</code>，英文为<code>lang: en</code>，示例如下：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">title: Hexo双语切换</span><br><span class="line">date: 2019-04-09 17:12:53</span><br><span class="line">lang: zh-CN</span><br><span class="line">tags: [HEXO]</span><br><span class="line">categories: Blog</span><br></pre></td></tr></table></figure>
+
+<h1 id="添加切换按钮"><a href="#添加切换按钮" class="headerlink" title="添加切换按钮"></a>添加切换按钮</h1><p>打开Next主题配置文件<code>.\themes\next\_config.yml</code>并在<code>Menu: </code>下添加<code>switch_lang: </code>，示例如下</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu</span>:</span><br><span class="line">  <span class="attr">home</span>: / || home</span><br><span class="line">  <span class="attr">about</span>: <span class="regexp">/about/</span> || user</span><br><span class="line">  <span class="attr">tags</span>: <span class="regexp">/tags/</span> || tags</span><br><span class="line">  <span class="attr">categories</span>: <span class="regexp">/categories/</span> || th</span><br><span class="line">  <span class="attr">archives</span>: <span class="regexp">/archives/</span> || archive</span><br><span class="line">  <span class="attr">switch_lang</span>: /en || language</span><br><span class="line">  #<span class="attr">schedule</span>: <span class="regexp">/schedule/</span> || calendar</span><br><span class="line">  #<span class="attr">sitemap</span>: /sitemap.<span class="property">xml</span> || sitemap</span><br><span class="line">  #<span class="attr">commonweal</span>: <span class="regexp">/404/</span> || heartbeat</span><br></pre></td></tr></table></figure>
+
+<p>打开<code>.\themes\next\languages</code>下的<code>zh-CN.yml</code>和<code>en.yml</code>文件，分别在<code>menu: </code>下添加<code>switch_lang:</code>，示例如下</p>
+<p><strong>zh-CN</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu</span>:</span><br><span class="line">  <span class="attr">home</span>: 首页</span><br><span class="line">  <span class="attr">archives</span>: 归档</span><br><span class="line">  <span class="attr">categories</span>: 分类</span><br><span class="line">  <span class="attr">tags</span>: 标签</span><br><span class="line">  <span class="attr">switch_lang</span>: <span class="title class_">English</span></span><br><span class="line">  <span class="attr">about</span>: 关于</span><br><span class="line">  <span class="attr">search</span>: 搜索</span><br><span class="line">  <span class="attr">schedule</span>: 日程表</span><br><span class="line">  <span class="attr">sitemap</span>: 站点地图</span><br><span class="line">  <span class="attr">commonweal</span>: 公益 <span class="number">404</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>en</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu</span>:</span><br><span class="line">  <span class="attr">home</span>: <span class="title class_">Home</span></span><br><span class="line">  <span class="attr">archives</span>: <span class="title class_">Archives</span></span><br><span class="line">  <span class="attr">categories</span>: <span class="title class_">Categories</span></span><br><span class="line">  <span class="attr">tags</span>: <span class="title class_">Tags</span></span><br><span class="line">  <span class="attr">switch_lang</span>: zh-<span class="variable constant_">CN</span></span><br><span class="line">  <span class="attr">about</span>: <span class="title class_">About</span></span><br><span class="line">  <span class="attr">search</span>: <span class="title class_">Search</span></span><br><span class="line">  <span class="attr">schedule</span>: <span class="title class_">Schedule</span></span><br><span class="line">  <span class="attr">sitemap</span>: <span class="title class_">Sitemap</span></span><br><span class="line">  <span class="attr">commonweal</span>: <span class="title class_">Commonweal</span> <span class="number">404</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="添加判断条件"><a href="#添加判断条件" class="headerlink" title="添加判断条件"></a>添加判断条件</h1><p>此时链接仍然是单项可用的，只能跳转到英文页面但是不能跳转回中文页面，因此需要添加判断条件<br>在<code>.\themes\next\layout\_partials\head\head-unique.swig</code>中添加以下代码，在加载完英文页面后将页面切换按钮重定向到中文</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">    <span class="comment">// Wait for the page to load first</span></span><br><span class="line">    <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">        switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">            <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en&#x27;</span>);</span><br><span class="line">            <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">                <span class="title function_">_prevOnload</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>JavaScript萌新表示在这里卡了好久，<code>document.getElementsByClassName</code>返回的数值是数组，调试的时候一直报错，在后面加上了<code>[0]</code>才能返回<code>Class</code>的名称</p>
+<h1 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h1><p>虽然上述方法可以实现切换，但是在英文页面点击Tags、Archives、Categories等标签时会跳转中文页面，需要再跳转后的页面再点击一次英文切换按钮才能切换到相应页面的中文，如果大佬们有什么好的办法欢迎评论区留言</p>
+<blockquote>
+<p>参考<a href="https://wm4n.github.io/Hexo-NexT-%E5%90%8C%E6%99%82%E6%94%AF%E6%8F%B4%E5%A4%9A%E8%AA%9E%E7%B3%BB/">wm4n</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Blog</category>
+      </categories>
+      <tags>
+        <tag>HEXO</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java与C的环境变量配置</title>
+    <url>/Java%E4%B8%8EC%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">昨天又把系统重装了，升级到了2004，本以为能凭借记忆配置好Java和C的环境变量，然鹅最后还是找了百度，所以就再记录一遍吧</blockquote>
+
+<span id="more"></span>
+
+<h1 id="Java环境变量配置"><a href="#Java环境变量配置" class="headerlink" title="Java环境变量配置"></a>Java环境变量配置</h1><ol>
+<li>直接在任务栏搜索框搜索<code>环境变量</code>，会出现<code>编辑系统环境变量</code></li>
+<li>在弹出的窗口中点击右下角的<code>环境变量</code></li>
+<li>在下面的<code>系统变量</code>中新建系统变量，变量名<code>JAVA_HOME</code>，变量值为JDK的安装路径，默认是<code>C:\Program Files\Java\jdk-14.0.2</code></li>
+<li>再新建一个系统变量<code>CLASSPATH</code>，变量值为<code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></li>
+<li>双击系统变量中的<code>path</code>，点击右上角的<code>新建</code></li>
+<li>分别加入<code>%JAVA_HOME%\bin</code>与<code>%JAVA_HOME%\jre\bin</code></li>
+<li>确定三连回到桌面</li>
+<li>打开终端，输入<code>java -version</code>检查是否成功，成功的话会显示java版本号</li>
+<li>不成功的话重启一遍，并检查一下变量是否输入正确</li>
+</ol>
+<h1 id="C环境变量配置"><a href="#C环境变量配置" class="headerlink" title="C环境变量配置"></a>C环境变量配置</h1><ol>
+<li>在mingw中勾选<code>mingw32-base</code>和<code>mingw-gcc-g++</code>就行，选择多了会装到天荒地老。。。勾选方式是<code>右键 - Mark for Installation</code></li>
+<li>点击右上角的<code>Installation - Apply Changes</code></li>
+<li>在弹出的窗口中点击<code>Apply</code>确认</li>
+<li>漫长的等待。。。。。。土豆服务器经常会报错安装失败</li>
+<li>安装完成后同上打开系统变量</li>
+<li>双击系统变量中的<code>path</code>，点击右上角的<code>新建</code></li>
+<li>加入mingw的安装路径，默认是<code>C:\MinGW\bin</code></li>
+<li>打开终端，输入<code>gcc -v</code>检查是否成功</li>
+<li>不成功同样重启试试</li>
+</ol>
+<p>设置完成后的环境变量大概是这个亚子<br><img data-src="https://s2.loli.net/2022/05/13/O49gVDEHBFZ2kzm.png" alt="1"><br><img data-src="https://s2.loli.net/2022/05/13/uLJnsPYEIiHSA1t.png" alt="2"></p>
+]]></content>
+      <categories>
+        <category>Tech</category>
+      </categories>
+      <tags>
+        <tag>Software</tag>
+        <tag>Java</tag>
+        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -1702,26 +1702,249 @@
       </tags>
   </entry>
   <entry>
-    <title>Purpose</title>
-    <url>/Purpose.html</url>
-    <content><![CDATA[<h3 id="01"><a href="#01" class="headerlink" title="01"></a>01</h3><p>建立博客的初衷是记录一些自己踩过的坑，防止以后踩相同的坑无法自拔。</p>
-<h3 id="02"><a href="#02" class="headerlink" title="02"></a>02</h3><p>博客主要记录的领域有：</p>
+    <title>PTE不完全指南</title>
+    <url>/PTE%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">我12月27日在武汉湖北大学考场考完了PTE，等了三天之后出了成绩，成绩单在下面，顺利达到格拉的入学要求。记录一下备考的经验，祝大家早日和语言考试分手（雅思就是个死渣男）</blockquote>
+
+<p><img data-src="https://s2.loli.net/2022/05/13/X3K2jQ8mRNSeMY5.png" alt="PTE"></p>
+<span id="more"></span>
+
+<p>首先讲一下大概的时间线，我是今年5月份开始了解PTE。因为4月考的雅思没有达到录取要求，更主要的是复习一个月去考和第一次裸考的成绩基本一样，只有阅读涨了0.5分。。。</p>
 <ul>
-<li>C&#x2F;C++编写的PTA算法题</li>
-<li>闲的蛋疼写的小游戏</li>
-<li>Echats的模板文件（主要给建筑狗用）</li>
-<li>PTE相关的经验</li>
-<li>CS出国留学的准备工作</li>
-<li>Python爬虫</li>
-<li>一些偏技术的教程（比如搭建这个博客）</li>
+<li>5月在B站稍微了解了下PTE，然后就在准备研究生申请的事情</li>
+<li>十月底格拉来了offer，con雅思6.5（写作6.5，其他6.0）或者PTE68（62），虽然他官网些写的是PTE60(59)</li>
+<li>双十一开始复习，双十一在淘宝买了Voucher报了名，然后主要练习口语，每天大概2个小时，中间忙着订格拉的宿舍，大部分时间在摸鱼</li>
+<li>十二月之后开始练所有的题型，每天大概4-6个小时</li>
+<li>12月11号做了官方模考A卷，总分66，听62 说70 读65 写64，然后格拉要求总分68，就跟慌，11号以后每天复习时间大概在6-8小时</li>
+<li>12月21号做了模考C卷，总分67，都说C卷最接近真实考试难度，所以我更慌了</li>
+<li>12月25号做了模考B卷，总分70</li>
+<li>12月26号飞去武汉，27号上午9点考试</li>
+<li>12月30号中午1点收到出成绩的邮件（这里不得不吐槽武汉考场，出成绩是真的慢，我同学29号下午在广州白云考的，30号早上7点多就出分了）</li>
 </ul>
-<h3 id="03"><a href="#03" class="headerlink" title="03"></a>03</h3><p>目前就想到这些，有空再更新（咕咕咕）</p>
+<h1 id="关于PTE"><a href="#关于PTE" class="headerlink" title="关于PTE"></a>关于PTE</h1><p>PTE是英国培生教育集团推出的英语语言能力考试，全程机考，程序自动评分，目前英国大部分学校是认可的</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
+<li>PTE不会像雅思那样人为压分，只要下功夫练习就一定会有进步，不像雅思，花老大的力气也不涨分</li>
+<li>PTE出分速度快，一般1-5个工作日</li>
+<li>PTE考位相对宽松，不用担心抢不到位置</li>
+</ol>
+<h2 id="适合人群"><a href="#适合人群" class="headerlink" title="适合人群"></a>适合人群</h2><p>PTE适合听力&#x2F;阅读比较好的考生，因为它的听力和阅读难度比较大，尤其是听力<br>PTE的写作和口语比雅思要简单，也适合雅思一直卡口语&#x2F;写作小分的考生</p>
+<h1 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h1><p>题型上次介绍过，再列个表概括一下</p>
+<table>
+<thead>
+<tr>
+<th align="center">部分</th>
+<th align="center">题型</th>
+<th>要求</th>
+<th align="center">题目数量</th>
+<th>交叉评分</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Speaking</td>
+<td align="center">RA</td>
+<td>朗读屏幕上的一段话，40s准备40s朗读，短句子给的时间会相应减少</td>
+<td align="center">6-7</td>
+<td>Reading and speaking &#x2F; Oral fluency, pronunciation</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">RS</td>
+<td>电脑播放一句话的录音，听完后马上复述出来</td>
+<td align="center">10-12</td>
+<td>Listening and speaking &#x2F; Oral fluency, pronunciation</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">DI</td>
+<td>描述给出的图片，25s准备，40s叙述</td>
+<td align="center">6-7</td>
+<td>Speaking &#x2F; Oral fluency, pronunciation</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">RL</td>
+<td>听一段录音，然后简单复述录音讲了什么，需要做笔记</td>
+<td align="center">3-4</td>
+<td>Listening and speaking &#x2F; Oral fluency, pronunciation</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">ASQ</td>
+<td>回答听到的问题，一般答案是一个单词，都是常识性问题</td>
+<td align="center">10-12</td>
+<td>Listening and speaking &#x2F; Vocabulary</td>
+</tr>
+<tr>
+<td align="center">Writing</td>
+<td align="center">SWT</td>
+<td>给出一段文章，用5-75个单词概括这段话，只能写一句话，每题10min</td>
+<td align="center">2-3</td>
+<td>Reading and writing &#x2F; Grammar, vocabulary</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">WE</td>
+<td>类似雅思大作文，每题20min</td>
+<td align="center">1-2</td>
+<td>Writing &#x2F; Grammar, vocabulary, spelling, written discourse</td>
+</tr>
+<tr>
+<td align="center">Reading</td>
+<td align="center">FIBW</td>
+<td>完形填空的变种，将合适的单词拖拽到文章的空里</td>
+<td align="center">5-6</td>
+<td>Reading and writing</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">FIB</td>
+<td>类似完形填空，从下拉菜单里选择缺少的单词</td>
+<td align="center">4-5</td>
+<td>Reading</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">RO</td>
+<td>给几句打乱顺序的话，重新排序</td>
+<td align="center">2-3</td>
+<td>Reading</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">MCM</td>
+<td>多选题</td>
+<td align="center">2-3</td>
+<td>Reading</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">MCS</td>
+<td>单选题</td>
+<td align="center">2-3</td>
+<td>Reading</td>
+</tr>
+<tr>
+<td align="center">Listening</td>
+<td align="center">SST</td>
+<td>听一段录音，然后总结一段50-70词的小文章，需要做笔记</td>
+<td align="center">2-3</td>
+<td>Listening and writing &#x2F; Grammar, vocabulary, spelling</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">FIB</td>
+<td>听录音，然后拼写出缺少的单词</td>
+<td align="center">2-3</td>
+<td>Listening and writing</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">WFD</td>
+<td>听一句话，然后拼写出来</td>
+<td align="center">3-4</td>
+<td>Listening and writing</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">MCS</td>
+<td>单选题</td>
+<td align="center">2-3</td>
+<td>Listening</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">MCM</td>
+<td>多选题</td>
+<td align="center">2-3</td>
+<td>Listening</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">SMW</td>
+<td>播放一段录音，最后几个单词会剪掉，选择被剪掉的单词</td>
+<td align="center">2-3</td>
+<td>Listening</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">HIW</td>
+<td>播放一段录音，录音和下面的文章有不一样的词，点选出不同的词</td>
+<td align="center">2-3</td>
+<td>Listening and reading</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">HCS</td>
+<td>播放一段录音，选出最能概括录音的总结</td>
+<td align="center">2-3</td>
+<td>Listening and reading</td>
+</tr>
+</tbody></table>
+<h1 id="答题经验"><a href="#答题经验" class="headerlink" title="答题经验"></a>答题经验</h1><h2 id="Speaking"><a href="#Speaking" class="headerlink" title="Speaking"></a>Speaking</h2><p><strong>口语部分最重要的就是流利度，我的经验就是一直说不要停，念错了也不要倒回去重新念，一直往下说就好，注意意群和停顿，另外录音开始后要及时说，3s内不说的话系统会自动关闭麦克风并跳到下一题</strong></p>
+<h3 id="RA"><a href="#RA" class="headerlink" title="RA"></a>RA</h3><p>在准备时间里小声读一遍，不会念的词猜一下，数字年份之类的提前多念几遍</p>
+<h3 id="RS"><a href="#RS" class="headerlink" title="RS"></a>RS</h3><p>我是鱼的记忆，长的句子记不住，只能记住一半多，能说多少说多少吧，不要卡壳就好<br>这个部分我个人来不及记笔记，也不是很建议记笔记，来不及反应</p>
+<h3 id="RL-x2F-DI"><a href="#RL-x2F-DI" class="headerlink" title="RL&#x2F;DI"></a>RL&#x2F;DI</h3><p>这两个题就是套模板保证流利度，把模板记熟练，考试的时候无脑说。不用纠结语法，这俩题目不考语法<br>RL来不及记句子的话就记关键词，然后往模板里套就行</p>
+<h3 id="ASQ"><a href="#ASQ" class="headerlink" title="ASQ"></a>ASQ</h3><p>这个题很蛋疼，对词汇量要求挺高，最好在考试之前过一遍机经，分值不高不必太纠结</p>
+<h2 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h2><p><strong>写作要注意拼写，打字的时候打错的概率还是挺大的，每道题最好留2分钟检查一下拼写</strong><br>吐槽一下考场的键盘，武汉考场用的是那种巧克力键盘，真的难用，建议练习的时候找那种廉价的薄膜键盘就行，用机械键盘练习的话考试会很不习惯的</p>
+<h3 id="SWT"><a href="#SWT" class="headerlink" title="SWT"></a>SWT</h3><p>一般第一句话就是关键句，文章里面举得例子可以无视，注意只能有1个句号</p>
+<h3 id="WE"><a href="#WE" class="headerlink" title="WE"></a>WE</h3><p>从雅思转过来可能很不习惯这道题，200-300词的文章却要20分钟写完，莫得办法，只能用模板。模板百度就有，也可以去知乎豆瓣上找或者留邮箱要，拿到模板要看一下有没有错误，有些无良机构给的模板真的是无法直视。<br>留邮箱的话注意拿到资料后及时删除留下的邮箱，不然某垃圾机构会一直给你发垃圾邮件（没错说的就是你PTE在线学院）等offer的时候看见垃圾邮件恨不得想吃了他，每次来邮件都以为是来Offer了</p>
+<h2 id="Reading"><a href="#Reading" class="headerlink" title="Reading"></a>Reading</h2><p>阅读的重点就是词汇量，多背单词<br><strong>做题的时候注意时间，阅读是整体计时，在低分值的单选多选题目上不用纠结，给其他题目留足时间</strong></p>
+<h3 id="RO"><a href="#RO" class="headerlink" title="RO"></a>RO</h3><p>这部分有点玄学，经验就是找一下句子前后的逻辑和连接词，实在找不出来就背机经吧</p>
+<h3 id="MCM-x2F-MCS"><a href="#MCM-x2F-MCS" class="headerlink" title="MCM&#x2F;MCS"></a>MCM&#x2F;MCS</h3><p>多选和单选都很直接，不会像雅思那样故意挖坑，不要在这两道题上浪费太多时间，分值不高。<br>多选拿不准的话就选最确定的那一个，选错的话倒扣分的</p>
+<h3 id="FIB-x2F-FIBW"><a href="#FIB-x2F-FIBW" class="headerlink" title="FIB&#x2F;FIBW"></a>FIB&#x2F;FIBW</h3><p>这两道题最考验词汇量，一开始练的时候真的是一脸懵逼，不过可以根据词性排除一些选项，增加蒙对的概率。。。</p>
+<h2 id="Listening"><a href="#Listening" class="headerlink" title="Listening"></a>Listening</h2><p><strong>听力部分除SST外也是整体计时，注意合理分配时间，因为分值最大的WFD是最后才出现的，有很多人来不及做完WFD就被系统强制交卷了，建议给WFD留3-4分钟</strong></p>
+<h3 id="SWT-1"><a href="#SWT-1" class="headerlink" title="SWT"></a>SWT</h3><p>这部分是单独计时的，播放录音的时间也包含在里面<br>一般第一句话会是主题句，另外反复出现的词也要留意<br>记笔记的话尽量记完整的句子，最好不要用模板，因为有词数限制，模板就是浪费宝贵的空间<br>同样建议留出时间检查拼写</p>
+<h3 id="FIB"><a href="#FIB" class="headerlink" title="FIB"></a>FIB</h3><p>这道题主要考察拼写，建议用笔把词语记下来<br>亲测武汉考场不能用<code>tab</code>键切换到下一个空，直接打的话需要另一只手操作鼠标，来不及</p>
+<h3 id="WFD"><a href="#WFD" class="headerlink" title="WFD"></a>WFD</h3><p>这道题是重头戏，建议考试之前背机经，一个单词就是一分<br>听的时候注意单复数和时态，听完后先回想一下大概意思<br>记笔记的话建议练习首字母法，即记下来每个单词的首字母，然后再把其他的字母填上<br>做完后检查一遍拼写</p>
+<h3 id="MCM"><a href="#MCM" class="headerlink" title="MCM"></a>MCM</h3><p>同阅读多选，选对一个1分，选错倒扣分<br>不确定的话不要选</p>
+<h3 id="HIW"><a href="#HIW" class="headerlink" title="HIW"></a>HIW</h3><p>这个题选错的话也是倒扣分，所以没听清楚的就不要选了</p>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><h2 id="报名注意事项"><a href="#报名注意事项" class="headerlink" title="报名注意事项"></a>报名注意事项</h2><ol>
+<li>报名的时候名字全部大写，名在前面姓在后面，中间空格，和身份证上的拼写一致</li>
+<li>留常用的邮箱，出成绩的话会发邮件通知你的</li>
+</ol>
+<h2 id="Voucher"><a href="#Voucher" class="headerlink" title="Voucher"></a>Voucher</h2><p>官方的优惠券，能省点钱，淘宝可入，会发给你一个优惠码，报名缴费的时候填写优惠码就行了<br>淘宝上的仅限中国大陆考区使用，有效期一般12个月，退考后可以继续用</p>
+<h2 id="练习平台"><a href="#练习平台" class="headerlink" title="练习平台"></a>练习平台</h2><p>现在主流的联系平台主要有羊驼、黑科技和猩际，我三家都有用，各有千秋，每家平台都有不少水军。豆瓣一搜索PTE全是某科技的回答，知乎就是某驼的多，每家平台都说自己评分准，但是不要过于相信他们的评分，仅供参考，目前羊驼的口语打分偏低，猩际的偏高，某科技口语是5分制，不好评价</p>
+<ul>
+<li>羊驼 - 在它家买的Voucher，送了一个半月会员，刚好够用，优点是口语练习实时出成绩，口语成绩是90分制，比较直观，有手机APP和网页版</li>
+<li>黑科技 - 开了1个月的会员，主要练习作文，优点是可以查看其他人的优秀作文，有微信小程序和网页版</li>
+<li>猩际 - 白嫖的，也用来练习写作，优点是会标出写作错误的地方，它家的公开课可以看一下，适合入门</li>
+</ul>
+<h2 id="机经"><a href="#机经" class="headerlink" title="机经"></a>机经</h2><p>PTE的一个神器就是机经，尤其是前几年题库少的时候，不过培生一直在更新题库，所以不建议过于依赖机经<br>有几家机构会有预测题，据说准确率蛮高的，后悔没有背<br>我知道的有下面两家，具体不作评价，没怎么看</p>
+<ul>
+<li>羊驼 - 它家的在APP里或者微信公众号里可以找到下载链接</li>
+<li>萤火虫 - 它家的在微信公众号里有下载链接</li>
+</ul>
+<h2 id="模考"><a href="#模考" class="headerlink" title="模考"></a>模考</h2><p>PTE官方推出了三套模考，和考试的时候使用的是一套打分模式，有ABC三套，强烈建议考试之前做几套官方模拟，要不然就是在烧钱，<br>一般最后考试的分数都会比模考高几分的，因为考场耳机的收音效果比较好<br>模考的时候不要使用蓝牙耳机，录音效果差，很容易出现口语10分的情况。<br>有条件的买一个带麦的头戴式耳机，不放心的可以去闲鱼收一个二手的官方考试同款耳机，不过没太大必要，一个耳机四五百，拿来买排骨吃它不香吗<br>淘宝上可以买到模考的账号，可以单个买也可以买套装，套装价格大概430元</p>
+<ul>
+<li>A卷 - 难度最大，不太适合一开始就做，容易打击信心</li>
+<li>B卷 - 难度最低</li>
+<li>C卷 - 难度最接近真实考试</li>
+</ul>
+<p>另外这几家机构也有自己的模拟考试，价格比较便宜，可以练手用</p>
+<h2 id="考试当天注意事项"><a href="#考试当天注意事项" class="headerlink" title="考试当天注意事项"></a>考试当天注意事项</h2><ol>
+<li>提前半小时到达考场，可以带点材料，在休息室可以看材料</li>
+<li>考场有专门存包的柜子，柜子很大，小号的行李箱也能塞进去，每个人会给一把钥匙，这个柜子中途是不允许开的，可以提前把水杯拿出来，考场提供饮用水，可以自己接</li>
+<li>电子设备都要关机放进柜子里</li>
+<li>考场桌子上有3M的耳塞，做写作和阅读的时候可以带上，因为你做到写作的时候可能还有人在做口语</li>
+<li>国内考生带身份证就行，没必要带护照，我两个都带了，然后只拿了身份证进去</li>
+<li>考试之前不要喝太多水，因为考完 口语、写作和阅读之后才会有10分钟的休息时间，大概在11点左右，憋两个小时很酸爽</li>
+<li>中间的10分钟休息是可选的，建议休息，休息的时候举手找考官来帮你暂停考试，休息的时候注意时间，因为入场的时候要重新检查，记得出去的时候带着证件</li>
+<li>电脑有异常及时找考官记录，要不然考完就没办法了，武汉考场的考官很nice，态度很友好</li>
+<li>口语部分不要念太大声，一是保护自己的嗓子；二是会干扰别人，别人举报你的话会被写报告的（当然其他人声音太大的话你也可以举报）；考场的耳机收音效果都是不错的，没必要喊太大声，武汉考场的话你自己在说的时候基本听不到别人说话的声音</li>
+<li>口语部分说完之后就可以点<code>Next</code>,避免录进去别人的声音，虽然概率不大</li>
+<li>耳机麦克的位置我是放在上嘴唇和鼻尖中间，距离脸部大概2-3指的距离</li>
+<li>试音的时候不要跟着别人念<code>Testing testing one two three</code>，找几个爆破音念或者念屏幕上的注意事项，看看会不会喷麦</li>
+<li>考试的笔不用的时候一定要扣好笔帽，要不然干了就写不出字来了，考场记笔记用的本子是塑料材质，比较滑</li>
+<li>耳机一旦调好就不要再动了</li>
+</ol>
+<p>需要模板的可以给我发邮件，我当时找了不少，虽然没用到几个<br>要说的就这么多了，祝大家早日通过考试~~~<br>BTW，2020新年快乐~~~</p>
 ]]></content>
       <categories>
-        <category>Dairy</category>
+        <category>PTE</category>
       </categories>
       <tags>
-        <tag>Record</tag>
+        <tag>English</tag>
+        <tag>PTE</tag>
       </tags>
   </entry>
   <entry>
@@ -2198,252 +2421,6 @@
       </tags>
   </entry>
   <entry>
-    <title>PTE不完全指南</title>
-    <url>/PTE%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">我12月27日在武汉湖北大学考场考完了PTE，等了三天之后出了成绩，成绩单在下面，顺利达到格拉的入学要求。记录一下备考的经验，祝大家早日和语言考试分手（雅思就是个死渣男）</blockquote>
-
-<p><img data-src="https://s2.loli.net/2022/05/13/X3K2jQ8mRNSeMY5.png" alt="PTE"></p>
-<span id="more"></span>
-
-<p>首先讲一下大概的时间线，我是今年5月份开始了解PTE。因为4月考的雅思没有达到录取要求，更主要的是复习一个月去考和第一次裸考的成绩基本一样，只有阅读涨了0.5分。。。</p>
-<ul>
-<li>5月在B站稍微了解了下PTE，然后就在准备研究生申请的事情</li>
-<li>十月底格拉来了offer，con雅思6.5（写作6.5，其他6.0）或者PTE68（62），虽然他官网些写的是PTE60(59)</li>
-<li>双十一开始复习，双十一在淘宝买了Voucher报了名，然后主要练习口语，每天大概2个小时，中间忙着订格拉的宿舍，大部分时间在摸鱼</li>
-<li>十二月之后开始练所有的题型，每天大概4-6个小时</li>
-<li>12月11号做了官方模考A卷，总分66，听62 说70 读65 写64，然后格拉要求总分68，就跟慌，11号以后每天复习时间大概在6-8小时</li>
-<li>12月21号做了模考C卷，总分67，都说C卷最接近真实考试难度，所以我更慌了</li>
-<li>12月25号做了模考B卷，总分70</li>
-<li>12月26号飞去武汉，27号上午9点考试</li>
-<li>12月30号中午1点收到出成绩的邮件（这里不得不吐槽武汉考场，出成绩是真的慢，我同学29号下午在广州白云考的，30号早上7点多就出分了）</li>
-</ul>
-<h1 id="关于PTE"><a href="#关于PTE" class="headerlink" title="关于PTE"></a>关于PTE</h1><p>PTE是英国培生教育集团推出的英语语言能力考试，全程机考，程序自动评分，目前英国大部分学校是认可的</p>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
-<li>PTE不会像雅思那样人为压分，只要下功夫练习就一定会有进步，不像雅思，花老大的力气也不涨分</li>
-<li>PTE出分速度快，一般1-5个工作日</li>
-<li>PTE考位相对宽松，不用担心抢不到位置</li>
-</ol>
-<h2 id="适合人群"><a href="#适合人群" class="headerlink" title="适合人群"></a>适合人群</h2><p>PTE适合听力&#x2F;阅读比较好的考生，因为它的听力和阅读难度比较大，尤其是听力<br>PTE的写作和口语比雅思要简单，也适合雅思一直卡口语&#x2F;写作小分的考生</p>
-<h1 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h1><p>题型上次介绍过，再列个表概括一下</p>
-<table>
-<thead>
-<tr>
-<th align="center">部分</th>
-<th align="center">题型</th>
-<th>要求</th>
-<th align="center">题目数量</th>
-<th>交叉评分</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Speaking</td>
-<td align="center">RA</td>
-<td>朗读屏幕上的一段话，40s准备40s朗读，短句子给的时间会相应减少</td>
-<td align="center">6-7</td>
-<td>Reading and speaking &#x2F; Oral fluency, pronunciation</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">RS</td>
-<td>电脑播放一句话的录音，听完后马上复述出来</td>
-<td align="center">10-12</td>
-<td>Listening and speaking &#x2F; Oral fluency, pronunciation</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">DI</td>
-<td>描述给出的图片，25s准备，40s叙述</td>
-<td align="center">6-7</td>
-<td>Speaking &#x2F; Oral fluency, pronunciation</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">RL</td>
-<td>听一段录音，然后简单复述录音讲了什么，需要做笔记</td>
-<td align="center">3-4</td>
-<td>Listening and speaking &#x2F; Oral fluency, pronunciation</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">ASQ</td>
-<td>回答听到的问题，一般答案是一个单词，都是常识性问题</td>
-<td align="center">10-12</td>
-<td>Listening and speaking &#x2F; Vocabulary</td>
-</tr>
-<tr>
-<td align="center">Writing</td>
-<td align="center">SWT</td>
-<td>给出一段文章，用5-75个单词概括这段话，只能写一句话，每题10min</td>
-<td align="center">2-3</td>
-<td>Reading and writing &#x2F; Grammar, vocabulary</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">WE</td>
-<td>类似雅思大作文，每题20min</td>
-<td align="center">1-2</td>
-<td>Writing &#x2F; Grammar, vocabulary, spelling, written discourse</td>
-</tr>
-<tr>
-<td align="center">Reading</td>
-<td align="center">FIBW</td>
-<td>完形填空的变种，将合适的单词拖拽到文章的空里</td>
-<td align="center">5-6</td>
-<td>Reading and writing</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">FIB</td>
-<td>类似完形填空，从下拉菜单里选择缺少的单词</td>
-<td align="center">4-5</td>
-<td>Reading</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">RO</td>
-<td>给几句打乱顺序的话，重新排序</td>
-<td align="center">2-3</td>
-<td>Reading</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">MCM</td>
-<td>多选题</td>
-<td align="center">2-3</td>
-<td>Reading</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">MCS</td>
-<td>单选题</td>
-<td align="center">2-3</td>
-<td>Reading</td>
-</tr>
-<tr>
-<td align="center">Listening</td>
-<td align="center">SST</td>
-<td>听一段录音，然后总结一段50-70词的小文章，需要做笔记</td>
-<td align="center">2-3</td>
-<td>Listening and writing &#x2F; Grammar, vocabulary, spelling</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">FIB</td>
-<td>听录音，然后拼写出缺少的单词</td>
-<td align="center">2-3</td>
-<td>Listening and writing</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">WFD</td>
-<td>听一句话，然后拼写出来</td>
-<td align="center">3-4</td>
-<td>Listening and writing</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">MCS</td>
-<td>单选题</td>
-<td align="center">2-3</td>
-<td>Listening</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">MCM</td>
-<td>多选题</td>
-<td align="center">2-3</td>
-<td>Listening</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">SMW</td>
-<td>播放一段录音，最后几个单词会剪掉，选择被剪掉的单词</td>
-<td align="center">2-3</td>
-<td>Listening</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">HIW</td>
-<td>播放一段录音，录音和下面的文章有不一样的词，点选出不同的词</td>
-<td align="center">2-3</td>
-<td>Listening and reading</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">HCS</td>
-<td>播放一段录音，选出最能概括录音的总结</td>
-<td align="center">2-3</td>
-<td>Listening and reading</td>
-</tr>
-</tbody></table>
-<h1 id="答题经验"><a href="#答题经验" class="headerlink" title="答题经验"></a>答题经验</h1><h2 id="Speaking"><a href="#Speaking" class="headerlink" title="Speaking"></a>Speaking</h2><p><strong>口语部分最重要的就是流利度，我的经验就是一直说不要停，念错了也不要倒回去重新念，一直往下说就好，注意意群和停顿，另外录音开始后要及时说，3s内不说的话系统会自动关闭麦克风并跳到下一题</strong></p>
-<h3 id="RA"><a href="#RA" class="headerlink" title="RA"></a>RA</h3><p>在准备时间里小声读一遍，不会念的词猜一下，数字年份之类的提前多念几遍</p>
-<h3 id="RS"><a href="#RS" class="headerlink" title="RS"></a>RS</h3><p>我是鱼的记忆，长的句子记不住，只能记住一半多，能说多少说多少吧，不要卡壳就好<br>这个部分我个人来不及记笔记，也不是很建议记笔记，来不及反应</p>
-<h3 id="RL-x2F-DI"><a href="#RL-x2F-DI" class="headerlink" title="RL&#x2F;DI"></a>RL&#x2F;DI</h3><p>这两个题就是套模板保证流利度，把模板记熟练，考试的时候无脑说。不用纠结语法，这俩题目不考语法<br>RL来不及记句子的话就记关键词，然后往模板里套就行</p>
-<h3 id="ASQ"><a href="#ASQ" class="headerlink" title="ASQ"></a>ASQ</h3><p>这个题很蛋疼，对词汇量要求挺高，最好在考试之前过一遍机经，分值不高不必太纠结</p>
-<h2 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h2><p><strong>写作要注意拼写，打字的时候打错的概率还是挺大的，每道题最好留2分钟检查一下拼写</strong><br>吐槽一下考场的键盘，武汉考场用的是那种巧克力键盘，真的难用，建议练习的时候找那种廉价的薄膜键盘就行，用机械键盘练习的话考试会很不习惯的</p>
-<h3 id="SWT"><a href="#SWT" class="headerlink" title="SWT"></a>SWT</h3><p>一般第一句话就是关键句，文章里面举得例子可以无视，注意只能有1个句号</p>
-<h3 id="WE"><a href="#WE" class="headerlink" title="WE"></a>WE</h3><p>从雅思转过来可能很不习惯这道题，200-300词的文章却要20分钟写完，莫得办法，只能用模板。模板百度就有，也可以去知乎豆瓣上找或者留邮箱要，拿到模板要看一下有没有错误，有些无良机构给的模板真的是无法直视。<br>留邮箱的话注意拿到资料后及时删除留下的邮箱，不然某垃圾机构会一直给你发垃圾邮件（没错说的就是你PTE在线学院）等offer的时候看见垃圾邮件恨不得想吃了他，每次来邮件都以为是来Offer了</p>
-<h2 id="Reading"><a href="#Reading" class="headerlink" title="Reading"></a>Reading</h2><p>阅读的重点就是词汇量，多背单词<br><strong>做题的时候注意时间，阅读是整体计时，在低分值的单选多选题目上不用纠结，给其他题目留足时间</strong></p>
-<h3 id="RO"><a href="#RO" class="headerlink" title="RO"></a>RO</h3><p>这部分有点玄学，经验就是找一下句子前后的逻辑和连接词，实在找不出来就背机经吧</p>
-<h3 id="MCM-x2F-MCS"><a href="#MCM-x2F-MCS" class="headerlink" title="MCM&#x2F;MCS"></a>MCM&#x2F;MCS</h3><p>多选和单选都很直接，不会像雅思那样故意挖坑，不要在这两道题上浪费太多时间，分值不高。<br>多选拿不准的话就选最确定的那一个，选错的话倒扣分的</p>
-<h3 id="FIB-x2F-FIBW"><a href="#FIB-x2F-FIBW" class="headerlink" title="FIB&#x2F;FIBW"></a>FIB&#x2F;FIBW</h3><p>这两道题最考验词汇量，一开始练的时候真的是一脸懵逼，不过可以根据词性排除一些选项，增加蒙对的概率。。。</p>
-<h2 id="Listening"><a href="#Listening" class="headerlink" title="Listening"></a>Listening</h2><p><strong>听力部分除SST外也是整体计时，注意合理分配时间，因为分值最大的WFD是最后才出现的，有很多人来不及做完WFD就被系统强制交卷了，建议给WFD留3-4分钟</strong></p>
-<h3 id="SWT-1"><a href="#SWT-1" class="headerlink" title="SWT"></a>SWT</h3><p>这部分是单独计时的，播放录音的时间也包含在里面<br>一般第一句话会是主题句，另外反复出现的词也要留意<br>记笔记的话尽量记完整的句子，最好不要用模板，因为有词数限制，模板就是浪费宝贵的空间<br>同样建议留出时间检查拼写</p>
-<h3 id="FIB"><a href="#FIB" class="headerlink" title="FIB"></a>FIB</h3><p>这道题主要考察拼写，建议用笔把词语记下来<br>亲测武汉考场不能用<code>tab</code>键切换到下一个空，直接打的话需要另一只手操作鼠标，来不及</p>
-<h3 id="WFD"><a href="#WFD" class="headerlink" title="WFD"></a>WFD</h3><p>这道题是重头戏，建议考试之前背机经，一个单词就是一分<br>听的时候注意单复数和时态，听完后先回想一下大概意思<br>记笔记的话建议练习首字母法，即记下来每个单词的首字母，然后再把其他的字母填上<br>做完后检查一遍拼写</p>
-<h3 id="MCM"><a href="#MCM" class="headerlink" title="MCM"></a>MCM</h3><p>同阅读多选，选对一个1分，选错倒扣分<br>不确定的话不要选</p>
-<h3 id="HIW"><a href="#HIW" class="headerlink" title="HIW"></a>HIW</h3><p>这个题选错的话也是倒扣分，所以没听清楚的就不要选了</p>
-<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><h2 id="报名注意事项"><a href="#报名注意事项" class="headerlink" title="报名注意事项"></a>报名注意事项</h2><ol>
-<li>报名的时候名字全部大写，名在前面姓在后面，中间空格，和身份证上的拼写一致</li>
-<li>留常用的邮箱，出成绩的话会发邮件通知你的</li>
-</ol>
-<h2 id="Voucher"><a href="#Voucher" class="headerlink" title="Voucher"></a>Voucher</h2><p>官方的优惠券，能省点钱，淘宝可入，会发给你一个优惠码，报名缴费的时候填写优惠码就行了<br>淘宝上的仅限中国大陆考区使用，有效期一般12个月，退考后可以继续用</p>
-<h2 id="练习平台"><a href="#练习平台" class="headerlink" title="练习平台"></a>练习平台</h2><p>现在主流的联系平台主要有羊驼、黑科技和猩际，我三家都有用，各有千秋，每家平台都有不少水军。豆瓣一搜索PTE全是某科技的回答，知乎就是某驼的多，每家平台都说自己评分准，但是不要过于相信他们的评分，仅供参考，目前羊驼的口语打分偏低，猩际的偏高，某科技口语是5分制，不好评价</p>
-<ul>
-<li>羊驼 - 在它家买的Voucher，送了一个半月会员，刚好够用，优点是口语练习实时出成绩，口语成绩是90分制，比较直观，有手机APP和网页版</li>
-<li>黑科技 - 开了1个月的会员，主要练习作文，优点是可以查看其他人的优秀作文，有微信小程序和网页版</li>
-<li>猩际 - 白嫖的，也用来练习写作，优点是会标出写作错误的地方，它家的公开课可以看一下，适合入门</li>
-</ul>
-<h2 id="机经"><a href="#机经" class="headerlink" title="机经"></a>机经</h2><p>PTE的一个神器就是机经，尤其是前几年题库少的时候，不过培生一直在更新题库，所以不建议过于依赖机经<br>有几家机构会有预测题，据说准确率蛮高的，后悔没有背<br>我知道的有下面两家，具体不作评价，没怎么看</p>
-<ul>
-<li>羊驼 - 它家的在APP里或者微信公众号里可以找到下载链接</li>
-<li>萤火虫 - 它家的在微信公众号里有下载链接</li>
-</ul>
-<h2 id="模考"><a href="#模考" class="headerlink" title="模考"></a>模考</h2><p>PTE官方推出了三套模考，和考试的时候使用的是一套打分模式，有ABC三套，强烈建议考试之前做几套官方模拟，要不然就是在烧钱，<br>一般最后考试的分数都会比模考高几分的，因为考场耳机的收音效果比较好<br>模考的时候不要使用蓝牙耳机，录音效果差，很容易出现口语10分的情况。<br>有条件的买一个带麦的头戴式耳机，不放心的可以去闲鱼收一个二手的官方考试同款耳机，不过没太大必要，一个耳机四五百，拿来买排骨吃它不香吗<br>淘宝上可以买到模考的账号，可以单个买也可以买套装，套装价格大概430元</p>
-<ul>
-<li>A卷 - 难度最大，不太适合一开始就做，容易打击信心</li>
-<li>B卷 - 难度最低</li>
-<li>C卷 - 难度最接近真实考试</li>
-</ul>
-<p>另外这几家机构也有自己的模拟考试，价格比较便宜，可以练手用</p>
-<h2 id="考试当天注意事项"><a href="#考试当天注意事项" class="headerlink" title="考试当天注意事项"></a>考试当天注意事项</h2><ol>
-<li>提前半小时到达考场，可以带点材料，在休息室可以看材料</li>
-<li>考场有专门存包的柜子，柜子很大，小号的行李箱也能塞进去，每个人会给一把钥匙，这个柜子中途是不允许开的，可以提前把水杯拿出来，考场提供饮用水，可以自己接</li>
-<li>电子设备都要关机放进柜子里</li>
-<li>考场桌子上有3M的耳塞，做写作和阅读的时候可以带上，因为你做到写作的时候可能还有人在做口语</li>
-<li>国内考生带身份证就行，没必要带护照，我两个都带了，然后只拿了身份证进去</li>
-<li>考试之前不要喝太多水，因为考完 口语、写作和阅读之后才会有10分钟的休息时间，大概在11点左右，憋两个小时很酸爽</li>
-<li>中间的10分钟休息是可选的，建议休息，休息的时候举手找考官来帮你暂停考试，休息的时候注意时间，因为入场的时候要重新检查，记得出去的时候带着证件</li>
-<li>电脑有异常及时找考官记录，要不然考完就没办法了，武汉考场的考官很nice，态度很友好</li>
-<li>口语部分不要念太大声，一是保护自己的嗓子；二是会干扰别人，别人举报你的话会被写报告的（当然其他人声音太大的话你也可以举报）；考场的耳机收音效果都是不错的，没必要喊太大声，武汉考场的话你自己在说的时候基本听不到别人说话的声音</li>
-<li>口语部分说完之后就可以点<code>Next</code>,避免录进去别人的声音，虽然概率不大</li>
-<li>耳机麦克的位置我是放在上嘴唇和鼻尖中间，距离脸部大概2-3指的距离</li>
-<li>试音的时候不要跟着别人念<code>Testing testing one two three</code>，找几个爆破音念或者念屏幕上的注意事项，看看会不会喷麦</li>
-<li>考试的笔不用的时候一定要扣好笔帽，要不然干了就写不出字来了，考场记笔记用的本子是塑料材质，比较滑</li>
-<li>耳机一旦调好就不要再动了</li>
-</ol>
-<p>需要模板的可以给我发邮件，我当时找了不少，虽然没用到几个<br>要说的就这么多了，祝大家早日通过考试~~~<br>BTW，2020新年快乐~~~</p>
-]]></content>
-      <categories>
-        <category>PTE</category>
-      </categories>
-      <tags>
-        <tag>English</tag>
-        <tag>PTE</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PTE题型</title>
     <url>/PTE%E9%A2%98%E5%9E%8B.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">被雅思恶心到了（~~口语万年5.5~~），转战PTE，开个坑记录下PTE的题型，文章的题型顺序是按照考试的时间先后顺序排列的。另外[送上PTE官网](https://pearsonpte.com/)，可以在官[这里](https://pearsonpte.com/the-test/who-accepts-it/)查询下自己想申请的学校接不接受PTE成绩，另外也可以到学校官网查询，例如我要申请的UCD是要达到总分63小分不低于59，对应雅思就是总分6.5小分6.0的水平，但是PTE是全机器判卷，排除掉了人为因素的影响，更为客观，AI才是未来~~</blockquote>
@@ -2816,6 +2793,29 @@
       <tags>
         <tag>English</tag>
         <tag>PTE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Purpose</title>
+    <url>/Purpose.html</url>
+    <content><![CDATA[<h3 id="01"><a href="#01" class="headerlink" title="01"></a>01</h3><p>建立博客的初衷是记录一些自己踩过的坑，防止以后踩相同的坑无法自拔。</p>
+<h3 id="02"><a href="#02" class="headerlink" title="02"></a>02</h3><p>博客主要记录的领域有：</p>
+<ul>
+<li>C&#x2F;C++编写的PTA算法题</li>
+<li>闲的蛋疼写的小游戏</li>
+<li>Echats的模板文件（主要给建筑狗用）</li>
+<li>PTE相关的经验</li>
+<li>CS出国留学的准备工作</li>
+<li>Python爬虫</li>
+<li>一些偏技术的教程（比如搭建这个博客）</li>
+</ul>
+<h3 id="03"><a href="#03" class="headerlink" title="03"></a>03</h3><p>目前就想到这些，有空再更新（咕咕咕）</p>
+]]></content>
+      <categories>
+        <category>Dairy</category>
+      </categories>
+      <tags>
+        <tag>Record</tag>
       </tags>
   </entry>
   <entry>
@@ -3337,48 +3337,6 @@
       </tags>
   </entry>
   <entry>
-    <title>添加 Windows Terminal 至右键菜单</title>
-    <url>/%E6%B7%BB%E5%8A%A0-Windows-Terminal-%E8%87%B3%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Windows Terminal 已经在微软应用商店上架了，所以我把终端从 Fluent Terminal 换成了 Windows Terminal，记录一下将它添加到右键菜单的过程</blockquote>
-
-<span id="more"></span>
-
-<h1 id="添加图标"><a href="#添加图标" class="headerlink" title="添加图标"></a>添加图标</h1><p>首先在<code>C:\Users\[YOUR_USER_NAME]\AppData\Local</code>新建文件夹<code>Terminal</code>，可以直接使用下面的命令创建，<strong>记得把[YOUR_USER_NAME]换成自己的用户名！</strong></p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> C:\Users\[YOUR_USER_NAME]\AppData\Local\Terminal</span><br></pre></td></tr></table></figure>
-
-<p>然后下载 Windows Terminal 图标到刚才创建的文件夹，如果浏览器没有自动下载的话就右键另存为terminal.ico</p>
-<a class="btn" href="https://raw.githubusercontent.com/microsoft/terminal/master/res/terminal.ico"><i class="fa fa-arrow-right fa-fw"></i>terminal.ico 下载</a>
-
-<h1 id="注册表写入"><a href="#注册表写入" class="headerlink" title="注册表写入"></a>注册表写入</h1><p>新建一个txt文件，添加下面的内容，然后把文件后缀改为<code>.reg</code>。<strong>记得把[YOUR_USER_NAME]换成自己的用户名！</strong></p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">Windows Registry Editor Version <span class="number">5</span>.<span class="number">00</span></span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt]</span><br><span class="line">@=&quot;Windows terminal here&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Terminal\\terminal.ico&quot;</span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt\command]</span><br><span class="line">@=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe&quot;</span><br></pre></td></tr></table></figure>
-
-<p>完成后双击文件，合并到注册表中</p>
-<h1 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h1><p>这个时候右键菜单中已经出现了<code>Windows terminal here</code>的选项，但是点击后所在的目录并不是当前的目录，这就需要修改<code>Windows Terminal</code>的配置文件了</p>
-<p>打开<code>Windows Terminal</code>，点击顶部的下拉菜单，打开<code>设置</code>，此时会打开名为<code>settings.json</code>的配置文件，要修改的部分是这个亚子</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
-
-<p>要想在当前文件夹启动<code>Windows Terminal</code>，需要在每一段的下面添加<code>&quot;startingDirectory&quot;: &quot;./&quot;</code>，修改完成后是这个亚子</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
-
-<p>保存后就能够使用右键菜单在当前文件夹运行<code>Windows Terminal</code>了</p>
-<h1 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h1><p>在使用Powershell的时候可能会出现报错<code>无法加载文件balabala.ps1，因为在此系统上禁止执行脚本，有关详细信息，请参阅balabala</code>，这是因为默认的<code>ExecutionPolicy</code>是<code>Restricted</code>，即不允许执行任何脚本。解决方法是以管理员身份运行，并输入命令<code>set-executionpolicy remotesigned</code>即可解除限制</p>
-<blockquote>
-<p>参考：</p>
-<ol>
-<li><a href="https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461">https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461</a></li>
-<li><a href="https://blog.csdn.net/Jioho_chen/article/details/101159291">https://blog.csdn.net/Jioho_chen/article/details/101159291</a></li>
-</ol>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Tech</category>
-      </categories>
-      <tags>
-        <tag>Software</tag>
-        <tag>Win10</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Win10重装指北</title>
     <url>/Win10%E9%87%8D%E8%A3%85%E6%8C%87%E5%8C%97.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">写一个Win10重装教程，另外偷个懒，把office的安装教程也合进来了hhh</blockquote>
@@ -3748,6 +3706,48 @@
         <category>Tech</category>
       </categories>
       <tags>
+        <tag>Win10</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>添加 Windows Terminal 至右键菜单</title>
+    <url>/%E6%B7%BB%E5%8A%A0-Windows-Terminal-%E8%87%B3%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Windows Terminal 已经在微软应用商店上架了，所以我把终端从 Fluent Terminal 换成了 Windows Terminal，记录一下将它添加到右键菜单的过程</blockquote>
+
+<span id="more"></span>
+
+<h1 id="添加图标"><a href="#添加图标" class="headerlink" title="添加图标"></a>添加图标</h1><p>首先在<code>C:\Users\[YOUR_USER_NAME]\AppData\Local</code>新建文件夹<code>Terminal</code>，可以直接使用下面的命令创建，<strong>记得把[YOUR_USER_NAME]换成自己的用户名！</strong></p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> C:\Users\[YOUR_USER_NAME]\AppData\Local\Terminal</span><br></pre></td></tr></table></figure>
+
+<p>然后下载 Windows Terminal 图标到刚才创建的文件夹，如果浏览器没有自动下载的话就右键另存为terminal.ico</p>
+<a class="btn" href="https://raw.githubusercontent.com/microsoft/terminal/master/res/terminal.ico"><i class="fa fa-arrow-right fa-fw"></i>terminal.ico 下载</a>
+
+<h1 id="注册表写入"><a href="#注册表写入" class="headerlink" title="注册表写入"></a>注册表写入</h1><p>新建一个txt文件，添加下面的内容，然后把文件后缀改为<code>.reg</code>。<strong>记得把[YOUR_USER_NAME]换成自己的用户名！</strong></p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">Windows Registry Editor Version <span class="number">5</span>.<span class="number">00</span></span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt]</span><br><span class="line">@=&quot;Windows terminal here&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Terminal\\terminal.ico&quot;</span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt\command]</span><br><span class="line">@=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe&quot;</span><br></pre></td></tr></table></figure>
+
+<p>完成后双击文件，合并到注册表中</p>
+<h1 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h1><p>这个时候右键菜单中已经出现了<code>Windows terminal here</code>的选项，但是点击后所在的目录并不是当前的目录，这就需要修改<code>Windows Terminal</code>的配置文件了</p>
+<p>打开<code>Windows Terminal</code>，点击顶部的下拉菜单，打开<code>设置</code>，此时会打开名为<code>settings.json</code>的配置文件，要修改的部分是这个亚子</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>要想在当前文件夹启动<code>Windows Terminal</code>，需要在每一段的下面添加<code>&quot;startingDirectory&quot;: &quot;./&quot;</code>，修改完成后是这个亚子</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>保存后就能够使用右键菜单在当前文件夹运行<code>Windows Terminal</code>了</p>
+<h1 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h1><p>在使用Powershell的时候可能会出现报错<code>无法加载文件balabala.ps1，因为在此系统上禁止执行脚本，有关详细信息，请参阅balabala</code>，这是因为默认的<code>ExecutionPolicy</code>是<code>Restricted</code>，即不允许执行任何脚本。解决方法是以管理员身份运行，并输入命令<code>set-executionpolicy remotesigned</code>即可解除限制</p>
+<blockquote>
+<p>参考：</p>
+<ol>
+<li><a href="https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461">https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461</a></li>
+<li><a href="https://blog.csdn.net/Jioho_chen/article/details/101159291">https://blog.csdn.net/Jioho_chen/article/details/101159291</a></li>
+</ol>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Tech</category>
+      </categories>
+      <tags>
+        <tag>Software</tag>
         <tag>Win10</tag>
       </tags>
   </entry>
