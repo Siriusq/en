@@ -317,20 +317,6 @@
 
   
   <url>
-    <loc>https://siriusq.github.io/tags/Grasshopper/</loc>
-    <lastmod>2022-05-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://siriusq.github.io/tags/Architecture/</loc>
-    <lastmod>2022-05-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://siriusq.github.io/tags/Github/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -345,7 +331,35 @@
   </url>
   
   <url>
+    <loc>https://siriusq.github.io/tags/Grasshopper/</loc>
+    <lastmod>2022-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.github.io/tags/Architecture/</loc>
+    <lastmod>2022-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://siriusq.github.io/tags/HEXO/</loc>
+    <lastmod>2022-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.github.io/tags/English/</loc>
+    <lastmod>2022-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.github.io/tags/Next/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -366,20 +380,6 @@
   </url>
   
   <url>
-    <loc>https://siriusq.github.io/tags/Jupyter/</loc>
-    <lastmod>2022-05-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://siriusq.github.io/tags/CS/</loc>
-    <lastmod>2022-05-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://siriusq.github.io/tags/Java/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -388,6 +388,20 @@
   
   <url>
     <loc>https://siriusq.github.io/tags/C/</loc>
+    <lastmod>2022-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.github.io/tags/Jupyter/</loc>
+    <lastmod>2022-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.github.io/tags/CS/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -415,27 +429,6 @@
   </url>
   
   <url>
-    <loc>https://siriusq.github.io/tags/Next/</loc>
-    <lastmod>2022-05-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://siriusq.github.io/tags/PTE/</loc>
-    <lastmod>2022-05-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://siriusq.github.io/tags/English/</loc>
-    <lastmod>2022-05-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://siriusq.github.io/tags/Hexo/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -450,6 +443,13 @@
   </url>
   
   <url>
+    <loc>https://siriusq.github.io/tags/PTE/</loc>
+    <lastmod>2022-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://siriusq.github.io/tags/Win10/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -457,14 +457,14 @@
   </url>
   
   <url>
-    <loc>https://siriusq.github.io/tags/Ubuntu/</loc>
+    <loc>https://siriusq.github.io/tags/%E8%BD%AC%E4%B8%93%E4%B8%9A/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://siriusq.github.io/tags/%E8%BD%AC%E4%B8%93%E4%B8%9A/</loc>
+    <loc>https://siriusq.github.io/tags/Ubuntu/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -487,14 +487,14 @@
 
   
   <url>
-    <loc>https://siriusq.github.io/categories/Architecture/</loc>
+    <loc>https://siriusq.github.io/categories/Tech/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://siriusq.github.io/categories/Tech/</loc>
+    <loc>https://siriusq.github.io/categories/Architecture/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
