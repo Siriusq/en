@@ -38,71 +38,11 @@
 </ul>
 ]]></content>
       <categories>
-        <category>Tech</category>
+        <category>折腾</category>
       </categories>
       <tags>
         <tag>Github</tag>
-        <tag>Internet</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HEXO部署</title>
-    <url>/HEXO%E9%83%A8%E7%BD%B2.html</url>
-    <content><![CDATA[<p>博客已经搭建成功了，下一步是用Hexo配合Markdown写博客了</p>
-<h1 id="Hexo写作流程"><a href="#Hexo写作流程" class="headerlink" title="Hexo写作流程"></a>Hexo写作流程</h1><p>博客写作流程相对于搭建要简单太多了，只需要以下几步：</p>
-<ul>
-<li>创建新博客文件</li>
-<li>生成新网页</li>
-<li>部署到Github Page</li>
-</ul>
-<span id="more"></span>
-
-<h2 id="创建新博客文件"><a href="#创建新博客文件" class="headerlink" title="创建新博客文件"></a>创建新博客文件</h2><ol>
-<li><p>在博客文件夹中右键打开Git bash</p>
-</li>
-<li><p>输入<code>hexo new &quot;博客标题&quot;</code> 新建一个md文件，双引号内的名字就是文章标题</p>
-</li>
-<li><p>进入<code>博客根目录/source/_posts</code> 文件夹，可以看到新创建的文件<code>博客标题.md</code>,md后缀代表Markdown文件</p>
-</li>
-<li><p>双击使用安装的Markdown编辑器打开进行编辑</p>
-<ul>
-<li>文件内会默认生成以下内容(以本博客为例）：  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   ---`</span><br><span class="line">   title: HEXO&amp;Markdown</span><br><span class="line">date: 2019-04-04 10:50:41</span><br><span class="line">tags: [Hexo,Markdown]</span><br><span class="line">   ---`</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>其中<code>title</code>就是博客标题</li>
-<li><code>date</code>是博客的创建时间，不用修改</li>
-<li><code>tags</code>是博客的标签</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>踩坑：<br>此处注意冒号后面的空格</p>
-</blockquote>
-<ul>
-<li>在<code>---</code>分割线后就是我们写博文的地方了，按照Markdown语法规则编写即可</li>
-</ul>
-</li>
-<li><p>编写完成后保存</p>
-</li>
-</ol>
-<h2 id="生成新网页并部署"><a href="#生成新网页并部署" class="headerlink" title="生成新网页并部署"></a>生成新网页并部署</h2><ol>
-<li>打开Git bash</li>
-<li>输入命令<code>hexo clean</code>清除网页缓存</li>
-<li>输入命令<code>hexo g</code>生成新的网页文件</li>
-<li>（可选）输入命令<code>hexo s</code>生成本地服务并前往返回的网址预览网页<blockquote>
-<p>踩坑：<br>Git bash内的复制命令并不是熟悉的<code>ctrl c</code>，而是<code>ctrl ins</code>，使用<code>ctrl c</code>复制预览网址会结束本地服务进程，所以预览网页会没反应</p>
-</blockquote>
-</li>
-<li>输入命令<code>hexo d</code>将网页部署到Github Page</li>
-</ol>
-<hr>
-<p><strong>以上是完整流程，每次更新博客的时候都要重复一遍上述流程</strong><br>省事的话可以合并命令，直接用<code>hexo cl</code>和<code>hexo g -d</code>即可更新</p>
-]]></content>
-      <categories>
-        <category>Blog</category>
-      </categories>
-      <tags>
-        <tag>HEXO</tag>
+        <tag>Win10</tag>
       </tags>
   </entry>
   <entry>
@@ -227,33 +167,71 @@
 <p>（逃。。。ε&#x3D;ε&#x3D;ε&#x3D;┏(゜ロ゜;)┛</p>
 ]]></content>
       <categories>
-        <category>Architecture</category>
+        <category>建筑狗</category>
       </categories>
       <tags>
         <tag>Grasshopper</tag>
-        <tag>Architecture</tag>
+        <tag>建筑</tag>
       </tags>
   </entry>
   <entry>
-    <title>Hexo Next JSDelivr 被墙解决方案</title>
-    <url>/Hexo-Next-JSDelivr-%E8%A2%AB%E5%A2%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">GFW坏事做尽，又玩DNS污染，网站引用的JSDelivr资源全炸</blockquote>
-
+    <title>HEXO部署</title>
+    <url>/HEXO%E9%83%A8%E7%BD%B2.html</url>
+    <content><![CDATA[<p>博客已经搭建成功了，下一步是用Hexo配合Markdown写博客了</p>
+<h1 id="Hexo写作流程"><a href="#Hexo写作流程" class="headerlink" title="Hexo写作流程"></a>Hexo写作流程</h1><p>博客写作流程相对于搭建要简单太多了，只需要以下几步：</p>
+<ul>
+<li>创建新博客文件</li>
+<li>生成新网页</li>
+<li>部署到Github Page</li>
+</ul>
 <span id="more"></span>
 
-<p>今天更新网站的时候突然发现加载速度巨慢，开控制台一看一片报错，和JSDelivr有关的资源全部不能加载，经确认JSDelivr已经被墙，下面是紧急补救措施，后续明天再发</p>
-<h1 id="紧急补救措施"><a href="#紧急补救措施" class="headerlink" title="紧急补救措施"></a>紧急补救措施</h1><ul>
-<li>打开<code>_config.next.yml</code></li>
-<li>定位到到<code>CDN Settings</code></li>
-<li>修改<code>plugins: jsdelivr</code>为<code>plugins: unpkg</code></li>
+<h2 id="创建新博客文件"><a href="#创建新博客文件" class="headerlink" title="创建新博客文件"></a>创建新博客文件</h2><ol>
+<li><p>在博客文件夹中右键打开Git bash</p>
+</li>
+<li><p>输入<code>hexo new &quot;博客标题&quot;</code> 新建一个md文件，双引号内的名字就是文章标题</p>
+</li>
+<li><p>进入<code>博客根目录/source/_posts</code> 文件夹，可以看到新创建的文件<code>博客标题.md</code>,md后缀代表Markdown文件</p>
+</li>
+<li><p>双击使用安装的Markdown编辑器打开进行编辑</p>
+<ul>
+<li>文件内会默认生成以下内容(以本博客为例）：  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   ---`</span><br><span class="line">   title: HEXO&amp;Markdown</span><br><span class="line">date: 2019-04-04 10:50:41</span><br><span class="line">tags: [Hexo,Markdown]</span><br><span class="line">   ---`</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其中<code>title</code>就是博客标题</li>
+<li><code>date</code>是博客的创建时间，不用修改</li>
+<li><code>tags</code>是博客的标签</li>
 </ul>
+</li>
+</ul>
+<blockquote>
+<p>踩坑：<br>此处注意冒号后面的空格</p>
+</blockquote>
+<ul>
+<li>在<code>---</code>分割线后就是我们写博文的地方了，按照Markdown语法规则编写即可</li>
+</ul>
+</li>
+<li><p>编写完成后保存</p>
+</li>
+</ol>
+<h2 id="生成新网页并部署"><a href="#生成新网页并部署" class="headerlink" title="生成新网页并部署"></a>生成新网页并部署</h2><ol>
+<li>打开Git bash</li>
+<li>输入命令<code>hexo clean</code>清除网页缓存</li>
+<li>输入命令<code>hexo g</code>生成新的网页文件</li>
+<li>（可选）输入命令<code>hexo s</code>生成本地服务并前往返回的网址预览网页<blockquote>
+<p>踩坑：<br>Git bash内的复制命令并不是熟悉的<code>ctrl c</code>，而是<code>ctrl ins</code>，使用<code>ctrl c</code>复制预览网址会结束本地服务进程，所以预览网页会没反应</p>
+</blockquote>
+</li>
+<li>输入命令<code>hexo d</code>将网页部署到Github Page</li>
+</ol>
+<hr>
+<p><strong>以上是完整流程，每次更新博客的时候都要重复一遍上述流程</strong><br>省事的话可以合并命令，直接用<code>hexo cl</code>和<code>hexo g -d</code>即可更新</p>
 ]]></content>
       <categories>
-        <category>Blog</category>
+        <category>网站配置</category>
       </categories>
       <tags>
         <tag>HEXO</tag>
-        <tag>Next</tag>
       </tags>
   </entry>
   <entry>
@@ -327,12 +305,46 @@
 <p>ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;┌(;￣◇￣)┘</p>
 ]]></content>
       <categories>
-        <category>Blog</category>
+        <category>网站配置</category>
       </categories>
       <tags>
         <tag>HEXO</tag>
         <tag>Next</tag>
-        <tag>English</tag>
+        <tag>i18n</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo Next JSDelivr 被墙解决方案</title>
+    <url>/Hexo-Next-JSDelivr-%E8%A2%AB%E5%A2%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">GFW坏事做尽，又玩DNS污染，我上一篇记录JSDelivr使用方法的博客还没写完，JSDelivr就没了😭</blockquote>
+
+<span id="more"></span>
+
+<p>今天更新网站的时候突然发现加载速度巨慢，开控制台一看一片报错，和JSDelivr有关的资源全部不能加载，经确认JSDelivr已经被墙😭。因为Next主题默认使用JSDelivr作为第三方插件（如Gitalk、FancyBox）的CDN提供方，所以JSDelivr被墙后网站基本瘫痪。</p>
+<p><img data-src="https://s2.loli.net/2022/05/23/DZbmI2lfGTpoRNy.png" alt="ping"></p>
+<p>emmm估计用不了太久就会全图变红了。其实JSDelivr被墙已经有过预兆了，因为滥用的太多，去年年底JSDelivr在国内的ICP备案就被吊销了，抽风了一段时间后又恢复了正常，强撑了半年之后还是被疯掉了，令人惋惜。</p>
+<h1 id="主题第三方插件修复"><a href="#主题第三方插件修复" class="headerlink" title="主题第三方插件修复"></a>主题第三方插件修复</h1><p>有三种解决方案，第一种解决方案是更换CDN提供方，第二种方案是把第三方插件全部部署到自己的网站上，第三种方案是使用自己的CDN，但是过于麻烦，就不写了🐶。</p>
+<h2 id="更换CDN提供方"><a href="#更换CDN提供方" class="headerlink" title="更换CDN提供方"></a>更换CDN提供方</h2><p>Next官方提供了<code>jsdelivr</code>、<code>unpkg</code>和<code>cdnjs</code>三家CDN供应商，经实测<code>unpkg</code>和<code>cdnjs</code>目前仍能正常访问，所以把第三方插件的CDN切换过去就好了</p>
+<ul>
+<li>打开<code>_config.next.yml</code></li>
+<li>定位到到<code>CDN Settings</code></li>
+<li>修改<code>plugins: jsdelivr</code>为<code>plugins: unpkg</code>或者<code>plugins: cdnjs</code></li>
+</ul>
+<h2 id="本地部署"><a href="#本地部署" class="headerlink" title="本地部署"></a>本地部署</h2><p>Next官方也有一个集合了主题中使用到的第三方插件的仓库</p>
+<div class="note info"><p><a class="btn" href="https://github.com/next-theme/plugins"><i class="fa fa-torii-gate fa-fw"></i>Next第三方插件库</a></p></div>
+
+<ul>
+<li>首先安装第三方插件库，报错的话检查<code>@next-theme/plugins</code>和<code>hexo-theme-next</code>两者版本号是否相同<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install @next-theme/plugins</span><br></pre></td></tr></table></figure></li>
+<li>修改<code>plugins: jsdelivr</code>为<code>plugins: local</code></li>
+</ul>
+<h1 id="自己的资源"><a href="#自己的资源" class="headerlink" title="自己的资源"></a>自己的资源</h1><p>自己的资源就没办法咯，毕竟JSDelivr这么好用的仅此一家，<code>unpkg</code>和<code>cdnjs</code>都没法上自己的资源。能想到的只有把资源部署到自己的网站和自己找托管两种方法了。我就只能吭哧吭哧的把自己的资源搬回到网站上了😭</p>
+]]></content>
+      <categories>
+        <category>网站配置</category>
+      </categories>
+      <tags>
+        <tag>HEXO</tag>
+        <tag>Next</tag>
       </tags>
   </entry>
   <entry>
@@ -487,7 +499,7 @@
 <h1 id="完工"><a href="#完工" class="headerlink" title="完工"></a>完工</h1><p>坑填的差不多了，后续会更新HEXO的基本用法和Markdown语法，如果记起来其他的坑也会补充的，由于这是搭完博客几天后才写完的，一些细节记不太清了，有问题欢迎骚扰~</p>
 ]]></content>
       <categories>
-        <category>Blog</category>
+        <category>网站配置</category>
       </categories>
       <tags>
         <tag>HEXO</tag>
@@ -546,10 +558,12 @@
 </blockquote>
 ]]></content>
       <categories>
-        <category>Blog</category>
+        <category>网站配置</category>
       </categories>
       <tags>
         <tag>HEXO</tag>
+        <tag>Next</tag>
+        <tag>i18n</tag>
       </tags>
   </entry>
   <entry>
@@ -579,10 +593,11 @@
 <p>现在已经可以在Google上搜索到自己的文章和网站了，填坑结束~~~</p>
 ]]></content>
       <categories>
-        <category>Blog</category>
+        <category>网站配置</category>
       </categories>
       <tags>
         <tag>HEXO</tag>
+        <tag>SEO</tag>
       </tags>
   </entry>
   <entry>
@@ -721,10 +736,11 @@
 <p>大概就是这些，下一步打算装个黑苹果用hhh。</p>
 ]]></content>
       <categories>
-        <category>Tech</category>
+        <category>搞机</category>
       </categories>
       <tags>
         <tag>ITX</tag>
+        <tag>搞机</tag>
       </tags>
   </entry>
   <entry>
@@ -759,10 +775,11 @@
 <p>设置完成后的环境变量大概是这个亚子<br><img data-src="https://s2.loli.net/2022/05/13/O49gVDEHBFZ2kzm.png" alt="1"><br><img data-src="https://s2.loli.net/2022/05/13/uLJnsPYEIiHSA1t.png" alt="2"></p>
 ]]></content>
       <categories>
-        <category>Tech</category>
+        <category>程序猿</category>
       </categories>
       <tags>
-        <tag>Software</tag>
+        <tag>Win10</tag>
+        <tag>环境变量</tag>
         <tag>Java</tag>
         <tag>C</tag>
       </tags>
@@ -849,12 +866,11 @@
 </blockquote>
 ]]></content>
       <categories>
-        <category>CS</category>
+        <category>程序猿</category>
       </categories>
       <tags>
-        <tag>Software</tag>
+        <tag>Win10</tag>
         <tag>Jupyter</tag>
-        <tag>CS</tag>
       </tags>
   </entry>
   <entry>
@@ -1462,7 +1478,7 @@
 <h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><h1 id="大标题"><a href="#大标题" class="headerlink" title="大标题"></a>大标题</h1><h2 id="小标题"><a href="#小标题" class="headerlink" title="小标题"></a>小标题</h2><h1 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h1><p>Hexo中常用的Markdown语法大概就这些了，填坑结束~</p>
 ]]></content>
       <categories>
-        <category>Blog</category>
+        <category>网站配置</category>
       </categories>
       <tags>
         <tag>HEXO</tag>
@@ -1470,26 +1486,27 @@
       </tags>
   </entry>
   <entry>
-    <title>New</title>
+    <title>开站纪念</title>
     <url>/New.html</url>
-    <content><![CDATA[<blockquote>
-<p>第一篇博客，搭网站踩坑踩到自闭</p>
-</blockquote>
+    <content><![CDATA[<blockquote class="blockquote-center">第一篇博客，搭网站踩坑踩到自闭，留下当作开站纪念了</blockquote>
+
+<span id="more"></span>
+
+<p>2022.05 这篇就当个日记本用吧hhh</p>
 ]]></content>
       <categories>
-        <category>Dairy</category>
+        <category>日常</category>
       </categories>
       <tags>
-        <tag>Record</tag>
-        <tag>First</tag>
+        <tag>博客</tag>
+        <tag>纪念</tag>
       </tags>
   </entry>
   <entry>
-    <title>Next 8.0 主题美化</title>
-    <url>/Next-8-0-%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">失踪一年的老鸽子回来了！（手动狗头🐶）我终于想起了我的博客，然后这几天把他更新到了Next 8.0，这篇算是我的更新记录，巨坑待填中。。。。。。</blockquote>
+    <title>Next 8.10 升级日志</title>
+    <url>/Next-8-0-%E5%8D%87%E7%BA%A7%E6%97%A5%E5%BF%97.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">失踪一年的老鸽子回来了！（手动狗头🐶）我终于想起了我的博客，然后这几天把他更新到了Next 8.10，这篇算是我的更新记录</blockquote>
 
-<p>维护中。。。。。。</p>
 <span id="more"></span>
 
 <h1 id="升级log"><a href="#升级log" class="headerlink" title="升级log"></a>升级log</h1><p>Next主题的官网又双叒叕更换了，谷歌搜出来靠前的都是老版本的网站，害得我找了半天。建议挂梯子访问，直接访问巨慢。</p>
@@ -1513,8 +1530,9 @@
 <li><del>部分js、css文件通过JSDelivr分发</del></li>
 <li>船新的404页面</li>
 </ul>
-<h1 id="JSDelivr"><a href="#JSDelivr" class="headerlink" title="JSDelivr"></a>JSDelivr</h1><div class="note danger"><p>得嘞，JSDelivr被墙了，这一段不用看了，GFW你坏事做尽
+<h1 id="JSDelivr"><a href="#JSDelivr" class="headerlink" title="JSDelivr"></a>JSDelivr</h1><div class="note danger"><p>得嘞，JSDelivr被墙了，这一段不用看了，GFW你坏事做尽。
 
+<p>原来扔给JSDelivr的文件放到了<code>./source/</code>里面</p>
 <a class="btn" href="#图床"><i class="fa fa-torii-gate fa-fw"></i>跳过本段</a></p></div>
 
 <p>这次升级把一些自定义的js和css文件放到了JSDelivr来加速，JSDelivr是一个CDN服务商，可以为Github、npm等提供镜像加速，Next主题自身的一些文件也是使用JSDelivr来加速的。</p>
@@ -1547,33 +1565,6 @@
 <p>如果以前已经在谷歌收录的话可以选择直接从Google Search Console导入，但是需要授权，我懒得搞，就还是选择了手动添加hhh。手动添加有三种方式，我选择的是第二种，向网页添加HTML Meta标签，这也是Next官方内置的方法。</p>
 <p><img data-src="https://s2.loli.net/2022/05/14/MDxcUdybVQORf2B.png" alt="验证方式"></p>
 <p>复制content后面的内容，然后打开Next主题的配置文件，找到<code>bing_site_verification</code>，粘贴到后面并保存，然后<code>hexo cl &amp;&amp; hexo g -d</code>一键三连，再返回Bing Webmasters点击验证就大功告成了。</p>
-<h1 id="看板娘"><a href="#看板娘" class="headerlink" title="看板娘"></a>看板娘</h1><p>原来使用的看板娘插件是<code>hexo-helper-live2d</code>，但是已经几年没有更新过了，<code>npm</code>安装的时候报了8项风险，于是更换成了<a href="https://github.com/stevenjoezhang/live2d-widget">张书樵</a>大佬的<code>live2d-widget</code>。</p>
-<div class="note info"><p><a class="btn" href="https://github.com/stevenjoezhang/live2d-widget"><i class="fa fa-torii-gate fa-fw"></i>live2d-widget</a></p></div>
-
-<p>然后模型调用的API使用了<a href="https://github.com/fghrsh/live2d_api">fghrsh</a>大佬的<code>live2d_api</code>。</p>
-<div class="note info"><p><a class="btn" href="https://github.com/fghrsh/live2d_api"><i class="fa fa-torii-gate fa-fw"></i>live2d_api</a></p></div>
-
-<h2 id="配置方法"><a href="#配置方法" class="headerlink" title="配置方法"></a>配置方法</h2><h3 id="live2d-widget配置"><a href="#live2d-widget配置" class="headerlink" title="live2d-widget配置"></a>live2d-widget配置</h3><ul>
-<li>首先<code>fork</code>一份live2d-widget并<code>clone</code>到本地</li>
-<li>打开<code>waifu.css</code>，修改看板娘配置<ul>
-<li><code>#waifu</code>中的参数可以调整看板娘位置。其中<code>left: 0;</code>表示看板娘显示在屏幕左边，修改为<code>right: 0;</code>则会显示在右侧</li>
-<li><code>#waifu-tool</code>中的参数可以调整看板娘旁边工具栏样式</li>
-<li><code>waifu-tips</code>中的参数可以调整看板娘对话框样式</li>
-</ul>
-</li>
-</ul>
-<h3 id="live2d-api配置"><a href="#live2d-api配置" class="headerlink" title="live2d_api配置"></a>live2d_api配置</h3><ul>
-<li>首先<code>fork</code>一份live2d_api并<code>clone</code>到本地</li>
-<li>模型文件都在<code>model</code>文件夹中</li>
-</ul>
-<h3 id="JSDelivr加速"><a href="#JSDelivr加速" class="headerlink" title="JSDelivr加速"></a>JSDelivr加速</h3><ul>
-<li>打开<code>live2d-widget/autoload.js</code>，修改下列参数<ul>
-<li><code>const live2d_path = &quot;xxxx&quot;;</code>，将<code>xxxx</code>修改为自己<code>fork</code>后的<code>live2d-widget</code>仓库的JSDelivr链接</li>
-<li>将<code>initWidget</code>中的<code>cdnPath</code>修改为自己<code>fork</code>后的<code>live2d_api</code>仓库的JSDelivr链接</li>
-<li><code>if (screen.width &gt;= 768)</code>里面可以调整显示看板娘的最小屏幕横向分辨率，在分辨率小于<code>768</code>的设备上看板娘不会显示</li>
-</ul>
-</li>
-</ul>
 <h1 id="自定义鼠标样式"><a href="#自定义鼠标样式" class="headerlink" title="自定义鼠标样式"></a>自定义鼠标样式</h1><div class="note primary"><p>鼠标样式我是按照<a class="btn" href="https://akilar.top/posts/ebf20e02/#%E9%BC%A0%E6%A0%87%E6%8C%87%E9%92%88%E6%A0%B7%E5%BC%8F%E6%9B%BF%E6%8D%A2"><i class="fa fa-blog fa-fw"></i>akilar</a>的文章配置的，特此感谢</p></div>
 
 <ul>
@@ -1624,7 +1615,7 @@
 <h1 id="自定义代码块样式"><a href="#自定义代码块样式" class="headerlink" title="自定义代码块样式"></a>自定义代码块样式</h1><p>同上，打开<code>./source/_data/styles.styl</code>，代码如下</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">code</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#ff7f50</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.05</span>);</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">2px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">figure</span><span class="selector-class">.highlight</span> &#123;</span><br><span class="line">    <span class="selector-class">.gutter</span> &#123;</span><br><span class="line">    pre &#123;</span><br><span class="line">      <span class="attribute">background</span>: <span class="number">#0d1117</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其中<code>code</code>控制的是单行的代码块样式，<code>figure.highlight</code>控制的是多行代码块的样式，多行代码块只调整了行号的背景颜色</p>
-<h1 id="GitHub贡献墙"><a href="#GitHub贡献墙" class="headerlink" title="GitHub贡献墙"></a>GitHub贡献墙</h1><div class="note primary"><p>GitHub贡献墙使用的是 <a class="btn" href="https://github.com/2016rshah/githubchart-api"><i class="fa fa-github fa-fw"></i>Github Chart API</a> ，特此感谢</p></div>
+<h1 id="GitHub贡献墙"><a href="#GitHub贡献墙" class="headerlink" title="GitHub贡献墙"></a>GitHub贡献墙</h1><div class="note primary"><p>GitHub贡献墙使用的是 <a class="btn" href="https://github.com/2016rshah/githubchart-api"><i class="fa fa-code-branch fa-fw"></i>Github Chart API</a> ，特此感谢</p></div>
 
 <p>使用方法非常简单，插入下面的代码就完事了</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://ghchart.rshah.org/你的GitHub用户名&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Github chart&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
@@ -1632,239 +1623,69 @@
 <p>如果想要修改色块颜色的话可以修改为，把<code>6c5ce7</code>替换为想使用的HEX基准色，其他颜色会自动生成，不需要加#</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://ghchart.rshah.org/6c5ce7/你的GitHub用户名&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Github chart&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="404页面"><a href="#404页面" class="headerlink" title="404页面"></a>404页面</h1><p>hexo new page 404</p>
-<p>Hexo config file<br>relative_link: false</p>
+<h1 id="404页面"><a href="#404页面" class="headerlink" title="404页面"></a>404页面</h1><p>原来的404页面移动端适配做的不好，就换了个新的</p>
+<ul>
+<li>首先打开<code>_config.yml</code>，注意不是next主题的</li>
+<li>定位到<code>relative_link: </code>并设置为<code>false</code></li>
+<li>在根目录执行<code>hexo new page 404</code>创建<code>./source/404</code>文件夹</li>
+<li>打开生成的<code>index.md</code>文件，在<code>title</code>下面加上这些：<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">type: <span class="string">&quot;404&quot;</span></span><br><span class="line">permalink: /<span class="number">404</span></span><br><span class="line">layout: false</span><br><span class="line">comments: false</span><br></pre></td></tr></table></figure></li>
+<li>然后找个顺眼的模板套上就行了，注意<strong>缩进不要超过4个空格</strong>，会不识别</li>
+</ul>
+<p>下面是我的代码</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">title</span>&gt;</span>Sirius - 404 Not Found<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;/css/404font/404fonts.css&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;/css/404cat.css&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- partial:index.partial.html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;text-wrapper&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span> <span class="attr">data-content</span>=<span class="string">&quot;404&quot;</span>&gt;</span></span><br><span class="line">  404</span><br><span class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;subtitle&quot;</span>&gt;</span></span><br><span class="line">  诶？页面走丢了喵~</span><br><span class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;buttons&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;button&quot;</span> <span class="attr">href</span>=<span class="string">&quot;/&quot;</span>&gt;</span>回主页看看吧~<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- partial --&gt;</span></span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后是两个<code>css</code>文件</p>
+<div class="note info"><p><a class="btn" href="/css/404cat.css"><i class="fa fa-download fa-fw"></i>404cat.css</a>
+<a class="btn" href="/css/404font/404fonts.css"><i class="fa fa-download fa-fw"></i>404fonts.css</a></p></div>
+
+<h1 id="看板娘"><a href="#看板娘" class="headerlink" title="看板娘"></a>看板娘</h1><div class="note primary"><p>看板娘的配置参考了<a class="btn" href="https://akilar.top/posts/5b8f515f/"><i class="fa fa-blog fa-fw"></i>akilar</a>的文章，特此感谢</p></div>
+
+<div class="note warning"><p>前排提醒，看板娘对网站加载速度影响很大喔，但是吧，没有看板娘的网站莫得灵魂🐶</p></div>
+
+<p>原来使用的看板娘插件是<code>hexo-helper-live2d</code>，但是已经几年没有更新过了，<code>npm</code>安装的时候报了8项风险，于是更换成了<a href="https://github.com/stevenjoezhang/live2d-widget">张书樵</a>大佬的<code>live2d-widget</code>。</p>
+<div class="note info"><p><a class="btn" href="https://github.com/stevenjoezhang/live2d-widget"><i class="fa fa-torii-gate fa-fw"></i>live2d-widget</a></p></div>
+
+<p>然后模型调用的API使用了<a href="https://github.com/fghrsh/live2d_api">fghrsh</a>大佬的<code>live2d_api</code>。</p>
+<div class="note info"><p><a class="btn" href="https://github.com/fghrsh/live2d_api"><i class="fa fa-torii-gate fa-fw"></i>live2d_api</a></p></div>
+
+<h2 id="配置方法"><a href="#配置方法" class="headerlink" title="配置方法"></a>配置方法</h2><h3 id="live2d-api配置"><a href="#live2d-api配置" class="headerlink" title="live2d_api配置"></a>live2d_api配置</h3><ol>
+<li>把<code>live2d_api</code>项目的压缩包下载到本地，移动到<code>./source/</code>目录下<div class="note info"><p><a class="btn" href="https://github.com/fghrsh/live2d_api/archive/refs/heads/master.zip"><i class="fa fa-download fa-fw"></i>live2d_api下载</a></p></div></li>
+<li>解压后把文件夹重命名为<code>live2d_api</code></li>
+<li>模型文件都在<code>model</code>文件夹中<ul>
+<li>注意每一个模型文件夹内都有<code>index.json</code>文件，用来确定模型信息。从别处下载的模型文件里一般不是这种命名，可能叫做<code>模型名.json</code>或者<code>模型名.model.json</code>，记得修改，不然读取不到模型信息的</li>
+<li>采用<code>单模型 多组皮肤</code>目录结构的模型会出现无法换装的问题，解决方案是调整为<code>同分组 多个模型</code>的目录结构。目录结构细节详见<a href="https://github.com/fghrsh/live2d_api#%E6%B7%BB%E5%8A%A0%E6%A8%A1%E5%9E%8B">README.md</a></li>
+<li>调整完目录结构记得修改<code>model_list.json</code></li>
+<li><code>model_list.json</code>中的<code>message</code>用于控制模型出场时说的话，与上面模型的顺序一一对应</li>
+</ul>
+</li>
+</ol>
+<h3 id="live2d-widget配置"><a href="#live2d-widget配置" class="headerlink" title="live2d-widget配置"></a>live2d-widget配置</h3><ol>
+<li>把<code>live2d-widget</code>项目的压缩包下载到本地，移动到<code>./source/</code>目录下<div class="note info"><p><a class="btn" href="https://github.com/stevenjoezhang/live2d-widget/archive/refs/heads/master.zip"><i class="fa fa-download fa-fw"></i>live2d-widget下载</a></p></div></li>
+<li>解压后把文件夹重命名为<code>live2d-widget</code></li>
+<li>打开<code>./source/live2d-widget/autoload.js</code>，修改下列参数<ul>
+<li><code>const live2d_path = &quot;xxxx&quot;;</code>，将<code>xxxx</code>修改为<code>/live2d-widget/</code></li>
+<li>将<code>initWidget</code>中的<code>cdnPath</code>修改为<code>/live2d_api/</code></li>
+<li><code>if (screen.width &gt;= 768)</code>里面可以调整显示看板娘的最小屏幕横向分辨率，这里表示在分辨率小于<code>768</code>的设备上看板娘不会显示</li>
+</ul>
+</li>
+<li>打开<code>waifu.css</code>，修改看板娘配置<ul>
+<li><code>#waifu</code>中的参数可以调整看板娘位置。其中<code>left: 0;</code>表示看板娘显示在屏幕左边，修改为<code>right: 0;</code>则会显示在右侧</li>
+<li><code>#waifu-tool</code>中的参数可以调整看板娘旁边工具栏样式</li>
+<li><code>#waifu-tips</code>中的参数可以调整看板娘对话框样式</li>
+</ul>
+</li>
+</ol>
+<h3 id="引入js"><a href="#引入js" class="headerlink" title="引入js"></a>引入js</h3><p>打开<code>source/_data/head.njk</code>，粘贴下面的代码</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;/live2d-widget/autoload.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后<code>hexo s</code>就能去浏览器里<del>调戏</del>自己的看板娘啦~</p>
+<p>完结撒花~</p>
 ]]></content>
       <categories>
-        <category>Blog</category>
+        <category>网站配置</category>
       </categories>
       <tags>
         <tag>HEXO</tag>
         <tag>Next</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Next升级+Mac迁移 </title>
-    <url>/Next%E5%8D%87%E7%BA%A7-Mac%E8%BF%81%E7%A7%BB.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">写博客到现在已经快一年了，Next主题也更新了好多版本，新增的pjax真的是太香了，果断更新。顺便把Hexo迁移到mac上面来</blockquote>
-
-<span id="more"></span>
-
-<h1 id="更新说明"><a href="#更新说明" class="headerlink" title="更新说明"></a>更新说明</h1><p>Next主题从7.1到7.7.2的变动较大，直接升级的话小问题比较多，所以这次升级采用了重新安装的方式</p>
-<h2 id="版本对比"><a href="#版本对比" class="headerlink" title="版本对比"></a>版本对比</h2><p>升级前Hexo版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo: 3.8.0</span><br><span class="line">hexo-cli: 3.1.0</span><br><span class="line">os: Windows_NT 10.0.17763 win32 x64</span><br><span class="line">node: 12.14.1</span><br><span class="line">next: 7.1</span><br></pre></td></tr></table></figure>
-<p>升级后Hexo版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo: 4.2.0</span><br><span class="line">hexo-cli: 3.1.0</span><br><span class="line">os: Darwin 18.7.0 darwin x64</span><br><span class="line">node: 13.10.1</span><br><span class="line">next: 7.7.2</span><br></pre></td></tr></table></figure>
-
-<h2 id="新增功能"><a href="#新增功能" class="headerlink" title="新增功能"></a>新增功能</h2><ul>
-<li>pjax（局部刷新加载页面）</li>
-<li>DarkMode夜间模式（支持Mac等的夜间模式）</li>
-<li>Gitalk评论（Gitment凉了之后一直没设置评论系统，这次顺路加上）</li>
-<li>Mediumzoom（图片插件）</li>
-<li>中英切换（新）</li>
-<li>CDN（进行中）</li>
-<li>Echarts</li>
-</ul>
-<h2 id="移除功能"><a href="#移除功能" class="headerlink" title="移除功能"></a>移除功能</h2><ul>
-<li>动态背景（占用资源较大，在手机平板等设备上造成卡顿、发热、耗电快等问题）</li>
-<li>i18n-generator（一年也没写过英语的博客，而且这个方案缺陷太大，正在寻找其他解决方案）</li>
-<li>网易云音乐挂件（使用频率极低，拖慢加载速度）</li>
-</ul>
-<h2 id="保留功能"><a href="#保留功能" class="headerlink" title="保留功能"></a>保留功能</h2><ul>
-<li>站内搜索</li>
-<li>字数与阅读时长统计</li>
-<li>网站运行时间</li>
-<li>加载进度条</li>
-<li>崩溃欺骗</li>
-<li>背景图片</li>
-<li>鼠标点击特效</li>
-<li>不蒜子</li>
-<li>Live2D看板娘</li>
-</ul>
-<h1 id="Mac安装过程"><a href="#Mac安装过程" class="headerlink" title="Mac安装过程"></a>Mac安装过程</h1><h2 id="安装软件依赖"><a href="#安装软件依赖" class="headerlink" title="安装软件依赖"></a>安装软件依赖</h2><p>首先下载安装<code>git</code>和<code>node.js</code>,官网如下</p>
-<ul>
-<li><a href="https://git-scm.com/">git</a></li>
-<li><a href="https://nodejs.org/en/">node.js</a></li>
-</ul>
-<p>安装完成后在终端分别输入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git --version</span><br><span class="line">node -v</span><br></pre></td></tr></table></figure>
-<p>检测是否安装成功，成功的话会返回软件版本号</p>
-<h2 id="配置本地目录"><a href="#配置本地目录" class="headerlink" title="配置本地目录"></a>配置本地目录</h2><ul>
-<li>新建一个用于存放博客文件的文件夹</li>
-<li>新建位于文件夹位置的终端窗口</li>
-<li>输入<code>npm install hexo -g</code>安装hexo<ul>
-<li>这一步可能会报错，报错的话使用命令<code>sudo npm install --unsafe-perm --verbose -g hexo</code>来安装hexo</li>
-</ul>
-</li>
-<li>输入<code>npm install</code>安装其他依赖</li>
-<li>输入<code>npm install hexo-deployer-git --save</code>安装部署插件</li>
-<li>输入<code>hexo v</code>查看是否安装成功，成功会返回版本号</li>
-</ul>
-<h2 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h2><ul>
-<li>打开终端</li>
-<li>输入<code>ls -al ~/.ssh</code>检查是否有以前生成的 SSH Key，没有的话继续</li>
-<li>输入<code>ssh-keygen -t rsa -C &quot;Guthub邮箱地址&quot;</code> 然后回车三连</li>
-<li>此时终端会显示文件的生成路径，根据路径找到并打开<code>id_rsa.pub</code></li>
-<li>复制里面的所有内容</li>
-<li>打开Github，在右上角个人头像下拉菜单中找到<code>Settings</code></li>
-<li>打开<code>SSH and GPG keys</code>,点击右上角<code>New SSH key</code></li>
-<li><code>Title</code>随便填,然后在<code>Key</code>中粘贴</li>
-<li>点击<code>Add SSH key</code></li>
-<li>回到Git bash，输入<code>ssh -T git@github.com</code>回车</li>
-<li>首次输入可能会有提醒，输入<code>yes</code>回车即可</li>
-<li>成功返回<code>Hi 用户名! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code>就代表成功了</li>
-<li>输入<code>git config --global user.name &quot;用户名&quot;</code></li>
-<li>输入<code>git config --global user.email  &quot;邮箱地址&quot;</code></li>
-</ul>
-<h2 id="安装Next主题"><a href="#安装Next主题" class="headerlink" title="安装Next主题"></a>安装Next主题</h2><p>在终端输入下面的命令安装最新的Next主题</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-
-<h1 id="Next主题自定义"><a href="#Next主题自定义" class="headerlink" title="Next主题自定义"></a>Next主题自定义</h1><p>Hexo的配置过程我就不说了，根据原来的<code>_config.yml</code>配置就行，下面要说的是Next主题的配置</p>
-<h2 id="配置文件分离"><a href="#配置文件分离" class="headerlink" title="配置文件分离"></a>配置文件分离</h2><p>Next主题在7.3之后分离了配置文件与主题，详情请见<a href="https://tding.top/archives/2bd6d82.html">小丁的个人博客</a>。</p>
-<ul>
-<li>新建文件夹<code>hexo/source/_data</code></li>
-<li>将<code>./themes/next/_config.yml</code>复制到<code>hexo/source/_data</code>路径下并重命名为<code>next.yml</code></li>
-<li>将<code>next.yml</code>中的<code>override</code>设置为<code>true</code>即可作为主题的配置文件使用</li>
-<li>在<code>hexo/source/_data</code>中新建<code>body-end.swig</code>和<code>styles.styl</code>文件</li>
-<li>然后在<code>next.yml</code>的<code>custom_file_path</code>中删除前面的<code>#</code>来启用<code>bodyEnd</code>和<code>style</code></li>
-<li><code>custom_file_path</code>中的其他选项根据需要创建相关文件并启用</li>
-</ul>
-<h2 id="Pjax"><a href="#Pjax" class="headerlink" title="Pjax"></a>Pjax</h2><p>Pjax是基于Ajax的插件，能实现网页局部无刷新载入，听起来很香，然而存在一些小问题：</p>
-<ul>
-<li>使用Mediumzoom时，从归档进入博文不会加载图片，需要刷新网页才能加载</li>
-<li>Echarts图表全部需要刷新才能显示，否则只有一片空白</li>
-</ul>
-<p>安装Pjax</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/theme-next-pjax source/lib/pjax</span><br></pre></td></tr></table></figure>
-<p>在<code>next.yml</code>中搜索<code>pjax</code>并设置为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pjax: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="Darkmode"><a href="#Darkmode" class="headerlink" title="Darkmode"></a>Darkmode</h2><p>Next主题新增了暗色模式，能够配合系统的暗色主题使用<br>在<code>next.yml</code>中搜索<code>darkmode</code>并设置为<code>auto</code>即可根据系统主题切换亮色&#x2F;暗色模式</p>
-<h2 id="Gitalk评论"><a href="#Gitalk评论" class="headerlink" title="Gitalk评论"></a>Gitalk评论</h2><p>评论系统，一开始想用Valine来着，结果要实名制，果断弃了</p>
-<ul>
-<li>在Github新建一个仓库<code>gitalk-comment</code>，用来存放评论产生的issues</li>
-<li>点击右上角<code>头像 - Setting - Developer settings - OAuth Apps - New OAuth Apps</code></li>
-<li><code>Application name</code> 随便填</li>
-<li><code>Homepage URL</code>和<code>Authorization callback URL</code>都填自己的博客地址</li>
-<li>点击 <code>Register application</code></li>
-<li>在<code>next.yml</code>中搜索<code>gitalk</code></li>
-<li>复制得到的<code>Cilent ID</code>和<code>Cilent secret</code>到相应位置粘贴</li>
-<li>设置<code>enable</code>为<code>true</code></li>
-<li><code>github_id</code>和<code>admin_user</code>为你的用户名</li>
-<li><code>repo</code>为刚才创建的仓库名<code>gitalk-comment</code></li>
-<li><code>distraction_free_mode</code>是类似facobook的评论遮罩功能</li>
-</ul>
-<p><code>next.yml</code>中的具体配置如下</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"># Gitalk</span><br><span class="line"># For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk</span><br><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  github_id: Siriusq # GitHub repo owner</span><br><span class="line">  repo: gitalk-commnet # Repository name to store issues</span><br><span class="line">  client_id: xxxxxxxx # GitHub Application Client ID</span><br><span class="line">  client_secret: xxxxxxxx # GitHub Application Client Secret</span><br><span class="line">  admin_user: Siriusq # GitHub repo owner and collaborators, only these guys can initialize gitHub issues</span><br><span class="line">  distraction_free_mode: false # Facebook-like distraction free mode</span><br><span class="line">  # Gitalk<span class="string">&#x27;s display language depends on user&#x27;</span>s browser or system environment</span><br><span class="line">  # If you want everyone visiting your site to see a uniform language, you can set a force language value</span><br><span class="line">  # Available values: en | es-ES | fr | ru | zh-CN | zh-TW</span><br><span class="line">  language:</span><br></pre></td></tr></table></figure>
-
-<h2 id="Mediumzoom"><a href="#Mediumzoom" class="headerlink" title="Mediumzoom"></a>Mediumzoom</h2><p>模仿Medium图片查看方式的插件<br>安装</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install medium-zoom</span><br></pre></td></tr></table></figure>
-<p>在<code>next.yml</code>中搜索<code>mediumzoom</code>并设置为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mediumzoom: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="中英切换"><a href="#中英切换" class="headerlink" title="中英切换"></a>中英切换</h2><p>请移步另一篇博客<a href="https://siriusq.top/Hexo-Next-7-7-%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html">Hexo Next 7.7 双语切换</a></p>
-<h2 id="站内搜索"><a href="#站内搜索" class="headerlink" title="站内搜索"></a>站内搜索</h2><p>查找博客内的内容<br>安装</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb</span><br></pre></td></tr></table></figure>
-<p>在<code>next.yml</code>中搜索<code>local_search</code>并设置为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enable: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="字数与阅读时长统计"><a href="#字数与阅读时长统计" class="headerlink" title="字数与阅读时长统计"></a>字数与阅读时长统计</h2><p>安装</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-symbols-count-<span class="built_in">time</span></span><br></pre></td></tr></table></figure>
-<p>在根目录的<code>_config.yml</code>中添加</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br><span class="line">  exclude_codeblock: false</span><br><span class="line">  awl: 4</span><br><span class="line">  wpm: 275</span><br><span class="line">  suffix: &quot;mins.&quot;</span><br></pre></td></tr></table></figure>
-<p>然后在<code>next.yml</code>中搜索<code>symbols_count_time</code>并设置为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="添加jquery"><a href="#添加jquery" class="headerlink" title="添加jquery"></a>添加jquery</h2><ul>
-<li>新版的Next主题移除了jquery，导致一些老得自定义设置会失效，我直接从老版本的Next主题复制过来了，路径是<code>./hexo/themes/next/source/libs/jquery/jquert-2.2.0.min.js</code>，也可以到<a href="https://code.jquery.com/jquery/">官网</a>下载</li>
-<li>将jquery放置在<code>./hexo/source/js</code>路径下</li>
-<li>在<code>./hexo/source/_data/body-end.swig</code>添加，版本不同的话记得改下面的版本<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!--jquery--&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/js/jquery-2.2.0.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="网站运行时间"><a href="#网站运行时间" class="headerlink" title="网站运行时间"></a>网站运行时间</h2><p>打开<code>./hexo/themes/next/layout/_partials/footer.swig</code>并添加下列代码</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">span</span> id=&quot;timeDate&quot;&gt;载入天数...&lt;/<span class="selector-tag">span</span>&gt;&lt;<span class="selector-tag">span</span> id=&quot;times&quot;&gt;载入时分秒...&lt;/<span class="selector-tag">span</span>&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="selector-tag">var</span> now = new Date();</span><br><span class="line">    function createtime() &#123;</span><br><span class="line">        <span class="selector-tag">var</span> grt= new Date(&quot;<span class="number">03</span>/<span class="number">31</span>/<span class="number">2019</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span><span class="string">&quot;);</span></span><br><span class="line"><span class="string">        now.setTime(now.getTime()+250);</span></span><br><span class="line"><span class="string">        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);</span></span><br><span class="line"><span class="string">        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);</span></span><br><span class="line"><span class="string">        if(String(hnum).length ==1 )&#123;hnum = &quot;</span><span class="number">0</span><span class="string">&quot; + hnum;&#125; minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);</span></span><br><span class="line"><span class="string">        mnum = Math.floor(minutes); if(String(mnum).length ==1 )&#123;mnum = &quot;</span><span class="number">0</span><span class="string">&quot; + mnum;&#125;</span></span><br><span class="line"><span class="string">        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);</span></span><br><span class="line"><span class="string">        snum = Math.round(seconds); if(String(snum).length ==1 )&#123;snum = &quot;</span><span class="number">0</span><span class="string">&quot; + snum;&#125;</span></span><br><span class="line"><span class="string">        document.getElementById(&quot;</span>timeDate<span class="string">&quot;).innerHTML = &quot;</span>本站已安全运行 <span class="string">&quot;+dnum+&quot;</span> 天 <span class="string">&quot;;</span></span><br><span class="line"><span class="string">        document.getElementById(&quot;</span>times<span class="string">&quot;).innerHTML = hnum + &quot;</span> 小时 <span class="string">&quot; + mnum + &quot;</span> 分 <span class="string">&quot; + snum + &quot;</span> 秒<span class="string">&quot;;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">setInterval(&quot;</span><span class="built_in">createtime</span>()<span class="string">&quot;,250);</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="加载进度条"><a href="#加载进度条" class="headerlink" title="加载进度条"></a>加载进度条</h2><p>显示当前网页的加载进度<br>安装</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/theme-next-pace source/lib/pace</span><br></pre></td></tr></table></figure>
-<p>在<code>next.yml</code>中搜索<code>Progress bar in the top during page loading</code>并设置为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pace:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="崩溃欺骗"><a href="#崩溃欺骗" class="headerlink" title="崩溃欺骗"></a>崩溃欺骗</h2><p>在网页标题中添加崩溃欺骗效果，离开页面后标题会更改，切换回来后会恢复正常，需要配合<strong>jquery</strong>使用</p>
-<p>在<code>./hexo/source/js</code>中新建<code>crash_cheat</code>文件，复制下列代码</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!--崩溃欺骗--&gt;</span><br><span class="line"> <span class="keyword">var</span> <span class="title class_">OriginTitle</span> = <span class="variable language_">document</span>.<span class="property">title</span>;</span><br><span class="line"> <span class="keyword">var</span> titleTime;</span><br><span class="line"> <span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;visibilitychange&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">     <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="property">hidden</span>) &#123;</span><br><span class="line">         $(<span class="string">&#x27;[rel=&quot;icon&quot;]&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&#x27;href&#x27;</span>, <span class="string">&quot;/img/TEP.ico&quot;</span>);</span><br><span class="line">         <span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">&#x27;╭(°A°`)╮ 页面崩溃啦 ~&#x27;</span>;</span><br><span class="line">         <span class="built_in">clearTimeout</span>(titleTime);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">else</span> &#123;</span><br><span class="line">         $(<span class="string">&#x27;[rel=&quot;icon&quot;]&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&#x27;href&#x27;</span>, <span class="string">&quot;/favicon.ico&quot;</span>);</span><br><span class="line">         <span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">&#x27;(ฅ&gt;ω&lt;*ฅ) 噫又好了~&#x27;</span> + <span class="title class_">OriginTitle</span>;</span><br><span class="line">         titleTime = <span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">             <span class="variable language_">document</span>.<span class="property">title</span> = <span class="title class_">OriginTitle</span>;</span><br><span class="line">         &#125;, <span class="number">2000</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
-<p>然后在<code>./hexo/source/_data/body-end.swig</code>中添加</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;!--崩溃欺骗--&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; <span class="attribute">src</span>=&quot;/js/crash_cheat<span class="selector-class">.js</span>&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h2><p>将背景图片放置在<code>./hexo/themes/next/source/images</code>中并命名为<code>background.jpg</code><br>然后在<code>./hexo/source/_data/styles.styl</code>中添加</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">url</span>(<span class="string">/images/background.jpg</span>);//图片路径</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;//是否重复平铺</span><br><span class="line">    <span class="attribute">background-attachment</span>: fixed;//是否随着网页上下滚动而滚动，fixed为固定</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">50%</span> <span class="number">50%</span>;//图片位置</span><br><span class="line">    <span class="attribute">background-size</span>: cover;//图片展示大小</span><br><span class="line">    -webkit-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    -o-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    -moz-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    -ms-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0.9</span>;</span><br><span class="line">    <span class="selector-tag">footer</span> &gt; <span class="selector-tag">div</span> &gt; <span class="selector-tag">div</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>:<span class="number">#000000</span>;//底部文字颜色</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="鼠标点击特效"><a href="#鼠标点击特效" class="headerlink" title="鼠标点击特效"></a>鼠标点击特效</h2><p>根据<a href="https://tding.top/archives/2bd6d82.html">小丁的个人博客</a>更换了鼠标点击的特效，原来的特效对低性能设备不友好<br>在<code>./hexo/themes/next/source/js/cursor</code>中新建<code>fireworks.js</code>，并添加</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">class Circle &#123;</span><br><span class="line">  constructor(&#123; origin, speed, <span class="attribute">color</span>, angle, context &#125;) &#123;</span><br><span class="line">    this<span class="selector-class">.origin</span> = origin</span><br><span class="line">    this<span class="selector-class">.position</span> = &#123; ..<span class="selector-class">.this</span><span class="selector-class">.origin</span> &#125;</span><br><span class="line">    this<span class="selector-class">.color</span> = <span class="attribute">color</span></span><br><span class="line">    this<span class="selector-class">.speed</span> = speed</span><br><span class="line">    this<span class="selector-class">.angle</span> = angle</span><br><span class="line">    this<span class="selector-class">.context</span> = context</span><br><span class="line">    this<span class="selector-class">.renderCount</span> = <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  draw() &#123;</span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.fillStyle</span> = this<span class="selector-class">.color</span></span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.beginPath</span>()</span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.arc</span>(this<span class="selector-class">.position</span><span class="selector-class">.x</span>, this<span class="selector-class">.position</span><span class="selector-class">.y</span>, <span class="number">2</span>, <span class="number">0</span>, Math<span class="selector-class">.PI</span> * <span class="number">2</span>)</span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.fill</span>()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  move() &#123;</span><br><span class="line">    this<span class="selector-class">.position</span><span class="selector-class">.x</span> = (Math<span class="selector-class">.sin</span>(this<span class="selector-class">.angle</span>) * this<span class="selector-class">.speed</span>) + this<span class="selector-class">.position</span><span class="selector-class">.x</span></span><br><span class="line">    this<span class="selector-class">.position</span><span class="selector-class">.y</span> = (Math<span class="selector-class">.cos</span>(this<span class="selector-class">.angle</span>) * this<span class="selector-class">.speed</span>) + this<span class="selector-class">.position</span><span class="selector-class">.y</span> + (this<span class="selector-class">.renderCount</span> * <span class="number">0.3</span>)</span><br><span class="line">    this<span class="selector-class">.renderCount</span>++</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Boom &#123;</span><br><span class="line">  constructor (&#123; origin, context, circleCount = <span class="number">16</span>, area &#125;) &#123;</span><br><span class="line">    this<span class="selector-class">.origin</span> = origin</span><br><span class="line">    this<span class="selector-class">.context</span> = context</span><br><span class="line">    this<span class="selector-class">.circleCount</span> = circleCount</span><br><span class="line">    this<span class="selector-class">.area</span> = area</span><br><span class="line">    this<span class="selector-class">.stop</span> = false</span><br><span class="line">    this<span class="selector-class">.circles</span> = <span class="selector-attr">[]</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomArray(range) &#123;</span><br><span class="line">    const length = range<span class="selector-class">.length</span></span><br><span class="line">    const randomIndex = Math<span class="selector-class">.floor</span>(length * Math<span class="selector-class">.random</span>())</span><br><span class="line">    return range<span class="selector-attr">[randomIndex]</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomColor() &#123;</span><br><span class="line">    const range = <span class="selector-attr">[<span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;9&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>, <span class="string">&#x27;F&#x27;</span>]</span></span><br><span class="line">    return &#x27;#&#x27; + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomRange(start, end) &#123;</span><br><span class="line">    return (end - start) * Math<span class="selector-class">.random</span>() + start</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  init() &#123;</span><br><span class="line">    for(let <span class="selector-tag">i</span> = <span class="number">0</span>; <span class="selector-tag">i</span> &lt; this<span class="selector-class">.circleCount</span>; <span class="selector-tag">i</span>++) &#123;</span><br><span class="line">      const circle = new Circle(&#123;</span><br><span class="line">        context: this.context,</span><br><span class="line">        origin: this.origin,</span><br><span class="line">        color: this.<span class="built_in">randomColor</span>(),</span><br><span class="line">        angle: this.<span class="built_in">randomRange</span>(Math.PI - <span class="number">1</span>, Math.PI + <span class="number">1</span>),</span><br><span class="line">        speed: this.<span class="built_in">randomRange</span>(<span class="number">1</span>, <span class="number">6</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">      this<span class="selector-class">.circles</span><span class="selector-class">.push</span>(circle)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  move() &#123;</span><br><span class="line">    this<span class="selector-class">.circles</span><span class="selector-class">.forEach</span>((circle, index) =&gt; &#123;</span><br><span class="line">      if (circle<span class="selector-class">.position</span><span class="selector-class">.x</span> &gt; this<span class="selector-class">.area</span><span class="selector-class">.width</span> || circle<span class="selector-class">.position</span><span class="selector-class">.y</span> &gt; this<span class="selector-class">.area</span><span class="selector-class">.height</span>) &#123;</span><br><span class="line">        return this<span class="selector-class">.circles</span><span class="selector-class">.splice</span>(index, <span class="number">1</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      circle<span class="selector-class">.move</span>()</span><br><span class="line">    &#125;)</span><br><span class="line">    if (this<span class="selector-class">.circles</span><span class="selector-class">.length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      this<span class="selector-class">.stop</span> = true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  draw() &#123;</span><br><span class="line">    this<span class="selector-class">.circles</span><span class="selector-class">.forEach</span>(circle =&gt; circle<span class="selector-class">.draw</span>())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class CursorSpecialEffects &#123;</span><br><span class="line">  constructor() &#123;</span><br><span class="line">    this<span class="selector-class">.computerCanvas</span> = document<span class="selector-class">.createElement</span>(&#x27;<span class="selector-tag">canvas</span>&#x27;)</span><br><span class="line">    this<span class="selector-class">.renderCanvas</span> = document<span class="selector-class">.createElement</span>(&#x27;<span class="selector-tag">canvas</span>&#x27;)</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.computerContext</span> = this<span class="selector-class">.computerCanvas</span><span class="selector-class">.getContext</span>(&#x27;<span class="number">2</span>d&#x27;)</span><br><span class="line">    this<span class="selector-class">.renderContext</span> = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.getContext</span>(&#x27;<span class="number">2</span>d&#x27;)</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.globalWidth</span> = window<span class="selector-class">.innerWidth</span></span><br><span class="line">    this<span class="selector-class">.globalHeight</span> = window<span class="selector-class">.innerHeight</span></span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.booms</span> = <span class="selector-attr">[]</span></span><br><span class="line">    this<span class="selector-class">.running</span> = false</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleMouseDown(e) &#123;</span><br><span class="line">    const boom = new Boom(&#123;</span><br><span class="line">      origin: &#123; x: e.clientX, y: e.clientY &#125;,</span><br><span class="line">      context: this.computerContext,</span><br><span class="line">      area: &#123;</span><br><span class="line">        <span class="attribute">width</span>: this.globalWidth,</span><br><span class="line">        height: this.globalHeight</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    boom<span class="selector-class">.init</span>()</span><br><span class="line">    this<span class="selector-class">.booms</span><span class="selector-class">.push</span>(boom)</span><br><span class="line">    this<span class="selector-class">.running</span> || this<span class="selector-class">.run</span>()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handlePageHide() &#123;</span><br><span class="line">    this<span class="selector-class">.booms</span> = <span class="selector-attr">[]</span></span><br><span class="line">    this<span class="selector-class">.running</span> = false</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  init() &#123;</span><br><span class="line">    const style = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.style</span></span><br><span class="line">    style<span class="selector-class">.position</span> = &#x27;fixed&#x27;</span><br><span class="line">    style<span class="selector-class">.top</span> = style<span class="selector-class">.left</span> = <span class="number">0</span></span><br><span class="line">    style<span class="selector-class">.zIndex</span> = &#x27;<span class="number">999999999999999999999999999999999999999999</span>&#x27;</span><br><span class="line">    style<span class="selector-class">.pointerEvents</span> = &#x27;<span class="attribute">none</span>&#x27;</span><br><span class="line"></span><br><span class="line">    style<span class="selector-class">.width</span> = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.width</span> = this<span class="selector-class">.computerCanvas</span><span class="selector-class">.width</span> = this<span class="selector-class">.globalWidth</span></span><br><span class="line">    style<span class="selector-class">.height</span> = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.height</span> = this<span class="selector-class">.computerCanvas</span><span class="selector-class">.height</span> = this<span class="selector-class">.globalHeight</span></span><br><span class="line"></span><br><span class="line">    document<span class="selector-class">.body</span><span class="selector-class">.append</span>(this<span class="selector-class">.renderCanvas</span>)</span><br><span class="line"></span><br><span class="line">    window<span class="selector-class">.addEventListener</span>(&#x27;mousedown&#x27;, this<span class="selector-class">.handleMouseDown</span><span class="selector-class">.bind</span>(this))</span><br><span class="line">    window<span class="selector-class">.addEventListener</span>(&#x27;pagehide&#x27;, this<span class="selector-class">.handlePageHide</span><span class="selector-class">.bind</span>(this))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  run() &#123;</span><br><span class="line">    this<span class="selector-class">.running</span> = true</span><br><span class="line">    if (this<span class="selector-class">.booms</span><span class="selector-class">.length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      return this<span class="selector-class">.running</span> = false</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    requestAnimationFrame(this<span class="selector-class">.run</span><span class="selector-class">.bind</span>(this))</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.computerContext</span><span class="selector-class">.clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, this<span class="selector-class">.globalWidth</span>, this<span class="selector-class">.globalHeight</span>)</span><br><span class="line">    this<span class="selector-class">.renderContext</span><span class="selector-class">.clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, this<span class="selector-class">.globalWidth</span>, this<span class="selector-class">.globalHeight</span>)</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.booms</span><span class="selector-class">.forEach</span>((boom, index) =&gt; &#123;</span><br><span class="line">      if (boom<span class="selector-class">.stop</span>) &#123;</span><br><span class="line">        return this<span class="selector-class">.booms</span><span class="selector-class">.splice</span>(index, <span class="number">1</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      boom<span class="selector-class">.move</span>()</span><br><span class="line">      boom<span class="selector-class">.draw</span>()</span><br><span class="line">    &#125;)</span><br><span class="line">    this<span class="selector-class">.renderContext</span><span class="selector-class">.drawImage</span>(this<span class="selector-class">.computerCanvas</span>, <span class="number">0</span>, <span class="number">0</span>, this<span class="selector-class">.globalWidth</span>, this<span class="selector-class">.globalHeight</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const cursorSpecialEffects = new CursorSpecialEffects()</span><br><span class="line">cursorSpecialEffects<span class="selector-class">.init</span>()</span><br></pre></td></tr></table></figure>
-
-<p>然后在<code>./hexo/source/_data/body-end.swig</code>中添加</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;# 鼠标点击特效 #&#125;</span><br><span class="line">&#123;% if theme<span class="selector-class">.cursor_effect</span> == &quot;fireworks&quot; %&#125;</span><br><span class="line">  &lt;script async <span class="attribute">src</span>=&quot;/js/<span class="attribute">cursor</span>/fireworks<span class="selector-class">.js</span>&quot;&gt;&lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在<code>next.yml</code>中添加</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"># 鼠标点击特效</span><br><span class="line">cursor_effect: fireworks</span><br></pre></td></tr></table></figure>
-
-<h2 id="不蒜子"><a href="#不蒜子" class="headerlink" title="不蒜子"></a>不蒜子</h2><p>Next内置了不蒜子统计<br>在<code>next.yml</code>中搜索<code>busuanzi_count</code>并设置为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enable: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="自定义单行代码颜色"><a href="#自定义单行代码颜色" class="headerlink" title="自定义单行代码颜色"></a>自定义单行代码颜色</h2><p>在<code>./hexo/source/_data/styles.styl</code>中添加</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">code</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#ff511A</span>;</span><br><span class="line">    //<span class="attribute">background</span>: <span class="number">#fbf7f8</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">2px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Live2D看板娘"><a href="#Live2D看板娘" class="headerlink" title="Live2D看板娘"></a>Live2D看板娘</h2><p>以我安装的<code>tororo</code>为例，其他模型请见<a href="https://github.com/xiazeyu/live2d-widget-models">官方文档</a><br>安装</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br><span class="line">npm install live2d-widget-model-tororo</span><br></pre></td></tr></table></figure>
-<p>在<code>next.yml</code>中搜索<code>Progress bar in the top during page loading</code>并设置为</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  enable: true 							# 开启Live2D</span><br><span class="line">  scriptFrom: local 					   # 插件来源</span><br><span class="line">  pluginRootPath: live2dw/ 				# 插件根目录(相对路径)</span><br><span class="line">  pluginJsPath: lib/ 					  # 脚本文件路径(相对于插件根目录路径)</span><br><span class="line">  pluginModelPath: assets/ 				# 模型文件路径(相对于插件根目录)</span><br><span class="line">  tagMode: false 						  # 是否标签模式</span><br><span class="line">  debug: false 							# 是否开启调试模式</span><br><span class="line">  model:</span><br><span class="line">    use: live2d-widget-model-wanko 		# 选择模型</span><br><span class="line">  display:</span><br><span class="line">    position: right						# 模型在页面上的位置</span><br><span class="line">    width: <span class="number">150</span> 							# 模型宽度</span><br><span class="line">    height: <span class="number">300</span> 		 				  # 模型高度</span><br><span class="line">  mobile:</span><br><span class="line">    show: true 							# 是否在手机端显示</span><br><span class="line">  react:</span><br><span class="line">    opacity: <span class="number">1</span> 							# 设置模型透明度</span><br></pre></td></tr></table></figure>
-
-<h2 id="Echarts"><a href="#Echarts" class="headerlink" title="Echarts"></a>Echarts</h2><p>熊家的可视化图表，与PJAX有冲突，开启PJAX的情况下需要刷新页面才能成功加载。谷歌搜到说要修改PJAX，但是本人水平有限没能成功</p>
-<p>安装的插件使用的是4.3，某些图表不能正常显示，需要手动修改为最新的，这个版本失效的话就到ECharts官网上随便打开一个示例，然后用浏览器控制台找到最新js文件的地址替换。</p>
-<p>打开<code>./hexo/node_modules/hexo-tag-echarts4/template.html</code>，修改<code>&lt;script src=&quot;https://cdn.bootcss.com/echarts/4.3.0/echarts.common.min.js&quot;&gt;&lt;/script&gt;</code>为<code>&lt;script src=&quot;https://www.echartsjs.com/examples/vendors/echarts/echarts.min.js?_v_=1584687926098&quot;&gt;&lt;/script&gt;</code></p>
-<p>此外，一些地图类的图表需要引入地图的js，也是开控制台找，然后加入到<code>./hexo/node_modules/hexo-tag-echarts4/template.html</code>中，例如中国地图和世界地图的js</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;script <span class="attribute">src</span>=&quot;https://www.echartsjs.com/examples/vendors/echarts/map/js/china.js?_v_=<span class="number">1584687926098</span><span class="string">&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script src=&quot;</span>https://www.echartsjs.com/examples/vendors/echarts/map/js/world.js?_v_=<span class="number">1584687926098</span><span class="string">&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>总之就是缺什么补什么</p>
-<p>安装</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-tag-echarts4 --save</span><br></pre></td></tr></table></figure>
-
-<p>使用<br>400代表图表的高度是400px，85%表示相对宽度是85%，不标明的话默认值是高度400px，宽度81%</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;% echarts <span class="number">400</span> &#x27;<span class="number">85%</span>&#x27; %&#125;</span><br><span class="line">\\TODO echarts contents goes here</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>示例</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;% echarts %&#125;</span><br><span class="line">option = &#123;</span><br><span class="line">    xAxis: &#123;</span><br><span class="line">        type: <span class="string">&#x27;category&#x27;</span>,</span><br><span class="line">        data: [<span class="string">&#x27;Mon&#x27;</span>, <span class="string">&#x27;Tue&#x27;</span>, <span class="string">&#x27;Wed&#x27;</span>, <span class="string">&#x27;Thu&#x27;</span>, <span class="string">&#x27;Fri&#x27;</span>, <span class="string">&#x27;Sat&#x27;</span>, <span class="string">&#x27;Sun&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    yAxis: &#123;</span><br><span class="line">        type: <span class="string">&#x27;value&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    series: [&#123;</span><br><span class="line">        data: [<span class="number">820</span>, <span class="number">932</span>, <span class="number">901</span>, <span class="number">934</span>, <span class="number">1290</span>, <span class="number">1330</span>, <span class="number">1320</span>],</span><br><span class="line">        type: <span class="string">&#x27;line&#x27;</span></span><br><span class="line">    &#125;]</span><br><span class="line">&#125;;</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2022.5.13 已废弃</p>
-<h2 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h2><p>Github的服务器在境外，网站加载时间巨长，而使用CDN加速可以有效缓解这一问题</p>
-<ul>
-<li>登陆<a href="https://www.cloudflare.com/">Cloudflare</a></li>
-<li>输入你的域名并点击点击<code>Add site</code></li>
-<li>选择套餐，选<code>free</code>就好</li>
-<li>点击<code>Confirm plan</code></li>
-<li>Cloudflare会先扫描你的DNS记录，稍等一会会出现你域名现在的解析记录</li>
-<li>点击<code>Continue</code></li>
-<li>打开你域名服务商的网站，用Cloudflare给的两个DNS服务器替换掉原来的服务器</li>
-<li>完成后回到Cloudflare，点击<code>Done, check nameservers</code></li>
-<li>然后慢慢等待生效，生效后会有邮件提醒</li>
-<li>等待的时候可以做一些设置</li>
-<li>SSL&#x2F;TLS选项<ul>
-<li>Mode使用默认的Full</li>
-<li>Always Use HTTPS设置为On</li>
-<li>Opportunistic Encryption设置为On</li>
-<li>Authenticated Origin Pills设置为On</li>
-</ul>
-</li>
-</ul>
-<p>填坑完成，毕设期间估计要咕咕咕3个月了┏(＾0＾)┛</p>
-<blockquote>
-<p>参考: <a href="https://tding.top/archives/2bd6d82.html">小丁的个人博客</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Blog</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>MacOS</tag>
       </tags>
   </entry>
   <entry>
@@ -2333,11 +2154,235 @@
 <h1 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h1><p><strong>差不多就这些东西，美化真的是个大坑</strong><br><img data-src="https://s2.loli.net/2022/05/13/ft5VBOGJjwnbDWc.jpg" alt="201904121"></p>
 ]]></content>
       <categories>
-        <category>Blog</category>
+        <category>网站配置</category>
       </categories>
       <tags>
         <tag>HEXO</tag>
         <tag>Next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Next升级+Mac迁移 </title>
+    <url>/Next%E5%8D%87%E7%BA%A7-Mac%E8%BF%81%E7%A7%BB.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">写博客到现在已经快一年了，Next主题也更新了好多版本，新增的pjax真的是太香了，果断更新。顺便把Hexo迁移到mac上面来</blockquote>
+
+<span id="more"></span>
+
+<h1 id="更新说明"><a href="#更新说明" class="headerlink" title="更新说明"></a>更新说明</h1><p>Next主题从7.1到7.7.2的变动较大，直接升级的话小问题比较多，所以这次升级采用了重新安装的方式</p>
+<h2 id="版本对比"><a href="#版本对比" class="headerlink" title="版本对比"></a>版本对比</h2><p>升级前Hexo版本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo: 3.8.0</span><br><span class="line">hexo-cli: 3.1.0</span><br><span class="line">os: Windows_NT 10.0.17763 win32 x64</span><br><span class="line">node: 12.14.1</span><br><span class="line">next: 7.1</span><br></pre></td></tr></table></figure>
+<p>升级后Hexo版本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo: 4.2.0</span><br><span class="line">hexo-cli: 3.1.0</span><br><span class="line">os: Darwin 18.7.0 darwin x64</span><br><span class="line">node: 13.10.1</span><br><span class="line">next: 7.7.2</span><br></pre></td></tr></table></figure>
+
+<h2 id="新增功能"><a href="#新增功能" class="headerlink" title="新增功能"></a>新增功能</h2><ul>
+<li>pjax（局部刷新加载页面）</li>
+<li>DarkMode夜间模式（支持Mac等的夜间模式）</li>
+<li>Gitalk评论（Gitment凉了之后一直没设置评论系统，这次顺路加上）</li>
+<li>Mediumzoom（图片插件）</li>
+<li>中英切换（新）</li>
+<li>CDN（进行中）</li>
+<li>Echarts</li>
+</ul>
+<h2 id="移除功能"><a href="#移除功能" class="headerlink" title="移除功能"></a>移除功能</h2><ul>
+<li>动态背景（占用资源较大，在手机平板等设备上造成卡顿、发热、耗电快等问题）</li>
+<li>i18n-generator（一年也没写过英语的博客，而且这个方案缺陷太大，正在寻找其他解决方案）</li>
+<li>网易云音乐挂件（使用频率极低，拖慢加载速度）</li>
+</ul>
+<h2 id="保留功能"><a href="#保留功能" class="headerlink" title="保留功能"></a>保留功能</h2><ul>
+<li>站内搜索</li>
+<li>字数与阅读时长统计</li>
+<li>网站运行时间</li>
+<li>加载进度条</li>
+<li>崩溃欺骗</li>
+<li>背景图片</li>
+<li>鼠标点击特效</li>
+<li>不蒜子</li>
+<li>Live2D看板娘</li>
+</ul>
+<h1 id="Mac安装过程"><a href="#Mac安装过程" class="headerlink" title="Mac安装过程"></a>Mac安装过程</h1><h2 id="安装软件依赖"><a href="#安装软件依赖" class="headerlink" title="安装软件依赖"></a>安装软件依赖</h2><p>首先下载安装<code>git</code>和<code>node.js</code>,官网如下</p>
+<ul>
+<li><a href="https://git-scm.com/">git</a></li>
+<li><a href="https://nodejs.org/en/">node.js</a></li>
+</ul>
+<p>安装完成后在终端分别输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git --version</span><br><span class="line">node -v</span><br></pre></td></tr></table></figure>
+<p>检测是否安装成功，成功的话会返回软件版本号</p>
+<h2 id="配置本地目录"><a href="#配置本地目录" class="headerlink" title="配置本地目录"></a>配置本地目录</h2><ul>
+<li>新建一个用于存放博客文件的文件夹</li>
+<li>新建位于文件夹位置的终端窗口</li>
+<li>输入<code>npm install hexo -g</code>安装hexo<ul>
+<li>这一步可能会报错，报错的话使用命令<code>sudo npm install --unsafe-perm --verbose -g hexo</code>来安装hexo</li>
+</ul>
+</li>
+<li>输入<code>npm install</code>安装其他依赖</li>
+<li>输入<code>npm install hexo-deployer-git --save</code>安装部署插件</li>
+<li>输入<code>hexo v</code>查看是否安装成功，成功会返回版本号</li>
+</ul>
+<h2 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h2><ul>
+<li>打开终端</li>
+<li>输入<code>ls -al ~/.ssh</code>检查是否有以前生成的 SSH Key，没有的话继续</li>
+<li>输入<code>ssh-keygen -t rsa -C &quot;Guthub邮箱地址&quot;</code> 然后回车三连</li>
+<li>此时终端会显示文件的生成路径，根据路径找到并打开<code>id_rsa.pub</code></li>
+<li>复制里面的所有内容</li>
+<li>打开Github，在右上角个人头像下拉菜单中找到<code>Settings</code></li>
+<li>打开<code>SSH and GPG keys</code>,点击右上角<code>New SSH key</code></li>
+<li><code>Title</code>随便填,然后在<code>Key</code>中粘贴</li>
+<li>点击<code>Add SSH key</code></li>
+<li>回到Git bash，输入<code>ssh -T git@github.com</code>回车</li>
+<li>首次输入可能会有提醒，输入<code>yes</code>回车即可</li>
+<li>成功返回<code>Hi 用户名! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code>就代表成功了</li>
+<li>输入<code>git config --global user.name &quot;用户名&quot;</code></li>
+<li>输入<code>git config --global user.email  &quot;邮箱地址&quot;</code></li>
+</ul>
+<h2 id="安装Next主题"><a href="#安装Next主题" class="headerlink" title="安装Next主题"></a>安装Next主题</h2><p>在终端输入下面的命令安装最新的Next主题</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<h1 id="Next主题自定义"><a href="#Next主题自定义" class="headerlink" title="Next主题自定义"></a>Next主题自定义</h1><p>Hexo的配置过程我就不说了，根据原来的<code>_config.yml</code>配置就行，下面要说的是Next主题的配置</p>
+<h2 id="配置文件分离"><a href="#配置文件分离" class="headerlink" title="配置文件分离"></a>配置文件分离</h2><p>Next主题在7.3之后分离了配置文件与主题，详情请见<a href="https://tding.top/archives/2bd6d82.html">小丁的个人博客</a>。</p>
+<ul>
+<li>新建文件夹<code>hexo/source/_data</code></li>
+<li>将<code>./themes/next/_config.yml</code>复制到<code>hexo/source/_data</code>路径下并重命名为<code>next.yml</code></li>
+<li>将<code>next.yml</code>中的<code>override</code>设置为<code>true</code>即可作为主题的配置文件使用</li>
+<li>在<code>hexo/source/_data</code>中新建<code>body-end.swig</code>和<code>styles.styl</code>文件</li>
+<li>然后在<code>next.yml</code>的<code>custom_file_path</code>中删除前面的<code>#</code>来启用<code>bodyEnd</code>和<code>style</code></li>
+<li><code>custom_file_path</code>中的其他选项根据需要创建相关文件并启用</li>
+</ul>
+<h2 id="Pjax"><a href="#Pjax" class="headerlink" title="Pjax"></a>Pjax</h2><p>Pjax是基于Ajax的插件，能实现网页局部无刷新载入，听起来很香，然而存在一些小问题：</p>
+<ul>
+<li>使用Mediumzoom时，从归档进入博文不会加载图片，需要刷新网页才能加载</li>
+<li>Echarts图表全部需要刷新才能显示，否则只有一片空白</li>
+</ul>
+<p>安装Pjax</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/theme-next-pjax source/lib/pjax</span><br></pre></td></tr></table></figure>
+<p>在<code>next.yml</code>中搜索<code>pjax</code>并设置为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pjax: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="Darkmode"><a href="#Darkmode" class="headerlink" title="Darkmode"></a>Darkmode</h2><p>Next主题新增了暗色模式，能够配合系统的暗色主题使用<br>在<code>next.yml</code>中搜索<code>darkmode</code>并设置为<code>auto</code>即可根据系统主题切换亮色&#x2F;暗色模式</p>
+<h2 id="Gitalk评论"><a href="#Gitalk评论" class="headerlink" title="Gitalk评论"></a>Gitalk评论</h2><p>评论系统，一开始想用Valine来着，结果要实名制，果断弃了</p>
+<ul>
+<li>在Github新建一个仓库<code>gitalk-comment</code>，用来存放评论产生的issues</li>
+<li>点击右上角<code>头像 - Setting - Developer settings - OAuth Apps - New OAuth Apps</code></li>
+<li><code>Application name</code> 随便填</li>
+<li><code>Homepage URL</code>和<code>Authorization callback URL</code>都填自己的博客地址</li>
+<li>点击 <code>Register application</code></li>
+<li>在<code>next.yml</code>中搜索<code>gitalk</code></li>
+<li>复制得到的<code>Cilent ID</code>和<code>Cilent secret</code>到相应位置粘贴</li>
+<li>设置<code>enable</code>为<code>true</code></li>
+<li><code>github_id</code>和<code>admin_user</code>为你的用户名</li>
+<li><code>repo</code>为刚才创建的仓库名<code>gitalk-comment</code></li>
+<li><code>distraction_free_mode</code>是类似facobook的评论遮罩功能</li>
+</ul>
+<p><code>next.yml</code>中的具体配置如下</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"># Gitalk</span><br><span class="line"># For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk</span><br><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  github_id: Siriusq # GitHub repo owner</span><br><span class="line">  repo: gitalk-commnet # Repository name to store issues</span><br><span class="line">  client_id: xxxxxxxx # GitHub Application Client ID</span><br><span class="line">  client_secret: xxxxxxxx # GitHub Application Client Secret</span><br><span class="line">  admin_user: Siriusq # GitHub repo owner and collaborators, only these guys can initialize gitHub issues</span><br><span class="line">  distraction_free_mode: false # Facebook-like distraction free mode</span><br><span class="line">  # Gitalk<span class="string">&#x27;s display language depends on user&#x27;</span>s browser or system environment</span><br><span class="line">  # If you want everyone visiting your site to see a uniform language, you can set a force language value</span><br><span class="line">  # Available values: en | es-ES | fr | ru | zh-CN | zh-TW</span><br><span class="line">  language:</span><br></pre></td></tr></table></figure>
+
+<h2 id="Mediumzoom"><a href="#Mediumzoom" class="headerlink" title="Mediumzoom"></a>Mediumzoom</h2><p>模仿Medium图片查看方式的插件<br>安装</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install medium-zoom</span><br></pre></td></tr></table></figure>
+<p>在<code>next.yml</code>中搜索<code>mediumzoom</code>并设置为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mediumzoom: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="中英切换"><a href="#中英切换" class="headerlink" title="中英切换"></a>中英切换</h2><p>请移步另一篇博客<a href="https://siriusq.top/Hexo-Next-7-7-%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html">Hexo Next 7.7 双语切换</a></p>
+<h2 id="站内搜索"><a href="#站内搜索" class="headerlink" title="站内搜索"></a>站内搜索</h2><p>查找博客内的内容<br>安装</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb</span><br></pre></td></tr></table></figure>
+<p>在<code>next.yml</code>中搜索<code>local_search</code>并设置为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enable: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="字数与阅读时长统计"><a href="#字数与阅读时长统计" class="headerlink" title="字数与阅读时长统计"></a>字数与阅读时长统计</h2><p>安装</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-symbols-count-<span class="built_in">time</span></span><br></pre></td></tr></table></figure>
+<p>在根目录的<code>_config.yml</code>中添加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br><span class="line">  exclude_codeblock: false</span><br><span class="line">  awl: 4</span><br><span class="line">  wpm: 275</span><br><span class="line">  suffix: &quot;mins.&quot;</span><br></pre></td></tr></table></figure>
+<p>然后在<code>next.yml</code>中搜索<code>symbols_count_time</code>并设置为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加jquery"><a href="#添加jquery" class="headerlink" title="添加jquery"></a>添加jquery</h2><ul>
+<li>新版的Next主题移除了jquery，导致一些老得自定义设置会失效，我直接从老版本的Next主题复制过来了，路径是<code>./hexo/themes/next/source/libs/jquery/jquert-2.2.0.min.js</code>，也可以到<a href="https://code.jquery.com/jquery/">官网</a>下载</li>
+<li>将jquery放置在<code>./hexo/source/js</code>路径下</li>
+<li>在<code>./hexo/source/_data/body-end.swig</code>添加，版本不同的话记得改下面的版本<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!--jquery--&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/js/jquery-2.2.0.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="网站运行时间"><a href="#网站运行时间" class="headerlink" title="网站运行时间"></a>网站运行时间</h2><p>打开<code>./hexo/themes/next/layout/_partials/footer.swig</code>并添加下列代码</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">span</span> id=&quot;timeDate&quot;&gt;载入天数...&lt;/<span class="selector-tag">span</span>&gt;&lt;<span class="selector-tag">span</span> id=&quot;times&quot;&gt;载入时分秒...&lt;/<span class="selector-tag">span</span>&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="selector-tag">var</span> now = new Date();</span><br><span class="line">    function createtime() &#123;</span><br><span class="line">        <span class="selector-tag">var</span> grt= new Date(&quot;<span class="number">03</span>/<span class="number">31</span>/<span class="number">2019</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span><span class="string">&quot;);</span></span><br><span class="line"><span class="string">        now.setTime(now.getTime()+250);</span></span><br><span class="line"><span class="string">        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);</span></span><br><span class="line"><span class="string">        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);</span></span><br><span class="line"><span class="string">        if(String(hnum).length ==1 )&#123;hnum = &quot;</span><span class="number">0</span><span class="string">&quot; + hnum;&#125; minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);</span></span><br><span class="line"><span class="string">        mnum = Math.floor(minutes); if(String(mnum).length ==1 )&#123;mnum = &quot;</span><span class="number">0</span><span class="string">&quot; + mnum;&#125;</span></span><br><span class="line"><span class="string">        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);</span></span><br><span class="line"><span class="string">        snum = Math.round(seconds); if(String(snum).length ==1 )&#123;snum = &quot;</span><span class="number">0</span><span class="string">&quot; + snum;&#125;</span></span><br><span class="line"><span class="string">        document.getElementById(&quot;</span>timeDate<span class="string">&quot;).innerHTML = &quot;</span>本站已安全运行 <span class="string">&quot;+dnum+&quot;</span> 天 <span class="string">&quot;;</span></span><br><span class="line"><span class="string">        document.getElementById(&quot;</span>times<span class="string">&quot;).innerHTML = hnum + &quot;</span> 小时 <span class="string">&quot; + mnum + &quot;</span> 分 <span class="string">&quot; + snum + &quot;</span> 秒<span class="string">&quot;;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">setInterval(&quot;</span><span class="built_in">createtime</span>()<span class="string">&quot;,250);</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="加载进度条"><a href="#加载进度条" class="headerlink" title="加载进度条"></a>加载进度条</h2><p>显示当前网页的加载进度<br>安装</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/theme-next-pace source/lib/pace</span><br></pre></td></tr></table></figure>
+<p>在<code>next.yml</code>中搜索<code>Progress bar in the top during page loading</code>并设置为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pace:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="崩溃欺骗"><a href="#崩溃欺骗" class="headerlink" title="崩溃欺骗"></a>崩溃欺骗</h2><p>在网页标题中添加崩溃欺骗效果，离开页面后标题会更改，切换回来后会恢复正常，需要配合<strong>jquery</strong>使用</p>
+<p>在<code>./hexo/source/js</code>中新建<code>crash_cheat</code>文件，复制下列代码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!--崩溃欺骗--&gt;</span><br><span class="line"> <span class="keyword">var</span> <span class="title class_">OriginTitle</span> = <span class="variable language_">document</span>.<span class="property">title</span>;</span><br><span class="line"> <span class="keyword">var</span> titleTime;</span><br><span class="line"> <span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;visibilitychange&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">     <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="property">hidden</span>) &#123;</span><br><span class="line">         $(<span class="string">&#x27;[rel=&quot;icon&quot;]&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&#x27;href&#x27;</span>, <span class="string">&quot;/img/TEP.ico&quot;</span>);</span><br><span class="line">         <span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">&#x27;╭(°A°`)╮ 页面崩溃啦 ~&#x27;</span>;</span><br><span class="line">         <span class="built_in">clearTimeout</span>(titleTime);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">else</span> &#123;</span><br><span class="line">         $(<span class="string">&#x27;[rel=&quot;icon&quot;]&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&#x27;href&#x27;</span>, <span class="string">&quot;/favicon.ico&quot;</span>);</span><br><span class="line">         <span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">&#x27;(ฅ&gt;ω&lt;*ฅ) 噫又好了~&#x27;</span> + <span class="title class_">OriginTitle</span>;</span><br><span class="line">         titleTime = <span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">             <span class="variable language_">document</span>.<span class="property">title</span> = <span class="title class_">OriginTitle</span>;</span><br><span class="line">         &#125;, <span class="number">2000</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<p>然后在<code>./hexo/source/_data/body-end.swig</code>中添加</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;!--崩溃欺骗--&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; <span class="attribute">src</span>=&quot;/js/crash_cheat<span class="selector-class">.js</span>&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h2><p>将背景图片放置在<code>./hexo/themes/next/source/images</code>中并命名为<code>background.jpg</code><br>然后在<code>./hexo/source/_data/styles.styl</code>中添加</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">url</span>(<span class="string">/images/background.jpg</span>);//图片路径</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;//是否重复平铺</span><br><span class="line">    <span class="attribute">background-attachment</span>: fixed;//是否随着网页上下滚动而滚动，fixed为固定</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">50%</span> <span class="number">50%</span>;//图片位置</span><br><span class="line">    <span class="attribute">background-size</span>: cover;//图片展示大小</span><br><span class="line">    -webkit-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    -o-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    -moz-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    -ms-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0.9</span>;</span><br><span class="line">    <span class="selector-tag">footer</span> &gt; <span class="selector-tag">div</span> &gt; <span class="selector-tag">div</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>:<span class="number">#000000</span>;//底部文字颜色</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="鼠标点击特效"><a href="#鼠标点击特效" class="headerlink" title="鼠标点击特效"></a>鼠标点击特效</h2><p>根据<a href="https://tding.top/archives/2bd6d82.html">小丁的个人博客</a>更换了鼠标点击的特效，原来的特效对低性能设备不友好<br>在<code>./hexo/themes/next/source/js/cursor</code>中新建<code>fireworks.js</code>，并添加</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">class Circle &#123;</span><br><span class="line">  constructor(&#123; origin, speed, <span class="attribute">color</span>, angle, context &#125;) &#123;</span><br><span class="line">    this<span class="selector-class">.origin</span> = origin</span><br><span class="line">    this<span class="selector-class">.position</span> = &#123; ..<span class="selector-class">.this</span><span class="selector-class">.origin</span> &#125;</span><br><span class="line">    this<span class="selector-class">.color</span> = <span class="attribute">color</span></span><br><span class="line">    this<span class="selector-class">.speed</span> = speed</span><br><span class="line">    this<span class="selector-class">.angle</span> = angle</span><br><span class="line">    this<span class="selector-class">.context</span> = context</span><br><span class="line">    this<span class="selector-class">.renderCount</span> = <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  draw() &#123;</span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.fillStyle</span> = this<span class="selector-class">.color</span></span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.beginPath</span>()</span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.arc</span>(this<span class="selector-class">.position</span><span class="selector-class">.x</span>, this<span class="selector-class">.position</span><span class="selector-class">.y</span>, <span class="number">2</span>, <span class="number">0</span>, Math<span class="selector-class">.PI</span> * <span class="number">2</span>)</span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.fill</span>()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  move() &#123;</span><br><span class="line">    this<span class="selector-class">.position</span><span class="selector-class">.x</span> = (Math<span class="selector-class">.sin</span>(this<span class="selector-class">.angle</span>) * this<span class="selector-class">.speed</span>) + this<span class="selector-class">.position</span><span class="selector-class">.x</span></span><br><span class="line">    this<span class="selector-class">.position</span><span class="selector-class">.y</span> = (Math<span class="selector-class">.cos</span>(this<span class="selector-class">.angle</span>) * this<span class="selector-class">.speed</span>) + this<span class="selector-class">.position</span><span class="selector-class">.y</span> + (this<span class="selector-class">.renderCount</span> * <span class="number">0.3</span>)</span><br><span class="line">    this<span class="selector-class">.renderCount</span>++</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Boom &#123;</span><br><span class="line">  constructor (&#123; origin, context, circleCount = <span class="number">16</span>, area &#125;) &#123;</span><br><span class="line">    this<span class="selector-class">.origin</span> = origin</span><br><span class="line">    this<span class="selector-class">.context</span> = context</span><br><span class="line">    this<span class="selector-class">.circleCount</span> = circleCount</span><br><span class="line">    this<span class="selector-class">.area</span> = area</span><br><span class="line">    this<span class="selector-class">.stop</span> = false</span><br><span class="line">    this<span class="selector-class">.circles</span> = <span class="selector-attr">[]</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomArray(range) &#123;</span><br><span class="line">    const length = range<span class="selector-class">.length</span></span><br><span class="line">    const randomIndex = Math<span class="selector-class">.floor</span>(length * Math<span class="selector-class">.random</span>())</span><br><span class="line">    return range<span class="selector-attr">[randomIndex]</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomColor() &#123;</span><br><span class="line">    const range = <span class="selector-attr">[<span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;9&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>, <span class="string">&#x27;F&#x27;</span>]</span></span><br><span class="line">    return &#x27;#&#x27; + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomRange(start, end) &#123;</span><br><span class="line">    return (end - start) * Math<span class="selector-class">.random</span>() + start</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  init() &#123;</span><br><span class="line">    for(let <span class="selector-tag">i</span> = <span class="number">0</span>; <span class="selector-tag">i</span> &lt; this<span class="selector-class">.circleCount</span>; <span class="selector-tag">i</span>++) &#123;</span><br><span class="line">      const circle = new Circle(&#123;</span><br><span class="line">        context: this.context,</span><br><span class="line">        origin: this.origin,</span><br><span class="line">        color: this.<span class="built_in">randomColor</span>(),</span><br><span class="line">        angle: this.<span class="built_in">randomRange</span>(Math.PI - <span class="number">1</span>, Math.PI + <span class="number">1</span>),</span><br><span class="line">        speed: this.<span class="built_in">randomRange</span>(<span class="number">1</span>, <span class="number">6</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">      this<span class="selector-class">.circles</span><span class="selector-class">.push</span>(circle)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  move() &#123;</span><br><span class="line">    this<span class="selector-class">.circles</span><span class="selector-class">.forEach</span>((circle, index) =&gt; &#123;</span><br><span class="line">      if (circle<span class="selector-class">.position</span><span class="selector-class">.x</span> &gt; this<span class="selector-class">.area</span><span class="selector-class">.width</span> || circle<span class="selector-class">.position</span><span class="selector-class">.y</span> &gt; this<span class="selector-class">.area</span><span class="selector-class">.height</span>) &#123;</span><br><span class="line">        return this<span class="selector-class">.circles</span><span class="selector-class">.splice</span>(index, <span class="number">1</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      circle<span class="selector-class">.move</span>()</span><br><span class="line">    &#125;)</span><br><span class="line">    if (this<span class="selector-class">.circles</span><span class="selector-class">.length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      this<span class="selector-class">.stop</span> = true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  draw() &#123;</span><br><span class="line">    this<span class="selector-class">.circles</span><span class="selector-class">.forEach</span>(circle =&gt; circle<span class="selector-class">.draw</span>())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class CursorSpecialEffects &#123;</span><br><span class="line">  constructor() &#123;</span><br><span class="line">    this<span class="selector-class">.computerCanvas</span> = document<span class="selector-class">.createElement</span>(&#x27;<span class="selector-tag">canvas</span>&#x27;)</span><br><span class="line">    this<span class="selector-class">.renderCanvas</span> = document<span class="selector-class">.createElement</span>(&#x27;<span class="selector-tag">canvas</span>&#x27;)</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.computerContext</span> = this<span class="selector-class">.computerCanvas</span><span class="selector-class">.getContext</span>(&#x27;<span class="number">2</span>d&#x27;)</span><br><span class="line">    this<span class="selector-class">.renderContext</span> = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.getContext</span>(&#x27;<span class="number">2</span>d&#x27;)</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.globalWidth</span> = window<span class="selector-class">.innerWidth</span></span><br><span class="line">    this<span class="selector-class">.globalHeight</span> = window<span class="selector-class">.innerHeight</span></span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.booms</span> = <span class="selector-attr">[]</span></span><br><span class="line">    this<span class="selector-class">.running</span> = false</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleMouseDown(e) &#123;</span><br><span class="line">    const boom = new Boom(&#123;</span><br><span class="line">      origin: &#123; x: e.clientX, y: e.clientY &#125;,</span><br><span class="line">      context: this.computerContext,</span><br><span class="line">      area: &#123;</span><br><span class="line">        <span class="attribute">width</span>: this.globalWidth,</span><br><span class="line">        height: this.globalHeight</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    boom<span class="selector-class">.init</span>()</span><br><span class="line">    this<span class="selector-class">.booms</span><span class="selector-class">.push</span>(boom)</span><br><span class="line">    this<span class="selector-class">.running</span> || this<span class="selector-class">.run</span>()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handlePageHide() &#123;</span><br><span class="line">    this<span class="selector-class">.booms</span> = <span class="selector-attr">[]</span></span><br><span class="line">    this<span class="selector-class">.running</span> = false</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  init() &#123;</span><br><span class="line">    const style = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.style</span></span><br><span class="line">    style<span class="selector-class">.position</span> = &#x27;fixed&#x27;</span><br><span class="line">    style<span class="selector-class">.top</span> = style<span class="selector-class">.left</span> = <span class="number">0</span></span><br><span class="line">    style<span class="selector-class">.zIndex</span> = &#x27;<span class="number">999999999999999999999999999999999999999999</span>&#x27;</span><br><span class="line">    style<span class="selector-class">.pointerEvents</span> = &#x27;<span class="attribute">none</span>&#x27;</span><br><span class="line"></span><br><span class="line">    style<span class="selector-class">.width</span> = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.width</span> = this<span class="selector-class">.computerCanvas</span><span class="selector-class">.width</span> = this<span class="selector-class">.globalWidth</span></span><br><span class="line">    style<span class="selector-class">.height</span> = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.height</span> = this<span class="selector-class">.computerCanvas</span><span class="selector-class">.height</span> = this<span class="selector-class">.globalHeight</span></span><br><span class="line"></span><br><span class="line">    document<span class="selector-class">.body</span><span class="selector-class">.append</span>(this<span class="selector-class">.renderCanvas</span>)</span><br><span class="line"></span><br><span class="line">    window<span class="selector-class">.addEventListener</span>(&#x27;mousedown&#x27;, this<span class="selector-class">.handleMouseDown</span><span class="selector-class">.bind</span>(this))</span><br><span class="line">    window<span class="selector-class">.addEventListener</span>(&#x27;pagehide&#x27;, this<span class="selector-class">.handlePageHide</span><span class="selector-class">.bind</span>(this))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  run() &#123;</span><br><span class="line">    this<span class="selector-class">.running</span> = true</span><br><span class="line">    if (this<span class="selector-class">.booms</span><span class="selector-class">.length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      return this<span class="selector-class">.running</span> = false</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    requestAnimationFrame(this<span class="selector-class">.run</span><span class="selector-class">.bind</span>(this))</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.computerContext</span><span class="selector-class">.clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, this<span class="selector-class">.globalWidth</span>, this<span class="selector-class">.globalHeight</span>)</span><br><span class="line">    this<span class="selector-class">.renderContext</span><span class="selector-class">.clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, this<span class="selector-class">.globalWidth</span>, this<span class="selector-class">.globalHeight</span>)</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.booms</span><span class="selector-class">.forEach</span>((boom, index) =&gt; &#123;</span><br><span class="line">      if (boom<span class="selector-class">.stop</span>) &#123;</span><br><span class="line">        return this<span class="selector-class">.booms</span><span class="selector-class">.splice</span>(index, <span class="number">1</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      boom<span class="selector-class">.move</span>()</span><br><span class="line">      boom<span class="selector-class">.draw</span>()</span><br><span class="line">    &#125;)</span><br><span class="line">    this<span class="selector-class">.renderContext</span><span class="selector-class">.drawImage</span>(this<span class="selector-class">.computerCanvas</span>, <span class="number">0</span>, <span class="number">0</span>, this<span class="selector-class">.globalWidth</span>, this<span class="selector-class">.globalHeight</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const cursorSpecialEffects = new CursorSpecialEffects()</span><br><span class="line">cursorSpecialEffects<span class="selector-class">.init</span>()</span><br></pre></td></tr></table></figure>
+
+<p>然后在<code>./hexo/source/_data/body-end.swig</code>中添加</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;# 鼠标点击特效 #&#125;</span><br><span class="line">&#123;% if theme<span class="selector-class">.cursor_effect</span> == &quot;fireworks&quot; %&#125;</span><br><span class="line">  &lt;script async <span class="attribute">src</span>=&quot;/js/<span class="attribute">cursor</span>/fireworks<span class="selector-class">.js</span>&quot;&gt;&lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>next.yml</code>中添加</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"># 鼠标点击特效</span><br><span class="line">cursor_effect: fireworks</span><br></pre></td></tr></table></figure>
+
+<h2 id="不蒜子"><a href="#不蒜子" class="headerlink" title="不蒜子"></a>不蒜子</h2><p>Next内置了不蒜子统计<br>在<code>next.yml</code>中搜索<code>busuanzi_count</code>并设置为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enable: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义单行代码颜色"><a href="#自定义单行代码颜色" class="headerlink" title="自定义单行代码颜色"></a>自定义单行代码颜色</h2><p>在<code>./hexo/source/_data/styles.styl</code>中添加</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">code</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#ff511A</span>;</span><br><span class="line">    //<span class="attribute">background</span>: <span class="number">#fbf7f8</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">2px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Live2D看板娘"><a href="#Live2D看板娘" class="headerlink" title="Live2D看板娘"></a>Live2D看板娘</h2><p>以我安装的<code>tororo</code>为例，其他模型请见<a href="https://github.com/xiazeyu/live2d-widget-models">官方文档</a><br>安装</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br><span class="line">npm install live2d-widget-model-tororo</span><br></pre></td></tr></table></figure>
+<p>在<code>next.yml</code>中搜索<code>Progress bar in the top during page loading</code>并设置为</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  enable: true 							# 开启Live2D</span><br><span class="line">  scriptFrom: local 					   # 插件来源</span><br><span class="line">  pluginRootPath: live2dw/ 				# 插件根目录(相对路径)</span><br><span class="line">  pluginJsPath: lib/ 					  # 脚本文件路径(相对于插件根目录路径)</span><br><span class="line">  pluginModelPath: assets/ 				# 模型文件路径(相对于插件根目录)</span><br><span class="line">  tagMode: false 						  # 是否标签模式</span><br><span class="line">  debug: false 							# 是否开启调试模式</span><br><span class="line">  model:</span><br><span class="line">    use: live2d-widget-model-wanko 		# 选择模型</span><br><span class="line">  display:</span><br><span class="line">    position: right						# 模型在页面上的位置</span><br><span class="line">    width: <span class="number">150</span> 							# 模型宽度</span><br><span class="line">    height: <span class="number">300</span> 		 				  # 模型高度</span><br><span class="line">  mobile:</span><br><span class="line">    show: true 							# 是否在手机端显示</span><br><span class="line">  react:</span><br><span class="line">    opacity: <span class="number">1</span> 							# 设置模型透明度</span><br></pre></td></tr></table></figure>
+
+<h2 id="Echarts"><a href="#Echarts" class="headerlink" title="Echarts"></a>Echarts</h2><p>熊家的可视化图表，与PJAX有冲突，开启PJAX的情况下需要刷新页面才能成功加载。谷歌搜到说要修改PJAX，但是本人水平有限没能成功</p>
+<p>安装的插件使用的是4.3，某些图表不能正常显示，需要手动修改为最新的，这个版本失效的话就到ECharts官网上随便打开一个示例，然后用浏览器控制台找到最新js文件的地址替换。</p>
+<p>打开<code>./hexo/node_modules/hexo-tag-echarts4/template.html</code>，修改<code>&lt;script src=&quot;https://cdn.bootcss.com/echarts/4.3.0/echarts.common.min.js&quot;&gt;&lt;/script&gt;</code>为<code>&lt;script src=&quot;https://www.echartsjs.com/examples/vendors/echarts/echarts.min.js?_v_=1584687926098&quot;&gt;&lt;/script&gt;</code></p>
+<p>此外，一些地图类的图表需要引入地图的js，也是开控制台找，然后加入到<code>./hexo/node_modules/hexo-tag-echarts4/template.html</code>中，例如中国地图和世界地图的js</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;script <span class="attribute">src</span>=&quot;https://www.echartsjs.com/examples/vendors/echarts/map/js/china.js?_v_=<span class="number">1584687926098</span><span class="string">&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script src=&quot;</span>https://www.echartsjs.com/examples/vendors/echarts/map/js/world.js?_v_=<span class="number">1584687926098</span><span class="string">&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>总之就是缺什么补什么</p>
+<p>安装</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-tag-echarts4 --save</span><br></pre></td></tr></table></figure>
+
+<p>使用<br>400代表图表的高度是400px，85%表示相对宽度是85%，不标明的话默认值是高度400px，宽度81%</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;% echarts <span class="number">400</span> &#x27;<span class="number">85%</span>&#x27; %&#125;</span><br><span class="line">\\TODO echarts contents goes here</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;% echarts %&#125;</span><br><span class="line">option = &#123;</span><br><span class="line">    xAxis: &#123;</span><br><span class="line">        type: <span class="string">&#x27;category&#x27;</span>,</span><br><span class="line">        data: [<span class="string">&#x27;Mon&#x27;</span>, <span class="string">&#x27;Tue&#x27;</span>, <span class="string">&#x27;Wed&#x27;</span>, <span class="string">&#x27;Thu&#x27;</span>, <span class="string">&#x27;Fri&#x27;</span>, <span class="string">&#x27;Sat&#x27;</span>, <span class="string">&#x27;Sun&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    yAxis: &#123;</span><br><span class="line">        type: <span class="string">&#x27;value&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    series: [&#123;</span><br><span class="line">        data: [<span class="number">820</span>, <span class="number">932</span>, <span class="number">901</span>, <span class="number">934</span>, <span class="number">1290</span>, <span class="number">1330</span>, <span class="number">1320</span>],</span><br><span class="line">        type: <span class="string">&#x27;line&#x27;</span></span><br><span class="line">    &#125;]</span><br><span class="line">&#125;;</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2022.5.13 已废弃</p>
+<h2 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h2><p>Github的服务器在境外，网站加载时间巨长，而使用CDN加速可以有效缓解这一问题</p>
+<ul>
+<li>登陆<a href="https://www.cloudflare.com/">Cloudflare</a></li>
+<li>输入你的域名并点击点击<code>Add site</code></li>
+<li>选择套餐，选<code>free</code>就好</li>
+<li>点击<code>Confirm plan</code></li>
+<li>Cloudflare会先扫描你的DNS记录，稍等一会会出现你域名现在的解析记录</li>
+<li>点击<code>Continue</code></li>
+<li>打开你域名服务商的网站，用Cloudflare给的两个DNS服务器替换掉原来的服务器</li>
+<li>完成后回到Cloudflare，点击<code>Done, check nameservers</code></li>
+<li>然后慢慢等待生效，生效后会有邮件提醒</li>
+<li>等待的时候可以做一些设置</li>
+<li>SSL&#x2F;TLS选项<ul>
+<li>Mode使用默认的Full</li>
+<li>Always Use HTTPS设置为On</li>
+<li>Opportunistic Encryption设置为On</li>
+<li>Authenticated Origin Pills设置为On</li>
+</ul>
+</li>
+</ul>
+<p>填坑完成，毕设期间估计要咕咕咕3个月了┏(＾0＾)┛</p>
+<blockquote>
+<p>参考: <a href="https://tding.top/archives/2bd6d82.html">小丁的个人博客</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>网站配置</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>MacOS</tag>
       </tags>
   </entry>
   <entry>
@@ -2579,11 +2624,12 @@
 <p>需要模板的可以给我发邮件，我当时找了不少，虽然没用到几个<br>要说的就这么多了，祝大家早日通过考试~~~<br>BTW，2020新年快乐~~~</p>
 ]]></content>
       <categories>
-        <category>PTE</category>
+        <category>留学</category>
       </categories>
       <tags>
-        <tag>English</tag>
+        <tag>留学</tag>
         <tag>PTE</tag>
+        <tag>攻略</tag>
       </tags>
   </entry>
   <entry>
@@ -2954,34 +3000,34 @@
 <h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>在这里安利一位B站的小姐姐@<a href="https://space.bilibili.com/35648955">久酱贩卖机</a>，她做了几期PTE的科普视频，灰常有用，B站果然是年轻人的学习圣地~~<br>另：知乎PTE板块已经被几家机构号占领了，看看就好…</p>
 ]]></content>
       <categories>
-        <category>PTE</category>
+        <category>留学</category>
       </categories>
       <tags>
-        <tag>English</tag>
+        <tag>留学</tag>
         <tag>PTE</tag>
+        <tag>攻略</tag>
       </tags>
   </entry>
   <entry>
-    <title>Purpose</title>
+    <title>碎碎念</title>
     <url>/Purpose.html</url>
-    <content><![CDATA[<h3 id="01"><a href="#01" class="headerlink" title="01"></a>01</h3><p>建立博客的初衷是记录一些自己踩过的坑，防止以后踩相同的坑无法自拔。</p>
+    <content><![CDATA[<h3 id="01"><a href="#01" class="headerlink" title="01"></a>01</h3><p>建立博客的目的嘛，就是记录一些自己踩过的坑咯，然后记录下每次因为感兴趣而开始的折腾，在世界上留下存在的痕迹吧，就这样。</p>
 <h3 id="02"><a href="#02" class="headerlink" title="02"></a>02</h3><p>博客主要记录的领域有：</p>
 <ul>
-<li>C&#x2F;C++编写的PTA算法题</li>
-<li>闲的蛋疼写的小游戏</li>
-<li>Echats的模板文件（主要给建筑狗用）</li>
-<li>PTE相关的经验</li>
-<li>CS出国留学的准备工作</li>
-<li>Python爬虫</li>
-<li>一些偏技术的教程（比如搭建这个博客）</li>
+<li>网站的配置</li>
+<li>出国留学经验</li>
+<li>建筑狗的水图大法</li>
+<li>搞机（字面意思啦）</li>
+<li>各种折腾</li>
 </ul>
-<h3 id="03"><a href="#03" class="headerlink" title="03"></a>03</h3><p>目前就想到这些，有空再更新（咕咕咕）</p>
+<h3 id="03"><a href="#03" class="headerlink" title="03"></a>03</h3><p>博主是一个老鸽子，不一定啥时候会冒出来，咕咕咕~</p>
+<p>emmm这些好像放到<code>关于</code>里面比较好欸，罢了罢了，写都写了，就这样吧</p>
 ]]></content>
       <categories>
-        <category>Dairy</category>
+        <category>日常</category>
       </categories>
       <tags>
-        <tag>Record</tag>
+        <tag>博客</tag>
       </tags>
   </entry>
   <entry>
@@ -3270,20 +3316,23 @@
 </blockquote>
 ]]></content>
       <categories>
-        <category>Tech</category>
+        <category>搞机</category>
       </categories>
       <tags>
-        <tag>MacOS</tag>
+        <tag>搞机</tag>
+        <tag>黑苹果</tag>
+        <tag>多系统</tag>
       </tags>
   </entry>
   <entry>
     <title>V2Ray</title>
     <url>/V2Ray.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">自从P站无法访问后就一直想写个V2Ray的教程，然鹅拖延症加懒癌晚期到现在才开始写emmm，虽然民间一直流传有上P站的各种神功，但网速实在感人而且指不定那天就挂掉了，另外如果你不想看这么麻烦的教程的话可以直接移到文章最后，有懒人大礼包
-**敲黑板！！！请将工具用于正当学习用途！！！遵守国家相关法律法规！！！**
+    <content><![CDATA[<blockquote class="blockquote-center">自从P站无法访问后就一直想写个V2Ray的教程，然鹅拖延症加懒癌晚期到现在才开始写emmm，虽然民间一直流传有上P站的各种神功，但网速实在感人而且指不定那天就挂掉了，另外如果你不想看这么麻烦的教程的话可以直接移到文章最后，有懒人大礼包。解释一下这个P站是建筑狗用的Pinterest，想歪的面壁去（🐶）
 </blockquote>
 
 <span id="more"></span>
+
+<div class="note danger"><p>文章时间久远，俺自己也没再用这个方案了，仅供参考</p></div>
 
 <h1 id="V2Ray简介"><a href="#V2Ray简介" class="headerlink" title="V2Ray简介"></a>V2Ray简介</h1><p>V2Ray项目是Project V下的一款基础网络通讯工具，<a href="https://www.v2ray.com/">官网</a>已经404了，相比于Shadowsocks，V2Ray功能更加强大，但配置也相对麻烦，主要优点有：</p>
 <ul>
@@ -3489,17 +3538,16 @@
 </ul>
 </li>
 </ol>
-<p><strong>最后再次敲黑板：请将工具用于正当学习用途！！！遵守国家相关法律法规！！！</strong></p>
+<p><strong>技术无罪</strong></p>
 <blockquote>
 <p>参考：<a href="https://github.com/233boy/v2ray/wiki/V2Ray%E6%90%AD%E5%BB%BA%E8%AF%A6%E7%BB%86%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B">233boy</a>、<a href="https://www.i5seo.com/">长沙SEO霜天博客</a>、<a href="https://blog.sprov.xyz/2019/03/11/cdn-v2ray-safe-proxy/">sprov</a>、<a href="https://octopuspalm.top/2018/08/18/Linux%20%E7%B3%BB%E7%BB%9F%E4%B8%8Bv2ray%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8/">THE WORLD OF ABCDLSJ</a></p>
 </blockquote>
 ]]></content>
       <categories>
-        <category>Tech</category>
+        <category>折腾</category>
       </categories>
       <tags>
-        <tag>Internet</tag>
-        <tag>Architecture</tag>
+        <tag>V2Ray</tag>
       </tags>
   </entry>
   <entry>
@@ -3749,6 +3797,62 @@
 </tr>
 </thead>
 <tbody><tr>
+<td align="left">Office2021</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Office 专业增强版 LTSC 2021</td>
+<td align="left">FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH</td>
+</tr>
+<tr>
+<td align="left">Office LTSC Standard 2021</td>
+<td align="left">KDX7X-BNVR8-TXXGX-4Q7Y8-78VT3</td>
+</tr>
+<tr>
+<td align="left">Project Professional 2021</td>
+<td align="left">FTNWT-C6WBT-8HMGF-K9PRX-QV9H8</td>
+</tr>
+<tr>
+<td align="left">Project Standard 2021</td>
+<td align="left">J2JDC-NJCYY-9RGQ4-YXWMH-T3D4T</td>
+</tr>
+<tr>
+<td align="left">Visio LTSC Professional 2021</td>
+<td align="left">KNH8D-FGHT4-T8RK3-CTDYJ-K2HT4</td>
+</tr>
+<tr>
+<td align="left">Visio LTSC Standard 2021</td>
+<td align="left">MJVNY-BYWPY-CWV6J-2RKRT-4M8QG</td>
+</tr>
+<tr>
+<td align="left">Access LTSC 2021</td>
+<td align="left">WM8YG-YNGDD-4JHDC-PG3F4-FC4T4</td>
+</tr>
+<tr>
+<td align="left">Excel LTSC 2021</td>
+<td align="left">NWG3X-87C9K-TC7YY-BC2G7-G6RVC</td>
+</tr>
+<tr>
+<td align="left">Outlook LTSC 2021</td>
+<td align="left">C9FM6-3N72F-HFJXB-TM3V9-T86R9</td>
+</tr>
+<tr>
+<td align="left">PowerPoint LTSC 2021</td>
+<td align="left">TY7XF-NFRBR-KJ44C-G83KF-GX27K</td>
+</tr>
+<tr>
+<td align="left">Publisher LTSC 2021</td>
+<td align="left">2MW9D-N4BXM-9VBPG-Q7W6M-KFBGQ</td>
+</tr>
+<tr>
+<td align="left">Skype for Business LTSC 2021</td>
+<td align="left">HWCXN-K3WBT-WJBKY-R8BD9-XK29P</td>
+</tr>
+<tr>
+<td align="left">Word LTSC 2021</td>
+<td align="left">TN8H9-M34D3-Y64V9-TR72V-X79KV</td>
+</tr>
+<tr>
 <td align="left">Office2019</td>
 <td align="left"></td>
 </tr>
@@ -3869,10 +3973,73 @@
 <p>本篇结束~</p>
 ]]></content>
       <categories>
-        <category>Tech</category>
+        <category>折腾</category>
       </categories>
       <tags>
         <tag>Win10</tag>
+        <tag>Office</tag>
+        <tag>重装</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>格拉斯哥大学IT选课指南</title>
+    <url>/%E6%A0%BC%E6%8B%89%E6%96%AF%E5%93%A5%E5%A4%A7%E5%AD%A6IT%E9%80%89%E8%AF%BE%E6%8C%87%E5%8D%97.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">很久很久之前说过的选课指南哈哈哈，先挖个坑，慢慢填（咕咕咕咕咕🕊️）</blockquote>
+
+<span id="more"></span>
+
+<div class="note danger"><p>填坑中。。。。。。过几天再回来看吧</p></div>]]></content>
+      <categories>
+        <category>留学</category>
+      </categories>
+      <tags>
+        <tag>留学</tag>
+        <tag>攻略</tag>
+        <tag>英国</tag>
+        <tag>选课</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>添加 Windows Terminal 至右键菜单</title>
+    <url>/%E6%B7%BB%E5%8A%A0-Windows-Terminal-%E8%87%B3%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Windows Terminal 已经在微软应用商店上架了，所以我把终端从 Fluent Terminal 换成了 Windows Terminal，记录一下将它添加到右键菜单的过程</blockquote>
+
+<span id="more"></span>
+
+<h1 id="添加图标"><a href="#添加图标" class="headerlink" title="添加图标"></a>添加图标</h1><p>首先在<code>C:\Users\[YOUR_USER_NAME]\AppData\Local</code>新建文件夹<code>Terminal</code>，可以直接使用下面的命令创建，<strong>记得把[YOUR_USER_NAME]换成自己的用户名！</strong></p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> C:\Users\[YOUR_USER_NAME]\AppData\Local\Terminal</span><br></pre></td></tr></table></figure>
+
+<p>然后下载 Windows Terminal 图标到刚才创建的文件夹，如果浏览器没有自动下载的话就右键另存为terminal.ico</p>
+<a class="btn" href="https://raw.githubusercontent.com/microsoft/terminal/master/res/terminal.ico"><i class="fa fa-arrow-right fa-fw"></i>terminal.ico 下载</a>
+
+<h1 id="注册表写入"><a href="#注册表写入" class="headerlink" title="注册表写入"></a>注册表写入</h1><p>新建一个txt文件，添加下面的内容，然后把文件后缀改为<code>.reg</code>。<strong>记得把[YOUR_USER_NAME]换成自己的用户名！</strong></p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">Windows Registry Editor Version <span class="number">5</span>.<span class="number">00</span></span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt]</span><br><span class="line">@=&quot;Windows terminal here&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Terminal\\terminal.ico&quot;</span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt\command]</span><br><span class="line">@=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe&quot;</span><br></pre></td></tr></table></figure>
+
+<p>完成后双击文件，合并到注册表中</p>
+<h1 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h1><p>这个时候右键菜单中已经出现了<code>Windows terminal here</code>的选项，但是点击后所在的目录并不是当前的目录，这就需要修改<code>Windows Terminal</code>的配置文件了</p>
+<p>打开<code>Windows Terminal</code>，点击顶部的下拉菜单，打开<code>设置</code>，此时会打开名为<code>settings.json</code>的配置文件，要修改的部分是这个亚子</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>要想在当前文件夹启动<code>Windows Terminal</code>，需要在每一段的下面添加<code>&quot;startingDirectory&quot;: &quot;./&quot;</code>，修改完成后是这个亚子</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>保存后就能够使用右键菜单在当前文件夹运行<code>Windows Terminal</code>了</p>
+<h1 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h1><p>在使用Powershell的时候可能会出现报错<code>无法加载文件balabala.ps1，因为在此系统上禁止执行脚本，有关详细信息，请参阅balabala</code>，这是因为默认的<code>ExecutionPolicy</code>是<code>Restricted</code>，即不允许执行任何脚本。解决方法是以管理员身份运行，并输入命令<code>set-executionpolicy remotesigned</code>即可解除限制</p>
+<blockquote>
+<p>参考：</p>
+<ol>
+<li><a href="https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461">https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461</a></li>
+<li><a href="https://blog.csdn.net/Jioho_chen/article/details/101159291">https://blog.csdn.net/Jioho_chen/article/details/101159291</a></li>
+</ol>
+</blockquote>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>Win10</tag>
+        <tag>软件</tag>
+        <tag>Windows Terminal</tag>
       </tags>
   </entry>
   <entry>
@@ -4298,12 +4465,12 @@
 </blockquote>
 ]]></content>
       <categories>
-        <category>Tech</category>
+        <category>搞机</category>
       </categories>
       <tags>
-        <tag>MacOS</tag>
-        <tag>Win10</tag>
-        <tag>Ubuntu</tag>
+        <tag>搞机</tag>
+        <tag>黑苹果</tag>
+        <tag>多系统</tag>
       </tags>
   </entry>
   <entry>
@@ -4739,53 +4906,318 @@
 <p>等到6月我毕业以及办签证的时候会新开一篇文章讲签证办理以及换CAS的相关注意事项（绝不咕咕咕）</p>
 ]]></content>
       <categories>
-        <category>CS</category>
+        <category>留学</category>
       </categories>
       <tags>
-        <tag>CS</tag>
-        <tag>转专业</tag>
+        <tag>留学</tag>
+        <tag>攻略</tag>
+        <tag>英国</tag>
+        <tag>转码</tag>
       </tags>
   </entry>
   <entry>
-    <title>添加 Windows Terminal 至右键菜单</title>
-    <url>/%E6%B7%BB%E5%8A%A0-Windows-Terminal-%E8%87%B3%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Windows Terminal 已经在微软应用商店上架了，所以我把终端从 Fluent Terminal 换成了 Windows Terminal，记录一下将它添加到右键菜单的过程</blockquote>
+    <title>英国留学后续日志</title>
+    <url>/%E8%8B%B1%E5%9B%BD%E7%95%99%E5%AD%A6%E5%90%8E%E7%BB%AD%E6%97%A5%E5%BF%97.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">今天终于等到了格拉的uncon，开一贴记录一下换取uncon及后续签证申请的相关事宜。另外格拉上个月正式宣布部分专业延期开学至21年1月，CS院的所有专业都包含在内，所以下半年就要上家里蹲大学了，慢慢更</blockquote>
 
 <span id="more"></span>
 
-<h1 id="添加图标"><a href="#添加图标" class="headerlink" title="添加图标"></a>添加图标</h1><p>首先在<code>C:\Users\[YOUR_USER_NAME]\AppData\Local</code>新建文件夹<code>Terminal</code>，可以直接使用下面的命令创建，<strong>记得把[YOUR_USER_NAME]换成自己的用户名！</strong></p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> C:\Users\[YOUR_USER_NAME]\AppData\Local\Terminal</span><br></pre></td></tr></table></figure>
+<h1 id="预定住宿"><a href="#预定住宿" class="headerlink" title="预定住宿"></a>预定住宿</h1><p>英国留学住宿的选择主要有：校内的宿舍（或者学校官方的宿舍）、合租House、校外的学生公寓。大多数人都会选择校外的学生公寓，比较方便，不需要管水电煤等费用，相较house更加安全。公寓的房型主要分En-suite和Studio两种，En-suite一般是有4-6间卧室的套间，每个卧室内有独立卫浴，共享厨房与起居室，类似于国内的合租；Studio则是单人单间，房间内带有厨房和卫浴，类似于自己单独租的房子。Studio相对于En-suite隐私性更好，更安静，<del>也更贵。</del></p>
+<p>一般来说拿到offer之后就可以定房间了，比较想去的几个学校都可以先定上，订的越早越便宜，而且选择的空间也比较大。尽量找不需要押金的公寓，这样跑路的话直接找人转租或者取消就可以了。</p>
+<p>格拉附近比较热门的公寓有 West View（西景）、West Village（西村）、Vita、KC、TS、DM等，下边是出自格拉CS微信群的对比（图片来自某位不愿透露姓名的翟翟）</p>
+<p><img data-src="https://s2.loli.net/2022/05/13/UjZV4PTEzoOiKXk.jpg" alt="英国留学后续日志"></p>
+<p>预定的话可以直接去公寓官网订，也可以找中介，中介有异乡好居和学旅家，我找了学旅家，两家都说有（薛定谔的）返现，不知道什么时候能拿到，拿到回来更。</p>
+<h1 id="换取Uncon"><a href="#换取Uncon" class="headerlink" title="换取Uncon"></a>换取Uncon</h1><p>本科毕业之前大家的offer都是conditional offer，毕业后收集好缺少的材料并扫描成PDF，传到申请系统里去，就可以坐等发uncon了。我是6月24号上传到全部材料，7月7号在申请系统里查到了uncon，8号凌晨收到了邮件。一般毕业季换uncon的时间会长一些，因为换的人太多了。</p>
+<p>换uncon需要扫描上传的材料有</p>
+<ul>
+<li>毕业证原件</li>
+<li>学位证原件</li>
+<li>毕业证翻译件（自己翻译完盖学校的章就可以，不需要放照片）</li>
+<li>学位证翻译件（同上）</li>
+<li>包含所有课程的英文成绩单</li>
+<li>包含所有课程的中文成绩单（这个看具体学校，我在格拉只上传了英文的成绩单）</li>
+</ul>
+<p>下面是我用的毕业证与学位证的翻译件，格式没法调，需要word的康康百度云吧</p>
+<a class="btn" href="https://pan.baidu.com/s/1APNgOpkZaNnytagDF3rhYg"><i class="fa fa-arrow-right fa-fw"></i>密码uwbt</a>
 
-<p>然后下载 Windows Terminal 图标到刚才创建的文件夹，如果浏览器没有自动下载的话就右键另存为terminal.ico</p>
-<a class="btn" href="https://raw.githubusercontent.com/microsoft/terminal/master/res/terminal.ico"><i class="fa fa-arrow-right fa-fw"></i>terminal.ico 下载</a>
+<div class="tabs" id="first-unique-name"><ul class="nav-tabs"><li class="tab active"><a href="#first-unique-name-1"><i class="fa fa-pencil"></i>学士学位证书翻译</a></li><li class="tab"><a href="#first-unique-name-2"><i class="fa fa-pencil"></i>毕业证书翻译</a></li></ul><div class="tab-content"><div class="tab-pane active" id="first-unique-name-1"><p><strong>学士学位证明翻译</strong></p>
+<p>Bachelor’s Degree Certificate</p>
+<p>This is to certify that XXX, male, born on June 26, 1997, has completed an undergraduate program in Architecture at XXXXX University and graduated. According to Regulations of the People’s Republic of China on Academic Degrees, he is awarded the degree of Bachelor of Science in Architecture.</p>
+<p>Chairman of Degree Evaluation Committee: Xxxxx Xxx      XXXXX University<br>Certificate No.: XXXXXXXXXXXXXX      June 18th, 2020</p></div><div class="tab-pane" id="first-unique-name-2"><p><strong>毕业证书翻译</strong></p>
+<p>Graduation Certificate</p>
+<p>XXX XXX, male, born on June 26, 1997, studied a five-year program in Architecture at our school from September 2015 to June 2020. Having completed all courses specified in the teaching plan and passed the examinations, he is allowed to graduate.</p>
+<p>School: XXXXX University      President: Xxxxx Xxx<br>Certificate No.: XXXXXXXXXXXXXXXX      June 12th, 2020</p></div></div></div>
 
-<h1 id="注册表写入"><a href="#注册表写入" class="headerlink" title="注册表写入"></a>注册表写入</h1><p>新建一个txt文件，添加下面的内容，然后把文件后缀改为<code>.reg</code>。<strong>记得把[YOUR_USER_NAME]换成自己的用户名！</strong></p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">Windows Registry Editor Version <span class="number">5</span>.<span class="number">00</span></span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt]</span><br><span class="line">@=&quot;Windows terminal here&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Terminal\\terminal.ico&quot;</span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt\command]</span><br><span class="line">@=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe&quot;</span><br></pre></td></tr></table></figure>
+<h1 id="保证金"><a href="#保证金" class="headerlink" title="保证金"></a>保证金</h1><p>保证金是一项英国政府判断你是否有足够的经济能力完成学业的依据，具体的操作是开一个存款证明，办签证时会随机抽查存款证明，抽到了会发邮件给你。</p>
+<ul>
+<li>保证金金额大概在30w人民币，具体数额是按照学费+所在地区9个月生活费来算的，为了保险起见会在这个数额上再加几千英镑，生活费伦敦地区标准为1265镑&#x2F;月，其他地区为1015镑&#x2F;月</li>
+<li>一般存定期并设置自动转存</li>
+<li>存满28天之后就可以在网上预约签证了</li>
+<li>然后在办理签证的前几天去银行开存款证明和流水，不用开太早，因为存款证明开具日期和网上签证预约日期的间隔不能超过31天</li>
+<li>英镑和人民币可以混存，总金额够了就行</li>
+<li>最好存在自己名下，存在父母名下需要多开具亲子关系证明以及授权使用资金的证明</li>
+<li>建议存在中农工建这类大行，不建议存在农村信用社一类的地方</li>
+<li>不能用理财产品代替</li>
+</ul>
+<p><img data-src="https://s2.loli.net/2022/05/13/K2Eq8rUmZeNtBgY.png" alt="英国留学后续日志"></p>
+<h1 id="换汇"><a href="#换汇" class="headerlink" title="换汇"></a>换汇</h1><p>在去英国之前建议提前换好英镑，在常用的银行换就可以，到英国办好当地银行卡后通过跨境汇款转过去。下面是一些情报</p>
+<ul>
+<li>购买英镑的时候分为<strong>现汇</strong>和<strong>现钞</strong>两个选项，现汇就是存在银行卡里的钱，现钞就是换取的纸币</li>
+<li>换汇一般就是购买英镑现汇存在银行卡里</li>
+<li>临行前可以换一部分现钞，供落地后应急用，不用太多，海关不允许携带5000美元以上的等值外币出境</li>
+<li>每人每年的换汇额度是5万美元</li>
+<li>换汇的时候看的是<strong>购汇汇率</strong>而不是<strong>结汇汇率</strong>。购汇汇率是你向银行购买英镑的汇率，结汇汇率是你向银行出售英镑的汇率</li>
+<li>建议像我一样的贫困人口每天多看两眼汇率，万一英镑再跌到8.1呢</li>
+<li>英镑存定期的利息非常低，三个月存期利率只有0.1%，而人民币的是1.35%</li>
+<li>跨境汇款有被锁的风险，建议出国前把身份证银行卡留给父母，以防万一</li>
+<li>换汇之后可以在手机银行APP上预约到银行网点去现钞，我取了1000英镑，小城市里只有50英镑的大额纸钞，大城市可能会换到5磅10磅这样的小面值</li>
+</ul>
+<h1 id="肺结核体检"><a href="#肺结核体检" class="headerlink" title="肺结核体检"></a>肺结核体检</h1><p>肺结核体检是办理T4签证的必要材料，一般在办签证前两三个月就可以做了。</p>
+<ul>
+<li>肺结核体检需要到指定的医院做，否则无效。定点医院共有15家，医院地址以及联系方式请看<a href="https://www.gov.uk/government/publications/tuberculosis-test-for-a-uk-visa-clinics-in-china/approved-tuberculosis-testing-clinics-in-china"><strong>签证官网</strong></a></li>
+<li>费用为550元人民币，收费方式为现金或支付宝，不支持医保卡、信用卡或其他支付方式</li>
+<li>需要提前预约，通常提前一或两个工作天预约即可</li>
+<li>预约方式有电话和邮件两种，部分医院（如济南出国移民体检中心）还可以在网站上预约</li>
+<li>无需空腹，正常饮食</li>
+<li>需要携带的材料<ul>
+<li>有效期半年以上的护照原件，不接受任何其他证件</li>
+<li>护照复印件一张</li>
+<li>两张半年内35mmx45mm免冠白底彩照（需要露出眉毛及耳朵）</li>
+</ul>
+</li>
+<li>流程很快，耗时约为半小时，换上衣服拍下胸片，然后医生询问下病史就结束了</li>
+<li>体检结果正常的话，上午体检下午可以出结果并发出证书，下午体检则需第二天早上才能发出证书。</li>
+<li>凭护照取证书，如果不方便可以发快递到付，建议自取</li>
+<li>证书有效期通常为六个月，特殊情况下为三个月</li>
+<li>如果出现问题的话，医院会要求做痰培养了，这个过程就很漫长了，需要等两个月。但是如果你认为身体没有问题的话建议换一家医院重新做体检，不要说自己在其他医院做过（信息来源：知乎）</li>
+<li>英国地址填自己的学校，懒的话可以不填，没什么影响</li>
+</ul>
+<p>下面是我10月13日在济南做肺结核的记录</p>
+<ul>
+<li>济南的肺结核检测在山医大三院的出国体检中心做，地址是天桥区无影山路38号，进门后右手边红屋顶的房子就是</li>
+<li>我是七点四十五到的，医院大门口会有保安测体温。</li>
+<li>我到的时候前面只有三个人。进入体检中心后出示身份证和健康码，然后在门口机器上取号</li>
+<li>取号后领两张表，再测一次体温，工作人员会把体温写在表的右上角，过程中有什么疑问随时可以问工作人员</li>
+<li>填完表等到八点半，拿着护照去拍照，拍完给一张黑白的照片</li>
+<li>拍完照出来等待叫号，叫到自己的号就拿着材料去最里面的服务台</li>
+<li>把护照原件、复印件、刚拍的黑白照片、两张小两寸白底照片（要在背面也上自己名字）、填写的两张表格交给工作人员</li>
+<li>然后会拍照，还有在一张表上签字</li>
+<li>然后付款，支付宝现金均可</li>
+<li>付完款后工作人员把护照原件还给你，并给一个手环，手环是开储物柜用的，上面有对应的柜子编号</li>
+<li>拿着手环去玻璃门那里刷脸进去，进去之后有工作人员引导你到更衣室并给一件蓝色的上衣</li>
+<li>把上衣首饰全部摘掉，穿上那件蓝色的衣服，只带着护照和手环出去</li>
+<li>工作人员会告诉你去哪个房间做检测，在机器上做一个类似叉腰的动作，双肩向上同时贴到机器上，然后工作人员会让深吸一口气憋住，然后等工作人员喊可以了就可以出来了</li>
+<li>出来之后回到更衣室把衣服换好，然后把蓝色上衣扔进门口的回收箱</li>
+<li>走廊里的工作人员会让你到另一侧的医生室，医生会问一些问题，比如有没有得过肺结核、有没有和结合病人有过接触</li>
+<li>然后摘口罩拍照</li>
+<li>然后出去找走廊里的小姐姐把你带出去</li>
+<li>出去之后回到大门口的前台把手环还回去就可以溜了</li>
+<li>工作人员说因为疫情的原因，第二天下午三点后才能取报告，但是实测当天下午四点半就可以拿到，可以打电话问一下</li>
+</ul>
+<h1 id="国际旅行健康证"><a href="#国际旅行健康证" class="headerlink" title="国际旅行健康证"></a>国际旅行健康证</h1><p>这个健康证还有一个疫苗接种证都是很迷惑的东西，俗称小红本和小黄本。根据目前了解的信息，两者都是可做可不做的，入境时有非常小的概率抽查国际旅行健康证，被查到没有证也没什么事，只是耽误一点时间去做个免费体检，大概半小时，疫苗接种证则没听说过有被查到的。所以这俩我就不打算做了</p>
+<h1 id="签证"><a href="#签证" class="headerlink" title="签证"></a>签证</h1><h2 id="预约"><a href="#预约" class="headerlink" title="预约"></a>预约</h2><p>签证需要等CAS下来才能去办，CAS一般在入学前的3个月开始陆续发放，办理签证前需要在网上预约，最近学生签证也改名了，原来叫 Tier 4，现在直接叫 student visa。预约的时候建议挂全局代理，预约网站在国内的使用体验极差。</p>
+<a class="btn" href="https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/sort/country-nationality?p=student_out_uk&_ga=2.246378372.1460787317.1603017805-1850455343.1600247708"><i class="fa fa-home fa-fw"></i>预约网址</a>
 
-<p>完成后双击文件，合并到注册表中</p>
-<h1 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h1><p>这个时候右键菜单中已经出现了<code>Windows terminal here</code>的选项，但是点击后所在的目录并不是当前的目录，这就需要修改<code>Windows Terminal</code>的配置文件了</p>
-<p>打开<code>Windows Terminal</code>，点击顶部的下拉菜单，打开<code>设置</code>，此时会打开名为<code>settings.json</code>的配置文件，要修改的部分是这个亚子</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
-
-<p>要想在当前文件夹启动<code>Windows Terminal</code>，需要在每一段的下面添加<code>&quot;startingDirectory&quot;: &quot;./&quot;</code>，修改完成后是这个亚子</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
-
-<p>保存后就能够使用右键菜单在当前文件夹运行<code>Windows Terminal</code>了</p>
-<h1 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h1><p>在使用Powershell的时候可能会出现报错<code>无法加载文件balabala.ps1，因为在此系统上禁止执行脚本，有关详细信息，请参阅balabala</code>，这是因为默认的<code>ExecutionPolicy</code>是<code>Restricted</code>，即不允许执行任何脚本。解决方法是以管理员身份运行，并输入命令<code>set-executionpolicy remotesigned</code>即可解除限制</p>
-<blockquote>
-<p>参考：</p>
-<ol>
-<li><a href="https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461">https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461</a></li>
-<li><a href="https://blog.csdn.net/Jioho_chen/article/details/101159291">https://blog.csdn.net/Jioho_chen/article/details/101159291</a></li>
+<p>预约的步骤可以去看<a href="https://weibo.com/u/7305573611">@PhD威宇</a>的微博文章<a href="https://weibo.com/ttarticle/p/show?id=2309404537047783178301">保姆级手把手教你申请T4签证</a>，大佬写的非常详细，佩服大佬的耐心。T4和现在的 student visa 稍有出入，大体的步骤都是一样的。（我才不是因为懒不想写）</p>
+<p><strong>注意下载checklist</strong></p>
+<p>按照步骤交完签证申请费和IHS之后会跳转到VFS的网站上，这个网站是用来上传材料和预约递签日期地点用的，有一些增(keng)值(qian)服务可以选。这个网站深得学校教务选课系统的真传，同款土豆服务器，而且不挂全局代理基本没法用，挂了全局代理也会有各种各样的bug。</p>
+<p>Student visa 一般只有两个材料需要上传，checklist 会有说明</p>
+<ul>
+<li>护照信息页</li>
+<li>肺结核报告</li>
+</ul>
+<p>建议提前在网站上上传好材料，如果去签证中心现场上传的话会收取100块钱的扫描费用（奸商！）。</p>
+<p>另外一些签证中心（说的就是你济南，还有西安）还会收取服务费，大概500块钱，在VFS那个网站上交。</p>
+<p>预约的时候可以隔几个小时上去一次，看看有没有更早的位置。我一开始预约的是23号递签，后来刷出来了14号和16号的，就在网站上更改了预约时间，更改免费。</p>
+<p>预约好时间、传完材料、交完钱之后会发给你一个<code>Appointment Confirmation Notice</code>，记得打印出来带着</p>
+<h2 id="递签"><a href="#递签" class="headerlink" title="递签"></a>递签</h2><p>我最终去递签的时候只带了下面几个材料</p>
+<ul>
+<li>护照原件</li>
+<li>checklist</li>
+<li>Appointment Confirmation Notice</li>
+<li>肺结核报告原件</li>
+</ul>
+<p>最后工作人员收走了这些材料</p>
+<ul>
+<li>护照原件</li>
+<li>checklist 的第一页</li>
+<li>Appointment Confirmation Notice</li>
+</ul>
+<p>下面是我在济南递签的流程，我是12:13进去的，12:25就出来了</p>
+<ul>
+<li>济南签证中心地址在济南市历下区经十路11890号北京银行5楼</li>
+<li>从北京银行大厦的南门进，进去后在右手边向保安大叔出示健康码并测量体温</li>
+<li>用微信扫描桌面立牌上的二维码，填写姓名手机号等个人信息进行登记</li>
+<li>做四号电梯（最里面右手边那个）上5楼</li>
+<li>出电梯后左手边可以看到工作人员在柜台前面，会问是不是来办签证，然后带你到签证中心门口，测量体温后经过安检门进入</li>
+<li>进入之后出示护照、checklist、notice这几个材料，然后工作人员会问姓名和出生日期，并给你一张号码纸</li>
+<li>进去等叫号，左手边有几排椅子，椅子前面的柱子上挂着电视，会显示叫号信息</li>
+<li>人少的话工作人员就让直接去柜台，去柜台交护照、checklist、notice</li>
+<li>工作人员会问你办不办加急，问护照是自取还是快递，快递的话会给你一张快递单填写，然后交现金80元，可以找零</li>
+<li>工作人员没有提起过短信服务，短信也确实没什么用</li>
+<li>等一会工作人员会把不要的材料都退给你，快递的会给一张EMS快递单回执</li>
+<li>再回去等叫号，叫到号去7号室拍照录指纹</li>
+<li>先会让你报一下姓名和出生日期，然后摘眼镜和口罩拍照</li>
+<li>然后采指纹，先是右手四个手指并排，然后左手四个手指，最后是两个大拇指一起</li>
+<li>结束之后会给你张回执，就可以走了</li>
+<li>回家默默等快递把护照寄回来</li>
+</ul>
+<h1 id="订机票"><a href="#订机票" class="headerlink" title="订机票"></a>订机票</h1><p>机票我是在携程买的，也可以直接官网购买或者打电话购买</p>
+<p>机票最好早买，早买一般都很便宜。我亲眼见证了我的机票从4200元涨价到了5500元，现在涨到了15000元。我在5500的时候买入的，买入第二天晚上就涨到了15000。</p>
+<p>我们买的一般都是留学生机票，会有额外的行李额度，一般是两件不超过23kg的28寸托运行李和一件不超过20寸的手提行李，我一开始以为需要签证才能购买留学生机票，所以错过了4200的低价，其实买的时候完全不需要签证等证明材料。携程的要求是在飞机起飞前三天上传好签证、cas、offer、护照等证明材料就可以。能早买就早买吧。</p>
+<p>另外由于今年疫情的影响，有些飞机是不一定能飞的，没有经过民航局审批，但是他也在卖票，建议买票之前先查询一下。因为有些航空公司退票只给退代金券，就很坑。</p>
+<p>飞英国的机票除了去伦敦的，基本都要转机，转机机场一般有荷兰阿姆斯特丹、芬兰赫尔辛基、阿联酋迪拜、伦敦希思罗等。购票时看好是否是行李直挂，不是直挂的话转机的时候需要重新办理行李托运手续，麻烦且耗时，要留足充分的时间。</p>
+<p>此外如果飞到大学所在城市的机票很贵的话可以看一下飞往临近城市的机票，举个栗子，我是一开始打算从上海飞格拉斯哥，但是去格拉斯哥的机票已经都在一万多了，然鹅去爱丁堡的机票只有五千多，所以我就买了去爱宝的机票，落地后再几个人一起包车直接到格拉宿舍楼下，包车大概在100胖，三四个人一起分担也不贵。</p>
+<h1 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h1><p>注册一般分为学术注册（Academic Registration）和财务注册（Financial Registration），学校会给提前发一封邮件告诉你注册的网址、用户名和密码，记得修改自己的密码。</p>
+<h2 id="学术注册"><a href="#学术注册" class="headerlink" title="学术注册"></a>学术注册</h2><p>这里以格拉为例，学术注册包含以下内容</p>
+<ul>
+<li>确认课程信息</li>
+<li>确认姓名、性别、出生日期以及学生ID</li>
+<li>填写宗教信仰与国籍</li>
+<li>填写在英国的住址（Term Address）</li>
+<li>填写个人邮箱地址与电话号码</li>
+<li>是否有残疾</li>
+<li>添加紧急联系人</li>
+<li>填写 Statistical Information，就跟查户口一样，包括性取向、有没有孩子等问题</li>
+<li>上传照片，这个照片会用在学生证上，照片的标准和护照的一样</li>
+<li>上传护照ID页</li>
+</ul>
+<p>学术注册完成后就可以选课（Enroll）了</p>
+<h2 id="财务注册"><a href="#财务注册" class="headerlink" title="财务注册"></a>财务注册</h2><p>财务注册就是交学费，常见的方式有电汇、信用卡付款等，也有部分学校支持支付宝或银联卡支付。</p>
+<p>我用的方法是信用卡分期付款，部分学校对于全款付学费会有优惠折扣，然而格拉并没有。。。如果学校对全款支付学费没有优惠的话建议使用分期付款，毕竟能把暂时不用交的前放在英国的银行账户里吃利息，几万英镑产生的利息也不少的。</p>
+<p>我交学费的过程比较曲折。。。一开始我用的信用卡是建行的VISA卡，但是这张卡只能用人民币还款，我早买下的英镑不能拿来还款，所以果断办新卡。我先把建设银行账户里的英镑跨行转账到了中国银行的账户里，然后办了中国银行的卓隽英镑卡，可以直接用英镑还款。</p>
+<p>这张卡建议在中国银行的APP上申请，下卡非常快，我从申请到拿到卡只用了3天。注意申请的时候职业不要选择学生，直接选择待业，剩下的收入啥的胡乱写就行。咱也不知道为啥，这张卡明明是给留学生用的，但是选择学生身份申请的话大概率直接秒拒，很迷惑。另外不建议到网点去办理，工作人员对这类卡不太了解，而且办卡速度很慢，我还在微博上看到有人网点办英镑卡，结果拿到手是美元卡，没法用。</p>
+<p>我当时拿到的额度是1000英镑，少得可怜，而格拉分期付款的第一笔款需要2933磅。如果不嫌麻烦的话可以分三次刷1000英镑，刷完一次就还款。然而我比较懒，就我直接向信用卡里转账了3000磅，一次划掉。</p>
+<h1 id="行李指南"><a href="#行李指南" class="headerlink" title="行李指南"></a>行李指南</h1><p>我在国内买了很多杂七杂八的行李，也不知道行李箱里能不能装得下hhh</p>
+<p>下面只是我想到的行李，到时候不一定会全带</p>
+<h2 id="登机行李"><a href="#登机行李" class="headerlink" title="登机行李"></a>登机行李</h2><h3 id="文件证件类"><a href="#文件证件类" class="headerlink" title="文件证件类"></a>文件证件类</h3><ol>
+<li>护照</li>
+<li>与护照一起寄回来的BRP说明</li>
+<li>CAS</li>
+<li>租房合同</li>
+<li>语言成绩单</li>
+<li>学术成绩单</li>
+<li>毕业证学位证（记得把外面的壳子拔下来，壳子没用）</li>
+<li>证件照</li>
+<li>入境前48小时填写的那张表</li>
+<li>肺结核报告</li>
 </ol>
-</blockquote>
+<h3 id="现金卡片"><a href="#现金卡片" class="headerlink" title="现金卡片"></a>现金卡片</h3><ol>
+<li>银行卡</li>
+<li>英国手机卡</li>
+<li>卡针</li>
+<li>英镑现金</li>
+<li>签字笔</li>
+</ol>
+<h3 id="防疫物资（少量）"><a href="#防疫物资（少量）" class="headerlink" title="防疫物资（少量）"></a>防疫物资（少量）</h3><ol>
+<li>口罩</li>
+<li>一次性手套</li>
+<li>护目镜或面罩</li>
+</ol>
+<h3 id="电子产品"><a href="#电子产品" class="headerlink" title="电子产品"></a>电子产品</h3><ol>
+<li>手机</li>
+<li>充电宝</li>
+<li>相机</li>
+<li>电脑</li>
+<li>平板</li>
+<li>充电器</li>
+<li>数据线</li>
+<li>耳机</li>
+<li>多国旅行转换插头</li>
+</ol>
+<h3 id="葛优瘫用品"><a href="#葛优瘫用品" class="headerlink" title="葛优瘫用品"></a>葛优瘫用品</h3><ol>
+<li>拖鞋</li>
+<li>颈枕</li>
+<li>眼罩</li>
+<li>耳塞</li>
+<li>旅行洗漱包</li>
+<li>小零食</li>
+</ol>
+<h2 id="托运行李"><a href="#托运行李" class="headerlink" title="托运行李"></a>托运行李</h2><h3 id="药品防疫类"><a href="#药品防疫类" class="headerlink" title="药品防疫类"></a>药品防疫类</h3><ol>
+<li>口罩</li>
+<li>一次性手套</li>
+<li>面罩</li>
+<li>创可贴</li>
+<li>酒精棉片&#x2F;酒精湿巾</li>
+<li>感冒灵</li>
+<li>藿香正气胶囊</li>
+<li>西瓜霜</li>
+<li>甲硝锉</li>
+<li>诺氟沙星</li>
+<li>皮炎平</li>
+<li>红霉素软膏</li>
+<li>体温计&#x2F;测温枪</li>
+<li>个人日常用药</li>
+<li>紫外线杀毒灯</li>
+</ol>
+<h3 id="电子产品及配件"><a href="#电子产品及配件" class="headerlink" title="电子产品及配件"></a>电子产品及配件</h3><ol>
+<li>英标转换插头</li>
+<li>插排</li>
+<li>充电电池套装</li>
+<li>鼠标键盘</li>
+<li>剃须刀</li>
+<li>各种充电器</li>
+<li>耳机</li>
+<li>计算器</li>
+<li>移动硬盘</li>
+<li>U盘&#x2F;读卡器</li>
+<li>路由器</li>
+<li>手机壳</li>
+<li>钢化膜</li>
+<li>手机平板折叠支架</li>
+<li>笔记本电脑支架</li>
+<li>相机三脚架</li>
+<li>网线</li>
+<li>鼠标垫</li>
+</ol>
+<h3 id="生活用品及工具"><a href="#生活用品及工具" class="headerlink" title="生活用品及工具"></a>生活用品及工具</h3><ol>
+<li>指甲钳挖耳勺套装</li>
+<li>无痕挂钩</li>
+<li>肥皂盒</li>
+<li>零钱包</li>
+<li>筷子</li>
+<li>饭盒</li>
+<li>保温杯</li>
+<li>折叠盆</li>
+<li>吸盘花洒支架</li>
+<li>螺丝刀</li>
+<li>瑞士军刀&#x2F;多功能工具钳</li>
+<li>洗衣袋</li>
+<li>地漏防堵塞过滤网</li>
+<li>折叠衣架</li>
+<li>镊子</li>
+<li>折叠烧水壶</li>
+<li>烘鞋器</li>
+<li>台灯</li>
+<li>USB小风扇</li>
+<li>加湿器</li>
+<li>牙刷</li>
+</ol>
+<h3 id="衣物"><a href="#衣物" class="headerlink" title="衣物"></a>衣物</h3><ol>
+<li>冲锋衣</li>
+<li>内衣内裤</li>
+<li>袜子</li>
+<li>两三双鞋子</li>
+<li>卫衣</li>
+<li>外套</li>
+<li>羽绒服</li>
+<li>毛巾</li>
+</ol>
+<h3 id="行李箱配件"><a href="#行李箱配件" class="headerlink" title="行李箱配件"></a>行李箱配件</h3><p>主要是为了让自己的箱子更醒目，在转盘领行李的时候可以一眼看到，防止拿错</p>
+<ol>
+<li>彩色行李箱绑带</li>
+<li>行李挂牌</li>
+<li>行李箱套</li>
+</ol>
+<h1 id="落地后续"><a href="#落地后续" class="headerlink" title="落地后续"></a>落地后续</h1><p>预计1月到英国更新，另开一个新的博文记录</p>
 ]]></content>
       <categories>
-        <category>Tech</category>
+        <category>留学</category>
       </categories>
       <tags>
-        <tag>Software</tag>
-        <tag>Win10</tag>
+        <tag>留学</tag>
+        <tag>攻略</tag>
+        <tag>英国</tag>
       </tags>
   </entry>
   <entry>
@@ -5307,11 +5739,12 @@ OFFICIAL
 <h1 id="KC-Room-Tour"><a href="#KC-Room-Tour" class="headerlink" title="KC Room Tour"></a>KC Room Tour</h1><p>这个可能要无限期咕咕咕了，公寓staff来把空房间的门都给锁上了，进不去没法拍，只能等室友来了（淦*4）</p>
 ]]></content>
       <categories>
-        <category>Blog</category>
+        <category>留学</category>
       </categories>
       <tags>
-        <tag>Record</tag>
         <tag>留学</tag>
+        <tag>攻略</tag>
+        <tag>英国</tag>
       </tags>
   </entry>
   <entry>
@@ -5377,315 +5810,65 @@ OFFICIAL
 </ul>
 ]]></content>
       <categories>
-        <category>Blog</category>
+        <category>留学</category>
       </categories>
       <tags>
-        <tag>Record</tag>
         <tag>留学</tag>
+        <tag>攻略</tag>
+        <tag>英国</tag>
       </tags>
   </entry>
   <entry>
-    <title>英国留学后续日志</title>
-    <url>/%E8%8B%B1%E5%9B%BD%E7%95%99%E5%AD%A6%E5%90%8E%E7%BB%AD%E6%97%A5%E5%BF%97.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">今天终于等到了格拉的uncon，开一贴记录一下换取uncon及后续签证申请的相关事宜。另外格拉上个月正式宣布部分专业延期开学至21年1月，CS院的所有专业都包含在内，所以下半年就要上家里蹲大学了，慢慢更</blockquote>
+    <title>荣耀 magic watch 表盘制作</title>
+    <url>/%E8%8D%A3%E8%80%80-magic-watch-%E8%A1%A8%E7%9B%98%E5%88%B6%E4%BD%9C.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">趁着还没开学给老爸的 Magic Watch 做了个表盘，甲方唯二的要求就是：字大+醒目</blockquote>
 
+<p><img data-src="https://s2.loli.net/2022/05/13/fswCopBAYqjnFKl.png" alt="icon"></p>
 <span id="more"></span>
 
-<h1 id="预定住宿"><a href="#预定住宿" class="headerlink" title="预定住宿"></a>预定住宿</h1><p>英国留学住宿的选择主要有：校内的宿舍（或者学校官方的宿舍）、合租House、校外的学生公寓。大多数人都会选择校外的学生公寓，比较方便，不需要管水电煤等费用，相较house更加安全。公寓的房型主要分En-suite和Studio两种，En-suite一般是有4-6间卧室的套间，每个卧室内有独立卫浴，共享厨房与起居室，类似于国内的合租；Studio则是单人单间，房间内带有厨房和卫浴，类似于自己单独租的房子。Studio相对于En-suite隐私性更好，更安静，<del>也更贵。</del></p>
-<p>一般来说拿到offer之后就可以定房间了，比较想去的几个学校都可以先定上，订的越早越便宜，而且选择的空间也比较大。尽量找不需要押金的公寓，这样跑路的话直接找人转租或者取消就可以了。</p>
-<p>格拉附近比较热门的公寓有 West View（西景）、West Village（西村）、Vita、KC、TS、DM等，下边是出自格拉CS微信群的对比（图片来自某位不愿透露姓名的翟翟）</p>
-<p><img data-src="https://s2.loli.net/2022/05/13/UjZV4PTEzoOiKXk.jpg" alt="英国留学后续日志"></p>
-<p>预定的话可以直接去公寓官网订，也可以找中介，中介有异乡好居和学旅家，我找了学旅家，两家都说有（薛定谔的）返现，不知道什么时候能拿到，拿到回来更。</p>
-<h1 id="换取Uncon"><a href="#换取Uncon" class="headerlink" title="换取Uncon"></a>换取Uncon</h1><p>本科毕业之前大家的offer都是conditional offer，毕业后收集好缺少的材料并扫描成PDF，传到申请系统里去，就可以坐等发uncon了。我是6月24号上传到全部材料，7月7号在申请系统里查到了uncon，8号凌晨收到了邮件。一般毕业季换uncon的时间会长一些，因为换的人太多了。</p>
-<p>换uncon需要扫描上传的材料有</p>
-<ul>
-<li>毕业证原件</li>
-<li>学位证原件</li>
-<li>毕业证翻译件（自己翻译完盖学校的章就可以，不需要放照片）</li>
-<li>学位证翻译件（同上）</li>
-<li>包含所有课程的英文成绩单</li>
-<li>包含所有课程的中文成绩单（这个看具体学校，我在格拉只上传了英文的成绩单）</li>
-</ul>
-<p>下面是我用的毕业证与学位证的翻译件，格式没法调，需要word的康康百度云吧</p>
-<a class="btn" href="https://pan.baidu.com/s/1APNgOpkZaNnytagDF3rhYg"><i class="fa fa-arrow-right fa-fw"></i>密码uwbt</a>
+<h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p>刚开始搜集材料的时候看见有人说表盘要<strong>手动</strong>编辑xml文件，这不是反人类吗。。。不过好在华为已经推出了表盘设计软件<code>HwWatchFaceDesigner</code>，整个设计过程就和用<code>PhotoShop</code>P图一样<br>首先到华为的网站去下载<code>华为手表表盘开发工具</code>并解压，然后打开<code>HwWatchFaceDesigner.exe</code></p>
+<a class="btn" href="https://developer.huawei.com/consumer/cn/doc/5050601"><i class="fa fa-download fa-fw"></i>传送门</a>
 
-<div class="tabs" id="first-unique-name"><ul class="nav-tabs"><li class="tab active"><a href="#first-unique-name-1"><i class="fa fa-pencil"></i>学士学位证书翻译</a></li><li class="tab"><a href="#first-unique-name-2"><i class="fa fa-pencil"></i>毕业证书翻译</a></li></ul><div class="tab-content"><div class="tab-pane active" id="first-unique-name-1"><p><strong>学士学位证明翻译</strong></p>
-<p>Bachelor’s Degree Certificate</p>
-<p>This is to certify that XXX, male, born on June 26, 1997, has completed an undergraduate program in Architecture at XXXXX University and graduated. According to Regulations of the People’s Republic of China on Academic Degrees, he is awarded the degree of Bachelor of Science in Architecture.</p>
-<p>Chairman of Degree Evaluation Committee: Xxxxx Xxx      XXXXX University<br>Certificate No.: XXXXXXXXXXXXXX      June 18th, 2020</p></div><div class="tab-pane" id="first-unique-name-2"><p><strong>毕业证书翻译</strong></p>
-<p>Graduation Certificate</p>
-<p>XXX XXX, male, born on June 26, 1997, studied a five-year program in Architecture at our school from September 2015 to June 2020. Having completed all courses specified in the teaching plan and passed the examinations, he is allowed to graduate.</p>
-<p>School: XXXXX University      President: Xxxxx Xxx<br>Certificate No.: XXXXXXXXXXXXXXXX      June 12th, 2020</p></div></div></div>
+<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p>在解压后的文件夹里有中英文的<code>用户手册</code>，路径是<code>.\document\用户手册.pdf</code>,也可以在<code>帮助</code>中点击<code>用户手册</code>。我就不再啰嗦了，只记录一些注意事项</p>
+<ul>
+<li><code>荣耀 Magic Watch</code>的分辨率是<code>390*390</code></li>
+<li>新建工程的时候<code>表盘效果图</code>先空着，设计完成之后再截图到PS里，导出不同分辨率的效果图</li>
+<li>图层最多25个</li>
+<li>一些位置固定的图标可以到最后在PS里和背景图合成为一张图片，节省图层</li>
+<li><code>星期</code>的<code>选图</code>里面第一张图是无效的，随便添加一张，从第二张图开始才是周一</li>
+<li><code>上午下午</code>的<code>选图</code>里面第三张图要找一张空白的png图</li>
+<li><code>撤销</code>不能使用<code>ctrl+z</code>的快捷键，只能点击上面菜单栏的返回图标，而且一经保存就不能再撤回</li>
+</ul>
+<h1 id="素材"><a href="#素材" class="headerlink" title="素材"></a>素材</h1><p>制作表盘需要用到各种png格式的图片素材，下面是我使用到的素材网站<br><a href="https://www.freepik.com/">freepik</a> - 背景图片素材，未注册的话每天有下载数量限制，注册的时候需要科学上网，因为需要用到谷歌的验证服务，注册完成后不需要<br><a href="https://webgradients.com/">webgradients</a> - 渐变色配色<br><a href="https://www.iconfinder.com/">iconfinder</a> - 图标素材，这个网站有在线编辑器，点开图片后有一个<code>Open in icon editor</code>，可以在线调整好素材的颜色，省下PS的过程</p>
+<p>部分素材是需要付费的，筛选的时候勾上<code>free</code>就好了</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>目前版本的<code>华为运动健康</code>软件是不能自定义添加表盘的，需要下载老版本，百度云自取</p>
+<a class="btn" href="https://pan.baidu.com/s/1Pg0lIOtRS3fmXG8kvMkNDA"><i class="fa fa-download fa-fw"></i>提取码: mpbm</a>
 
-<h1 id="保证金"><a href="#保证金" class="headerlink" title="保证金"></a>保证金</h1><p>保证金是一项英国政府判断你是否有足够的经济能力完成学业的依据，具体的操作是开一个存款证明，办签证时会随机抽查存款证明，抽到了会发邮件给你。</p>
+<p>安装的具体操作步骤如下</p>
 <ul>
-<li>保证金金额大概在30w人民币，具体数额是按照学费+所在地区9个月生活费来算的，为了保险起见会在这个数额上再加几千英镑，生活费伦敦地区标准为1265镑&#x2F;月，其他地区为1015镑&#x2F;月</li>
-<li>一般存定期并设置自动转存</li>
-<li>存满28天之后就可以在网上预约签证了</li>
-<li>然后在办理签证的前几天去银行开存款证明和流水，不用开太早，因为存款证明开具日期和网上签证预约日期的间隔不能超过31天</li>
-<li>英镑和人民币可以混存，总金额够了就行</li>
-<li>最好存在自己名下，存在父母名下需要多开具亲子关系证明以及授权使用资金的证明</li>
-<li>建议存在中农工建这类大行，不建议存在农村信用社一类的地方</li>
-<li>不能用理财产品代替</li>
+<li>先将导出的<code>hwt</code>文件拷贝到手机</li>
+<li>成功连接设备后进入<code>表盘市场</code></li>
+<li>点击右上角的三个点</li>
+<li>进入<code>隐私声明</code></li>
+<li>撤销华为主题服务</li>
+<li>退出来再重新进入<code>表盘市场</code></li>
+<li>在弹出窗口中重新给华为主题服务授权</li>
+<li>再次点击右上角的三个点，会多出一个<code>添加表盘</code>选项</li>
+<li>点击后会询问你是否是开发者，点击<code>是</code></li>
+<li>找到拷贝进手机的<code>hwt</code>文件路径，点击确定并安装</li>
 </ul>
-<p><img data-src="https://s2.loli.net/2022/05/13/K2Eq8rUmZeNtBgY.png" alt="英国留学后续日志"></p>
-<h1 id="换汇"><a href="#换汇" class="headerlink" title="换汇"></a>换汇</h1><p>在去英国之前建议提前换好英镑，在常用的银行换就可以，到英国办好当地银行卡后通过跨境汇款转过去。下面是一些情报</p>
-<ul>
-<li>购买英镑的时候分为<strong>现汇</strong>和<strong>现钞</strong>两个选项，现汇就是存在银行卡里的钱，现钞就是换取的纸币</li>
-<li>换汇一般就是购买英镑现汇存在银行卡里</li>
-<li>临行前可以换一部分现钞，供落地后应急用，不用太多，海关不允许携带5000美元以上的等值外币出境</li>
-<li>每人每年的换汇额度是5万美元</li>
-<li>换汇的时候看的是<strong>购汇汇率</strong>而不是<strong>结汇汇率</strong>。购汇汇率是你向银行购买英镑的汇率，结汇汇率是你向银行出售英镑的汇率</li>
-<li>建议像我一样的贫困人口每天多看两眼汇率，万一英镑再跌到8.1呢</li>
-<li>英镑存定期的利息非常低，三个月存期利率只有0.1%，而人民币的是1.35%</li>
-<li>跨境汇款有被锁的风险，建议出国前把身份证银行卡留给父母，以防万一</li>
-<li>换汇之后可以在手机银行APP上预约到银行网点去现钞，我取了1000英镑，小城市里只有50英镑的大额纸钞，大城市可能会换到5磅10磅这样的小面值</li>
-</ul>
-<h1 id="肺结核体检"><a href="#肺结核体检" class="headerlink" title="肺结核体检"></a>肺结核体检</h1><p>肺结核体检是办理T4签证的必要材料，一般在办签证前两三个月就可以做了。</p>
-<ul>
-<li>肺结核体检需要到指定的医院做，否则无效。定点医院共有15家，医院地址以及联系方式请看<a href="https://www.gov.uk/government/publications/tuberculosis-test-for-a-uk-visa-clinics-in-china/approved-tuberculosis-testing-clinics-in-china"><strong>签证官网</strong></a></li>
-<li>费用为550元人民币，收费方式为现金或支付宝，不支持医保卡、信用卡或其他支付方式</li>
-<li>需要提前预约，通常提前一或两个工作天预约即可</li>
-<li>预约方式有电话和邮件两种，部分医院（如济南出国移民体检中心）还可以在网站上预约</li>
-<li>无需空腹，正常饮食</li>
-<li>需要携带的材料<ul>
-<li>有效期半年以上的护照原件，不接受任何其他证件</li>
-<li>护照复印件一张</li>
-<li>两张半年内35mmx45mm免冠白底彩照（需要露出眉毛及耳朵）</li>
-</ul>
-</li>
-<li>流程很快，耗时约为半小时，换上衣服拍下胸片，然后医生询问下病史就结束了</li>
-<li>体检结果正常的话，上午体检下午可以出结果并发出证书，下午体检则需第二天早上才能发出证书。</li>
-<li>凭护照取证书，如果不方便可以发快递到付，建议自取</li>
-<li>证书有效期通常为六个月，特殊情况下为三个月</li>
-<li>如果出现问题的话，医院会要求做痰培养了，这个过程就很漫长了，需要等两个月。但是如果你认为身体没有问题的话建议换一家医院重新做体检，不要说自己在其他医院做过（信息来源：知乎）</li>
-<li>英国地址填自己的学校，懒的话可以不填，没什么影响</li>
-</ul>
-<p>下面是我10月13日在济南做肺结核的记录</p>
-<ul>
-<li>济南的肺结核检测在山医大三院的出国体检中心做，地址是天桥区无影山路38号，进门后右手边红屋顶的房子就是</li>
-<li>我是七点四十五到的，医院大门口会有保安测体温。</li>
-<li>我到的时候前面只有三个人。进入体检中心后出示身份证和健康码，然后在门口机器上取号</li>
-<li>取号后领两张表，再测一次体温，工作人员会把体温写在表的右上角，过程中有什么疑问随时可以问工作人员</li>
-<li>填完表等到八点半，拿着护照去拍照，拍完给一张黑白的照片</li>
-<li>拍完照出来等待叫号，叫到自己的号就拿着材料去最里面的服务台</li>
-<li>把护照原件、复印件、刚拍的黑白照片、两张小两寸白底照片（要在背面也上自己名字）、填写的两张表格交给工作人员</li>
-<li>然后会拍照，还有在一张表上签字</li>
-<li>然后付款，支付宝现金均可</li>
-<li>付完款后工作人员把护照原件还给你，并给一个手环，手环是开储物柜用的，上面有对应的柜子编号</li>
-<li>拿着手环去玻璃门那里刷脸进去，进去之后有工作人员引导你到更衣室并给一件蓝色的上衣</li>
-<li>把上衣首饰全部摘掉，穿上那件蓝色的衣服，只带着护照和手环出去</li>
-<li>工作人员会告诉你去哪个房间做检测，在机器上做一个类似叉腰的动作，双肩向上同时贴到机器上，然后工作人员会让深吸一口气憋住，然后等工作人员喊可以了就可以出来了</li>
-<li>出来之后回到更衣室把衣服换好，然后把蓝色上衣扔进门口的回收箱</li>
-<li>走廊里的工作人员会让你到另一侧的医生室，医生会问一些问题，比如有没有得过肺结核、有没有和结合病人有过接触</li>
-<li>然后摘口罩拍照</li>
-<li>然后出去找走廊里的小姐姐把你带出去</li>
-<li>出去之后回到大门口的前台把手环还回去就可以溜了</li>
-<li>工作人员说因为疫情的原因，第二天下午三点后才能取报告，但是实测当天下午四点半就可以拿到，可以打电话问一下</li>
-</ul>
-<h1 id="国际旅行健康证"><a href="#国际旅行健康证" class="headerlink" title="国际旅行健康证"></a>国际旅行健康证</h1><p>这个健康证还有一个疫苗接种证都是很迷惑的东西，俗称小红本和小黄本。根据目前了解的信息，两者都是可做可不做的，入境时有非常小的概率抽查国际旅行健康证，被查到没有证也没什么事，只是耽误一点时间去做个免费体检，大概半小时，疫苗接种证则没听说过有被查到的。所以这俩我就不打算做了</p>
-<h1 id="签证"><a href="#签证" class="headerlink" title="签证"></a>签证</h1><h2 id="预约"><a href="#预约" class="headerlink" title="预约"></a>预约</h2><p>签证需要等CAS下来才能去办，CAS一般在入学前的3个月开始陆续发放，办理签证前需要在网上预约，最近学生签证也改名了，原来叫 Tier 4，现在直接叫 student visa。预约的时候建议挂全局代理，预约网站在国内的使用体验极差。</p>
-<a class="btn" href="https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/sort/country-nationality?p=student_out_uk&_ga=2.246378372.1460787317.1603017805-1850455343.1600247708"><i class="fa fa-home fa-fw"></i>预约网址</a>
+<p>如果觉得这个表盘不满意需要卸载的话，还要重新安装最新版的<code>华为运动健康</code>，进入<code>表盘市场</code>中的<code>我的</code>里面删除，老版本的不能在表盘市场中删除自定义的表盘，这就很尴尬，所以。。。一定要设计好了检查好了再安装，要不这个过程可是太反人类了，手表安装表盘巨慢，1秒钟才安装百分之一。。。</p>
+<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>我做的表盘已经上传到我的Github了，源文件也一起上传了，有需要的自取</p>
+<a class="btn" href="https://github.com/Siriusq/Honor-Magic-Watch-Theme-Sirius"><i class="fa fa-download fa-fw"></i>源文件</a>
 
-<p>预约的步骤可以去看<a href="https://weibo.com/u/7305573611">@PhD威宇</a>的微博文章<a href="https://weibo.com/ttarticle/p/show?id=2309404537047783178301">保姆级手把手教你申请T4签证</a>，大佬写的非常详细，佩服大佬的耐心。T4和现在的 student visa 稍有出入，大体的步骤都是一样的。（我才不是因为懒不想写）</p>
-<p><strong>注意下载checklist</strong></p>
-<p>按照步骤交完签证申请费和IHS之后会跳转到VFS的网站上，这个网站是用来上传材料和预约递签日期地点用的，有一些增(keng)值(qian)服务可以选。这个网站深得学校教务选课系统的真传，同款土豆服务器，而且不挂全局代理基本没法用，挂了全局代理也会有各种各样的bug。</p>
-<p>Student visa 一般只有两个材料需要上传，checklist 会有说明</p>
-<ul>
-<li>护照信息页</li>
-<li>肺结核报告</li>
-</ul>
-<p>建议提前在网站上上传好材料，如果去签证中心现场上传的话会收取100块钱的扫描费用（奸商！）。</p>
-<p>另外一些签证中心（说的就是你济南，还有西安）还会收取服务费，大概500块钱，在VFS那个网站上交。</p>
-<p>预约的时候可以隔几个小时上去一次，看看有没有更早的位置。我一开始预约的是23号递签，后来刷出来了14号和16号的，就在网站上更改了预约时间，更改免费。</p>
-<p>预约好时间、传完材料、交完钱之后会发给你一个<code>Appointment Confirmation Notice</code>，记得打印出来带着</p>
-<h2 id="递签"><a href="#递签" class="headerlink" title="递签"></a>递签</h2><p>我最终去递签的时候只带了下面几个材料</p>
-<ul>
-<li>护照原件</li>
-<li>checklist</li>
-<li>Appointment Confirmation Notice</li>
-<li>肺结核报告原件</li>
-</ul>
-<p>最后工作人员收走了这些材料</p>
-<ul>
-<li>护照原件</li>
-<li>checklist 的第一页</li>
-<li>Appointment Confirmation Notice</li>
-</ul>
-<p>下面是我在济南递签的流程，我是12:13进去的，12:25就出来了</p>
-<ul>
-<li>济南签证中心地址在济南市历下区经十路11890号北京银行5楼</li>
-<li>从北京银行大厦的南门进，进去后在右手边向保安大叔出示健康码并测量体温</li>
-<li>用微信扫描桌面立牌上的二维码，填写姓名手机号等个人信息进行登记</li>
-<li>做四号电梯（最里面右手边那个）上5楼</li>
-<li>出电梯后左手边可以看到工作人员在柜台前面，会问是不是来办签证，然后带你到签证中心门口，测量体温后经过安检门进入</li>
-<li>进入之后出示护照、checklist、notice这几个材料，然后工作人员会问姓名和出生日期，并给你一张号码纸</li>
-<li>进去等叫号，左手边有几排椅子，椅子前面的柱子上挂着电视，会显示叫号信息</li>
-<li>人少的话工作人员就让直接去柜台，去柜台交护照、checklist、notice</li>
-<li>工作人员会问你办不办加急，问护照是自取还是快递，快递的话会给你一张快递单填写，然后交现金80元，可以找零</li>
-<li>工作人员没有提起过短信服务，短信也确实没什么用</li>
-<li>等一会工作人员会把不要的材料都退给你，快递的会给一张EMS快递单回执</li>
-<li>再回去等叫号，叫到号去7号室拍照录指纹</li>
-<li>先会让你报一下姓名和出生日期，然后摘眼镜和口罩拍照</li>
-<li>然后采指纹，先是右手四个手指并排，然后左手四个手指，最后是两个大拇指一起</li>
-<li>结束之后会给你张回执，就可以走了</li>
-<li>回家默默等快递把护照寄回来</li>
-</ul>
-<h1 id="订机票"><a href="#订机票" class="headerlink" title="订机票"></a>订机票</h1><p>机票我是在携程买的，也可以直接官网购买或者打电话购买</p>
-<p>机票最好早买，早买一般都很便宜。我亲眼见证了我的机票从4200元涨价到了5500元，现在涨到了15000元。我在5500的时候买入的，买入第二天晚上就涨到了15000。</p>
-<p>我们买的一般都是留学生机票，会有额外的行李额度，一般是两件不超过23kg的28寸托运行李和一件不超过20寸的手提行李，我一开始以为需要签证才能购买留学生机票，所以错过了4200的低价，其实买的时候完全不需要签证等证明材料。携程的要求是在飞机起飞前三天上传好签证、cas、offer、护照等证明材料就可以。能早买就早买吧。</p>
-<p>另外由于今年疫情的影响，有些飞机是不一定能飞的，没有经过民航局审批，但是他也在卖票，建议买票之前先查询一下。因为有些航空公司退票只给退代金券，就很坑。</p>
-<p>飞英国的机票除了去伦敦的，基本都要转机，转机机场一般有荷兰阿姆斯特丹、芬兰赫尔辛基、阿联酋迪拜、伦敦希思罗等。购票时看好是否是行李直挂，不是直挂的话转机的时候需要重新办理行李托运手续，麻烦且耗时，要留足充分的时间。</p>
-<p>此外如果飞到大学所在城市的机票很贵的话可以看一下飞往临近城市的机票，举个栗子，我是一开始打算从上海飞格拉斯哥，但是去格拉斯哥的机票已经都在一万多了，然鹅去爱丁堡的机票只有五千多，所以我就买了去爱宝的机票，落地后再几个人一起包车直接到格拉宿舍楼下，包车大概在100胖，三四个人一起分担也不贵。</p>
-<h1 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h1><p>注册一般分为学术注册（Academic Registration）和财务注册（Financial Registration），学校会给提前发一封邮件告诉你注册的网址、用户名和密码，记得修改自己的密码。</p>
-<h2 id="学术注册"><a href="#学术注册" class="headerlink" title="学术注册"></a>学术注册</h2><p>这里以格拉为例，学术注册包含以下内容</p>
-<ul>
-<li>确认课程信息</li>
-<li>确认姓名、性别、出生日期以及学生ID</li>
-<li>填写宗教信仰与国籍</li>
-<li>填写在英国的住址（Term Address）</li>
-<li>填写个人邮箱地址与电话号码</li>
-<li>是否有残疾</li>
-<li>添加紧急联系人</li>
-<li>填写 Statistical Information，就跟查户口一样，包括性取向、有没有孩子等问题</li>
-<li>上传照片，这个照片会用在学生证上，照片的标准和护照的一样</li>
-<li>上传护照ID页</li>
-</ul>
-<p>学术注册完成后就可以选课（Enroll）了</p>
-<h2 id="财务注册"><a href="#财务注册" class="headerlink" title="财务注册"></a>财务注册</h2><p>财务注册就是交学费，常见的方式有电汇、信用卡付款等，也有部分学校支持支付宝或银联卡支付。</p>
-<p>我用的方法是信用卡分期付款，部分学校对于全款付学费会有优惠折扣，然而格拉并没有。。。如果学校对全款支付学费没有优惠的话建议使用分期付款，毕竟能把暂时不用交的前放在英国的银行账户里吃利息，几万英镑产生的利息也不少的。</p>
-<p>我交学费的过程比较曲折。。。一开始我用的信用卡是建行的VISA卡，但是这张卡只能用人民币还款，我早买下的英镑不能拿来还款，所以果断办新卡。我先把建设银行账户里的英镑跨行转账到了中国银行的账户里，然后办了中国银行的卓隽英镑卡，可以直接用英镑还款。</p>
-<p>这张卡建议在中国银行的APP上申请，下卡非常快，我从申请到拿到卡只用了3天。注意申请的时候职业不要选择学生，直接选择待业，剩下的收入啥的胡乱写就行。咱也不知道为啥，这张卡明明是给留学生用的，但是选择学生身份申请的话大概率直接秒拒，很迷惑。另外不建议到网点去办理，工作人员对这类卡不太了解，而且办卡速度很慢，我还在微博上看到有人网点办英镑卡，结果拿到手是美元卡，没法用。</p>
-<p>我当时拿到的额度是1000英镑，少得可怜，而格拉分期付款的第一笔款需要2933磅。如果不嫌麻烦的话可以分三次刷1000英镑，刷完一次就还款。然而我比较懒，就我直接向信用卡里转账了3000磅，一次划掉。</p>
-<h1 id="行李指南"><a href="#行李指南" class="headerlink" title="行李指南"></a>行李指南</h1><p>我在国内买了很多杂七杂八的行李，也不知道行李箱里能不能装得下hhh</p>
-<p>下面只是我想到的行李，到时候不一定会全带</p>
-<h2 id="登机行李"><a href="#登机行李" class="headerlink" title="登机行李"></a>登机行李</h2><h3 id="文件证件类"><a href="#文件证件类" class="headerlink" title="文件证件类"></a>文件证件类</h3><ol>
-<li>护照</li>
-<li>与护照一起寄回来的BRP说明</li>
-<li>CAS</li>
-<li>租房合同</li>
-<li>语言成绩单</li>
-<li>学术成绩单</li>
-<li>毕业证学位证（记得把外面的壳子拔下来，壳子没用）</li>
-<li>证件照</li>
-<li>入境前48小时填写的那张表</li>
-<li>肺结核报告</li>
-</ol>
-<h3 id="现金卡片"><a href="#现金卡片" class="headerlink" title="现金卡片"></a>现金卡片</h3><ol>
-<li>银行卡</li>
-<li>英国手机卡</li>
-<li>卡针</li>
-<li>英镑现金</li>
-<li>签字笔</li>
-</ol>
-<h3 id="防疫物资（少量）"><a href="#防疫物资（少量）" class="headerlink" title="防疫物资（少量）"></a>防疫物资（少量）</h3><ol>
-<li>口罩</li>
-<li>一次性手套</li>
-<li>护目镜或面罩</li>
-</ol>
-<h3 id="电子产品"><a href="#电子产品" class="headerlink" title="电子产品"></a>电子产品</h3><ol>
-<li>手机</li>
-<li>充电宝</li>
-<li>相机</li>
-<li>电脑</li>
-<li>平板</li>
-<li>充电器</li>
-<li>数据线</li>
-<li>耳机</li>
-<li>多国旅行转换插头</li>
-</ol>
-<h3 id="葛优瘫用品"><a href="#葛优瘫用品" class="headerlink" title="葛优瘫用品"></a>葛优瘫用品</h3><ol>
-<li>拖鞋</li>
-<li>颈枕</li>
-<li>眼罩</li>
-<li>耳塞</li>
-<li>旅行洗漱包</li>
-<li>小零食</li>
-</ol>
-<h2 id="托运行李"><a href="#托运行李" class="headerlink" title="托运行李"></a>托运行李</h2><h3 id="药品防疫类"><a href="#药品防疫类" class="headerlink" title="药品防疫类"></a>药品防疫类</h3><ol>
-<li>口罩</li>
-<li>一次性手套</li>
-<li>面罩</li>
-<li>创可贴</li>
-<li>酒精棉片&#x2F;酒精湿巾</li>
-<li>感冒灵</li>
-<li>藿香正气胶囊</li>
-<li>西瓜霜</li>
-<li>甲硝锉</li>
-<li>诺氟沙星</li>
-<li>皮炎平</li>
-<li>红霉素软膏</li>
-<li>体温计&#x2F;测温枪</li>
-<li>个人日常用药</li>
-<li>紫外线杀毒灯</li>
-</ol>
-<h3 id="电子产品及配件"><a href="#电子产品及配件" class="headerlink" title="电子产品及配件"></a>电子产品及配件</h3><ol>
-<li>英标转换插头</li>
-<li>插排</li>
-<li>充电电池套装</li>
-<li>鼠标键盘</li>
-<li>剃须刀</li>
-<li>各种充电器</li>
-<li>耳机</li>
-<li>计算器</li>
-<li>移动硬盘</li>
-<li>U盘&#x2F;读卡器</li>
-<li>路由器</li>
-<li>手机壳</li>
-<li>钢化膜</li>
-<li>手机平板折叠支架</li>
-<li>笔记本电脑支架</li>
-<li>相机三脚架</li>
-<li>网线</li>
-<li>鼠标垫</li>
-</ol>
-<h3 id="生活用品及工具"><a href="#生活用品及工具" class="headerlink" title="生活用品及工具"></a>生活用品及工具</h3><ol>
-<li>指甲钳挖耳勺套装</li>
-<li>无痕挂钩</li>
-<li>肥皂盒</li>
-<li>零钱包</li>
-<li>筷子</li>
-<li>饭盒</li>
-<li>保温杯</li>
-<li>折叠盆</li>
-<li>吸盘花洒支架</li>
-<li>螺丝刀</li>
-<li>瑞士军刀&#x2F;多功能工具钳</li>
-<li>洗衣袋</li>
-<li>地漏防堵塞过滤网</li>
-<li>折叠衣架</li>
-<li>镊子</li>
-<li>折叠烧水壶</li>
-<li>烘鞋器</li>
-<li>台灯</li>
-<li>USB小风扇</li>
-<li>加湿器</li>
-<li>牙刷</li>
-</ol>
-<h3 id="衣物"><a href="#衣物" class="headerlink" title="衣物"></a>衣物</h3><ol>
-<li>冲锋衣</li>
-<li>内衣内裤</li>
-<li>袜子</li>
-<li>两三双鞋子</li>
-<li>卫衣</li>
-<li>外套</li>
-<li>羽绒服</li>
-<li>毛巾</li>
-</ol>
-<h3 id="行李箱配件"><a href="#行李箱配件" class="headerlink" title="行李箱配件"></a>行李箱配件</h3><p>主要是为了让自己的箱子更醒目，在转盘领行李的时候可以一眼看到，防止拿错</p>
-<ol>
-<li>彩色行李箱绑带</li>
-<li>行李挂牌</li>
-<li>行李箱套</li>
-</ol>
-<h1 id="落地后续"><a href="#落地后续" class="headerlink" title="落地后续"></a>落地后续</h1><p>预计1月到英国更新，另开一个新的博文记录</p>
-]]></content>
+<a class="btn" href="https://github.com/Siriusq/Honor-Magic-Watch-Theme-Sirius/releases/download/6.0/sirius_3.1.6.hwt"><i class="fa fa-download fa-fw"></i>表盘下载</a>]]></content>
       <categories>
-        <category>Blog</category>
+        <category>搞机</category>
       </categories>
       <tags>
-        <tag>Record</tag>
-        <tag>留学</tag>
+        <tag>搞机</tag>
+        <tag>表盘</tag>
+        <tag>荣耀 magic watch</tag>
       </tags>
   </entry>
   <entry>
@@ -5854,62 +6037,11 @@ OFFICIAL
 <hr>
 ]]></content>
       <categories>
-        <category>Tech</category>
+        <category>折腾</category>
       </categories>
       <tags>
-        <tag>Software</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>荣耀 magic watch 表盘制作</title>
-    <url>/%E8%8D%A3%E8%80%80-magic-watch-%E8%A1%A8%E7%9B%98%E5%88%B6%E4%BD%9C.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">趁着还没开学给老爸的 Magic Watch 做了个表盘，甲方唯二的要求就是：字大+醒目</blockquote>
-
-<p><img data-src="https://s2.loli.net/2022/05/13/fswCopBAYqjnFKl.png" alt="icon"></p>
-<span id="more"></span>
-
-<h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p>刚开始搜集材料的时候看见有人说表盘要<strong>手动</strong>编辑xml文件，这不是反人类吗。。。不过好在华为已经推出了表盘设计软件<code>HwWatchFaceDesigner</code>，整个设计过程就和用<code>PhotoShop</code>P图一样<br>首先到华为的网站去下载<code>华为手表表盘开发工具</code>并解压，然后打开<code>HwWatchFaceDesigner.exe</code></p>
-<a class="btn" href="https://developer.huawei.com/consumer/cn/doc/5050601"><i class="fa fa-download fa-fw"></i>传送门</a>
-
-<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p>在解压后的文件夹里有中英文的<code>用户手册</code>，路径是<code>.\document\用户手册.pdf</code>,也可以在<code>帮助</code>中点击<code>用户手册</code>。我就不再啰嗦了，只记录一些注意事项</p>
-<ul>
-<li><code>荣耀 Magic Watch</code>的分辨率是<code>390*390</code></li>
-<li>新建工程的时候<code>表盘效果图</code>先空着，设计完成之后再截图到PS里，导出不同分辨率的效果图</li>
-<li>图层最多25个</li>
-<li>一些位置固定的图标可以到最后在PS里和背景图合成为一张图片，节省图层</li>
-<li><code>星期</code>的<code>选图</code>里面第一张图是无效的，随便添加一张，从第二张图开始才是周一</li>
-<li><code>上午下午</code>的<code>选图</code>里面第三张图要找一张空白的png图</li>
-<li><code>撤销</code>不能使用<code>ctrl+z</code>的快捷键，只能点击上面菜单栏的返回图标，而且一经保存就不能再撤回</li>
-</ul>
-<h1 id="素材"><a href="#素材" class="headerlink" title="素材"></a>素材</h1><p>制作表盘需要用到各种png格式的图片素材，下面是我使用到的素材网站<br><a href="https://www.freepik.com/">freepik</a> - 背景图片素材，未注册的话每天有下载数量限制，注册的时候需要科学上网，因为需要用到谷歌的验证服务，注册完成后不需要<br><a href="https://webgradients.com/">webgradients</a> - 渐变色配色<br><a href="https://www.iconfinder.com/">iconfinder</a> - 图标素材，这个网站有在线编辑器，点开图片后有一个<code>Open in icon editor</code>，可以在线调整好素材的颜色，省下PS的过程</p>
-<p>部分素材是需要付费的，筛选的时候勾上<code>free</code>就好了</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>目前版本的<code>华为运动健康</code>软件是不能自定义添加表盘的，需要下载老版本，百度云自取</p>
-<a class="btn" href="https://pan.baidu.com/s/1Pg0lIOtRS3fmXG8kvMkNDA"><i class="fa fa-download fa-fw"></i>提取码: mpbm</a>
-
-<p>安装的具体操作步骤如下</p>
-<ul>
-<li>先将导出的<code>hwt</code>文件拷贝到手机</li>
-<li>成功连接设备后进入<code>表盘市场</code></li>
-<li>点击右上角的三个点</li>
-<li>进入<code>隐私声明</code></li>
-<li>撤销华为主题服务</li>
-<li>退出来再重新进入<code>表盘市场</code></li>
-<li>在弹出窗口中重新给华为主题服务授权</li>
-<li>再次点击右上角的三个点，会多出一个<code>添加表盘</code>选项</li>
-<li>点击后会询问你是否是开发者，点击<code>是</code></li>
-<li>找到拷贝进手机的<code>hwt</code>文件路径，点击确定并安装</li>
-</ul>
-<p>如果觉得这个表盘不满意需要卸载的话，还要重新安装最新版的<code>华为运动健康</code>，进入<code>表盘市场</code>中的<code>我的</code>里面删除，老版本的不能在表盘市场中删除自定义的表盘，这就很尴尬，所以。。。一定要设计好了检查好了再安装，要不这个过程可是太反人类了，手表安装表盘巨慢，1秒钟才安装百分之一。。。</p>
-<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>我做的表盘已经上传到我的Github了，源文件也一起上传了，有需要的自取</p>
-<a class="btn" href="https://github.com/Siriusq/Honor-Magic-Watch-Theme-Sirius"><i class="fa fa-download fa-fw"></i>源文件</a>
-
-<a class="btn" href="https://github.com/Siriusq/Honor-Magic-Watch-Theme-Sirius/releases/download/6.0/sirius_3.1.6.hwt"><i class="fa fa-download fa-fw"></i>表盘下载</a>]]></content>
-      <categories>
-        <category>Tech</category>
-      </categories>
-      <tags>
-        <tag>Software</tag>
-        <tag>Watch</tag>
+        <tag>Win10</tag>
+        <tag>软件</tag>
       </tags>
   </entry>
   <entry>
@@ -5972,10 +6104,10 @@ OFFICIAL
 <p>差不多就这些内容了，有什么问题可以在下面评论留言或者微信找我，溜了溜了</p>
 ]]></content>
       <categories>
-        <category>Architecture</category>
+        <category>建筑狗</category>
       </categories>
       <tags>
-        <tag>Architecture</tag>
+        <tag>建筑</tag>
       </tags>
   </entry>
 </search>
