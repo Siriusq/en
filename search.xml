@@ -1,85 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo Next 7.7 双语切换</title>
-    <url>/Hexo-Next-7-7-%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">一年前通过在Google的疯狂查找和尝试，实现了在7.1版本的Next主题上进行中英双语的切换。但是Bug多多（切换到英文界面后点击关于、归档等标签还会跳转回中文界面），而我本人又是拖延症+懒癌晚期，一直没有尝试修复。最近借着给Next主题升级的机会顺便解决这个问题。折腾了两天，终于成功实现了理想中的中英双语切换效果，搞得毕设都没怎么做。</blockquote>
-
-<span id="more"></span>
-
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>我最初的想法是：在Github上新建一个仓库，然后开启新仓库的 Github Pages 作为英文网站使用，这样中英文的网站就可以相互独立，互不干扰，只需要在两个网站上添加一个切换按钮就可以了。但是查询后发现每个 Github 账号只能拥有一个个人主页，这就很尴尬了，难不成要再注册一个账号来作为英文网站使用吗？未免太过麻烦。就在我一筹莫展的时候，发现了<strong>chitanda</strong>大佬的文章<a href="https://segmentfault.com/a/1190000003946969">单个GitHub帐号下添加多个GitHub Pages的相关问题</a>。</p>
-<blockquote>
-<p>根据官方文档，GitHub Pages分为两类:个人&#x2F;组织主页以及项目主页，两者基本上没啥区别，但是有以下几点不同:（该文场景下个人和组织帐号没什么区别，所以下文为了行文方便将统一用个人主页代指）</p>
-<ul>
-<li>个人主页必须要和用户的GitHub帐号同名，所以每个用户有且只能有一个repo作为个人主页，且必须是<username>&#x2F;<username>.github.io的形式；而项目主页的命名则没有这种限制，且数量有任意多个。</li>
-<li>不考虑绑定的自定义域名的前提下，个人主页的GitHub二级域名为<username>.github.io;项目主页的GitHub二级域名为<username>.github.io&#x2F;<projectname>,没有<projectname>.<username>.github.io这种方式</li>
-<li>个人主页的展示内容以master分支里的文件为准；而项目主页的展示内容以gh-pages分支内的文件为准</li>
-</ul>
-</blockquote>
-<p>这样的话，如果在Github里新建一个仓库，用项目主页的方式来部署英文网站，中英文网站应该还是相互独立的，英文网站的的域名格式是<code>中文域名/仓库名/</code>，也就不用再单独配置新的域名，听起来好像能行？那就试一下吧</p>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>这里以我自己的域名<code>siriusq.top</code>和英文网站仓库名<code>en</code>为例</p>
-<h2 id="创建项目主页"><a href="#创建项目主页" class="headerlink" title="创建项目主页"></a>创建项目主页</h2><ul>
-<li>在 Github 新建一个名为<code>en</code>的<code>Repositories</code></li>
-<li>进入新建的<code>Repositories</code>，点击<code>Settings</code></li>
-<li>下拉到<code>Github Pages</code>选项</li>
-<li>点击<code>Choose a theme</code>，然后随便选一个主题</li>
-<li>成功建立项目主页和后<code>Github Pages</code>选项会显示<code>Your site is published at https://siriusq.top/en/</code></li>
-<li>至此英文网站的项目主页创建成功</li>
-</ul>
-<h2 id="建立本地英文网站目录"><a href="#建立本地英文网站目录" class="headerlink" title="建立本地英文网站目录"></a>建立本地英文网站目录</h2><p>复制现在的中文博客文件夹并重命名，名字随意，这里以我自己的中文文件夹名<code>Hexo</code>和复制出来的英文文件夹名<code>Hexoen</code>为例</p>
-<ul>
-<li>打开<code>./Hexoen/_config.yml</code>文件，依次修改配置如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">language: en</span><br><span class="line">url: https://siriusq.top/en/ # 用自己的 域名/仓库名/ 替换 siriusq.top/en/</span><br><span class="line">root: /en/ # 用自己的仓库名替换 en</span><br><span class="line">repo: git@github.com:Siriusq/en.git # 用自己的 用户名/仓库名 替换 Siriusq/en</span><br></pre></td></tr></table></figure></li>
-<li>删除<code>./Hexoen/source</code>下的<code>CNAME</code>文件（如果有的话）</li>
-</ul>
-<h2 id="加入中文切换按钮"><a href="#加入中文切换按钮" class="headerlink" title="加入中文切换按钮"></a>加入中文切换按钮</h2><ul>
-<li>打开<code>./Hexoen/source/_data/next.yml</code>文件<ul>
-<li>在<code>Menu Settings</code>下的<code>menu：</code>中加入<code>switch_lang</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: / || home</span><br><span class="line">about: /about/ || user</span><br><span class="line">tags: /tags/ || tags</span><br><span class="line">categories: /categories/ || th</span><br><span class="line">archives: /archives/ || archive</span><br><span class="line">switch_lang: https://siriusq.top || language # 将siriusq.top替换成你的中文网站域名</span><br><span class="line">#schedule: /schedule/ || calendar</span><br><span class="line">#sitemap: /sitemap.xml || sitemap</span><br><span class="line">#commonweal: /<span class="number">404</span>/ || heartbeat</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>打开<code>./Hexoen/themes/next/languages/en.yml</code>文件<ul>
-<li>在<code>menu:</code>下添加<code> switch_lang: 简体中文</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: Home</span><br><span class="line">archives: Archives</span><br><span class="line">categories: Categories</span><br><span class="line">tags: Tags</span><br><span class="line">about: About</span><br><span class="line">switch_lang: 简体中文</span><br><span class="line">search: Search</span><br><span class="line">schedule: Schedule</span><br><span class="line">sitemap: Sitemap</span><br><span class="line">commonweal: Commonweal <span class="number">404</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h2 id="加入英文切换按钮"><a href="#加入英文切换按钮" class="headerlink" title="加入英文切换按钮"></a>加入英文切换按钮</h2><ul>
-<li>打开<code>./Hexo/source/_data/next.yml</code>文件<ul>
-<li>在<code>Menu Settings</code>下的<code>menu：</code>中加入<code>switch_lang</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: / || home</span><br><span class="line">about: /about/ || user</span><br><span class="line">tags: /tags/ || tags</span><br><span class="line">categories: /categories/ || th</span><br><span class="line">archives: /archives/ || archive</span><br><span class="line">switch_lang: https://siriusq.top/en/ || language # 将siriusq.top/en/替换成你的英文网站域名</span><br><span class="line">#schedule: /schedule/ || calendar</span><br><span class="line">#sitemap: /sitemap.xml || sitemap</span><br><span class="line">#commonweal: /<span class="number">404</span>/ || heartbeat</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>打开<code>./Hexoen/themes/next/languages/en.yml</code>文件<ul>
-<li>在<code>menu:</code>下添加<code> switch_lang: 简体中文</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: 首页</span><br><span class="line">archives: 归档</span><br><span class="line">categories: 分类</span><br><span class="line">tags: 标签</span><br><span class="line">about: 关于</span><br><span class="line">switch_lang: English</span><br><span class="line">search: 搜索</span><br><span class="line">schedule: 日程表</span><br><span class="line">sitemap: 站点地图</span><br><span class="line">commonweal: 公益 <span class="number">404</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h2 id="添加切换判断条件"><a href="#添加切换判断条件" class="headerlink" title="添加切换判断条件"></a>添加切换判断条件</h2><p><strong>中文网站</strong><br>打开<code>./Hexo/themes/next/layout/_partials/head/head-unique.swig</code>，在最下方粘贴代码</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">  <span class="comment">// Wait for the page to load first</span></span><br><span class="line">  <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">      switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">          <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">          <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en/&#x27;</span>);</span><br><span class="line">          <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">              <span class="title function_">_prevOnload</span>();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;j</span><br></pre></td></tr></table></figure>
-
-<p><strong>英文网站</strong><br>打开<code>./Hexoen/themes/next/layout/_partials/head/head-unique.swig</code>，在最下方粘贴代码</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">  <span class="comment">// Wait for the page to load first</span></span><br><span class="line">  <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">      switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">          <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">          <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en/&#x27;</span>);</span><br><span class="line">          <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">              <span class="title function_">_prevOnload</span>();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>分别在两个文件夹执行hexo三连操作，将网站部署到Github，过一会就能访问了</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><ul>
-<li>由于两个网站是相互独立的，所以给两个网站用不同的主题在理论上也是可行的，我只给英文网站修改了下404页面</li>
-<li>一点瑕疵：开启PJAX的话，在页面完全加载之前点击切换按钮的话会卡一下才跳转</li>
-<li>二点瑕疵：网站相互独立，所以跳转的时候网页是完全重新加载的，PJAX无效</li>
-<li>注意事项：写博客的时候，中英文目录下的markdown文件名请保持一致，否则切换的时候会跳转到404页面</li>
-</ul>
-<p>折腾这些东西真的太费时间了，毕设一点没动，现在很慌张。有问题欢迎评论区留言，最近可能回复不及时。</p>
-<p>不多说了，我要滚去做毕设了</p>
-<p>ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;┌(;￣◇￣)┘</p>
-]]></content>
-      <categories>
-        <category>网站配置</category>
-      </categories>
-      <tags>
-        <tag>HEXO</tag>
-        <tag>Next</tag>
-        <tag>i18n</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Github无法加载图片解决方法</title>
     <url>/Github%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E5%9B%BE%E7%89%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">昨天上 Github 添加图片的时候发现图片不能正常加载了，访问全球最大的同性交友网站没有图片怎么能行（滑稽）。查了一下发现IP又挂了，修改 Hosts 后成功解决，此方法同样适用于 Github 无法访问的问题</blockquote>
@@ -122,66 +43,6 @@
       <tags>
         <tag>Github</tag>
         <tag>Win10</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HEXO部署</title>
-    <url>/HEXO%E9%83%A8%E7%BD%B2.html</url>
-    <content><![CDATA[<p>博客已经搭建成功了，下一步是用Hexo配合Markdown写博客了</p>
-<h1 id="Hexo写作流程"><a href="#Hexo写作流程" class="headerlink" title="Hexo写作流程"></a>Hexo写作流程</h1><p>博客写作流程相对于搭建要简单太多了，只需要以下几步：</p>
-<ul>
-<li>创建新博客文件</li>
-<li>生成新网页</li>
-<li>部署到Github Page</li>
-</ul>
-<span id="more"></span>
-
-<h2 id="创建新博客文件"><a href="#创建新博客文件" class="headerlink" title="创建新博客文件"></a>创建新博客文件</h2><ol>
-<li><p>在博客文件夹中右键打开Git bash</p>
-</li>
-<li><p>输入<code>hexo new &quot;博客标题&quot;</code> 新建一个md文件，双引号内的名字就是文章标题</p>
-</li>
-<li><p>进入<code>博客根目录/source/_posts</code> 文件夹，可以看到新创建的文件<code>博客标题.md</code>,md后缀代表Markdown文件</p>
-</li>
-<li><p>双击使用安装的Markdown编辑器打开进行编辑</p>
-<ul>
-<li>文件内会默认生成以下内容(以本博客为例）：  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   ---`</span><br><span class="line">   title: HEXO&amp;Markdown</span><br><span class="line">date: 2019-04-04 10:50:41</span><br><span class="line">tags: [Hexo,Markdown]</span><br><span class="line">   ---`</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>其中<code>title</code>就是博客标题</li>
-<li><code>date</code>是博客的创建时间，不用修改</li>
-<li><code>tags</code>是博客的标签</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>踩坑：<br>此处注意冒号后面的空格</p>
-</blockquote>
-<ul>
-<li>在<code>---</code>分割线后就是我们写博文的地方了，按照Markdown语法规则编写即可</li>
-</ul>
-</li>
-<li><p>编写完成后保存</p>
-</li>
-</ol>
-<h2 id="生成新网页并部署"><a href="#生成新网页并部署" class="headerlink" title="生成新网页并部署"></a>生成新网页并部署</h2><ol>
-<li>打开Git bash</li>
-<li>输入命令<code>hexo clean</code>清除网页缓存</li>
-<li>输入命令<code>hexo g</code>生成新的网页文件</li>
-<li>（可选）输入命令<code>hexo s</code>生成本地服务并前往返回的网址预览网页<blockquote>
-<p>踩坑：<br>Git bash内的复制命令并不是熟悉的<code>ctrl c</code>，而是<code>ctrl ins</code>，使用<code>ctrl c</code>复制预览网址会结束本地服务进程，所以预览网页会没反应</p>
-</blockquote>
-</li>
-<li>输入命令<code>hexo d</code>将网页部署到Github Page</li>
-</ol>
-<hr>
-<p><strong>以上是完整流程，每次更新博客的时候都要重复一遍上述流程</strong><br>省事的话可以合并命令，直接用<code>hexo cl</code>和<code>hexo g -d</code>即可更新</p>
-]]></content>
-      <categories>
-        <category>网站配置</category>
-      </categories>
-      <tags>
-        <tag>HEXO</tag>
       </tags>
   </entry>
   <entry>
@@ -311,6 +172,145 @@
       <tags>
         <tag>Grasshopper</tag>
         <tag>建筑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HEXO部署</title>
+    <url>/HEXO%E9%83%A8%E7%BD%B2.html</url>
+    <content><![CDATA[<p>博客已经搭建成功了，下一步是用Hexo配合Markdown写博客了</p>
+<h1 id="Hexo写作流程"><a href="#Hexo写作流程" class="headerlink" title="Hexo写作流程"></a>Hexo写作流程</h1><p>博客写作流程相对于搭建要简单太多了，只需要以下几步：</p>
+<ul>
+<li>创建新博客文件</li>
+<li>生成新网页</li>
+<li>部署到Github Page</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="创建新博客文件"><a href="#创建新博客文件" class="headerlink" title="创建新博客文件"></a>创建新博客文件</h2><ol>
+<li><p>在博客文件夹中右键打开Git bash</p>
+</li>
+<li><p>输入<code>hexo new &quot;博客标题&quot;</code> 新建一个md文件，双引号内的名字就是文章标题</p>
+</li>
+<li><p>进入<code>博客根目录/source/_posts</code> 文件夹，可以看到新创建的文件<code>博客标题.md</code>,md后缀代表Markdown文件</p>
+</li>
+<li><p>双击使用安装的Markdown编辑器打开进行编辑</p>
+<ul>
+<li>文件内会默认生成以下内容(以本博客为例）：  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   ---`</span><br><span class="line">   title: HEXO&amp;Markdown</span><br><span class="line">date: 2019-04-04 10:50:41</span><br><span class="line">tags: [Hexo,Markdown]</span><br><span class="line">   ---`</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其中<code>title</code>就是博客标题</li>
+<li><code>date</code>是博客的创建时间，不用修改</li>
+<li><code>tags</code>是博客的标签</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>踩坑：<br>此处注意冒号后面的空格</p>
+</blockquote>
+<ul>
+<li>在<code>---</code>分割线后就是我们写博文的地方了，按照Markdown语法规则编写即可</li>
+</ul>
+</li>
+<li><p>编写完成后保存</p>
+</li>
+</ol>
+<h2 id="生成新网页并部署"><a href="#生成新网页并部署" class="headerlink" title="生成新网页并部署"></a>生成新网页并部署</h2><ol>
+<li>打开Git bash</li>
+<li>输入命令<code>hexo clean</code>清除网页缓存</li>
+<li>输入命令<code>hexo g</code>生成新的网页文件</li>
+<li>（可选）输入命令<code>hexo s</code>生成本地服务并前往返回的网址预览网页<blockquote>
+<p>踩坑：<br>Git bash内的复制命令并不是熟悉的<code>ctrl c</code>，而是<code>ctrl ins</code>，使用<code>ctrl c</code>复制预览网址会结束本地服务进程，所以预览网页会没反应</p>
+</blockquote>
+</li>
+<li>输入命令<code>hexo d</code>将网页部署到Github Page</li>
+</ol>
+<hr>
+<p><strong>以上是完整流程，每次更新博客的时候都要重复一遍上述流程</strong><br>省事的话可以合并命令，直接用<code>hexo cl</code>和<code>hexo g -d</code>即可更新</p>
+]]></content>
+      <categories>
+        <category>网站配置</category>
+      </categories>
+      <tags>
+        <tag>HEXO</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo Next 7.7 双语切换</title>
+    <url>/Hexo-Next-7-7-%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">一年前通过在Google的疯狂查找和尝试，实现了在7.1版本的Next主题上进行中英双语的切换。但是Bug多多（切换到英文界面后点击关于、归档等标签还会跳转回中文界面），而我本人又是拖延症+懒癌晚期，一直没有尝试修复。最近借着给Next主题升级的机会顺便解决这个问题。折腾了两天，终于成功实现了理想中的中英双语切换效果，搞得毕设都没怎么做。</blockquote>
+
+<span id="more"></span>
+
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>我最初的想法是：在Github上新建一个仓库，然后开启新仓库的 Github Pages 作为英文网站使用，这样中英文的网站就可以相互独立，互不干扰，只需要在两个网站上添加一个切换按钮就可以了。但是查询后发现每个 Github 账号只能拥有一个个人主页，这就很尴尬了，难不成要再注册一个账号来作为英文网站使用吗？未免太过麻烦。就在我一筹莫展的时候，发现了<strong>chitanda</strong>大佬的文章<a href="https://segmentfault.com/a/1190000003946969">单个GitHub帐号下添加多个GitHub Pages的相关问题</a>。</p>
+<blockquote>
+<p>根据官方文档，GitHub Pages分为两类:个人&#x2F;组织主页以及项目主页，两者基本上没啥区别，但是有以下几点不同:（该文场景下个人和组织帐号没什么区别，所以下文为了行文方便将统一用个人主页代指）</p>
+<ul>
+<li>个人主页必须要和用户的GitHub帐号同名，所以每个用户有且只能有一个repo作为个人主页，且必须是<username>&#x2F;<username>.github.io的形式；而项目主页的命名则没有这种限制，且数量有任意多个。</li>
+<li>不考虑绑定的自定义域名的前提下，个人主页的GitHub二级域名为<username>.github.io;项目主页的GitHub二级域名为<username>.github.io&#x2F;<projectname>,没有<projectname>.<username>.github.io这种方式</li>
+<li>个人主页的展示内容以master分支里的文件为准；而项目主页的展示内容以gh-pages分支内的文件为准</li>
+</ul>
+</blockquote>
+<p>这样的话，如果在Github里新建一个仓库，用项目主页的方式来部署英文网站，中英文网站应该还是相互独立的，英文网站的的域名格式是<code>中文域名/仓库名/</code>，也就不用再单独配置新的域名，听起来好像能行？那就试一下吧</p>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>这里以我自己的域名<code>siriusq.top</code>和英文网站仓库名<code>en</code>为例</p>
+<h2 id="创建项目主页"><a href="#创建项目主页" class="headerlink" title="创建项目主页"></a>创建项目主页</h2><ul>
+<li>在 Github 新建一个名为<code>en</code>的<code>Repositories</code></li>
+<li>进入新建的<code>Repositories</code>，点击<code>Settings</code></li>
+<li>下拉到<code>Github Pages</code>选项</li>
+<li>点击<code>Choose a theme</code>，然后随便选一个主题</li>
+<li>成功建立项目主页和后<code>Github Pages</code>选项会显示<code>Your site is published at https://siriusq.top/en/</code></li>
+<li>至此英文网站的项目主页创建成功</li>
+</ul>
+<h2 id="建立本地英文网站目录"><a href="#建立本地英文网站目录" class="headerlink" title="建立本地英文网站目录"></a>建立本地英文网站目录</h2><p>复制现在的中文博客文件夹并重命名，名字随意，这里以我自己的中文文件夹名<code>Hexo</code>和复制出来的英文文件夹名<code>Hexoen</code>为例</p>
+<ul>
+<li>打开<code>./Hexoen/_config.yml</code>文件，依次修改配置如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">language: en</span><br><span class="line">url: https://siriusq.top/en/ # 用自己的 域名/仓库名/ 替换 siriusq.top/en/</span><br><span class="line">root: /en/ # 用自己的仓库名替换 en</span><br><span class="line">repo: git@github.com:Siriusq/en.git # 用自己的 用户名/仓库名 替换 Siriusq/en</span><br></pre></td></tr></table></figure></li>
+<li>删除<code>./Hexoen/source</code>下的<code>CNAME</code>文件（如果有的话）</li>
+</ul>
+<h2 id="加入中文切换按钮"><a href="#加入中文切换按钮" class="headerlink" title="加入中文切换按钮"></a>加入中文切换按钮</h2><ul>
+<li>打开<code>./Hexoen/source/_data/next.yml</code>文件<ul>
+<li>在<code>Menu Settings</code>下的<code>menu：</code>中加入<code>switch_lang</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: / || home</span><br><span class="line">about: /about/ || user</span><br><span class="line">tags: /tags/ || tags</span><br><span class="line">categories: /categories/ || th</span><br><span class="line">archives: /archives/ || archive</span><br><span class="line">switch_lang: https://siriusq.top || language # 将siriusq.top替换成你的中文网站域名</span><br><span class="line">#schedule: /schedule/ || calendar</span><br><span class="line">#sitemap: /sitemap.xml || sitemap</span><br><span class="line">#commonweal: /<span class="number">404</span>/ || heartbeat</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>打开<code>./Hexoen/themes/next/languages/en.yml</code>文件<ul>
+<li>在<code>menu:</code>下添加<code> switch_lang: 简体中文</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: Home</span><br><span class="line">archives: Archives</span><br><span class="line">categories: Categories</span><br><span class="line">tags: Tags</span><br><span class="line">about: About</span><br><span class="line">switch_lang: 简体中文</span><br><span class="line">search: Search</span><br><span class="line">schedule: Schedule</span><br><span class="line">sitemap: Sitemap</span><br><span class="line">commonweal: Commonweal <span class="number">404</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="加入英文切换按钮"><a href="#加入英文切换按钮" class="headerlink" title="加入英文切换按钮"></a>加入英文切换按钮</h2><ul>
+<li>打开<code>./Hexo/source/_data/next.yml</code>文件<ul>
+<li>在<code>Menu Settings</code>下的<code>menu：</code>中加入<code>switch_lang</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: / || home</span><br><span class="line">about: /about/ || user</span><br><span class="line">tags: /tags/ || tags</span><br><span class="line">categories: /categories/ || th</span><br><span class="line">archives: /archives/ || archive</span><br><span class="line">switch_lang: https://siriusq.top/en/ || language # 将siriusq.top/en/替换成你的英文网站域名</span><br><span class="line">#schedule: /schedule/ || calendar</span><br><span class="line">#sitemap: /sitemap.xml || sitemap</span><br><span class="line">#commonweal: /<span class="number">404</span>/ || heartbeat</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>打开<code>./Hexoen/themes/next/languages/en.yml</code>文件<ul>
+<li>在<code>menu:</code>下添加<code> switch_lang: 简体中文</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: 首页</span><br><span class="line">archives: 归档</span><br><span class="line">categories: 分类</span><br><span class="line">tags: 标签</span><br><span class="line">about: 关于</span><br><span class="line">switch_lang: English</span><br><span class="line">search: 搜索</span><br><span class="line">schedule: 日程表</span><br><span class="line">sitemap: 站点地图</span><br><span class="line">commonweal: 公益 <span class="number">404</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="添加切换判断条件"><a href="#添加切换判断条件" class="headerlink" title="添加切换判断条件"></a>添加切换判断条件</h2><p><strong>中文网站</strong><br>打开<code>./Hexo/themes/next/layout/_partials/head/head-unique.swig</code>，在最下方粘贴代码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">  <span class="comment">// Wait for the page to load first</span></span><br><span class="line">  <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">      switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">          <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">          <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en/&#x27;</span>);</span><br><span class="line">          <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">              <span class="title function_">_prevOnload</span>();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;j</span><br></pre></td></tr></table></figure>
+
+<p><strong>英文网站</strong><br>打开<code>./Hexoen/themes/next/layout/_partials/head/head-unique.swig</code>，在最下方粘贴代码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">  <span class="comment">// Wait for the page to load first</span></span><br><span class="line">  <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">      switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">          <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">          <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en/&#x27;</span>);</span><br><span class="line">          <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">              <span class="title function_">_prevOnload</span>();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>分别在两个文件夹执行hexo三连操作，将网站部署到Github，过一会就能访问了</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><ul>
+<li>由于两个网站是相互独立的，所以给两个网站用不同的主题在理论上也是可行的，我只给英文网站修改了下404页面</li>
+<li>一点瑕疵：开启PJAX的话，在页面完全加载之前点击切换按钮的话会卡一下才跳转</li>
+<li>二点瑕疵：网站相互独立，所以跳转的时候网页是完全重新加载的，PJAX无效</li>
+<li>注意事项：写博客的时候，中英文目录下的markdown文件名请保持一致，否则切换的时候会跳转到404页面</li>
+</ul>
+<p>折腾这些东西真的太费时间了，毕设一点没动，现在很慌张。有问题欢迎评论区留言，最近可能回复不及时。</p>
+<p>不多说了，我要滚去做毕设了</p>
+<p>ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;┌(;￣◇￣)┘</p>
+]]></content>
+      <categories>
+        <category>网站配置</category>
+      </categories>
+      <tags>
+        <tag>HEXO</tag>
+        <tag>Next</tag>
+        <tag>i18n</tag>
       </tags>
   </entry>
   <entry>
@@ -1622,6 +1622,8 @@
 
 <p>如果想要修改色块颜色的话可以修改为，把<code>6c5ce7</code>替换为想使用的HEX基准色，其他颜色会自动生成，不需要加#</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://ghchart.rshah.org/6c5ce7/你的GitHub用户名&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Github chart&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="FancyBox隐藏caption"><a href="#FancyBox隐藏caption" class="headerlink" title="FancyBox隐藏caption"></a>FancyBox隐藏caption</h1><p>FancyBox的caption不太美观，所以要消灭它！（其实是隐藏了）<br>打开<code>./source/_data/styles.styl</code>，代码如下</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">// 隐藏图片名</span><br><span class="line"><span class="selector-class">.fancybox</span> <span class="selector-class">.image-caption</span> &#123;</span><br><span class="line">	<span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="404页面"><a href="#404页面" class="headerlink" title="404页面"></a>404页面</h1><p>原来的404页面移动端适配做的不好，就换了个新的</p>
 <ul>
@@ -2388,10 +2390,11 @@
   <entry>
     <title>OneDrive同步本地任意文件夹</title>
     <url>/OneDrive%E5%90%8C%E6%AD%A5%E6%9C%AC%E5%9C%B0%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E5%A4%B9.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">为了能在其他设备上写博客，我曾经把整个文件夹扔到了OneDrive上，但是后来发现这样每次执行`hexo cl && hexo g`时都会产生大量的文件变动，对OneDrive服务器属实不太友好，毕竟一直在白嫖🐶。后来就只保留了`./source/_posts`文件夹，每次写完文章后手动复制粘贴过去。前几天突发奇想，能不能让OneDrive自动同步这个文件夹，搜了一圈就发现了`mklink`这个命令，可以在OneDrive中为源文件夹创建符号映射，这样两边的文件夹就可以一直同步</blockquote>
+    <content><![CDATA[<blockquote class="blockquote-center">使用mklink命令创建OneDrive与博客Markdown文件夹的符号链接，实现同步的目的</blockquote>
 
 <span id="more"></span>
 
+<p>为了能在其他设备上写博客，我曾经把整个文件夹扔到了OneDrive上，但是后来发现这样每次执行<code>hexo cl &amp;&amp; hexo g</code>时都会产生大量的文件变动，对OneDrive服务器属实不太友好，毕竟一直在白嫖🐶。后来就只保留了<code>./source/_posts</code>文件夹，每次写完文章后手动复制粘贴过去。前几天突发奇想，能不能让OneDrive自动同步这个文件夹，搜了一圈就发现了<code>mklink</code>这个命令。</p>
 <div class="note info"><p>下面有一些关于`mklink`命令的说明，不想看的话直接点按钮跳过 <a class="btn" href="#OneDrive创建符号链接"><i class="fa fa-forward fa-fw"></i>跳过</a></p></div>
 
 
@@ -2508,13 +2511,13 @@
 <h2 id="联接（目录交接点）"><a href="#联接（目录交接点）" class="headerlink" title="联接（目录交接点）"></a>联接（目录交接点）</h2><p>新建测试文件夹与<code>target</code>，新建测试文件<code>./target/target.txt</code><br><img data-src="https://s2.loli.net/2022/05/25/9DXKw3zxn8p41EB.png" alt="联接1"><br>执行命令</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /j E:\Test\link E:\Test\target</span><br></pre></td></tr></table></figure>
 <p>结果与文件夹的符号链接基本相同，唯一的区别是<code>link</code>文件夹在地址栏与标题栏的路径相同。但是文件的真实存储位置仍然是<code>target</code>源文件夹。<br><img data-src="https://s2.loli.net/2022/05/25/hy1fLAiPF48Jwgv.png" alt="联接2"></p>
-<h1 id="OneDrive创建符号链接"><a href="#OneDrive创建符号链接" class="headerlink" title="OneDrive创建符号链接"></a>OneDrive创建符号链接</h1><p>首先打开OneDrive的设置，确认<code>常规</code>和<code>通知</code>里面所有的项目已经勾选。<br><img data-src="https://s2.loli.net/2022/05/25/CUqA9YGWbci2O48.png" alt="OneDrive设置"><br>然后按下<code>win</code>+<code>s</code>，输入<code>cmd</code>，<code>以管理员身份运行</code>，然后输入<code>mklink</code>命令。注意<code>mklink</code>命令只能用<code>cmd</code>运行，<code>powershell</code>是不支持的。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /d C:\Users\Sun\OneDrive\Siriusq D:\Siriusq\source\_posts</span><br></pre></td></tr></table></figure>
-<p>注意第一个路径是OneDrive的路径，第二个路径则是我博客文章的路径，OneDrive里的文件夹要提前创建好，否则会提示<code>系统找不到指定的路径</code>。</p>
+<h1 id="OneDrive创建符号链接"><a href="#OneDrive创建符号链接" class="headerlink" title="OneDrive创建符号链接"></a>OneDrive创建符号链接</h1><p>首先打开OneDrive的设置，确认<code>常规</code>和<code>通知</code>里面所有的项目已经勾选。<br><img data-src="https://s2.loli.net/2022/05/25/CUqA9YGWbci2O48.png" alt="OneDrive设置"><br>然后将博客的<code>_posts</code>文件夹剪切到OneDrive并重命名，注意是剪切，博客文件夹不能存在<code>_posts</code>文件夹。<br>然后按下<code>win</code>+<code>s</code>，输入<code>cmd</code>，<code>以管理员身份运行</code>，然后输入<code>mklink</code>命令。注意<code>mklink</code>命令只能用<code>cmd</code>运行，<code>powershell</code>是不支持的。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /d D:\Siriusq\source\_posts C:\Users\Sun\OneDrive\Siriusq</span><br></pre></td></tr></table></figure>
+<p>注意第一个路径是我博客文章的路径，第二个路径则是OneDrive的路径我博客文章的路径。这里其实是反着来的，OneDrive作为源文件夹，不然OneDrive会一直显示同步被挂起，很迷惑。</p>
 <p>执行完毕后会有提示</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">为 C:\Users\Sun\OneDrive\Siriusq &lt;&lt;===&gt;&gt; D:\Siriusq\source\_posts 创建的符号链接</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">为 D:\Siriusq\source\_posts &lt;&lt;===&gt;&gt; C:\Users\Sun\OneDrive\Siriusq 创建的符号链接</span><br></pre></td></tr></table></figure>
 
-<p><img data-src="https://s2.loli.net/2022/05/25/KP3WcDwSRlgmosu.png" alt="链接成功"><br>链接成功后打开OneDrive的文件夹可以看到，地址栏是当前OneDrive文件夹的路径，而标题栏却是源文件夹的路径。此时无论修改哪一边的文件，另一边的文件也会跟着变化，达到同步的目的</p>
+<p><img data-src="https://s2.loli.net/2022/05/25/YphRoDOySbv6ixJ.png" alt="链接成功"><br>链接成功后打开博客的文件夹可以看到，地址栏是当前文件夹的路径，而标题栏却是OneDrive文件夹的路径。此时无论修改哪一边的文件，另一边的文件也会跟着变化，达到同步的目的</p>
 ]]></content>
       <categories>
         <category>折腾</category>
@@ -2544,7 +2547,7 @@
 <p>在跳转的页面选择<code>添加电子邮件</code><br><img data-src="https://s2.loli.net/2022/05/25/TC2OgrAsRNkYxdl.png" alt="添加电子邮件"></p>
 <p>添加别名就完成了<br><img data-src="https://s2.loli.net/2022/05/25/CGNFuAjmw1YH8qR.png" alt="添加别名"></p>
 <h1 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h1><p>先点击左上角的<code>文件</code>，然后选择<code>打开和导出</code>-<code>打开Outlook数据文件</code><br><img data-src="https://s2.loli.net/2022/05/25/4bJTqcYNexEfs5m.png" alt="打开Outlook数据文件"></p>
-<p>选择<code>从零一程序或文件导入</code>，然后一路下一页就完事了，前面设置过密码的话会要求输入密码<br><img data-src="https://s2.loli.net/2022/05/25/VB5IcH4zpbAo3Rr.png" alt="导入向导"></p>
+<p>选择<code>从另一程序或文件导入</code>，然后一路下一页就完事了，前面设置过密码的话会要求输入密码<br><img data-src="https://s2.loli.net/2022/05/25/VB5IcH4zpbAo3Rr.png" alt="导入向导"></p>
 ]]></content>
       <categories>
         <category>折腾</category>
@@ -2553,253 +2556,6 @@
         <tag>Outlook</tag>
         <tag>备份</tag>
         <tag>留学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PTE不完全指南</title>
-    <url>/PTE%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">我12月27日在武汉湖北大学考场考完了PTE，等了三天之后出了成绩，成绩单在下面，顺利达到格拉的入学要求。记录一下备考的经验，祝大家早日和语言考试分手（雅思就是个死渣男）</blockquote>
-
-<p><img data-src="https://s2.loli.net/2022/05/13/X3K2jQ8mRNSeMY5.png" alt="PTE"></p>
-<span id="more"></span>
-
-<p>首先讲一下大概的时间线，我是今年5月份开始了解PTE。因为4月考的雅思没有达到录取要求，更主要的是复习一个月去考和第一次裸考的成绩基本一样，只有阅读涨了0.5分。。。</p>
-<ul>
-<li>5月在B站稍微了解了下PTE，然后就在准备研究生申请的事情</li>
-<li>十月底格拉来了offer，con雅思6.5（写作6.5，其他6.0）或者PTE68（62），虽然他官网些写的是PTE60(59)</li>
-<li>双十一开始复习，双十一在淘宝买了Voucher报了名，然后主要练习口语，每天大概2个小时，中间忙着订格拉的宿舍，大部分时间在摸鱼</li>
-<li>十二月之后开始练所有的题型，每天大概4-6个小时</li>
-<li>12月11号做了官方模考A卷，总分66，听62 说70 读65 写64，然后格拉要求总分68，就跟慌，11号以后每天复习时间大概在6-8小时</li>
-<li>12月21号做了模考C卷，总分67，都说C卷最接近真实考试难度，所以我更慌了</li>
-<li>12月25号做了模考B卷，总分70</li>
-<li>12月26号飞去武汉，27号上午9点考试</li>
-<li>12月30号中午1点收到出成绩的邮件（这里不得不吐槽武汉考场，出成绩是真的慢，我同学29号下午在广州白云考的，30号早上7点多就出分了）</li>
-</ul>
-<h1 id="关于PTE"><a href="#关于PTE" class="headerlink" title="关于PTE"></a>关于PTE</h1><p>PTE是英国培生教育集团推出的英语语言能力考试，全程机考，程序自动评分，目前英国大部分学校是认可的</p>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
-<li>PTE不会像雅思那样人为压分，只要下功夫练习就一定会有进步，不像雅思，花老大的力气也不涨分</li>
-<li>PTE出分速度快，一般1-5个工作日</li>
-<li>PTE考位相对宽松，不用担心抢不到位置</li>
-</ol>
-<h2 id="适合人群"><a href="#适合人群" class="headerlink" title="适合人群"></a>适合人群</h2><p>PTE适合听力&#x2F;阅读比较好的考生，因为它的听力和阅读难度比较大，尤其是听力<br>PTE的写作和口语比雅思要简单，也适合雅思一直卡口语&#x2F;写作小分的考生</p>
-<h1 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h1><p>题型上次介绍过，再列个表概括一下</p>
-<table>
-<thead>
-<tr>
-<th align="center">部分</th>
-<th align="center">题型</th>
-<th>要求</th>
-<th align="center">题目数量</th>
-<th>交叉评分</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Speaking</td>
-<td align="center">RA</td>
-<td>朗读屏幕上的一段话，40s准备40s朗读，短句子给的时间会相应减少</td>
-<td align="center">6-7</td>
-<td>Reading and speaking &#x2F; Oral fluency, pronunciation</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">RS</td>
-<td>电脑播放一句话的录音，听完后马上复述出来</td>
-<td align="center">10-12</td>
-<td>Listening and speaking &#x2F; Oral fluency, pronunciation</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">DI</td>
-<td>描述给出的图片，25s准备，40s叙述</td>
-<td align="center">6-7</td>
-<td>Speaking &#x2F; Oral fluency, pronunciation</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">RL</td>
-<td>听一段录音，然后简单复述录音讲了什么，需要做笔记</td>
-<td align="center">3-4</td>
-<td>Listening and speaking &#x2F; Oral fluency, pronunciation</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">ASQ</td>
-<td>回答听到的问题，一般答案是一个单词，都是常识性问题</td>
-<td align="center">10-12</td>
-<td>Listening and speaking &#x2F; Vocabulary</td>
-</tr>
-<tr>
-<td align="center">Writing</td>
-<td align="center">SWT</td>
-<td>给出一段文章，用5-75个单词概括这段话，只能写一句话，每题10min</td>
-<td align="center">2-3</td>
-<td>Reading and writing &#x2F; Grammar, vocabulary</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">WE</td>
-<td>类似雅思大作文，每题20min</td>
-<td align="center">1-2</td>
-<td>Writing &#x2F; Grammar, vocabulary, spelling, written discourse</td>
-</tr>
-<tr>
-<td align="center">Reading</td>
-<td align="center">FIBW</td>
-<td>完形填空的变种，将合适的单词拖拽到文章的空里</td>
-<td align="center">5-6</td>
-<td>Reading and writing</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">FIB</td>
-<td>类似完形填空，从下拉菜单里选择缺少的单词</td>
-<td align="center">4-5</td>
-<td>Reading</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">RO</td>
-<td>给几句打乱顺序的话，重新排序</td>
-<td align="center">2-3</td>
-<td>Reading</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">MCM</td>
-<td>多选题</td>
-<td align="center">2-3</td>
-<td>Reading</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">MCS</td>
-<td>单选题</td>
-<td align="center">2-3</td>
-<td>Reading</td>
-</tr>
-<tr>
-<td align="center">Listening</td>
-<td align="center">SST</td>
-<td>听一段录音，然后总结一段50-70词的小文章，需要做笔记</td>
-<td align="center">2-3</td>
-<td>Listening and writing &#x2F; Grammar, vocabulary, spelling</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">FIB</td>
-<td>听录音，然后拼写出缺少的单词</td>
-<td align="center">2-3</td>
-<td>Listening and writing</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">WFD</td>
-<td>听一句话，然后拼写出来</td>
-<td align="center">3-4</td>
-<td>Listening and writing</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">MCS</td>
-<td>单选题</td>
-<td align="center">2-3</td>
-<td>Listening</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">MCM</td>
-<td>多选题</td>
-<td align="center">2-3</td>
-<td>Listening</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">SMW</td>
-<td>播放一段录音，最后几个单词会剪掉，选择被剪掉的单词</td>
-<td align="center">2-3</td>
-<td>Listening</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">HIW</td>
-<td>播放一段录音，录音和下面的文章有不一样的词，点选出不同的词</td>
-<td align="center">2-3</td>
-<td>Listening and reading</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">HCS</td>
-<td>播放一段录音，选出最能概括录音的总结</td>
-<td align="center">2-3</td>
-<td>Listening and reading</td>
-</tr>
-</tbody></table>
-<h1 id="答题经验"><a href="#答题经验" class="headerlink" title="答题经验"></a>答题经验</h1><h2 id="Speaking"><a href="#Speaking" class="headerlink" title="Speaking"></a>Speaking</h2><p><strong>口语部分最重要的就是流利度，我的经验就是一直说不要停，念错了也不要倒回去重新念，一直往下说就好，注意意群和停顿，另外录音开始后要及时说，3s内不说的话系统会自动关闭麦克风并跳到下一题</strong></p>
-<h3 id="RA"><a href="#RA" class="headerlink" title="RA"></a>RA</h3><p>在准备时间里小声读一遍，不会念的词猜一下，数字年份之类的提前多念几遍</p>
-<h3 id="RS"><a href="#RS" class="headerlink" title="RS"></a>RS</h3><p>我是鱼的记忆，长的句子记不住，只能记住一半多，能说多少说多少吧，不要卡壳就好<br>这个部分我个人来不及记笔记，也不是很建议记笔记，来不及反应</p>
-<h3 id="RL-x2F-DI"><a href="#RL-x2F-DI" class="headerlink" title="RL&#x2F;DI"></a>RL&#x2F;DI</h3><p>这两个题就是套模板保证流利度，把模板记熟练，考试的时候无脑说。不用纠结语法，这俩题目不考语法<br>RL来不及记句子的话就记关键词，然后往模板里套就行</p>
-<h3 id="ASQ"><a href="#ASQ" class="headerlink" title="ASQ"></a>ASQ</h3><p>这个题很蛋疼，对词汇量要求挺高，最好在考试之前过一遍机经，分值不高不必太纠结</p>
-<h2 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h2><p><strong>写作要注意拼写，打字的时候打错的概率还是挺大的，每道题最好留2分钟检查一下拼写</strong><br>吐槽一下考场的键盘，武汉考场用的是那种巧克力键盘，真的难用，建议练习的时候找那种廉价的薄膜键盘就行，用机械键盘练习的话考试会很不习惯的</p>
-<h3 id="SWT"><a href="#SWT" class="headerlink" title="SWT"></a>SWT</h3><p>一般第一句话就是关键句，文章里面举得例子可以无视，注意只能有1个句号</p>
-<h3 id="WE"><a href="#WE" class="headerlink" title="WE"></a>WE</h3><p>从雅思转过来可能很不习惯这道题，200-300词的文章却要20分钟写完，莫得办法，只能用模板。模板百度就有，也可以去知乎豆瓣上找或者留邮箱要，拿到模板要看一下有没有错误，有些无良机构给的模板真的是无法直视。<br>留邮箱的话注意拿到资料后及时删除留下的邮箱，不然某垃圾机构会一直给你发垃圾邮件（没错说的就是你PTE在线学院）等offer的时候看见垃圾邮件恨不得想吃了他，每次来邮件都以为是来Offer了</p>
-<h2 id="Reading"><a href="#Reading" class="headerlink" title="Reading"></a>Reading</h2><p>阅读的重点就是词汇量，多背单词<br><strong>做题的时候注意时间，阅读是整体计时，在低分值的单选多选题目上不用纠结，给其他题目留足时间</strong></p>
-<h3 id="RO"><a href="#RO" class="headerlink" title="RO"></a>RO</h3><p>这部分有点玄学，经验就是找一下句子前后的逻辑和连接词，实在找不出来就背机经吧</p>
-<h3 id="MCM-x2F-MCS"><a href="#MCM-x2F-MCS" class="headerlink" title="MCM&#x2F;MCS"></a>MCM&#x2F;MCS</h3><p>多选和单选都很直接，不会像雅思那样故意挖坑，不要在这两道题上浪费太多时间，分值不高。<br>多选拿不准的话就选最确定的那一个，选错的话倒扣分的</p>
-<h3 id="FIB-x2F-FIBW"><a href="#FIB-x2F-FIBW" class="headerlink" title="FIB&#x2F;FIBW"></a>FIB&#x2F;FIBW</h3><p>这两道题最考验词汇量，一开始练的时候真的是一脸懵逼，不过可以根据词性排除一些选项，增加蒙对的概率。。。</p>
-<h2 id="Listening"><a href="#Listening" class="headerlink" title="Listening"></a>Listening</h2><p><strong>听力部分除SST外也是整体计时，注意合理分配时间，因为分值最大的WFD是最后才出现的，有很多人来不及做完WFD就被系统强制交卷了，建议给WFD留3-4分钟</strong></p>
-<h3 id="SWT-1"><a href="#SWT-1" class="headerlink" title="SWT"></a>SWT</h3><p>这部分是单独计时的，播放录音的时间也包含在里面<br>一般第一句话会是主题句，另外反复出现的词也要留意<br>记笔记的话尽量记完整的句子，最好不要用模板，因为有词数限制，模板就是浪费宝贵的空间<br>同样建议留出时间检查拼写</p>
-<h3 id="FIB"><a href="#FIB" class="headerlink" title="FIB"></a>FIB</h3><p>这道题主要考察拼写，建议用笔把词语记下来<br>亲测武汉考场不能用<code>tab</code>键切换到下一个空，直接打的话需要另一只手操作鼠标，来不及</p>
-<h3 id="WFD"><a href="#WFD" class="headerlink" title="WFD"></a>WFD</h3><p>这道题是重头戏，建议考试之前背机经，一个单词就是一分<br>听的时候注意单复数和时态，听完后先回想一下大概意思<br>记笔记的话建议练习首字母法，即记下来每个单词的首字母，然后再把其他的字母填上<br>做完后检查一遍拼写</p>
-<h3 id="MCM"><a href="#MCM" class="headerlink" title="MCM"></a>MCM</h3><p>同阅读多选，选对一个1分，选错倒扣分<br>不确定的话不要选</p>
-<h3 id="HIW"><a href="#HIW" class="headerlink" title="HIW"></a>HIW</h3><p>这个题选错的话也是倒扣分，所以没听清楚的就不要选了</p>
-<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><h2 id="报名注意事项"><a href="#报名注意事项" class="headerlink" title="报名注意事项"></a>报名注意事项</h2><ol>
-<li>报名的时候名字全部大写，名在前面姓在后面，中间空格，和身份证上的拼写一致</li>
-<li>留常用的邮箱，出成绩的话会发邮件通知你的</li>
-</ol>
-<h2 id="Voucher"><a href="#Voucher" class="headerlink" title="Voucher"></a>Voucher</h2><p>官方的优惠券，能省点钱，淘宝可入，会发给你一个优惠码，报名缴费的时候填写优惠码就行了<br>淘宝上的仅限中国大陆考区使用，有效期一般12个月，退考后可以继续用</p>
-<h2 id="练习平台"><a href="#练习平台" class="headerlink" title="练习平台"></a>练习平台</h2><p>现在主流的联系平台主要有羊驼、黑科技和猩际，我三家都有用，各有千秋，每家平台都有不少水军。豆瓣一搜索PTE全是某科技的回答，知乎就是某驼的多，每家平台都说自己评分准，但是不要过于相信他们的评分，仅供参考，目前羊驼的口语打分偏低，猩际的偏高，某科技口语是5分制，不好评价</p>
-<ul>
-<li>羊驼 - 在它家买的Voucher，送了一个半月会员，刚好够用，优点是口语练习实时出成绩，口语成绩是90分制，比较直观，有手机APP和网页版</li>
-<li>黑科技 - 开了1个月的会员，主要练习作文，优点是可以查看其他人的优秀作文，有微信小程序和网页版</li>
-<li>猩际 - 白嫖的，也用来练习写作，优点是会标出写作错误的地方，它家的公开课可以看一下，适合入门</li>
-</ul>
-<h2 id="机经"><a href="#机经" class="headerlink" title="机经"></a>机经</h2><p>PTE的一个神器就是机经，尤其是前几年题库少的时候，不过培生一直在更新题库，所以不建议过于依赖机经<br>有几家机构会有预测题，据说准确率蛮高的，后悔没有背<br>我知道的有下面两家，具体不作评价，没怎么看</p>
-<ul>
-<li>羊驼 - 它家的在APP里或者微信公众号里可以找到下载链接</li>
-<li>萤火虫 - 它家的在微信公众号里有下载链接</li>
-</ul>
-<h2 id="模考"><a href="#模考" class="headerlink" title="模考"></a>模考</h2><p>PTE官方推出了三套模考，和考试的时候使用的是一套打分模式，有ABC三套，强烈建议考试之前做几套官方模拟，要不然就是在烧钱，<br>一般最后考试的分数都会比模考高几分的，因为考场耳机的收音效果比较好<br>模考的时候不要使用蓝牙耳机，录音效果差，很容易出现口语10分的情况。<br>有条件的买一个带麦的头戴式耳机，不放心的可以去闲鱼收一个二手的官方考试同款耳机，不过没太大必要，一个耳机四五百，拿来买排骨吃它不香吗<br>淘宝上可以买到模考的账号，可以单个买也可以买套装，套装价格大概430元</p>
-<ul>
-<li>A卷 - 难度最大，不太适合一开始就做，容易打击信心</li>
-<li>B卷 - 难度最低</li>
-<li>C卷 - 难度最接近真实考试</li>
-</ul>
-<p>另外这几家机构也有自己的模拟考试，价格比较便宜，可以练手用</p>
-<h2 id="考试当天注意事项"><a href="#考试当天注意事项" class="headerlink" title="考试当天注意事项"></a>考试当天注意事项</h2><ol>
-<li>提前半小时到达考场，可以带点材料，在休息室可以看材料</li>
-<li>考场有专门存包的柜子，柜子很大，小号的行李箱也能塞进去，每个人会给一把钥匙，这个柜子中途是不允许开的，可以提前把水杯拿出来，考场提供饮用水，可以自己接</li>
-<li>电子设备都要关机放进柜子里</li>
-<li>考场桌子上有3M的耳塞，做写作和阅读的时候可以带上，因为你做到写作的时候可能还有人在做口语</li>
-<li>国内考生带身份证就行，没必要带护照，我两个都带了，然后只拿了身份证进去</li>
-<li>考试之前不要喝太多水，因为考完 口语、写作和阅读之后才会有10分钟的休息时间，大概在11点左右，憋两个小时很酸爽</li>
-<li>中间的10分钟休息是可选的，建议休息，休息的时候举手找考官来帮你暂停考试，休息的时候注意时间，因为入场的时候要重新检查，记得出去的时候带着证件</li>
-<li>电脑有异常及时找考官记录，要不然考完就没办法了，武汉考场的考官很nice，态度很友好</li>
-<li>口语部分不要念太大声，一是保护自己的嗓子；二是会干扰别人，别人举报你的话会被写报告的（当然其他人声音太大的话你也可以举报）；考场的耳机收音效果都是不错的，没必要喊太大声，武汉考场的话你自己在说的时候基本听不到别人说话的声音</li>
-<li>口语部分说完之后就可以点<code>Next</code>,避免录进去别人的声音，虽然概率不大</li>
-<li>耳机麦克的位置我是放在上嘴唇和鼻尖中间，距离脸部大概2-3指的距离</li>
-<li>试音的时候不要跟着别人念<code>Testing testing one two three</code>，找几个爆破音念或者念屏幕上的注意事项，看看会不会喷麦</li>
-<li>考试的笔不用的时候一定要扣好笔帽，要不然干了就写不出字来了，考场记笔记用的本子是塑料材质，比较滑</li>
-<li>耳机一旦调好就不要再动了</li>
-</ol>
-<p>需要模板的可以给我发邮件，我当时找了不少，虽然没用到几个<br>要说的就这么多了，祝大家早日通过考试~~~<br>BTW，2020新年快乐~~~</p>
-]]></content>
-      <categories>
-        <category>留学</category>
-      </categories>
-      <tags>
-        <tag>留学</tag>
-        <tag>PTE</tag>
-        <tag>攻略</tag>
       </tags>
   </entry>
   <entry>
@@ -3179,6 +2935,253 @@
       </tags>
   </entry>
   <entry>
+    <title>PTE不完全指南</title>
+    <url>/PTE%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">我12月27日在武汉湖北大学考场考完了PTE，等了三天之后出了成绩，成绩单在下面，顺利达到格拉的入学要求。记录一下备考的经验，祝大家早日和语言考试分手（雅思就是个死渣男）</blockquote>
+
+<p><img data-src="https://s2.loli.net/2022/05/13/X3K2jQ8mRNSeMY5.png" alt="PTE"></p>
+<span id="more"></span>
+
+<p>首先讲一下大概的时间线，我是今年5月份开始了解PTE。因为4月考的雅思没有达到录取要求，更主要的是复习一个月去考和第一次裸考的成绩基本一样，只有阅读涨了0.5分。。。</p>
+<ul>
+<li>5月在B站稍微了解了下PTE，然后就在准备研究生申请的事情</li>
+<li>十月底格拉来了offer，con雅思6.5（写作6.5，其他6.0）或者PTE68（62），虽然他官网些写的是PTE60(59)</li>
+<li>双十一开始复习，双十一在淘宝买了Voucher报了名，然后主要练习口语，每天大概2个小时，中间忙着订格拉的宿舍，大部分时间在摸鱼</li>
+<li>十二月之后开始练所有的题型，每天大概4-6个小时</li>
+<li>12月11号做了官方模考A卷，总分66，听62 说70 读65 写64，然后格拉要求总分68，就跟慌，11号以后每天复习时间大概在6-8小时</li>
+<li>12月21号做了模考C卷，总分67，都说C卷最接近真实考试难度，所以我更慌了</li>
+<li>12月25号做了模考B卷，总分70</li>
+<li>12月26号飞去武汉，27号上午9点考试</li>
+<li>12月30号中午1点收到出成绩的邮件（这里不得不吐槽武汉考场，出成绩是真的慢，我同学29号下午在广州白云考的，30号早上7点多就出分了）</li>
+</ul>
+<h1 id="关于PTE"><a href="#关于PTE" class="headerlink" title="关于PTE"></a>关于PTE</h1><p>PTE是英国培生教育集团推出的英语语言能力考试，全程机考，程序自动评分，目前英国大部分学校是认可的</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
+<li>PTE不会像雅思那样人为压分，只要下功夫练习就一定会有进步，不像雅思，花老大的力气也不涨分</li>
+<li>PTE出分速度快，一般1-5个工作日</li>
+<li>PTE考位相对宽松，不用担心抢不到位置</li>
+</ol>
+<h2 id="适合人群"><a href="#适合人群" class="headerlink" title="适合人群"></a>适合人群</h2><p>PTE适合听力&#x2F;阅读比较好的考生，因为它的听力和阅读难度比较大，尤其是听力<br>PTE的写作和口语比雅思要简单，也适合雅思一直卡口语&#x2F;写作小分的考生</p>
+<h1 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h1><p>题型上次介绍过，再列个表概括一下</p>
+<table>
+<thead>
+<tr>
+<th align="center">部分</th>
+<th align="center">题型</th>
+<th>要求</th>
+<th align="center">题目数量</th>
+<th>交叉评分</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Speaking</td>
+<td align="center">RA</td>
+<td>朗读屏幕上的一段话，40s准备40s朗读，短句子给的时间会相应减少</td>
+<td align="center">6-7</td>
+<td>Reading and speaking &#x2F; Oral fluency, pronunciation</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">RS</td>
+<td>电脑播放一句话的录音，听完后马上复述出来</td>
+<td align="center">10-12</td>
+<td>Listening and speaking &#x2F; Oral fluency, pronunciation</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">DI</td>
+<td>描述给出的图片，25s准备，40s叙述</td>
+<td align="center">6-7</td>
+<td>Speaking &#x2F; Oral fluency, pronunciation</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">RL</td>
+<td>听一段录音，然后简单复述录音讲了什么，需要做笔记</td>
+<td align="center">3-4</td>
+<td>Listening and speaking &#x2F; Oral fluency, pronunciation</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">ASQ</td>
+<td>回答听到的问题，一般答案是一个单词，都是常识性问题</td>
+<td align="center">10-12</td>
+<td>Listening and speaking &#x2F; Vocabulary</td>
+</tr>
+<tr>
+<td align="center">Writing</td>
+<td align="center">SWT</td>
+<td>给出一段文章，用5-75个单词概括这段话，只能写一句话，每题10min</td>
+<td align="center">2-3</td>
+<td>Reading and writing &#x2F; Grammar, vocabulary</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">WE</td>
+<td>类似雅思大作文，每题20min</td>
+<td align="center">1-2</td>
+<td>Writing &#x2F; Grammar, vocabulary, spelling, written discourse</td>
+</tr>
+<tr>
+<td align="center">Reading</td>
+<td align="center">FIBW</td>
+<td>完形填空的变种，将合适的单词拖拽到文章的空里</td>
+<td align="center">5-6</td>
+<td>Reading and writing</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">FIB</td>
+<td>类似完形填空，从下拉菜单里选择缺少的单词</td>
+<td align="center">4-5</td>
+<td>Reading</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">RO</td>
+<td>给几句打乱顺序的话，重新排序</td>
+<td align="center">2-3</td>
+<td>Reading</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">MCM</td>
+<td>多选题</td>
+<td align="center">2-3</td>
+<td>Reading</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">MCS</td>
+<td>单选题</td>
+<td align="center">2-3</td>
+<td>Reading</td>
+</tr>
+<tr>
+<td align="center">Listening</td>
+<td align="center">SST</td>
+<td>听一段录音，然后总结一段50-70词的小文章，需要做笔记</td>
+<td align="center">2-3</td>
+<td>Listening and writing &#x2F; Grammar, vocabulary, spelling</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">FIB</td>
+<td>听录音，然后拼写出缺少的单词</td>
+<td align="center">2-3</td>
+<td>Listening and writing</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">WFD</td>
+<td>听一句话，然后拼写出来</td>
+<td align="center">3-4</td>
+<td>Listening and writing</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">MCS</td>
+<td>单选题</td>
+<td align="center">2-3</td>
+<td>Listening</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">MCM</td>
+<td>多选题</td>
+<td align="center">2-3</td>
+<td>Listening</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">SMW</td>
+<td>播放一段录音，最后几个单词会剪掉，选择被剪掉的单词</td>
+<td align="center">2-3</td>
+<td>Listening</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">HIW</td>
+<td>播放一段录音，录音和下面的文章有不一样的词，点选出不同的词</td>
+<td align="center">2-3</td>
+<td>Listening and reading</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">HCS</td>
+<td>播放一段录音，选出最能概括录音的总结</td>
+<td align="center">2-3</td>
+<td>Listening and reading</td>
+</tr>
+</tbody></table>
+<h1 id="答题经验"><a href="#答题经验" class="headerlink" title="答题经验"></a>答题经验</h1><h2 id="Speaking"><a href="#Speaking" class="headerlink" title="Speaking"></a>Speaking</h2><p><strong>口语部分最重要的就是流利度，我的经验就是一直说不要停，念错了也不要倒回去重新念，一直往下说就好，注意意群和停顿，另外录音开始后要及时说，3s内不说的话系统会自动关闭麦克风并跳到下一题</strong></p>
+<h3 id="RA"><a href="#RA" class="headerlink" title="RA"></a>RA</h3><p>在准备时间里小声读一遍，不会念的词猜一下，数字年份之类的提前多念几遍</p>
+<h3 id="RS"><a href="#RS" class="headerlink" title="RS"></a>RS</h3><p>我是鱼的记忆，长的句子记不住，只能记住一半多，能说多少说多少吧，不要卡壳就好<br>这个部分我个人来不及记笔记，也不是很建议记笔记，来不及反应</p>
+<h3 id="RL-x2F-DI"><a href="#RL-x2F-DI" class="headerlink" title="RL&#x2F;DI"></a>RL&#x2F;DI</h3><p>这两个题就是套模板保证流利度，把模板记熟练，考试的时候无脑说。不用纠结语法，这俩题目不考语法<br>RL来不及记句子的话就记关键词，然后往模板里套就行</p>
+<h3 id="ASQ"><a href="#ASQ" class="headerlink" title="ASQ"></a>ASQ</h3><p>这个题很蛋疼，对词汇量要求挺高，最好在考试之前过一遍机经，分值不高不必太纠结</p>
+<h2 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h2><p><strong>写作要注意拼写，打字的时候打错的概率还是挺大的，每道题最好留2分钟检查一下拼写</strong><br>吐槽一下考场的键盘，武汉考场用的是那种巧克力键盘，真的难用，建议练习的时候找那种廉价的薄膜键盘就行，用机械键盘练习的话考试会很不习惯的</p>
+<h3 id="SWT"><a href="#SWT" class="headerlink" title="SWT"></a>SWT</h3><p>一般第一句话就是关键句，文章里面举得例子可以无视，注意只能有1个句号</p>
+<h3 id="WE"><a href="#WE" class="headerlink" title="WE"></a>WE</h3><p>从雅思转过来可能很不习惯这道题，200-300词的文章却要20分钟写完，莫得办法，只能用模板。模板百度就有，也可以去知乎豆瓣上找或者留邮箱要，拿到模板要看一下有没有错误，有些无良机构给的模板真的是无法直视。<br>留邮箱的话注意拿到资料后及时删除留下的邮箱，不然某垃圾机构会一直给你发垃圾邮件（没错说的就是你PTE在线学院）等offer的时候看见垃圾邮件恨不得想吃了他，每次来邮件都以为是来Offer了</p>
+<h2 id="Reading"><a href="#Reading" class="headerlink" title="Reading"></a>Reading</h2><p>阅读的重点就是词汇量，多背单词<br><strong>做题的时候注意时间，阅读是整体计时，在低分值的单选多选题目上不用纠结，给其他题目留足时间</strong></p>
+<h3 id="RO"><a href="#RO" class="headerlink" title="RO"></a>RO</h3><p>这部分有点玄学，经验就是找一下句子前后的逻辑和连接词，实在找不出来就背机经吧</p>
+<h3 id="MCM-x2F-MCS"><a href="#MCM-x2F-MCS" class="headerlink" title="MCM&#x2F;MCS"></a>MCM&#x2F;MCS</h3><p>多选和单选都很直接，不会像雅思那样故意挖坑，不要在这两道题上浪费太多时间，分值不高。<br>多选拿不准的话就选最确定的那一个，选错的话倒扣分的</p>
+<h3 id="FIB-x2F-FIBW"><a href="#FIB-x2F-FIBW" class="headerlink" title="FIB&#x2F;FIBW"></a>FIB&#x2F;FIBW</h3><p>这两道题最考验词汇量，一开始练的时候真的是一脸懵逼，不过可以根据词性排除一些选项，增加蒙对的概率。。。</p>
+<h2 id="Listening"><a href="#Listening" class="headerlink" title="Listening"></a>Listening</h2><p><strong>听力部分除SST外也是整体计时，注意合理分配时间，因为分值最大的WFD是最后才出现的，有很多人来不及做完WFD就被系统强制交卷了，建议给WFD留3-4分钟</strong></p>
+<h3 id="SWT-1"><a href="#SWT-1" class="headerlink" title="SWT"></a>SWT</h3><p>这部分是单独计时的，播放录音的时间也包含在里面<br>一般第一句话会是主题句，另外反复出现的词也要留意<br>记笔记的话尽量记完整的句子，最好不要用模板，因为有词数限制，模板就是浪费宝贵的空间<br>同样建议留出时间检查拼写</p>
+<h3 id="FIB"><a href="#FIB" class="headerlink" title="FIB"></a>FIB</h3><p>这道题主要考察拼写，建议用笔把词语记下来<br>亲测武汉考场不能用<code>tab</code>键切换到下一个空，直接打的话需要另一只手操作鼠标，来不及</p>
+<h3 id="WFD"><a href="#WFD" class="headerlink" title="WFD"></a>WFD</h3><p>这道题是重头戏，建议考试之前背机经，一个单词就是一分<br>听的时候注意单复数和时态，听完后先回想一下大概意思<br>记笔记的话建议练习首字母法，即记下来每个单词的首字母，然后再把其他的字母填上<br>做完后检查一遍拼写</p>
+<h3 id="MCM"><a href="#MCM" class="headerlink" title="MCM"></a>MCM</h3><p>同阅读多选，选对一个1分，选错倒扣分<br>不确定的话不要选</p>
+<h3 id="HIW"><a href="#HIW" class="headerlink" title="HIW"></a>HIW</h3><p>这个题选错的话也是倒扣分，所以没听清楚的就不要选了</p>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><h2 id="报名注意事项"><a href="#报名注意事项" class="headerlink" title="报名注意事项"></a>报名注意事项</h2><ol>
+<li>报名的时候名字全部大写，名在前面姓在后面，中间空格，和身份证上的拼写一致</li>
+<li>留常用的邮箱，出成绩的话会发邮件通知你的</li>
+</ol>
+<h2 id="Voucher"><a href="#Voucher" class="headerlink" title="Voucher"></a>Voucher</h2><p>官方的优惠券，能省点钱，淘宝可入，会发给你一个优惠码，报名缴费的时候填写优惠码就行了<br>淘宝上的仅限中国大陆考区使用，有效期一般12个月，退考后可以继续用</p>
+<h2 id="练习平台"><a href="#练习平台" class="headerlink" title="练习平台"></a>练习平台</h2><p>现在主流的联系平台主要有羊驼、黑科技和猩际，我三家都有用，各有千秋，每家平台都有不少水军。豆瓣一搜索PTE全是某科技的回答，知乎就是某驼的多，每家平台都说自己评分准，但是不要过于相信他们的评分，仅供参考，目前羊驼的口语打分偏低，猩际的偏高，某科技口语是5分制，不好评价</p>
+<ul>
+<li>羊驼 - 在它家买的Voucher，送了一个半月会员，刚好够用，优点是口语练习实时出成绩，口语成绩是90分制，比较直观，有手机APP和网页版</li>
+<li>黑科技 - 开了1个月的会员，主要练习作文，优点是可以查看其他人的优秀作文，有微信小程序和网页版</li>
+<li>猩际 - 白嫖的，也用来练习写作，优点是会标出写作错误的地方，它家的公开课可以看一下，适合入门</li>
+</ul>
+<h2 id="机经"><a href="#机经" class="headerlink" title="机经"></a>机经</h2><p>PTE的一个神器就是机经，尤其是前几年题库少的时候，不过培生一直在更新题库，所以不建议过于依赖机经<br>有几家机构会有预测题，据说准确率蛮高的，后悔没有背<br>我知道的有下面两家，具体不作评价，没怎么看</p>
+<ul>
+<li>羊驼 - 它家的在APP里或者微信公众号里可以找到下载链接</li>
+<li>萤火虫 - 它家的在微信公众号里有下载链接</li>
+</ul>
+<h2 id="模考"><a href="#模考" class="headerlink" title="模考"></a>模考</h2><p>PTE官方推出了三套模考，和考试的时候使用的是一套打分模式，有ABC三套，强烈建议考试之前做几套官方模拟，要不然就是在烧钱，<br>一般最后考试的分数都会比模考高几分的，因为考场耳机的收音效果比较好<br>模考的时候不要使用蓝牙耳机，录音效果差，很容易出现口语10分的情况。<br>有条件的买一个带麦的头戴式耳机，不放心的可以去闲鱼收一个二手的官方考试同款耳机，不过没太大必要，一个耳机四五百，拿来买排骨吃它不香吗<br>淘宝上可以买到模考的账号，可以单个买也可以买套装，套装价格大概430元</p>
+<ul>
+<li>A卷 - 难度最大，不太适合一开始就做，容易打击信心</li>
+<li>B卷 - 难度最低</li>
+<li>C卷 - 难度最接近真实考试</li>
+</ul>
+<p>另外这几家机构也有自己的模拟考试，价格比较便宜，可以练手用</p>
+<h2 id="考试当天注意事项"><a href="#考试当天注意事项" class="headerlink" title="考试当天注意事项"></a>考试当天注意事项</h2><ol>
+<li>提前半小时到达考场，可以带点材料，在休息室可以看材料</li>
+<li>考场有专门存包的柜子，柜子很大，小号的行李箱也能塞进去，每个人会给一把钥匙，这个柜子中途是不允许开的，可以提前把水杯拿出来，考场提供饮用水，可以自己接</li>
+<li>电子设备都要关机放进柜子里</li>
+<li>考场桌子上有3M的耳塞，做写作和阅读的时候可以带上，因为你做到写作的时候可能还有人在做口语</li>
+<li>国内考生带身份证就行，没必要带护照，我两个都带了，然后只拿了身份证进去</li>
+<li>考试之前不要喝太多水，因为考完 口语、写作和阅读之后才会有10分钟的休息时间，大概在11点左右，憋两个小时很酸爽</li>
+<li>中间的10分钟休息是可选的，建议休息，休息的时候举手找考官来帮你暂停考试，休息的时候注意时间，因为入场的时候要重新检查，记得出去的时候带着证件</li>
+<li>电脑有异常及时找考官记录，要不然考完就没办法了，武汉考场的考官很nice，态度很友好</li>
+<li>口语部分不要念太大声，一是保护自己的嗓子；二是会干扰别人，别人举报你的话会被写报告的（当然其他人声音太大的话你也可以举报）；考场的耳机收音效果都是不错的，没必要喊太大声，武汉考场的话你自己在说的时候基本听不到别人说话的声音</li>
+<li>口语部分说完之后就可以点<code>Next</code>,避免录进去别人的声音，虽然概率不大</li>
+<li>耳机麦克的位置我是放在上嘴唇和鼻尖中间，距离脸部大概2-3指的距离</li>
+<li>试音的时候不要跟着别人念<code>Testing testing one two three</code>，找几个爆破音念或者念屏幕上的注意事项，看看会不会喷麦</li>
+<li>考试的笔不用的时候一定要扣好笔帽，要不然干了就写不出字来了，考场记笔记用的本子是塑料材质，比较滑</li>
+<li>耳机一旦调好就不要再动了</li>
+</ol>
+<p>需要模板的可以给我发邮件，我当时找了不少，虽然没用到几个<br>要说的就这么多了，祝大家早日通过考试~~~<br>BTW，2020新年快乐~~~</p>
+]]></content>
+      <categories>
+        <category>留学</category>
+      </categories>
+      <tags>
+        <tag>留学</tag>
+        <tag>PTE</tag>
+        <tag>攻略</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>碎碎念</title>
     <url>/Purpose.html</url>
     <content><![CDATA[<h3 id="01"><a href="#01" class="headerlink" title="01"></a>01</h3><p>建立博客的目的嘛，就是记录一些自己踩过的坑咯，然后记录下每次因为感兴趣而开始的折腾，在世界上留下存在的痕迹吧，就这样。</p>
@@ -3198,6 +3201,232 @@
       </categories>
       <tags>
         <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>V2Ray</title>
+    <url>/V2Ray.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">自从P站无法访问后就一直想写个V2Ray的教程，然鹅拖延症加懒癌晚期到现在才开始写emmm，虽然民间一直流传有上P站的各种神功，但网速实在感人而且指不定那天就挂掉了，另外如果你不想看这么麻烦的教程的话可以直接移到文章最后，有懒人大礼包。解释一下这个P站是建筑狗用的Pinterest，想歪的面壁去（🐶）
+</blockquote>
+
+<span id="more"></span>
+
+<div class="note danger"><p>文章时间久远，俺自己也没再用这个方案了，仅供参考</p></div>
+
+<h1 id="V2Ray简介"><a href="#V2Ray简介" class="headerlink" title="V2Ray简介"></a>V2Ray简介</h1><p>V2Ray项目是Project V下的一款基础网络通讯工具，<a href="https://www.v2ray.com/">官网</a>已经404了，相比于Shadowsocks，V2Ray功能更加强大，但配置也相对麻烦，主要优点有：</p>
+<ul>
+<li>更完善的协议: V2Ray 使用了新的自行研发的 VMess 协议，改正了 Shadowsocks 一些已有的缺点，更难被GFW检测到</li>
+<li>更强大的性能: 网络性能更好，具体数据可以看 <a href="https://steemit.com/cn/@v2ray/3cjiux">V2Ray 官方博客</a></li>
+<li>更丰富的功能: 以下是部分 V2Ray 的功能<ul>
+<li>mKCP: KCP 协议在 V2Ray 上的实现，不必另行安装 kcptun</li>
+<li>动态端口：动态改变通信的端口，对抗对长时间大流量端口的限速封锁</li>
+<li>路由功能：可以随意设定指定数据包的流向，去广告、反跟踪都可以</li>
+<li>传出代理：看名字可能不太好理解，其实差不多可以称之为多重代理。类似于 Tor 的代理</li>
+<li>数据包伪装：类似于 Shadowsocks-rss 的混淆，另外对于 mKCP 的数据包也可伪装，伪装常见流量，令识别更困难</li>
+<li>WebSocket 协议：可以 PaaS 平台搭建V2Ray，通过 WebSocket 代理。也可以通过它使用 CDN 中转，抗封锁效果更好</li>
+<li>Mux:多路复用，进一步提高科学上网的并发性能</li>
+</ul>
+</li>
+</ul>
+<h1 id="购买VPS"><a href="#购买VPS" class="headerlink" title="购买VPS"></a>购买VPS</h1><p>关于FQ的原理，简单说就是用国内的设备连接国外的服务器（也就是下面要购买的VPS），然后通过国外的服务器访问那些404的不存在的网址，再将数据传回你的设备，所以需要购买一个境外的服务器。</p>
+<p>服务器选择有很多，香港新加坡日本美国等国家的都可以，提供服务的厂商有<a href="https://www.vultr.com/">Vultr</a>、<a href="https://bandwagonhost.com/">Bandwagon</a>等，更多VPS信息可以去<a href="https://blog.phpgao.com/vpses.html">大佬的博客</a>查看。现在比较主流的VPS厂商已经支持支付宝&#x2F;微信付款了，另外厂商也会有一些优惠活动</p>
+<p>这里我以<a href="https://www.vultr.com/">Vultr</a>为例</p>
+<ol>
+<li>进入官网后在中间的两栏输入账号（邮箱地址）和密码，然后点击<code>Create account</code></li>
+<li>在跳转后的页面左侧单击<code>Billing</code>并选择支付方式和充值金额，Vultr支持支付宝（Alipay）和微信（Wechat Pay）两种国内常用的付款方式，当然也可以使用支持美元的信用卡支付</li>
+<li>勾选<code>I Agree to the Terms of Service</code>选框，支付宝点击<code>Pay with Alipay</code>，微信选择<code>Generate QR Code</code>进行支付</li>
+<li>点击页面左侧的<code>Products</code>按钮切换</li>
+<li>在<code>Choose Server</code>中选择<code>Cloud Compute</code></li>
+<li>在<code>Cloud Compute</code>中选择服务器地区，一般来说东京和洛杉矶的速度较快</li>
+<li>在<code>Server Type</code>中选择服务器的操作系统，一般选择Linux系统降低内存使用，如<code>CentOS</code>和<code>Ubuntu</code></li>
+<li>在<code>Server Size</code>中选择合适的硬件配置以及带宽，一般来说选择<code>1CPU</code>、<code>512MB</code>内存即可，注意有些特价的VPS只提供IPV4地址，普通用户不要选择</li>
+<li>其它的选项不需要填写，直接点击页面右下角的<code>Deploy Now</code></li>
+<li>页面会跳转到<code>Server added successfully</code>服务器添加成功页面，右下方会显示正在安装<code>Installing</code></li>
+<li>安装完成后会显示用户名、密码、IP地址等信息，记住这几个信息，稍后会用到</li>
+</ol>
+<h1 id="连接VPS"><a href="#连接VPS" class="headerlink" title="连接VPS"></a>连接VPS</h1><h2 id="安装Xshell"><a href="#安装Xshell" class="headerlink" title="安装Xshell"></a>安装Xshell</h2><p>远程连接需要使用<a href="https://www.netsarang.com/zh/free-for-home-school/">Xshell</a>，输入姓名邮箱后获取下载链接并安装</p>
+<h2 id="连接VPS-1"><a href="#连接VPS-1" class="headerlink" title="连接VPS"></a>连接VPS</h2><ol>
+<li>打开Xshell</li>
+<li>点击顶栏<code>文件</code>并选择<code>新建</code></li>
+<li>在<code>名称</code>处填写一个易于区分的名称</li>
+<li>在<code>主机</code>处填写VPS的IP地址并点击<code>确定</code></li>
+<li>此时会提示保存ssh密钥，点击<code>接受并保存</code></li>
+<li>提示需要用户名的话输入<code>root</code>即可</li>
+<li>输入VPS的密码并点击确定即可连接</li>
+</ol>
+<h1 id="安装V2Ray"><a href="#安装V2Ray" class="headerlink" title="安装V2Ray"></a>安装V2Ray</h1><p>V2Ray的手动安装过程较为繁琐，但已经有大佬做好了一键安装脚本，直接安装并使用即可</p>
+<ol>
+<li>在上一步连接成功后的<code>Xshell</code>中使用<code>Shift + Insert</code>粘贴命令<code>bash &lt;(curl -s -L https://git.io/v2ray.sh)</code><ul>
+<li>如果提示<code>curl: command not found</code>，则需要安装<code>curl</code>，命令如下</li>
+<li>ubuntu&#x2F;debian:<code>apt-get update -y &amp;&amp; apt-get install curl -y</code></li>
+<li>centos:<code>yum update -y &amp;&amp; yum install curl -y</code></li>
+</ul>
+</li>
+<li>输入<code>1</code>并回车选择安装</li>
+<li>选择V2Ray传输协议，这里17个选择，备注有说明<ul>
+<li>默认的可以选择TCP，简单</li>
+<li>或者选择使用mKCP_wechat-vedio_dynamicPort进行微信优化伪装和动态端口设定，可以在一定程度上防止被墙，但是这个真的看脸。另外mKCP可以起到一定的加速作用，副作用是容易被运营商QOS限制</li>
+<li>比较稳妥的方法是使用WebSocket+TLS，在配合Cloudflare进行中转防止IP被墙，后面会讲</li>
+</ul>
+</li>
+<li>选择V2Ray端口，自己填写一个或者用默认的回车即可，数值在1-65535之间，避开特殊端口(例如80、443)</li>
+<li>其他的默认回车即可</li>
+<li>安装之前会有提示，看一下设置没有问题的话回车</li>
+<li>等待片刻，如果出现什么看不懂的提示就默认回车</li>
+<li>输入<code>v2ray start</code>启动V2Ray服务</li>
+<li>输入<code>v2ray status</code>回车检测V2Ray是否在运行，返回<code>V2Ray 状态: 正在运行</code>的话说明安装成功了</li>
+<li>centos6和7需要关闭防火墙，使用命令<code>systemctl stop firewalld</code>以及<code>systemctl disable firewalld</code>关闭</li>
+</ol>
+<p>至此在VPS上的配置就已经完成了</p>
+<p><strong>2019.06.30.emmm这个周出去浪了，回来再更</strong></p>
+<p><strong>2019.07.11本咕咕咕回来了，继续更，顺带说一句厦门是真的热</strong></p>
+<h1 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h1><p>在Xshell中连接你的VPS,使用命令<code>v2ray url</code>生成VMess链接并复制，一会要用</p>
+<p>V2Ray官方版本是没有GUI界面的，一般用户用起来有点蛋疼，好在各个平台都有支持V2Ray的客户端</p>
+<h2 id="Windows客户端"><a href="#Windows客户端" class="headerlink" title="Windows客户端"></a>Windows客户端</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Windows平台使用的客户端是V2RayN<br>在安装客户端之前需要先下载V2Ray并解压，然后再下载V2RayN的压缩包并解压到相同的文件夹,下面是下载链接</p>
+<a class="btn" href="https://github.com/v2ray/v2ray-core/releases">V2Ray下载</a> <a class="btn" href="https://github.com/2dust/v2rayN/releases">V2RayN下载</a>
+
+<p>V2Ray选择<code>v2ray-windows-64.zip</code>，V2RayN选择<code>v2rayN.zip</code><br>为了方便使用可以将文件夹内的<code>V2RayN.exe</code>右键发送到桌面快捷方式，以后启动时双击打开即可</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>首先复制刚才的VMess链接，然后打开<code>V2RayN.exe</code>，点击顶栏<code>服务器</code>打开下拉菜单，选择<code>从剪贴板导入批量URL</code>即可<br>如果有多个服务器建议修改别名<br>为了节省流量我们需要开启PAC，因为在全局模式下你的所有流量都会通过你的服务器收发，而PAC则会检查你要访问的网站是否在它的规则当中，如果在则通过代理服务器连接，不在的话就会绕过代理服务器直接连接，步骤如下：<br>首先在任务栏右下角找到V2RayN的并右键，选择<code>启用Http代理</code>并将<code>Http代理模式</code>设置为<code>开启Http代理，并自动配置代理服务器(全局模式)</code>；然后打开v2RayN，点击顶栏<code>检查更新</code>打开下拉菜单，选择<code>检查更新PAC</code>，等待更新完成后将<code>Http代理模式</code>设置为<code>开启PAC，并自动配置PAC(PAC模式)</code></p>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p>更新可以通过V2RayN内的<code>检查更新</code>选项进行更新，<code>V2RayCore</code>和<code>V2RayN</code>建议保持最新版本，PAC大约过一两个月更新一次就可以</p>
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><ol>
+<li>emmm这是个玄学问题，不确定是win10的锅还是V2Ray的问题，有时候会出现没有响应的情况，打开404网站的时候V2RayN的信息栏没有任何反应，看起来像被墙了一样，此时需要使用网络重置解决问题，步骤为：在win10的设置中选择<code>网络和Internet</code>，在<code>状态</code>中找到<code>网络重置</code>选项，过几秒会提醒你要在几分钟内注销，此时直接手动重启即可，重启后再启动V2RayN就解决了</li>
+<li>有时候所有的网站都会打不开，原因是退出V2Ray的时候仍然处在全局模式，解决方案为打开V2RayN将<code>Http代理模式</code>切换为<code>PAC模式</code></li>
+</ol>
+<h2 id="iOS客户端"><a href="#iOS客户端" class="headerlink" title="iOS客户端"></a>iOS客户端</h2><p>iOS客户端有<code>Kitsunebi</code>、<code>Shadowrocket</code>、<code>Pepi</code>、<code>Kitsunebi Lite</code>等，但是这些软件在国区已经全部下架了，解决方案有:</p>
+<ul>
+<li>注册美区等国外区的Apple ID</li>
+<li>通过淘宝购买已经购买过上述软件的Apple ID<br>这里我以<code>Kitsunebi Lite</code>为例，打开软件后点击右上角的<code>+</code>，选择URL导入，粘贴Vmess链接，点击<code>YES</code>，然后回到主页将模式调为自动，点击上方的开关即可使用</li>
+</ul>
+<h2 id="Android客户端"><a href="#Android客户端" class="headerlink" title="Android客户端"></a>Android客户端</h2><p>安卓端主要是<a href="https://play.google.com/store/apps/details?id=com.v2ray.ang">V2RayNG</a>和<a href="https://play.google.com/store/apps/details?id=com.github.dawndiy.bifrostv">BifrostV</a>两款软件，这里的链接是Google Play的，另外V2RayNG还有<a href="https://github.com/2dust/v2rayNG/releases">Github链接</a>，选择<code>app-universal-release.apk</code>下载使用<br>使用步骤大同小异，都是点击右上角的<code>+</code>并导入Vmess链接，然后点击右下角按钮即可使用</p>
+<h2 id="MacOS客户端"><a href="#MacOS客户端" class="headerlink" title="MacOS客户端"></a>MacOS客户端</h2><p>MacOS可以使用<a href="https://github.com/insisttech/v2rayX-copy/releases">V2RayX</a></p>
+<ol>
+<li>点击上面的链接并下载<code>V2RayX.app-1.2.0.zip</code>，名称不一定完全一样，然后解压，并将<code>V2RayX.app</code>复制到<code>程序</code>文件夹</li>
+<li>第一次打开时会出现需要安全认证的信息，此时你需要点完所有系统弹出的窗口里的<code>是</code>、<code>打开</code>、<code>确认</code>等选项，然后打开<code>系统偏好设置</code>里的<code>安全性与隐私</code>，你就会看见灰色的一条，大概意思为“V2RayX，未被安全认证，是否打开”，后面有一个<code>仍要打开</code>的选项，点开就好。然后你就会在状态栏看到 V2RayX 图标</li>
+<li>点击图标然后单击<code>Configure</code>，TCP模式在这个界面可以完成配置，按照VPS端的参数填写；mKCP和WebSocket+TLS需要点击页面下方的<code>transport settings</code>进入高级设置</li>
+<li>配置完成后点击<code>OK</code>，此时会弹窗提醒，点击<code>Yes, save!</code></li>
+<li>点击V2RayX的图标，可以在<code>Global Mode</code>全局模式和<code>PAC Mode</code>PAC模式之间调整</li>
+<li>点击<code>Start V2Ray</code>即可使用</li>
+</ol>
+<h2 id="Linux客户端"><a href="#Linux客户端" class="headerlink" title="Linux客户端"></a>Linux客户端</h2><p>用大佬的话说，<em>你都用Linux了还要什么客户端</em>，其实是Linux真的没有GUI客户端2333，所以只能节省一些麻烦。。。。。。</p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><ol>
+<li>首先还是去V2Ray的<a href="https://github.com/v2ray/v2ray-core/releases/">Github</a>下载安装包，Intel架构的根据系统选择<code>V2Ray-linux-64</code>或者<code>V2Ray-linux-32</code>，ARM架构的选择<code>V2Ray-linux-arm64</code>或<code>V2Ray-linux-arm</code></li>
+<li>下载完成后解压</li>
+<li>打开解压后的文件夹，删除其中的<code>vpoint_vmess_freedom.json</code>文件，然后自己创建一个<code>config.json</code>文件，建议直接通过Windows客户端导出这个文件，在<code>V2Ray</code>中点击服务器下拉菜单，选择<code>导出所选服务器为客户端配置</code></li>
+<li>在文件夹打开终端并执行命令<code>sudo ./v2ray</code>即可开启</li>
+</ol>
+<h3 id="配置PAC"><a href="#配置PAC" class="headerlink" title="配置PAC"></a>配置PAC</h3><p>此时的V2Ray还不能够愉快的使用，我们还需要给它配置PAC</p>
+<ol>
+<li>首先安装<code>pip</code>工具，执行命令<code>apt install python-pip</code>，完成后使用命令<code>pip -V</code>检测是否安装成功，成功后会返回pip的版本</li>
+<li>执行命令<code>pip install genpac</code>安装<code>genpac</code>，安装成功后会返回<code>Successfully installed genpac-xxx</code></li>
+<li>执行命令<code>genpac --format=pac -o auto.pac --pac-proxy=&quot;SOCKS5 127.0.0.1:1080</code>，如果没有输出说明成功，否则按照返回值修改</li>
+<li>打开系统设置，以Fedora为例，点击<code>网络</code>，打开<code>Network Proxy</code>的菜单并将其设置为自动</li>
+<li>Google下载一个PAC文件</li>
+<li>在下方的<code>配置URL</code>栏填入你的PAC文件的绝对路径，格式为<code>file://路径</code></li>
+</ol>
+<h3 id="设置桌面图标"><a href="#设置桌面图标" class="headerlink" title="设置桌面图标"></a>设置桌面图标</h3><p>每次输入命令启动还是很麻烦的，但是我们可以在桌面设置一个快捷方式或者加入程序列表（滑稽）<br>在文件夹中新建一个名为<code>v2ray.desktop</code>的文件，粘贴下列代码，然后复制到<code>/usr/share/application</code>文件夹下，此过程需要root权限</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line"></span><br><span class="line">Name=V2Ray</span><br><span class="line"></span><br><span class="line">GenericName=V2Ray Client</span><br><span class="line"></span><br><span class="line">Comment=A platform <span class="keyword">for</span> building proxies to bypass network restrictions.</span><br><span class="line"></span><br><span class="line">Exec=/到你文件夹的路径/v2ray --config=/到你文件夹的路径/config.json</span><br><span class="line"></span><br><span class="line">Icon=/到自定义图标图片的路径</span><br><span class="line"></span><br><span class="line">Terminal=true</span><br><span class="line"></span><br><span class="line"><span class="built_in">Type</span>=Application</span><br><span class="line"></span><br><span class="line">Categories=Network;Internet;</span><br></pre></td></tr></table></figure>
+<p>然后把文件的权限修改为<code>允许文件作为程序执行</code><br>图标文件可以去大佬的<a href="https://pan.baidu.com/s/1yf4Rkmuy7h65z8XC77SAdg#list/path=%2F">百度网盘</a>下载，提取码<code>hc82</code></p>
+<p>然后你就可以愉快的使用V2Ray了（滑稽）</p>
+<h1 id="使用Cloudflare-CDN中转（选配）"><a href="#使用Cloudflare-CDN中转（选配）" class="headerlink" title="使用Cloudflare CDN中转（选配）"></a>使用Cloudflare CDN中转（选配）</h1><p>目前GFW主要通过封禁IP的方式墙掉你的VPS，而对应的解决方案便是通过Cloudflare中转，墙不知道你的IP还怎么封呢（滑稽），另外这个方法的另一个功能就是恢复被墙IP的访问（滑稽+1）<br>虽然CDN中转能够有效防止IP被墙，但是步骤比较繁琐，延迟也会提高，还需要另外购买一个域名。不想折腾直接跳过就好了，我第一次配也没有用这个，直接用的mKCP，用了快一年才被墙掉，通过这个方法恢复了被墙的IP</p>
+<h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p>域名推荐购买<a href="https://sg.godaddy.com/zh">Godaddy</a>家的，这是国外最大的域名供应商，而且不需要实名认证，国内的阿里云和腾讯云也不是不能用2333</p>
+<ol>
+<li>首先打开<a href="https://sg.godaddy.com/zh">Godaddy</a>进行注册，邮箱用户名密码不多说</li>
+<li>注册完成后回到首页搜索自己想要的域名，点击<code>加入购物车</code>,然后点击上面的<code>进入购物车</code></li>
+<li>跳转的页面会提示你购买隐私服务和Linux主机，全部选不用然后点击下面的<code>进入购物车</code></li>
+<li>结算信息页面除了电话号码都随便写，把右边的<code>2年</code>改成<code>1年</code>，2年的价格比1年贵很多，选1年然后到期再换别的</li>
+<li>付款过程不多说</li>
+</ol>
+<h2 id="Cloudflare-CDN配置"><a href="#Cloudflare-CDN配置" class="headerlink" title="Cloudflare CDN配置"></a>Cloudflare CDN配置</h2><p>Cloudflare CDN就是防止我们IP被墙的关键，而且它提供免费的CDN服务</p>
+<ol>
+<li>邮箱密码注册不多说</li>
+<li>注册完成后点击蓝色的<code>+Add Site</code>按钮</li>
+<li>输入刚才在Godaddy上购买的域名，然后点击下面的<code>Add Site</code>按钮</li>
+<li>点击<code>Next</code>按钮</li>
+<li>套餐选择<code>Free</code>那个，然后点击<code>Confirm plan</code>，在弹出的窗口再点击一次<code>Confirm</code></li>
+<li>找到DNS页面，可以看到Cloudflare生成的两个记录。点击蓝色按钮<code>Add Record</code>，第一个空选择<code>A</code>；第二个空填写域名前缀，如<code>test</code>等，生成二级域名；第三个空填写你VPS的IP；第四个不用管。</li>
+<li>点击<code>Add Record</code></li>
+<li>点击<code>Status</code>下面的橙色云朵，把它变成<strong>灰色</strong>，即DNS Only，然后点击<code>Continue</code></li>
+<li>这里会提示你修改你的域名服务器，页面上提供了两个域名服务器地址，需要我们回到购买域名的网站进行修改</li>
+<li>打开<a href="https://sg.godaddy.com/zh">Godaddy</a>，在右上角的用户名那里点击打开下拉菜单，然后点击<code>我的产品</code></li>
+<li>点击你的域名右侧的<code>DNS</code></li>
+<li>在跳转的页面上点击蓝色的<code>更改</code>按钮</li>
+<li>选择自定义，如果有别的域名服务器需要先删掉，然后把Cloudflare提供的两个域名服务器粘贴进去，点击保存</li>
+<li>回到Cloudflare页面并继续点击<code>continue</code>，如果提示你还没有修改域名服务器的话就等待一段时间（几分钟到几个小时）。等到域名服务器生效就好了，生效的话Cloudflare会发邮件给你；或者页面提示<code>Great news! Cloudflare is now protecting your site</code>就说明可以使用了</li>
+</ol>
+<h2 id="V2Ray设置"><a href="#V2Ray设置" class="headerlink" title="V2Ray设置"></a>V2Ray设置</h2><p>先前我们用的是mKCP协议，现在需要换成<code>WebSocket+TLS</code></p>
+<ol>
+<li>使用Xshell连接VPS</li>
+<li>输入命令<code>v2ray config</code>并回车</li>
+<li>修改传输协议为<code>WebSocket+TLS</code></li>
+<li>输入你的二级域名并回车，如<code>test.xxxxx.xxx</code></li>
+<li>确认域名正确并回车</li>
+<li>如果域名解析错误会报错提示并退出脚本</li>
+<li><code>是否自动配置TLS</code>选择Y回车</li>
+<li>其它选项默认即可</li>
+<li>输入<code>v2ray status</code>查看V2Ray状态,确保V2Ray和Caddy都是正在运行状态</li>
+<li>输入<code>v2ray url</code>生成VMess链接并复制</li>
+<li>返回<code>Cloudflare</code>域名管理界面，点击<code>Crypto</code>选项，将SSL后的选项设置为<code>Full</code>并确认<code>Universal SSL Status</code>状态为<code>Active Certificate</code>，不是的话可能要稍微等一会，等待证书申请成功（脸黑的话需要等很长时间，但是不会超过24小时，一般很快）</li>
+<li>打开<code>Cloudflare</code>的<code>DNS</code>选项，点击<code>Status</code>下面的灰色云朵，把它恢复为橙色</li>
+<li>把刚才复制的<code>VMess</code>连接重新导入你的客户端就完成了</li>
+</ol>
+<h1 id="常用命令汇总"><a href="#常用命令汇总" class="headerlink" title="常用命令汇总"></a>常用命令汇总</h1><ul>
+<li>启动V2Ray——<code>v2ray start</code></li>
+<li>关闭V2Ray——<code>v2ray stop</code></li>
+<li>重启V2Ray——<code>v2ray restart</code></li>
+<li>更新V2Ray——<code>v2ray update</code></li>
+<li>更新V2Ray管理脚本——<code>v2ray update</code></li>
+<li>查看V2Ray状态——<code>v2ray status</code></li>
+<li>查看V2Ray配置——<code>v2ray inf</code></li>
+<li>修改V2Ray配置——<code>v2ray config</code></li>
+<li>生成配置文件链接——<code>v2ray link</code></li>
+<li>生成配置信息链接——<code>v2ray infolink</code></li>
+<li>生成配置二维码链接——<code>v2ray qr</code></li>
+<li>查看V2Ray日志——<code>v2ray log</code></li>
+<li>生成VMess链接——<code>v2ray url</code></li>
+</ul>
+<h1 id="懒人大礼包"><a href="#懒人大礼包" class="headerlink" title="懒人大礼包"></a>懒人大礼包</h1><p>懒人大礼包是<code>Bandwagon</code>(一家VPS供应商，被墙之前用户巨多，俗称搬瓦工)官方出品的梯子<code>Just My Socks</code>，使用搬瓦工的优质<code>CN2 GIA</code>线路并且支持被墙自动换IP，也就是说IP被墙后你不用自己动手，<code>Just My Socks</code>官方会为你提供一条龙服务，你甚至感受不到它的存在。<strong>虽然它还是个ShadowSocks</strong><br>这套服务的包月金额最低2.88美元，按照19年7月的汇率大概是19.8元人民币,包年是198元人民币，支持自支付宝付款。<br>因为官方过于作死，已经被墙了，需要使用备用网址<a href="https://justmysocks1.net/members/cart.php?gid=1">Just My Socks</a><br>目前主要有三种套餐，Just My Socks 100、Just My Socks 500和Just My Socks 1000，以100为例，官网的信息是这样的<code>100G/mo at 1Gbps | 3 devices</code>，意思就是每个月100G的流量，带宽是1Gbps，支持3台设备使用，一般人这个就够用了，土豪随意</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>注册登陆，不废话</li>
+<li>选择需要的套餐，点击<code>Order Now</code></li>
+<li>在<code>Choose Billing Cycle</code>可以选择付款周期，包月<code>Monthly</code>，包季度<code>Quarterly</code>，包半年<code>Semi-Annually</code>和包年<code>Annually</code>，周期越长越便宜</li>
+<li>在<code>Apply Promo Code</code>中输入优惠码<code>JMS9272283</code>可以享受5.2%的优惠，完成后点击右侧<code>Checkout</code></li>
+<li>没注册的话这一步可以继续注册，填写基本信息，国家选择<code>China</code>，付款方式选择<code>Alipay</code>，勾选下面的<code>I have read and agree to the Terms of Service</code>然后点击<code>Complete Order</code>，支付宝扫码付款</li>
+<li>付款完成后在官网顶栏选择<code>Services</code>，在下拉菜单中选择<code>My Services</code>，可以看到已经购买的产品，<code>Status</code>状态为<code>Active</code>，即为激活可用状态</li>
+<li>点击你的产品就可以看到ShadowSocks的相关信息了，其中<ul>
+<li><code>ShadowSocks Encryption</code>是加密方式</li>
+<li><code>ShadowSocks Port</code>是端口</li>
+<li><code>ShadowSocks Paaword</code>是密码</li>
+<li><code>ShadowSocks Server IP</code>是服务器地址，这个地址会有多个，都可以同时用</li>
+</ul>
+</li>
+<li>在V2Ray客户端选择服务器，点击<code>添加ShadowSocks服务器</code>并输入相关信息就可以用了，可以多添加几个，防止某个节点失效，因为<code>Just My Socks</code>的自动检测需要时间</li>
+</ol>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>在页面左侧的<code>Actions</code>菜单中可以切换端口、密码和加密方式，觉得套餐不能满足需求或不满意可以在<code>Actions</code>菜单中选择修改套餐和退款，在<code>Overview</code>中可以更改付款周期，注意<strong>密码和端口的更改是自动生成</strong>的，不支持自定义。<br>更改成功会提示<code>Changes saved. Please wait 1 minute for settings to propagate to all servers.</code>，就是说需要等待1分钟将设置同步到所有服务器，1分钟后重新点击左侧的<code>Service Information</code>就可以看到更新后的信息了</p>
+<ol>
+<li>更改密码，点击<code>Change password</code>即可</li>
+<li>更改端口，点击<code>Change port</code>即可</li>
+<li>更改加密方式，点击<code>Switch to aes-256-gcm</code>和<code>Switch to aes-256-cfb</code>可以切换两种加密方式，建议选择<code>aes-256-gcm</code></li>
+<li>修改套餐，点击<code>Upgrade/Downgrade</code>，选择合适的套餐后付款即可</li>
+<li>更改付款周期,点击<code>Modify billing cycle</code>,选择的合适的周期后点击后面的<code>Change billing cycle</code>,可能会提示<code>Billing cycle has been modified successfully. Your next invoice will reflect new billing period</code>，意思是周期修改成功，但不会立即生效，会在下一个周期生效</li>
+<li>退款，点击<code>Request Refund</code>，然后再点击<code>Request full refund for this service</code>。<br>这个的操作稍微复杂一些，而且相同身份信息只有一次退款机会，意思就是如果你用同一个支付宝给不同的账号付款，你只有一个账号的退款机会。<br>同时你还要满足以下条件<ul>
+<li>客户账户信誉良好，未违反服务条款</li>
+<li>以前没有付款或目前没争议</li>
+<li>每月数据传输使用量低于10%</li>
+<li>客户帐户是 7 天内创建的</li>
+<li>客户当前账号没有退款过<br>这些都没有问题的话经过审核通过就会将退款原路返回</li>
+</ul>
+</li>
+</ol>
+<p><strong>技术无罪</strong></p>
+<blockquote>
+<p>参考：<a href="https://github.com/233boy/v2ray/wiki/V2Ray%E6%90%AD%E5%BB%BA%E8%AF%A6%E7%BB%86%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B">233boy</a>、<a href="https://www.i5seo.com/">长沙SEO霜天博客</a>、<a href="https://blog.sprov.xyz/2019/03/11/cdn-v2ray-safe-proxy/">sprov</a>、<a href="https://octopuspalm.top/2018/08/18/Linux%20%E7%B3%BB%E7%BB%9F%E4%B8%8Bv2ray%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8/">THE WORLD OF ABCDLSJ</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>V2Ray</tag>
       </tags>
   </entry>
   <entry>
@@ -3495,229 +3724,158 @@
       </tags>
   </entry>
   <entry>
-    <title>V2Ray</title>
-    <url>/V2Ray.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">自从P站无法访问后就一直想写个V2Ray的教程，然鹅拖延症加懒癌晚期到现在才开始写emmm，虽然民间一直流传有上P站的各种神功，但网速实在感人而且指不定那天就挂掉了，另外如果你不想看这么麻烦的教程的话可以直接移到文章最后，有懒人大礼包。解释一下这个P站是建筑狗用的Pinterest，想歪的面壁去（🐶）
-</blockquote>
+    <title>格拉斯哥大学IT选课指南</title>
+    <url>/%E6%A0%BC%E6%8B%89%E6%96%AF%E5%93%A5%E5%A4%A7%E5%AD%A6IT%E9%80%89%E8%AF%BE%E6%8C%87%E5%8D%97.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">很久很久之前说过的选课指南哈哈哈，根据本人21年上课体验以及专业群道听途说总结，仅供参考，注意时效</blockquote>
 
 <span id="more"></span>
 
-<div class="note danger"><p>文章时间久远，俺自己也没再用这个方案了，仅供参考</p></div>
-
-<h1 id="V2Ray简介"><a href="#V2Ray简介" class="headerlink" title="V2Ray简介"></a>V2Ray简介</h1><p>V2Ray项目是Project V下的一款基础网络通讯工具，<a href="https://www.v2ray.com/">官网</a>已经404了，相比于Shadowsocks，V2Ray功能更加强大，但配置也相对麻烦，主要优点有：</p>
-<ul>
-<li>更完善的协议: V2Ray 使用了新的自行研发的 VMess 协议，改正了 Shadowsocks 一些已有的缺点，更难被GFW检测到</li>
-<li>更强大的性能: 网络性能更好，具体数据可以看 <a href="https://steemit.com/cn/@v2ray/3cjiux">V2Ray 官方博客</a></li>
-<li>更丰富的功能: 以下是部分 V2Ray 的功能<ul>
-<li>mKCP: KCP 协议在 V2Ray 上的实现，不必另行安装 kcptun</li>
-<li>动态端口：动态改变通信的端口，对抗对长时间大流量端口的限速封锁</li>
-<li>路由功能：可以随意设定指定数据包的流向，去广告、反跟踪都可以</li>
-<li>传出代理：看名字可能不太好理解，其实差不多可以称之为多重代理。类似于 Tor 的代理</li>
-<li>数据包伪装：类似于 Shadowsocks-rss 的混淆，另外对于 mKCP 的数据包也可伪装，伪装常见流量，令识别更困难</li>
-<li>WebSocket 协议：可以 PaaS 平台搭建V2Ray，通过 WebSocket 代理。也可以通过它使用 CDN 中转，抗封锁效果更好</li>
-<li>Mux:多路复用，进一步提高科学上网的并发性能</li>
-</ul>
-</li>
-</ul>
-<h1 id="购买VPS"><a href="#购买VPS" class="headerlink" title="购买VPS"></a>购买VPS</h1><p>关于FQ的原理，简单说就是用国内的设备连接国外的服务器（也就是下面要购买的VPS），然后通过国外的服务器访问那些404的不存在的网址，再将数据传回你的设备，所以需要购买一个境外的服务器。</p>
-<p>服务器选择有很多，香港新加坡日本美国等国家的都可以，提供服务的厂商有<a href="https://www.vultr.com/">Vultr</a>、<a href="https://bandwagonhost.com/">Bandwagon</a>等，更多VPS信息可以去<a href="https://blog.phpgao.com/vpses.html">大佬的博客</a>查看。现在比较主流的VPS厂商已经支持支付宝&#x2F;微信付款了，另外厂商也会有一些优惠活动</p>
-<p>这里我以<a href="https://www.vultr.com/">Vultr</a>为例</p>
-<ol>
-<li>进入官网后在中间的两栏输入账号（邮箱地址）和密码，然后点击<code>Create account</code></li>
-<li>在跳转后的页面左侧单击<code>Billing</code>并选择支付方式和充值金额，Vultr支持支付宝（Alipay）和微信（Wechat Pay）两种国内常用的付款方式，当然也可以使用支持美元的信用卡支付</li>
-<li>勾选<code>I Agree to the Terms of Service</code>选框，支付宝点击<code>Pay with Alipay</code>，微信选择<code>Generate QR Code</code>进行支付</li>
-<li>点击页面左侧的<code>Products</code>按钮切换</li>
-<li>在<code>Choose Server</code>中选择<code>Cloud Compute</code></li>
-<li>在<code>Cloud Compute</code>中选择服务器地区，一般来说东京和洛杉矶的速度较快</li>
-<li>在<code>Server Type</code>中选择服务器的操作系统，一般选择Linux系统降低内存使用，如<code>CentOS</code>和<code>Ubuntu</code></li>
-<li>在<code>Server Size</code>中选择合适的硬件配置以及带宽，一般来说选择<code>1CPU</code>、<code>512MB</code>内存即可，注意有些特价的VPS只提供IPV4地址，普通用户不要选择</li>
-<li>其它的选项不需要填写，直接点击页面右下角的<code>Deploy Now</code></li>
-<li>页面会跳转到<code>Server added successfully</code>服务器添加成功页面，右下方会显示正在安装<code>Installing</code></li>
-<li>安装完成后会显示用户名、密码、IP地址等信息，记住这几个信息，稍后会用到</li>
-</ol>
-<h1 id="连接VPS"><a href="#连接VPS" class="headerlink" title="连接VPS"></a>连接VPS</h1><h2 id="安装Xshell"><a href="#安装Xshell" class="headerlink" title="安装Xshell"></a>安装Xshell</h2><p>远程连接需要使用<a href="https://www.netsarang.com/zh/free-for-home-school/">Xshell</a>，输入姓名邮箱后获取下载链接并安装</p>
-<h2 id="连接VPS-1"><a href="#连接VPS-1" class="headerlink" title="连接VPS"></a>连接VPS</h2><ol>
-<li>打开Xshell</li>
-<li>点击顶栏<code>文件</code>并选择<code>新建</code></li>
-<li>在<code>名称</code>处填写一个易于区分的名称</li>
-<li>在<code>主机</code>处填写VPS的IP地址并点击<code>确定</code></li>
-<li>此时会提示保存ssh密钥，点击<code>接受并保存</code></li>
-<li>提示需要用户名的话输入<code>root</code>即可</li>
-<li>输入VPS的密码并点击确定即可连接</li>
-</ol>
-<h1 id="安装V2Ray"><a href="#安装V2Ray" class="headerlink" title="安装V2Ray"></a>安装V2Ray</h1><p>V2Ray的手动安装过程较为繁琐，但已经有大佬做好了一键安装脚本，直接安装并使用即可</p>
-<ol>
-<li>在上一步连接成功后的<code>Xshell</code>中使用<code>Shift + Insert</code>粘贴命令<code>bash &lt;(curl -s -L https://git.io/v2ray.sh)</code><ul>
-<li>如果提示<code>curl: command not found</code>，则需要安装<code>curl</code>，命令如下</li>
-<li>ubuntu&#x2F;debian:<code>apt-get update -y &amp;&amp; apt-get install curl -y</code></li>
-<li>centos:<code>yum update -y &amp;&amp; yum install curl -y</code></li>
-</ul>
-</li>
-<li>输入<code>1</code>并回车选择安装</li>
-<li>选择V2Ray传输协议，这里17个选择，备注有说明<ul>
-<li>默认的可以选择TCP，简单</li>
-<li>或者选择使用mKCP_wechat-vedio_dynamicPort进行微信优化伪装和动态端口设定，可以在一定程度上防止被墙，但是这个真的看脸。另外mKCP可以起到一定的加速作用，副作用是容易被运营商QOS限制</li>
-<li>比较稳妥的方法是使用WebSocket+TLS，在配合Cloudflare进行中转防止IP被墙，后面会讲</li>
-</ul>
-</li>
-<li>选择V2Ray端口，自己填写一个或者用默认的回车即可，数值在1-65535之间，避开特殊端口(例如80、443)</li>
-<li>其他的默认回车即可</li>
-<li>安装之前会有提示，看一下设置没有问题的话回车</li>
-<li>等待片刻，如果出现什么看不懂的提示就默认回车</li>
-<li>输入<code>v2ray start</code>启动V2Ray服务</li>
-<li>输入<code>v2ray status</code>回车检测V2Ray是否在运行，返回<code>V2Ray 状态: 正在运行</code>的话说明安装成功了</li>
-<li>centos6和7需要关闭防火墙，使用命令<code>systemctl stop firewalld</code>以及<code>systemctl disable firewalld</code>关闭</li>
-</ol>
-<p>至此在VPS上的配置就已经完成了</p>
-<p><strong>2019.06.30.emmm这个周出去浪了，回来再更</strong></p>
-<p><strong>2019.07.11本咕咕咕回来了，继续更，顺带说一句厦门是真的热</strong></p>
-<h1 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h1><p>在Xshell中连接你的VPS,使用命令<code>v2ray url</code>生成VMess链接并复制，一会要用</p>
-<p>V2Ray官方版本是没有GUI界面的，一般用户用起来有点蛋疼，好在各个平台都有支持V2Ray的客户端</p>
-<h2 id="Windows客户端"><a href="#Windows客户端" class="headerlink" title="Windows客户端"></a>Windows客户端</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Windows平台使用的客户端是V2RayN<br>在安装客户端之前需要先下载V2Ray并解压，然后再下载V2RayN的压缩包并解压到相同的文件夹,下面是下载链接</p>
-<a class="btn" href="https://github.com/v2ray/v2ray-core/releases">V2Ray下载</a> <a class="btn" href="https://github.com/2dust/v2rayN/releases">V2RayN下载</a>
-
-<p>V2Ray选择<code>v2ray-windows-64.zip</code>，V2RayN选择<code>v2rayN.zip</code><br>为了方便使用可以将文件夹内的<code>V2RayN.exe</code>右键发送到桌面快捷方式，以后启动时双击打开即可</p>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>首先复制刚才的VMess链接，然后打开<code>V2RayN.exe</code>，点击顶栏<code>服务器</code>打开下拉菜单，选择<code>从剪贴板导入批量URL</code>即可<br>如果有多个服务器建议修改别名<br>为了节省流量我们需要开启PAC，因为在全局模式下你的所有流量都会通过你的服务器收发，而PAC则会检查你要访问的网站是否在它的规则当中，如果在则通过代理服务器连接，不在的话就会绕过代理服务器直接连接，步骤如下：<br>首先在任务栏右下角找到V2RayN的并右键，选择<code>启用Http代理</code>并将<code>Http代理模式</code>设置为<code>开启Http代理，并自动配置代理服务器(全局模式)</code>；然后打开v2RayN，点击顶栏<code>检查更新</code>打开下拉菜单，选择<code>检查更新PAC</code>，等待更新完成后将<code>Http代理模式</code>设置为<code>开启PAC，并自动配置PAC(PAC模式)</code></p>
-<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p>更新可以通过V2RayN内的<code>检查更新</code>选项进行更新，<code>V2RayCore</code>和<code>V2RayN</code>建议保持最新版本，PAC大约过一两个月更新一次就可以</p>
-<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><ol>
-<li>emmm这是个玄学问题，不确定是win10的锅还是V2Ray的问题，有时候会出现没有响应的情况，打开404网站的时候V2RayN的信息栏没有任何反应，看起来像被墙了一样，此时需要使用网络重置解决问题，步骤为：在win10的设置中选择<code>网络和Internet</code>，在<code>状态</code>中找到<code>网络重置</code>选项，过几秒会提醒你要在几分钟内注销，此时直接手动重启即可，重启后再启动V2RayN就解决了</li>
-<li>有时候所有的网站都会打不开，原因是退出V2Ray的时候仍然处在全局模式，解决方案为打开V2RayN将<code>Http代理模式</code>切换为<code>PAC模式</code></li>
-</ol>
-<h2 id="iOS客户端"><a href="#iOS客户端" class="headerlink" title="iOS客户端"></a>iOS客户端</h2><p>iOS客户端有<code>Kitsunebi</code>、<code>Shadowrocket</code>、<code>Pepi</code>、<code>Kitsunebi Lite</code>等，但是这些软件在国区已经全部下架了，解决方案有:</p>
-<ul>
-<li>注册美区等国外区的Apple ID</li>
-<li>通过淘宝购买已经购买过上述软件的Apple ID<br>这里我以<code>Kitsunebi Lite</code>为例，打开软件后点击右上角的<code>+</code>，选择URL导入，粘贴Vmess链接，点击<code>YES</code>，然后回到主页将模式调为自动，点击上方的开关即可使用</li>
-</ul>
-<h2 id="Android客户端"><a href="#Android客户端" class="headerlink" title="Android客户端"></a>Android客户端</h2><p>安卓端主要是<a href="https://play.google.com/store/apps/details?id=com.v2ray.ang">V2RayNG</a>和<a href="https://play.google.com/store/apps/details?id=com.github.dawndiy.bifrostv">BifrostV</a>两款软件，这里的链接是Google Play的，另外V2RayNG还有<a href="https://github.com/2dust/v2rayNG/releases">Github链接</a>，选择<code>app-universal-release.apk</code>下载使用<br>使用步骤大同小异，都是点击右上角的<code>+</code>并导入Vmess链接，然后点击右下角按钮即可使用</p>
-<h2 id="MacOS客户端"><a href="#MacOS客户端" class="headerlink" title="MacOS客户端"></a>MacOS客户端</h2><p>MacOS可以使用<a href="https://github.com/insisttech/v2rayX-copy/releases">V2RayX</a></p>
-<ol>
-<li>点击上面的链接并下载<code>V2RayX.app-1.2.0.zip</code>，名称不一定完全一样，然后解压，并将<code>V2RayX.app</code>复制到<code>程序</code>文件夹</li>
-<li>第一次打开时会出现需要安全认证的信息，此时你需要点完所有系统弹出的窗口里的<code>是</code>、<code>打开</code>、<code>确认</code>等选项，然后打开<code>系统偏好设置</code>里的<code>安全性与隐私</code>，你就会看见灰色的一条，大概意思为“V2RayX，未被安全认证，是否打开”，后面有一个<code>仍要打开</code>的选项，点开就好。然后你就会在状态栏看到 V2RayX 图标</li>
-<li>点击图标然后单击<code>Configure</code>，TCP模式在这个界面可以完成配置，按照VPS端的参数填写；mKCP和WebSocket+TLS需要点击页面下方的<code>transport settings</code>进入高级设置</li>
-<li>配置完成后点击<code>OK</code>，此时会弹窗提醒，点击<code>Yes, save!</code></li>
-<li>点击V2RayX的图标，可以在<code>Global Mode</code>全局模式和<code>PAC Mode</code>PAC模式之间调整</li>
-<li>点击<code>Start V2Ray</code>即可使用</li>
-</ol>
-<h2 id="Linux客户端"><a href="#Linux客户端" class="headerlink" title="Linux客户端"></a>Linux客户端</h2><p>用大佬的话说，<em>你都用Linux了还要什么客户端</em>，其实是Linux真的没有GUI客户端2333，所以只能节省一些麻烦。。。。。。</p>
-<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><ol>
-<li>首先还是去V2Ray的<a href="https://github.com/v2ray/v2ray-core/releases/">Github</a>下载安装包，Intel架构的根据系统选择<code>V2Ray-linux-64</code>或者<code>V2Ray-linux-32</code>，ARM架构的选择<code>V2Ray-linux-arm64</code>或<code>V2Ray-linux-arm</code></li>
-<li>下载完成后解压</li>
-<li>打开解压后的文件夹，删除其中的<code>vpoint_vmess_freedom.json</code>文件，然后自己创建一个<code>config.json</code>文件，建议直接通过Windows客户端导出这个文件，在<code>V2Ray</code>中点击服务器下拉菜单，选择<code>导出所选服务器为客户端配置</code></li>
-<li>在文件夹打开终端并执行命令<code>sudo ./v2ray</code>即可开启</li>
-</ol>
-<h3 id="配置PAC"><a href="#配置PAC" class="headerlink" title="配置PAC"></a>配置PAC</h3><p>此时的V2Ray还不能够愉快的使用，我们还需要给它配置PAC</p>
-<ol>
-<li>首先安装<code>pip</code>工具，执行命令<code>apt install python-pip</code>，完成后使用命令<code>pip -V</code>检测是否安装成功，成功后会返回pip的版本</li>
-<li>执行命令<code>pip install genpac</code>安装<code>genpac</code>，安装成功后会返回<code>Successfully installed genpac-xxx</code></li>
-<li>执行命令<code>genpac --format=pac -o auto.pac --pac-proxy=&quot;SOCKS5 127.0.0.1:1080</code>，如果没有输出说明成功，否则按照返回值修改</li>
-<li>打开系统设置，以Fedora为例，点击<code>网络</code>，打开<code>Network Proxy</code>的菜单并将其设置为自动</li>
-<li>Google下载一个PAC文件</li>
-<li>在下方的<code>配置URL</code>栏填入你的PAC文件的绝对路径，格式为<code>file://路径</code></li>
-</ol>
-<h3 id="设置桌面图标"><a href="#设置桌面图标" class="headerlink" title="设置桌面图标"></a>设置桌面图标</h3><p>每次输入命令启动还是很麻烦的，但是我们可以在桌面设置一个快捷方式或者加入程序列表（滑稽）<br>在文件夹中新建一个名为<code>v2ray.desktop</code>的文件，粘贴下列代码，然后复制到<code>/usr/share/application</code>文件夹下，此过程需要root权限</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line"></span><br><span class="line">Name=V2Ray</span><br><span class="line"></span><br><span class="line">GenericName=V2Ray Client</span><br><span class="line"></span><br><span class="line">Comment=A platform <span class="keyword">for</span> building proxies to bypass network restrictions.</span><br><span class="line"></span><br><span class="line">Exec=/到你文件夹的路径/v2ray --config=/到你文件夹的路径/config.json</span><br><span class="line"></span><br><span class="line">Icon=/到自定义图标图片的路径</span><br><span class="line"></span><br><span class="line">Terminal=true</span><br><span class="line"></span><br><span class="line"><span class="built_in">Type</span>=Application</span><br><span class="line"></span><br><span class="line">Categories=Network;Internet;</span><br></pre></td></tr></table></figure>
-<p>然后把文件的权限修改为<code>允许文件作为程序执行</code><br>图标文件可以去大佬的<a href="https://pan.baidu.com/s/1yf4Rkmuy7h65z8XC77SAdg#list/path=%2F">百度网盘</a>下载，提取码<code>hc82</code></p>
-<p>然后你就可以愉快的使用V2Ray了（滑稽）</p>
-<h1 id="使用Cloudflare-CDN中转（选配）"><a href="#使用Cloudflare-CDN中转（选配）" class="headerlink" title="使用Cloudflare CDN中转（选配）"></a>使用Cloudflare CDN中转（选配）</h1><p>目前GFW主要通过封禁IP的方式墙掉你的VPS，而对应的解决方案便是通过Cloudflare中转，墙不知道你的IP还怎么封呢（滑稽），另外这个方法的另一个功能就是恢复被墙IP的访问（滑稽+1）<br>虽然CDN中转能够有效防止IP被墙，但是步骤比较繁琐，延迟也会提高，还需要另外购买一个域名。不想折腾直接跳过就好了，我第一次配也没有用这个，直接用的mKCP，用了快一年才被墙掉，通过这个方法恢复了被墙的IP</p>
-<h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p>域名推荐购买<a href="https://sg.godaddy.com/zh">Godaddy</a>家的，这是国外最大的域名供应商，而且不需要实名认证，国内的阿里云和腾讯云也不是不能用2333</p>
-<ol>
-<li>首先打开<a href="https://sg.godaddy.com/zh">Godaddy</a>进行注册，邮箱用户名密码不多说</li>
-<li>注册完成后回到首页搜索自己想要的域名，点击<code>加入购物车</code>,然后点击上面的<code>进入购物车</code></li>
-<li>跳转的页面会提示你购买隐私服务和Linux主机，全部选不用然后点击下面的<code>进入购物车</code></li>
-<li>结算信息页面除了电话号码都随便写，把右边的<code>2年</code>改成<code>1年</code>，2年的价格比1年贵很多，选1年然后到期再换别的</li>
-<li>付款过程不多说</li>
-</ol>
-<h2 id="Cloudflare-CDN配置"><a href="#Cloudflare-CDN配置" class="headerlink" title="Cloudflare CDN配置"></a>Cloudflare CDN配置</h2><p>Cloudflare CDN就是防止我们IP被墙的关键，而且它提供免费的CDN服务</p>
-<ol>
-<li>邮箱密码注册不多说</li>
-<li>注册完成后点击蓝色的<code>+Add Site</code>按钮</li>
-<li>输入刚才在Godaddy上购买的域名，然后点击下面的<code>Add Site</code>按钮</li>
-<li>点击<code>Next</code>按钮</li>
-<li>套餐选择<code>Free</code>那个，然后点击<code>Confirm plan</code>，在弹出的窗口再点击一次<code>Confirm</code></li>
-<li>找到DNS页面，可以看到Cloudflare生成的两个记录。点击蓝色按钮<code>Add Record</code>，第一个空选择<code>A</code>；第二个空填写域名前缀，如<code>test</code>等，生成二级域名；第三个空填写你VPS的IP；第四个不用管。</li>
-<li>点击<code>Add Record</code></li>
-<li>点击<code>Status</code>下面的橙色云朵，把它变成<strong>灰色</strong>，即DNS Only，然后点击<code>Continue</code></li>
-<li>这里会提示你修改你的域名服务器，页面上提供了两个域名服务器地址，需要我们回到购买域名的网站进行修改</li>
-<li>打开<a href="https://sg.godaddy.com/zh">Godaddy</a>，在右上角的用户名那里点击打开下拉菜单，然后点击<code>我的产品</code></li>
-<li>点击你的域名右侧的<code>DNS</code></li>
-<li>在跳转的页面上点击蓝色的<code>更改</code>按钮</li>
-<li>选择自定义，如果有别的域名服务器需要先删掉，然后把Cloudflare提供的两个域名服务器粘贴进去，点击保存</li>
-<li>回到Cloudflare页面并继续点击<code>continue</code>，如果提示你还没有修改域名服务器的话就等待一段时间（几分钟到几个小时）。等到域名服务器生效就好了，生效的话Cloudflare会发邮件给你；或者页面提示<code>Great news! Cloudflare is now protecting your site</code>就说明可以使用了</li>
-</ol>
-<h2 id="V2Ray设置"><a href="#V2Ray设置" class="headerlink" title="V2Ray设置"></a>V2Ray设置</h2><p>先前我们用的是mKCP协议，现在需要换成<code>WebSocket+TLS</code></p>
-<ol>
-<li>使用Xshell连接VPS</li>
-<li>输入命令<code>v2ray config</code>并回车</li>
-<li>修改传输协议为<code>WebSocket+TLS</code></li>
-<li>输入你的二级域名并回车，如<code>test.xxxxx.xxx</code></li>
-<li>确认域名正确并回车</li>
-<li>如果域名解析错误会报错提示并退出脚本</li>
-<li><code>是否自动配置TLS</code>选择Y回车</li>
-<li>其它选项默认即可</li>
-<li>输入<code>v2ray status</code>查看V2Ray状态,确保V2Ray和Caddy都是正在运行状态</li>
-<li>输入<code>v2ray url</code>生成VMess链接并复制</li>
-<li>返回<code>Cloudflare</code>域名管理界面，点击<code>Crypto</code>选项，将SSL后的选项设置为<code>Full</code>并确认<code>Universal SSL Status</code>状态为<code>Active Certificate</code>，不是的话可能要稍微等一会，等待证书申请成功（脸黑的话需要等很长时间，但是不会超过24小时，一般很快）</li>
-<li>打开<code>Cloudflare</code>的<code>DNS</code>选项，点击<code>Status</code>下面的灰色云朵，把它恢复为橙色</li>
-<li>把刚才复制的<code>VMess</code>连接重新导入你的客户端就完成了</li>
-</ol>
-<h1 id="常用命令汇总"><a href="#常用命令汇总" class="headerlink" title="常用命令汇总"></a>常用命令汇总</h1><ul>
-<li>启动V2Ray——<code>v2ray start</code></li>
-<li>关闭V2Ray——<code>v2ray stop</code></li>
-<li>重启V2Ray——<code>v2ray restart</code></li>
-<li>更新V2Ray——<code>v2ray update</code></li>
-<li>更新V2Ray管理脚本——<code>v2ray update</code></li>
-<li>查看V2Ray状态——<code>v2ray status</code></li>
-<li>查看V2Ray配置——<code>v2ray inf</code></li>
-<li>修改V2Ray配置——<code>v2ray config</code></li>
-<li>生成配置文件链接——<code>v2ray link</code></li>
-<li>生成配置信息链接——<code>v2ray infolink</code></li>
-<li>生成配置二维码链接——<code>v2ray qr</code></li>
-<li>查看V2Ray日志——<code>v2ray log</code></li>
-<li>生成VMess链接——<code>v2ray url</code></li>
-</ul>
-<h1 id="懒人大礼包"><a href="#懒人大礼包" class="headerlink" title="懒人大礼包"></a>懒人大礼包</h1><p>懒人大礼包是<code>Bandwagon</code>(一家VPS供应商，被墙之前用户巨多，俗称搬瓦工)官方出品的梯子<code>Just My Socks</code>，使用搬瓦工的优质<code>CN2 GIA</code>线路并且支持被墙自动换IP，也就是说IP被墙后你不用自己动手，<code>Just My Socks</code>官方会为你提供一条龙服务，你甚至感受不到它的存在。<strong>虽然它还是个ShadowSocks</strong><br>这套服务的包月金额最低2.88美元，按照19年7月的汇率大概是19.8元人民币,包年是198元人民币，支持自支付宝付款。<br>因为官方过于作死，已经被墙了，需要使用备用网址<a href="https://justmysocks1.net/members/cart.php?gid=1">Just My Socks</a><br>目前主要有三种套餐，Just My Socks 100、Just My Socks 500和Just My Socks 1000，以100为例，官网的信息是这样的<code>100G/mo at 1Gbps | 3 devices</code>，意思就是每个月100G的流量，带宽是1Gbps，支持3台设备使用，一般人这个就够用了，土豪随意</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
-<li>注册登陆，不废话</li>
-<li>选择需要的套餐，点击<code>Order Now</code></li>
-<li>在<code>Choose Billing Cycle</code>可以选择付款周期，包月<code>Monthly</code>，包季度<code>Quarterly</code>，包半年<code>Semi-Annually</code>和包年<code>Annually</code>，周期越长越便宜</li>
-<li>在<code>Apply Promo Code</code>中输入优惠码<code>JMS9272283</code>可以享受5.2%的优惠，完成后点击右侧<code>Checkout</code></li>
-<li>没注册的话这一步可以继续注册，填写基本信息，国家选择<code>China</code>，付款方式选择<code>Alipay</code>，勾选下面的<code>I have read and agree to the Terms of Service</code>然后点击<code>Complete Order</code>，支付宝扫码付款</li>
-<li>付款完成后在官网顶栏选择<code>Services</code>，在下拉菜单中选择<code>My Services</code>，可以看到已经购买的产品，<code>Status</code>状态为<code>Active</code>，即为激活可用状态</li>
-<li>点击你的产品就可以看到ShadowSocks的相关信息了，其中<ul>
-<li><code>ShadowSocks Encryption</code>是加密方式</li>
-<li><code>ShadowSocks Port</code>是端口</li>
-<li><code>ShadowSocks Paaword</code>是密码</li>
-<li><code>ShadowSocks Server IP</code>是服务器地址，这个地址会有多个，都可以同时用</li>
-</ul>
-</li>
-<li>在V2Ray客户端选择服务器，点击<code>添加ShadowSocks服务器</code>并输入相关信息就可以用了，可以多添加几个，防止某个节点失效，因为<code>Just My Socks</code>的自动检测需要时间</li>
-</ol>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>在页面左侧的<code>Actions</code>菜单中可以切换端口、密码和加密方式，觉得套餐不能满足需求或不满意可以在<code>Actions</code>菜单中选择修改套餐和退款，在<code>Overview</code>中可以更改付款周期，注意<strong>密码和端口的更改是自动生成</strong>的，不支持自定义。<br>更改成功会提示<code>Changes saved. Please wait 1 minute for settings to propagate to all servers.</code>，就是说需要等待1分钟将设置同步到所有服务器，1分钟后重新点击左侧的<code>Service Information</code>就可以看到更新后的信息了</p>
-<ol>
-<li>更改密码，点击<code>Change password</code>即可</li>
-<li>更改端口，点击<code>Change port</code>即可</li>
-<li>更改加密方式，点击<code>Switch to aes-256-gcm</code>和<code>Switch to aes-256-cfb</code>可以切换两种加密方式，建议选择<code>aes-256-gcm</code></li>
-<li>修改套餐，点击<code>Upgrade/Downgrade</code>，选择合适的套餐后付款即可</li>
-<li>更改付款周期,点击<code>Modify billing cycle</code>,选择的合适的周期后点击后面的<code>Change billing cycle</code>,可能会提示<code>Billing cycle has been modified successfully. Your next invoice will reflect new billing period</code>，意思是周期修改成功，但不会立即生效，会在下一个周期生效</li>
-<li>退款，点击<code>Request Refund</code>，然后再点击<code>Request full refund for this service</code>。<br>这个的操作稍微复杂一些，而且相同身份信息只有一次退款机会，意思就是如果你用同一个支付宝给不同的账号付款，你只有一个账号的退款机会。<br>同时你还要满足以下条件<ul>
-<li>客户账户信誉良好，未违反服务条款</li>
-<li>以前没有付款或目前没争议</li>
-<li>每月数据传输使用量低于10%</li>
-<li>客户帐户是 7 天内创建的</li>
-<li>客户当前账号没有退款过<br>这些都没有问题的话经过审核通过就会将退款原路返回</li>
-</ul>
-</li>
-</ol>
-<p><strong>技术无罪</strong></p>
-<blockquote>
-<p>参考：<a href="https://github.com/233boy/v2ray/wiki/V2Ray%E6%90%AD%E5%BB%BA%E8%AF%A6%E7%BB%86%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B">233boy</a>、<a href="https://www.i5seo.com/">长沙SEO霜天博客</a>、<a href="https://blog.sprov.xyz/2019/03/11/cdn-v2ray-safe-proxy/">sprov</a>、<a href="https://octopuspalm.top/2018/08/18/Linux%20%E7%B3%BB%E7%BB%9F%E4%B8%8Bv2ray%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8/">THE WORLD OF ABCDLSJ</a></p>
-</blockquote>
+<h1 id="Semester-1"><a href="#Semester-1" class="headerlink" title="Semester 1"></a>Semester 1</h1><p>第一学期全都是必修课，一共5门，整个IT+的课表都一样。为了<del>偷懒</del>方便，下面的课程名全用缩写表示</p>
+<table>
+<thead>
+<tr>
+<th align="left">缩写</th>
+<th align="left">课程名</th>
+<th align="left">难度</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">SN</td>
+<td align="left">Systems and Networks</td>
+<td align="left">⭐</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">PR</td>
+<td align="left">Programming</td>
+<td align="left">⭐</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">DTA</td>
+<td align="left">Database Theory &amp; App</td>
+<td align="left">⭐</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">SE</td>
+<td align="left">Software Engineering</td>
+<td align="left">⭐⭐</td>
+<td align="left">下学期还会见到它</td>
+</tr>
+<tr>
+<td align="left">ECS</td>
+<td align="left">Enterprise Cyber Security</td>
+<td align="left">⭐⭐⭐⭐⭐</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h2 id="Systems-and-Networks"><a href="#Systems-and-Networks" class="headerlink" title="Systems and Networks"></a>Systems and Networks</h2><p>主讲操作系统+一丢丢的计算机网络，还有汇编语言（大概算吧），用的是某位教授自己编写的软件<code>Sigma16</code>，很简单。</p>
+<h2 id="Programming"><a href="#Programming" class="headerlink" title="Programming"></a>Programming</h2><p>主讲JAVA基础知识，开学的第一周全是这门课，上午上课下午Lab，疯狂填鸭哈哈哈。如果自己学过一些JAVA的话就非常简单了，我第一周全程划水（不是），然后后面会讲到对象、IO、异常、Swing这些。</p>
+<h2 id="Database-Theory-amp-App"><a href="#Database-Theory-amp-App" class="headerlink" title="Database Theory &amp; App"></a>Database Theory &amp; App</h2><p>主讲数据库基本知识，如范式、E-R图、关系代数、SQL等，软件用的<code>PostgreSQL</code>，有Lab。</p>
+<h2 id="Software-Engineering"><a href="#Software-Engineering" class="headerlink" title="Software Engineering"></a>Software Engineering</h2><p>面向产品经理编程🐶，这门课两个学期都有，第一学期会讲一些Java的基本知识，和Programming有些重复，还有用户故事、UML图、看板、敏捷开发等，会使用<code>Trello</code>看板。注意第一学期的作业和第二学期的作业是密切相关的，不要给自己挖坑，第一学期作业是根据需求编写用户故事啥的，第二学期就是按照编的用户故事把软件开发出来（小组作业预警⚠️小组不可以更换）。虽然两学期都有，但是考试只有一次。</p>
+<h2 id="Enterprise-Cyber-Security"><a href="#Enterprise-Cyber-Security" class="headerlink" title="Enterprise Cyber Security"></a>Enterprise Cyber Security</h2><p>emmm纯理论课程，非常的枯燥，作业还特别麻烦（小组作业预警⚠️）。教授的上课方式也是独树一帜，开直播然后共享屏幕播放他提前录好的课。。。。。。而且他的网络还不好，经常就看不清楚课件。总之一言难尽吧。</p>
+<h2 id="AWSP"><a href="#AWSP" class="headerlink" title="AWSP"></a>AWSP</h2><p>AWSP应该不算一门课，和语言班比较像，开学后大概一个月会收到邮件，要求去做一个英语测试，包含选择和写作，然后根据得分情况判断你是不是需要上额外的写作课。完成的话成绩单上会标记CP，不算分，不影响学位。</p>
+<h1 id="Semester-2"><a href="#Semester-2" class="headerlink" title="Semester 2"></a>Semester 2</h1><p>第二学期是一门必修课+4门选修课+一个必修小组项目，IT可以随便选，SD必须选ADS和AP。21年一共有9门选修课供选择，除ADS和AP外剩下的课是和CS+一起上的。下面我自己上过的课难度用⭐表示，道听途说的用💡表示，仅供参考。</p>
+<table>
+<thead>
+<tr>
+<th align="left">缩写</th>
+<th align="left">课程名</th>
+<th align="left">难度</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">SE</td>
+<td align="left">Software Engineering</td>
+<td align="left">⭐⭐⭐</td>
+<td align="left">必修（没错还是它）</td>
+</tr>
+<tr>
+<td align="left">TP</td>
+<td align="left">Team Project</td>
+<td align="left">⭐⭐</td>
+<td align="left">必修小组项目</td>
+</tr>
+<tr>
+<td align="left">CSysF</td>
+<td align="left">Cyber Security Fundamentals</td>
+<td align="left">⭐⭐</td>
+<td align="left">选修</td>
+</tr>
+<tr>
+<td align="left">HCI-DE</td>
+<td align="left">HCI Design &amp; Evaluation</td>
+<td align="left">💡💡</td>
+<td align="left">选修</td>
+</tr>
+<tr>
+<td align="left">CSFor</td>
+<td align="left">Cyber System Forensics</td>
+<td align="left">💡💡💡💡💡</td>
+<td align="left">选修</td>
+</tr>
+<tr>
+<td align="left">HCS</td>
+<td align="left">Human-Centred Security for MSc</td>
+<td align="left">💡💡</td>
+<td align="left">选修</td>
+</tr>
+<tr>
+<td align="left">IV</td>
+<td align="left">Information Visualisation</td>
+<td align="left">💡💡💡</td>
+<td align="left">选修</td>
+</tr>
+<tr>
+<td align="left">CSD</td>
+<td align="left">Cryptography &amp; Secure Development</td>
+<td align="left">💡💡💡</td>
+<td align="left">选修</td>
+</tr>
+<tr>
+<td align="left">ITECH</td>
+<td align="left">Internet Technology</td>
+<td align="left">⭐⭐⭐</td>
+<td align="left">选修</td>
+</tr>
+<tr>
+<td align="left">ADS</td>
+<td align="left">Algorithms &amp; Data Structures</td>
+<td align="left">⭐⭐⭐</td>
+<td align="left">选修（SD必修）</td>
+</tr>
+<tr>
+<td align="left">AP</td>
+<td align="left">Advanced Programming</td>
+<td align="left">⭐⭐</td>
+<td align="left">选修（SD必修）</td>
+</tr>
+</tbody></table>
+<h2 id="Software-Engineering-1"><a href="#Software-Engineering-1" class="headerlink" title="Software Engineering"></a>Software Engineering</h2><p>第二学期主要讲设计模式，比较枯燥，作业也比较麻烦。</p>
+<h2 id="Team-Project"><a href="#Team-Project" class="headerlink" title="Team Project"></a>Team Project</h2><p>五人组队，完成一个项目的开发，和SE契合度很高，也要完成用户故事，遵循敏捷开发流程等。作业是完成一个战棋游戏，前端的东西老师都写好了，主要完成后端的逻辑，要设计人机对战的AI，比较麻烦的是要做工作记录。只有项目没有考试（小组预警⚠️）。</p>
+<h2 id="Cyber-Security-Fundamentals"><a href="#Cyber-Security-Fundamentals" class="headerlink" title="Cyber Security Fundamentals"></a>Cyber Security Fundamentals</h2><p>讲解网络安全的基础知识，包括网络攻击技术（钓鱼、SQL注入等）、计算机网络基础、到的黑客、数字取证等。实践操作很多，比较有意思，推荐选择。作业要求通过<code>OWASP Vulnerable Web Application Project</code>来进行模拟攻击，并编写报告（小组作业预警⚠️）。</p>
+<h2 id="HCI-Design-amp-Evaluation"><a href="#HCI-Design-amp-Evaluation" class="headerlink" title="HCI Design &amp; Evaluation"></a>HCI Design &amp; Evaluation</h2><p>人机交互的课，我没选，据说有丢丢麻烦。</p>
+<h2 id="Cyber-System-Forensics"><a href="#Cyber-System-Forensics" class="headerlink" title="Cyber System Forensics"></a>Cyber System Forensics</h2><p>快跑❌❌❌，和ECS差不多的东西。</p>
+<h2 id="Human-Centred-Security-for-MSc"><a href="#Human-Centred-Security-for-MSc" class="headerlink" title="Human-Centred Security for MSc"></a>Human-Centred Security for MSc</h2><p>安全类的课，我没选，据说还阔以。</p>
+<h2 id="Information-Visualisation"><a href="#Information-Visualisation" class="headerlink" title="Information Visualisation"></a>Information Visualisation</h2><p>可视化，俺还是没选，据说有丢丢麻烦。</p>
+<h2 id="Cryptography-amp-Secure-Development"><a href="#Cryptography-amp-Secure-Development" class="headerlink" title="Cryptography &amp; Secure Development"></a>Cryptography &amp; Secure Development</h2><p>安全类的课，会讲加密，俺又双叒叕没选，据说作业难度较高。</p>
+<h2 id="Internet-Technology"><a href="#Internet-Technology" class="headerlink" title="Internet Technology"></a>Internet Technology</h2><p>主讲网站开发，内容很翔实，实操很多，压力略大，不过个人比较推荐（小组作业预警⚠️，需要提前掌握Python预警⚠️）。内容包括架构、Django框架、CSS、AJAX、HTTP协议、客户端、XML等等。个人作业是根据<code>Tango with Django</code>教程写一个半成品网站。然后小组作业是4人组队，写一个网站，基本都写的是评测类的网站。Quiz比较多。</p>
+<h2 id="Algorithms-amp-Data-Structures"><a href="#Algorithms-amp-Data-Structures" class="headerlink" title="Algorithms &amp; Data Structures"></a>Algorithms &amp; Data Structures</h2><p>SD的必修课，数据结构和算法，将来打算做开发的话这是绕不过去的坎。比较推荐，讲的不是很深，有Lab。</p>
+<h2 id="Advanced-Programming"><a href="#Advanced-Programming" class="headerlink" title="Advanced Programming"></a>Advanced Programming</h2><p>SD的必修课，将来做Java开发的话推荐，会讲泛型、多线程、序列化、数据结构等内容，有Lab，作业难度稍高。</p>
+<h1 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h1><p>有小组作业的课程组队的时候一定要慎重，来自被一次小组作业深深伤害过的人的忠告🐶<br>小组作业也要注意自己的工作量哦，毕竟小组作业的得分有一部分就是组员打分，懂得都懂🐶</p>
+<p>最后祝大家都能拿<code>Distinction</code>😊</p>
 ]]></content>
       <categories>
-        <category>折腾</category>
+        <category>留学</category>
       </categories>
       <tags>
-        <tag>V2Ray</tag>
+        <tag>留学</tag>
+        <tag>攻略</tag>
+        <tag>英国</tag>
+        <tag>选课</tag>
       </tags>
   </entry>
   <entry>
@@ -4149,592 +4307,6 @@
         <tag>Win10</tag>
         <tag>Office</tag>
         <tag>重装</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>格拉斯哥大学IT选课指南</title>
-    <url>/%E6%A0%BC%E6%8B%89%E6%96%AF%E5%93%A5%E5%A4%A7%E5%AD%A6IT%E9%80%89%E8%AF%BE%E6%8C%87%E5%8D%97.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">很久很久之前说过的选课指南哈哈哈，根据本人21年上课体验以及专业群道听途说总结，仅供参考，注意时效</blockquote>
-
-<span id="more"></span>
-
-<h1 id="Semester-1"><a href="#Semester-1" class="headerlink" title="Semester 1"></a>Semester 1</h1><p>第一学期全都是必修课，一共5门，整个IT+的课表都一样。为了<del>偷懒</del>方便，下面的课程名全用缩写表示</p>
-<table>
-<thead>
-<tr>
-<th align="left">缩写</th>
-<th align="left">课程名</th>
-<th align="left">难度</th>
-<th align="left">备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">SN</td>
-<td align="left">Systems and Networks</td>
-<td align="left">⭐</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">PR</td>
-<td align="left">Programming</td>
-<td align="left">⭐</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">DTA</td>
-<td align="left">Database Theory &amp; App</td>
-<td align="left">⭐</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">SE</td>
-<td align="left">Software Engineering</td>
-<td align="left">⭐⭐</td>
-<td align="left">下学期还会见到它</td>
-</tr>
-<tr>
-<td align="left">ECS</td>
-<td align="left">Enterprise Cyber Security</td>
-<td align="left">⭐⭐⭐⭐⭐</td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<h2 id="Systems-and-Networks"><a href="#Systems-and-Networks" class="headerlink" title="Systems and Networks"></a>Systems and Networks</h2><p>主讲操作系统+一丢丢的计算机网络，还有汇编语言（大概算吧），用的是某位教授自己编写的软件<code>Sigma16</code>，很简单。</p>
-<h2 id="Programming"><a href="#Programming" class="headerlink" title="Programming"></a>Programming</h2><p>主讲JAVA基础知识，开学的第一周全是这门课，上午上课下午Lab，疯狂填鸭哈哈哈。如果自己学过一些JAVA的话就非常简单了，我第一周全程划水（不是），然后后面会讲到对象、IO、异常、Swing这些。</p>
-<h2 id="Database-Theory-amp-App"><a href="#Database-Theory-amp-App" class="headerlink" title="Database Theory &amp; App"></a>Database Theory &amp; App</h2><p>主讲数据库基本知识，如范式、E-R图、关系代数、SQL等，软件用的<code>PostgreSQL</code>，有Lab。</p>
-<h2 id="Software-Engineering"><a href="#Software-Engineering" class="headerlink" title="Software Engineering"></a>Software Engineering</h2><p>面向产品经理编程🐶，这门课两个学期都有，第一学期会讲一些Java的基本知识，和Programming有些重复，还有用户故事、UML图、看板、敏捷开发等，会使用<code>Trello</code>看板。注意第一学期的作业和第二学期的作业是密切相关的，不要给自己挖坑，第一学期作业是根据需求编写用户故事啥的，第二学期就是按照编的用户故事把软件开发出来（小组作业预警⚠️小组不可以更换）。虽然两学期都有，但是考试只有一次。</p>
-<h2 id="Enterprise-Cyber-Security"><a href="#Enterprise-Cyber-Security" class="headerlink" title="Enterprise Cyber Security"></a>Enterprise Cyber Security</h2><p>emmm纯理论课程，非常的枯燥，作业还特别麻烦（小组作业预警⚠️）。教授的上课方式也是独树一帜，开直播然后共享屏幕播放他提前录好的课。。。。。。而且他的网络还不好，经常就看不清楚课件。总之一言难尽吧。</p>
-<h2 id="AWSP"><a href="#AWSP" class="headerlink" title="AWSP"></a>AWSP</h2><p>AWSP应该不算一门课，和语言班比较像，开学后大概一个月会收到邮件，要求去做一个英语测试，包含选择和写作，然后根据得分情况判断你是不是需要上额外的写作课。完成的话成绩单上会标记CP，不算分，不影响学位。</p>
-<h1 id="Semester-2"><a href="#Semester-2" class="headerlink" title="Semester 2"></a>Semester 2</h1><p>第二学期是一门必修课+4门选修课+一个必修小组项目，IT可以随便选，SD必须选ADS和AP。21年一共有9门选修课供选择，除ADS和AP外剩下的课是和CS+一起上的。下面我自己上过的课难度用⭐表示，道听途说的用💡表示，仅供参考。</p>
-<table>
-<thead>
-<tr>
-<th align="left">缩写</th>
-<th align="left">课程名</th>
-<th align="left">难度</th>
-<th align="left">备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">SE</td>
-<td align="left">Software Engineering</td>
-<td align="left">⭐⭐⭐</td>
-<td align="left">必修（没错还是它）</td>
-</tr>
-<tr>
-<td align="left">TP</td>
-<td align="left">Team Project</td>
-<td align="left">⭐⭐</td>
-<td align="left">必修小组项目</td>
-</tr>
-<tr>
-<td align="left">CSysF</td>
-<td align="left">Cyber Security Fundamentals</td>
-<td align="left">⭐⭐</td>
-<td align="left">选修</td>
-</tr>
-<tr>
-<td align="left">HCI-DE</td>
-<td align="left">HCI Design &amp; Evaluation</td>
-<td align="left">💡💡</td>
-<td align="left">选修</td>
-</tr>
-<tr>
-<td align="left">CSFor</td>
-<td align="left">Cyber System Forensics</td>
-<td align="left">💡💡💡💡💡</td>
-<td align="left">选修</td>
-</tr>
-<tr>
-<td align="left">HCS</td>
-<td align="left">Human-Centred Security for MSc</td>
-<td align="left">💡💡</td>
-<td align="left">选修</td>
-</tr>
-<tr>
-<td align="left">IV</td>
-<td align="left">Information Visualisation</td>
-<td align="left">💡💡💡</td>
-<td align="left">选修</td>
-</tr>
-<tr>
-<td align="left">CSD</td>
-<td align="left">Cryptography &amp; Secure Development</td>
-<td align="left">💡💡💡</td>
-<td align="left">选修</td>
-</tr>
-<tr>
-<td align="left">ITECH</td>
-<td align="left">Internet Technology</td>
-<td align="left">⭐⭐⭐</td>
-<td align="left">选修</td>
-</tr>
-<tr>
-<td align="left">ADS</td>
-<td align="left">Algorithms &amp; Data Structures</td>
-<td align="left">⭐⭐⭐</td>
-<td align="left">选修（SD必修）</td>
-</tr>
-<tr>
-<td align="left">AP</td>
-<td align="left">Advanced Programming</td>
-<td align="left">⭐⭐</td>
-<td align="left">选修（SD必修）</td>
-</tr>
-</tbody></table>
-<h2 id="Software-Engineering-1"><a href="#Software-Engineering-1" class="headerlink" title="Software Engineering"></a>Software Engineering</h2><p>第二学期主要讲设计模式，比较枯燥，作业也比较麻烦。</p>
-<h2 id="Team-Project"><a href="#Team-Project" class="headerlink" title="Team Project"></a>Team Project</h2><p>五人组队，完成一个项目的开发，和SE契合度很高，也要完成用户故事，遵循敏捷开发流程等。作业是完成一个战棋游戏，前端的东西老师都写好了，主要完成后端的逻辑，要设计人机对战的AI，比较麻烦的是要做工作记录。只有项目没有考试（小组预警⚠️）。</p>
-<h2 id="Cyber-Security-Fundamentals"><a href="#Cyber-Security-Fundamentals" class="headerlink" title="Cyber Security Fundamentals"></a>Cyber Security Fundamentals</h2><p>讲解网络安全的基础知识，包括网络攻击技术（钓鱼、SQL注入等）、计算机网络基础、到的黑客、数字取证等。实践操作很多，比较有意思，推荐选择。作业要求通过<code>OWASP Vulnerable Web Application Project</code>来进行模拟攻击，并编写报告（小组作业预警⚠️）。</p>
-<h2 id="HCI-Design-amp-Evaluation"><a href="#HCI-Design-amp-Evaluation" class="headerlink" title="HCI Design &amp; Evaluation"></a>HCI Design &amp; Evaluation</h2><p>人机交互的课，我没选，据说有丢丢麻烦。</p>
-<h2 id="Cyber-System-Forensics"><a href="#Cyber-System-Forensics" class="headerlink" title="Cyber System Forensics"></a>Cyber System Forensics</h2><p>快跑❌❌❌，和ECS差不多的东西。</p>
-<h2 id="Human-Centred-Security-for-MSc"><a href="#Human-Centred-Security-for-MSc" class="headerlink" title="Human-Centred Security for MSc"></a>Human-Centred Security for MSc</h2><p>安全类的课，我没选，据说还阔以。</p>
-<h2 id="Information-Visualisation"><a href="#Information-Visualisation" class="headerlink" title="Information Visualisation"></a>Information Visualisation</h2><p>可视化，俺还是没选，据说有丢丢麻烦。</p>
-<h2 id="Cryptography-amp-Secure-Development"><a href="#Cryptography-amp-Secure-Development" class="headerlink" title="Cryptography &amp; Secure Development"></a>Cryptography &amp; Secure Development</h2><p>安全类的课，会讲加密，俺又双叒叕没选，据说作业难度较高。</p>
-<h2 id="Internet-Technology"><a href="#Internet-Technology" class="headerlink" title="Internet Technology"></a>Internet Technology</h2><p>主讲网站开发，内容很翔实，实操很多，压力略大，不过个人比较推荐（小组作业预警⚠️，需要提前掌握Python预警⚠️）。内容包括架构、Django框架、CSS、AJAX、HTTP协议、客户端、XML等等。个人作业是根据<code>Tango with Django</code>教程写一个半成品网站。然后小组作业是4人组队，写一个网站，基本都写的是评测类的网站。Quiz比较多。</p>
-<h2 id="Algorithms-amp-Data-Structures"><a href="#Algorithms-amp-Data-Structures" class="headerlink" title="Algorithms &amp; Data Structures"></a>Algorithms &amp; Data Structures</h2><p>SD的必修课，数据结构和算法，将来打算做开发的话这是绕不过去的坎。比较推荐，讲的不是很深，有Lab。</p>
-<h2 id="Advanced-Programming"><a href="#Advanced-Programming" class="headerlink" title="Advanced Programming"></a>Advanced Programming</h2><p>SD的必修课，将来做Java开发的话推荐，会讲泛型、多线程、序列化、数据结构等内容，有Lab，作业难度稍高。</p>
-<h1 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h1><p>有小组作业的课程组队的时候一定要慎重，来自被一次小组作业深深伤害过的人的忠告🐶<br>小组作业也要注意自己的工作量哦，毕竟小组作业的得分有一部分就是组员打分，懂得都懂🐶</p>
-<p>最后祝大家都能拿<code>Distinction</code>😊</p>
-]]></content>
-      <categories>
-        <category>留学</category>
-      </categories>
-      <tags>
-        <tag>留学</tag>
-        <tag>攻略</tag>
-        <tag>英国</tag>
-        <tag>选课</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>笔记本改造计划</title>
-    <url>/%E7%AC%94%E8%AE%B0%E6%9C%AC%E6%94%B9%E9%80%A0%E8%AE%A1%E5%88%92.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">准备折腾一下笔记本，毕竟不用做建筑狗了，这个笔记本是当年高考完暑假买的，年少无知买了个商务本，众所周知，商务本=性能垃圾+贵，所以大二配完台式后给笔记本装了个Fedora，然后就一直在吃灰，这几天升级Fedora的时候崩了，但是今年9月要去国外读书，笔记本还是得用。计划安装 Win10 LTSC，Ubuntu 18.04 LTS，Macos Mojave三系统，把机械硬盘换成固态，升级网卡</blockquote>
-
-<span id="more"></span>
-
-<p>老规矩先上配置<br>型号：Acer TravelMate P645-SG<br>CPU：Intel Core i7-5500U （2.4GHz&#x2F;2C4T）（垃圾的一批）<br>GPU：NVIDIA 840M 2G (拆掉独显提升性能系列)<br>内存：8G DDR3L 1600Mhz<br>SSD：建兴L8T 128G msata接口<br>HDD：西数 500G 5400转蓝盘<br>网卡：Intel 7265NGW</p>
-<p>准备升级硬件<br>网卡：换成DW1560，方便黑苹果用，淘宝330<br>硬盘：机械硬盘换成三星860EVO 500G，京东559<br>内存：这个还在纠结，准备把插槽4G的换成8G</p>
-<h1 id="硬件升级"><a href="#硬件升级" class="headerlink" title="硬件升级"></a>硬件升级</h1><p>实不相瞒，我这几天拆了四五次电脑，螺丝都给拧花了一个，下面是拆机图，红色框里是网卡的位置，我已经拆了，绿框是内存，黄框是新换的SSD<br><img data-src="https://s2.loli.net/2022/05/13/hlnmf9TeY4is6Xp.jpg" alt="拆机图"><br>估计当年脑子里进了不少水，选了建筑专业就算了，买个笔记本也这么奇葩，青黄不接的5代低压CPU + 青黄不接的8系亮机显卡，唯一的优点就是续航长？</p>
-<h2 id="网卡"><a href="#网卡" class="headerlink" title="网卡"></a>网卡</h2><p>原装的英特尔网卡当然是不能用了，所以要去某宝买黑苹果可以用的网卡，买之前注意接口和网卡长度，一般都是<code>ngff</code>的小卡</p>
-<p>安装的时候把原来的天线接口断开，用指甲挑一下就开了，然后拧螺丝换上新的，再把天线接上</p>
-<p>DW1560在我的笔记本上有一点问题，蓝牙不能用，三个系统都搜索不到蓝牙设备，查阅资料后发现需要屏蔽背面两个识别针脚，最简单粗暴的方法就是用胶带把这两个贴上，下面上图</p>
-<p><img data-src="https://s2.loli.net/2022/05/13/6t4XJmzknyBwLg7.jpg" alt="网卡"></p>
-<p>需要屏蔽的就是红圈里右侧的两个针脚，手残党最好找个镊子贴胶带，注意不要贴到左边的两个。屏蔽之后BIOS自检时间会变长一点，问题不大</p>
-<h2 id="SSD"><a href="#SSD" class="headerlink" title="SSD"></a>SSD</h2><p>老电脑，只有一个MSATA和一个SATA3的接口，上不了M.2就很难受</p>
-<p>把原来的500G蓝盘拆下来扔到硬盘盒里做了移动硬盘，虽然速度很垃圾但是勉强能用，分个区给mac做备份</p>
-<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><p>这个笔记本内存是板载4G + 插槽4G的，就更难受了，升级内存的话只能是4G+8G这种逼死强迫症的组合，所以暂时搁置，到时候不够用了再说</p>
-<h1 id="Win10-LTSC-安装"><a href="#Win10-LTSC-安装" class="headerlink" title="Win10 LTSC 安装"></a>Win10 LTSC 安装</h1><p>首先安装的是老坛酸菜，放在128G的固态中，选择它主要是为了省电+节省硬盘空间</p>
-<h2 id="下载镜像文件"><a href="#下载镜像文件" class="headerlink" title="下载镜像文件"></a>下载镜像文件</h2><p>Win10的镜像文件都可以在<code>MSDN, I Tell You</code>上面下载，下面是传送门</p>
-<a class="btn" href="https://msdn.itellyou.cn/?tdsourcetag=s_pcqq_aiomsg"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<p>在左侧操作系统栏中找到相对应的版本下载即可，上面的都是<code>ed2k</code>链接，建议使用迅雷下载（莫得办法），另外有能力的话可以给站长一些支持，毕竟坚持十几年也很不容易</p>
-<h2 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h2><p>win10的镜像越来越大了，现在1903的<code>install.wim</code>已经超过4G。所以还是要用UltraISO来刻录，以前<code>install.wim</code>都不到4个G，制作安装盘的时候直接把iso解压到U盘就可以用了。</p>
-<p>老坛酸菜的镜像没有大于4G的文件，所以找一个8G及以上的U盘，把镜像直接解压到U盘就可以了</p>
-<h3 id="UltraISO刻录教程"><a href="#UltraISO刻录教程" class="headerlink" title="UltraISO刻录教程"></a>UltraISO刻录教程</h3><p>安装ltsc的请跳过，这个是制作1903启动盘的步骤</p>
-<ul>
-<li>插入U盘</li>
-<li>以管理员身份运行UltraISO</li>
-<li>选择<code>文件</code>——<code>打开</code></li>
-<li>在弹出窗口中找到要用的ISO文件，点击<code>打开</code></li>
-<li>点击<code>启动</code>——<code>写入硬盘镜像</code></li>
-<li>在弹出窗口中选择好自己的U盘</li>
-<li>写入方式使用默认的<code>USB-HDD+</code></li>
-<li>点击<code>写入</code></li>
-</ul>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
-<li>插上启动盘，然后开机狂按<code>F2</code>进入<code>BIOS</code></li>
-<li>设置U盘为首选启动项</li>
-<li>保存并退出BIOS</li>
-<li>系统转一会圈之后就会进入语言选择界面，一般默认就行，点击<code>下一步</code></li>
-<li>使用<code>Shift</code>+<code>F10</code>打开终端</li>
-<li>输入<code>diskpart</code>打开磁盘管理</li>
-<li>输入<code>list disk</code>，列出硬盘</li>
-<li>找到安装目标磁盘的序号，输入<code>select disk 序号</code>回车</li>
-<li>输入<code>clean</code>回车</li>
-<li>输入<code>convert gpt</code>转换gpt格式</li>
-<li>点击<code>现在安装</code></li>
-<li>接受条款然后点击<code>下一步</code></li>
-<li>选择<code>自定义</code></li>
-<li>选择目标磁盘，点击<code>下一步</code></li>
-<li>重启的时候拔下启动U盘</li>
-<li>剩下的一路无脑下一步就装完了</li>
-</ul>
-<h2 id="激活"><a href="#激活" class="headerlink" title="激活"></a>激活</h2><p>LTSC没有数字权利激活(明明LTSB有的，咋到新版本就没了呢，强迫症表示不爽)，所以要用<code>KMS激活</code><br>右键单击开始菜单微软图标，使用管理员身份运行<code>PowerShell</code>，依次输入下列指令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">slmgr -ipk M7XTQ-FN8P6-TTKYV-9D4CC-J462D</span><br><span class="line">slmgr -skms kms.03k.org</span><br><span class="line">slmgr -ato</span><br><span class="line">slmgr -dlv</span><br></pre></td></tr></table></figure>
-
-<p>中途会弹出对话框，全点确定就行</p>
-<p>剩下的过程就是安装软件，我另一篇文章总结了一些好用的软件，附上传送门</p>
-<a class="btn" href="https://siriusq.top/%E8%BD%AF%E4%BB%B6%E6%95%B4%E7%90%86.html"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<h1 id="Ubuntu-18-04-LTS-安装"><a href="#Ubuntu-18-04-LTS-安装" class="headerlink" title="Ubuntu 18.04 LTS 安装"></a>Ubuntu 18.04 LTS 安装</h1><h2 id="下载镜像文件-1"><a href="#下载镜像文件-1" class="headerlink" title="下载镜像文件"></a>下载镜像文件</h2><p>Ubuntu的镜像文件去官网下，传送门</p>
-<a class="btn" href="https://ubuntu.com/download/desktop"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<h2 id="制作启动盘-1"><a href="#制作启动盘-1" class="headerlink" title="制作启动盘"></a>制作启动盘</h2><p>Ubuntu的启动盘可以使用软件刻录，我比较懒，就直接把iso镜像解压到U盘里了，然后在bios页面添加U盘对应的efi启动项，就可以就如安装程序了</p>
-<h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><ul>
-<li>选择<code>install ubuntu</code>并回车开始安装</li>
-<li>选择语言以及键盘布局</li>
-<li>选择<code>最小安装</code>节省时间</li>
-<li><code>装Ubuntu更新</code>这个看心情选</li>
-<li><code>安装类型</code>选择<code>其他选项</code></li>
-<li>找到要安装Ubuntu的目标磁盘</li>
-<li>点击左下角的<code>+</code>进行分区，分区方法有很多种，我分了三个区<ul>
-<li>第一个是<code>EFI系统分区</code>，我分了512M</li>
-<li>第二个是<code>交换空间</code>，也就是虚拟内存，和你的实际内存一样大就行，我分了8192M，也就是8G</li>
-<li>第三个是主分区，挂载点是<code>/</code>，用于<code>Ext4日志文件系统</code>，看个人需求，我分了160G</li>
-</ul>
-</li>
-<li>分区完成后选中<code>efi</code>分区然后点击<code>现在安装</code></li>
-<li>选择时区，创建用户名和密码</li>
-<li>安装完成后会要求重启</li>
-</ul>
-<h2 id="添加grub引导"><a href="#添加grub引导" class="headerlink" title="添加grub引导"></a>添加grub引导</h2><p>重启后你会神奇的发现直接俄进入了windows系统，因为ubuntu没有添加引导，我又用懒人方法在bios中添加了grub的efi启动项，然后把他设为首选启动项，这样Ubuntu和Win就可以共存了</p>
-<h1 id="Macos-Mojave-10-14-6-折腾"><a href="#Macos-Mojave-10-14-6-折腾" class="headerlink" title="Macos Mojave 10.14.6 折腾"></a>Macos Mojave 10.14.6 折腾</h1><p>最后一个也是最难搞的一个就是黑苹果了，折腾了好几天，绕了不少弯，安装流派依旧是<code>Vanilla</code></p>
-<p>我制作安装盘的过程嘛。一言难尽，直接放上参考教程，<a href="https://fewtarius.gitbook.io/laptopguide/">The Vanilla Laptop Guide</a>，这个网站我到最后修复睡眠问题的时候才发现，早点发现的话就不用绕那么多圈子了。</p>
-<p><strong>建议直接使用上面的方法，下面是本人的折腾记录</strong>，我会把我的EFI上传到github，下载下来替换掉刻录启动盘的时候生成的，直接用就行，记得在修改机型的相关信息</p>
-<p>完美程度95%</p>
-<ul>
-<li>读卡器和视频输出我用不到就没搞</li>
-<li>读卡器据说有<code>Sinetek-rtsx.kext</code>可以驱动，有需要的可以试一下，我没有SD卡没法测试</li>
-<li>手头没有多余的视频线，不知道能不外接显示器，等回学校再测试一下</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="center">类别</th>
-<th align="center">驱动</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">电池</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">显示器</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">亮度调节</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">睡眠</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">USB</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">键盘</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">触摸板</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">声卡</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">CPU变频</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">Airdrop</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">读卡器</td>
-<td align="center">N&#x2F;A</td>
-</tr>
-<tr>
-<td align="center">HDMI输出</td>
-<td align="center">N&#x2F;A</td>
-</tr>
-<tr>
-<td align="center">VGA输出</td>
-<td align="center">N&#x2F;A</td>
-</tr>
-</tbody></table>
-<hr>
-<p>下面是我一言难尽的折腾过程，请点击下面传送门跳过</p>
-<a class="btn" href="#EFI%E4%B8%8B%E8%BD%BD"><i class="fa fa-paper-plane fa-fw"></i>我是传送门</a>
-
-<h2 id="制作启动盘-2"><a href="#制作启动盘-2" class="headerlink" title="制作启动盘"></a>制作启动盘</h2><p>下面只是我九曲十八弯的安装盘翻车记录，仅供参考，因为一些细节记不清了，启动盘我是用台式机上的黑果刻的，安装第二台黑果的时候有另一台黑果用会简单不少</p>
-<ul>
-<li>一开始的我还是在win上用gibmacos制作，因为这个方法用的是恢复镜像，所以安装的时候要在线下载安装镜像，然而我的网卡一直不能驱动，所以就很尴尬的卡住了</li>
-<li>然后我就满世界的找教程，慌不择路的选了一个，跟着它一步一步的走，然后发现，我怎么搞了个PE盘？这镜像明明是Mojave 10.14.6 啊？？？</li>
-<li>然后我又下载了Mojave的官方镜像，刻录完后用Clover添加了EFI分区，换上了Vanilla的plist，开机发现没有install macos这个选项，再次尬住</li>
-<li>最后我是这么解决掉。。。把最后一次刻录的EFI分区文件整个替换成了第一步在win上刻录的那个EFI分区文件，然后再换上Vanilla的plist文件，简直蠢到家了</li>
-</ul>
-<h3 id="Mojave-原版镜像下载"><a href="#Mojave-原版镜像下载" class="headerlink" title="Mojave 原版镜像下载"></a>Mojave 原版镜像下载</h3><p>原版镜像可以用<code>macOS Mojave Patcher Tool</code>下载</p>
-<a class="btn" href="http://dosdude1.com/mojave/"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<p>下载完成后打开软件，在顶栏中选择<code>Tools</code>-<code>Download macOS Mojave</code>即可</p>
-<h3 id="刻录安装盘"><a href="#刻录安装盘" class="headerlink" title="刻录安装盘"></a>刻录安装盘</h3><p>这一步我用的软件是<code>DiskMaker X 8 for MacOS Mojave</code></p>
-<a class="btn" href="https://diskmakerx.com/download/"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<p>注意不要下载最新的，那是给Catalina用的</p>
-<ul>
-<li>下载完成后打开软件，会提示你是否更新，选择<code>Not now, thanks</code>即可</li>
-<li>选择<code>Select a macOS Installation App</code>，找到上一步下载的安装镜像，点击选取</li>
-<li>选择<code>An 8 GB USB thumb drive（ERASE ALL DISL）</code></li>
-<li>选择你的U盘然后点击<code>Choose this disk</code></li>
-<li>最后会要求你输入密码，然后等待一段时间会提示你安装盘刻录完成</li>
-</ul>
-<h3 id="创建EFI分区"><a href="#创建EFI分区" class="headerlink" title="创建EFI分区"></a>创建EFI分区</h3><p>这一步需要使用<code>Clover EFI bootloader</code></p>
-<a class="btn" href="https://sourceforge.net/projects/cloverefiboot/"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<p>下载安装，一路继续，在<code>安装类型</code>那里点击左下角的<code>自定</code>，<code>安装位置</code>选择自己的U盘</p>
-<p><strong>UEFI设置</strong></p>
-<ul>
-<li>仅安装UEFI开机版本</li>
-<li>安装Clover到EFI系统区</li>
-<li>在UEFI Drivers里面勾选这三个选项<ul>
-<li>AptioMemoryFix</li>
-<li>PartitionDxe</li>
-<li>ApfsLoader</li>
-</ul>
-</li>
-</ul>
-<p>不知道为什么，我这样创建的安装盘没能成功进入安装页面，所以我把第一次用gibmacos创建的EFI文件夹直接复制到U盘上替换掉了原来的EFI文件夹</p>
-<h3 id="替换config-plist"><a href="#替换config-plist" class="headerlink" title="替换config.plist"></a>替换config.plist</h3><p>这一步要找到自己的CPU所对应的<code>config.plist</code>文件，下载后替换EFI文件中的<code>config.plist</code>。github上已经有大神按照CPU代数制作了相应的文件，记得把机型设置成<code>MacBook Air7,2</code></p>
-<a class="btn" href="https://github.com/corpnewt/Hackintosh-Guide/tree/master/Configs"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<p>这里说明一下CPU的代号对应问题</p>
-<ul>
-<li>CoffeeLake - 第八代CPU</li>
-<li>Haswell - 第四代CPU</li>
-<li>Ivy Bridge - 第三代CPU</li>
-<li>KabyLake -第七代CPU</li>
-<li>Skylake - 第六代CPU</li>
-</ul>
-<p>没错，中间单单少了我那奇葩的第五代CPU-Broadwell，所以我就用第四代的文件代替了，第五代就是第四代的一个小升级，差不多能用</p>
-<p>由于Github上并没有下载按钮，所以我们需要点击要下载的文件，然后点击页面上方的<code>Raw</code>，右键另存为<code>config.plist</code></p>
-<h3 id="加载kext"><a href="#加载kext" class="headerlink" title="加载kext"></a>加载kext</h3><p>kext就相当于驱动，由于苹果的官方驱动只针对特定型号的硬件，所以我们需要找到适合自己硬件的kext来驱动，需要的文件有</p>
-<ul>
-<li><a href="https://github.com/acidanthera/VirtualSMC/releases">VirtualSMC.kext</a> - 最核心的kext，下载下来的压缩包里有几个附属kext，也要一起使用</li>
-<li><a href="https://github.com/acidanthera/Lilu/releases">Lilu.kext</a> - 我觉得这是个类似运行库的东西</li>
-<li><a href="https://github.com/acidanthera/WhateverGreen/releases">WhateverGreen.kext</a> - 显卡补丁</li>
-<li><a href="https://github.com/acidanthera/VoodooPS2/releases">VoodooPS2.kext</a> - 键盘和触摸板的驱动</li>
-<li><a href="https://github.com/acidanthera/AppleALC/releases">AppleALC.kext</a> - 声卡补丁</li>
-<li><a href="https://github.com/Mieze/IntelMausiEthernet">IntelMausiEthernet.kext</a> - 有线网卡补丁</li>
-<li><a href="https://github.com/acidanthera/AirportBrcmFixup/releases">AirportBrcmFixup.kext</a> - 无线补丁</li>
-<li><a href="https://bitbucket.org/RehabMan/os-x-brcmpatchram/downloads/">BrcmFirmwareData.kext</a> - 无线网卡补丁</li>
-<li><a href="https://bitbucket.org/RehabMan/os-x-brcmpatchram/downloads/">BrcmPatchRAM2.kext</a> - 和上一个在一个压缩包里</li>
-<li><a href="https://bitbucket.org/RehabMan/os-x-fake-pci-id/downloads/">FakePCIID.kext</a> - pci补丁</li>
-<li><a href="https://bitbucket.org/RehabMan/os-x-fake-pci-id/downloads/">FakePCIID_Broadcom_WiFi.kext</a> - 和上一个在一个压缩包里</li>
-</ul>
-<p>把这些文件放到<code>./EFI/CLOVER/kext/Other</code>路径中</p>
-<h2 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h2><p>上一篇中写过一部分，复制粘贴大法</p>
-<h3 id="BIOS设置"><a href="#BIOS设置" class="headerlink" title="BIOS设置"></a>BIOS设置</h3><ol>
-<li>开机进入BIOS(快捷键为F2)，将所有设置设为默认</li>
-<li>关闭<code>Secure boot</code>,保存退出</li>
-<li>重启再次进入BIOS，选择<code>Boot Device</code>的首选项为<strong>U盘</strong></li>
-<li>从U盘引导后会进入Clover菜单，选择<code>Boot macOS Install from OS X Base System</code>回车，Clover默认会开启啰嗦模式，就是在屏幕上滚动显示状态，跑完就会进入MacOS安装程序，出现选择语言的菜单</li>
-</ol>
-<h3 id="格式化磁盘"><a href="#格式化磁盘" class="headerlink" title="格式化磁盘"></a>格式化磁盘</h3><p>安装之前需要对目标磁盘进行格式化</p>
-<ol>
-<li>双击<code>磁盘工具</code></li>
-<li>点击左上角<code>显示</code>选项的下拉菜单并选择<code>显示所有设备</code></li>
-<li>点击顶部的<code>抹掉</code></li>
-<li>选择用于安装MacOS的硬盘，并将其设置为<ul>
-<li>名称: （设置硬盘的名称）</li>
-<li>格式： Mac OS 扩展（日志式）</li>
-<li>方案: GUID 分区图</li>
-</ul>
-</li>
-<li>点击右下方的<code>抹掉</code></li>
-<li>关闭<code>Disk Utility</code></li>
-</ol>
-<h3 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h3><ol>
-<li>选择<code>安装macOS</code>，点击继续</li>
-<li>选择用于安装的磁盘</li>
-<li>等待大概十几分钟，安装完成后会自动重启</li>
-</ol>
-<h3 id="系统设置"><a href="#系统设置" class="headerlink" title="系统设置"></a>系统设置</h3><p>重启后再次选择U盘引导，进入Clover，选择<code>Boot macOS from 你硬盘的名字</code>，等待Clover啰嗦模式跑完就会进入欢迎使用页面，选择国家和键盘balabala的不多说</p>
-<ul>
-<li>传输信息到这台Mac - 现在不传输任何信息</li>
-<li>AppleID登陆可以先跳过，后面可能需要修改机型，修改完后还要重新登录</li>
-<li>条款与条件 - 全部同意</li>
-<li>快捷设置 - 选择自定设置，然后把<code>分析</code>里面的勾选取消，黑苹果就没有必要来分析了hhhhh</li>
-</ul>
-<p>等待一会就能够进入系统了</p>
-<h2 id="配置系统"><a href="#配置系统" class="headerlink" title="配置系统"></a>配置系统</h2><p>现在我们仍然需要通过安装U盘进行启动，这一步我们将把EFI文件从U盘复制到启动盘，然后就不需要U盘了<br>首先需要下载下面的两个软件</p>
-<ul>
-<li><a href="https://sourceforge.net/projects/cloverefiboot/">Clover EFI bootloader</a></li>
-<li><a href="https://mackie100projects.altervista.org/download-clover-configurator/">clover Configurator</a></li>
-</ul>
-<h3 id="Clover-EFI-bootloader设置"><a href="#Clover-EFI-bootloader设置" class="headerlink" title="Clover EFI bootloader设置"></a>Clover EFI bootloader设置</h3><p>下载安装，一路继续，在<code>安装类型</code>那里点击左下角的<code>自定</code>，具体设置如下</p>
-<ul>
-<li>仅安装UEFI开机版本</li>
-<li>安装Clover到EFI系统区</li>
-<li>在UEFI Drivers里面勾选这三个选项<ul>
-<li>AptioMemoryFix</li>
-<li>PartitionDxe</li>
-<li>ApfsLoader</li>
-</ul>
-</li>
-<li>安装RC Scripts到目标磁区</li>
-</ul>
-<h3 id="EFI文件替换"><a href="#EFI文件替换" class="headerlink" title="EFI文件替换"></a>EFI文件替换</h3><ol>
-<li>下载安装然后打开<code>Clover Configurator</code></li>
-<li>点击左侧菜单里的<code>挂载分区</code></li>
-<li>在右下找到安装macOS的硬盘，点击旁边的<code>挂载分区</code></li>
-<li>再点击旁边的<code>打开分区</code>，会打开<code>EFI</code>文件夹</li>
-<li>打开安装U盘<code>CLover</code>，把里面的文件拷贝到上一步打开的文件夹</li>
-<li>此时系统会提醒有重复文件，点击替换</li>
-</ol>
-<p>此时重启就可以进入bios把首选启动项改成clover了，U盘可以推出了</p>
-<h2 id="驱动安装"><a href="#驱动安装" class="headerlink" title="驱动安装"></a>驱动安装</h2><p>部分驱动使用<code>Clover Configurator</code>安装，在<code>安装驱动</code>的<code>UEFI驱动</code>里面勾选下面的选项，我不太确定那些是必须的hhh</p>
-<ul>
-<li>ApfsDriverLoader</li>
-<li>AptioInputFix</li>
-<li>AptioMemoryFix</li>
-<li>AudioDce</li>
-<li>DataHubDxe</li>
-<li>FSInject</li>
-<li>HFSPlus</li>
-<li>PartitionDxe</li>
-<li>Ps2MouseDxe</li>
-<li>SMCHelper</li>
-<li>UsbKbDxe</li>
-<li>UsbMouseDxe</li>
-</ul>
-<p><strong>下面的步骤需要使用<code>Hackintool</code>来进行设置</strong></p>
-<a class="btn" href="https://www.tonymacx86.com/threads/release-hackintool-v2-8-6.254559/"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<h3 id="声卡"><a href="#声卡" class="headerlink" title="声卡"></a>声卡</h3><p>前面已经安装了AppleALC的声卡驱动，但是此时还没有声音</p>
-<ol>
-<li>点击<code>音频</code></li>
-<li>在下面的<code>Layout ID</code>中选择数值，我选择的是127</li>
-</ol>
-<h3 id="核显"><a href="#核显" class="headerlink" title="核显"></a>核显</h3><ol>
-<li>点击<code>应用补丁</code></li>
-<li>在<code>CPU架构</code>中选择<code>Broadwell</code>，平台ID选择<code>0x16160002</code></li>
-<li>点击下面的<code>应用补丁</code></li>
-<li>在通用中勾选<ol>
-<li>设备属性</li>
-<li>自动侦测变化</li>
-<li>全部</li>
-<li>接口</li>
-<li>基本显存</li>
-<li>图形卡</li>
-<li>音频</li>
-</ol>
-</li>
-<li>在高级中勾选<ol>
-<li>DVMT 32MB预分配</li>
-<li>禁用eGPU</li>
-<li>将DP映射到HDMI</li>
-<li>仿冒图形卡ID</li>
-<li>显存2048MB</li>
-<li>启用HDMI20（4K）</li>
-<li>USB端口数限制</li>
-</ol>
-</li>
-<li>点击生成补丁</li>
-</ol>
-<h3 id="显示器"><a href="#显示器" class="headerlink" title="显示器"></a>显示器</h3><ol>
-<li>点击<code>显示器</code></li>
-<li>选中自己的显示器</li>
-<li>在注入EDID中选择合适的比例，选择合适的分辨率</li>
-<li>点击下面的加号</li>
-<li>点击右下角的导出按钮</li>
-<li>把生成的kext文件复制到<code>./EFI/CLOVER/kext/Other</code>路径中</li>
-</ol>
-<p>点击顶栏的<code>文件</code>，选择导出引导工具Config.plist，替换掉EFI分区中的文件，重启</p>
-<h3 id="USB"><a href="#USB" class="headerlink" title="USB"></a>USB</h3><p>USB和睡眠的关系比较大，很多时候睡眠失败都是USB的锅，USB需要使用Hackintool定制端口</p>
-<ul>
-<li>首先先到<code>Clover Configurator</code>的内核与驱动补丁中打开解除USB端口数量限制的补丁，相关补丁在注释中会标明</li>
-<li>打开<code>Hackintool</code>，点击USB，可以在下面看到，已经连接过的端口是绿色的</li>
-<li>准备好一个USB3.0的U盘，一个USB2.0的设备，比如键盘鼠标，打开记事本</li>
-<li>把笔记本的USB接口依次用2.0和3.0的设备插一遍，记录下对应的名称</li>
-<li>如果有Type-C的话要正反插，端口不变的就是Type-C+sw，变化的就是Type-C</li>
-<li>根据记录选择连接器类型，没有插过的就选择internal</li>
-<li>选中没有变绿的接口，点击下面的减号删掉</li>
-<li>注意，保证接口数量小于等于15个，USB3.0的算两个</li>
-<li>点击右下角的导出图标</li>
-<li>把生成的ssdt文件放到<code>./EFI/CLOVER/ACPI/patched</code>路径中</li>
-<li>把生成的USBport.kext放到<code>./EFI/CLOVER/kext/Other</code>路径中</li>
-<li>回到<code>Clover Configurator</code>的内核与驱动补丁中关闭解除USB端口数量限制的补丁</li>
-<li>重启</li>
-</ul>
-<p><strong>下面的这些设置需要使用SSDT进行设置，首先下载maciASL</strong></p>
-<a class="btn" href="https://github.com/acidanthera/MaciASL/releases"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<h3 id="亮度"><a href="#亮度" class="headerlink" title="亮度"></a>亮度</h3><p>亮度设置其实有两个方法，第一种是在<code>Clover Configurator</code>中勾选添加PLNF，简单粗暴，但是这个方法和电池驱动有冲突，水火不容，所以建议采用ssdt的方法，下载下面的ssdt文件，然后放到<code>./EFI/CLOVER/ACPI/patched</code>路径中</p>
-<a class="btn" href="https://raw.githubusercontent.com/acidanthera/WhateverGreen/master/Manual/SSDT-PNLF.dsl"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<p>重启之后在偏好设置中会出现显示器亮度滑块，但是不能用键盘调节屏幕亮度，这个我试了很多种方法是都没能成功使用原来的键位调节亮度，所以只用了一个简单粗暴的方法，打开系统偏好设置-键盘-快捷键，点击显示器，点击降低和提高显示器亮度，按下想用的快捷键，注意不要发生冲突</p>
-<h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><p>CPU部分主要是变频的问题，不打补丁的话cpu一直处在睿频模式，很耗电，打补丁使用的是<a href="https://github.com/Piker-Alpha/ssdtPRGen.sh">ssdtPRGen</a></p>
-<ul>
-<li>打开终端</li>
-<li>输入命令<code>curl -o ~/ssdtPRGen.sh https://raw.githubusercontent.com/Piker-Alpha/ssdtPRGen.sh/Beta/ssdtPRGen.sh</code>下载</li>
-<li>输入命令<code>chmod +x ~/ssdtPRGen.sh</code>授予运行权限</li>
-<li>运行脚本，根据提示进行选择，最后会生成ssdt文件</li>
-<li>把生成的ssdt文件放到<code>./EFI/CLOVER/ACPI/patched</code>路径中</li>
-<li>重启</li>
-</ul>
-<p>通过安装软件来判断cpu是否能变频，我用的是<code>Intel Power Gadget</code></p>
-<a class="btn" href="https://software.intel.com/en-us/articles/intel-power-gadget"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<p>做完这些之后基本就是完美黑苹果了，登陆你的Apple ID，接着设置就好了</p>
-<p>以上</p>
-<hr>
-<h2 id="EFI下载"><a href="#EFI下载" class="headerlink" title="EFI下载"></a>EFI下载</h2><p>下载后解压，在<code>Clover Configurator</code>中生成自己的机型相关参数</p>
-<a class="btn" href="https://github.com/Siriusq/Acer-TMP645-Hackintosh/releases/download/v1.0/EFI.zip"><i class="fa fa-arrow-right fa-fw"></i>Acer TravelMate P645-SG</a>
-
-<p>到BIOS里设置clover默认启动就能愉快的用三系统了</p>
-<h1 id="Ubuntu的美化"><a href="#Ubuntu的美化" class="headerlink" title="Ubuntu的美化"></a>Ubuntu的美化</h1><p>实在是看不惯Ubuntu的基佬紫风格，美化一下。打开终端安装插件<code>apt install chrome-gnome-shell</code></p>
-<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><p>使用的主题是<code>Arc Theme</code></p>
-<a class="btn" href="https://github.com/arc-design/arc-theme"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<ul>
-<li>打开终端输入<code>sudo apt install arc-theme</code>直接安装</li>
-<li>安装完成后打开<code>优化</code></li>
-<li>把<code>主题</code>的<code>应用程序</code>和<code>Shell</code>设置为arc主题即可</li>
-</ul>
-<h2 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h2><p>主题换完后图标也要换，我用的是Papirus</p>
-<ul>
-<li>打开终端，依次输入下面三条命令</li>
-<li><code>sudo add-apt-repository ppa:papirus/papirus</code></li>
-<li><code>sudo apt-get update</code></li>
-<li><code>sudo apt-get install papirus-icon-theme</code></li>
-<li>安装完成后打开<code>优化</code></li>
-<li>把<code>主题</code>的<code>图标</code>设置为papirus即可</li>
-</ul>
-<h2 id="终端"><a href="#终端" class="headerlink" title="终端"></a>终端</h2><ul>
-<li>打开终端</li>
-<li>点击顶栏-<code>配置文件首选项</code></li>
-<li>选择配置文件</li>
-<li>点击<code>颜色</code></li>
-<li>勾选<code>使用透明背景</code></li>
-</ul>
-<h1 id="一点微小的工作"><a href="#一点微小的工作" class="headerlink" title="一点微小的工作"></a>一点微小的工作</h1><p>三系统装完之后进入win10会发现时间不对，慢了8个小时，因为Win10默认BIOS时间为本地时间，而Mac和Linux则是把BIOS时间作为UTC，正好和北京时间相差8小时，所以需要做一点微小的工作调整一下</p>
-<ul>
-<li>使用<code>Win+R</code>打开运行窗口</li>
-<li>输入<code>regedit</code>打开注册表编辑器</li>
-<li>打开路径<code>HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/TimeZoneInformation/</code></li>
-<li>右键新建<code>DWORD</code></li>
-<li>命名为<code>RealTimeIsUniversal</code></li>
-<li>设置数值为<code>1</code></li>
-<li>重启</li>
-</ul>
-<p>折腾的差不多了，开学前的日子就要愉快的肝代码了hhh</p>
-<blockquote>
-<p>感谢：<a href="https://vanilla.amd-osx.com/">AMD OS X Vanilla</a>、<a href="https://fewtarius.gitbook.io/laptopguide/">The Vanilla Laptop Guide</a>、<a href="https://hackintosh.gitbook.io/-r-hackintosh-vanilla-desktop-guide/config.plist-per-hardware/haswell">hackintosh.gitbook.io</a>、<a href="https://sleele.com/2019/06/07/%e4%bd%bf%e7%94%a8hackintool%e5%ae%9a%e5%88%b6%e9%bb%91%e8%8b%b9%e6%9e%9cusb%e9%a9%b1%e5%8a%a8/">sleele的博客</a>、<a href="https://blog.daliansky.net/">黑果小兵</a>、<a href="https://www.cnblogs.com/SemiconductorKING/p/7702410.html">SemiconductorKING</a> 提供的帮助！</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>搞机</category>
-      </categories>
-      <tags>
-        <tag>搞机</tag>
-        <tag>黑苹果</tag>
-        <tag>多系统</tag>
       </tags>
   </entry>
   <entry>
@@ -5220,6 +4792,437 @@
         <tag>攻略</tag>
         <tag>英国</tag>
         <tag>转码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>笔记本改造计划</title>
+    <url>/%E7%AC%94%E8%AE%B0%E6%9C%AC%E6%94%B9%E9%80%A0%E8%AE%A1%E5%88%92.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">准备折腾一下笔记本，毕竟不用做建筑狗了，这个笔记本是当年高考完暑假买的，年少无知买了个商务本，众所周知，商务本=性能垃圾+贵，所以大二配完台式后给笔记本装了个Fedora，然后就一直在吃灰，这几天升级Fedora的时候崩了，但是今年9月要去国外读书，笔记本还是得用。计划安装 Win10 LTSC，Ubuntu 18.04 LTS，Macos Mojave三系统，把机械硬盘换成固态，升级网卡</blockquote>
+
+<span id="more"></span>
+
+<p>老规矩先上配置<br>型号：Acer TravelMate P645-SG<br>CPU：Intel Core i7-5500U （2.4GHz&#x2F;2C4T）（垃圾的一批）<br>GPU：NVIDIA 840M 2G (拆掉独显提升性能系列)<br>内存：8G DDR3L 1600Mhz<br>SSD：建兴L8T 128G msata接口<br>HDD：西数 500G 5400转蓝盘<br>网卡：Intel 7265NGW</p>
+<p>准备升级硬件<br>网卡：换成DW1560，方便黑苹果用，淘宝330<br>硬盘：机械硬盘换成三星860EVO 500G，京东559<br>内存：这个还在纠结，准备把插槽4G的换成8G</p>
+<h1 id="硬件升级"><a href="#硬件升级" class="headerlink" title="硬件升级"></a>硬件升级</h1><p>实不相瞒，我这几天拆了四五次电脑，螺丝都给拧花了一个，下面是拆机图，红色框里是网卡的位置，我已经拆了，绿框是内存，黄框是新换的SSD<br><img data-src="https://s2.loli.net/2022/05/13/hlnmf9TeY4is6Xp.jpg" alt="拆机图"><br>估计当年脑子里进了不少水，选了建筑专业就算了，买个笔记本也这么奇葩，青黄不接的5代低压CPU + 青黄不接的8系亮机显卡，唯一的优点就是续航长？</p>
+<h2 id="网卡"><a href="#网卡" class="headerlink" title="网卡"></a>网卡</h2><p>原装的英特尔网卡当然是不能用了，所以要去某宝买黑苹果可以用的网卡，买之前注意接口和网卡长度，一般都是<code>ngff</code>的小卡</p>
+<p>安装的时候把原来的天线接口断开，用指甲挑一下就开了，然后拧螺丝换上新的，再把天线接上</p>
+<p>DW1560在我的笔记本上有一点问题，蓝牙不能用，三个系统都搜索不到蓝牙设备，查阅资料后发现需要屏蔽背面两个识别针脚，最简单粗暴的方法就是用胶带把这两个贴上，下面上图</p>
+<p><img data-src="https://s2.loli.net/2022/05/13/6t4XJmzknyBwLg7.jpg" alt="网卡"></p>
+<p>需要屏蔽的就是红圈里右侧的两个针脚，手残党最好找个镊子贴胶带，注意不要贴到左边的两个。屏蔽之后BIOS自检时间会变长一点，问题不大</p>
+<h2 id="SSD"><a href="#SSD" class="headerlink" title="SSD"></a>SSD</h2><p>老电脑，只有一个MSATA和一个SATA3的接口，上不了M.2就很难受</p>
+<p>把原来的500G蓝盘拆下来扔到硬盘盒里做了移动硬盘，虽然速度很垃圾但是勉强能用，分个区给mac做备份</p>
+<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><p>这个笔记本内存是板载4G + 插槽4G的，就更难受了，升级内存的话只能是4G+8G这种逼死强迫症的组合，所以暂时搁置，到时候不够用了再说</p>
+<h1 id="Win10-LTSC-安装"><a href="#Win10-LTSC-安装" class="headerlink" title="Win10 LTSC 安装"></a>Win10 LTSC 安装</h1><p>首先安装的是老坛酸菜，放在128G的固态中，选择它主要是为了省电+节省硬盘空间</p>
+<h2 id="下载镜像文件"><a href="#下载镜像文件" class="headerlink" title="下载镜像文件"></a>下载镜像文件</h2><p>Win10的镜像文件都可以在<code>MSDN, I Tell You</code>上面下载，下面是传送门</p>
+<a class="btn" href="https://msdn.itellyou.cn/?tdsourcetag=s_pcqq_aiomsg"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<p>在左侧操作系统栏中找到相对应的版本下载即可，上面的都是<code>ed2k</code>链接，建议使用迅雷下载（莫得办法），另外有能力的话可以给站长一些支持，毕竟坚持十几年也很不容易</p>
+<h2 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h2><p>win10的镜像越来越大了，现在1903的<code>install.wim</code>已经超过4G。所以还是要用UltraISO来刻录，以前<code>install.wim</code>都不到4个G，制作安装盘的时候直接把iso解压到U盘就可以用了。</p>
+<p>老坛酸菜的镜像没有大于4G的文件，所以找一个8G及以上的U盘，把镜像直接解压到U盘就可以了</p>
+<h3 id="UltraISO刻录教程"><a href="#UltraISO刻录教程" class="headerlink" title="UltraISO刻录教程"></a>UltraISO刻录教程</h3><p>安装ltsc的请跳过，这个是制作1903启动盘的步骤</p>
+<ul>
+<li>插入U盘</li>
+<li>以管理员身份运行UltraISO</li>
+<li>选择<code>文件</code>——<code>打开</code></li>
+<li>在弹出窗口中找到要用的ISO文件，点击<code>打开</code></li>
+<li>点击<code>启动</code>——<code>写入硬盘镜像</code></li>
+<li>在弹出窗口中选择好自己的U盘</li>
+<li>写入方式使用默认的<code>USB-HDD+</code></li>
+<li>点击<code>写入</code></li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li>插上启动盘，然后开机狂按<code>F2</code>进入<code>BIOS</code></li>
+<li>设置U盘为首选启动项</li>
+<li>保存并退出BIOS</li>
+<li>系统转一会圈之后就会进入语言选择界面，一般默认就行，点击<code>下一步</code></li>
+<li>使用<code>Shift</code>+<code>F10</code>打开终端</li>
+<li>输入<code>diskpart</code>打开磁盘管理</li>
+<li>输入<code>list disk</code>，列出硬盘</li>
+<li>找到安装目标磁盘的序号，输入<code>select disk 序号</code>回车</li>
+<li>输入<code>clean</code>回车</li>
+<li>输入<code>convert gpt</code>转换gpt格式</li>
+<li>点击<code>现在安装</code></li>
+<li>接受条款然后点击<code>下一步</code></li>
+<li>选择<code>自定义</code></li>
+<li>选择目标磁盘，点击<code>下一步</code></li>
+<li>重启的时候拔下启动U盘</li>
+<li>剩下的一路无脑下一步就装完了</li>
+</ul>
+<h2 id="激活"><a href="#激活" class="headerlink" title="激活"></a>激活</h2><p>LTSC没有数字权利激活(明明LTSB有的，咋到新版本就没了呢，强迫症表示不爽)，所以要用<code>KMS激活</code><br>右键单击开始菜单微软图标，使用管理员身份运行<code>PowerShell</code>，依次输入下列指令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">slmgr -ipk M7XTQ-FN8P6-TTKYV-9D4CC-J462D</span><br><span class="line">slmgr -skms kms.03k.org</span><br><span class="line">slmgr -ato</span><br><span class="line">slmgr -dlv</span><br></pre></td></tr></table></figure>
+
+<p>中途会弹出对话框，全点确定就行</p>
+<p>剩下的过程就是安装软件，我另一篇文章总结了一些好用的软件，附上传送门</p>
+<a class="btn" href="https://siriusq.top/%E8%BD%AF%E4%BB%B6%E6%95%B4%E7%90%86.html"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<h1 id="Ubuntu-18-04-LTS-安装"><a href="#Ubuntu-18-04-LTS-安装" class="headerlink" title="Ubuntu 18.04 LTS 安装"></a>Ubuntu 18.04 LTS 安装</h1><h2 id="下载镜像文件-1"><a href="#下载镜像文件-1" class="headerlink" title="下载镜像文件"></a>下载镜像文件</h2><p>Ubuntu的镜像文件去官网下，传送门</p>
+<a class="btn" href="https://ubuntu.com/download/desktop"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<h2 id="制作启动盘-1"><a href="#制作启动盘-1" class="headerlink" title="制作启动盘"></a>制作启动盘</h2><p>Ubuntu的启动盘可以使用软件刻录，我比较懒，就直接把iso镜像解压到U盘里了，然后在bios页面添加U盘对应的efi启动项，就可以就如安装程序了</p>
+<h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><ul>
+<li>选择<code>install ubuntu</code>并回车开始安装</li>
+<li>选择语言以及键盘布局</li>
+<li>选择<code>最小安装</code>节省时间</li>
+<li><code>装Ubuntu更新</code>这个看心情选</li>
+<li><code>安装类型</code>选择<code>其他选项</code></li>
+<li>找到要安装Ubuntu的目标磁盘</li>
+<li>点击左下角的<code>+</code>进行分区，分区方法有很多种，我分了三个区<ul>
+<li>第一个是<code>EFI系统分区</code>，我分了512M</li>
+<li>第二个是<code>交换空间</code>，也就是虚拟内存，和你的实际内存一样大就行，我分了8192M，也就是8G</li>
+<li>第三个是主分区，挂载点是<code>/</code>，用于<code>Ext4日志文件系统</code>，看个人需求，我分了160G</li>
+</ul>
+</li>
+<li>分区完成后选中<code>efi</code>分区然后点击<code>现在安装</code></li>
+<li>选择时区，创建用户名和密码</li>
+<li>安装完成后会要求重启</li>
+</ul>
+<h2 id="添加grub引导"><a href="#添加grub引导" class="headerlink" title="添加grub引导"></a>添加grub引导</h2><p>重启后你会神奇的发现直接俄进入了windows系统，因为ubuntu没有添加引导，我又用懒人方法在bios中添加了grub的efi启动项，然后把他设为首选启动项，这样Ubuntu和Win就可以共存了</p>
+<h1 id="Macos-Mojave-10-14-6-折腾"><a href="#Macos-Mojave-10-14-6-折腾" class="headerlink" title="Macos Mojave 10.14.6 折腾"></a>Macos Mojave 10.14.6 折腾</h1><p>最后一个也是最难搞的一个就是黑苹果了，折腾了好几天，绕了不少弯，安装流派依旧是<code>Vanilla</code></p>
+<p>我制作安装盘的过程嘛。一言难尽，直接放上参考教程，<a href="https://fewtarius.gitbook.io/laptopguide/">The Vanilla Laptop Guide</a>，这个网站我到最后修复睡眠问题的时候才发现，早点发现的话就不用绕那么多圈子了。</p>
+<p><strong>建议直接使用上面的方法，下面是本人的折腾记录</strong>，我会把我的EFI上传到github，下载下来替换掉刻录启动盘的时候生成的，直接用就行，记得在修改机型的相关信息</p>
+<p>完美程度95%</p>
+<ul>
+<li>读卡器和视频输出我用不到就没搞</li>
+<li>读卡器据说有<code>Sinetek-rtsx.kext</code>可以驱动，有需要的可以试一下，我没有SD卡没法测试</li>
+<li>手头没有多余的视频线，不知道能不外接显示器，等回学校再测试一下</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">类别</th>
+<th align="center">驱动</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">电池</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">显示器</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">亮度调节</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">睡眠</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">USB</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">键盘</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">触摸板</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">声卡</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">CPU变频</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">Airdrop</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">读卡器</td>
+<td align="center">N&#x2F;A</td>
+</tr>
+<tr>
+<td align="center">HDMI输出</td>
+<td align="center">N&#x2F;A</td>
+</tr>
+<tr>
+<td align="center">VGA输出</td>
+<td align="center">N&#x2F;A</td>
+</tr>
+</tbody></table>
+<hr>
+<p>下面是我一言难尽的折腾过程，请点击下面传送门跳过</p>
+<a class="btn" href="#EFI%E4%B8%8B%E8%BD%BD"><i class="fa fa-paper-plane fa-fw"></i>我是传送门</a>
+
+<h2 id="制作启动盘-2"><a href="#制作启动盘-2" class="headerlink" title="制作启动盘"></a>制作启动盘</h2><p>下面只是我九曲十八弯的安装盘翻车记录，仅供参考，因为一些细节记不清了，启动盘我是用台式机上的黑果刻的，安装第二台黑果的时候有另一台黑果用会简单不少</p>
+<ul>
+<li>一开始的我还是在win上用gibmacos制作，因为这个方法用的是恢复镜像，所以安装的时候要在线下载安装镜像，然而我的网卡一直不能驱动，所以就很尴尬的卡住了</li>
+<li>然后我就满世界的找教程，慌不择路的选了一个，跟着它一步一步的走，然后发现，我怎么搞了个PE盘？这镜像明明是Mojave 10.14.6 啊？？？</li>
+<li>然后我又下载了Mojave的官方镜像，刻录完后用Clover添加了EFI分区，换上了Vanilla的plist，开机发现没有install macos这个选项，再次尬住</li>
+<li>最后我是这么解决掉。。。把最后一次刻录的EFI分区文件整个替换成了第一步在win上刻录的那个EFI分区文件，然后再换上Vanilla的plist文件，简直蠢到家了</li>
+</ul>
+<h3 id="Mojave-原版镜像下载"><a href="#Mojave-原版镜像下载" class="headerlink" title="Mojave 原版镜像下载"></a>Mojave 原版镜像下载</h3><p>原版镜像可以用<code>macOS Mojave Patcher Tool</code>下载</p>
+<a class="btn" href="http://dosdude1.com/mojave/"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<p>下载完成后打开软件，在顶栏中选择<code>Tools</code>-<code>Download macOS Mojave</code>即可</p>
+<h3 id="刻录安装盘"><a href="#刻录安装盘" class="headerlink" title="刻录安装盘"></a>刻录安装盘</h3><p>这一步我用的软件是<code>DiskMaker X 8 for MacOS Mojave</code></p>
+<a class="btn" href="https://diskmakerx.com/download/"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<p>注意不要下载最新的，那是给Catalina用的</p>
+<ul>
+<li>下载完成后打开软件，会提示你是否更新，选择<code>Not now, thanks</code>即可</li>
+<li>选择<code>Select a macOS Installation App</code>，找到上一步下载的安装镜像，点击选取</li>
+<li>选择<code>An 8 GB USB thumb drive（ERASE ALL DISL）</code></li>
+<li>选择你的U盘然后点击<code>Choose this disk</code></li>
+<li>最后会要求你输入密码，然后等待一段时间会提示你安装盘刻录完成</li>
+</ul>
+<h3 id="创建EFI分区"><a href="#创建EFI分区" class="headerlink" title="创建EFI分区"></a>创建EFI分区</h3><p>这一步需要使用<code>Clover EFI bootloader</code></p>
+<a class="btn" href="https://sourceforge.net/projects/cloverefiboot/"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<p>下载安装，一路继续，在<code>安装类型</code>那里点击左下角的<code>自定</code>，<code>安装位置</code>选择自己的U盘</p>
+<p><strong>UEFI设置</strong></p>
+<ul>
+<li>仅安装UEFI开机版本</li>
+<li>安装Clover到EFI系统区</li>
+<li>在UEFI Drivers里面勾选这三个选项<ul>
+<li>AptioMemoryFix</li>
+<li>PartitionDxe</li>
+<li>ApfsLoader</li>
+</ul>
+</li>
+</ul>
+<p>不知道为什么，我这样创建的安装盘没能成功进入安装页面，所以我把第一次用gibmacos创建的EFI文件夹直接复制到U盘上替换掉了原来的EFI文件夹</p>
+<h3 id="替换config-plist"><a href="#替换config-plist" class="headerlink" title="替换config.plist"></a>替换config.plist</h3><p>这一步要找到自己的CPU所对应的<code>config.plist</code>文件，下载后替换EFI文件中的<code>config.plist</code>。github上已经有大神按照CPU代数制作了相应的文件，记得把机型设置成<code>MacBook Air7,2</code></p>
+<a class="btn" href="https://github.com/corpnewt/Hackintosh-Guide/tree/master/Configs"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<p>这里说明一下CPU的代号对应问题</p>
+<ul>
+<li>CoffeeLake - 第八代CPU</li>
+<li>Haswell - 第四代CPU</li>
+<li>Ivy Bridge - 第三代CPU</li>
+<li>KabyLake -第七代CPU</li>
+<li>Skylake - 第六代CPU</li>
+</ul>
+<p>没错，中间单单少了我那奇葩的第五代CPU-Broadwell，所以我就用第四代的文件代替了，第五代就是第四代的一个小升级，差不多能用</p>
+<p>由于Github上并没有下载按钮，所以我们需要点击要下载的文件，然后点击页面上方的<code>Raw</code>，右键另存为<code>config.plist</code></p>
+<h3 id="加载kext"><a href="#加载kext" class="headerlink" title="加载kext"></a>加载kext</h3><p>kext就相当于驱动，由于苹果的官方驱动只针对特定型号的硬件，所以我们需要找到适合自己硬件的kext来驱动，需要的文件有</p>
+<ul>
+<li><a href="https://github.com/acidanthera/VirtualSMC/releases">VirtualSMC.kext</a> - 最核心的kext，下载下来的压缩包里有几个附属kext，也要一起使用</li>
+<li><a href="https://github.com/acidanthera/Lilu/releases">Lilu.kext</a> - 我觉得这是个类似运行库的东西</li>
+<li><a href="https://github.com/acidanthera/WhateverGreen/releases">WhateverGreen.kext</a> - 显卡补丁</li>
+<li><a href="https://github.com/acidanthera/VoodooPS2/releases">VoodooPS2.kext</a> - 键盘和触摸板的驱动</li>
+<li><a href="https://github.com/acidanthera/AppleALC/releases">AppleALC.kext</a> - 声卡补丁</li>
+<li><a href="https://github.com/Mieze/IntelMausiEthernet">IntelMausiEthernet.kext</a> - 有线网卡补丁</li>
+<li><a href="https://github.com/acidanthera/AirportBrcmFixup/releases">AirportBrcmFixup.kext</a> - 无线补丁</li>
+<li><a href="https://bitbucket.org/RehabMan/os-x-brcmpatchram/downloads/">BrcmFirmwareData.kext</a> - 无线网卡补丁</li>
+<li><a href="https://bitbucket.org/RehabMan/os-x-brcmpatchram/downloads/">BrcmPatchRAM2.kext</a> - 和上一个在一个压缩包里</li>
+<li><a href="https://bitbucket.org/RehabMan/os-x-fake-pci-id/downloads/">FakePCIID.kext</a> - pci补丁</li>
+<li><a href="https://bitbucket.org/RehabMan/os-x-fake-pci-id/downloads/">FakePCIID_Broadcom_WiFi.kext</a> - 和上一个在一个压缩包里</li>
+</ul>
+<p>把这些文件放到<code>./EFI/CLOVER/kext/Other</code>路径中</p>
+<h2 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h2><p>上一篇中写过一部分，复制粘贴大法</p>
+<h3 id="BIOS设置"><a href="#BIOS设置" class="headerlink" title="BIOS设置"></a>BIOS设置</h3><ol>
+<li>开机进入BIOS(快捷键为F2)，将所有设置设为默认</li>
+<li>关闭<code>Secure boot</code>,保存退出</li>
+<li>重启再次进入BIOS，选择<code>Boot Device</code>的首选项为<strong>U盘</strong></li>
+<li>从U盘引导后会进入Clover菜单，选择<code>Boot macOS Install from OS X Base System</code>回车，Clover默认会开启啰嗦模式，就是在屏幕上滚动显示状态，跑完就会进入MacOS安装程序，出现选择语言的菜单</li>
+</ol>
+<h3 id="格式化磁盘"><a href="#格式化磁盘" class="headerlink" title="格式化磁盘"></a>格式化磁盘</h3><p>安装之前需要对目标磁盘进行格式化</p>
+<ol>
+<li>双击<code>磁盘工具</code></li>
+<li>点击左上角<code>显示</code>选项的下拉菜单并选择<code>显示所有设备</code></li>
+<li>点击顶部的<code>抹掉</code></li>
+<li>选择用于安装MacOS的硬盘，并将其设置为<ul>
+<li>名称: （设置硬盘的名称）</li>
+<li>格式： Mac OS 扩展（日志式）</li>
+<li>方案: GUID 分区图</li>
+</ul>
+</li>
+<li>点击右下方的<code>抹掉</code></li>
+<li>关闭<code>Disk Utility</code></li>
+</ol>
+<h3 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h3><ol>
+<li>选择<code>安装macOS</code>，点击继续</li>
+<li>选择用于安装的磁盘</li>
+<li>等待大概十几分钟，安装完成后会自动重启</li>
+</ol>
+<h3 id="系统设置"><a href="#系统设置" class="headerlink" title="系统设置"></a>系统设置</h3><p>重启后再次选择U盘引导，进入Clover，选择<code>Boot macOS from 你硬盘的名字</code>，等待Clover啰嗦模式跑完就会进入欢迎使用页面，选择国家和键盘balabala的不多说</p>
+<ul>
+<li>传输信息到这台Mac - 现在不传输任何信息</li>
+<li>AppleID登陆可以先跳过，后面可能需要修改机型，修改完后还要重新登录</li>
+<li>条款与条件 - 全部同意</li>
+<li>快捷设置 - 选择自定设置，然后把<code>分析</code>里面的勾选取消，黑苹果就没有必要来分析了hhhhh</li>
+</ul>
+<p>等待一会就能够进入系统了</p>
+<h2 id="配置系统"><a href="#配置系统" class="headerlink" title="配置系统"></a>配置系统</h2><p>现在我们仍然需要通过安装U盘进行启动，这一步我们将把EFI文件从U盘复制到启动盘，然后就不需要U盘了<br>首先需要下载下面的两个软件</p>
+<ul>
+<li><a href="https://sourceforge.net/projects/cloverefiboot/">Clover EFI bootloader</a></li>
+<li><a href="https://mackie100projects.altervista.org/download-clover-configurator/">clover Configurator</a></li>
+</ul>
+<h3 id="Clover-EFI-bootloader设置"><a href="#Clover-EFI-bootloader设置" class="headerlink" title="Clover EFI bootloader设置"></a>Clover EFI bootloader设置</h3><p>下载安装，一路继续，在<code>安装类型</code>那里点击左下角的<code>自定</code>，具体设置如下</p>
+<ul>
+<li>仅安装UEFI开机版本</li>
+<li>安装Clover到EFI系统区</li>
+<li>在UEFI Drivers里面勾选这三个选项<ul>
+<li>AptioMemoryFix</li>
+<li>PartitionDxe</li>
+<li>ApfsLoader</li>
+</ul>
+</li>
+<li>安装RC Scripts到目标磁区</li>
+</ul>
+<h3 id="EFI文件替换"><a href="#EFI文件替换" class="headerlink" title="EFI文件替换"></a>EFI文件替换</h3><ol>
+<li>下载安装然后打开<code>Clover Configurator</code></li>
+<li>点击左侧菜单里的<code>挂载分区</code></li>
+<li>在右下找到安装macOS的硬盘，点击旁边的<code>挂载分区</code></li>
+<li>再点击旁边的<code>打开分区</code>，会打开<code>EFI</code>文件夹</li>
+<li>打开安装U盘<code>CLover</code>，把里面的文件拷贝到上一步打开的文件夹</li>
+<li>此时系统会提醒有重复文件，点击替换</li>
+</ol>
+<p>此时重启就可以进入bios把首选启动项改成clover了，U盘可以推出了</p>
+<h2 id="驱动安装"><a href="#驱动安装" class="headerlink" title="驱动安装"></a>驱动安装</h2><p>部分驱动使用<code>Clover Configurator</code>安装，在<code>安装驱动</code>的<code>UEFI驱动</code>里面勾选下面的选项，我不太确定那些是必须的hhh</p>
+<ul>
+<li>ApfsDriverLoader</li>
+<li>AptioInputFix</li>
+<li>AptioMemoryFix</li>
+<li>AudioDce</li>
+<li>DataHubDxe</li>
+<li>FSInject</li>
+<li>HFSPlus</li>
+<li>PartitionDxe</li>
+<li>Ps2MouseDxe</li>
+<li>SMCHelper</li>
+<li>UsbKbDxe</li>
+<li>UsbMouseDxe</li>
+</ul>
+<p><strong>下面的步骤需要使用<code>Hackintool</code>来进行设置</strong></p>
+<a class="btn" href="https://www.tonymacx86.com/threads/release-hackintool-v2-8-6.254559/"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<h3 id="声卡"><a href="#声卡" class="headerlink" title="声卡"></a>声卡</h3><p>前面已经安装了AppleALC的声卡驱动，但是此时还没有声音</p>
+<ol>
+<li>点击<code>音频</code></li>
+<li>在下面的<code>Layout ID</code>中选择数值，我选择的是127</li>
+</ol>
+<h3 id="核显"><a href="#核显" class="headerlink" title="核显"></a>核显</h3><ol>
+<li>点击<code>应用补丁</code></li>
+<li>在<code>CPU架构</code>中选择<code>Broadwell</code>，平台ID选择<code>0x16160002</code></li>
+<li>点击下面的<code>应用补丁</code></li>
+<li>在通用中勾选<ol>
+<li>设备属性</li>
+<li>自动侦测变化</li>
+<li>全部</li>
+<li>接口</li>
+<li>基本显存</li>
+<li>图形卡</li>
+<li>音频</li>
+</ol>
+</li>
+<li>在高级中勾选<ol>
+<li>DVMT 32MB预分配</li>
+<li>禁用eGPU</li>
+<li>将DP映射到HDMI</li>
+<li>仿冒图形卡ID</li>
+<li>显存2048MB</li>
+<li>启用HDMI20（4K）</li>
+<li>USB端口数限制</li>
+</ol>
+</li>
+<li>点击生成补丁</li>
+</ol>
+<h3 id="显示器"><a href="#显示器" class="headerlink" title="显示器"></a>显示器</h3><ol>
+<li>点击<code>显示器</code></li>
+<li>选中自己的显示器</li>
+<li>在注入EDID中选择合适的比例，选择合适的分辨率</li>
+<li>点击下面的加号</li>
+<li>点击右下角的导出按钮</li>
+<li>把生成的kext文件复制到<code>./EFI/CLOVER/kext/Other</code>路径中</li>
+</ol>
+<p>点击顶栏的<code>文件</code>，选择导出引导工具Config.plist，替换掉EFI分区中的文件，重启</p>
+<h3 id="USB"><a href="#USB" class="headerlink" title="USB"></a>USB</h3><p>USB和睡眠的关系比较大，很多时候睡眠失败都是USB的锅，USB需要使用Hackintool定制端口</p>
+<ul>
+<li>首先先到<code>Clover Configurator</code>的内核与驱动补丁中打开解除USB端口数量限制的补丁，相关补丁在注释中会标明</li>
+<li>打开<code>Hackintool</code>，点击USB，可以在下面看到，已经连接过的端口是绿色的</li>
+<li>准备好一个USB3.0的U盘，一个USB2.0的设备，比如键盘鼠标，打开记事本</li>
+<li>把笔记本的USB接口依次用2.0和3.0的设备插一遍，记录下对应的名称</li>
+<li>如果有Type-C的话要正反插，端口不变的就是Type-C+sw，变化的就是Type-C</li>
+<li>根据记录选择连接器类型，没有插过的就选择internal</li>
+<li>选中没有变绿的接口，点击下面的减号删掉</li>
+<li>注意，保证接口数量小于等于15个，USB3.0的算两个</li>
+<li>点击右下角的导出图标</li>
+<li>把生成的ssdt文件放到<code>./EFI/CLOVER/ACPI/patched</code>路径中</li>
+<li>把生成的USBport.kext放到<code>./EFI/CLOVER/kext/Other</code>路径中</li>
+<li>回到<code>Clover Configurator</code>的内核与驱动补丁中关闭解除USB端口数量限制的补丁</li>
+<li>重启</li>
+</ul>
+<p><strong>下面的这些设置需要使用SSDT进行设置，首先下载maciASL</strong></p>
+<a class="btn" href="https://github.com/acidanthera/MaciASL/releases"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<h3 id="亮度"><a href="#亮度" class="headerlink" title="亮度"></a>亮度</h3><p>亮度设置其实有两个方法，第一种是在<code>Clover Configurator</code>中勾选添加PLNF，简单粗暴，但是这个方法和电池驱动有冲突，水火不容，所以建议采用ssdt的方法，下载下面的ssdt文件，然后放到<code>./EFI/CLOVER/ACPI/patched</code>路径中</p>
+<a class="btn" href="https://raw.githubusercontent.com/acidanthera/WhateverGreen/master/Manual/SSDT-PNLF.dsl"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<p>重启之后在偏好设置中会出现显示器亮度滑块，但是不能用键盘调节屏幕亮度，这个我试了很多种方法是都没能成功使用原来的键位调节亮度，所以只用了一个简单粗暴的方法，打开系统偏好设置-键盘-快捷键，点击显示器，点击降低和提高显示器亮度，按下想用的快捷键，注意不要发生冲突</p>
+<h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><p>CPU部分主要是变频的问题，不打补丁的话cpu一直处在睿频模式，很耗电，打补丁使用的是<a href="https://github.com/Piker-Alpha/ssdtPRGen.sh">ssdtPRGen</a></p>
+<ul>
+<li>打开终端</li>
+<li>输入命令<code>curl -o ~/ssdtPRGen.sh https://raw.githubusercontent.com/Piker-Alpha/ssdtPRGen.sh/Beta/ssdtPRGen.sh</code>下载</li>
+<li>输入命令<code>chmod +x ~/ssdtPRGen.sh</code>授予运行权限</li>
+<li>运行脚本，根据提示进行选择，最后会生成ssdt文件</li>
+<li>把生成的ssdt文件放到<code>./EFI/CLOVER/ACPI/patched</code>路径中</li>
+<li>重启</li>
+</ul>
+<p>通过安装软件来判断cpu是否能变频，我用的是<code>Intel Power Gadget</code></p>
+<a class="btn" href="https://software.intel.com/en-us/articles/intel-power-gadget"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<p>做完这些之后基本就是完美黑苹果了，登陆你的Apple ID，接着设置就好了</p>
+<p>以上</p>
+<hr>
+<h2 id="EFI下载"><a href="#EFI下载" class="headerlink" title="EFI下载"></a>EFI下载</h2><p>下载后解压，在<code>Clover Configurator</code>中生成自己的机型相关参数</p>
+<a class="btn" href="https://github.com/Siriusq/Acer-TMP645-Hackintosh/releases/download/v1.0/EFI.zip"><i class="fa fa-arrow-right fa-fw"></i>Acer TravelMate P645-SG</a>
+
+<p>到BIOS里设置clover默认启动就能愉快的用三系统了</p>
+<h1 id="Ubuntu的美化"><a href="#Ubuntu的美化" class="headerlink" title="Ubuntu的美化"></a>Ubuntu的美化</h1><p>实在是看不惯Ubuntu的基佬紫风格，美化一下。打开终端安装插件<code>apt install chrome-gnome-shell</code></p>
+<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><p>使用的主题是<code>Arc Theme</code></p>
+<a class="btn" href="https://github.com/arc-design/arc-theme"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<ul>
+<li>打开终端输入<code>sudo apt install arc-theme</code>直接安装</li>
+<li>安装完成后打开<code>优化</code></li>
+<li>把<code>主题</code>的<code>应用程序</code>和<code>Shell</code>设置为arc主题即可</li>
+</ul>
+<h2 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h2><p>主题换完后图标也要换，我用的是Papirus</p>
+<ul>
+<li>打开终端，依次输入下面三条命令</li>
+<li><code>sudo add-apt-repository ppa:papirus/papirus</code></li>
+<li><code>sudo apt-get update</code></li>
+<li><code>sudo apt-get install papirus-icon-theme</code></li>
+<li>安装完成后打开<code>优化</code></li>
+<li>把<code>主题</code>的<code>图标</code>设置为papirus即可</li>
+</ul>
+<h2 id="终端"><a href="#终端" class="headerlink" title="终端"></a>终端</h2><ul>
+<li>打开终端</li>
+<li>点击顶栏-<code>配置文件首选项</code></li>
+<li>选择配置文件</li>
+<li>点击<code>颜色</code></li>
+<li>勾选<code>使用透明背景</code></li>
+</ul>
+<h1 id="一点微小的工作"><a href="#一点微小的工作" class="headerlink" title="一点微小的工作"></a>一点微小的工作</h1><p>三系统装完之后进入win10会发现时间不对，慢了8个小时，因为Win10默认BIOS时间为本地时间，而Mac和Linux则是把BIOS时间作为UTC，正好和北京时间相差8小时，所以需要做一点微小的工作调整一下</p>
+<ul>
+<li>使用<code>Win+R</code>打开运行窗口</li>
+<li>输入<code>regedit</code>打开注册表编辑器</li>
+<li>打开路径<code>HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/TimeZoneInformation/</code></li>
+<li>右键新建<code>DWORD</code></li>
+<li>命名为<code>RealTimeIsUniversal</code></li>
+<li>设置数值为<code>1</code></li>
+<li>重启</li>
+</ul>
+<p>折腾的差不多了，开学前的日子就要愉快的肝代码了hhh</p>
+<blockquote>
+<p>感谢：<a href="https://vanilla.amd-osx.com/">AMD OS X Vanilla</a>、<a href="https://fewtarius.gitbook.io/laptopguide/">The Vanilla Laptop Guide</a>、<a href="https://hackintosh.gitbook.io/-r-hackintosh-vanilla-desktop-guide/config.plist-per-hardware/haswell">hackintosh.gitbook.io</a>、<a href="https://sleele.com/2019/06/07/%e4%bd%bf%e7%94%a8hackintool%e5%ae%9a%e5%88%b6%e9%bb%91%e8%8b%b9%e6%9e%9cusb%e9%a9%b1%e5%8a%a8/">sleele的博客</a>、<a href="https://blog.daliansky.net/">黑果小兵</a>、<a href="https://www.cnblogs.com/SemiconductorKING/p/7702410.html">SemiconductorKING</a> 提供的帮助！</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>搞机</category>
+      </categories>
+      <tags>
+        <tag>搞机</tag>
+        <tag>黑苹果</tag>
+        <tag>多系统</tag>
       </tags>
   </entry>
   <entry>
@@ -6126,6 +6129,59 @@ OFFICIAL
       </tags>
   </entry>
   <entry>
+    <title>荣耀 magic watch 表盘制作</title>
+    <url>/%E8%8D%A3%E8%80%80-magic-watch-%E8%A1%A8%E7%9B%98%E5%88%B6%E4%BD%9C.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">趁着还没开学给老爸的 Magic Watch 做了个表盘，甲方唯二的要求就是：字大+醒目</blockquote>
+
+<p><img data-src="https://s2.loli.net/2022/05/13/fswCopBAYqjnFKl.png" alt="icon"></p>
+<span id="more"></span>
+
+<h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p>刚开始搜集材料的时候看见有人说表盘要<strong>手动</strong>编辑xml文件，这不是反人类吗。。。不过好在华为已经推出了表盘设计软件<code>HwWatchFaceDesigner</code>，整个设计过程就和用<code>PhotoShop</code>P图一样<br>首先到华为的网站去下载<code>华为手表表盘开发工具</code>并解压，然后打开<code>HwWatchFaceDesigner.exe</code></p>
+<a class="btn" href="https://developer.huawei.com/consumer/cn/doc/5050601"><i class="fa fa-download fa-fw"></i>传送门</a>
+
+<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p>在解压后的文件夹里有中英文的<code>用户手册</code>，路径是<code>.\document\用户手册.pdf</code>,也可以在<code>帮助</code>中点击<code>用户手册</code>。我就不再啰嗦了，只记录一些注意事项</p>
+<ul>
+<li><code>荣耀 Magic Watch</code>的分辨率是<code>390*390</code></li>
+<li>新建工程的时候<code>表盘效果图</code>先空着，设计完成之后再截图到PS里，导出不同分辨率的效果图</li>
+<li>图层最多25个</li>
+<li>一些位置固定的图标可以到最后在PS里和背景图合成为一张图片，节省图层</li>
+<li><code>星期</code>的<code>选图</code>里面第一张图是无效的，随便添加一张，从第二张图开始才是周一</li>
+<li><code>上午下午</code>的<code>选图</code>里面第三张图要找一张空白的png图</li>
+<li><code>撤销</code>不能使用<code>ctrl+z</code>的快捷键，只能点击上面菜单栏的返回图标，而且一经保存就不能再撤回</li>
+</ul>
+<h1 id="素材"><a href="#素材" class="headerlink" title="素材"></a>素材</h1><p>制作表盘需要用到各种png格式的图片素材，下面是我使用到的素材网站<br><a href="https://www.freepik.com/">freepik</a> - 背景图片素材，未注册的话每天有下载数量限制，注册的时候需要科学上网，因为需要用到谷歌的验证服务，注册完成后不需要<br><a href="https://webgradients.com/">webgradients</a> - 渐变色配色<br><a href="https://www.iconfinder.com/">iconfinder</a> - 图标素材，这个网站有在线编辑器，点开图片后有一个<code>Open in icon editor</code>，可以在线调整好素材的颜色，省下PS的过程</p>
+<p>部分素材是需要付费的，筛选的时候勾上<code>free</code>就好了</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>目前版本的<code>华为运动健康</code>软件是不能自定义添加表盘的，需要下载老版本，百度云自取</p>
+<a class="btn" href="https://pan.baidu.com/s/1Pg0lIOtRS3fmXG8kvMkNDA"><i class="fa fa-download fa-fw"></i>提取码: mpbm</a>
+
+<p>安装的具体操作步骤如下</p>
+<ul>
+<li>先将导出的<code>hwt</code>文件拷贝到手机</li>
+<li>成功连接设备后进入<code>表盘市场</code></li>
+<li>点击右上角的三个点</li>
+<li>进入<code>隐私声明</code></li>
+<li>撤销华为主题服务</li>
+<li>退出来再重新进入<code>表盘市场</code></li>
+<li>在弹出窗口中重新给华为主题服务授权</li>
+<li>再次点击右上角的三个点，会多出一个<code>添加表盘</code>选项</li>
+<li>点击后会询问你是否是开发者，点击<code>是</code></li>
+<li>找到拷贝进手机的<code>hwt</code>文件路径，点击确定并安装</li>
+</ul>
+<p>如果觉得这个表盘不满意需要卸载的话，还要重新安装最新版的<code>华为运动健康</code>，进入<code>表盘市场</code>中的<code>我的</code>里面删除，老版本的不能在表盘市场中删除自定义的表盘，这就很尴尬，所以。。。一定要设计好了检查好了再安装，要不这个过程可是太反人类了，手表安装表盘巨慢，1秒钟才安装百分之一。。。</p>
+<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>我做的表盘已经上传到我的Github了，源文件也一起上传了，有需要的自取</p>
+<a class="btn" href="https://github.com/Siriusq/Honor-Magic-Watch-Theme-Sirius"><i class="fa fa-download fa-fw"></i>源文件</a>
+
+<a class="btn" href="https://github.com/Siriusq/Honor-Magic-Watch-Theme-Sirius/releases/download/6.0/sirius_3.1.6.hwt"><i class="fa fa-download fa-fw"></i>表盘下载</a>]]></content>
+      <categories>
+        <category>搞机</category>
+      </categories>
+      <tags>
+        <tag>搞机</tag>
+        <tag>表盘</tag>
+        <tag>荣耀 magic watch</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>软件整理</title>
     <url>/%E8%BD%AF%E4%BB%B6%E6%95%B4%E7%90%86.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">记录下平常用的软件和官网的链接，免得重装系统之后还得重新一个一个找2333333</blockquote>
@@ -6327,59 +6383,6 @@ OFFICIAL
       <tags>
         <tag>Win10</tag>
         <tag>软件</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>荣耀 magic watch 表盘制作</title>
-    <url>/%E8%8D%A3%E8%80%80-magic-watch-%E8%A1%A8%E7%9B%98%E5%88%B6%E4%BD%9C.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">趁着还没开学给老爸的 Magic Watch 做了个表盘，甲方唯二的要求就是：字大+醒目</blockquote>
-
-<p><img data-src="https://s2.loli.net/2022/05/13/fswCopBAYqjnFKl.png" alt="icon"></p>
-<span id="more"></span>
-
-<h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p>刚开始搜集材料的时候看见有人说表盘要<strong>手动</strong>编辑xml文件，这不是反人类吗。。。不过好在华为已经推出了表盘设计软件<code>HwWatchFaceDesigner</code>，整个设计过程就和用<code>PhotoShop</code>P图一样<br>首先到华为的网站去下载<code>华为手表表盘开发工具</code>并解压，然后打开<code>HwWatchFaceDesigner.exe</code></p>
-<a class="btn" href="https://developer.huawei.com/consumer/cn/doc/5050601"><i class="fa fa-download fa-fw"></i>传送门</a>
-
-<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p>在解压后的文件夹里有中英文的<code>用户手册</code>，路径是<code>.\document\用户手册.pdf</code>,也可以在<code>帮助</code>中点击<code>用户手册</code>。我就不再啰嗦了，只记录一些注意事项</p>
-<ul>
-<li><code>荣耀 Magic Watch</code>的分辨率是<code>390*390</code></li>
-<li>新建工程的时候<code>表盘效果图</code>先空着，设计完成之后再截图到PS里，导出不同分辨率的效果图</li>
-<li>图层最多25个</li>
-<li>一些位置固定的图标可以到最后在PS里和背景图合成为一张图片，节省图层</li>
-<li><code>星期</code>的<code>选图</code>里面第一张图是无效的，随便添加一张，从第二张图开始才是周一</li>
-<li><code>上午下午</code>的<code>选图</code>里面第三张图要找一张空白的png图</li>
-<li><code>撤销</code>不能使用<code>ctrl+z</code>的快捷键，只能点击上面菜单栏的返回图标，而且一经保存就不能再撤回</li>
-</ul>
-<h1 id="素材"><a href="#素材" class="headerlink" title="素材"></a>素材</h1><p>制作表盘需要用到各种png格式的图片素材，下面是我使用到的素材网站<br><a href="https://www.freepik.com/">freepik</a> - 背景图片素材，未注册的话每天有下载数量限制，注册的时候需要科学上网，因为需要用到谷歌的验证服务，注册完成后不需要<br><a href="https://webgradients.com/">webgradients</a> - 渐变色配色<br><a href="https://www.iconfinder.com/">iconfinder</a> - 图标素材，这个网站有在线编辑器，点开图片后有一个<code>Open in icon editor</code>，可以在线调整好素材的颜色，省下PS的过程</p>
-<p>部分素材是需要付费的，筛选的时候勾上<code>free</code>就好了</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>目前版本的<code>华为运动健康</code>软件是不能自定义添加表盘的，需要下载老版本，百度云自取</p>
-<a class="btn" href="https://pan.baidu.com/s/1Pg0lIOtRS3fmXG8kvMkNDA"><i class="fa fa-download fa-fw"></i>提取码: mpbm</a>
-
-<p>安装的具体操作步骤如下</p>
-<ul>
-<li>先将导出的<code>hwt</code>文件拷贝到手机</li>
-<li>成功连接设备后进入<code>表盘市场</code></li>
-<li>点击右上角的三个点</li>
-<li>进入<code>隐私声明</code></li>
-<li>撤销华为主题服务</li>
-<li>退出来再重新进入<code>表盘市场</code></li>
-<li>在弹出窗口中重新给华为主题服务授权</li>
-<li>再次点击右上角的三个点，会多出一个<code>添加表盘</code>选项</li>
-<li>点击后会询问你是否是开发者，点击<code>是</code></li>
-<li>找到拷贝进手机的<code>hwt</code>文件路径，点击确定并安装</li>
-</ul>
-<p>如果觉得这个表盘不满意需要卸载的话，还要重新安装最新版的<code>华为运动健康</code>，进入<code>表盘市场</code>中的<code>我的</code>里面删除，老版本的不能在表盘市场中删除自定义的表盘，这就很尴尬，所以。。。一定要设计好了检查好了再安装，要不这个过程可是太反人类了，手表安装表盘巨慢，1秒钟才安装百分之一。。。</p>
-<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>我做的表盘已经上传到我的Github了，源文件也一起上传了，有需要的自取</p>
-<a class="btn" href="https://github.com/Siriusq/Honor-Magic-Watch-Theme-Sirius"><i class="fa fa-download fa-fw"></i>源文件</a>
-
-<a class="btn" href="https://github.com/Siriusq/Honor-Magic-Watch-Theme-Sirius/releases/download/6.0/sirius_3.1.6.hwt"><i class="fa fa-download fa-fw"></i>表盘下载</a>]]></content>
-      <categories>
-        <category>搞机</category>
-      </categories>
-      <tags>
-        <tag>搞机</tag>
-        <tag>表盘</tag>
-        <tag>荣耀 magic watch</tag>
       </tags>
   </entry>
   <entry>
