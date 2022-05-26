@@ -1,6 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Github无法加载图片解决方法</title>
+    <url>/Github%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E5%9B%BE%E7%89%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">昨天上 Github 添加图片的时候发现图片不能正常加载了，访问全球最大的同性交友网站没有图片怎么能行（滑稽）。查了一下发现IP又挂了，修改 Hosts 后成功解决，此方法同样适用于 Github 无法访问的问题</blockquote>
+
+<span id="more"></span>
+
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>当我们通过网址访问网站的时候，需要通过 <strong>DNS 解析</strong>来把网址转换成 <strong>IP 地址</strong>，而Github上不去的原因之一就是 GFW 的 DNS 污染大法，这会导致 DNS 服务器返回的 IP 地址是错误的，自然也就无法连接网站，加载图片等资源了。另一个原因就是直接的IP封锁，GFW 会拦截带有相关 IP 的数据头，数据依然无法传输。</p>
+<p>在因特网规模还小的时候，DNS 还没有诞生，域名映射到 IP 地址的工作是由 <code>Hosts</code> 来完成的，后来网络规模迅速扩大，仅靠 <code>Hosts</code> 已经不能满足需要了，此时 DNS 服务器才登上历史舞台。</p>
+<p>虽然 DNS 抢了 Hosts 的饭碗，但是 Hosts 的优先级依然比 DNS 要高，计算机在请求 DNS 解析之前会先检查本机的 Hosts 中是否有要访问的域名和 IP 的映射关系，有的话就不需要使用 DNS 服务器，直接访问映射的IP地址即可。这就使得添加 Hosts 文件映射记录来避免 GFW 的 DNS 污染成为可能。</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>下面是<code>Windows 系统</code>上的解决方案</p>
+<ul>
+<li>在开始菜单 Windows 图标处右键单击</li>
+<li>选择 Windows PowerShell （管理员）</li>
+<li>输入<code>notepad.exe</code>并回车，打开记事本<ul>
+<li>这么做的原因是修改 Hosts 文件需要管理员权限，直接用记事本的话无法保存</li>
+</ul>
+</li>
+<li>在记事本菜单栏依次点击<code>文件</code>，<code>打开</code></li>
+<li>在<code>C:\Windows\System32\drivers\etc</code>路径中找到 Hosts 文件并打开（<code>Ubuntu</code>和<code>Macos</code>的文件路径一般为<code>/etc/hosts</code>，先复制出来，替换完成后再粘贴回去替换）</li>
+<li>在最下面添加下面的映射  <figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"># Github</span><br><span class="line"><span class="number">192</span>.<span class="number">30</span>.<span class="number">253</span>.<span class="number">112</span> github.com</span><br><span class="line"><span class="number">140</span>.<span class="number">82</span>.<span class="number">113</span>.<span class="number">19</span> gist.github.com</span><br><span class="line"><span class="number">185</span>.<span class="number">199</span>.<span class="number">108</span>.<span class="number">153</span> assets-cdn.github.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> raw.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> gist.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> cloud.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> camo.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars0.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars1.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars2.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars3.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars4.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars5.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars6.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars7.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars8.githubusercontent.com</span><br></pre></td></tr></table></figure></li>
+<li><code>ctrl+s</code>保存，刷新网页一下就能正常访问了</li>
+<li>如果依然不能访问，需要刷新 DN S缓存 + 重启浏览器<ul>
+<li>Windows：<code>ipconfig /flushdns</code></li>
+<li>Ubuntu：<code>sudo systemctl restart nscd</code></li>
+<li>Macos：<code>sudo killall -HUP mDNSResponder</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="更新-Hosts"><a href="#更新-Hosts" class="headerlink" title="更新 Hosts"></a>更新 Hosts</h1><p>由于 GFW 孜孜不倦的工作，这些 IP 隔一段时间就会被干掉，所以我们隔一段时间按就需要修改 Hosts 文件来访问被干掉的网站</p>
+<ul>
+<li>打开 <a href="https://www.ipaddress.com/">ipaddress</a></li>
+<li>逐条输入 Hosts 中的相关域名</li>
+<li>用返回的新 IP 地址替换掉原来的地址</li>
+<li>保存</li>
+</ul>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>Github</tag>
+        <tag>Win10</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HEXO部署</title>
+    <url>/HEXO%E9%83%A8%E7%BD%B2.html</url>
+    <content><![CDATA[<p>博客已经搭建成功了，下一步是用Hexo配合Markdown写博客了</p>
+<h1 id="Hexo写作流程"><a href="#Hexo写作流程" class="headerlink" title="Hexo写作流程"></a>Hexo写作流程</h1><p>博客写作流程相对于搭建要简单太多了，只需要以下几步：</p>
+<ul>
+<li>创建新博客文件</li>
+<li>生成新网页</li>
+<li>部署到Github Page</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="创建新博客文件"><a href="#创建新博客文件" class="headerlink" title="创建新博客文件"></a>创建新博客文件</h2><ol>
+<li><p>在博客文件夹中右键打开Git bash</p>
+</li>
+<li><p>输入<code>hexo new &quot;博客标题&quot;</code> 新建一个md文件，双引号内的名字就是文章标题</p>
+</li>
+<li><p>进入<code>博客根目录/source/_posts</code> 文件夹，可以看到新创建的文件<code>博客标题.md</code>,md后缀代表Markdown文件</p>
+</li>
+<li><p>双击使用安装的Markdown编辑器打开进行编辑</p>
+<ul>
+<li>文件内会默认生成以下内容(以本博客为例）：  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   ---`</span><br><span class="line">   title: HEXO&amp;Markdown</span><br><span class="line">date: 2019-04-04 10:50:41</span><br><span class="line">tags: [Hexo,Markdown]</span><br><span class="line">   ---`</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其中<code>title</code>就是博客标题</li>
+<li><code>date</code>是博客的创建时间，不用修改</li>
+<li><code>tags</code>是博客的标签</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>踩坑：<br>此处注意冒号后面的空格</p>
+</blockquote>
+<ul>
+<li>在<code>---</code>分割线后就是我们写博文的地方了，按照Markdown语法规则编写即可</li>
+</ul>
+</li>
+<li><p>编写完成后保存</p>
+</li>
+</ol>
+<h2 id="生成新网页并部署"><a href="#生成新网页并部署" class="headerlink" title="生成新网页并部署"></a>生成新网页并部署</h2><ol>
+<li>打开Git bash</li>
+<li>输入命令<code>hexo clean</code>清除网页缓存</li>
+<li>输入命令<code>hexo g</code>生成新的网页文件</li>
+<li>（可选）输入命令<code>hexo s</code>生成本地服务并前往返回的网址预览网页<blockquote>
+<p>踩坑：<br>Git bash内的复制命令并不是熟悉的<code>ctrl c</code>，而是<code>ctrl ins</code>，使用<code>ctrl c</code>复制预览网址会结束本地服务进程，所以预览网页会没反应</p>
+</blockquote>
+</li>
+<li>输入命令<code>hexo d</code>将网页部署到Github Page</li>
+</ol>
+<hr>
+<p><strong>以上是完整流程，每次更新博客的时候都要重复一遍上述流程</strong><br>省事的话可以合并命令，直接用<code>hexo cl</code>和<code>hexo g -d</code>即可更新</p>
+]]></content>
+      <categories>
+        <category>网站配置</category>
+      </categories>
+      <tags>
+        <tag>HEXO</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Grasshopper</title>
     <url>/Grasshopper.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">把大二到现在攒下来的用来画（shui）分析图的Grasshopper电池做一下汇总，并记录一下简易使用方法供建筑狗使用，感兴趣的话为何不尝试一下转行程序猿呢（~~劝退~~）</blockquote>
@@ -127,111 +232,6 @@
       <tags>
         <tag>Grasshopper</tag>
         <tag>建筑</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Github无法加载图片解决方法</title>
-    <url>/Github%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E5%9B%BE%E7%89%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">昨天上 Github 添加图片的时候发现图片不能正常加载了，访问全球最大的同性交友网站没有图片怎么能行（滑稽）。查了一下发现IP又挂了，修改 Hosts 后成功解决，此方法同样适用于 Github 无法访问的问题</blockquote>
-
-<span id="more"></span>
-
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>当我们通过网址访问网站的时候，需要通过 <strong>DNS 解析</strong>来把网址转换成 <strong>IP 地址</strong>，而Github上不去的原因之一就是 GFW 的 DNS 污染大法，这会导致 DNS 服务器返回的 IP 地址是错误的，自然也就无法连接网站，加载图片等资源了。另一个原因就是直接的IP封锁，GFW 会拦截带有相关 IP 的数据头，数据依然无法传输。</p>
-<p>在因特网规模还小的时候，DNS 还没有诞生，域名映射到 IP 地址的工作是由 <code>Hosts</code> 来完成的，后来网络规模迅速扩大，仅靠 <code>Hosts</code> 已经不能满足需要了，此时 DNS 服务器才登上历史舞台。</p>
-<p>虽然 DNS 抢了 Hosts 的饭碗，但是 Hosts 的优先级依然比 DNS 要高，计算机在请求 DNS 解析之前会先检查本机的 Hosts 中是否有要访问的域名和 IP 的映射关系，有的话就不需要使用 DNS 服务器，直接访问映射的IP地址即可。这就使得添加 Hosts 文件映射记录来避免 GFW 的 DNS 污染成为可能。</p>
-<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>下面是<code>Windows 系统</code>上的解决方案</p>
-<ul>
-<li>在开始菜单 Windows 图标处右键单击</li>
-<li>选择 Windows PowerShell （管理员）</li>
-<li>输入<code>notepad.exe</code>并回车，打开记事本<ul>
-<li>这么做的原因是修改 Hosts 文件需要管理员权限，直接用记事本的话无法保存</li>
-</ul>
-</li>
-<li>在记事本菜单栏依次点击<code>文件</code>，<code>打开</code></li>
-<li>在<code>C:\Windows\System32\drivers\etc</code>路径中找到 Hosts 文件并打开（<code>Ubuntu</code>和<code>Macos</code>的文件路径一般为<code>/etc/hosts</code>，先复制出来，替换完成后再粘贴回去替换）</li>
-<li>在最下面添加下面的映射  <figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"># Github</span><br><span class="line"><span class="number">192</span>.<span class="number">30</span>.<span class="number">253</span>.<span class="number">112</span> github.com</span><br><span class="line"><span class="number">140</span>.<span class="number">82</span>.<span class="number">113</span>.<span class="number">19</span> gist.github.com</span><br><span class="line"><span class="number">185</span>.<span class="number">199</span>.<span class="number">108</span>.<span class="number">153</span> assets-cdn.github.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> raw.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> gist.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> cloud.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> camo.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars0.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars1.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars2.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars3.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars4.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars5.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars6.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars7.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars8.githubusercontent.com</span><br></pre></td></tr></table></figure></li>
-<li><code>ctrl+s</code>保存，刷新网页一下就能正常访问了</li>
-<li>如果依然不能访问，需要刷新 DN S缓存 + 重启浏览器<ul>
-<li>Windows：<code>ipconfig /flushdns</code></li>
-<li>Ubuntu：<code>sudo systemctl restart nscd</code></li>
-<li>Macos：<code>sudo killall -HUP mDNSResponder</code></li>
-</ul>
-</li>
-</ul>
-<h1 id="更新-Hosts"><a href="#更新-Hosts" class="headerlink" title="更新 Hosts"></a>更新 Hosts</h1><p>由于 GFW 孜孜不倦的工作，这些 IP 隔一段时间就会被干掉，所以我们隔一段时间按就需要修改 Hosts 文件来访问被干掉的网站</p>
-<ul>
-<li>打开 <a href="https://www.ipaddress.com/">ipaddress</a></li>
-<li>逐条输入 Hosts 中的相关域名</li>
-<li>用返回的新 IP 地址替换掉原来的地址</li>
-<li>保存</li>
-</ul>
-]]></content>
-      <categories>
-        <category>折腾</category>
-      </categories>
-      <tags>
-        <tag>Github</tag>
-        <tag>Win10</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HEXO部署</title>
-    <url>/HEXO%E9%83%A8%E7%BD%B2.html</url>
-    <content><![CDATA[<p>博客已经搭建成功了，下一步是用Hexo配合Markdown写博客了</p>
-<h1 id="Hexo写作流程"><a href="#Hexo写作流程" class="headerlink" title="Hexo写作流程"></a>Hexo写作流程</h1><p>博客写作流程相对于搭建要简单太多了，只需要以下几步：</p>
-<ul>
-<li>创建新博客文件</li>
-<li>生成新网页</li>
-<li>部署到Github Page</li>
-</ul>
-<span id="more"></span>
-
-<h2 id="创建新博客文件"><a href="#创建新博客文件" class="headerlink" title="创建新博客文件"></a>创建新博客文件</h2><ol>
-<li><p>在博客文件夹中右键打开Git bash</p>
-</li>
-<li><p>输入<code>hexo new &quot;博客标题&quot;</code> 新建一个md文件，双引号内的名字就是文章标题</p>
-</li>
-<li><p>进入<code>博客根目录/source/_posts</code> 文件夹，可以看到新创建的文件<code>博客标题.md</code>,md后缀代表Markdown文件</p>
-</li>
-<li><p>双击使用安装的Markdown编辑器打开进行编辑</p>
-<ul>
-<li>文件内会默认生成以下内容(以本博客为例）：  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   ---`</span><br><span class="line">   title: HEXO&amp;Markdown</span><br><span class="line">date: 2019-04-04 10:50:41</span><br><span class="line">tags: [Hexo,Markdown]</span><br><span class="line">   ---`</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>其中<code>title</code>就是博客标题</li>
-<li><code>date</code>是博客的创建时间，不用修改</li>
-<li><code>tags</code>是博客的标签</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>踩坑：<br>此处注意冒号后面的空格</p>
-</blockquote>
-<ul>
-<li>在<code>---</code>分割线后就是我们写博文的地方了，按照Markdown语法规则编写即可</li>
-</ul>
-</li>
-<li><p>编写完成后保存</p>
-</li>
-</ol>
-<h2 id="生成新网页并部署"><a href="#生成新网页并部署" class="headerlink" title="生成新网页并部署"></a>生成新网页并部署</h2><ol>
-<li>打开Git bash</li>
-<li>输入命令<code>hexo clean</code>清除网页缓存</li>
-<li>输入命令<code>hexo g</code>生成新的网页文件</li>
-<li>（可选）输入命令<code>hexo s</code>生成本地服务并前往返回的网址预览网页<blockquote>
-<p>踩坑：<br>Git bash内的复制命令并不是熟悉的<code>ctrl c</code>，而是<code>ctrl ins</code>，使用<code>ctrl c</code>复制预览网址会结束本地服务进程，所以预览网页会没反应</p>
-</blockquote>
-</li>
-<li>输入命令<code>hexo d</code>将网页部署到Github Page</li>
-</ol>
-<hr>
-<p><strong>以上是完整流程，每次更新博客的时候都要重复一遍上述流程</strong><br>省事的话可以合并命令，直接用<code>hexo cl</code>和<code>hexo g -d</code>即可更新</p>
-]]></content>
-      <categories>
-        <category>网站配置</category>
-      </categories>
-      <tags>
-        <tag>HEXO</tag>
       </tags>
   </entry>
   <entry>
@@ -782,95 +782,6 @@
         <tag>环境变量</tag>
         <tag>Java</tag>
         <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Jupyter Notebook 食用指南</title>
-    <url>/Jupyter-Notebook-%E9%A3%9F%E7%94%A8%E6%8C%87%E5%8D%97.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">延期开学的咸鱼在家无事可做，打算刷刷 MOOC 掉点头发，记笔记的时候发现 OneNote 没法记录代码，缩进高亮行号都没有，于是就想到了一直在电脑里躺尸的 Jupyter Notebook，记录下安装及食用的方法</blockquote>
-
-<span id="more"></span>
-
-<h1 id="安装-Jupyter-Notebook"><a href="#安装-Jupyter-Notebook" class="headerlink" title="安装 Jupyter Notebook"></a>安装 Jupyter Notebook</h1><p>安装 Jupyter Notebook 之前需要先安装好 Python 或 Anaconda，可以使用 <code>conda</code>（Anaconda） 和 <code>pip</code> 两种方式安装</p>
-<p>Jupyter 官方推荐按使用 <code>conda</code>（Anaconda） 来安装，安装 Anaconda 的时候一般会默认安装 Jupyter Notebook，但如果没有安装的话就使用下面的命令</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">conda install jupyter notebook</span><br></pre></td></tr></table></figure>
-
-<p>不用 Anaconda 的话就用 pip 安装，命令为</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">pip install jupyter notebook</span><br></pre></td></tr></table></figure>
-
-<h2 id="关于-Anaconda-和-Python-的关系"><a href="#关于-Anaconda-和-Python-的关系" class="headerlink" title="关于 Anaconda 和 Python 的关系"></a>关于 Anaconda 和 Python 的关系</h2><p>这里顺带解释一波 Anaconda 和 Python 的关系，众所周知，Python 是一门编程语言（手动狗头），而 Anaconda 相当于 Python 的发行版，带有很多科学计算类的库以及包管理器 conda。可以用 Ubuntu 和 Linux 的关系来类比。</p>
-<p>此外安装 Anaconda 后也要手动添加系统环境变量</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\ProgramData\Anaconda3\Scripts</span><br><span class="line">C:\ProgramData\Anaconda3</span><br><span class="line">C:\ProgramData\Anaconda3\Library\bin</span><br></pre></td></tr></table></figure>
-
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="安装-Java-扩展"><a href="#安装-Java-扩展" class="headerlink" title="安装 Java 扩展"></a>安装 Java 扩展</h2><p>我用的Java插件是 <a href="https://github.com/SpencerPark/IJava">IJava</a>，支持代码运行、自动联想、错误提示等功能，安装方式为</p>
-<ol>
-<li>在 <a href="https://github.com/SpencerPark/IJava/releases">release</a> 页面下载压缩包</li>
-<li>解压缩并打开解压后的文件夹</li>
-<li>在解压后的文件夹以管理员身份运行终端</li>
-<li>输入 <code>python install.py -h</code></li>
-<li>输入 <code>jupyter kernelspec list</code> 检查是否安装成功，成功的话会返回<code>java  C:\ProgramData\jupyter\kernels\java</code></li>
-</ol>
-<h2 id="安装-Nbextensions"><a href="#安装-Nbextensions" class="headerlink" title="安装 Nbextensions"></a>安装 Nbextensions</h2><p>这是一个扩展的集合，有诸如设置自动保存的时间间隔、支持更多的 Latex 元素、设置代码字体大小等功能，我就不列举了，插件中的每个功能都带有详细的介绍。我主要用它来显示 Markdown 的目录。安装方式为</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">conda install -c conda-forge jupyter_contrib_nbextensions</span><br></pre></td></tr></table></figure>
-
-<p>安装完会在 Jupyter 的状态栏显示，如果没有的话使用这个命令</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">jupyter contrib nbextension install --user --skip-running-check</span><br></pre></td></tr></table></figure>
-
-<p>在里面勾选 <code>Table of Contents(2)</code> 就可以启用目录功能了</p>
-<h2 id="安装-nb-conda"><a href="#安装-nb-conda" class="headerlink" title="安装 nb_conda"></a>安装 nb_conda</h2><p>nb_conda 主要用于多种运行环境的切换，安装命令为</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">conda install nb_conda</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改默认存储位置"><a href="#修改默认存储位置" class="headerlink" title="修改默认存储位置"></a>修改默认存储位置</h2><p>Jupyter Notebook 默认的存储位置已经有很多文件了，非常杂乱，下面要做的就是换一个指定的文件夹存储笔记</p>
-<ol>
-<li>首先需要创建 Jupyter 的配置文件 <code>C:\Users\Sun\.jupyter\jupyter_notebook_config.py</code> ，命令为 <figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure></li>
-<li>打开 <code>C:\Users\Sun\.jupyter\jupyter_notebook_config.py</code> ，搜索 <code>c.NotebookApp.notebook_dir</code>，删掉前面的<code>#</code>，然后把指定文件夹的目录复制到单引号之间，修改完是这个亚子 <figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment">## The directory to use for notebooks and kernels.</span></span><br><span class="line">c.NotebookApp.notebook_dir = <span class="string">&#x27;E:\Jupyter&#x27;</span></span><br></pre></td></tr></table></figure></li>
-<li>保存文件并打开 Jupyter Notebook 查看是否成功</li>
-</ol>
-<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><ul>
-<li>安装完成后在终端输入 <code>jupyter notebook</code> 就可以在浏览器中打开，默认地址为 <code>http://localhost:8888</code></li>
-<li>使用<code>jupyter notebook --port port_number</code>可以指定端口(port_number)启动</li>
-<li>使用<code>jupyter notebook notebook_name.ipynb</code>可以启动对应名称(notebook_name)的笔记</li>
-<li>使用<code>jupyter notebook --no-browser</code>可以只启动服务而不启动浏览器</li>
-</ul>
-<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>结束的方法有两种</p>
-<ul>
-<li>在浏览器页面点击 Quit</li>
-<li>在终端中使用 <code>ctrl + c</code> 结束运行</li>
-</ul>
-<h2 id="主页操作"><a href="#主页操作" class="headerlink" title="主页操作"></a>主页操作</h2><p><img data-src="https://s2.loli.net/2022/05/13/Oy5mb7ZerDd4V2I.png" alt="主页操作"></p>
-<h2 id="笔记操作"><a href="#笔记操作" class="headerlink" title="笔记操作"></a>笔记操作</h2><p><img data-src="https://s2.loli.net/2022/05/13/qxvI6sUtpoETQOw.png" alt="笔记操作"></p>
-<p>另外点击笔记标题（Untitled）那里可以重命名</p>
-<h2 id="Markdown-内部跳转"><a href="#Markdown-内部跳转" class="headerlink" title="Markdown 内部跳转"></a>Markdown 内部跳转</h2><p>Jupyter Notebook 在 Markdown 模式下可以实现内部跳转，示例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-attr">[示例]</span>(<span class="selector-id">#link</span>)</span><br><span class="line">跳转中间的内容</span><br><span class="line">&lt;<span class="selector-tag">a</span> id=link&gt;跳转提示语&lt;/<span class="selector-tag">a</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<p>跳转提示语可以不加，不加的话跳转到的地方没有提示</p>
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>在 Python 内核下可以使用Shell命令，在命令前加 <code>%</code>即可</p>
-<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">%pwd <span class="comment"># 获取文件夹绝对路径</span></span><br><span class="line">%ls  <span class="comment"># 获取当前文件夹文件信息</span></span><br><span class="line">%run 文件路径 <span class="comment">#直接运行本地文件</span></span><br><span class="line">%load 文件路径 <span class="comment">#加载本地文件</span></span><br><span class="line">%load URL <span class="comment">#加载指定网站的源代码，如https://www.baidu.com/</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>Jupyter Notebook 有两种不同的键盘输入模式. 编辑模式可以将代码或文本输入到一个单元格中，并通过一个绿色的单元格来表示。命令模式将键盘与笔记本级命令绑定在一起，并通过一个灰色的单元格边界显示，该边框为蓝色的左边框。</p>
-<h3 id="编辑模式"><a href="#编辑模式" class="headerlink" title="编辑模式"></a>编辑模式</h3><p><img data-src="https://s2.loli.net/2022/05/13/jdkRQwH8mcMhgyr.png" alt="编辑模式"></p>
-<h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><p><img data-src="https://s2.loli.net/2022/05/13/fskpXI5jeJir2b7.png" alt="命令模式"></p>
-<h3 id="自定义快捷键"><a href="#自定义快捷键" class="headerlink" title="自定义快捷键"></a>自定义快捷键</h3><p>Jupyter Notebook 中原有的快捷键数量不是很多，但是预留了自定义快捷键的空间，在 <code>Help - Edit Keyboard Shortcuts</code> 中可以进行设置，在 <code>add shortcut</code> 中填入对应的按键然后点击右侧的 <code>+</code> 即可。这里注意 </p>
-<ul>
-<li><code>Ctrl、Shift、Alt</code> 等要输入完整字母，不能直接识别</li>
-<li>两个按键中间用 <code>-</code> 来连接</li>
-<li>设置完成记得点击右下角的确定</li>
-</ul>
-<p>在这里我设置了两个快捷键</p>
-<ul>
-<li>clear cell output，清除单元格的输出结果，快捷键 <code>Alt-Shif-D</code></li>
-<li>clear all cells output，清除当前笔记所有单元格的输出结果，快捷键 <code>Alt-Ctrl-D</code></li>
-</ul>
-<blockquote>
-<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/33105153">https://zhuanlan.zhihu.com/p/33105153</a><br><a href="https://www.zhihu.com/question/380990243">https://www.zhihu.com/question/380990243</a><br><a href="https://blog.csdn.net/qq_34992030/article/details/89175633">https://blog.csdn.net/qq_34992030/article/details/89175633</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>程序猿</category>
-      </categories>
-      <tags>
-        <tag>Win10</tag>
-        <tag>Jupyter</tag>
       </tags>
   </entry>
   <entry>
@@ -1486,6 +1397,95 @@
       </tags>
   </entry>
   <entry>
+    <title>Jupyter Notebook 食用指南</title>
+    <url>/Jupyter-Notebook-%E9%A3%9F%E7%94%A8%E6%8C%87%E5%8D%97.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">延期开学的咸鱼在家无事可做，打算刷刷 MOOC 掉点头发，记笔记的时候发现 OneNote 没法记录代码，缩进高亮行号都没有，于是就想到了一直在电脑里躺尸的 Jupyter Notebook，记录下安装及食用的方法</blockquote>
+
+<span id="more"></span>
+
+<h1 id="安装-Jupyter-Notebook"><a href="#安装-Jupyter-Notebook" class="headerlink" title="安装 Jupyter Notebook"></a>安装 Jupyter Notebook</h1><p>安装 Jupyter Notebook 之前需要先安装好 Python 或 Anaconda，可以使用 <code>conda</code>（Anaconda） 和 <code>pip</code> 两种方式安装</p>
+<p>Jupyter 官方推荐按使用 <code>conda</code>（Anaconda） 来安装，安装 Anaconda 的时候一般会默认安装 Jupyter Notebook，但如果没有安装的话就使用下面的命令</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">conda install jupyter notebook</span><br></pre></td></tr></table></figure>
+
+<p>不用 Anaconda 的话就用 pip 安装，命令为</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">pip install jupyter notebook</span><br></pre></td></tr></table></figure>
+
+<h2 id="关于-Anaconda-和-Python-的关系"><a href="#关于-Anaconda-和-Python-的关系" class="headerlink" title="关于 Anaconda 和 Python 的关系"></a>关于 Anaconda 和 Python 的关系</h2><p>这里顺带解释一波 Anaconda 和 Python 的关系，众所周知，Python 是一门编程语言（手动狗头），而 Anaconda 相当于 Python 的发行版，带有很多科学计算类的库以及包管理器 conda。可以用 Ubuntu 和 Linux 的关系来类比。</p>
+<p>此外安装 Anaconda 后也要手动添加系统环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\ProgramData\Anaconda3\Scripts</span><br><span class="line">C:\ProgramData\Anaconda3</span><br><span class="line">C:\ProgramData\Anaconda3\Library\bin</span><br></pre></td></tr></table></figure>
+
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="安装-Java-扩展"><a href="#安装-Java-扩展" class="headerlink" title="安装 Java 扩展"></a>安装 Java 扩展</h2><p>我用的Java插件是 <a href="https://github.com/SpencerPark/IJava">IJava</a>，支持代码运行、自动联想、错误提示等功能，安装方式为</p>
+<ol>
+<li>在 <a href="https://github.com/SpencerPark/IJava/releases">release</a> 页面下载压缩包</li>
+<li>解压缩并打开解压后的文件夹</li>
+<li>在解压后的文件夹以管理员身份运行终端</li>
+<li>输入 <code>python install.py -h</code></li>
+<li>输入 <code>jupyter kernelspec list</code> 检查是否安装成功，成功的话会返回<code>java  C:\ProgramData\jupyter\kernels\java</code></li>
+</ol>
+<h2 id="安装-Nbextensions"><a href="#安装-Nbextensions" class="headerlink" title="安装 Nbextensions"></a>安装 Nbextensions</h2><p>这是一个扩展的集合，有诸如设置自动保存的时间间隔、支持更多的 Latex 元素、设置代码字体大小等功能，我就不列举了，插件中的每个功能都带有详细的介绍。我主要用它来显示 Markdown 的目录。安装方式为</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">conda install -c conda-forge jupyter_contrib_nbextensions</span><br></pre></td></tr></table></figure>
+
+<p>安装完会在 Jupyter 的状态栏显示，如果没有的话使用这个命令</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">jupyter contrib nbextension install --user --skip-running-check</span><br></pre></td></tr></table></figure>
+
+<p>在里面勾选 <code>Table of Contents(2)</code> 就可以启用目录功能了</p>
+<h2 id="安装-nb-conda"><a href="#安装-nb-conda" class="headerlink" title="安装 nb_conda"></a>安装 nb_conda</h2><p>nb_conda 主要用于多种运行环境的切换，安装命令为</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">conda install nb_conda</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改默认存储位置"><a href="#修改默认存储位置" class="headerlink" title="修改默认存储位置"></a>修改默认存储位置</h2><p>Jupyter Notebook 默认的存储位置已经有很多文件了，非常杂乱，下面要做的就是换一个指定的文件夹存储笔记</p>
+<ol>
+<li>首先需要创建 Jupyter 的配置文件 <code>C:\Users\Sun\.jupyter\jupyter_notebook_config.py</code> ，命令为 <figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure></li>
+<li>打开 <code>C:\Users\Sun\.jupyter\jupyter_notebook_config.py</code> ，搜索 <code>c.NotebookApp.notebook_dir</code>，删掉前面的<code>#</code>，然后把指定文件夹的目录复制到单引号之间，修改完是这个亚子 <figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment">## The directory to use for notebooks and kernels.</span></span><br><span class="line">c.NotebookApp.notebook_dir = <span class="string">&#x27;E:\Jupyter&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>保存文件并打开 Jupyter Notebook 查看是否成功</li>
+</ol>
+<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><ul>
+<li>安装完成后在终端输入 <code>jupyter notebook</code> 就可以在浏览器中打开，默认地址为 <code>http://localhost:8888</code></li>
+<li>使用<code>jupyter notebook --port port_number</code>可以指定端口(port_number)启动</li>
+<li>使用<code>jupyter notebook notebook_name.ipynb</code>可以启动对应名称(notebook_name)的笔记</li>
+<li>使用<code>jupyter notebook --no-browser</code>可以只启动服务而不启动浏览器</li>
+</ul>
+<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>结束的方法有两种</p>
+<ul>
+<li>在浏览器页面点击 Quit</li>
+<li>在终端中使用 <code>ctrl + c</code> 结束运行</li>
+</ul>
+<h2 id="主页操作"><a href="#主页操作" class="headerlink" title="主页操作"></a>主页操作</h2><p><img data-src="https://s2.loli.net/2022/05/13/Oy5mb7ZerDd4V2I.png" alt="主页操作"></p>
+<h2 id="笔记操作"><a href="#笔记操作" class="headerlink" title="笔记操作"></a>笔记操作</h2><p><img data-src="https://s2.loli.net/2022/05/13/qxvI6sUtpoETQOw.png" alt="笔记操作"></p>
+<p>另外点击笔记标题（Untitled）那里可以重命名</p>
+<h2 id="Markdown-内部跳转"><a href="#Markdown-内部跳转" class="headerlink" title="Markdown 内部跳转"></a>Markdown 内部跳转</h2><p>Jupyter Notebook 在 Markdown 模式下可以实现内部跳转，示例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-attr">[示例]</span>(<span class="selector-id">#link</span>)</span><br><span class="line">跳转中间的内容</span><br><span class="line">&lt;<span class="selector-tag">a</span> id=link&gt;跳转提示语&lt;/<span class="selector-tag">a</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>跳转提示语可以不加，不加的话跳转到的地方没有提示</p>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>在 Python 内核下可以使用Shell命令，在命令前加 <code>%</code>即可</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">%pwd <span class="comment"># 获取文件夹绝对路径</span></span><br><span class="line">%ls  <span class="comment"># 获取当前文件夹文件信息</span></span><br><span class="line">%run 文件路径 <span class="comment">#直接运行本地文件</span></span><br><span class="line">%load 文件路径 <span class="comment">#加载本地文件</span></span><br><span class="line">%load URL <span class="comment">#加载指定网站的源代码，如https://www.baidu.com/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>Jupyter Notebook 有两种不同的键盘输入模式. 编辑模式可以将代码或文本输入到一个单元格中，并通过一个绿色的单元格来表示。命令模式将键盘与笔记本级命令绑定在一起，并通过一个灰色的单元格边界显示，该边框为蓝色的左边框。</p>
+<h3 id="编辑模式"><a href="#编辑模式" class="headerlink" title="编辑模式"></a>编辑模式</h3><p><img data-src="https://s2.loli.net/2022/05/13/jdkRQwH8mcMhgyr.png" alt="编辑模式"></p>
+<h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><p><img data-src="https://s2.loli.net/2022/05/13/fskpXI5jeJir2b7.png" alt="命令模式"></p>
+<h3 id="自定义快捷键"><a href="#自定义快捷键" class="headerlink" title="自定义快捷键"></a>自定义快捷键</h3><p>Jupyter Notebook 中原有的快捷键数量不是很多，但是预留了自定义快捷键的空间，在 <code>Help - Edit Keyboard Shortcuts</code> 中可以进行设置，在 <code>add shortcut</code> 中填入对应的按键然后点击右侧的 <code>+</code> 即可。这里注意 </p>
+<ul>
+<li><code>Ctrl、Shift、Alt</code> 等要输入完整字母，不能直接识别</li>
+<li>两个按键中间用 <code>-</code> 来连接</li>
+<li>设置完成记得点击右下角的确定</li>
+</ul>
+<p>在这里我设置了两个快捷键</p>
+<ul>
+<li>clear cell output，清除单元格的输出结果，快捷键 <code>Alt-Shif-D</code></li>
+<li>clear all cells output，清除当前笔记所有单元格的输出结果，快捷键 <code>Alt-Ctrl-D</code></li>
+</ul>
+<blockquote>
+<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/33105153">https://zhuanlan.zhihu.com/p/33105153</a><br><a href="https://www.zhihu.com/question/380990243">https://www.zhihu.com/question/380990243</a><br><a href="https://blog.csdn.net/qq_34992030/article/details/89175633">https://blog.csdn.net/qq_34992030/article/details/89175633</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>程序猿</category>
+      </categories>
+      <tags>
+        <tag>Win10</tag>
+        <tag>Jupyter</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>开站纪念</title>
     <url>/New.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">第一篇博客，搭网站踩坑踩到自闭，留下当作开站纪念了</blockquote>
@@ -1519,7 +1519,7 @@
 <li>图片查看工具从<code>mediumzoom</code>切换为<code>fancybox</code></li>
 <li>开启<code>pangu</code>，自动在汉字和单词之间添加空格</li>
 <li>开启<code>quicklink</code>预读取，提高加载速度</li>
-<li>字体更换为<code>思源宋体</code></li>
+<li>字体更换为<code>思源宋体</code>与<code>Fira Code</code></li>
 <li>图片全部转移到图床 sm.ms</li>
 <li>必应搜索收录</li>
 <li>新的看板娘</li>
@@ -1557,11 +1557,11 @@
 </ul>
 <p><img data-src="https://s2.loli.net/2022/05/15/tmeGD8vOcCZxky2.png" alt="举个栗子🌰"></p>
 <p>然后把链接粘贴到对应位置即可</p>
-<h1 id="字体更换"><a href="#字体更换" class="headerlink" title="字体更换"></a>字体更换</h1><p>默认的字体在高分屏上有点糊，就换成了很多博客都在用<code>思源宋体</code>，代码字体换成了<code>Fira Code</code>。更多字体可以去<code>Google Fonts</code>找</p>
+<h1 id="字体更换"><a href="#字体更换" class="headerlink" title="字体更换"></a>字体更换</h1><p>默认的字体在高分屏上有点糊，就换成了很多博客都在用<code>思源宋体</code>，代码字体也换成了<code>Fira Code</code>与<code>思源宋体</code>。Next现在支持按优先级选用字体，如果排在前面的字体中找不到需要的字符，就会使用下一个字体，如果所有指定字体都没有需要的字符，则会使用默认字体，在Windows下为微软雅黑。更多字体可以去<code>Google Fonts</code>找</p>
 <div class="note info"><p><a class="btn" href="https://fonts.google.com/"><i class="fa fa-torii-gate fa-fw"></i>Google Fonts 传送门</a></p></div>
 
 <p>打开Next主题的配置文件<code>_config.next.yml</code>，定位到<code># Font Settings</code>，更改下面几个选项，<code>Noto Serif SC</code>即<code>思源宋体</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">font:</span><br><span class="line">  enable: true</span><br><span class="line"></span><br><span class="line">  global:</span><br><span class="line">    external: true</span><br><span class="line">    family: Noto Serif SC</span><br><span class="line">    size:</span><br><span class="line"></span><br><span class="line">  codes:</span><br><span class="line">    external: true</span><br><span class="line">    family: Fira Code</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">font:</span><br><span class="line">  enable: true</span><br><span class="line"></span><br><span class="line">  global:</span><br><span class="line">    external: true</span><br><span class="line">    family: Noto Serif SC</span><br><span class="line">    size:</span><br><span class="line"></span><br><span class="line">  codes:</span><br><span class="line">    external: true</span><br><span class="line">    family: Fira Code, Noto Serif SC</span><br></pre></td></tr></table></figure>
 
 
 <h1 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h1><p>图床我选用的是<code>sm.ms</code>，免费版有5GB容量，而且它在国内的访问速度和稳定性都不错，足够我的博客使用了。单次上传图片上限是10张，支持jpg、png、gif等常用格式，并且在上传后会自动生成Markdown使用的图片链接。</p>
@@ -1702,6 +1702,147 @@
       <tags>
         <tag>HEXO</tag>
         <tag>Next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OneDrive同步本地任意文件夹</title>
+    <url>/OneDrive%E5%90%8C%E6%AD%A5%E6%9C%AC%E5%9C%B0%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E5%A4%B9.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">使用mklink命令创建OneDrive与博客Markdown文件夹的符号链接，实现同步的目的</blockquote>
+
+<span id="more"></span>
+
+<p>为了能在其他设备上写博客，我曾经把整个文件夹扔到了OneDrive上，但是后来发现这样每次执行<code>hexo cl &amp;&amp; hexo g</code>时都会产生大量的文件变动，对OneDrive服务器属实不太友好，毕竟一直在白嫖🐶。后来就只保留了<code>./source/_posts</code>文件夹，每次写完文章后手动复制粘贴过去。前几天突发奇想，能不能让OneDrive自动同步这个文件夹，搜了一圈就发现了<code>mklink</code>这个命令。</p>
+<div class="note info"><p>下面有一些关于`mklink`命令的说明，不想看的话直接点按钮跳过 <a class="btn" href="#OneDrive创建符号链接"><i class="fa fa-forward fa-fw"></i>跳过</a></p></div>
+
+
+<h1 id="mklink命令简介"><a href="#mklink命令简介" class="headerlink" title="mklink命令简介"></a>mklink命令简介</h1><div class="note primary"><p>命令简介引用了<a class="btn" href="https://ss64.com/nt/mklink.html"><i class="fa fa-book fa-fw"></i>SS64</a>以及<a class="btn" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/mklink"><i class="fa fa-book fa-fw"></i>Microsoft Docs</a>的内容，参考了 <a class="btn" href="https://www.icoa.cn/a/910.html"><i class="fa fa-blog fa-fw"></i>逍遥峡谷</a> 的文章，特此感谢</p></div>
+
+<p><code>mklink</code>命令用于创建目录或文件符号或硬链接，自Vista开始引入，支持Vista以后的Windows操作系统。</p>
+<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p><code>mklink</code>命令提供了三种链接方式，分别是<code>符号链接</code>、<code>硬链接</code>以及<code>联接</code>，三种方式与快捷方式的对比如下</p>
+<table>
+<thead>
+<tr>
+<th align="left">方式</th>
+<th align="center">链接文件</th>
+<th align="center">链接文件夹</th>
+<th align="center">跨硬盘链接</th>
+<th align="center">指向不存在的目标</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">快捷方式</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="left">硬链接</td>
+<td align="center">✅</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+<tr>
+<td align="left">联接（目录交接点&#x2F;软链接）</td>
+<td align="center">❌</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="left">符号链接</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+</tbody></table>
+<blockquote>
+<ul>
+<li>符号链接和联接是基于<a href="https://zh.m.wikipedia.org/zh-hans/NTFS%E9%87%8D%E8%A7%A3%E6%9E%90%E7%82%B9">NTFS重解析点(NTFS reparse point)</a>实现的</li>
+<li>硬链接是通过指向同一inode的多个文件表项实现的–与Unix硬链接相同。如果原始文件名被删除，硬链接仍将工作，它直接指向磁盘上的数据</li>
+<li>在一个循环中创建两个相互指向的链接，或者创建一个指向自身的链接是可行的（但不可取）。符号链接可能会在那些没有处理这些情况的应用程序中暴露出安全漏洞。</li>
+<li>符号链接和硬链接都不支持<code>.zip</code>压缩文件</li>
+</ul>
+</blockquote>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink [[/d] | [/h] | [/j]] &lt;link&gt; &lt;target&gt;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">&#x2F;d</td>
+<td align="left">创建目录符号链接。 默认情况下，此命令将创建文件符号链接。</td>
+</tr>
+<tr>
+<td align="left">&#x2F;h</td>
+<td align="left">创建硬链接而不是符号链接。</td>
+</tr>
+<tr>
+<td align="left">&#x2F;j</td>
+<td align="left">创建联接（目录交接点）。</td>
+</tr>
+<tr>
+<td align="left">&lt;link&gt;</td>
+<td align="left">指定要创建的符号链接的名称。</td>
+</tr>
+<tr>
+<td align="left">&lt;target&gt;</td>
+<td align="left">指定新符号链接引用的路径 (相对或绝对) 。</td>
+</tr>
+<tr>
+<td align="left">&#x2F;?</td>
+<td align="left">在命令提示符下显示帮助。</td>
+</tr>
+</tbody></table>
+<p>如果<code>&lt;link&gt;</code>和<code>&lt;target&gt;</code>路径中含有空格，则需要用双引号<code>&quot;&quot;</code>包住内容</p>
+<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><blockquote>
+<p>默认情况下，运行命令<code>mklink</code>需要管理员权限。但是自<code>Windows 10 build 14972</code>起，如果开启了<code>开发人员模式</code>，则无需提权即可运行命令。</p>
+</blockquote>
+<h2 id="移动与选中"><a href="#移动与选中" class="headerlink" title="移动与选中"></a>移动与选中</h2><blockquote>
+<ul>
+<li>在文件资源管理器中选中<code>符号链接</code>将会选中源文件（目录）</li>
+<li>在文件资源管理器中选中<code>联接</code>将会选中<code>联接</code>自身</li>
+<li>在文件资源管理器中拖拽<code>符号链接</code>到新的位置将只移动<code>符号链接</code>自身</li>
+<li>在文件资源管理器中拖拽<code>联接</code>到新的位置将会移动源文件目录到新的位置</li>
+</ul>
+</blockquote>
+<h1 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h1><p>下面是我对每个类型所做的测试</p>
+<div class="note primary"><p>更加详细的详细说明可以看 <a class="btn" href="https://sspai.com/post/66834"><i class="fa fa-blog fa-fw"></i>少数派</a> 的文章，讲的非常明白</p></div>
+
+<h2 id="文件的符号链接"><a href="#文件的符号链接" class="headerlink" title="文件的符号链接"></a>文件的符号链接</h2><p>新建测试文件夹<code>link</code>与<code>target</code>，新建测试文件<code>./target/target.txt</code>，此时<code>link</code>文件夹为空<br><img data-src="https://s2.loli.net/2022/05/25/cAlHUYMq2W9L7h5.png" alt="文件的符号链接1"><br>执行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink E:\Test\link\link.txt E:\Test\target\target.txt</span><br></pre></td></tr></table></figure>
+<p>此时<code>link</code>文件夹内出现了<code>link.txt</code>，文件类型为<code>.symlink</code>，图标与快捷方式相同，但它是符号链接。更改任一文件另一个文件也会被同步更改。符号链接指向的是源文件的路径，文件的真实存储位置仍然在<code>./target/target.txt</code>。<br><img data-src="https://s2.loli.net/2022/05/25/KJQd7MjVpxwBeo1.png" alt="文件的符号链接2"></p>
+<h2 id="文件夹的符号链接"><a href="#文件夹的符号链接" class="headerlink" title="文件夹的符号链接"></a>文件夹的符号链接</h2><p>新建测试文件夹与<code>target</code>，新建测试文件<code>./target/target.txt</code><br><img data-src="https://s2.loli.net/2022/05/25/9DXKw3zxn8p41EB.png" alt="文件夹的符号链接1"><br>执行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /d E:\Test\link E:\Test\target</span><br></pre></td></tr></table></figure>
+<p>此时会创建<code>link</code>文件夹，文件夹图标与快捷方式相同，文件夹内容与源文件夹相同。更改任一文件另一个文件也会被同步更改。<br><img data-src="https://s2.loli.net/2022/05/25/UePih7d86o3OglN.png" alt="文件夹的符号链接2"></p>
+<p>符号链接指向的是源文件目录的路径，文件的真实存储位置仍然是<code>target</code>源文件夹，可以看到<code>link</code>文件夹在地址栏与标题栏的路径不同。<br><img data-src="https://s2.loli.net/2022/05/25/4WKXoCPbQa8GZ7S.png" alt="文件夹的符号链接3"></p>
+<h2 id="文件的硬链接"><a href="#文件的硬链接" class="headerlink" title="文件的硬链接"></a>文件的硬链接</h2><p>新建测试文件夹<code>link</code>与<code>target</code>，新建测试文件<code>./target/target.txt</code>，此时<code>link</code>文件夹为空<br><img data-src="https://s2.loli.net/2022/05/25/cAlHUYMq2W9L7h5.png" alt="文件的硬链接1"><br>执行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /h E:\Test\link\link.txt E:\Test\target\target.txt</span><br></pre></td></tr></table></figure>
+<p>此时<code>link</code>文件夹内出现了<code>link.txt</code>，文件类型仍然为<code>文本文档</code>，与源文件相同。图标也是正常的文本文档图标。硬链接直接指向硬盘上的文件。<br><img data-src="https://s2.loli.net/2022/05/25/GgYQLRkw6UDWm1y.png" alt="文件的硬链接2"></p>
+<h2 id="联接（目录交接点）"><a href="#联接（目录交接点）" class="headerlink" title="联接（目录交接点）"></a>联接（目录交接点）</h2><p>新建测试文件夹与<code>target</code>，新建测试文件<code>./target/target.txt</code><br><img data-src="https://s2.loli.net/2022/05/25/9DXKw3zxn8p41EB.png" alt="联接1"><br>执行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /j E:\Test\link E:\Test\target</span><br></pre></td></tr></table></figure>
+<p>结果与文件夹的符号链接基本相同，唯一的区别是<code>link</code>文件夹在地址栏与标题栏的路径相同。但是文件的真实存储位置仍然是<code>target</code>源文件夹。<br><img data-src="https://s2.loli.net/2022/05/25/hy1fLAiPF48Jwgv.png" alt="联接2"></p>
+<h1 id="OneDrive创建符号链接"><a href="#OneDrive创建符号链接" class="headerlink" title="OneDrive创建符号链接"></a>OneDrive创建符号链接</h1><p>首先打开OneDrive的设置，确认<code>常规</code>和<code>通知</code>里面所有的项目已经勾选。<br><img data-src="https://s2.loli.net/2022/05/25/CUqA9YGWbci2O48.png" alt="OneDrive设置"><br>然后将博客的<code>_posts</code>文件夹剪切到OneDrive并重命名，注意是剪切，博客文件夹不能存在<code>_posts</code>文件夹。<br>然后按下<code>win</code>+<code>s</code>，输入<code>cmd</code>，<code>以管理员身份运行</code>，然后输入<code>mklink</code>命令。注意<code>mklink</code>命令只能用<code>cmd</code>运行，<code>powershell</code>是不支持的。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /d D:\Siriusq\source\_posts C:\Users\Sun\OneDrive\Siriusq</span><br></pre></td></tr></table></figure>
+<p>注意第一个路径是我博客文章的路径，第二个路径则是OneDrive的路径我博客文章的路径。这里其实是反着来的，OneDrive作为源文件夹，不然OneDrive会一直显示同步被挂起，很迷惑。</p>
+<p>执行完毕后会有提示</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">为 D:\Siriusq\source\_posts &lt;&lt;===&gt;&gt; C:\Users\Sun\OneDrive\Siriusq 创建的符号链接</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://s2.loli.net/2022/05/25/YphRoDOySbv6ixJ.png" alt="链接成功"><br>链接成功后打开博客的文件夹可以看到，地址栏是当前文件夹的路径，而标题栏却是OneDrive文件夹的路径。此时无论修改哪一边的文件，另一边的文件也会跟着变化，达到同步的目的</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>Win10</tag>
+        <tag>OneDrive</tag>
+        <tag>mklink</tag>
       </tags>
   </entry>
   <entry>
@@ -2399,147 +2540,6 @@
       <tags>
         <tag>Hexo</tag>
         <tag>MacOS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>OneDrive同步本地任意文件夹</title>
-    <url>/OneDrive%E5%90%8C%E6%AD%A5%E6%9C%AC%E5%9C%B0%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E5%A4%B9.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">使用mklink命令创建OneDrive与博客Markdown文件夹的符号链接，实现同步的目的</blockquote>
-
-<span id="more"></span>
-
-<p>为了能在其他设备上写博客，我曾经把整个文件夹扔到了OneDrive上，但是后来发现这样每次执行<code>hexo cl &amp;&amp; hexo g</code>时都会产生大量的文件变动，对OneDrive服务器属实不太友好，毕竟一直在白嫖🐶。后来就只保留了<code>./source/_posts</code>文件夹，每次写完文章后手动复制粘贴过去。前几天突发奇想，能不能让OneDrive自动同步这个文件夹，搜了一圈就发现了<code>mklink</code>这个命令。</p>
-<div class="note info"><p>下面有一些关于`mklink`命令的说明，不想看的话直接点按钮跳过 <a class="btn" href="#OneDrive创建符号链接"><i class="fa fa-forward fa-fw"></i>跳过</a></p></div>
-
-
-<h1 id="mklink命令简介"><a href="#mklink命令简介" class="headerlink" title="mklink命令简介"></a>mklink命令简介</h1><div class="note primary"><p>命令简介引用了<a class="btn" href="https://ss64.com/nt/mklink.html"><i class="fa fa-book fa-fw"></i>SS64</a>以及<a class="btn" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/mklink"><i class="fa fa-book fa-fw"></i>Microsoft Docs</a>的内容，参考了 <a class="btn" href="https://www.icoa.cn/a/910.html"><i class="fa fa-blog fa-fw"></i>逍遥峡谷</a> 的文章，特此感谢</p></div>
-
-<p><code>mklink</code>命令用于创建目录或文件符号或硬链接，自Vista开始引入，支持Vista以后的Windows操作系统。</p>
-<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p><code>mklink</code>命令提供了三种链接方式，分别是<code>符号链接</code>、<code>硬链接</code>以及<code>联接</code>，三种方式与快捷方式的对比如下</p>
-<table>
-<thead>
-<tr>
-<th align="left">方式</th>
-<th align="center">链接文件</th>
-<th align="center">链接文件夹</th>
-<th align="center">跨硬盘链接</th>
-<th align="center">指向不存在的目标</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">快捷方式</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-</tr>
-<tr>
-<td align="left">硬链接</td>
-<td align="center">✅</td>
-<td align="center">❌</td>
-<td align="center">❌</td>
-<td align="center">❌</td>
-</tr>
-<tr>
-<td align="left">联接（目录交接点&#x2F;软链接）</td>
-<td align="center">❌</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-</tr>
-<tr>
-<td align="left">符号链接</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-</tr>
-</tbody></table>
-<blockquote>
-<ul>
-<li>符号链接和联接是基于<a href="https://zh.m.wikipedia.org/zh-hans/NTFS%E9%87%8D%E8%A7%A3%E6%9E%90%E7%82%B9">NTFS重解析点(NTFS reparse point)</a>实现的</li>
-<li>硬链接是通过指向同一inode的多个文件表项实现的–与Unix硬链接相同。如果原始文件名被删除，硬链接仍将工作，它直接指向磁盘上的数据</li>
-<li>在一个循环中创建两个相互指向的链接，或者创建一个指向自身的链接是可行的（但不可取）。符号链接可能会在那些没有处理这些情况的应用程序中暴露出安全漏洞。</li>
-<li>符号链接和硬链接都不支持<code>.zip</code>压缩文件</li>
-</ul>
-</blockquote>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink [[/d] | [/h] | [/j]] &lt;link&gt; &lt;target&gt;</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th align="left">参数</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">&#x2F;d</td>
-<td align="left">创建目录符号链接。 默认情况下，此命令将创建文件符号链接。</td>
-</tr>
-<tr>
-<td align="left">&#x2F;h</td>
-<td align="left">创建硬链接而不是符号链接。</td>
-</tr>
-<tr>
-<td align="left">&#x2F;j</td>
-<td align="left">创建联接（目录交接点）。</td>
-</tr>
-<tr>
-<td align="left">&lt;link&gt;</td>
-<td align="left">指定要创建的符号链接的名称。</td>
-</tr>
-<tr>
-<td align="left">&lt;target&gt;</td>
-<td align="left">指定新符号链接引用的路径 (相对或绝对) 。</td>
-</tr>
-<tr>
-<td align="left">&#x2F;?</td>
-<td align="left">在命令提示符下显示帮助。</td>
-</tr>
-</tbody></table>
-<p>如果<code>&lt;link&gt;</code>和<code>&lt;target&gt;</code>路径中含有空格，则需要用双引号<code>&quot;&quot;</code>包住内容</p>
-<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><blockquote>
-<p>默认情况下，运行命令<code>mklink</code>需要管理员权限。但是自<code>Windows 10 build 14972</code>起，如果开启了<code>开发人员模式</code>，则无需提权即可运行命令。</p>
-</blockquote>
-<h2 id="移动与选中"><a href="#移动与选中" class="headerlink" title="移动与选中"></a>移动与选中</h2><blockquote>
-<ul>
-<li>在文件资源管理器中选中<code>符号链接</code>将会选中源文件（目录）</li>
-<li>在文件资源管理器中选中<code>联接</code>将会选中<code>联接</code>自身</li>
-<li>在文件资源管理器中拖拽<code>符号链接</code>到新的位置将只移动<code>符号链接</code>自身</li>
-<li>在文件资源管理器中拖拽<code>联接</code>到新的位置将会移动源文件目录到新的位置</li>
-</ul>
-</blockquote>
-<h1 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h1><p>下面是我对每个类型所做的测试</p>
-<div class="note primary"><p>更加详细的详细说明可以看 <a class="btn" href="https://sspai.com/post/66834"><i class="fa fa-blog fa-fw"></i>少数派</a> 的文章，讲的非常明白</p></div>
-
-<h2 id="文件的符号链接"><a href="#文件的符号链接" class="headerlink" title="文件的符号链接"></a>文件的符号链接</h2><p>新建测试文件夹<code>link</code>与<code>target</code>，新建测试文件<code>./target/target.txt</code>，此时<code>link</code>文件夹为空<br><img data-src="https://s2.loli.net/2022/05/25/cAlHUYMq2W9L7h5.png" alt="文件的符号链接1"><br>执行命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink E:\Test\link\link.txt E:\Test\target\target.txt</span><br></pre></td></tr></table></figure>
-<p>此时<code>link</code>文件夹内出现了<code>link.txt</code>，文件类型为<code>.symlink</code>，图标与快捷方式相同，但它是符号链接。更改任一文件另一个文件也会被同步更改。符号链接指向的是源文件的路径，文件的真实存储位置仍然在<code>./target/target.txt</code>。<br><img data-src="https://s2.loli.net/2022/05/25/KJQd7MjVpxwBeo1.png" alt="文件的符号链接2"></p>
-<h2 id="文件夹的符号链接"><a href="#文件夹的符号链接" class="headerlink" title="文件夹的符号链接"></a>文件夹的符号链接</h2><p>新建测试文件夹与<code>target</code>，新建测试文件<code>./target/target.txt</code><br><img data-src="https://s2.loli.net/2022/05/25/9DXKw3zxn8p41EB.png" alt="文件夹的符号链接1"><br>执行命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /d E:\Test\link E:\Test\target</span><br></pre></td></tr></table></figure>
-<p>此时会创建<code>link</code>文件夹，文件夹图标与快捷方式相同，文件夹内容与源文件夹相同。更改任一文件另一个文件也会被同步更改。<br><img data-src="https://s2.loli.net/2022/05/25/UePih7d86o3OglN.png" alt="文件夹的符号链接2"></p>
-<p>符号链接指向的是源文件目录的路径，文件的真实存储位置仍然是<code>target</code>源文件夹，可以看到<code>link</code>文件夹在地址栏与标题栏的路径不同。<br><img data-src="https://s2.loli.net/2022/05/25/4WKXoCPbQa8GZ7S.png" alt="文件夹的符号链接3"></p>
-<h2 id="文件的硬链接"><a href="#文件的硬链接" class="headerlink" title="文件的硬链接"></a>文件的硬链接</h2><p>新建测试文件夹<code>link</code>与<code>target</code>，新建测试文件<code>./target/target.txt</code>，此时<code>link</code>文件夹为空<br><img data-src="https://s2.loli.net/2022/05/25/cAlHUYMq2W9L7h5.png" alt="文件的硬链接1"><br>执行命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /h E:\Test\link\link.txt E:\Test\target\target.txt</span><br></pre></td></tr></table></figure>
-<p>此时<code>link</code>文件夹内出现了<code>link.txt</code>，文件类型仍然为<code>文本文档</code>，与源文件相同。图标也是正常的文本文档图标。硬链接直接指向硬盘上的文件。<br><img data-src="https://s2.loli.net/2022/05/25/GgYQLRkw6UDWm1y.png" alt="文件的硬链接2"></p>
-<h2 id="联接（目录交接点）"><a href="#联接（目录交接点）" class="headerlink" title="联接（目录交接点）"></a>联接（目录交接点）</h2><p>新建测试文件夹与<code>target</code>，新建测试文件<code>./target/target.txt</code><br><img data-src="https://s2.loli.net/2022/05/25/9DXKw3zxn8p41EB.png" alt="联接1"><br>执行命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /j E:\Test\link E:\Test\target</span><br></pre></td></tr></table></figure>
-<p>结果与文件夹的符号链接基本相同，唯一的区别是<code>link</code>文件夹在地址栏与标题栏的路径相同。但是文件的真实存储位置仍然是<code>target</code>源文件夹。<br><img data-src="https://s2.loli.net/2022/05/25/hy1fLAiPF48Jwgv.png" alt="联接2"></p>
-<h1 id="OneDrive创建符号链接"><a href="#OneDrive创建符号链接" class="headerlink" title="OneDrive创建符号链接"></a>OneDrive创建符号链接</h1><p>首先打开OneDrive的设置，确认<code>常规</code>和<code>通知</code>里面所有的项目已经勾选。<br><img data-src="https://s2.loli.net/2022/05/25/CUqA9YGWbci2O48.png" alt="OneDrive设置"><br>然后将博客的<code>_posts</code>文件夹剪切到OneDrive并重命名，注意是剪切，博客文件夹不能存在<code>_posts</code>文件夹。<br>然后按下<code>win</code>+<code>s</code>，输入<code>cmd</code>，<code>以管理员身份运行</code>，然后输入<code>mklink</code>命令。注意<code>mklink</code>命令只能用<code>cmd</code>运行，<code>powershell</code>是不支持的。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /d D:\Siriusq\source\_posts C:\Users\Sun\OneDrive\Siriusq</span><br></pre></td></tr></table></figure>
-<p>注意第一个路径是我博客文章的路径，第二个路径则是OneDrive的路径我博客文章的路径。这里其实是反着来的，OneDrive作为源文件夹，不然OneDrive会一直显示同步被挂起，很迷惑。</p>
-<p>执行完毕后会有提示</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">为 D:\Siriusq\source\_posts &lt;&lt;===&gt;&gt; C:\Users\Sun\OneDrive\Siriusq 创建的符号链接</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="https://s2.loli.net/2022/05/25/YphRoDOySbv6ixJ.png" alt="链接成功"><br>链接成功后打开博客的文件夹可以看到，地址栏是当前文件夹的路径，而标题栏却是OneDrive文件夹的路径。此时无论修改哪一边的文件，另一边的文件也会跟着变化，达到同步的目的</p>
-]]></content>
-      <categories>
-        <category>折腾</category>
-      </categories>
-      <tags>
-        <tag>Win10</tag>
-        <tag>OneDrive</tag>
-        <tag>mklink</tag>
       </tags>
   </entry>
   <entry>
@@ -3512,6 +3512,161 @@
       </tags>
   </entry>
   <entry>
+    <title>格拉斯哥大学IT选课指南</title>
+    <url>/%E6%A0%BC%E6%8B%89%E6%96%AF%E5%93%A5%E5%A4%A7%E5%AD%A6IT%E9%80%89%E8%AF%BE%E6%8C%87%E5%8D%97.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">很久很久之前说过的选课指南哈哈哈，根据本人21年上课体验以及专业群道听途说总结，仅供参考，注意时效</blockquote>
+
+<span id="more"></span>
+
+<h1 id="Semester-1"><a href="#Semester-1" class="headerlink" title="Semester 1"></a>Semester 1</h1><p>第一学期全都是必修课，一共5门，整个IT+的课表都一样。为了<del>偷懒</del>方便，下面的课程名全用缩写表示</p>
+<table>
+<thead>
+<tr>
+<th align="left">缩写</th>
+<th align="left">课程名</th>
+<th align="left">难度</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">SN</td>
+<td align="left">Systems and Networks</td>
+<td align="left">⭐</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">PR</td>
+<td align="left">Programming</td>
+<td align="left">⭐</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">DTA</td>
+<td align="left">Database Theory &amp; App</td>
+<td align="left">⭐</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">SE</td>
+<td align="left">Software Engineering</td>
+<td align="left">⭐⭐</td>
+<td align="left">下学期还会见到它</td>
+</tr>
+<tr>
+<td align="left">ECS</td>
+<td align="left">Enterprise Cyber Security</td>
+<td align="left">⭐⭐⭐⭐⭐</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h2 id="Systems-and-Networks"><a href="#Systems-and-Networks" class="headerlink" title="Systems and Networks"></a>Systems and Networks</h2><p>主讲操作系统+一丢丢的计算机网络，还有汇编语言（大概算吧），用的是某位教授自己编写的软件<code>Sigma16</code>，很简单。</p>
+<h2 id="Programming"><a href="#Programming" class="headerlink" title="Programming"></a>Programming</h2><p>主讲JAVA基础知识，开学的第一周全是这门课，上午上课下午Lab，疯狂填鸭哈哈哈。如果自己学过一些JAVA的话就非常简单了，我第一周全程划水（不是），然后后面会讲到对象、IO、异常、Swing这些。</p>
+<h2 id="Database-Theory-amp-App"><a href="#Database-Theory-amp-App" class="headerlink" title="Database Theory &amp; App"></a>Database Theory &amp; App</h2><p>主讲数据库基本知识，如范式、E-R图、关系代数、SQL等，软件用的<code>PostgreSQL</code>，有Lab。</p>
+<h2 id="Software-Engineering"><a href="#Software-Engineering" class="headerlink" title="Software Engineering"></a>Software Engineering</h2><p>面向产品经理编程🐶，这门课两个学期都有，第一学期会讲一些Java的基本知识，和Programming有些重复，还有用户故事、UML图、看板、敏捷开发等，会使用<code>Trello</code>看板。注意第一学期的作业和第二学期的作业是密切相关的，不要给自己挖坑，第一学期作业是根据需求编写用户故事啥的，第二学期就是按照编的用户故事把软件开发出来（小组作业预警⚠️小组不可以更换）。虽然两学期都有，但是考试只有一次。</p>
+<h2 id="Enterprise-Cyber-Security"><a href="#Enterprise-Cyber-Security" class="headerlink" title="Enterprise Cyber Security"></a>Enterprise Cyber Security</h2><p>emmm纯理论课程，非常的枯燥，作业还特别麻烦（小组作业预警⚠️）。教授的上课方式也是独树一帜，开直播然后共享屏幕播放他提前录好的课。。。。。。而且他的网络还不好，经常就看不清楚课件。总之一言难尽吧。</p>
+<h2 id="AWSP"><a href="#AWSP" class="headerlink" title="AWSP"></a>AWSP</h2><p>AWSP应该不算一门课，和语言班比较像，开学后大概一个月会收到邮件，要求去做一个英语测试，包含选择和写作，然后根据得分情况判断你是不是需要上额外的写作课。完成的话成绩单上会标记CP，不算分，不影响学位。</p>
+<h1 id="Semester-2"><a href="#Semester-2" class="headerlink" title="Semester 2"></a>Semester 2</h1><p>第二学期是一门必修课+4门选修课+一个必修小组项目，IT可以随便选，SD必须选ADS和AP。21年一共有9门选修课供选择，除ADS和AP外剩下的课是和CS+一起上的。下面我自己上过的课难度用⭐表示，道听途说的用💡表示，仅供参考。</p>
+<table>
+<thead>
+<tr>
+<th align="left">缩写</th>
+<th align="left">课程名</th>
+<th align="left">难度</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">SE</td>
+<td align="left">Software Engineering</td>
+<td align="left">⭐⭐⭐</td>
+<td align="left">必修（没错还是它）</td>
+</tr>
+<tr>
+<td align="left">TP</td>
+<td align="left">Team Project</td>
+<td align="left">⭐⭐</td>
+<td align="left">必修小组项目</td>
+</tr>
+<tr>
+<td align="left">CSysF</td>
+<td align="left">Cyber Security Fundamentals</td>
+<td align="left">⭐⭐</td>
+<td align="left">选修</td>
+</tr>
+<tr>
+<td align="left">HCI-DE</td>
+<td align="left">HCI Design &amp; Evaluation</td>
+<td align="left">💡💡</td>
+<td align="left">选修</td>
+</tr>
+<tr>
+<td align="left">CSFor</td>
+<td align="left">Cyber System Forensics</td>
+<td align="left">💡💡💡💡💡</td>
+<td align="left">选修</td>
+</tr>
+<tr>
+<td align="left">HCS</td>
+<td align="left">Human-Centred Security for MSc</td>
+<td align="left">💡💡</td>
+<td align="left">选修</td>
+</tr>
+<tr>
+<td align="left">IV</td>
+<td align="left">Information Visualisation</td>
+<td align="left">💡💡💡</td>
+<td align="left">选修</td>
+</tr>
+<tr>
+<td align="left">CSD</td>
+<td align="left">Cryptography &amp; Secure Development</td>
+<td align="left">💡💡💡</td>
+<td align="left">选修</td>
+</tr>
+<tr>
+<td align="left">ITECH</td>
+<td align="left">Internet Technology</td>
+<td align="left">⭐⭐⭐</td>
+<td align="left">选修</td>
+</tr>
+<tr>
+<td align="left">ADS</td>
+<td align="left">Algorithms &amp; Data Structures</td>
+<td align="left">⭐⭐⭐</td>
+<td align="left">选修（SD必修）</td>
+</tr>
+<tr>
+<td align="left">AP</td>
+<td align="left">Advanced Programming</td>
+<td align="left">⭐⭐</td>
+<td align="left">选修（SD必修）</td>
+</tr>
+</tbody></table>
+<h2 id="Software-Engineering-1"><a href="#Software-Engineering-1" class="headerlink" title="Software Engineering"></a>Software Engineering</h2><p>第二学期主要讲设计模式，比较枯燥，作业也比较麻烦。</p>
+<h2 id="Team-Project"><a href="#Team-Project" class="headerlink" title="Team Project"></a>Team Project</h2><p>五人组队，完成一个项目的开发，和SE契合度很高，也要完成用户故事，遵循敏捷开发流程等。作业是完成一个战棋游戏，前端的东西老师都写好了，主要完成后端的逻辑，要设计人机对战的AI，比较麻烦的是要做工作记录。只有项目没有考试（小组预警⚠️）。</p>
+<h2 id="Cyber-Security-Fundamentals"><a href="#Cyber-Security-Fundamentals" class="headerlink" title="Cyber Security Fundamentals"></a>Cyber Security Fundamentals</h2><p>讲解网络安全的基础知识，包括网络攻击技术（钓鱼、SQL注入等）、计算机网络基础、到的黑客、数字取证等。实践操作很多，比较有意思，推荐选择。作业要求通过<code>OWASP Vulnerable Web Application Project</code>来进行模拟攻击，并编写报告（小组作业预警⚠️）。</p>
+<h2 id="HCI-Design-amp-Evaluation"><a href="#HCI-Design-amp-Evaluation" class="headerlink" title="HCI Design &amp; Evaluation"></a>HCI Design &amp; Evaluation</h2><p>人机交互的课，我没选，据说有丢丢麻烦。</p>
+<h2 id="Cyber-System-Forensics"><a href="#Cyber-System-Forensics" class="headerlink" title="Cyber System Forensics"></a>Cyber System Forensics</h2><p>快跑❌❌❌，和ECS差不多的东西。</p>
+<h2 id="Human-Centred-Security-for-MSc"><a href="#Human-Centred-Security-for-MSc" class="headerlink" title="Human-Centred Security for MSc"></a>Human-Centred Security for MSc</h2><p>安全类的课，我没选，据说还阔以。</p>
+<h2 id="Information-Visualisation"><a href="#Information-Visualisation" class="headerlink" title="Information Visualisation"></a>Information Visualisation</h2><p>可视化，俺还是没选，据说有丢丢麻烦。</p>
+<h2 id="Cryptography-amp-Secure-Development"><a href="#Cryptography-amp-Secure-Development" class="headerlink" title="Cryptography &amp; Secure Development"></a>Cryptography &amp; Secure Development</h2><p>安全类的课，会讲加密，俺又双叒叕没选，据说作业难度较高。</p>
+<h2 id="Internet-Technology"><a href="#Internet-Technology" class="headerlink" title="Internet Technology"></a>Internet Technology</h2><p>主讲网站开发，内容很翔实，实操很多，压力略大，不过个人比较推荐（小组作业预警⚠️，需要提前掌握Python预警⚠️）。内容包括架构、Django框架、CSS、AJAX、HTTP协议、客户端、XML等等。个人作业是根据<code>Tango with Django</code>教程写一个半成品网站。然后小组作业是4人组队，写一个网站，基本都写的是评测类的网站。Quiz比较多。</p>
+<h2 id="Algorithms-amp-Data-Structures"><a href="#Algorithms-amp-Data-Structures" class="headerlink" title="Algorithms &amp; Data Structures"></a>Algorithms &amp; Data Structures</h2><p>SD的必修课，数据结构和算法，将来打算做开发的话这是绕不过去的坎。比较推荐，讲的不是很深，有Lab。</p>
+<h2 id="Advanced-Programming"><a href="#Advanced-Programming" class="headerlink" title="Advanced Programming"></a>Advanced Programming</h2><p>SD的必修课，将来做Java开发的话推荐，会讲泛型、多线程、序列化、数据结构等内容，有Lab，作业难度稍高。</p>
+<h1 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h1><p>有小组作业的课程组队的时候一定要慎重，来自被一次小组作业深深伤害过的人的忠告🐶<br>小组作业也要注意自己的工作量哦，毕竟小组作业的得分有一部分就是组员打分，懂得都懂🐶</p>
+<p>最后祝大家都能拿<code>Distinction</code>😊</p>
+]]></content>
+      <categories>
+        <category>留学</category>
+      </categories>
+      <tags>
+        <tag>留学</tag>
+        <tag>攻略</tag>
+        <tag>英国</tag>
+        <tag>选课</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>V2Ray</title>
     <url>/V2Ray.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">自从P站无法访问后就一直想写个V2Ray的教程，然鹅拖延症加懒癌晚期到现在才开始写emmm，虽然民间一直流传有上P站的各种神功，但网速实在感人而且指不定那天就挂掉了，另外如果你不想看这么麻烦的教程的话可以直接移到文章最后，有懒人大礼包。解释一下这个P站是建筑狗用的Pinterest，想歪的面壁去（🐶）
@@ -3735,6 +3890,135 @@
       </categories>
       <tags>
         <tag>V2Ray</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>npm常用命令</title>
+    <url>/npm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">收集了一些npm的命令，以及主题升级时常用的命令</blockquote>
+
+<span id="more"></span>
+
+<p>npm（全称 Node Package Manager，即“node包管理器”）是Node.js预设的、用JavaScript编写的软体套件管理系统</p>
+<h1 id="npm命令"><a href="#npm命令" class="headerlink" title="npm命令"></a>npm命令</h1><div class="note primary"><p>参考了<a class="btn" href="https://segmentfault.com/a/1190000019141975"><i class="fa fa-blog fa-fw"></i>jm365</a>的文章，特此感谢</p></div>
+
+<h2 id="辅助"><a href="#辅助" class="headerlink" title="辅助"></a>辅助</h2><ul>
+<li><code>npm -l</code> 查看所有命令的用法</li>
+<li><code>npm &lt;command&gt; -h</code> 查看某个命令的用法</li>
+<li><code>npm help &lt;command&gt;</code> 查看某个命令的详细用法</li>
+<li><code>npm -v</code> 查看npm版本</li>
+<li><code>npm config list -l</code> 查看npm的配置</li>
+<li><code>npm ls</code> 查看局部安装的所有模块</li>
+<li><code>npm ls -g</code> 查看全局安装的所有模块</li>
+<li><code>npm ls &lt;moduleName&gt;</code> 查看指定模块的局部安装情况</li>
+<li><code>npm ls &lt;moduleName&gt; -g</code> 查看指定模块的全局安装情况</li>
+<li><code>npm view &lt;moduleName&gt;</code> 查看当前源中指定模块的信息</li>
+<li><code>npm view &lt;moduleName&gt; versions</code> 查看当前源中指定模块的所有历史版本</li>
+<li><code>npm view &lt;moduleName&gt; version</code> 查看当前源中指定模块的最新版本</li>
+</ul>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><ul>
+<li><code>npm init</code> 在所在目录初始化一个项目</li>
+</ul>
+<h2 id="安装-x2F-卸载"><a href="#安装-x2F-卸载" class="headerlink" title="安装&#x2F;卸载"></a>安装&#x2F;卸载</h2><ul>
+<li><code>npm i/install &lt;moduleName&gt;</code> 安装模块；i是install的缩写，两者功能是一样的</li>
+<li><code>npm i &lt;moduleName&gt;@x.x.x</code> 安装模块的指定版本</li>
+<li><code>npm i &lt;moduleName&gt; --save</code> 安装并保存至package.json文件的dependencies中</li>
+<li><code>npm i &lt;moduleName&gt; --save-dev</code> 安装并保存至package.json文件的devDependencies中</li>
+<li><code>npm i &lt;moduleName&gt; -g</code> 全局安装模块</li>
+</ul>
+<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><ul>
+<li><code>npm uninstall &lt;moduleName&gt;</code> 卸载指定局部模块</li>
+<li><code>npm uninstall &lt;moduleName&gt; -g</code> 卸载指定全局模块</li>
+</ul>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><ul>
+<li><code>npm update</code> 按照package.json中的描述更新模块，且会在package.json文件中保存更新后的版本描述；^a.b.c更新至a下的最新版本，~a.b.c更新至a.b下的最新版本，a.b.c不会做任何更新</li>
+<li><code>npm update &lt;moduleName&gt;</code> 更新局部指定模块</li>
+<li><code>npm update &lt;moduleName&gt;@x.x.x</code> 更新局部指定模块到指定版本</li>
+<li><code>npm update &lt;moduleName&gt; -g</code> 更新全局指定模块</li>
+<li><code>npm update &lt;moduleName&gt;@x.x.x -g</code> 更新全局指定模块到指定版本</li>
+</ul>
+<h2 id="npm源"><a href="#npm源" class="headerlink" title="npm源"></a>npm源</h2><ul>
+<li><code>npm config get registry</code> 查看当前npm源地址</li>
+<li><code>npm config set registry &lt;registryAddress&gt;</code> 将npm源设置成相应的地址</li>
+</ul>
+<h1 id="package-json简介"><a href="#package-json简介" class="headerlink" title="package.json简介"></a>package.json简介</h1><p><code>package.json</code>文件是项目的清单，是<code>npm</code>和<code>yarn</code>存储所有已安装软件包的名称和版本的地方。<code>npm install</code>命令根据它来下载所需的模块，下面是<code>package.json</code>的字段说明。</p>
+<ul>
+<li><code>version</code> 表明了当前的版本。</li>
+<li><code>name</code> 设置了应用程序&#x2F;软件包的名称。</li>
+<li><code>description</code> 是应用程序&#x2F;软件包的简短描述。</li>
+<li><code>main</code> 设置了应用程序的入口点。</li>
+<li><code>private</code> 如果设置为 true，则可以防止应用程序&#x2F;软件包被意外地发布到 npm。</li>
+<li><code>scripts</code> 定义了一组可以运行的 node 脚本。</li>
+<li><code>dependencies</code> 设置了作为依赖安装的 npm 软件包的列表。</li>
+<li><code>devDependencies</code> 设置了作为开发依赖安装的 npm 软件包的列表。</li>
+<li><code>engines</code> 设置了此软件包&#x2F;应用程序在哪个版本的 Node.js 上运行。</li>
+<li><code>browserslist</code> 用于告知要支持哪些浏览器（及其版本）。</li>
+</ul>
+<h1 id="主题升级常用指令"><a href="#主题升级常用指令" class="headerlink" title="主题升级常用指令"></a>主题升级常用指令</h1><p>列出已经安装的包</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm ls</span><br></pre></td></tr></table></figure>
+
+<p>检查需要升级的包</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm-check</span><br></pre></td></tr></table></figure>
+
+<p>升级主题到最新版</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-theme-next@latest</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm update hexo-theme-next</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>程序猿</category>
+      </categories>
+      <tags>
+        <tag>HEXO</tag>
+        <tag>Next</tag>
+        <tag>npm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>添加 Windows Terminal 至右键菜单</title>
+    <url>/%E6%B7%BB%E5%8A%A0-Windows-Terminal-%E8%87%B3%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Windows Terminal 已经在微软应用商店上架了，所以我把终端从 Fluent Terminal 换成了 Windows Terminal，记录一下将它添加到右键菜单的过程</blockquote>
+
+<span id="more"></span>
+
+<div class="note danger"><p>Windows 11 现在已经在右键菜单里默认添加了在终端中打开，所以不需要再单独添加了，已经添加过的去注册表里删掉[HKEY_CLASSES_ROOT\Directory\Background\shell\wt]就好了</p></div>
+
+<h1 id="添加图标"><a href="#添加图标" class="headerlink" title="添加图标"></a>添加图标</h1><p>首先在<code>C:\Users\[YOUR_USER_NAME]\AppData\Local</code>新建文件夹<code>Terminal</code>，可以直接使用下面的命令创建，<strong>记得把[YOUR_USER_NAME]换成自己的用户名！</strong></p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> C:\Users\[YOUR_USER_NAME]\AppData\Local\Terminal</span><br></pre></td></tr></table></figure>
+
+<p>然后下载 Windows Terminal 图标到刚才创建的文件夹，如果浏览器没有自动下载的话就右键另存为terminal.ico</p>
+<a class="btn" href="https://raw.githubusercontent.com/microsoft/terminal/master/res/terminal.ico"><i class="fa fa-arrow-right fa-fw"></i>terminal.ico 下载</a>
+
+<h1 id="注册表写入"><a href="#注册表写入" class="headerlink" title="注册表写入"></a>注册表写入</h1><p>新建一个txt文件，添加下面的内容，然后把文件后缀改为<code>.reg</code>。<strong>记得把[YOUR_USER_NAME]换成自己的用户名！</strong></p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">Windows Registry Editor Version <span class="number">5</span>.<span class="number">00</span></span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt]</span><br><span class="line">@=&quot;Windows terminal here&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Terminal\\terminal.ico&quot;</span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt\command]</span><br><span class="line">@=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe&quot;</span><br></pre></td></tr></table></figure>
+
+<p>完成后双击文件，合并到注册表中</p>
+<h1 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h1><p>这个时候右键菜单中已经出现了<code>Windows terminal here</code>的选项，但是点击后所在的目录并不是当前的目录，这就需要修改<code>Windows Terminal</code>的配置文件了</p>
+<p>打开<code>Windows Terminal</code>，点击顶部的下拉菜单，打开<code>设置</code>，此时会打开名为<code>settings.json</code>的配置文件，要修改的部分是这个亚子</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>要想在当前文件夹启动<code>Windows Terminal</code>，需要在每一段的下面添加<code>&quot;startingDirectory&quot;: &quot;./&quot;</code>，修改完成后是这个亚子</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>保存后就能够使用右键菜单在当前文件夹运行<code>Windows Terminal</code>了</p>
+<h1 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h1><p>在使用Powershell的时候可能会出现报错<code>无法加载文件balabala.ps1，因为在此系统上禁止执行脚本，有关详细信息，请参阅balabala</code>，这是因为默认的<code>ExecutionPolicy</code>是<code>Restricted</code>，即不允许执行任何脚本。解决方法是以管理员身份运行，并输入命令<code>set-executionpolicy remotesigned</code>即可解除限制</p>
+<blockquote>
+<p>参考：</p>
+<ol>
+<li><a href="https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461">https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461</a></li>
+<li><a href="https://blog.csdn.net/Jioho_chen/article/details/101159291">https://blog.csdn.net/Jioho_chen/article/details/101159291</a></li>
+</ol>
+</blockquote>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>Win10</tag>
+        <tag>软件</tag>
+        <tag>Windows Terminal</tag>
       </tags>
   </entry>
   <entry>
@@ -4166,288 +4450,6 @@
         <tag>Win10</tag>
         <tag>Office</tag>
         <tag>重装</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>npm常用命令</title>
-    <url>/npm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">收集了一些npm的命令，以及主题升级时常用的命令</blockquote>
-
-<span id="more"></span>
-
-<p>npm（全称 Node Package Manager，即“node包管理器”）是Node.js预设的、用JavaScript编写的软体套件管理系统</p>
-<h1 id="npm命令"><a href="#npm命令" class="headerlink" title="npm命令"></a>npm命令</h1><div class="note primary"><p>参考了<a class="btn" href="https://segmentfault.com/a/1190000019141975"><i class="fa fa-blog fa-fw"></i>jm365</a>的文章，特此感谢</p></div>
-
-<h2 id="辅助"><a href="#辅助" class="headerlink" title="辅助"></a>辅助</h2><ul>
-<li><code>npm -l</code> 查看所有命令的用法</li>
-<li><code>npm &lt;command&gt; -h</code> 查看某个命令的用法</li>
-<li><code>npm help &lt;command&gt;</code> 查看某个命令的详细用法</li>
-<li><code>npm -v</code> 查看npm版本</li>
-<li><code>npm config list -l</code> 查看npm的配置</li>
-<li><code>npm ls</code> 查看局部安装的所有模块</li>
-<li><code>npm ls -g</code> 查看全局安装的所有模块</li>
-<li><code>npm ls &lt;moduleName&gt;</code> 查看指定模块的局部安装情况</li>
-<li><code>npm ls &lt;moduleName&gt; -g</code> 查看指定模块的全局安装情况</li>
-<li><code>npm view &lt;moduleName&gt;</code> 查看当前源中指定模块的信息</li>
-<li><code>npm view &lt;moduleName&gt; versions</code> 查看当前源中指定模块的所有历史版本</li>
-<li><code>npm view &lt;moduleName&gt; version</code> 查看当前源中指定模块的最新版本</li>
-</ul>
-<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><ul>
-<li><code>npm init</code> 在所在目录初始化一个项目</li>
-</ul>
-<h2 id="安装-x2F-卸载"><a href="#安装-x2F-卸载" class="headerlink" title="安装&#x2F;卸载"></a>安装&#x2F;卸载</h2><ul>
-<li><code>npm i/install &lt;moduleName&gt;</code> 安装模块；i是install的缩写，两者功能是一样的</li>
-<li><code>npm i &lt;moduleName&gt;@x.x.x</code> 安装模块的指定版本</li>
-<li><code>npm i &lt;moduleName&gt; --save</code> 安装并保存至package.json文件的dependencies中</li>
-<li><code>npm i &lt;moduleName&gt; --save-dev</code> 安装并保存至package.json文件的devDependencies中</li>
-<li><code>npm i &lt;moduleName&gt; -g</code> 全局安装模块</li>
-</ul>
-<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><ul>
-<li><code>npm uninstall &lt;moduleName&gt;</code> 卸载指定局部模块</li>
-<li><code>npm uninstall &lt;moduleName&gt; -g</code> 卸载指定全局模块</li>
-</ul>
-<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><ul>
-<li><code>npm update</code> 按照package.json中的描述更新模块，且会在package.json文件中保存更新后的版本描述；^a.b.c更新至a下的最新版本，~a.b.c更新至a.b下的最新版本，a.b.c不会做任何更新</li>
-<li><code>npm update &lt;moduleName&gt;</code> 更新局部指定模块</li>
-<li><code>npm update &lt;moduleName&gt;@x.x.x</code> 更新局部指定模块到指定版本</li>
-<li><code>npm update &lt;moduleName&gt; -g</code> 更新全局指定模块</li>
-<li><code>npm update &lt;moduleName&gt;@x.x.x -g</code> 更新全局指定模块到指定版本</li>
-</ul>
-<h2 id="npm源"><a href="#npm源" class="headerlink" title="npm源"></a>npm源</h2><ul>
-<li><code>npm config get registry</code> 查看当前npm源地址</li>
-<li><code>npm config set registry &lt;registryAddress&gt;</code> 将npm源设置成相应的地址</li>
-</ul>
-<h1 id="package-json简介"><a href="#package-json简介" class="headerlink" title="package.json简介"></a>package.json简介</h1><p><code>package.json</code>文件是项目的清单，是<code>npm</code>和<code>yarn</code>存储所有已安装软件包的名称和版本的地方。<code>npm install</code>命令根据它来下载所需的模块，下面是<code>package.json</code>的字段说明。</p>
-<ul>
-<li><code>version</code> 表明了当前的版本。</li>
-<li><code>name</code> 设置了应用程序&#x2F;软件包的名称。</li>
-<li><code>description</code> 是应用程序&#x2F;软件包的简短描述。</li>
-<li><code>main</code> 设置了应用程序的入口点。</li>
-<li><code>private</code> 如果设置为 true，则可以防止应用程序&#x2F;软件包被意外地发布到 npm。</li>
-<li><code>scripts</code> 定义了一组可以运行的 node 脚本。</li>
-<li><code>dependencies</code> 设置了作为依赖安装的 npm 软件包的列表。</li>
-<li><code>devDependencies</code> 设置了作为开发依赖安装的 npm 软件包的列表。</li>
-<li><code>engines</code> 设置了此软件包&#x2F;应用程序在哪个版本的 Node.js 上运行。</li>
-<li><code>browserslist</code> 用于告知要支持哪些浏览器（及其版本）。</li>
-</ul>
-<h1 id="主题升级常用指令"><a href="#主题升级常用指令" class="headerlink" title="主题升级常用指令"></a>主题升级常用指令</h1><p>列出已经安装的包</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm ls</span><br></pre></td></tr></table></figure>
-
-<p>检查需要升级的包</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm-check</span><br></pre></td></tr></table></figure>
-
-<p>升级主题到最新版</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-theme-next@latest</span><br></pre></td></tr></table></figure>
-
-<p>或者</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm update hexo-theme-next</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>程序猿</category>
-      </categories>
-      <tags>
-        <tag>HEXO</tag>
-        <tag>Next</tag>
-        <tag>npm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>格拉斯哥大学IT选课指南</title>
-    <url>/%E6%A0%BC%E6%8B%89%E6%96%AF%E5%93%A5%E5%A4%A7%E5%AD%A6IT%E9%80%89%E8%AF%BE%E6%8C%87%E5%8D%97.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">很久很久之前说过的选课指南哈哈哈，根据本人21年上课体验以及专业群道听途说总结，仅供参考，注意时效</blockquote>
-
-<span id="more"></span>
-
-<h1 id="Semester-1"><a href="#Semester-1" class="headerlink" title="Semester 1"></a>Semester 1</h1><p>第一学期全都是必修课，一共5门，整个IT+的课表都一样。为了<del>偷懒</del>方便，下面的课程名全用缩写表示</p>
-<table>
-<thead>
-<tr>
-<th align="left">缩写</th>
-<th align="left">课程名</th>
-<th align="left">难度</th>
-<th align="left">备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">SN</td>
-<td align="left">Systems and Networks</td>
-<td align="left">⭐</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">PR</td>
-<td align="left">Programming</td>
-<td align="left">⭐</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">DTA</td>
-<td align="left">Database Theory &amp; App</td>
-<td align="left">⭐</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">SE</td>
-<td align="left">Software Engineering</td>
-<td align="left">⭐⭐</td>
-<td align="left">下学期还会见到它</td>
-</tr>
-<tr>
-<td align="left">ECS</td>
-<td align="left">Enterprise Cyber Security</td>
-<td align="left">⭐⭐⭐⭐⭐</td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<h2 id="Systems-and-Networks"><a href="#Systems-and-Networks" class="headerlink" title="Systems and Networks"></a>Systems and Networks</h2><p>主讲操作系统+一丢丢的计算机网络，还有汇编语言（大概算吧），用的是某位教授自己编写的软件<code>Sigma16</code>，很简单。</p>
-<h2 id="Programming"><a href="#Programming" class="headerlink" title="Programming"></a>Programming</h2><p>主讲JAVA基础知识，开学的第一周全是这门课，上午上课下午Lab，疯狂填鸭哈哈哈。如果自己学过一些JAVA的话就非常简单了，我第一周全程划水（不是），然后后面会讲到对象、IO、异常、Swing这些。</p>
-<h2 id="Database-Theory-amp-App"><a href="#Database-Theory-amp-App" class="headerlink" title="Database Theory &amp; App"></a>Database Theory &amp; App</h2><p>主讲数据库基本知识，如范式、E-R图、关系代数、SQL等，软件用的<code>PostgreSQL</code>，有Lab。</p>
-<h2 id="Software-Engineering"><a href="#Software-Engineering" class="headerlink" title="Software Engineering"></a>Software Engineering</h2><p>面向产品经理编程🐶，这门课两个学期都有，第一学期会讲一些Java的基本知识，和Programming有些重复，还有用户故事、UML图、看板、敏捷开发等，会使用<code>Trello</code>看板。注意第一学期的作业和第二学期的作业是密切相关的，不要给自己挖坑，第一学期作业是根据需求编写用户故事啥的，第二学期就是按照编的用户故事把软件开发出来（小组作业预警⚠️小组不可以更换）。虽然两学期都有，但是考试只有一次。</p>
-<h2 id="Enterprise-Cyber-Security"><a href="#Enterprise-Cyber-Security" class="headerlink" title="Enterprise Cyber Security"></a>Enterprise Cyber Security</h2><p>emmm纯理论课程，非常的枯燥，作业还特别麻烦（小组作业预警⚠️）。教授的上课方式也是独树一帜，开直播然后共享屏幕播放他提前录好的课。。。。。。而且他的网络还不好，经常就看不清楚课件。总之一言难尽吧。</p>
-<h2 id="AWSP"><a href="#AWSP" class="headerlink" title="AWSP"></a>AWSP</h2><p>AWSP应该不算一门课，和语言班比较像，开学后大概一个月会收到邮件，要求去做一个英语测试，包含选择和写作，然后根据得分情况判断你是不是需要上额外的写作课。完成的话成绩单上会标记CP，不算分，不影响学位。</p>
-<h1 id="Semester-2"><a href="#Semester-2" class="headerlink" title="Semester 2"></a>Semester 2</h1><p>第二学期是一门必修课+4门选修课+一个必修小组项目，IT可以随便选，SD必须选ADS和AP。21年一共有9门选修课供选择，除ADS和AP外剩下的课是和CS+一起上的。下面我自己上过的课难度用⭐表示，道听途说的用💡表示，仅供参考。</p>
-<table>
-<thead>
-<tr>
-<th align="left">缩写</th>
-<th align="left">课程名</th>
-<th align="left">难度</th>
-<th align="left">备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">SE</td>
-<td align="left">Software Engineering</td>
-<td align="left">⭐⭐⭐</td>
-<td align="left">必修（没错还是它）</td>
-</tr>
-<tr>
-<td align="left">TP</td>
-<td align="left">Team Project</td>
-<td align="left">⭐⭐</td>
-<td align="left">必修小组项目</td>
-</tr>
-<tr>
-<td align="left">CSysF</td>
-<td align="left">Cyber Security Fundamentals</td>
-<td align="left">⭐⭐</td>
-<td align="left">选修</td>
-</tr>
-<tr>
-<td align="left">HCI-DE</td>
-<td align="left">HCI Design &amp; Evaluation</td>
-<td align="left">💡💡</td>
-<td align="left">选修</td>
-</tr>
-<tr>
-<td align="left">CSFor</td>
-<td align="left">Cyber System Forensics</td>
-<td align="left">💡💡💡💡💡</td>
-<td align="left">选修</td>
-</tr>
-<tr>
-<td align="left">HCS</td>
-<td align="left">Human-Centred Security for MSc</td>
-<td align="left">💡💡</td>
-<td align="left">选修</td>
-</tr>
-<tr>
-<td align="left">IV</td>
-<td align="left">Information Visualisation</td>
-<td align="left">💡💡💡</td>
-<td align="left">选修</td>
-</tr>
-<tr>
-<td align="left">CSD</td>
-<td align="left">Cryptography &amp; Secure Development</td>
-<td align="left">💡💡💡</td>
-<td align="left">选修</td>
-</tr>
-<tr>
-<td align="left">ITECH</td>
-<td align="left">Internet Technology</td>
-<td align="left">⭐⭐⭐</td>
-<td align="left">选修</td>
-</tr>
-<tr>
-<td align="left">ADS</td>
-<td align="left">Algorithms &amp; Data Structures</td>
-<td align="left">⭐⭐⭐</td>
-<td align="left">选修（SD必修）</td>
-</tr>
-<tr>
-<td align="left">AP</td>
-<td align="left">Advanced Programming</td>
-<td align="left">⭐⭐</td>
-<td align="left">选修（SD必修）</td>
-</tr>
-</tbody></table>
-<h2 id="Software-Engineering-1"><a href="#Software-Engineering-1" class="headerlink" title="Software Engineering"></a>Software Engineering</h2><p>第二学期主要讲设计模式，比较枯燥，作业也比较麻烦。</p>
-<h2 id="Team-Project"><a href="#Team-Project" class="headerlink" title="Team Project"></a>Team Project</h2><p>五人组队，完成一个项目的开发，和SE契合度很高，也要完成用户故事，遵循敏捷开发流程等。作业是完成一个战棋游戏，前端的东西老师都写好了，主要完成后端的逻辑，要设计人机对战的AI，比较麻烦的是要做工作记录。只有项目没有考试（小组预警⚠️）。</p>
-<h2 id="Cyber-Security-Fundamentals"><a href="#Cyber-Security-Fundamentals" class="headerlink" title="Cyber Security Fundamentals"></a>Cyber Security Fundamentals</h2><p>讲解网络安全的基础知识，包括网络攻击技术（钓鱼、SQL注入等）、计算机网络基础、到的黑客、数字取证等。实践操作很多，比较有意思，推荐选择。作业要求通过<code>OWASP Vulnerable Web Application Project</code>来进行模拟攻击，并编写报告（小组作业预警⚠️）。</p>
-<h2 id="HCI-Design-amp-Evaluation"><a href="#HCI-Design-amp-Evaluation" class="headerlink" title="HCI Design &amp; Evaluation"></a>HCI Design &amp; Evaluation</h2><p>人机交互的课，我没选，据说有丢丢麻烦。</p>
-<h2 id="Cyber-System-Forensics"><a href="#Cyber-System-Forensics" class="headerlink" title="Cyber System Forensics"></a>Cyber System Forensics</h2><p>快跑❌❌❌，和ECS差不多的东西。</p>
-<h2 id="Human-Centred-Security-for-MSc"><a href="#Human-Centred-Security-for-MSc" class="headerlink" title="Human-Centred Security for MSc"></a>Human-Centred Security for MSc</h2><p>安全类的课，我没选，据说还阔以。</p>
-<h2 id="Information-Visualisation"><a href="#Information-Visualisation" class="headerlink" title="Information Visualisation"></a>Information Visualisation</h2><p>可视化，俺还是没选，据说有丢丢麻烦。</p>
-<h2 id="Cryptography-amp-Secure-Development"><a href="#Cryptography-amp-Secure-Development" class="headerlink" title="Cryptography &amp; Secure Development"></a>Cryptography &amp; Secure Development</h2><p>安全类的课，会讲加密，俺又双叒叕没选，据说作业难度较高。</p>
-<h2 id="Internet-Technology"><a href="#Internet-Technology" class="headerlink" title="Internet Technology"></a>Internet Technology</h2><p>主讲网站开发，内容很翔实，实操很多，压力略大，不过个人比较推荐（小组作业预警⚠️，需要提前掌握Python预警⚠️）。内容包括架构、Django框架、CSS、AJAX、HTTP协议、客户端、XML等等。个人作业是根据<code>Tango with Django</code>教程写一个半成品网站。然后小组作业是4人组队，写一个网站，基本都写的是评测类的网站。Quiz比较多。</p>
-<h2 id="Algorithms-amp-Data-Structures"><a href="#Algorithms-amp-Data-Structures" class="headerlink" title="Algorithms &amp; Data Structures"></a>Algorithms &amp; Data Structures</h2><p>SD的必修课，数据结构和算法，将来打算做开发的话这是绕不过去的坎。比较推荐，讲的不是很深，有Lab。</p>
-<h2 id="Advanced-Programming"><a href="#Advanced-Programming" class="headerlink" title="Advanced Programming"></a>Advanced Programming</h2><p>SD的必修课，将来做Java开发的话推荐，会讲泛型、多线程、序列化、数据结构等内容，有Lab，作业难度稍高。</p>
-<h1 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h1><p>有小组作业的课程组队的时候一定要慎重，来自被一次小组作业深深伤害过的人的忠告🐶<br>小组作业也要注意自己的工作量哦，毕竟小组作业的得分有一部分就是组员打分，懂得都懂🐶</p>
-<p>最后祝大家都能拿<code>Distinction</code>😊</p>
-]]></content>
-      <categories>
-        <category>留学</category>
-      </categories>
-      <tags>
-        <tag>留学</tag>
-        <tag>攻略</tag>
-        <tag>英国</tag>
-        <tag>选课</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>添加 Windows Terminal 至右键菜单</title>
-    <url>/%E6%B7%BB%E5%8A%A0-Windows-Terminal-%E8%87%B3%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Windows Terminal 已经在微软应用商店上架了，所以我把终端从 Fluent Terminal 换成了 Windows Terminal，记录一下将它添加到右键菜单的过程</blockquote>
-
-<span id="more"></span>
-
-<h1 id="添加图标"><a href="#添加图标" class="headerlink" title="添加图标"></a>添加图标</h1><p>首先在<code>C:\Users\[YOUR_USER_NAME]\AppData\Local</code>新建文件夹<code>Terminal</code>，可以直接使用下面的命令创建，<strong>记得把[YOUR_USER_NAME]换成自己的用户名！</strong></p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> C:\Users\[YOUR_USER_NAME]\AppData\Local\Terminal</span><br></pre></td></tr></table></figure>
-
-<p>然后下载 Windows Terminal 图标到刚才创建的文件夹，如果浏览器没有自动下载的话就右键另存为terminal.ico</p>
-<a class="btn" href="https://raw.githubusercontent.com/microsoft/terminal/master/res/terminal.ico"><i class="fa fa-arrow-right fa-fw"></i>terminal.ico 下载</a>
-
-<h1 id="注册表写入"><a href="#注册表写入" class="headerlink" title="注册表写入"></a>注册表写入</h1><p>新建一个txt文件，添加下面的内容，然后把文件后缀改为<code>.reg</code>。<strong>记得把[YOUR_USER_NAME]换成自己的用户名！</strong></p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">Windows Registry Editor Version <span class="number">5</span>.<span class="number">00</span></span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt]</span><br><span class="line">@=&quot;Windows terminal here&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Terminal\\terminal.ico&quot;</span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt\command]</span><br><span class="line">@=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe&quot;</span><br></pre></td></tr></table></figure>
-
-<p>完成后双击文件，合并到注册表中</p>
-<h1 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h1><p>这个时候右键菜单中已经出现了<code>Windows terminal here</code>的选项，但是点击后所在的目录并不是当前的目录，这就需要修改<code>Windows Terminal</code>的配置文件了</p>
-<p>打开<code>Windows Terminal</code>，点击顶部的下拉菜单，打开<code>设置</code>，此时会打开名为<code>settings.json</code>的配置文件，要修改的部分是这个亚子</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
-
-<p>要想在当前文件夹启动<code>Windows Terminal</code>，需要在每一段的下面添加<code>&quot;startingDirectory&quot;: &quot;./&quot;</code>，修改完成后是这个亚子</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
-
-<p>保存后就能够使用右键菜单在当前文件夹运行<code>Windows Terminal</code>了</p>
-<h1 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h1><p>在使用Powershell的时候可能会出现报错<code>无法加载文件balabala.ps1，因为在此系统上禁止执行脚本，有关详细信息，请参阅balabala</code>，这是因为默认的<code>ExecutionPolicy</code>是<code>Restricted</code>，即不允许执行任何脚本。解决方法是以管理员身份运行，并输入命令<code>set-executionpolicy remotesigned</code>即可解除限制</p>
-<blockquote>
-<p>参考：</p>
-<ol>
-<li><a href="https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461">https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461</a></li>
-<li><a href="https://blog.csdn.net/Jioho_chen/article/details/101159291">https://blog.csdn.net/Jioho_chen/article/details/101159291</a></li>
-</ol>
-</blockquote>
-]]></content>
-      <categories>
-        <category>折腾</category>
-      </categories>
-      <tags>
-        <tag>Win10</tag>
-        <tag>软件</tag>
-        <tag>Windows Terminal</tag>
       </tags>
   </entry>
   <entry>
@@ -6227,59 +6229,6 @@ OFFICIAL
       </tags>
   </entry>
   <entry>
-    <title>荣耀 magic watch 表盘制作</title>
-    <url>/%E8%8D%A3%E8%80%80-magic-watch-%E8%A1%A8%E7%9B%98%E5%88%B6%E4%BD%9C.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">趁着还没开学给老爸的 Magic Watch 做了个表盘，甲方唯二的要求就是：字大+醒目</blockquote>
-
-<p><img data-src="https://s2.loli.net/2022/05/13/fswCopBAYqjnFKl.png" alt="icon"></p>
-<span id="more"></span>
-
-<h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p>刚开始搜集材料的时候看见有人说表盘要<strong>手动</strong>编辑xml文件，这不是反人类吗。。。不过好在华为已经推出了表盘设计软件<code>HwWatchFaceDesigner</code>，整个设计过程就和用<code>PhotoShop</code>P图一样<br>首先到华为的网站去下载<code>华为手表表盘开发工具</code>并解压，然后打开<code>HwWatchFaceDesigner.exe</code></p>
-<a class="btn" href="https://developer.huawei.com/consumer/cn/doc/5050601"><i class="fa fa-download fa-fw"></i>传送门</a>
-
-<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p>在解压后的文件夹里有中英文的<code>用户手册</code>，路径是<code>.\document\用户手册.pdf</code>,也可以在<code>帮助</code>中点击<code>用户手册</code>。我就不再啰嗦了，只记录一些注意事项</p>
-<ul>
-<li><code>荣耀 Magic Watch</code>的分辨率是<code>390*390</code></li>
-<li>新建工程的时候<code>表盘效果图</code>先空着，设计完成之后再截图到PS里，导出不同分辨率的效果图</li>
-<li>图层最多25个</li>
-<li>一些位置固定的图标可以到最后在PS里和背景图合成为一张图片，节省图层</li>
-<li><code>星期</code>的<code>选图</code>里面第一张图是无效的，随便添加一张，从第二张图开始才是周一</li>
-<li><code>上午下午</code>的<code>选图</code>里面第三张图要找一张空白的png图</li>
-<li><code>撤销</code>不能使用<code>ctrl+z</code>的快捷键，只能点击上面菜单栏的返回图标，而且一经保存就不能再撤回</li>
-</ul>
-<h1 id="素材"><a href="#素材" class="headerlink" title="素材"></a>素材</h1><p>制作表盘需要用到各种png格式的图片素材，下面是我使用到的素材网站<br><a href="https://www.freepik.com/">freepik</a> - 背景图片素材，未注册的话每天有下载数量限制，注册的时候需要科学上网，因为需要用到谷歌的验证服务，注册完成后不需要<br><a href="https://webgradients.com/">webgradients</a> - 渐变色配色<br><a href="https://www.iconfinder.com/">iconfinder</a> - 图标素材，这个网站有在线编辑器，点开图片后有一个<code>Open in icon editor</code>，可以在线调整好素材的颜色，省下PS的过程</p>
-<p>部分素材是需要付费的，筛选的时候勾上<code>free</code>就好了</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>目前版本的<code>华为运动健康</code>软件是不能自定义添加表盘的，需要下载老版本，百度云自取</p>
-<a class="btn" href="https://pan.baidu.com/s/1Pg0lIOtRS3fmXG8kvMkNDA"><i class="fa fa-download fa-fw"></i>提取码: mpbm</a>
-
-<p>安装的具体操作步骤如下</p>
-<ul>
-<li>先将导出的<code>hwt</code>文件拷贝到手机</li>
-<li>成功连接设备后进入<code>表盘市场</code></li>
-<li>点击右上角的三个点</li>
-<li>进入<code>隐私声明</code></li>
-<li>撤销华为主题服务</li>
-<li>退出来再重新进入<code>表盘市场</code></li>
-<li>在弹出窗口中重新给华为主题服务授权</li>
-<li>再次点击右上角的三个点，会多出一个<code>添加表盘</code>选项</li>
-<li>点击后会询问你是否是开发者，点击<code>是</code></li>
-<li>找到拷贝进手机的<code>hwt</code>文件路径，点击确定并安装</li>
-</ul>
-<p>如果觉得这个表盘不满意需要卸载的话，还要重新安装最新版的<code>华为运动健康</code>，进入<code>表盘市场</code>中的<code>我的</code>里面删除，老版本的不能在表盘市场中删除自定义的表盘，这就很尴尬，所以。。。一定要设计好了检查好了再安装，要不这个过程可是太反人类了，手表安装表盘巨慢，1秒钟才安装百分之一。。。</p>
-<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>我做的表盘已经上传到我的Github了，源文件也一起上传了，有需要的自取</p>
-<a class="btn" href="https://github.com/Siriusq/Honor-Magic-Watch-Theme-Sirius"><i class="fa fa-download fa-fw"></i>源文件</a>
-
-<a class="btn" href="https://github.com/Siriusq/Honor-Magic-Watch-Theme-Sirius/releases/download/6.0/sirius_3.1.6.hwt"><i class="fa fa-download fa-fw"></i>表盘下载</a>]]></content>
-      <categories>
-        <category>搞机</category>
-      </categories>
-      <tags>
-        <tag>搞机</tag>
-        <tag>表盘</tag>
-        <tag>荣耀 magic watch</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>软件整理</title>
     <url>/%E8%BD%AF%E4%BB%B6%E6%95%B4%E7%90%86.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">记录下平常用的软件和官网的链接，免得重装系统之后还得重新一个一个找2333333</blockquote>
@@ -6481,6 +6430,59 @@ OFFICIAL
       <tags>
         <tag>Win10</tag>
         <tag>软件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>荣耀 magic watch 表盘制作</title>
+    <url>/%E8%8D%A3%E8%80%80-magic-watch-%E8%A1%A8%E7%9B%98%E5%88%B6%E4%BD%9C.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">趁着还没开学给老爸的 Magic Watch 做了个表盘，甲方唯二的要求就是：字大+醒目</blockquote>
+
+<p><img data-src="https://s2.loli.net/2022/05/13/fswCopBAYqjnFKl.png" alt="icon"></p>
+<span id="more"></span>
+
+<h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p>刚开始搜集材料的时候看见有人说表盘要<strong>手动</strong>编辑xml文件，这不是反人类吗。。。不过好在华为已经推出了表盘设计软件<code>HwWatchFaceDesigner</code>，整个设计过程就和用<code>PhotoShop</code>P图一样<br>首先到华为的网站去下载<code>华为手表表盘开发工具</code>并解压，然后打开<code>HwWatchFaceDesigner.exe</code></p>
+<a class="btn" href="https://developer.huawei.com/consumer/cn/doc/5050601"><i class="fa fa-download fa-fw"></i>传送门</a>
+
+<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p>在解压后的文件夹里有中英文的<code>用户手册</code>，路径是<code>.\document\用户手册.pdf</code>,也可以在<code>帮助</code>中点击<code>用户手册</code>。我就不再啰嗦了，只记录一些注意事项</p>
+<ul>
+<li><code>荣耀 Magic Watch</code>的分辨率是<code>390*390</code></li>
+<li>新建工程的时候<code>表盘效果图</code>先空着，设计完成之后再截图到PS里，导出不同分辨率的效果图</li>
+<li>图层最多25个</li>
+<li>一些位置固定的图标可以到最后在PS里和背景图合成为一张图片，节省图层</li>
+<li><code>星期</code>的<code>选图</code>里面第一张图是无效的，随便添加一张，从第二张图开始才是周一</li>
+<li><code>上午下午</code>的<code>选图</code>里面第三张图要找一张空白的png图</li>
+<li><code>撤销</code>不能使用<code>ctrl+z</code>的快捷键，只能点击上面菜单栏的返回图标，而且一经保存就不能再撤回</li>
+</ul>
+<h1 id="素材"><a href="#素材" class="headerlink" title="素材"></a>素材</h1><p>制作表盘需要用到各种png格式的图片素材，下面是我使用到的素材网站<br><a href="https://www.freepik.com/">freepik</a> - 背景图片素材，未注册的话每天有下载数量限制，注册的时候需要科学上网，因为需要用到谷歌的验证服务，注册完成后不需要<br><a href="https://webgradients.com/">webgradients</a> - 渐变色配色<br><a href="https://www.iconfinder.com/">iconfinder</a> - 图标素材，这个网站有在线编辑器，点开图片后有一个<code>Open in icon editor</code>，可以在线调整好素材的颜色，省下PS的过程</p>
+<p>部分素材是需要付费的，筛选的时候勾上<code>free</code>就好了</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>目前版本的<code>华为运动健康</code>软件是不能自定义添加表盘的，需要下载老版本，百度云自取</p>
+<a class="btn" href="https://pan.baidu.com/s/1Pg0lIOtRS3fmXG8kvMkNDA"><i class="fa fa-download fa-fw"></i>提取码: mpbm</a>
+
+<p>安装的具体操作步骤如下</p>
+<ul>
+<li>先将导出的<code>hwt</code>文件拷贝到手机</li>
+<li>成功连接设备后进入<code>表盘市场</code></li>
+<li>点击右上角的三个点</li>
+<li>进入<code>隐私声明</code></li>
+<li>撤销华为主题服务</li>
+<li>退出来再重新进入<code>表盘市场</code></li>
+<li>在弹出窗口中重新给华为主题服务授权</li>
+<li>再次点击右上角的三个点，会多出一个<code>添加表盘</code>选项</li>
+<li>点击后会询问你是否是开发者，点击<code>是</code></li>
+<li>找到拷贝进手机的<code>hwt</code>文件路径，点击确定并安装</li>
+</ul>
+<p>如果觉得这个表盘不满意需要卸载的话，还要重新安装最新版的<code>华为运动健康</code>，进入<code>表盘市场</code>中的<code>我的</code>里面删除，老版本的不能在表盘市场中删除自定义的表盘，这就很尴尬，所以。。。一定要设计好了检查好了再安装，要不这个过程可是太反人类了，手表安装表盘巨慢，1秒钟才安装百分之一。。。</p>
+<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>我做的表盘已经上传到我的Github了，源文件也一起上传了，有需要的自取</p>
+<a class="btn" href="https://github.com/Siriusq/Honor-Magic-Watch-Theme-Sirius"><i class="fa fa-download fa-fw"></i>源文件</a>
+
+<a class="btn" href="https://github.com/Siriusq/Honor-Magic-Watch-Theme-Sirius/releases/download/6.0/sirius_3.1.6.hwt"><i class="fa fa-download fa-fw"></i>表盘下载</a>]]></content>
+      <categories>
+        <category>搞机</category>
+      </categories>
+      <tags>
+        <tag>搞机</tag>
+        <tag>表盘</tag>
+        <tag>荣耀 magic watch</tag>
       </tags>
   </entry>
   <entry>
