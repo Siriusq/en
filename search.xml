@@ -175,66 +175,6 @@
       </tags>
   </entry>
   <entry>
-    <title>HEXO部署</title>
-    <url>/HEXO%E9%83%A8%E7%BD%B2.html</url>
-    <content><![CDATA[<p>博客已经搭建成功了，下一步是用Hexo配合Markdown写博客了</p>
-<h1 id="Hexo写作流程"><a href="#Hexo写作流程" class="headerlink" title="Hexo写作流程"></a>Hexo写作流程</h1><p>博客写作流程相对于搭建要简单太多了，只需要以下几步：</p>
-<ul>
-<li>创建新博客文件</li>
-<li>生成新网页</li>
-<li>部署到Github Page</li>
-</ul>
-<span id="more"></span>
-
-<h2 id="创建新博客文件"><a href="#创建新博客文件" class="headerlink" title="创建新博客文件"></a>创建新博客文件</h2><ol>
-<li><p>在博客文件夹中右键打开Git bash</p>
-</li>
-<li><p>输入<code>hexo new &quot;博客标题&quot;</code> 新建一个md文件，双引号内的名字就是文章标题</p>
-</li>
-<li><p>进入<code>博客根目录/source/_posts</code> 文件夹，可以看到新创建的文件<code>博客标题.md</code>,md后缀代表Markdown文件</p>
-</li>
-<li><p>双击使用安装的Markdown编辑器打开进行编辑</p>
-<ul>
-<li>文件内会默认生成以下内容(以本博客为例）：  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   ---`</span><br><span class="line">   title: HEXO&amp;Markdown</span><br><span class="line">date: 2019-04-04 10:50:41</span><br><span class="line">tags: [Hexo,Markdown]</span><br><span class="line">   ---`</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>其中<code>title</code>就是博客标题</li>
-<li><code>date</code>是博客的创建时间，不用修改</li>
-<li><code>tags</code>是博客的标签</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>踩坑：<br>此处注意冒号后面的空格</p>
-</blockquote>
-<ul>
-<li>在<code>---</code>分割线后就是我们写博文的地方了，按照Markdown语法规则编写即可</li>
-</ul>
-</li>
-<li><p>编写完成后保存</p>
-</li>
-</ol>
-<h2 id="生成新网页并部署"><a href="#生成新网页并部署" class="headerlink" title="生成新网页并部署"></a>生成新网页并部署</h2><ol>
-<li>打开Git bash</li>
-<li>输入命令<code>hexo clean</code>清除网页缓存</li>
-<li>输入命令<code>hexo g</code>生成新的网页文件</li>
-<li>（可选）输入命令<code>hexo s</code>生成本地服务并前往返回的网址预览网页<blockquote>
-<p>踩坑：<br>Git bash内的复制命令并不是熟悉的<code>ctrl c</code>，而是<code>ctrl ins</code>，使用<code>ctrl c</code>复制预览网址会结束本地服务进程，所以预览网页会没反应</p>
-</blockquote>
-</li>
-<li>输入命令<code>hexo d</code>将网页部署到Github Page</li>
-</ol>
-<hr>
-<p><strong>以上是完整流程，每次更新博客的时候都要重复一遍上述流程</strong><br>省事的话可以合并命令，直接用<code>hexo cl</code>和<code>hexo g -d</code>即可更新</p>
-]]></content>
-      <categories>
-        <category>网站配置</category>
-      </categories>
-      <tags>
-        <tag>HEXO</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo Next 7.7 双语切换</title>
     <url>/Hexo-Next-7-7-%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">一年前通过在Google的疯狂查找和尝试，实现了在7.1版本的Next主题上进行中英双语的切换。但是Bug多多（切换到英文界面后点击关于、归档等标签还会跳转回中文界面），而我本人又是拖延症+懒癌晚期，一直没有尝试修复。最近借着给Next主题升级的机会顺便解决这个问题。折腾了两天，终于成功实现了理想中的中英双语切换效果，搞得毕设都没怎么做。</blockquote>
@@ -311,6 +251,66 @@
         <tag>HEXO</tag>
         <tag>Next</tag>
         <tag>i18n</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HEXO部署</title>
+    <url>/HEXO%E9%83%A8%E7%BD%B2.html</url>
+    <content><![CDATA[<p>博客已经搭建成功了，下一步是用Hexo配合Markdown写博客了</p>
+<h1 id="Hexo写作流程"><a href="#Hexo写作流程" class="headerlink" title="Hexo写作流程"></a>Hexo写作流程</h1><p>博客写作流程相对于搭建要简单太多了，只需要以下几步：</p>
+<ul>
+<li>创建新博客文件</li>
+<li>生成新网页</li>
+<li>部署到Github Page</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="创建新博客文件"><a href="#创建新博客文件" class="headerlink" title="创建新博客文件"></a>创建新博客文件</h2><ol>
+<li><p>在博客文件夹中右键打开Git bash</p>
+</li>
+<li><p>输入<code>hexo new &quot;博客标题&quot;</code> 新建一个md文件，双引号内的名字就是文章标题</p>
+</li>
+<li><p>进入<code>博客根目录/source/_posts</code> 文件夹，可以看到新创建的文件<code>博客标题.md</code>,md后缀代表Markdown文件</p>
+</li>
+<li><p>双击使用安装的Markdown编辑器打开进行编辑</p>
+<ul>
+<li>文件内会默认生成以下内容(以本博客为例）：  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   ---`</span><br><span class="line">   title: HEXO&amp;Markdown</span><br><span class="line">date: 2019-04-04 10:50:41</span><br><span class="line">tags: [Hexo,Markdown]</span><br><span class="line">   ---`</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其中<code>title</code>就是博客标题</li>
+<li><code>date</code>是博客的创建时间，不用修改</li>
+<li><code>tags</code>是博客的标签</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>踩坑：<br>此处注意冒号后面的空格</p>
+</blockquote>
+<ul>
+<li>在<code>---</code>分割线后就是我们写博文的地方了，按照Markdown语法规则编写即可</li>
+</ul>
+</li>
+<li><p>编写完成后保存</p>
+</li>
+</ol>
+<h2 id="生成新网页并部署"><a href="#生成新网页并部署" class="headerlink" title="生成新网页并部署"></a>生成新网页并部署</h2><ol>
+<li>打开Git bash</li>
+<li>输入命令<code>hexo clean</code>清除网页缓存</li>
+<li>输入命令<code>hexo g</code>生成新的网页文件</li>
+<li>（可选）输入命令<code>hexo s</code>生成本地服务并前往返回的网址预览网页<blockquote>
+<p>踩坑：<br>Git bash内的复制命令并不是熟悉的<code>ctrl c</code>，而是<code>ctrl ins</code>，使用<code>ctrl c</code>复制预览网址会结束本地服务进程，所以预览网页会没反应</p>
+</blockquote>
+</li>
+<li>输入命令<code>hexo d</code>将网页部署到Github Page</li>
+</ol>
+<hr>
+<p><strong>以上是完整流程，每次更新博客的时候都要重复一遍上述流程</strong><br>省事的话可以合并命令，直接用<code>hexo cl</code>和<code>hexo g -d</code>即可更新</p>
+]]></content>
+      <categories>
+        <category>网站配置</category>
+      </categories>
+      <tags>
+        <tag>HEXO</tag>
       </tags>
   </entry>
   <entry>
@@ -782,95 +782,6 @@
         <tag>环境变量</tag>
         <tag>Java</tag>
         <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Jupyter Notebook 食用指南</title>
-    <url>/Jupyter-Notebook-%E9%A3%9F%E7%94%A8%E6%8C%87%E5%8D%97.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">延期开学的咸鱼在家无事可做，打算刷刷 MOOC 掉点头发，记笔记的时候发现 OneNote 没法记录代码，缩进高亮行号都没有，于是就想到了一直在电脑里躺尸的 Jupyter Notebook，记录下安装及食用的方法</blockquote>
-
-<span id="more"></span>
-
-<h1 id="安装-Jupyter-Notebook"><a href="#安装-Jupyter-Notebook" class="headerlink" title="安装 Jupyter Notebook"></a>安装 Jupyter Notebook</h1><p>安装 Jupyter Notebook 之前需要先安装好 Python 或 Anaconda，可以使用 <code>conda</code>（Anaconda） 和 <code>pip</code> 两种方式安装</p>
-<p>Jupyter 官方推荐按使用 <code>conda</code>（Anaconda） 来安装，安装 Anaconda 的时候一般会默认安装 Jupyter Notebook，但如果没有安装的话就使用下面的命令</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">conda install jupyter notebook</span><br></pre></td></tr></table></figure>
-
-<p>不用 Anaconda 的话就用 pip 安装，命令为</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">pip install jupyter notebook</span><br></pre></td></tr></table></figure>
-
-<h2 id="关于-Anaconda-和-Python-的关系"><a href="#关于-Anaconda-和-Python-的关系" class="headerlink" title="关于 Anaconda 和 Python 的关系"></a>关于 Anaconda 和 Python 的关系</h2><p>这里顺带解释一波 Anaconda 和 Python 的关系，众所周知，Python 是一门编程语言（手动狗头），而 Anaconda 相当于 Python 的发行版，带有很多科学计算类的库以及包管理器 conda。可以用 Ubuntu 和 Linux 的关系来类比。</p>
-<p>此外安装 Anaconda 后也要手动添加系统环境变量</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\ProgramData\Anaconda3\Scripts</span><br><span class="line">C:\ProgramData\Anaconda3</span><br><span class="line">C:\ProgramData\Anaconda3\Library\bin</span><br></pre></td></tr></table></figure>
-
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="安装-Java-扩展"><a href="#安装-Java-扩展" class="headerlink" title="安装 Java 扩展"></a>安装 Java 扩展</h2><p>我用的Java插件是 <a href="https://github.com/SpencerPark/IJava">IJava</a>，支持代码运行、自动联想、错误提示等功能，安装方式为</p>
-<ol>
-<li>在 <a href="https://github.com/SpencerPark/IJava/releases">release</a> 页面下载压缩包</li>
-<li>解压缩并打开解压后的文件夹</li>
-<li>在解压后的文件夹以管理员身份运行终端</li>
-<li>输入 <code>python install.py -h</code></li>
-<li>输入 <code>jupyter kernelspec list</code> 检查是否安装成功，成功的话会返回<code>java  C:\ProgramData\jupyter\kernels\java</code></li>
-</ol>
-<h2 id="安装-Nbextensions"><a href="#安装-Nbextensions" class="headerlink" title="安装 Nbextensions"></a>安装 Nbextensions</h2><p>这是一个扩展的集合，有诸如设置自动保存的时间间隔、支持更多的 Latex 元素、设置代码字体大小等功能，我就不列举了，插件中的每个功能都带有详细的介绍。我主要用它来显示 Markdown 的目录。安装方式为</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">conda install -c conda-forge jupyter_contrib_nbextensions</span><br></pre></td></tr></table></figure>
-
-<p>安装完会在 Jupyter 的状态栏显示，如果没有的话使用这个命令</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">jupyter contrib nbextension install --user --skip-running-check</span><br></pre></td></tr></table></figure>
-
-<p>在里面勾选 <code>Table of Contents(2)</code> 就可以启用目录功能了</p>
-<h2 id="安装-nb-conda"><a href="#安装-nb-conda" class="headerlink" title="安装 nb_conda"></a>安装 nb_conda</h2><p>nb_conda 主要用于多种运行环境的切换，安装命令为</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">conda install nb_conda</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改默认存储位置"><a href="#修改默认存储位置" class="headerlink" title="修改默认存储位置"></a>修改默认存储位置</h2><p>Jupyter Notebook 默认的存储位置已经有很多文件了，非常杂乱，下面要做的就是换一个指定的文件夹存储笔记</p>
-<ol>
-<li>首先需要创建 Jupyter 的配置文件 <code>C:\Users\Sun\.jupyter\jupyter_notebook_config.py</code> ，命令为 <figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure></li>
-<li>打开 <code>C:\Users\Sun\.jupyter\jupyter_notebook_config.py</code> ，搜索 <code>c.NotebookApp.notebook_dir</code>，删掉前面的<code>#</code>，然后把指定文件夹的目录复制到单引号之间，修改完是这个亚子 <figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment">## The directory to use for notebooks and kernels.</span></span><br><span class="line">c.NotebookApp.notebook_dir = <span class="string">&#x27;E:\Jupyter&#x27;</span></span><br></pre></td></tr></table></figure></li>
-<li>保存文件并打开 Jupyter Notebook 查看是否成功</li>
-</ol>
-<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><ul>
-<li>安装完成后在终端输入 <code>jupyter notebook</code> 就可以在浏览器中打开，默认地址为 <code>http://localhost:8888</code></li>
-<li>使用<code>jupyter notebook --port port_number</code>可以指定端口(port_number)启动</li>
-<li>使用<code>jupyter notebook notebook_name.ipynb</code>可以启动对应名称(notebook_name)的笔记</li>
-<li>使用<code>jupyter notebook --no-browser</code>可以只启动服务而不启动浏览器</li>
-</ul>
-<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>结束的方法有两种</p>
-<ul>
-<li>在浏览器页面点击 Quit</li>
-<li>在终端中使用 <code>ctrl + c</code> 结束运行</li>
-</ul>
-<h2 id="主页操作"><a href="#主页操作" class="headerlink" title="主页操作"></a>主页操作</h2><p><img data-src="https://s2.loli.net/2022/05/13/Oy5mb7ZerDd4V2I.png" alt="主页操作"></p>
-<h2 id="笔记操作"><a href="#笔记操作" class="headerlink" title="笔记操作"></a>笔记操作</h2><p><img data-src="https://s2.loli.net/2022/05/13/qxvI6sUtpoETQOw.png" alt="笔记操作"></p>
-<p>另外点击笔记标题（Untitled）那里可以重命名</p>
-<h2 id="Markdown-内部跳转"><a href="#Markdown-内部跳转" class="headerlink" title="Markdown 内部跳转"></a>Markdown 内部跳转</h2><p>Jupyter Notebook 在 Markdown 模式下可以实现内部跳转，示例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-attr">[示例]</span>(<span class="selector-id">#link</span>)</span><br><span class="line">跳转中间的内容</span><br><span class="line">&lt;<span class="selector-tag">a</span> id=link&gt;跳转提示语&lt;/<span class="selector-tag">a</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<p>跳转提示语可以不加，不加的话跳转到的地方没有提示</p>
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>在 Python 内核下可以使用Shell命令，在命令前加 <code>%</code>即可</p>
-<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">%pwd <span class="comment"># 获取文件夹绝对路径</span></span><br><span class="line">%ls  <span class="comment"># 获取当前文件夹文件信息</span></span><br><span class="line">%run 文件路径 <span class="comment">#直接运行本地文件</span></span><br><span class="line">%load 文件路径 <span class="comment">#加载本地文件</span></span><br><span class="line">%load URL <span class="comment">#加载指定网站的源代码，如https://www.baidu.com/</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>Jupyter Notebook 有两种不同的键盘输入模式. 编辑模式可以将代码或文本输入到一个单元格中，并通过一个绿色的单元格来表示。命令模式将键盘与笔记本级命令绑定在一起，并通过一个灰色的单元格边界显示，该边框为蓝色的左边框。</p>
-<h3 id="编辑模式"><a href="#编辑模式" class="headerlink" title="编辑模式"></a>编辑模式</h3><p><img data-src="https://s2.loli.net/2022/05/13/jdkRQwH8mcMhgyr.png" alt="编辑模式"></p>
-<h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><p><img data-src="https://s2.loli.net/2022/05/13/fskpXI5jeJir2b7.png" alt="命令模式"></p>
-<h3 id="自定义快捷键"><a href="#自定义快捷键" class="headerlink" title="自定义快捷键"></a>自定义快捷键</h3><p>Jupyter Notebook 中原有的快捷键数量不是很多，但是预留了自定义快捷键的空间，在 <code>Help - Edit Keyboard Shortcuts</code> 中可以进行设置，在 <code>add shortcut</code> 中填入对应的按键然后点击右侧的 <code>+</code> 即可。这里注意 </p>
-<ul>
-<li><code>Ctrl、Shift、Alt</code> 等要输入完整字母，不能直接识别</li>
-<li>两个按键中间用 <code>-</code> 来连接</li>
-<li>设置完成记得点击右下角的确定</li>
-</ul>
-<p>在这里我设置了两个快捷键</p>
-<ul>
-<li>clear cell output，清除单元格的输出结果，快捷键 <code>Alt-Shif-D</code></li>
-<li>clear all cells output，清除当前笔记所有单元格的输出结果，快捷键 <code>Alt-Ctrl-D</code></li>
-</ul>
-<blockquote>
-<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/33105153">https://zhuanlan.zhihu.com/p/33105153</a><br><a href="https://www.zhihu.com/question/380990243">https://www.zhihu.com/question/380990243</a><br><a href="https://blog.csdn.net/qq_34992030/article/details/89175633">https://blog.csdn.net/qq_34992030/article/details/89175633</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>程序猿</category>
-      </categories>
-      <tags>
-        <tag>Win10</tag>
-        <tag>Jupyter</tag>
       </tags>
   </entry>
   <entry>
@@ -1486,6 +1397,112 @@
       </tags>
   </entry>
   <entry>
+    <title>Jupyter Notebook 食用指南</title>
+    <url>/Jupyter-Notebook-%E9%A3%9F%E7%94%A8%E6%8C%87%E5%8D%97.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">延期开学的咸鱼在家无事可做，打算刷刷 MOOC 掉点头发，记笔记的时候发现 OneNote 没法记录代码，缩进高亮行号都没有，于是就想到了一直在电脑里躺尸的 Jupyter Notebook，记录下安装及食用的方法</blockquote>
+
+<span id="more"></span>
+
+<h1 id="安装-Jupyter-Notebook"><a href="#安装-Jupyter-Notebook" class="headerlink" title="安装 Jupyter Notebook"></a>安装 Jupyter Notebook</h1><p>安装 Jupyter Notebook 之前需要先安装好 Python 或 Anaconda，可以使用 <code>conda</code>（Anaconda） 和 <code>pip</code> 两种方式安装</p>
+<p>Jupyter 官方推荐按使用 <code>conda</code>（Anaconda） 来安装，安装 Anaconda 的时候一般会默认安装 Jupyter Notebook，但如果没有安装的话就使用下面的命令</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">conda install jupyter notebook</span><br></pre></td></tr></table></figure>
+
+<p>不用 Anaconda 的话就用 pip 安装，命令为</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">pip install jupyter notebook</span><br></pre></td></tr></table></figure>
+
+<h2 id="关于-Anaconda-和-Python-的关系"><a href="#关于-Anaconda-和-Python-的关系" class="headerlink" title="关于 Anaconda 和 Python 的关系"></a>关于 Anaconda 和 Python 的关系</h2><p>这里顺带解释一波 Anaconda 和 Python 的关系，众所周知，Python 是一门编程语言（手动狗头），而 Anaconda 相当于 Python 的发行版，带有很多科学计算类的库以及包管理器 conda。可以用 Ubuntu 和 Linux 的关系来类比。</p>
+<p>此外安装 Anaconda 后也要手动添加系统环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\ProgramData\Anaconda3\Scripts</span><br><span class="line">C:\ProgramData\Anaconda3</span><br><span class="line">C:\ProgramData\Anaconda3\Library\bin</span><br></pre></td></tr></table></figure>
+
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="安装-Java-扩展"><a href="#安装-Java-扩展" class="headerlink" title="安装 Java 扩展"></a>安装 Java 扩展</h2><p>我用的Java插件是 <a href="https://github.com/SpencerPark/IJava">IJava</a>，支持代码运行、自动联想、错误提示等功能，安装方式为</p>
+<ol>
+<li>在 <a href="https://github.com/SpencerPark/IJava/releases">release</a> 页面下载压缩包</li>
+<li>解压缩并打开解压后的文件夹</li>
+<li>在解压后的文件夹以管理员身份运行终端</li>
+<li>输入 <code>python install.py -h</code></li>
+<li>输入 <code>jupyter kernelspec list</code> 检查是否安装成功，成功的话会返回<code>java  C:\ProgramData\jupyter\kernels\java</code></li>
+</ol>
+<h2 id="安装-Nbextensions"><a href="#安装-Nbextensions" class="headerlink" title="安装 Nbextensions"></a>安装 Nbextensions</h2><p>这是一个扩展的集合，有诸如设置自动保存的时间间隔、支持更多的 Latex 元素、设置代码字体大小等功能，我就不列举了，插件中的每个功能都带有详细的介绍。我主要用它来显示 Markdown 的目录。安装方式为</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">conda install -c conda-forge jupyter_contrib_nbextensions</span><br></pre></td></tr></table></figure>
+
+<p>安装完会在 Jupyter 的状态栏显示，如果没有的话使用这个命令</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">jupyter contrib nbextension install --user --skip-running-check</span><br></pre></td></tr></table></figure>
+
+<p>在里面勾选 <code>Table of Contents(2)</code> 就可以启用目录功能了</p>
+<h2 id="安装-nb-conda"><a href="#安装-nb-conda" class="headerlink" title="安装 nb_conda"></a>安装 nb_conda</h2><p>nb_conda 主要用于多种运行环境的切换，安装命令为</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">conda install nb_conda</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改默认存储位置"><a href="#修改默认存储位置" class="headerlink" title="修改默认存储位置"></a>修改默认存储位置</h2><p>Jupyter Notebook 默认的存储位置已经有很多文件了，非常杂乱，下面要做的就是换一个指定的文件夹存储笔记</p>
+<ol>
+<li>首先需要创建 Jupyter 的配置文件 <code>C:\Users\Sun\.jupyter\jupyter_notebook_config.py</code> ，命令为 <figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure></li>
+<li>打开 <code>C:\Users\Sun\.jupyter\jupyter_notebook_config.py</code> ，搜索 <code>c.NotebookApp.notebook_dir</code>，删掉前面的<code>#</code>，然后把指定文件夹的目录复制到单引号之间，修改完是这个亚子 <figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment">## The directory to use for notebooks and kernels.</span></span><br><span class="line">c.NotebookApp.notebook_dir = <span class="string">&#x27;E:\Jupyter&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>保存文件并打开 Jupyter Notebook 查看是否成功</li>
+</ol>
+<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><ul>
+<li>安装完成后在终端输入 <code>jupyter notebook</code> 就可以在浏览器中打开，默认地址为 <code>http://localhost:8888</code></li>
+<li>使用<code>jupyter notebook --port port_number</code>可以指定端口(port_number)启动</li>
+<li>使用<code>jupyter notebook notebook_name.ipynb</code>可以启动对应名称(notebook_name)的笔记</li>
+<li>使用<code>jupyter notebook --no-browser</code>可以只启动服务而不启动浏览器</li>
+</ul>
+<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>结束的方法有两种</p>
+<ul>
+<li>在浏览器页面点击 Quit</li>
+<li>在终端中使用 <code>ctrl + c</code> 结束运行</li>
+</ul>
+<h2 id="主页操作"><a href="#主页操作" class="headerlink" title="主页操作"></a>主页操作</h2><p><img data-src="https://s2.loli.net/2022/05/13/Oy5mb7ZerDd4V2I.png" alt="主页操作"></p>
+<h2 id="笔记操作"><a href="#笔记操作" class="headerlink" title="笔记操作"></a>笔记操作</h2><p><img data-src="https://s2.loli.net/2022/05/13/qxvI6sUtpoETQOw.png" alt="笔记操作"></p>
+<p>另外点击笔记标题（Untitled）那里可以重命名</p>
+<h2 id="Markdown-内部跳转"><a href="#Markdown-内部跳转" class="headerlink" title="Markdown 内部跳转"></a>Markdown 内部跳转</h2><p>Jupyter Notebook 在 Markdown 模式下可以实现内部跳转，示例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-attr">[示例]</span>(<span class="selector-id">#link</span>)</span><br><span class="line">跳转中间的内容</span><br><span class="line">&lt;<span class="selector-tag">a</span> id=link&gt;跳转提示语&lt;/<span class="selector-tag">a</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>跳转提示语可以不加，不加的话跳转到的地方没有提示</p>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>在 Python 内核下可以使用Shell命令，在命令前加 <code>%</code>即可</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">%pwd <span class="comment"># 获取文件夹绝对路径</span></span><br><span class="line">%ls  <span class="comment"># 获取当前文件夹文件信息</span></span><br><span class="line">%run 文件路径 <span class="comment">#直接运行本地文件</span></span><br><span class="line">%load 文件路径 <span class="comment">#加载本地文件</span></span><br><span class="line">%load URL <span class="comment">#加载指定网站的源代码，如https://www.baidu.com/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>Jupyter Notebook 有两种不同的键盘输入模式. 编辑模式可以将代码或文本输入到一个单元格中，并通过一个绿色的单元格来表示。命令模式将键盘与笔记本级命令绑定在一起，并通过一个灰色的单元格边界显示，该边框为蓝色的左边框。</p>
+<h3 id="编辑模式"><a href="#编辑模式" class="headerlink" title="编辑模式"></a>编辑模式</h3><p><img data-src="https://s2.loli.net/2022/05/13/jdkRQwH8mcMhgyr.png" alt="编辑模式"></p>
+<h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><p><img data-src="https://s2.loli.net/2022/05/13/fskpXI5jeJir2b7.png" alt="命令模式"></p>
+<h3 id="自定义快捷键"><a href="#自定义快捷键" class="headerlink" title="自定义快捷键"></a>自定义快捷键</h3><p>Jupyter Notebook 中原有的快捷键数量不是很多，但是预留了自定义快捷键的空间，在 <code>Help - Edit Keyboard Shortcuts</code> 中可以进行设置，在 <code>add shortcut</code> 中填入对应的按键然后点击右侧的 <code>+</code> 即可。这里注意 </p>
+<ul>
+<li><code>Ctrl、Shift、Alt</code> 等要输入完整字母，不能直接识别</li>
+<li>两个按键中间用 <code>-</code> 来连接</li>
+<li>设置完成记得点击右下角的确定</li>
+</ul>
+<p>在这里我设置了两个快捷键</p>
+<ul>
+<li>clear cell output，清除单元格的输出结果，快捷键 <code>Alt-Shif-D</code></li>
+<li>clear all cells output，清除当前笔记所有单元格的输出结果，快捷键 <code>Alt-Ctrl-D</code></li>
+</ul>
+<blockquote>
+<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/33105153">https://zhuanlan.zhihu.com/p/33105153</a><br><a href="https://www.zhihu.com/question/380990243">https://www.zhihu.com/question/380990243</a><br><a href="https://blog.csdn.net/qq_34992030/article/details/89175633">https://blog.csdn.net/qq_34992030/article/details/89175633</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>程序猿</category>
+      </categories>
+      <tags>
+        <tag>Win10</tag>
+        <tag>Jupyter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开站纪念</title>
+    <url>/New.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">第一篇博客，搭网站踩坑踩到自闭，留下当作开站纪念了</blockquote>
+
+<span id="more"></span>
+
+<p>2022.05 这篇就当个日记本用吧hhh</p>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>纪念</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Next 8.10 升级日志</title>
     <url>/Next-8-0-%E5%8D%87%E7%BA%A7%E6%97%A5%E5%BF%97.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">失踪一年的老鸽子回来了！（手动狗头🐶）我终于想起了我的博客，然后这几天把他更新到了Next 8.10，这篇算是我的更新记录</blockquote>
@@ -1685,247 +1702,6 @@
       <tags>
         <tag>HEXO</tag>
         <tag>Next</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开站纪念</title>
-    <url>/New.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">第一篇博客，搭网站踩坑踩到自闭，留下当作开站纪念了</blockquote>
-
-<span id="more"></span>
-
-<p>2022.05 这篇就当个日记本用吧hhh</p>
-]]></content>
-      <categories>
-        <category>日常</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-        <tag>纪念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Next升级+Mac迁移 </title>
-    <url>/Next%E5%8D%87%E7%BA%A7-Mac%E8%BF%81%E7%A7%BB.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">写博客到现在已经快一年了，Next主题也更新了好多版本，新增的pjax真的是太香了，果断更新。顺便把Hexo迁移到mac上面来</blockquote>
-
-<span id="more"></span>
-
-<h1 id="更新说明"><a href="#更新说明" class="headerlink" title="更新说明"></a>更新说明</h1><p>Next主题从7.1到7.7.2的变动较大，直接升级的话小问题比较多，所以这次升级采用了重新安装的方式</p>
-<h2 id="版本对比"><a href="#版本对比" class="headerlink" title="版本对比"></a>版本对比</h2><p>升级前Hexo版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo: 3.8.0</span><br><span class="line">hexo-cli: 3.1.0</span><br><span class="line">os: Windows_NT 10.0.17763 win32 x64</span><br><span class="line">node: 12.14.1</span><br><span class="line">next: 7.1</span><br></pre></td></tr></table></figure>
-<p>升级后Hexo版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo: 4.2.0</span><br><span class="line">hexo-cli: 3.1.0</span><br><span class="line">os: Darwin 18.7.0 darwin x64</span><br><span class="line">node: 13.10.1</span><br><span class="line">next: 7.7.2</span><br></pre></td></tr></table></figure>
-
-<h2 id="新增功能"><a href="#新增功能" class="headerlink" title="新增功能"></a>新增功能</h2><ul>
-<li>pjax（局部刷新加载页面）</li>
-<li>DarkMode夜间模式（支持Mac等的夜间模式）</li>
-<li>Gitalk评论（Gitment凉了之后一直没设置评论系统，这次顺路加上）</li>
-<li>Mediumzoom（图片插件）</li>
-<li>中英切换（新）</li>
-<li>CDN（进行中）</li>
-<li>Echarts</li>
-</ul>
-<h2 id="移除功能"><a href="#移除功能" class="headerlink" title="移除功能"></a>移除功能</h2><ul>
-<li>动态背景（占用资源较大，在手机平板等设备上造成卡顿、发热、耗电快等问题）</li>
-<li>i18n-generator（一年也没写过英语的博客，而且这个方案缺陷太大，正在寻找其他解决方案）</li>
-<li>网易云音乐挂件（使用频率极低，拖慢加载速度）</li>
-</ul>
-<h2 id="保留功能"><a href="#保留功能" class="headerlink" title="保留功能"></a>保留功能</h2><ul>
-<li>站内搜索</li>
-<li>字数与阅读时长统计</li>
-<li>网站运行时间</li>
-<li>加载进度条</li>
-<li>崩溃欺骗</li>
-<li>背景图片</li>
-<li>鼠标点击特效</li>
-<li>不蒜子</li>
-<li>Live2D看板娘</li>
-</ul>
-<h1 id="Mac安装过程"><a href="#Mac安装过程" class="headerlink" title="Mac安装过程"></a>Mac安装过程</h1><h2 id="安装软件依赖"><a href="#安装软件依赖" class="headerlink" title="安装软件依赖"></a>安装软件依赖</h2><p>首先下载安装<code>git</code>和<code>node.js</code>,官网如下</p>
-<ul>
-<li><a href="https://git-scm.com/">git</a></li>
-<li><a href="https://nodejs.org/en/">node.js</a></li>
-</ul>
-<p>安装完成后在终端分别输入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git --version</span><br><span class="line">node -v</span><br></pre></td></tr></table></figure>
-<p>检测是否安装成功，成功的话会返回软件版本号</p>
-<h2 id="配置本地目录"><a href="#配置本地目录" class="headerlink" title="配置本地目录"></a>配置本地目录</h2><ul>
-<li>新建一个用于存放博客文件的文件夹</li>
-<li>新建位于文件夹位置的终端窗口</li>
-<li>输入<code>npm install hexo -g</code>安装hexo<ul>
-<li>这一步可能会报错，报错的话使用命令<code>sudo npm install --unsafe-perm --verbose -g hexo</code>来安装hexo</li>
-</ul>
-</li>
-<li>输入<code>npm install</code>安装其他依赖</li>
-<li>输入<code>npm install hexo-deployer-git --save</code>安装部署插件</li>
-<li>输入<code>hexo v</code>查看是否安装成功，成功会返回版本号</li>
-</ul>
-<h2 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h2><ul>
-<li>打开终端</li>
-<li>输入<code>ls -al ~/.ssh</code>检查是否有以前生成的 SSH Key，没有的话继续</li>
-<li>输入<code>ssh-keygen -t rsa -C &quot;Guthub邮箱地址&quot;</code> 然后回车三连</li>
-<li>此时终端会显示文件的生成路径，根据路径找到并打开<code>id_rsa.pub</code></li>
-<li>复制里面的所有内容</li>
-<li>打开Github，在右上角个人头像下拉菜单中找到<code>Settings</code></li>
-<li>打开<code>SSH and GPG keys</code>,点击右上角<code>New SSH key</code></li>
-<li><code>Title</code>随便填,然后在<code>Key</code>中粘贴</li>
-<li>点击<code>Add SSH key</code></li>
-<li>回到Git bash，输入<code>ssh -T git@github.com</code>回车</li>
-<li>首次输入可能会有提醒，输入<code>yes</code>回车即可</li>
-<li>成功返回<code>Hi 用户名! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code>就代表成功了</li>
-<li>输入<code>git config --global user.name &quot;用户名&quot;</code></li>
-<li>输入<code>git config --global user.email  &quot;邮箱地址&quot;</code></li>
-</ul>
-<h2 id="安装Next主题"><a href="#安装Next主题" class="headerlink" title="安装Next主题"></a>安装Next主题</h2><p>在终端输入下面的命令安装最新的Next主题</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-
-<h1 id="Next主题自定义"><a href="#Next主题自定义" class="headerlink" title="Next主题自定义"></a>Next主题自定义</h1><p>Hexo的配置过程我就不说了，根据原来的<code>_config.yml</code>配置就行，下面要说的是Next主题的配置</p>
-<h2 id="配置文件分离"><a href="#配置文件分离" class="headerlink" title="配置文件分离"></a>配置文件分离</h2><p>Next主题在7.3之后分离了配置文件与主题，详情请见<a href="https://tding.top/archives/2bd6d82.html">小丁的个人博客</a>。</p>
-<ul>
-<li>新建文件夹<code>hexo/source/_data</code></li>
-<li>将<code>./themes/next/_config.yml</code>复制到<code>hexo/source/_data</code>路径下并重命名为<code>next.yml</code></li>
-<li>将<code>next.yml</code>中的<code>override</code>设置为<code>true</code>即可作为主题的配置文件使用</li>
-<li>在<code>hexo/source/_data</code>中新建<code>body-end.swig</code>和<code>styles.styl</code>文件</li>
-<li>然后在<code>next.yml</code>的<code>custom_file_path</code>中删除前面的<code>#</code>来启用<code>bodyEnd</code>和<code>style</code></li>
-<li><code>custom_file_path</code>中的其他选项根据需要创建相关文件并启用</li>
-</ul>
-<h2 id="Pjax"><a href="#Pjax" class="headerlink" title="Pjax"></a>Pjax</h2><p>Pjax是基于Ajax的插件，能实现网页局部无刷新载入，听起来很香，然而存在一些小问题：</p>
-<ul>
-<li>使用Mediumzoom时，从归档进入博文不会加载图片，需要刷新网页才能加载</li>
-<li>Echarts图表全部需要刷新才能显示，否则只有一片空白</li>
-</ul>
-<p>安装Pjax</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/theme-next-pjax source/lib/pjax</span><br></pre></td></tr></table></figure>
-<p>在<code>next.yml</code>中搜索<code>pjax</code>并设置为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pjax: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="Darkmode"><a href="#Darkmode" class="headerlink" title="Darkmode"></a>Darkmode</h2><p>Next主题新增了暗色模式，能够配合系统的暗色主题使用<br>在<code>next.yml</code>中搜索<code>darkmode</code>并设置为<code>auto</code>即可根据系统主题切换亮色&#x2F;暗色模式</p>
-<h2 id="Gitalk评论"><a href="#Gitalk评论" class="headerlink" title="Gitalk评论"></a>Gitalk评论</h2><p>评论系统，一开始想用Valine来着，结果要实名制，果断弃了</p>
-<ul>
-<li>在Github新建一个仓库<code>gitalk-comment</code>，用来存放评论产生的issues</li>
-<li>点击右上角<code>头像 - Setting - Developer settings - OAuth Apps - New OAuth Apps</code></li>
-<li><code>Application name</code> 随便填</li>
-<li><code>Homepage URL</code>和<code>Authorization callback URL</code>都填自己的博客地址</li>
-<li>点击 <code>Register application</code></li>
-<li>在<code>next.yml</code>中搜索<code>gitalk</code></li>
-<li>复制得到的<code>Cilent ID</code>和<code>Cilent secret</code>到相应位置粘贴</li>
-<li>设置<code>enable</code>为<code>true</code></li>
-<li><code>github_id</code>和<code>admin_user</code>为你的用户名</li>
-<li><code>repo</code>为刚才创建的仓库名<code>gitalk-comment</code></li>
-<li><code>distraction_free_mode</code>是类似facobook的评论遮罩功能</li>
-</ul>
-<p><code>next.yml</code>中的具体配置如下</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"># Gitalk</span><br><span class="line"># For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk</span><br><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  github_id: Siriusq # GitHub repo owner</span><br><span class="line">  repo: gitalk-commnet # Repository name to store issues</span><br><span class="line">  client_id: xxxxxxxx # GitHub Application Client ID</span><br><span class="line">  client_secret: xxxxxxxx # GitHub Application Client Secret</span><br><span class="line">  admin_user: Siriusq # GitHub repo owner and collaborators, only these guys can initialize gitHub issues</span><br><span class="line">  distraction_free_mode: false # Facebook-like distraction free mode</span><br><span class="line">  # Gitalk<span class="string">&#x27;s display language depends on user&#x27;</span>s browser or system environment</span><br><span class="line">  # If you want everyone visiting your site to see a uniform language, you can set a force language value</span><br><span class="line">  # Available values: en | es-ES | fr | ru | zh-CN | zh-TW</span><br><span class="line">  language:</span><br></pre></td></tr></table></figure>
-
-<h2 id="Mediumzoom"><a href="#Mediumzoom" class="headerlink" title="Mediumzoom"></a>Mediumzoom</h2><p>模仿Medium图片查看方式的插件<br>安装</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install medium-zoom</span><br></pre></td></tr></table></figure>
-<p>在<code>next.yml</code>中搜索<code>mediumzoom</code>并设置为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mediumzoom: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="中英切换"><a href="#中英切换" class="headerlink" title="中英切换"></a>中英切换</h2><p>请移步另一篇博客<a href="https://siriusq.top/Hexo-Next-7-7-%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html">Hexo Next 7.7 双语切换</a></p>
-<h2 id="站内搜索"><a href="#站内搜索" class="headerlink" title="站内搜索"></a>站内搜索</h2><p>查找博客内的内容<br>安装</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb</span><br></pre></td></tr></table></figure>
-<p>在<code>next.yml</code>中搜索<code>local_search</code>并设置为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enable: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="字数与阅读时长统计"><a href="#字数与阅读时长统计" class="headerlink" title="字数与阅读时长统计"></a>字数与阅读时长统计</h2><p>安装</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-symbols-count-<span class="built_in">time</span></span><br></pre></td></tr></table></figure>
-<p>在根目录的<code>_config.yml</code>中添加</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br><span class="line">  exclude_codeblock: false</span><br><span class="line">  awl: 4</span><br><span class="line">  wpm: 275</span><br><span class="line">  suffix: &quot;mins.&quot;</span><br></pre></td></tr></table></figure>
-<p>然后在<code>next.yml</code>中搜索<code>symbols_count_time</code>并设置为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="添加jquery"><a href="#添加jquery" class="headerlink" title="添加jquery"></a>添加jquery</h2><ul>
-<li>新版的Next主题移除了jquery，导致一些老得自定义设置会失效，我直接从老版本的Next主题复制过来了，路径是<code>./hexo/themes/next/source/libs/jquery/jquert-2.2.0.min.js</code>，也可以到<a href="https://code.jquery.com/jquery/">官网</a>下载</li>
-<li>将jquery放置在<code>./hexo/source/js</code>路径下</li>
-<li>在<code>./hexo/source/_data/body-end.swig</code>添加，版本不同的话记得改下面的版本<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!--jquery--&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/js/jquery-2.2.0.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="网站运行时间"><a href="#网站运行时间" class="headerlink" title="网站运行时间"></a>网站运行时间</h2><p>打开<code>./hexo/themes/next/layout/_partials/footer.swig</code>并添加下列代码</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">span</span> id=&quot;timeDate&quot;&gt;载入天数...&lt;/<span class="selector-tag">span</span>&gt;&lt;<span class="selector-tag">span</span> id=&quot;times&quot;&gt;载入时分秒...&lt;/<span class="selector-tag">span</span>&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="selector-tag">var</span> now = new Date();</span><br><span class="line">    function createtime() &#123;</span><br><span class="line">        <span class="selector-tag">var</span> grt= new Date(&quot;<span class="number">03</span>/<span class="number">31</span>/<span class="number">2019</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span><span class="string">&quot;);</span></span><br><span class="line"><span class="string">        now.setTime(now.getTime()+250);</span></span><br><span class="line"><span class="string">        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);</span></span><br><span class="line"><span class="string">        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);</span></span><br><span class="line"><span class="string">        if(String(hnum).length ==1 )&#123;hnum = &quot;</span><span class="number">0</span><span class="string">&quot; + hnum;&#125; minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);</span></span><br><span class="line"><span class="string">        mnum = Math.floor(minutes); if(String(mnum).length ==1 )&#123;mnum = &quot;</span><span class="number">0</span><span class="string">&quot; + mnum;&#125;</span></span><br><span class="line"><span class="string">        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);</span></span><br><span class="line"><span class="string">        snum = Math.round(seconds); if(String(snum).length ==1 )&#123;snum = &quot;</span><span class="number">0</span><span class="string">&quot; + snum;&#125;</span></span><br><span class="line"><span class="string">        document.getElementById(&quot;</span>timeDate<span class="string">&quot;).innerHTML = &quot;</span>本站已安全运行 <span class="string">&quot;+dnum+&quot;</span> 天 <span class="string">&quot;;</span></span><br><span class="line"><span class="string">        document.getElementById(&quot;</span>times<span class="string">&quot;).innerHTML = hnum + &quot;</span> 小时 <span class="string">&quot; + mnum + &quot;</span> 分 <span class="string">&quot; + snum + &quot;</span> 秒<span class="string">&quot;;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">setInterval(&quot;</span><span class="built_in">createtime</span>()<span class="string">&quot;,250);</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="加载进度条"><a href="#加载进度条" class="headerlink" title="加载进度条"></a>加载进度条</h2><p>显示当前网页的加载进度<br>安装</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/theme-next-pace source/lib/pace</span><br></pre></td></tr></table></figure>
-<p>在<code>next.yml</code>中搜索<code>Progress bar in the top during page loading</code>并设置为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pace:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="崩溃欺骗"><a href="#崩溃欺骗" class="headerlink" title="崩溃欺骗"></a>崩溃欺骗</h2><p>在网页标题中添加崩溃欺骗效果，离开页面后标题会更改，切换回来后会恢复正常，需要配合<strong>jquery</strong>使用</p>
-<p>在<code>./hexo/source/js</code>中新建<code>crash_cheat</code>文件，复制下列代码</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!--崩溃欺骗--&gt;</span><br><span class="line"> <span class="keyword">var</span> <span class="title class_">OriginTitle</span> = <span class="variable language_">document</span>.<span class="property">title</span>;</span><br><span class="line"> <span class="keyword">var</span> titleTime;</span><br><span class="line"> <span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;visibilitychange&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">     <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="property">hidden</span>) &#123;</span><br><span class="line">         $(<span class="string">&#x27;[rel=&quot;icon&quot;]&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&#x27;href&#x27;</span>, <span class="string">&quot;/img/TEP.ico&quot;</span>);</span><br><span class="line">         <span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">&#x27;╭(°A°`)╮ 页面崩溃啦 ~&#x27;</span>;</span><br><span class="line">         <span class="built_in">clearTimeout</span>(titleTime);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">else</span> &#123;</span><br><span class="line">         $(<span class="string">&#x27;[rel=&quot;icon&quot;]&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&#x27;href&#x27;</span>, <span class="string">&quot;/favicon.ico&quot;</span>);</span><br><span class="line">         <span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">&#x27;(ฅ&gt;ω&lt;*ฅ) 噫又好了~&#x27;</span> + <span class="title class_">OriginTitle</span>;</span><br><span class="line">         titleTime = <span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">             <span class="variable language_">document</span>.<span class="property">title</span> = <span class="title class_">OriginTitle</span>;</span><br><span class="line">         &#125;, <span class="number">2000</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
-<p>然后在<code>./hexo/source/_data/body-end.swig</code>中添加</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;!--崩溃欺骗--&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; <span class="attribute">src</span>=&quot;/js/crash_cheat<span class="selector-class">.js</span>&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h2><p>将背景图片放置在<code>./hexo/themes/next/source/images</code>中并命名为<code>background.jpg</code><br>然后在<code>./hexo/source/_data/styles.styl</code>中添加</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">url</span>(<span class="string">/images/background.jpg</span>);//图片路径</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;//是否重复平铺</span><br><span class="line">    <span class="attribute">background-attachment</span>: fixed;//是否随着网页上下滚动而滚动，fixed为固定</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">50%</span> <span class="number">50%</span>;//图片位置</span><br><span class="line">    <span class="attribute">background-size</span>: cover;//图片展示大小</span><br><span class="line">    -webkit-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    -o-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    -moz-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    -ms-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0.9</span>;</span><br><span class="line">    <span class="selector-tag">footer</span> &gt; <span class="selector-tag">div</span> &gt; <span class="selector-tag">div</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>:<span class="number">#000000</span>;//底部文字颜色</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="鼠标点击特效"><a href="#鼠标点击特效" class="headerlink" title="鼠标点击特效"></a>鼠标点击特效</h2><p>根据<a href="https://tding.top/archives/2bd6d82.html">小丁的个人博客</a>更换了鼠标点击的特效，原来的特效对低性能设备不友好<br>在<code>./hexo/themes/next/source/js/cursor</code>中新建<code>fireworks.js</code>，并添加</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">class Circle &#123;</span><br><span class="line">  constructor(&#123; origin, speed, <span class="attribute">color</span>, angle, context &#125;) &#123;</span><br><span class="line">    this<span class="selector-class">.origin</span> = origin</span><br><span class="line">    this<span class="selector-class">.position</span> = &#123; ..<span class="selector-class">.this</span><span class="selector-class">.origin</span> &#125;</span><br><span class="line">    this<span class="selector-class">.color</span> = <span class="attribute">color</span></span><br><span class="line">    this<span class="selector-class">.speed</span> = speed</span><br><span class="line">    this<span class="selector-class">.angle</span> = angle</span><br><span class="line">    this<span class="selector-class">.context</span> = context</span><br><span class="line">    this<span class="selector-class">.renderCount</span> = <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  draw() &#123;</span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.fillStyle</span> = this<span class="selector-class">.color</span></span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.beginPath</span>()</span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.arc</span>(this<span class="selector-class">.position</span><span class="selector-class">.x</span>, this<span class="selector-class">.position</span><span class="selector-class">.y</span>, <span class="number">2</span>, <span class="number">0</span>, Math<span class="selector-class">.PI</span> * <span class="number">2</span>)</span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.fill</span>()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  move() &#123;</span><br><span class="line">    this<span class="selector-class">.position</span><span class="selector-class">.x</span> = (Math<span class="selector-class">.sin</span>(this<span class="selector-class">.angle</span>) * this<span class="selector-class">.speed</span>) + this<span class="selector-class">.position</span><span class="selector-class">.x</span></span><br><span class="line">    this<span class="selector-class">.position</span><span class="selector-class">.y</span> = (Math<span class="selector-class">.cos</span>(this<span class="selector-class">.angle</span>) * this<span class="selector-class">.speed</span>) + this<span class="selector-class">.position</span><span class="selector-class">.y</span> + (this<span class="selector-class">.renderCount</span> * <span class="number">0.3</span>)</span><br><span class="line">    this<span class="selector-class">.renderCount</span>++</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Boom &#123;</span><br><span class="line">  constructor (&#123; origin, context, circleCount = <span class="number">16</span>, area &#125;) &#123;</span><br><span class="line">    this<span class="selector-class">.origin</span> = origin</span><br><span class="line">    this<span class="selector-class">.context</span> = context</span><br><span class="line">    this<span class="selector-class">.circleCount</span> = circleCount</span><br><span class="line">    this<span class="selector-class">.area</span> = area</span><br><span class="line">    this<span class="selector-class">.stop</span> = false</span><br><span class="line">    this<span class="selector-class">.circles</span> = <span class="selector-attr">[]</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomArray(range) &#123;</span><br><span class="line">    const length = range<span class="selector-class">.length</span></span><br><span class="line">    const randomIndex = Math<span class="selector-class">.floor</span>(length * Math<span class="selector-class">.random</span>())</span><br><span class="line">    return range<span class="selector-attr">[randomIndex]</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomColor() &#123;</span><br><span class="line">    const range = <span class="selector-attr">[<span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;9&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>, <span class="string">&#x27;F&#x27;</span>]</span></span><br><span class="line">    return &#x27;#&#x27; + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomRange(start, end) &#123;</span><br><span class="line">    return (end - start) * Math<span class="selector-class">.random</span>() + start</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  init() &#123;</span><br><span class="line">    for(let <span class="selector-tag">i</span> = <span class="number">0</span>; <span class="selector-tag">i</span> &lt; this<span class="selector-class">.circleCount</span>; <span class="selector-tag">i</span>++) &#123;</span><br><span class="line">      const circle = new Circle(&#123;</span><br><span class="line">        context: this.context,</span><br><span class="line">        origin: this.origin,</span><br><span class="line">        color: this.<span class="built_in">randomColor</span>(),</span><br><span class="line">        angle: this.<span class="built_in">randomRange</span>(Math.PI - <span class="number">1</span>, Math.PI + <span class="number">1</span>),</span><br><span class="line">        speed: this.<span class="built_in">randomRange</span>(<span class="number">1</span>, <span class="number">6</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">      this<span class="selector-class">.circles</span><span class="selector-class">.push</span>(circle)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  move() &#123;</span><br><span class="line">    this<span class="selector-class">.circles</span><span class="selector-class">.forEach</span>((circle, index) =&gt; &#123;</span><br><span class="line">      if (circle<span class="selector-class">.position</span><span class="selector-class">.x</span> &gt; this<span class="selector-class">.area</span><span class="selector-class">.width</span> || circle<span class="selector-class">.position</span><span class="selector-class">.y</span> &gt; this<span class="selector-class">.area</span><span class="selector-class">.height</span>) &#123;</span><br><span class="line">        return this<span class="selector-class">.circles</span><span class="selector-class">.splice</span>(index, <span class="number">1</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      circle<span class="selector-class">.move</span>()</span><br><span class="line">    &#125;)</span><br><span class="line">    if (this<span class="selector-class">.circles</span><span class="selector-class">.length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      this<span class="selector-class">.stop</span> = true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  draw() &#123;</span><br><span class="line">    this<span class="selector-class">.circles</span><span class="selector-class">.forEach</span>(circle =&gt; circle<span class="selector-class">.draw</span>())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class CursorSpecialEffects &#123;</span><br><span class="line">  constructor() &#123;</span><br><span class="line">    this<span class="selector-class">.computerCanvas</span> = document<span class="selector-class">.createElement</span>(&#x27;<span class="selector-tag">canvas</span>&#x27;)</span><br><span class="line">    this<span class="selector-class">.renderCanvas</span> = document<span class="selector-class">.createElement</span>(&#x27;<span class="selector-tag">canvas</span>&#x27;)</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.computerContext</span> = this<span class="selector-class">.computerCanvas</span><span class="selector-class">.getContext</span>(&#x27;<span class="number">2</span>d&#x27;)</span><br><span class="line">    this<span class="selector-class">.renderContext</span> = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.getContext</span>(&#x27;<span class="number">2</span>d&#x27;)</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.globalWidth</span> = window<span class="selector-class">.innerWidth</span></span><br><span class="line">    this<span class="selector-class">.globalHeight</span> = window<span class="selector-class">.innerHeight</span></span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.booms</span> = <span class="selector-attr">[]</span></span><br><span class="line">    this<span class="selector-class">.running</span> = false</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleMouseDown(e) &#123;</span><br><span class="line">    const boom = new Boom(&#123;</span><br><span class="line">      origin: &#123; x: e.clientX, y: e.clientY &#125;,</span><br><span class="line">      context: this.computerContext,</span><br><span class="line">      area: &#123;</span><br><span class="line">        <span class="attribute">width</span>: this.globalWidth,</span><br><span class="line">        height: this.globalHeight</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    boom<span class="selector-class">.init</span>()</span><br><span class="line">    this<span class="selector-class">.booms</span><span class="selector-class">.push</span>(boom)</span><br><span class="line">    this<span class="selector-class">.running</span> || this<span class="selector-class">.run</span>()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handlePageHide() &#123;</span><br><span class="line">    this<span class="selector-class">.booms</span> = <span class="selector-attr">[]</span></span><br><span class="line">    this<span class="selector-class">.running</span> = false</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  init() &#123;</span><br><span class="line">    const style = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.style</span></span><br><span class="line">    style<span class="selector-class">.position</span> = &#x27;fixed&#x27;</span><br><span class="line">    style<span class="selector-class">.top</span> = style<span class="selector-class">.left</span> = <span class="number">0</span></span><br><span class="line">    style<span class="selector-class">.zIndex</span> = &#x27;<span class="number">999999999999999999999999999999999999999999</span>&#x27;</span><br><span class="line">    style<span class="selector-class">.pointerEvents</span> = &#x27;<span class="attribute">none</span>&#x27;</span><br><span class="line"></span><br><span class="line">    style<span class="selector-class">.width</span> = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.width</span> = this<span class="selector-class">.computerCanvas</span><span class="selector-class">.width</span> = this<span class="selector-class">.globalWidth</span></span><br><span class="line">    style<span class="selector-class">.height</span> = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.height</span> = this<span class="selector-class">.computerCanvas</span><span class="selector-class">.height</span> = this<span class="selector-class">.globalHeight</span></span><br><span class="line"></span><br><span class="line">    document<span class="selector-class">.body</span><span class="selector-class">.append</span>(this<span class="selector-class">.renderCanvas</span>)</span><br><span class="line"></span><br><span class="line">    window<span class="selector-class">.addEventListener</span>(&#x27;mousedown&#x27;, this<span class="selector-class">.handleMouseDown</span><span class="selector-class">.bind</span>(this))</span><br><span class="line">    window<span class="selector-class">.addEventListener</span>(&#x27;pagehide&#x27;, this<span class="selector-class">.handlePageHide</span><span class="selector-class">.bind</span>(this))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  run() &#123;</span><br><span class="line">    this<span class="selector-class">.running</span> = true</span><br><span class="line">    if (this<span class="selector-class">.booms</span><span class="selector-class">.length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      return this<span class="selector-class">.running</span> = false</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    requestAnimationFrame(this<span class="selector-class">.run</span><span class="selector-class">.bind</span>(this))</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.computerContext</span><span class="selector-class">.clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, this<span class="selector-class">.globalWidth</span>, this<span class="selector-class">.globalHeight</span>)</span><br><span class="line">    this<span class="selector-class">.renderContext</span><span class="selector-class">.clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, this<span class="selector-class">.globalWidth</span>, this<span class="selector-class">.globalHeight</span>)</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.booms</span><span class="selector-class">.forEach</span>((boom, index) =&gt; &#123;</span><br><span class="line">      if (boom<span class="selector-class">.stop</span>) &#123;</span><br><span class="line">        return this<span class="selector-class">.booms</span><span class="selector-class">.splice</span>(index, <span class="number">1</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      boom<span class="selector-class">.move</span>()</span><br><span class="line">      boom<span class="selector-class">.draw</span>()</span><br><span class="line">    &#125;)</span><br><span class="line">    this<span class="selector-class">.renderContext</span><span class="selector-class">.drawImage</span>(this<span class="selector-class">.computerCanvas</span>, <span class="number">0</span>, <span class="number">0</span>, this<span class="selector-class">.globalWidth</span>, this<span class="selector-class">.globalHeight</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const cursorSpecialEffects = new CursorSpecialEffects()</span><br><span class="line">cursorSpecialEffects<span class="selector-class">.init</span>()</span><br></pre></td></tr></table></figure>
-
-<p>然后在<code>./hexo/source/_data/body-end.swig</code>中添加</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;# 鼠标点击特效 #&#125;</span><br><span class="line">&#123;% if theme<span class="selector-class">.cursor_effect</span> == &quot;fireworks&quot; %&#125;</span><br><span class="line">  &lt;script async <span class="attribute">src</span>=&quot;/js/<span class="attribute">cursor</span>/fireworks<span class="selector-class">.js</span>&quot;&gt;&lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在<code>next.yml</code>中添加</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"># 鼠标点击特效</span><br><span class="line">cursor_effect: fireworks</span><br></pre></td></tr></table></figure>
-
-<h2 id="不蒜子"><a href="#不蒜子" class="headerlink" title="不蒜子"></a>不蒜子</h2><p>Next内置了不蒜子统计<br>在<code>next.yml</code>中搜索<code>busuanzi_count</code>并设置为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enable: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="自定义单行代码颜色"><a href="#自定义单行代码颜色" class="headerlink" title="自定义单行代码颜色"></a>自定义单行代码颜色</h2><p>在<code>./hexo/source/_data/styles.styl</code>中添加</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">code</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#ff511A</span>;</span><br><span class="line">    //<span class="attribute">background</span>: <span class="number">#fbf7f8</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">2px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Live2D看板娘"><a href="#Live2D看板娘" class="headerlink" title="Live2D看板娘"></a>Live2D看板娘</h2><p>以我安装的<code>tororo</code>为例，其他模型请见<a href="https://github.com/xiazeyu/live2d-widget-models">官方文档</a><br>安装</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br><span class="line">npm install live2d-widget-model-tororo</span><br></pre></td></tr></table></figure>
-<p>在<code>next.yml</code>中搜索<code>Progress bar in the top during page loading</code>并设置为</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  enable: true 							# 开启Live2D</span><br><span class="line">  scriptFrom: local 					   # 插件来源</span><br><span class="line">  pluginRootPath: live2dw/ 				# 插件根目录(相对路径)</span><br><span class="line">  pluginJsPath: lib/ 					  # 脚本文件路径(相对于插件根目录路径)</span><br><span class="line">  pluginModelPath: assets/ 				# 模型文件路径(相对于插件根目录)</span><br><span class="line">  tagMode: false 						  # 是否标签模式</span><br><span class="line">  debug: false 							# 是否开启调试模式</span><br><span class="line">  model:</span><br><span class="line">    use: live2d-widget-model-wanko 		# 选择模型</span><br><span class="line">  display:</span><br><span class="line">    position: right						# 模型在页面上的位置</span><br><span class="line">    width: <span class="number">150</span> 							# 模型宽度</span><br><span class="line">    height: <span class="number">300</span> 		 				  # 模型高度</span><br><span class="line">  mobile:</span><br><span class="line">    show: true 							# 是否在手机端显示</span><br><span class="line">  react:</span><br><span class="line">    opacity: <span class="number">1</span> 							# 设置模型透明度</span><br></pre></td></tr></table></figure>
-
-<h2 id="Echarts"><a href="#Echarts" class="headerlink" title="Echarts"></a>Echarts</h2><p>熊家的可视化图表，与PJAX有冲突，开启PJAX的情况下需要刷新页面才能成功加载。谷歌搜到说要修改PJAX，但是本人水平有限没能成功</p>
-<p>安装的插件使用的是4.3，某些图表不能正常显示，需要手动修改为最新的，这个版本失效的话就到ECharts官网上随便打开一个示例，然后用浏览器控制台找到最新js文件的地址替换。</p>
-<p>打开<code>./hexo/node_modules/hexo-tag-echarts4/template.html</code>，修改<code>&lt;script src=&quot;https://cdn.bootcss.com/echarts/4.3.0/echarts.common.min.js&quot;&gt;&lt;/script&gt;</code>为<code>&lt;script src=&quot;https://www.echartsjs.com/examples/vendors/echarts/echarts.min.js?_v_=1584687926098&quot;&gt;&lt;/script&gt;</code></p>
-<p>此外，一些地图类的图表需要引入地图的js，也是开控制台找，然后加入到<code>./hexo/node_modules/hexo-tag-echarts4/template.html</code>中，例如中国地图和世界地图的js</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;script <span class="attribute">src</span>=&quot;https://www.echartsjs.com/examples/vendors/echarts/map/js/china.js?_v_=<span class="number">1584687926098</span><span class="string">&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script src=&quot;</span>https://www.echartsjs.com/examples/vendors/echarts/map/js/world.js?_v_=<span class="number">1584687926098</span><span class="string">&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>总之就是缺什么补什么</p>
-<p>安装</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-tag-echarts4 --save</span><br></pre></td></tr></table></figure>
-
-<p>使用<br>400代表图表的高度是400px，85%表示相对宽度是85%，不标明的话默认值是高度400px，宽度81%</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;% echarts <span class="number">400</span> &#x27;<span class="number">85%</span>&#x27; %&#125;</span><br><span class="line">\\TODO echarts contents goes here</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>示例</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;% echarts %&#125;</span><br><span class="line">option = &#123;</span><br><span class="line">    xAxis: &#123;</span><br><span class="line">        type: <span class="string">&#x27;category&#x27;</span>,</span><br><span class="line">        data: [<span class="string">&#x27;Mon&#x27;</span>, <span class="string">&#x27;Tue&#x27;</span>, <span class="string">&#x27;Wed&#x27;</span>, <span class="string">&#x27;Thu&#x27;</span>, <span class="string">&#x27;Fri&#x27;</span>, <span class="string">&#x27;Sat&#x27;</span>, <span class="string">&#x27;Sun&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    yAxis: &#123;</span><br><span class="line">        type: <span class="string">&#x27;value&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    series: [&#123;</span><br><span class="line">        data: [<span class="number">820</span>, <span class="number">932</span>, <span class="number">901</span>, <span class="number">934</span>, <span class="number">1290</span>, <span class="number">1330</span>, <span class="number">1320</span>],</span><br><span class="line">        type: <span class="string">&#x27;line&#x27;</span></span><br><span class="line">    &#125;]</span><br><span class="line">&#125;;</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2022.5.13 已废弃</p>
-<h2 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h2><p>Github的服务器在境外，网站加载时间巨长，而使用CDN加速可以有效缓解这一问题</p>
-<ul>
-<li>登陆<a href="https://www.cloudflare.com/">Cloudflare</a></li>
-<li>输入你的域名并点击点击<code>Add site</code></li>
-<li>选择套餐，选<code>free</code>就好</li>
-<li>点击<code>Confirm plan</code></li>
-<li>Cloudflare会先扫描你的DNS记录，稍等一会会出现你域名现在的解析记录</li>
-<li>点击<code>Continue</code></li>
-<li>打开你域名服务商的网站，用Cloudflare给的两个DNS服务器替换掉原来的服务器</li>
-<li>完成后回到Cloudflare，点击<code>Done, check nameservers</code></li>
-<li>然后慢慢等待生效，生效后会有邮件提醒</li>
-<li>等待的时候可以做一些设置</li>
-<li>SSL&#x2F;TLS选项<ul>
-<li>Mode使用默认的Full</li>
-<li>Always Use HTTPS设置为On</li>
-<li>Opportunistic Encryption设置为On</li>
-<li>Authenticated Origin Pills设置为On</li>
-</ul>
-</li>
-</ul>
-<p>填坑完成，毕设期间估计要咕咕咕3个月了┏(＾0＾)┛</p>
-<blockquote>
-<p>参考: <a href="https://tding.top/archives/2bd6d82.html">小丁的个人博客</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>网站配置</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>MacOS</tag>
       </tags>
   </entry>
   <entry>
@@ -2399,6 +2175,230 @@
       <tags>
         <tag>HEXO</tag>
         <tag>Next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Next升级+Mac迁移 </title>
+    <url>/Next%E5%8D%87%E7%BA%A7-Mac%E8%BF%81%E7%A7%BB.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">写博客到现在已经快一年了，Next主题也更新了好多版本，新增的pjax真的是太香了，果断更新。顺便把Hexo迁移到mac上面来</blockquote>
+
+<span id="more"></span>
+
+<h1 id="更新说明"><a href="#更新说明" class="headerlink" title="更新说明"></a>更新说明</h1><p>Next主题从7.1到7.7.2的变动较大，直接升级的话小问题比较多，所以这次升级采用了重新安装的方式</p>
+<h2 id="版本对比"><a href="#版本对比" class="headerlink" title="版本对比"></a>版本对比</h2><p>升级前Hexo版本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo: 3.8.0</span><br><span class="line">hexo-cli: 3.1.0</span><br><span class="line">os: Windows_NT 10.0.17763 win32 x64</span><br><span class="line">node: 12.14.1</span><br><span class="line">next: 7.1</span><br></pre></td></tr></table></figure>
+<p>升级后Hexo版本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo: 4.2.0</span><br><span class="line">hexo-cli: 3.1.0</span><br><span class="line">os: Darwin 18.7.0 darwin x64</span><br><span class="line">node: 13.10.1</span><br><span class="line">next: 7.7.2</span><br></pre></td></tr></table></figure>
+
+<h2 id="新增功能"><a href="#新增功能" class="headerlink" title="新增功能"></a>新增功能</h2><ul>
+<li>pjax（局部刷新加载页面）</li>
+<li>DarkMode夜间模式（支持Mac等的夜间模式）</li>
+<li>Gitalk评论（Gitment凉了之后一直没设置评论系统，这次顺路加上）</li>
+<li>Mediumzoom（图片插件）</li>
+<li>中英切换（新）</li>
+<li>CDN（进行中）</li>
+<li>Echarts</li>
+</ul>
+<h2 id="移除功能"><a href="#移除功能" class="headerlink" title="移除功能"></a>移除功能</h2><ul>
+<li>动态背景（占用资源较大，在手机平板等设备上造成卡顿、发热、耗电快等问题）</li>
+<li>i18n-generator（一年也没写过英语的博客，而且这个方案缺陷太大，正在寻找其他解决方案）</li>
+<li>网易云音乐挂件（使用频率极低，拖慢加载速度）</li>
+</ul>
+<h2 id="保留功能"><a href="#保留功能" class="headerlink" title="保留功能"></a>保留功能</h2><ul>
+<li>站内搜索</li>
+<li>字数与阅读时长统计</li>
+<li>网站运行时间</li>
+<li>加载进度条</li>
+<li>崩溃欺骗</li>
+<li>背景图片</li>
+<li>鼠标点击特效</li>
+<li>不蒜子</li>
+<li>Live2D看板娘</li>
+</ul>
+<h1 id="Mac安装过程"><a href="#Mac安装过程" class="headerlink" title="Mac安装过程"></a>Mac安装过程</h1><h2 id="安装软件依赖"><a href="#安装软件依赖" class="headerlink" title="安装软件依赖"></a>安装软件依赖</h2><p>首先下载安装<code>git</code>和<code>node.js</code>,官网如下</p>
+<ul>
+<li><a href="https://git-scm.com/">git</a></li>
+<li><a href="https://nodejs.org/en/">node.js</a></li>
+</ul>
+<p>安装完成后在终端分别输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git --version</span><br><span class="line">node -v</span><br></pre></td></tr></table></figure>
+<p>检测是否安装成功，成功的话会返回软件版本号</p>
+<h2 id="配置本地目录"><a href="#配置本地目录" class="headerlink" title="配置本地目录"></a>配置本地目录</h2><ul>
+<li>新建一个用于存放博客文件的文件夹</li>
+<li>新建位于文件夹位置的终端窗口</li>
+<li>输入<code>npm install hexo -g</code>安装hexo<ul>
+<li>这一步可能会报错，报错的话使用命令<code>sudo npm install --unsafe-perm --verbose -g hexo</code>来安装hexo</li>
+</ul>
+</li>
+<li>输入<code>npm install</code>安装其他依赖</li>
+<li>输入<code>npm install hexo-deployer-git --save</code>安装部署插件</li>
+<li>输入<code>hexo v</code>查看是否安装成功，成功会返回版本号</li>
+</ul>
+<h2 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h2><ul>
+<li>打开终端</li>
+<li>输入<code>ls -al ~/.ssh</code>检查是否有以前生成的 SSH Key，没有的话继续</li>
+<li>输入<code>ssh-keygen -t rsa -C &quot;Guthub邮箱地址&quot;</code> 然后回车三连</li>
+<li>此时终端会显示文件的生成路径，根据路径找到并打开<code>id_rsa.pub</code></li>
+<li>复制里面的所有内容</li>
+<li>打开Github，在右上角个人头像下拉菜单中找到<code>Settings</code></li>
+<li>打开<code>SSH and GPG keys</code>,点击右上角<code>New SSH key</code></li>
+<li><code>Title</code>随便填,然后在<code>Key</code>中粘贴</li>
+<li>点击<code>Add SSH key</code></li>
+<li>回到Git bash，输入<code>ssh -T git@github.com</code>回车</li>
+<li>首次输入可能会有提醒，输入<code>yes</code>回车即可</li>
+<li>成功返回<code>Hi 用户名! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code>就代表成功了</li>
+<li>输入<code>git config --global user.name &quot;用户名&quot;</code></li>
+<li>输入<code>git config --global user.email  &quot;邮箱地址&quot;</code></li>
+</ul>
+<h2 id="安装Next主题"><a href="#安装Next主题" class="headerlink" title="安装Next主题"></a>安装Next主题</h2><p>在终端输入下面的命令安装最新的Next主题</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<h1 id="Next主题自定义"><a href="#Next主题自定义" class="headerlink" title="Next主题自定义"></a>Next主题自定义</h1><p>Hexo的配置过程我就不说了，根据原来的<code>_config.yml</code>配置就行，下面要说的是Next主题的配置</p>
+<h2 id="配置文件分离"><a href="#配置文件分离" class="headerlink" title="配置文件分离"></a>配置文件分离</h2><p>Next主题在7.3之后分离了配置文件与主题，详情请见<a href="https://tding.top/archives/2bd6d82.html">小丁的个人博客</a>。</p>
+<ul>
+<li>新建文件夹<code>hexo/source/_data</code></li>
+<li>将<code>./themes/next/_config.yml</code>复制到<code>hexo/source/_data</code>路径下并重命名为<code>next.yml</code></li>
+<li>将<code>next.yml</code>中的<code>override</code>设置为<code>true</code>即可作为主题的配置文件使用</li>
+<li>在<code>hexo/source/_data</code>中新建<code>body-end.swig</code>和<code>styles.styl</code>文件</li>
+<li>然后在<code>next.yml</code>的<code>custom_file_path</code>中删除前面的<code>#</code>来启用<code>bodyEnd</code>和<code>style</code></li>
+<li><code>custom_file_path</code>中的其他选项根据需要创建相关文件并启用</li>
+</ul>
+<h2 id="Pjax"><a href="#Pjax" class="headerlink" title="Pjax"></a>Pjax</h2><p>Pjax是基于Ajax的插件，能实现网页局部无刷新载入，听起来很香，然而存在一些小问题：</p>
+<ul>
+<li>使用Mediumzoom时，从归档进入博文不会加载图片，需要刷新网页才能加载</li>
+<li>Echarts图表全部需要刷新才能显示，否则只有一片空白</li>
+</ul>
+<p>安装Pjax</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/theme-next-pjax source/lib/pjax</span><br></pre></td></tr></table></figure>
+<p>在<code>next.yml</code>中搜索<code>pjax</code>并设置为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pjax: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="Darkmode"><a href="#Darkmode" class="headerlink" title="Darkmode"></a>Darkmode</h2><p>Next主题新增了暗色模式，能够配合系统的暗色主题使用<br>在<code>next.yml</code>中搜索<code>darkmode</code>并设置为<code>auto</code>即可根据系统主题切换亮色&#x2F;暗色模式</p>
+<h2 id="Gitalk评论"><a href="#Gitalk评论" class="headerlink" title="Gitalk评论"></a>Gitalk评论</h2><p>评论系统，一开始想用Valine来着，结果要实名制，果断弃了</p>
+<ul>
+<li>在Github新建一个仓库<code>gitalk-comment</code>，用来存放评论产生的issues</li>
+<li>点击右上角<code>头像 - Setting - Developer settings - OAuth Apps - New OAuth Apps</code></li>
+<li><code>Application name</code> 随便填</li>
+<li><code>Homepage URL</code>和<code>Authorization callback URL</code>都填自己的博客地址</li>
+<li>点击 <code>Register application</code></li>
+<li>在<code>next.yml</code>中搜索<code>gitalk</code></li>
+<li>复制得到的<code>Cilent ID</code>和<code>Cilent secret</code>到相应位置粘贴</li>
+<li>设置<code>enable</code>为<code>true</code></li>
+<li><code>github_id</code>和<code>admin_user</code>为你的用户名</li>
+<li><code>repo</code>为刚才创建的仓库名<code>gitalk-comment</code></li>
+<li><code>distraction_free_mode</code>是类似facobook的评论遮罩功能</li>
+</ul>
+<p><code>next.yml</code>中的具体配置如下</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"># Gitalk</span><br><span class="line"># For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk</span><br><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  github_id: Siriusq # GitHub repo owner</span><br><span class="line">  repo: gitalk-commnet # Repository name to store issues</span><br><span class="line">  client_id: xxxxxxxx # GitHub Application Client ID</span><br><span class="line">  client_secret: xxxxxxxx # GitHub Application Client Secret</span><br><span class="line">  admin_user: Siriusq # GitHub repo owner and collaborators, only these guys can initialize gitHub issues</span><br><span class="line">  distraction_free_mode: false # Facebook-like distraction free mode</span><br><span class="line">  # Gitalk<span class="string">&#x27;s display language depends on user&#x27;</span>s browser or system environment</span><br><span class="line">  # If you want everyone visiting your site to see a uniform language, you can set a force language value</span><br><span class="line">  # Available values: en | es-ES | fr | ru | zh-CN | zh-TW</span><br><span class="line">  language:</span><br></pre></td></tr></table></figure>
+
+<h2 id="Mediumzoom"><a href="#Mediumzoom" class="headerlink" title="Mediumzoom"></a>Mediumzoom</h2><p>模仿Medium图片查看方式的插件<br>安装</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install medium-zoom</span><br></pre></td></tr></table></figure>
+<p>在<code>next.yml</code>中搜索<code>mediumzoom</code>并设置为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mediumzoom: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="中英切换"><a href="#中英切换" class="headerlink" title="中英切换"></a>中英切换</h2><p>请移步另一篇博客<a href="https://siriusq.top/Hexo-Next-7-7-%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html">Hexo Next 7.7 双语切换</a></p>
+<h2 id="站内搜索"><a href="#站内搜索" class="headerlink" title="站内搜索"></a>站内搜索</h2><p>查找博客内的内容<br>安装</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb</span><br></pre></td></tr></table></figure>
+<p>在<code>next.yml</code>中搜索<code>local_search</code>并设置为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enable: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="字数与阅读时长统计"><a href="#字数与阅读时长统计" class="headerlink" title="字数与阅读时长统计"></a>字数与阅读时长统计</h2><p>安装</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-symbols-count-<span class="built_in">time</span></span><br></pre></td></tr></table></figure>
+<p>在根目录的<code>_config.yml</code>中添加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br><span class="line">  exclude_codeblock: false</span><br><span class="line">  awl: 4</span><br><span class="line">  wpm: 275</span><br><span class="line">  suffix: &quot;mins.&quot;</span><br></pre></td></tr></table></figure>
+<p>然后在<code>next.yml</code>中搜索<code>symbols_count_time</code>并设置为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加jquery"><a href="#添加jquery" class="headerlink" title="添加jquery"></a>添加jquery</h2><ul>
+<li>新版的Next主题移除了jquery，导致一些老得自定义设置会失效，我直接从老版本的Next主题复制过来了，路径是<code>./hexo/themes/next/source/libs/jquery/jquert-2.2.0.min.js</code>，也可以到<a href="https://code.jquery.com/jquery/">官网</a>下载</li>
+<li>将jquery放置在<code>./hexo/source/js</code>路径下</li>
+<li>在<code>./hexo/source/_data/body-end.swig</code>添加，版本不同的话记得改下面的版本<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!--jquery--&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/js/jquery-2.2.0.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="网站运行时间"><a href="#网站运行时间" class="headerlink" title="网站运行时间"></a>网站运行时间</h2><p>打开<code>./hexo/themes/next/layout/_partials/footer.swig</code>并添加下列代码</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">span</span> id=&quot;timeDate&quot;&gt;载入天数...&lt;/<span class="selector-tag">span</span>&gt;&lt;<span class="selector-tag">span</span> id=&quot;times&quot;&gt;载入时分秒...&lt;/<span class="selector-tag">span</span>&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="selector-tag">var</span> now = new Date();</span><br><span class="line">    function createtime() &#123;</span><br><span class="line">        <span class="selector-tag">var</span> grt= new Date(&quot;<span class="number">03</span>/<span class="number">31</span>/<span class="number">2019</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span><span class="string">&quot;);</span></span><br><span class="line"><span class="string">        now.setTime(now.getTime()+250);</span></span><br><span class="line"><span class="string">        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);</span></span><br><span class="line"><span class="string">        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);</span></span><br><span class="line"><span class="string">        if(String(hnum).length ==1 )&#123;hnum = &quot;</span><span class="number">0</span><span class="string">&quot; + hnum;&#125; minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);</span></span><br><span class="line"><span class="string">        mnum = Math.floor(minutes); if(String(mnum).length ==1 )&#123;mnum = &quot;</span><span class="number">0</span><span class="string">&quot; + mnum;&#125;</span></span><br><span class="line"><span class="string">        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);</span></span><br><span class="line"><span class="string">        snum = Math.round(seconds); if(String(snum).length ==1 )&#123;snum = &quot;</span><span class="number">0</span><span class="string">&quot; + snum;&#125;</span></span><br><span class="line"><span class="string">        document.getElementById(&quot;</span>timeDate<span class="string">&quot;).innerHTML = &quot;</span>本站已安全运行 <span class="string">&quot;+dnum+&quot;</span> 天 <span class="string">&quot;;</span></span><br><span class="line"><span class="string">        document.getElementById(&quot;</span>times<span class="string">&quot;).innerHTML = hnum + &quot;</span> 小时 <span class="string">&quot; + mnum + &quot;</span> 分 <span class="string">&quot; + snum + &quot;</span> 秒<span class="string">&quot;;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">setInterval(&quot;</span><span class="built_in">createtime</span>()<span class="string">&quot;,250);</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="加载进度条"><a href="#加载进度条" class="headerlink" title="加载进度条"></a>加载进度条</h2><p>显示当前网页的加载进度<br>安装</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/theme-next-pace source/lib/pace</span><br></pre></td></tr></table></figure>
+<p>在<code>next.yml</code>中搜索<code>Progress bar in the top during page loading</code>并设置为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pace:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="崩溃欺骗"><a href="#崩溃欺骗" class="headerlink" title="崩溃欺骗"></a>崩溃欺骗</h2><p>在网页标题中添加崩溃欺骗效果，离开页面后标题会更改，切换回来后会恢复正常，需要配合<strong>jquery</strong>使用</p>
+<p>在<code>./hexo/source/js</code>中新建<code>crash_cheat</code>文件，复制下列代码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!--崩溃欺骗--&gt;</span><br><span class="line"> <span class="keyword">var</span> <span class="title class_">OriginTitle</span> = <span class="variable language_">document</span>.<span class="property">title</span>;</span><br><span class="line"> <span class="keyword">var</span> titleTime;</span><br><span class="line"> <span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;visibilitychange&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">     <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="property">hidden</span>) &#123;</span><br><span class="line">         $(<span class="string">&#x27;[rel=&quot;icon&quot;]&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&#x27;href&#x27;</span>, <span class="string">&quot;/img/TEP.ico&quot;</span>);</span><br><span class="line">         <span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">&#x27;╭(°A°`)╮ 页面崩溃啦 ~&#x27;</span>;</span><br><span class="line">         <span class="built_in">clearTimeout</span>(titleTime);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">else</span> &#123;</span><br><span class="line">         $(<span class="string">&#x27;[rel=&quot;icon&quot;]&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&#x27;href&#x27;</span>, <span class="string">&quot;/favicon.ico&quot;</span>);</span><br><span class="line">         <span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">&#x27;(ฅ&gt;ω&lt;*ฅ) 噫又好了~&#x27;</span> + <span class="title class_">OriginTitle</span>;</span><br><span class="line">         titleTime = <span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">             <span class="variable language_">document</span>.<span class="property">title</span> = <span class="title class_">OriginTitle</span>;</span><br><span class="line">         &#125;, <span class="number">2000</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<p>然后在<code>./hexo/source/_data/body-end.swig</code>中添加</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;!--崩溃欺骗--&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; <span class="attribute">src</span>=&quot;/js/crash_cheat<span class="selector-class">.js</span>&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h2><p>将背景图片放置在<code>./hexo/themes/next/source/images</code>中并命名为<code>background.jpg</code><br>然后在<code>./hexo/source/_data/styles.styl</code>中添加</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">url</span>(<span class="string">/images/background.jpg</span>);//图片路径</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;//是否重复平铺</span><br><span class="line">    <span class="attribute">background-attachment</span>: fixed;//是否随着网页上下滚动而滚动，fixed为固定</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">50%</span> <span class="number">50%</span>;//图片位置</span><br><span class="line">    <span class="attribute">background-size</span>: cover;//图片展示大小</span><br><span class="line">    -webkit-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    -o-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    -moz-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    -ms-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0.9</span>;</span><br><span class="line">    <span class="selector-tag">footer</span> &gt; <span class="selector-tag">div</span> &gt; <span class="selector-tag">div</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>:<span class="number">#000000</span>;//底部文字颜色</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="鼠标点击特效"><a href="#鼠标点击特效" class="headerlink" title="鼠标点击特效"></a>鼠标点击特效</h2><p>根据<a href="https://tding.top/archives/2bd6d82.html">小丁的个人博客</a>更换了鼠标点击的特效，原来的特效对低性能设备不友好<br>在<code>./hexo/themes/next/source/js/cursor</code>中新建<code>fireworks.js</code>，并添加</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">class Circle &#123;</span><br><span class="line">  constructor(&#123; origin, speed, <span class="attribute">color</span>, angle, context &#125;) &#123;</span><br><span class="line">    this<span class="selector-class">.origin</span> = origin</span><br><span class="line">    this<span class="selector-class">.position</span> = &#123; ..<span class="selector-class">.this</span><span class="selector-class">.origin</span> &#125;</span><br><span class="line">    this<span class="selector-class">.color</span> = <span class="attribute">color</span></span><br><span class="line">    this<span class="selector-class">.speed</span> = speed</span><br><span class="line">    this<span class="selector-class">.angle</span> = angle</span><br><span class="line">    this<span class="selector-class">.context</span> = context</span><br><span class="line">    this<span class="selector-class">.renderCount</span> = <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  draw() &#123;</span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.fillStyle</span> = this<span class="selector-class">.color</span></span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.beginPath</span>()</span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.arc</span>(this<span class="selector-class">.position</span><span class="selector-class">.x</span>, this<span class="selector-class">.position</span><span class="selector-class">.y</span>, <span class="number">2</span>, <span class="number">0</span>, Math<span class="selector-class">.PI</span> * <span class="number">2</span>)</span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.fill</span>()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  move() &#123;</span><br><span class="line">    this<span class="selector-class">.position</span><span class="selector-class">.x</span> = (Math<span class="selector-class">.sin</span>(this<span class="selector-class">.angle</span>) * this<span class="selector-class">.speed</span>) + this<span class="selector-class">.position</span><span class="selector-class">.x</span></span><br><span class="line">    this<span class="selector-class">.position</span><span class="selector-class">.y</span> = (Math<span class="selector-class">.cos</span>(this<span class="selector-class">.angle</span>) * this<span class="selector-class">.speed</span>) + this<span class="selector-class">.position</span><span class="selector-class">.y</span> + (this<span class="selector-class">.renderCount</span> * <span class="number">0.3</span>)</span><br><span class="line">    this<span class="selector-class">.renderCount</span>++</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Boom &#123;</span><br><span class="line">  constructor (&#123; origin, context, circleCount = <span class="number">16</span>, area &#125;) &#123;</span><br><span class="line">    this<span class="selector-class">.origin</span> = origin</span><br><span class="line">    this<span class="selector-class">.context</span> = context</span><br><span class="line">    this<span class="selector-class">.circleCount</span> = circleCount</span><br><span class="line">    this<span class="selector-class">.area</span> = area</span><br><span class="line">    this<span class="selector-class">.stop</span> = false</span><br><span class="line">    this<span class="selector-class">.circles</span> = <span class="selector-attr">[]</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomArray(range) &#123;</span><br><span class="line">    const length = range<span class="selector-class">.length</span></span><br><span class="line">    const randomIndex = Math<span class="selector-class">.floor</span>(length * Math<span class="selector-class">.random</span>())</span><br><span class="line">    return range<span class="selector-attr">[randomIndex]</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomColor() &#123;</span><br><span class="line">    const range = <span class="selector-attr">[<span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;9&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>, <span class="string">&#x27;F&#x27;</span>]</span></span><br><span class="line">    return &#x27;#&#x27; + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomRange(start, end) &#123;</span><br><span class="line">    return (end - start) * Math<span class="selector-class">.random</span>() + start</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  init() &#123;</span><br><span class="line">    for(let <span class="selector-tag">i</span> = <span class="number">0</span>; <span class="selector-tag">i</span> &lt; this<span class="selector-class">.circleCount</span>; <span class="selector-tag">i</span>++) &#123;</span><br><span class="line">      const circle = new Circle(&#123;</span><br><span class="line">        context: this.context,</span><br><span class="line">        origin: this.origin,</span><br><span class="line">        color: this.<span class="built_in">randomColor</span>(),</span><br><span class="line">        angle: this.<span class="built_in">randomRange</span>(Math.PI - <span class="number">1</span>, Math.PI + <span class="number">1</span>),</span><br><span class="line">        speed: this.<span class="built_in">randomRange</span>(<span class="number">1</span>, <span class="number">6</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">      this<span class="selector-class">.circles</span><span class="selector-class">.push</span>(circle)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  move() &#123;</span><br><span class="line">    this<span class="selector-class">.circles</span><span class="selector-class">.forEach</span>((circle, index) =&gt; &#123;</span><br><span class="line">      if (circle<span class="selector-class">.position</span><span class="selector-class">.x</span> &gt; this<span class="selector-class">.area</span><span class="selector-class">.width</span> || circle<span class="selector-class">.position</span><span class="selector-class">.y</span> &gt; this<span class="selector-class">.area</span><span class="selector-class">.height</span>) &#123;</span><br><span class="line">        return this<span class="selector-class">.circles</span><span class="selector-class">.splice</span>(index, <span class="number">1</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      circle<span class="selector-class">.move</span>()</span><br><span class="line">    &#125;)</span><br><span class="line">    if (this<span class="selector-class">.circles</span><span class="selector-class">.length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      this<span class="selector-class">.stop</span> = true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  draw() &#123;</span><br><span class="line">    this<span class="selector-class">.circles</span><span class="selector-class">.forEach</span>(circle =&gt; circle<span class="selector-class">.draw</span>())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class CursorSpecialEffects &#123;</span><br><span class="line">  constructor() &#123;</span><br><span class="line">    this<span class="selector-class">.computerCanvas</span> = document<span class="selector-class">.createElement</span>(&#x27;<span class="selector-tag">canvas</span>&#x27;)</span><br><span class="line">    this<span class="selector-class">.renderCanvas</span> = document<span class="selector-class">.createElement</span>(&#x27;<span class="selector-tag">canvas</span>&#x27;)</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.computerContext</span> = this<span class="selector-class">.computerCanvas</span><span class="selector-class">.getContext</span>(&#x27;<span class="number">2</span>d&#x27;)</span><br><span class="line">    this<span class="selector-class">.renderContext</span> = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.getContext</span>(&#x27;<span class="number">2</span>d&#x27;)</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.globalWidth</span> = window<span class="selector-class">.innerWidth</span></span><br><span class="line">    this<span class="selector-class">.globalHeight</span> = window<span class="selector-class">.innerHeight</span></span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.booms</span> = <span class="selector-attr">[]</span></span><br><span class="line">    this<span class="selector-class">.running</span> = false</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleMouseDown(e) &#123;</span><br><span class="line">    const boom = new Boom(&#123;</span><br><span class="line">      origin: &#123; x: e.clientX, y: e.clientY &#125;,</span><br><span class="line">      context: this.computerContext,</span><br><span class="line">      area: &#123;</span><br><span class="line">        <span class="attribute">width</span>: this.globalWidth,</span><br><span class="line">        height: this.globalHeight</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    boom<span class="selector-class">.init</span>()</span><br><span class="line">    this<span class="selector-class">.booms</span><span class="selector-class">.push</span>(boom)</span><br><span class="line">    this<span class="selector-class">.running</span> || this<span class="selector-class">.run</span>()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handlePageHide() &#123;</span><br><span class="line">    this<span class="selector-class">.booms</span> = <span class="selector-attr">[]</span></span><br><span class="line">    this<span class="selector-class">.running</span> = false</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  init() &#123;</span><br><span class="line">    const style = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.style</span></span><br><span class="line">    style<span class="selector-class">.position</span> = &#x27;fixed&#x27;</span><br><span class="line">    style<span class="selector-class">.top</span> = style<span class="selector-class">.left</span> = <span class="number">0</span></span><br><span class="line">    style<span class="selector-class">.zIndex</span> = &#x27;<span class="number">999999999999999999999999999999999999999999</span>&#x27;</span><br><span class="line">    style<span class="selector-class">.pointerEvents</span> = &#x27;<span class="attribute">none</span>&#x27;</span><br><span class="line"></span><br><span class="line">    style<span class="selector-class">.width</span> = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.width</span> = this<span class="selector-class">.computerCanvas</span><span class="selector-class">.width</span> = this<span class="selector-class">.globalWidth</span></span><br><span class="line">    style<span class="selector-class">.height</span> = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.height</span> = this<span class="selector-class">.computerCanvas</span><span class="selector-class">.height</span> = this<span class="selector-class">.globalHeight</span></span><br><span class="line"></span><br><span class="line">    document<span class="selector-class">.body</span><span class="selector-class">.append</span>(this<span class="selector-class">.renderCanvas</span>)</span><br><span class="line"></span><br><span class="line">    window<span class="selector-class">.addEventListener</span>(&#x27;mousedown&#x27;, this<span class="selector-class">.handleMouseDown</span><span class="selector-class">.bind</span>(this))</span><br><span class="line">    window<span class="selector-class">.addEventListener</span>(&#x27;pagehide&#x27;, this<span class="selector-class">.handlePageHide</span><span class="selector-class">.bind</span>(this))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  run() &#123;</span><br><span class="line">    this<span class="selector-class">.running</span> = true</span><br><span class="line">    if (this<span class="selector-class">.booms</span><span class="selector-class">.length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      return this<span class="selector-class">.running</span> = false</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    requestAnimationFrame(this<span class="selector-class">.run</span><span class="selector-class">.bind</span>(this))</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.computerContext</span><span class="selector-class">.clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, this<span class="selector-class">.globalWidth</span>, this<span class="selector-class">.globalHeight</span>)</span><br><span class="line">    this<span class="selector-class">.renderContext</span><span class="selector-class">.clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, this<span class="selector-class">.globalWidth</span>, this<span class="selector-class">.globalHeight</span>)</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.booms</span><span class="selector-class">.forEach</span>((boom, index) =&gt; &#123;</span><br><span class="line">      if (boom<span class="selector-class">.stop</span>) &#123;</span><br><span class="line">        return this<span class="selector-class">.booms</span><span class="selector-class">.splice</span>(index, <span class="number">1</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      boom<span class="selector-class">.move</span>()</span><br><span class="line">      boom<span class="selector-class">.draw</span>()</span><br><span class="line">    &#125;)</span><br><span class="line">    this<span class="selector-class">.renderContext</span><span class="selector-class">.drawImage</span>(this<span class="selector-class">.computerCanvas</span>, <span class="number">0</span>, <span class="number">0</span>, this<span class="selector-class">.globalWidth</span>, this<span class="selector-class">.globalHeight</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const cursorSpecialEffects = new CursorSpecialEffects()</span><br><span class="line">cursorSpecialEffects<span class="selector-class">.init</span>()</span><br></pre></td></tr></table></figure>
+
+<p>然后在<code>./hexo/source/_data/body-end.swig</code>中添加</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;# 鼠标点击特效 #&#125;</span><br><span class="line">&#123;% if theme<span class="selector-class">.cursor_effect</span> == &quot;fireworks&quot; %&#125;</span><br><span class="line">  &lt;script async <span class="attribute">src</span>=&quot;/js/<span class="attribute">cursor</span>/fireworks<span class="selector-class">.js</span>&quot;&gt;&lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>next.yml</code>中添加</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"># 鼠标点击特效</span><br><span class="line">cursor_effect: fireworks</span><br></pre></td></tr></table></figure>
+
+<h2 id="不蒜子"><a href="#不蒜子" class="headerlink" title="不蒜子"></a>不蒜子</h2><p>Next内置了不蒜子统计<br>在<code>next.yml</code>中搜索<code>busuanzi_count</code>并设置为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enable: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义单行代码颜色"><a href="#自定义单行代码颜色" class="headerlink" title="自定义单行代码颜色"></a>自定义单行代码颜色</h2><p>在<code>./hexo/source/_data/styles.styl</code>中添加</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">code</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#ff511A</span>;</span><br><span class="line">    //<span class="attribute">background</span>: <span class="number">#fbf7f8</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">2px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Live2D看板娘"><a href="#Live2D看板娘" class="headerlink" title="Live2D看板娘"></a>Live2D看板娘</h2><p>以我安装的<code>tororo</code>为例，其他模型请见<a href="https://github.com/xiazeyu/live2d-widget-models">官方文档</a><br>安装</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br><span class="line">npm install live2d-widget-model-tororo</span><br></pre></td></tr></table></figure>
+<p>在<code>next.yml</code>中搜索<code>Progress bar in the top during page loading</code>并设置为</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  enable: true 							# 开启Live2D</span><br><span class="line">  scriptFrom: local 					   # 插件来源</span><br><span class="line">  pluginRootPath: live2dw/ 				# 插件根目录(相对路径)</span><br><span class="line">  pluginJsPath: lib/ 					  # 脚本文件路径(相对于插件根目录路径)</span><br><span class="line">  pluginModelPath: assets/ 				# 模型文件路径(相对于插件根目录)</span><br><span class="line">  tagMode: false 						  # 是否标签模式</span><br><span class="line">  debug: false 							# 是否开启调试模式</span><br><span class="line">  model:</span><br><span class="line">    use: live2d-widget-model-wanko 		# 选择模型</span><br><span class="line">  display:</span><br><span class="line">    position: right						# 模型在页面上的位置</span><br><span class="line">    width: <span class="number">150</span> 							# 模型宽度</span><br><span class="line">    height: <span class="number">300</span> 		 				  # 模型高度</span><br><span class="line">  mobile:</span><br><span class="line">    show: true 							# 是否在手机端显示</span><br><span class="line">  react:</span><br><span class="line">    opacity: <span class="number">1</span> 							# 设置模型透明度</span><br></pre></td></tr></table></figure>
+
+<h2 id="Echarts"><a href="#Echarts" class="headerlink" title="Echarts"></a>Echarts</h2><p>熊家的可视化图表，与PJAX有冲突，开启PJAX的情况下需要刷新页面才能成功加载。谷歌搜到说要修改PJAX，但是本人水平有限没能成功</p>
+<p>安装的插件使用的是4.3，某些图表不能正常显示，需要手动修改为最新的，这个版本失效的话就到ECharts官网上随便打开一个示例，然后用浏览器控制台找到最新js文件的地址替换。</p>
+<p>打开<code>./hexo/node_modules/hexo-tag-echarts4/template.html</code>，修改<code>&lt;script src=&quot;https://cdn.bootcss.com/echarts/4.3.0/echarts.common.min.js&quot;&gt;&lt;/script&gt;</code>为<code>&lt;script src=&quot;https://www.echartsjs.com/examples/vendors/echarts/echarts.min.js?_v_=1584687926098&quot;&gt;&lt;/script&gt;</code></p>
+<p>此外，一些地图类的图表需要引入地图的js，也是开控制台找，然后加入到<code>./hexo/node_modules/hexo-tag-echarts4/template.html</code>中，例如中国地图和世界地图的js</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;script <span class="attribute">src</span>=&quot;https://www.echartsjs.com/examples/vendors/echarts/map/js/china.js?_v_=<span class="number">1584687926098</span><span class="string">&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script src=&quot;</span>https://www.echartsjs.com/examples/vendors/echarts/map/js/world.js?_v_=<span class="number">1584687926098</span><span class="string">&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>总之就是缺什么补什么</p>
+<p>安装</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-tag-echarts4 --save</span><br></pre></td></tr></table></figure>
+
+<p>使用<br>400代表图表的高度是400px，85%表示相对宽度是85%，不标明的话默认值是高度400px，宽度81%</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;% echarts <span class="number">400</span> &#x27;<span class="number">85%</span>&#x27; %&#125;</span><br><span class="line">\\TODO echarts contents goes here</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;% echarts %&#125;</span><br><span class="line">option = &#123;</span><br><span class="line">    xAxis: &#123;</span><br><span class="line">        type: <span class="string">&#x27;category&#x27;</span>,</span><br><span class="line">        data: [<span class="string">&#x27;Mon&#x27;</span>, <span class="string">&#x27;Tue&#x27;</span>, <span class="string">&#x27;Wed&#x27;</span>, <span class="string">&#x27;Thu&#x27;</span>, <span class="string">&#x27;Fri&#x27;</span>, <span class="string">&#x27;Sat&#x27;</span>, <span class="string">&#x27;Sun&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    yAxis: &#123;</span><br><span class="line">        type: <span class="string">&#x27;value&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    series: [&#123;</span><br><span class="line">        data: [<span class="number">820</span>, <span class="number">932</span>, <span class="number">901</span>, <span class="number">934</span>, <span class="number">1290</span>, <span class="number">1330</span>, <span class="number">1320</span>],</span><br><span class="line">        type: <span class="string">&#x27;line&#x27;</span></span><br><span class="line">    &#125;]</span><br><span class="line">&#125;;</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2022.5.13 已废弃</p>
+<h2 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h2><p>Github的服务器在境外，网站加载时间巨长，而使用CDN加速可以有效缓解这一问题</p>
+<ul>
+<li>登陆<a href="https://www.cloudflare.com/">Cloudflare</a></li>
+<li>输入你的域名并点击点击<code>Add site</code></li>
+<li>选择套餐，选<code>free</code>就好</li>
+<li>点击<code>Confirm plan</code></li>
+<li>Cloudflare会先扫描你的DNS记录，稍等一会会出现你域名现在的解析记录</li>
+<li>点击<code>Continue</code></li>
+<li>打开你域名服务商的网站，用Cloudflare给的两个DNS服务器替换掉原来的服务器</li>
+<li>完成后回到Cloudflare，点击<code>Done, check nameservers</code></li>
+<li>然后慢慢等待生效，生效后会有邮件提醒</li>
+<li>等待的时候可以做一些设置</li>
+<li>SSL&#x2F;TLS选项<ul>
+<li>Mode使用默认的Full</li>
+<li>Always Use HTTPS设置为On</li>
+<li>Opportunistic Encryption设置为On</li>
+<li>Authenticated Origin Pills设置为On</li>
+</ul>
+</li>
+</ul>
+<p>填坑完成，毕设期间估计要咕咕咕3个月了┏(＾0＾)┛</p>
+<blockquote>
+<p>参考: <a href="https://tding.top/archives/2bd6d82.html">小丁的个人博客</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>网站配置</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>MacOS</tag>
       </tags>
   </entry>
   <entry>
@@ -3218,6 +3218,232 @@
       </tags>
   </entry>
   <entry>
+    <title>V2Ray</title>
+    <url>/V2Ray.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">自从P站无法访问后就一直想写个V2Ray的教程，然鹅拖延症加懒癌晚期到现在才开始写emmm，虽然民间一直流传有上P站的各种神功，但网速实在感人而且指不定那天就挂掉了，另外如果你不想看这么麻烦的教程的话可以直接移到文章最后，有懒人大礼包。解释一下这个P站是建筑狗用的Pinterest，想歪的面壁去（🐶）
+</blockquote>
+
+<span id="more"></span>
+
+<div class="note danger"><p>文章时间久远，俺自己也没再用这个方案了，仅供参考</p></div>
+
+<h1 id="V2Ray简介"><a href="#V2Ray简介" class="headerlink" title="V2Ray简介"></a>V2Ray简介</h1><p>V2Ray项目是Project V下的一款基础网络通讯工具，<a href="https://www.v2ray.com/">官网</a>已经404了，相比于Shadowsocks，V2Ray功能更加强大，但配置也相对麻烦，主要优点有：</p>
+<ul>
+<li>更完善的协议: V2Ray 使用了新的自行研发的 VMess 协议，改正了 Shadowsocks 一些已有的缺点，更难被GFW检测到</li>
+<li>更强大的性能: 网络性能更好，具体数据可以看 <a href="https://steemit.com/cn/@v2ray/3cjiux">V2Ray 官方博客</a></li>
+<li>更丰富的功能: 以下是部分 V2Ray 的功能<ul>
+<li>mKCP: KCP 协议在 V2Ray 上的实现，不必另行安装 kcptun</li>
+<li>动态端口：动态改变通信的端口，对抗对长时间大流量端口的限速封锁</li>
+<li>路由功能：可以随意设定指定数据包的流向，去广告、反跟踪都可以</li>
+<li>传出代理：看名字可能不太好理解，其实差不多可以称之为多重代理。类似于 Tor 的代理</li>
+<li>数据包伪装：类似于 Shadowsocks-rss 的混淆，另外对于 mKCP 的数据包也可伪装，伪装常见流量，令识别更困难</li>
+<li>WebSocket 协议：可以 PaaS 平台搭建V2Ray，通过 WebSocket 代理。也可以通过它使用 CDN 中转，抗封锁效果更好</li>
+<li>Mux:多路复用，进一步提高科学上网的并发性能</li>
+</ul>
+</li>
+</ul>
+<h1 id="购买VPS"><a href="#购买VPS" class="headerlink" title="购买VPS"></a>购买VPS</h1><p>关于FQ的原理，简单说就是用国内的设备连接国外的服务器（也就是下面要购买的VPS），然后通过国外的服务器访问那些404的不存在的网址，再将数据传回你的设备，所以需要购买一个境外的服务器。</p>
+<p>服务器选择有很多，香港新加坡日本美国等国家的都可以，提供服务的厂商有<a href="https://www.vultr.com/">Vultr</a>、<a href="https://bandwagonhost.com/">Bandwagon</a>等，更多VPS信息可以去<a href="https://blog.phpgao.com/vpses.html">大佬的博客</a>查看。现在比较主流的VPS厂商已经支持支付宝&#x2F;微信付款了，另外厂商也会有一些优惠活动</p>
+<p>这里我以<a href="https://www.vultr.com/">Vultr</a>为例</p>
+<ol>
+<li>进入官网后在中间的两栏输入账号（邮箱地址）和密码，然后点击<code>Create account</code></li>
+<li>在跳转后的页面左侧单击<code>Billing</code>并选择支付方式和充值金额，Vultr支持支付宝（Alipay）和微信（Wechat Pay）两种国内常用的付款方式，当然也可以使用支持美元的信用卡支付</li>
+<li>勾选<code>I Agree to the Terms of Service</code>选框，支付宝点击<code>Pay with Alipay</code>，微信选择<code>Generate QR Code</code>进行支付</li>
+<li>点击页面左侧的<code>Products</code>按钮切换</li>
+<li>在<code>Choose Server</code>中选择<code>Cloud Compute</code></li>
+<li>在<code>Cloud Compute</code>中选择服务器地区，一般来说东京和洛杉矶的速度较快</li>
+<li>在<code>Server Type</code>中选择服务器的操作系统，一般选择Linux系统降低内存使用，如<code>CentOS</code>和<code>Ubuntu</code></li>
+<li>在<code>Server Size</code>中选择合适的硬件配置以及带宽，一般来说选择<code>1CPU</code>、<code>512MB</code>内存即可，注意有些特价的VPS只提供IPV4地址，普通用户不要选择</li>
+<li>其它的选项不需要填写，直接点击页面右下角的<code>Deploy Now</code></li>
+<li>页面会跳转到<code>Server added successfully</code>服务器添加成功页面，右下方会显示正在安装<code>Installing</code></li>
+<li>安装完成后会显示用户名、密码、IP地址等信息，记住这几个信息，稍后会用到</li>
+</ol>
+<h1 id="连接VPS"><a href="#连接VPS" class="headerlink" title="连接VPS"></a>连接VPS</h1><h2 id="安装Xshell"><a href="#安装Xshell" class="headerlink" title="安装Xshell"></a>安装Xshell</h2><p>远程连接需要使用<a href="https://www.netsarang.com/zh/free-for-home-school/">Xshell</a>，输入姓名邮箱后获取下载链接并安装</p>
+<h2 id="连接VPS-1"><a href="#连接VPS-1" class="headerlink" title="连接VPS"></a>连接VPS</h2><ol>
+<li>打开Xshell</li>
+<li>点击顶栏<code>文件</code>并选择<code>新建</code></li>
+<li>在<code>名称</code>处填写一个易于区分的名称</li>
+<li>在<code>主机</code>处填写VPS的IP地址并点击<code>确定</code></li>
+<li>此时会提示保存ssh密钥，点击<code>接受并保存</code></li>
+<li>提示需要用户名的话输入<code>root</code>即可</li>
+<li>输入VPS的密码并点击确定即可连接</li>
+</ol>
+<h1 id="安装V2Ray"><a href="#安装V2Ray" class="headerlink" title="安装V2Ray"></a>安装V2Ray</h1><p>V2Ray的手动安装过程较为繁琐，但已经有大佬做好了一键安装脚本，直接安装并使用即可</p>
+<ol>
+<li>在上一步连接成功后的<code>Xshell</code>中使用<code>Shift + Insert</code>粘贴命令<code>bash &lt;(curl -s -L https://git.io/v2ray.sh)</code><ul>
+<li>如果提示<code>curl: command not found</code>，则需要安装<code>curl</code>，命令如下</li>
+<li>ubuntu&#x2F;debian:<code>apt-get update -y &amp;&amp; apt-get install curl -y</code></li>
+<li>centos:<code>yum update -y &amp;&amp; yum install curl -y</code></li>
+</ul>
+</li>
+<li>输入<code>1</code>并回车选择安装</li>
+<li>选择V2Ray传输协议，这里17个选择，备注有说明<ul>
+<li>默认的可以选择TCP，简单</li>
+<li>或者选择使用mKCP_wechat-vedio_dynamicPort进行微信优化伪装和动态端口设定，可以在一定程度上防止被墙，但是这个真的看脸。另外mKCP可以起到一定的加速作用，副作用是容易被运营商QOS限制</li>
+<li>比较稳妥的方法是使用WebSocket+TLS，在配合Cloudflare进行中转防止IP被墙，后面会讲</li>
+</ul>
+</li>
+<li>选择V2Ray端口，自己填写一个或者用默认的回车即可，数值在1-65535之间，避开特殊端口(例如80、443)</li>
+<li>其他的默认回车即可</li>
+<li>安装之前会有提示，看一下设置没有问题的话回车</li>
+<li>等待片刻，如果出现什么看不懂的提示就默认回车</li>
+<li>输入<code>v2ray start</code>启动V2Ray服务</li>
+<li>输入<code>v2ray status</code>回车检测V2Ray是否在运行，返回<code>V2Ray 状态: 正在运行</code>的话说明安装成功了</li>
+<li>centos6和7需要关闭防火墙，使用命令<code>systemctl stop firewalld</code>以及<code>systemctl disable firewalld</code>关闭</li>
+</ol>
+<p>至此在VPS上的配置就已经完成了</p>
+<p><strong>2019.06.30.emmm这个周出去浪了，回来再更</strong></p>
+<p><strong>2019.07.11本咕咕咕回来了，继续更，顺带说一句厦门是真的热</strong></p>
+<h1 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h1><p>在Xshell中连接你的VPS,使用命令<code>v2ray url</code>生成VMess链接并复制，一会要用</p>
+<p>V2Ray官方版本是没有GUI界面的，一般用户用起来有点蛋疼，好在各个平台都有支持V2Ray的客户端</p>
+<h2 id="Windows客户端"><a href="#Windows客户端" class="headerlink" title="Windows客户端"></a>Windows客户端</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Windows平台使用的客户端是V2RayN<br>在安装客户端之前需要先下载V2Ray并解压，然后再下载V2RayN的压缩包并解压到相同的文件夹,下面是下载链接</p>
+<a class="btn" href="https://github.com/v2ray/v2ray-core/releases">V2Ray下载</a> <a class="btn" href="https://github.com/2dust/v2rayN/releases">V2RayN下载</a>
+
+<p>V2Ray选择<code>v2ray-windows-64.zip</code>，V2RayN选择<code>v2rayN.zip</code><br>为了方便使用可以将文件夹内的<code>V2RayN.exe</code>右键发送到桌面快捷方式，以后启动时双击打开即可</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>首先复制刚才的VMess链接，然后打开<code>V2RayN.exe</code>，点击顶栏<code>服务器</code>打开下拉菜单，选择<code>从剪贴板导入批量URL</code>即可<br>如果有多个服务器建议修改别名<br>为了节省流量我们需要开启PAC，因为在全局模式下你的所有流量都会通过你的服务器收发，而PAC则会检查你要访问的网站是否在它的规则当中，如果在则通过代理服务器连接，不在的话就会绕过代理服务器直接连接，步骤如下：<br>首先在任务栏右下角找到V2RayN的并右键，选择<code>启用Http代理</code>并将<code>Http代理模式</code>设置为<code>开启Http代理，并自动配置代理服务器(全局模式)</code>；然后打开v2RayN，点击顶栏<code>检查更新</code>打开下拉菜单，选择<code>检查更新PAC</code>，等待更新完成后将<code>Http代理模式</code>设置为<code>开启PAC，并自动配置PAC(PAC模式)</code></p>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p>更新可以通过V2RayN内的<code>检查更新</code>选项进行更新，<code>V2RayCore</code>和<code>V2RayN</code>建议保持最新版本，PAC大约过一两个月更新一次就可以</p>
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><ol>
+<li>emmm这是个玄学问题，不确定是win10的锅还是V2Ray的问题，有时候会出现没有响应的情况，打开404网站的时候V2RayN的信息栏没有任何反应，看起来像被墙了一样，此时需要使用网络重置解决问题，步骤为：在win10的设置中选择<code>网络和Internet</code>，在<code>状态</code>中找到<code>网络重置</code>选项，过几秒会提醒你要在几分钟内注销，此时直接手动重启即可，重启后再启动V2RayN就解决了</li>
+<li>有时候所有的网站都会打不开，原因是退出V2Ray的时候仍然处在全局模式，解决方案为打开V2RayN将<code>Http代理模式</code>切换为<code>PAC模式</code></li>
+</ol>
+<h2 id="iOS客户端"><a href="#iOS客户端" class="headerlink" title="iOS客户端"></a>iOS客户端</h2><p>iOS客户端有<code>Kitsunebi</code>、<code>Shadowrocket</code>、<code>Pepi</code>、<code>Kitsunebi Lite</code>等，但是这些软件在国区已经全部下架了，解决方案有:</p>
+<ul>
+<li>注册美区等国外区的Apple ID</li>
+<li>通过淘宝购买已经购买过上述软件的Apple ID<br>这里我以<code>Kitsunebi Lite</code>为例，打开软件后点击右上角的<code>+</code>，选择URL导入，粘贴Vmess链接，点击<code>YES</code>，然后回到主页将模式调为自动，点击上方的开关即可使用</li>
+</ul>
+<h2 id="Android客户端"><a href="#Android客户端" class="headerlink" title="Android客户端"></a>Android客户端</h2><p>安卓端主要是<a href="https://play.google.com/store/apps/details?id=com.v2ray.ang">V2RayNG</a>和<a href="https://play.google.com/store/apps/details?id=com.github.dawndiy.bifrostv">BifrostV</a>两款软件，这里的链接是Google Play的，另外V2RayNG还有<a href="https://github.com/2dust/v2rayNG/releases">Github链接</a>，选择<code>app-universal-release.apk</code>下载使用<br>使用步骤大同小异，都是点击右上角的<code>+</code>并导入Vmess链接，然后点击右下角按钮即可使用</p>
+<h2 id="MacOS客户端"><a href="#MacOS客户端" class="headerlink" title="MacOS客户端"></a>MacOS客户端</h2><p>MacOS可以使用<a href="https://github.com/insisttech/v2rayX-copy/releases">V2RayX</a></p>
+<ol>
+<li>点击上面的链接并下载<code>V2RayX.app-1.2.0.zip</code>，名称不一定完全一样，然后解压，并将<code>V2RayX.app</code>复制到<code>程序</code>文件夹</li>
+<li>第一次打开时会出现需要安全认证的信息，此时你需要点完所有系统弹出的窗口里的<code>是</code>、<code>打开</code>、<code>确认</code>等选项，然后打开<code>系统偏好设置</code>里的<code>安全性与隐私</code>，你就会看见灰色的一条，大概意思为“V2RayX，未被安全认证，是否打开”，后面有一个<code>仍要打开</code>的选项，点开就好。然后你就会在状态栏看到 V2RayX 图标</li>
+<li>点击图标然后单击<code>Configure</code>，TCP模式在这个界面可以完成配置，按照VPS端的参数填写；mKCP和WebSocket+TLS需要点击页面下方的<code>transport settings</code>进入高级设置</li>
+<li>配置完成后点击<code>OK</code>，此时会弹窗提醒，点击<code>Yes, save!</code></li>
+<li>点击V2RayX的图标，可以在<code>Global Mode</code>全局模式和<code>PAC Mode</code>PAC模式之间调整</li>
+<li>点击<code>Start V2Ray</code>即可使用</li>
+</ol>
+<h2 id="Linux客户端"><a href="#Linux客户端" class="headerlink" title="Linux客户端"></a>Linux客户端</h2><p>用大佬的话说，<em>你都用Linux了还要什么客户端</em>，其实是Linux真的没有GUI客户端2333，所以只能节省一些麻烦。。。。。。</p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><ol>
+<li>首先还是去V2Ray的<a href="https://github.com/v2ray/v2ray-core/releases/">Github</a>下载安装包，Intel架构的根据系统选择<code>V2Ray-linux-64</code>或者<code>V2Ray-linux-32</code>，ARM架构的选择<code>V2Ray-linux-arm64</code>或<code>V2Ray-linux-arm</code></li>
+<li>下载完成后解压</li>
+<li>打开解压后的文件夹，删除其中的<code>vpoint_vmess_freedom.json</code>文件，然后自己创建一个<code>config.json</code>文件，建议直接通过Windows客户端导出这个文件，在<code>V2Ray</code>中点击服务器下拉菜单，选择<code>导出所选服务器为客户端配置</code></li>
+<li>在文件夹打开终端并执行命令<code>sudo ./v2ray</code>即可开启</li>
+</ol>
+<h3 id="配置PAC"><a href="#配置PAC" class="headerlink" title="配置PAC"></a>配置PAC</h3><p>此时的V2Ray还不能够愉快的使用，我们还需要给它配置PAC</p>
+<ol>
+<li>首先安装<code>pip</code>工具，执行命令<code>apt install python-pip</code>，完成后使用命令<code>pip -V</code>检测是否安装成功，成功后会返回pip的版本</li>
+<li>执行命令<code>pip install genpac</code>安装<code>genpac</code>，安装成功后会返回<code>Successfully installed genpac-xxx</code></li>
+<li>执行命令<code>genpac --format=pac -o auto.pac --pac-proxy=&quot;SOCKS5 127.0.0.1:1080</code>，如果没有输出说明成功，否则按照返回值修改</li>
+<li>打开系统设置，以Fedora为例，点击<code>网络</code>，打开<code>Network Proxy</code>的菜单并将其设置为自动</li>
+<li>Google下载一个PAC文件</li>
+<li>在下方的<code>配置URL</code>栏填入你的PAC文件的绝对路径，格式为<code>file://路径</code></li>
+</ol>
+<h3 id="设置桌面图标"><a href="#设置桌面图标" class="headerlink" title="设置桌面图标"></a>设置桌面图标</h3><p>每次输入命令启动还是很麻烦的，但是我们可以在桌面设置一个快捷方式或者加入程序列表（滑稽）<br>在文件夹中新建一个名为<code>v2ray.desktop</code>的文件，粘贴下列代码，然后复制到<code>/usr/share/application</code>文件夹下，此过程需要root权限</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line"></span><br><span class="line">Name=V2Ray</span><br><span class="line"></span><br><span class="line">GenericName=V2Ray Client</span><br><span class="line"></span><br><span class="line">Comment=A platform <span class="keyword">for</span> building proxies to bypass network restrictions.</span><br><span class="line"></span><br><span class="line">Exec=/到你文件夹的路径/v2ray --config=/到你文件夹的路径/config.json</span><br><span class="line"></span><br><span class="line">Icon=/到自定义图标图片的路径</span><br><span class="line"></span><br><span class="line">Terminal=true</span><br><span class="line"></span><br><span class="line"><span class="built_in">Type</span>=Application</span><br><span class="line"></span><br><span class="line">Categories=Network;Internet;</span><br></pre></td></tr></table></figure>
+<p>然后把文件的权限修改为<code>允许文件作为程序执行</code><br>图标文件可以去大佬的<a href="https://pan.baidu.com/s/1yf4Rkmuy7h65z8XC77SAdg#list/path=%2F">百度网盘</a>下载，提取码<code>hc82</code></p>
+<p>然后你就可以愉快的使用V2Ray了（滑稽）</p>
+<h1 id="使用Cloudflare-CDN中转（选配）"><a href="#使用Cloudflare-CDN中转（选配）" class="headerlink" title="使用Cloudflare CDN中转（选配）"></a>使用Cloudflare CDN中转（选配）</h1><p>目前GFW主要通过封禁IP的方式墙掉你的VPS，而对应的解决方案便是通过Cloudflare中转，墙不知道你的IP还怎么封呢（滑稽），另外这个方法的另一个功能就是恢复被墙IP的访问（滑稽+1）<br>虽然CDN中转能够有效防止IP被墙，但是步骤比较繁琐，延迟也会提高，还需要另外购买一个域名。不想折腾直接跳过就好了，我第一次配也没有用这个，直接用的mKCP，用了快一年才被墙掉，通过这个方法恢复了被墙的IP</p>
+<h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p>域名推荐购买<a href="https://sg.godaddy.com/zh">Godaddy</a>家的，这是国外最大的域名供应商，而且不需要实名认证，国内的阿里云和腾讯云也不是不能用2333</p>
+<ol>
+<li>首先打开<a href="https://sg.godaddy.com/zh">Godaddy</a>进行注册，邮箱用户名密码不多说</li>
+<li>注册完成后回到首页搜索自己想要的域名，点击<code>加入购物车</code>,然后点击上面的<code>进入购物车</code></li>
+<li>跳转的页面会提示你购买隐私服务和Linux主机，全部选不用然后点击下面的<code>进入购物车</code></li>
+<li>结算信息页面除了电话号码都随便写，把右边的<code>2年</code>改成<code>1年</code>，2年的价格比1年贵很多，选1年然后到期再换别的</li>
+<li>付款过程不多说</li>
+</ol>
+<h2 id="Cloudflare-CDN配置"><a href="#Cloudflare-CDN配置" class="headerlink" title="Cloudflare CDN配置"></a>Cloudflare CDN配置</h2><p>Cloudflare CDN就是防止我们IP被墙的关键，而且它提供免费的CDN服务</p>
+<ol>
+<li>邮箱密码注册不多说</li>
+<li>注册完成后点击蓝色的<code>+Add Site</code>按钮</li>
+<li>输入刚才在Godaddy上购买的域名，然后点击下面的<code>Add Site</code>按钮</li>
+<li>点击<code>Next</code>按钮</li>
+<li>套餐选择<code>Free</code>那个，然后点击<code>Confirm plan</code>，在弹出的窗口再点击一次<code>Confirm</code></li>
+<li>找到DNS页面，可以看到Cloudflare生成的两个记录。点击蓝色按钮<code>Add Record</code>，第一个空选择<code>A</code>；第二个空填写域名前缀，如<code>test</code>等，生成二级域名；第三个空填写你VPS的IP；第四个不用管。</li>
+<li>点击<code>Add Record</code></li>
+<li>点击<code>Status</code>下面的橙色云朵，把它变成<strong>灰色</strong>，即DNS Only，然后点击<code>Continue</code></li>
+<li>这里会提示你修改你的域名服务器，页面上提供了两个域名服务器地址，需要我们回到购买域名的网站进行修改</li>
+<li>打开<a href="https://sg.godaddy.com/zh">Godaddy</a>，在右上角的用户名那里点击打开下拉菜单，然后点击<code>我的产品</code></li>
+<li>点击你的域名右侧的<code>DNS</code></li>
+<li>在跳转的页面上点击蓝色的<code>更改</code>按钮</li>
+<li>选择自定义，如果有别的域名服务器需要先删掉，然后把Cloudflare提供的两个域名服务器粘贴进去，点击保存</li>
+<li>回到Cloudflare页面并继续点击<code>continue</code>，如果提示你还没有修改域名服务器的话就等待一段时间（几分钟到几个小时）。等到域名服务器生效就好了，生效的话Cloudflare会发邮件给你；或者页面提示<code>Great news! Cloudflare is now protecting your site</code>就说明可以使用了</li>
+</ol>
+<h2 id="V2Ray设置"><a href="#V2Ray设置" class="headerlink" title="V2Ray设置"></a>V2Ray设置</h2><p>先前我们用的是mKCP协议，现在需要换成<code>WebSocket+TLS</code></p>
+<ol>
+<li>使用Xshell连接VPS</li>
+<li>输入命令<code>v2ray config</code>并回车</li>
+<li>修改传输协议为<code>WebSocket+TLS</code></li>
+<li>输入你的二级域名并回车，如<code>test.xxxxx.xxx</code></li>
+<li>确认域名正确并回车</li>
+<li>如果域名解析错误会报错提示并退出脚本</li>
+<li><code>是否自动配置TLS</code>选择Y回车</li>
+<li>其它选项默认即可</li>
+<li>输入<code>v2ray status</code>查看V2Ray状态,确保V2Ray和Caddy都是正在运行状态</li>
+<li>输入<code>v2ray url</code>生成VMess链接并复制</li>
+<li>返回<code>Cloudflare</code>域名管理界面，点击<code>Crypto</code>选项，将SSL后的选项设置为<code>Full</code>并确认<code>Universal SSL Status</code>状态为<code>Active Certificate</code>，不是的话可能要稍微等一会，等待证书申请成功（脸黑的话需要等很长时间，但是不会超过24小时，一般很快）</li>
+<li>打开<code>Cloudflare</code>的<code>DNS</code>选项，点击<code>Status</code>下面的灰色云朵，把它恢复为橙色</li>
+<li>把刚才复制的<code>VMess</code>连接重新导入你的客户端就完成了</li>
+</ol>
+<h1 id="常用命令汇总"><a href="#常用命令汇总" class="headerlink" title="常用命令汇总"></a>常用命令汇总</h1><ul>
+<li>启动V2Ray——<code>v2ray start</code></li>
+<li>关闭V2Ray——<code>v2ray stop</code></li>
+<li>重启V2Ray——<code>v2ray restart</code></li>
+<li>更新V2Ray——<code>v2ray update</code></li>
+<li>更新V2Ray管理脚本——<code>v2ray update</code></li>
+<li>查看V2Ray状态——<code>v2ray status</code></li>
+<li>查看V2Ray配置——<code>v2ray inf</code></li>
+<li>修改V2Ray配置——<code>v2ray config</code></li>
+<li>生成配置文件链接——<code>v2ray link</code></li>
+<li>生成配置信息链接——<code>v2ray infolink</code></li>
+<li>生成配置二维码链接——<code>v2ray qr</code></li>
+<li>查看V2Ray日志——<code>v2ray log</code></li>
+<li>生成VMess链接——<code>v2ray url</code></li>
+</ul>
+<h1 id="懒人大礼包"><a href="#懒人大礼包" class="headerlink" title="懒人大礼包"></a>懒人大礼包</h1><p>懒人大礼包是<code>Bandwagon</code>(一家VPS供应商，被墙之前用户巨多，俗称搬瓦工)官方出品的梯子<code>Just My Socks</code>，使用搬瓦工的优质<code>CN2 GIA</code>线路并且支持被墙自动换IP，也就是说IP被墙后你不用自己动手，<code>Just My Socks</code>官方会为你提供一条龙服务，你甚至感受不到它的存在。<strong>虽然它还是个ShadowSocks</strong><br>这套服务的包月金额最低2.88美元，按照19年7月的汇率大概是19.8元人民币,包年是198元人民币，支持自支付宝付款。<br>因为官方过于作死，已经被墙了，需要使用备用网址<a href="https://justmysocks1.net/members/cart.php?gid=1">Just My Socks</a><br>目前主要有三种套餐，Just My Socks 100、Just My Socks 500和Just My Socks 1000，以100为例，官网的信息是这样的<code>100G/mo at 1Gbps | 3 devices</code>，意思就是每个月100G的流量，带宽是1Gbps，支持3台设备使用，一般人这个就够用了，土豪随意</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>注册登陆，不废话</li>
+<li>选择需要的套餐，点击<code>Order Now</code></li>
+<li>在<code>Choose Billing Cycle</code>可以选择付款周期，包月<code>Monthly</code>，包季度<code>Quarterly</code>，包半年<code>Semi-Annually</code>和包年<code>Annually</code>，周期越长越便宜</li>
+<li>在<code>Apply Promo Code</code>中输入优惠码<code>JMS9272283</code>可以享受5.2%的优惠，完成后点击右侧<code>Checkout</code></li>
+<li>没注册的话这一步可以继续注册，填写基本信息，国家选择<code>China</code>，付款方式选择<code>Alipay</code>，勾选下面的<code>I have read and agree to the Terms of Service</code>然后点击<code>Complete Order</code>，支付宝扫码付款</li>
+<li>付款完成后在官网顶栏选择<code>Services</code>，在下拉菜单中选择<code>My Services</code>，可以看到已经购买的产品，<code>Status</code>状态为<code>Active</code>，即为激活可用状态</li>
+<li>点击你的产品就可以看到ShadowSocks的相关信息了，其中<ul>
+<li><code>ShadowSocks Encryption</code>是加密方式</li>
+<li><code>ShadowSocks Port</code>是端口</li>
+<li><code>ShadowSocks Paaword</code>是密码</li>
+<li><code>ShadowSocks Server IP</code>是服务器地址，这个地址会有多个，都可以同时用</li>
+</ul>
+</li>
+<li>在V2Ray客户端选择服务器，点击<code>添加ShadowSocks服务器</code>并输入相关信息就可以用了，可以多添加几个，防止某个节点失效，因为<code>Just My Socks</code>的自动检测需要时间</li>
+</ol>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>在页面左侧的<code>Actions</code>菜单中可以切换端口、密码和加密方式，觉得套餐不能满足需求或不满意可以在<code>Actions</code>菜单中选择修改套餐和退款，在<code>Overview</code>中可以更改付款周期，注意<strong>密码和端口的更改是自动生成</strong>的，不支持自定义。<br>更改成功会提示<code>Changes saved. Please wait 1 minute for settings to propagate to all servers.</code>，就是说需要等待1分钟将设置同步到所有服务器，1分钟后重新点击左侧的<code>Service Information</code>就可以看到更新后的信息了</p>
+<ol>
+<li>更改密码，点击<code>Change password</code>即可</li>
+<li>更改端口，点击<code>Change port</code>即可</li>
+<li>更改加密方式，点击<code>Switch to aes-256-gcm</code>和<code>Switch to aes-256-cfb</code>可以切换两种加密方式，建议选择<code>aes-256-gcm</code></li>
+<li>修改套餐，点击<code>Upgrade/Downgrade</code>，选择合适的套餐后付款即可</li>
+<li>更改付款周期,点击<code>Modify billing cycle</code>,选择的合适的周期后点击后面的<code>Change billing cycle</code>,可能会提示<code>Billing cycle has been modified successfully. Your next invoice will reflect new billing period</code>，意思是周期修改成功，但不会立即生效，会在下一个周期生效</li>
+<li>退款，点击<code>Request Refund</code>，然后再点击<code>Request full refund for this service</code>。<br>这个的操作稍微复杂一些，而且相同身份信息只有一次退款机会，意思就是如果你用同一个支付宝给不同的账号付款，你只有一个账号的退款机会。<br>同时你还要满足以下条件<ul>
+<li>客户账户信誉良好，未违反服务条款</li>
+<li>以前没有付款或目前没争议</li>
+<li>每月数据传输使用量低于10%</li>
+<li>客户帐户是 7 天内创建的</li>
+<li>客户当前账号没有退款过<br>这些都没有问题的话经过审核通过就会将退款原路返回</li>
+</ul>
+</li>
+</ol>
+<p><strong>技术无罪</strong></p>
+<blockquote>
+<p>参考：<a href="https://github.com/233boy/v2ray/wiki/V2Ray%E6%90%AD%E5%BB%BA%E8%AF%A6%E7%BB%86%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B">233boy</a>、<a href="https://www.i5seo.com/">长沙SEO霜天博客</a>、<a href="https://blog.sprov.xyz/2019/03/11/cdn-v2ray-safe-proxy/">sprov</a>、<a href="https://octopuspalm.top/2018/08/18/Linux%20%E7%B3%BB%E7%BB%9F%E4%B8%8Bv2ray%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8/">THE WORLD OF ABCDLSJ</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>V2Ray</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ryzen Hackintosh</title>
     <url>/Ryzen-Hackintosh.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">折腾了三天，终于把MacOs成功安装到了台式机上，某宝上买了一个拆机苹果网卡，基本完美，安装系统为MACOS HIGH SIERRA(10.13.6 17G65)，这篇文章就是在MacOS上写的（嚣张.jpg）</blockquote>
@@ -3509,232 +3735,6 @@
         <tag>搞机</tag>
         <tag>黑苹果</tag>
         <tag>多系统</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>V2Ray</title>
-    <url>/V2Ray.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">自从P站无法访问后就一直想写个V2Ray的教程，然鹅拖延症加懒癌晚期到现在才开始写emmm，虽然民间一直流传有上P站的各种神功，但网速实在感人而且指不定那天就挂掉了，另外如果你不想看这么麻烦的教程的话可以直接移到文章最后，有懒人大礼包。解释一下这个P站是建筑狗用的Pinterest，想歪的面壁去（🐶）
-</blockquote>
-
-<span id="more"></span>
-
-<div class="note danger"><p>文章时间久远，俺自己也没再用这个方案了，仅供参考</p></div>
-
-<h1 id="V2Ray简介"><a href="#V2Ray简介" class="headerlink" title="V2Ray简介"></a>V2Ray简介</h1><p>V2Ray项目是Project V下的一款基础网络通讯工具，<a href="https://www.v2ray.com/">官网</a>已经404了，相比于Shadowsocks，V2Ray功能更加强大，但配置也相对麻烦，主要优点有：</p>
-<ul>
-<li>更完善的协议: V2Ray 使用了新的自行研发的 VMess 协议，改正了 Shadowsocks 一些已有的缺点，更难被GFW检测到</li>
-<li>更强大的性能: 网络性能更好，具体数据可以看 <a href="https://steemit.com/cn/@v2ray/3cjiux">V2Ray 官方博客</a></li>
-<li>更丰富的功能: 以下是部分 V2Ray 的功能<ul>
-<li>mKCP: KCP 协议在 V2Ray 上的实现，不必另行安装 kcptun</li>
-<li>动态端口：动态改变通信的端口，对抗对长时间大流量端口的限速封锁</li>
-<li>路由功能：可以随意设定指定数据包的流向，去广告、反跟踪都可以</li>
-<li>传出代理：看名字可能不太好理解，其实差不多可以称之为多重代理。类似于 Tor 的代理</li>
-<li>数据包伪装：类似于 Shadowsocks-rss 的混淆，另外对于 mKCP 的数据包也可伪装，伪装常见流量，令识别更困难</li>
-<li>WebSocket 协议：可以 PaaS 平台搭建V2Ray，通过 WebSocket 代理。也可以通过它使用 CDN 中转，抗封锁效果更好</li>
-<li>Mux:多路复用，进一步提高科学上网的并发性能</li>
-</ul>
-</li>
-</ul>
-<h1 id="购买VPS"><a href="#购买VPS" class="headerlink" title="购买VPS"></a>购买VPS</h1><p>关于FQ的原理，简单说就是用国内的设备连接国外的服务器（也就是下面要购买的VPS），然后通过国外的服务器访问那些404的不存在的网址，再将数据传回你的设备，所以需要购买一个境外的服务器。</p>
-<p>服务器选择有很多，香港新加坡日本美国等国家的都可以，提供服务的厂商有<a href="https://www.vultr.com/">Vultr</a>、<a href="https://bandwagonhost.com/">Bandwagon</a>等，更多VPS信息可以去<a href="https://blog.phpgao.com/vpses.html">大佬的博客</a>查看。现在比较主流的VPS厂商已经支持支付宝&#x2F;微信付款了，另外厂商也会有一些优惠活动</p>
-<p>这里我以<a href="https://www.vultr.com/">Vultr</a>为例</p>
-<ol>
-<li>进入官网后在中间的两栏输入账号（邮箱地址）和密码，然后点击<code>Create account</code></li>
-<li>在跳转后的页面左侧单击<code>Billing</code>并选择支付方式和充值金额，Vultr支持支付宝（Alipay）和微信（Wechat Pay）两种国内常用的付款方式，当然也可以使用支持美元的信用卡支付</li>
-<li>勾选<code>I Agree to the Terms of Service</code>选框，支付宝点击<code>Pay with Alipay</code>，微信选择<code>Generate QR Code</code>进行支付</li>
-<li>点击页面左侧的<code>Products</code>按钮切换</li>
-<li>在<code>Choose Server</code>中选择<code>Cloud Compute</code></li>
-<li>在<code>Cloud Compute</code>中选择服务器地区，一般来说东京和洛杉矶的速度较快</li>
-<li>在<code>Server Type</code>中选择服务器的操作系统，一般选择Linux系统降低内存使用，如<code>CentOS</code>和<code>Ubuntu</code></li>
-<li>在<code>Server Size</code>中选择合适的硬件配置以及带宽，一般来说选择<code>1CPU</code>、<code>512MB</code>内存即可，注意有些特价的VPS只提供IPV4地址，普通用户不要选择</li>
-<li>其它的选项不需要填写，直接点击页面右下角的<code>Deploy Now</code></li>
-<li>页面会跳转到<code>Server added successfully</code>服务器添加成功页面，右下方会显示正在安装<code>Installing</code></li>
-<li>安装完成后会显示用户名、密码、IP地址等信息，记住这几个信息，稍后会用到</li>
-</ol>
-<h1 id="连接VPS"><a href="#连接VPS" class="headerlink" title="连接VPS"></a>连接VPS</h1><h2 id="安装Xshell"><a href="#安装Xshell" class="headerlink" title="安装Xshell"></a>安装Xshell</h2><p>远程连接需要使用<a href="https://www.netsarang.com/zh/free-for-home-school/">Xshell</a>，输入姓名邮箱后获取下载链接并安装</p>
-<h2 id="连接VPS-1"><a href="#连接VPS-1" class="headerlink" title="连接VPS"></a>连接VPS</h2><ol>
-<li>打开Xshell</li>
-<li>点击顶栏<code>文件</code>并选择<code>新建</code></li>
-<li>在<code>名称</code>处填写一个易于区分的名称</li>
-<li>在<code>主机</code>处填写VPS的IP地址并点击<code>确定</code></li>
-<li>此时会提示保存ssh密钥，点击<code>接受并保存</code></li>
-<li>提示需要用户名的话输入<code>root</code>即可</li>
-<li>输入VPS的密码并点击确定即可连接</li>
-</ol>
-<h1 id="安装V2Ray"><a href="#安装V2Ray" class="headerlink" title="安装V2Ray"></a>安装V2Ray</h1><p>V2Ray的手动安装过程较为繁琐，但已经有大佬做好了一键安装脚本，直接安装并使用即可</p>
-<ol>
-<li>在上一步连接成功后的<code>Xshell</code>中使用<code>Shift + Insert</code>粘贴命令<code>bash &lt;(curl -s -L https://git.io/v2ray.sh)</code><ul>
-<li>如果提示<code>curl: command not found</code>，则需要安装<code>curl</code>，命令如下</li>
-<li>ubuntu&#x2F;debian:<code>apt-get update -y &amp;&amp; apt-get install curl -y</code></li>
-<li>centos:<code>yum update -y &amp;&amp; yum install curl -y</code></li>
-</ul>
-</li>
-<li>输入<code>1</code>并回车选择安装</li>
-<li>选择V2Ray传输协议，这里17个选择，备注有说明<ul>
-<li>默认的可以选择TCP，简单</li>
-<li>或者选择使用mKCP_wechat-vedio_dynamicPort进行微信优化伪装和动态端口设定，可以在一定程度上防止被墙，但是这个真的看脸。另外mKCP可以起到一定的加速作用，副作用是容易被运营商QOS限制</li>
-<li>比较稳妥的方法是使用WebSocket+TLS，在配合Cloudflare进行中转防止IP被墙，后面会讲</li>
-</ul>
-</li>
-<li>选择V2Ray端口，自己填写一个或者用默认的回车即可，数值在1-65535之间，避开特殊端口(例如80、443)</li>
-<li>其他的默认回车即可</li>
-<li>安装之前会有提示，看一下设置没有问题的话回车</li>
-<li>等待片刻，如果出现什么看不懂的提示就默认回车</li>
-<li>输入<code>v2ray start</code>启动V2Ray服务</li>
-<li>输入<code>v2ray status</code>回车检测V2Ray是否在运行，返回<code>V2Ray 状态: 正在运行</code>的话说明安装成功了</li>
-<li>centos6和7需要关闭防火墙，使用命令<code>systemctl stop firewalld</code>以及<code>systemctl disable firewalld</code>关闭</li>
-</ol>
-<p>至此在VPS上的配置就已经完成了</p>
-<p><strong>2019.06.30.emmm这个周出去浪了，回来再更</strong></p>
-<p><strong>2019.07.11本咕咕咕回来了，继续更，顺带说一句厦门是真的热</strong></p>
-<h1 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h1><p>在Xshell中连接你的VPS,使用命令<code>v2ray url</code>生成VMess链接并复制，一会要用</p>
-<p>V2Ray官方版本是没有GUI界面的，一般用户用起来有点蛋疼，好在各个平台都有支持V2Ray的客户端</p>
-<h2 id="Windows客户端"><a href="#Windows客户端" class="headerlink" title="Windows客户端"></a>Windows客户端</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Windows平台使用的客户端是V2RayN<br>在安装客户端之前需要先下载V2Ray并解压，然后再下载V2RayN的压缩包并解压到相同的文件夹,下面是下载链接</p>
-<a class="btn" href="https://github.com/v2ray/v2ray-core/releases">V2Ray下载</a> <a class="btn" href="https://github.com/2dust/v2rayN/releases">V2RayN下载</a>
-
-<p>V2Ray选择<code>v2ray-windows-64.zip</code>，V2RayN选择<code>v2rayN.zip</code><br>为了方便使用可以将文件夹内的<code>V2RayN.exe</code>右键发送到桌面快捷方式，以后启动时双击打开即可</p>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>首先复制刚才的VMess链接，然后打开<code>V2RayN.exe</code>，点击顶栏<code>服务器</code>打开下拉菜单，选择<code>从剪贴板导入批量URL</code>即可<br>如果有多个服务器建议修改别名<br>为了节省流量我们需要开启PAC，因为在全局模式下你的所有流量都会通过你的服务器收发，而PAC则会检查你要访问的网站是否在它的规则当中，如果在则通过代理服务器连接，不在的话就会绕过代理服务器直接连接，步骤如下：<br>首先在任务栏右下角找到V2RayN的并右键，选择<code>启用Http代理</code>并将<code>Http代理模式</code>设置为<code>开启Http代理，并自动配置代理服务器(全局模式)</code>；然后打开v2RayN，点击顶栏<code>检查更新</code>打开下拉菜单，选择<code>检查更新PAC</code>，等待更新完成后将<code>Http代理模式</code>设置为<code>开启PAC，并自动配置PAC(PAC模式)</code></p>
-<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p>更新可以通过V2RayN内的<code>检查更新</code>选项进行更新，<code>V2RayCore</code>和<code>V2RayN</code>建议保持最新版本，PAC大约过一两个月更新一次就可以</p>
-<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><ol>
-<li>emmm这是个玄学问题，不确定是win10的锅还是V2Ray的问题，有时候会出现没有响应的情况，打开404网站的时候V2RayN的信息栏没有任何反应，看起来像被墙了一样，此时需要使用网络重置解决问题，步骤为：在win10的设置中选择<code>网络和Internet</code>，在<code>状态</code>中找到<code>网络重置</code>选项，过几秒会提醒你要在几分钟内注销，此时直接手动重启即可，重启后再启动V2RayN就解决了</li>
-<li>有时候所有的网站都会打不开，原因是退出V2Ray的时候仍然处在全局模式，解决方案为打开V2RayN将<code>Http代理模式</code>切换为<code>PAC模式</code></li>
-</ol>
-<h2 id="iOS客户端"><a href="#iOS客户端" class="headerlink" title="iOS客户端"></a>iOS客户端</h2><p>iOS客户端有<code>Kitsunebi</code>、<code>Shadowrocket</code>、<code>Pepi</code>、<code>Kitsunebi Lite</code>等，但是这些软件在国区已经全部下架了，解决方案有:</p>
-<ul>
-<li>注册美区等国外区的Apple ID</li>
-<li>通过淘宝购买已经购买过上述软件的Apple ID<br>这里我以<code>Kitsunebi Lite</code>为例，打开软件后点击右上角的<code>+</code>，选择URL导入，粘贴Vmess链接，点击<code>YES</code>，然后回到主页将模式调为自动，点击上方的开关即可使用</li>
-</ul>
-<h2 id="Android客户端"><a href="#Android客户端" class="headerlink" title="Android客户端"></a>Android客户端</h2><p>安卓端主要是<a href="https://play.google.com/store/apps/details?id=com.v2ray.ang">V2RayNG</a>和<a href="https://play.google.com/store/apps/details?id=com.github.dawndiy.bifrostv">BifrostV</a>两款软件，这里的链接是Google Play的，另外V2RayNG还有<a href="https://github.com/2dust/v2rayNG/releases">Github链接</a>，选择<code>app-universal-release.apk</code>下载使用<br>使用步骤大同小异，都是点击右上角的<code>+</code>并导入Vmess链接，然后点击右下角按钮即可使用</p>
-<h2 id="MacOS客户端"><a href="#MacOS客户端" class="headerlink" title="MacOS客户端"></a>MacOS客户端</h2><p>MacOS可以使用<a href="https://github.com/insisttech/v2rayX-copy/releases">V2RayX</a></p>
-<ol>
-<li>点击上面的链接并下载<code>V2RayX.app-1.2.0.zip</code>，名称不一定完全一样，然后解压，并将<code>V2RayX.app</code>复制到<code>程序</code>文件夹</li>
-<li>第一次打开时会出现需要安全认证的信息，此时你需要点完所有系统弹出的窗口里的<code>是</code>、<code>打开</code>、<code>确认</code>等选项，然后打开<code>系统偏好设置</code>里的<code>安全性与隐私</code>，你就会看见灰色的一条，大概意思为“V2RayX，未被安全认证，是否打开”，后面有一个<code>仍要打开</code>的选项，点开就好。然后你就会在状态栏看到 V2RayX 图标</li>
-<li>点击图标然后单击<code>Configure</code>，TCP模式在这个界面可以完成配置，按照VPS端的参数填写；mKCP和WebSocket+TLS需要点击页面下方的<code>transport settings</code>进入高级设置</li>
-<li>配置完成后点击<code>OK</code>，此时会弹窗提醒，点击<code>Yes, save!</code></li>
-<li>点击V2RayX的图标，可以在<code>Global Mode</code>全局模式和<code>PAC Mode</code>PAC模式之间调整</li>
-<li>点击<code>Start V2Ray</code>即可使用</li>
-</ol>
-<h2 id="Linux客户端"><a href="#Linux客户端" class="headerlink" title="Linux客户端"></a>Linux客户端</h2><p>用大佬的话说，<em>你都用Linux了还要什么客户端</em>，其实是Linux真的没有GUI客户端2333，所以只能节省一些麻烦。。。。。。</p>
-<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><ol>
-<li>首先还是去V2Ray的<a href="https://github.com/v2ray/v2ray-core/releases/">Github</a>下载安装包，Intel架构的根据系统选择<code>V2Ray-linux-64</code>或者<code>V2Ray-linux-32</code>，ARM架构的选择<code>V2Ray-linux-arm64</code>或<code>V2Ray-linux-arm</code></li>
-<li>下载完成后解压</li>
-<li>打开解压后的文件夹，删除其中的<code>vpoint_vmess_freedom.json</code>文件，然后自己创建一个<code>config.json</code>文件，建议直接通过Windows客户端导出这个文件，在<code>V2Ray</code>中点击服务器下拉菜单，选择<code>导出所选服务器为客户端配置</code></li>
-<li>在文件夹打开终端并执行命令<code>sudo ./v2ray</code>即可开启</li>
-</ol>
-<h3 id="配置PAC"><a href="#配置PAC" class="headerlink" title="配置PAC"></a>配置PAC</h3><p>此时的V2Ray还不能够愉快的使用，我们还需要给它配置PAC</p>
-<ol>
-<li>首先安装<code>pip</code>工具，执行命令<code>apt install python-pip</code>，完成后使用命令<code>pip -V</code>检测是否安装成功，成功后会返回pip的版本</li>
-<li>执行命令<code>pip install genpac</code>安装<code>genpac</code>，安装成功后会返回<code>Successfully installed genpac-xxx</code></li>
-<li>执行命令<code>genpac --format=pac -o auto.pac --pac-proxy=&quot;SOCKS5 127.0.0.1:1080</code>，如果没有输出说明成功，否则按照返回值修改</li>
-<li>打开系统设置，以Fedora为例，点击<code>网络</code>，打开<code>Network Proxy</code>的菜单并将其设置为自动</li>
-<li>Google下载一个PAC文件</li>
-<li>在下方的<code>配置URL</code>栏填入你的PAC文件的绝对路径，格式为<code>file://路径</code></li>
-</ol>
-<h3 id="设置桌面图标"><a href="#设置桌面图标" class="headerlink" title="设置桌面图标"></a>设置桌面图标</h3><p>每次输入命令启动还是很麻烦的，但是我们可以在桌面设置一个快捷方式或者加入程序列表（滑稽）<br>在文件夹中新建一个名为<code>v2ray.desktop</code>的文件，粘贴下列代码，然后复制到<code>/usr/share/application</code>文件夹下，此过程需要root权限</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line"></span><br><span class="line">Name=V2Ray</span><br><span class="line"></span><br><span class="line">GenericName=V2Ray Client</span><br><span class="line"></span><br><span class="line">Comment=A platform <span class="keyword">for</span> building proxies to bypass network restrictions.</span><br><span class="line"></span><br><span class="line">Exec=/到你文件夹的路径/v2ray --config=/到你文件夹的路径/config.json</span><br><span class="line"></span><br><span class="line">Icon=/到自定义图标图片的路径</span><br><span class="line"></span><br><span class="line">Terminal=true</span><br><span class="line"></span><br><span class="line"><span class="built_in">Type</span>=Application</span><br><span class="line"></span><br><span class="line">Categories=Network;Internet;</span><br></pre></td></tr></table></figure>
-<p>然后把文件的权限修改为<code>允许文件作为程序执行</code><br>图标文件可以去大佬的<a href="https://pan.baidu.com/s/1yf4Rkmuy7h65z8XC77SAdg#list/path=%2F">百度网盘</a>下载，提取码<code>hc82</code></p>
-<p>然后你就可以愉快的使用V2Ray了（滑稽）</p>
-<h1 id="使用Cloudflare-CDN中转（选配）"><a href="#使用Cloudflare-CDN中转（选配）" class="headerlink" title="使用Cloudflare CDN中转（选配）"></a>使用Cloudflare CDN中转（选配）</h1><p>目前GFW主要通过封禁IP的方式墙掉你的VPS，而对应的解决方案便是通过Cloudflare中转，墙不知道你的IP还怎么封呢（滑稽），另外这个方法的另一个功能就是恢复被墙IP的访问（滑稽+1）<br>虽然CDN中转能够有效防止IP被墙，但是步骤比较繁琐，延迟也会提高，还需要另外购买一个域名。不想折腾直接跳过就好了，我第一次配也没有用这个，直接用的mKCP，用了快一年才被墙掉，通过这个方法恢复了被墙的IP</p>
-<h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p>域名推荐购买<a href="https://sg.godaddy.com/zh">Godaddy</a>家的，这是国外最大的域名供应商，而且不需要实名认证，国内的阿里云和腾讯云也不是不能用2333</p>
-<ol>
-<li>首先打开<a href="https://sg.godaddy.com/zh">Godaddy</a>进行注册，邮箱用户名密码不多说</li>
-<li>注册完成后回到首页搜索自己想要的域名，点击<code>加入购物车</code>,然后点击上面的<code>进入购物车</code></li>
-<li>跳转的页面会提示你购买隐私服务和Linux主机，全部选不用然后点击下面的<code>进入购物车</code></li>
-<li>结算信息页面除了电话号码都随便写，把右边的<code>2年</code>改成<code>1年</code>，2年的价格比1年贵很多，选1年然后到期再换别的</li>
-<li>付款过程不多说</li>
-</ol>
-<h2 id="Cloudflare-CDN配置"><a href="#Cloudflare-CDN配置" class="headerlink" title="Cloudflare CDN配置"></a>Cloudflare CDN配置</h2><p>Cloudflare CDN就是防止我们IP被墙的关键，而且它提供免费的CDN服务</p>
-<ol>
-<li>邮箱密码注册不多说</li>
-<li>注册完成后点击蓝色的<code>+Add Site</code>按钮</li>
-<li>输入刚才在Godaddy上购买的域名，然后点击下面的<code>Add Site</code>按钮</li>
-<li>点击<code>Next</code>按钮</li>
-<li>套餐选择<code>Free</code>那个，然后点击<code>Confirm plan</code>，在弹出的窗口再点击一次<code>Confirm</code></li>
-<li>找到DNS页面，可以看到Cloudflare生成的两个记录。点击蓝色按钮<code>Add Record</code>，第一个空选择<code>A</code>；第二个空填写域名前缀，如<code>test</code>等，生成二级域名；第三个空填写你VPS的IP；第四个不用管。</li>
-<li>点击<code>Add Record</code></li>
-<li>点击<code>Status</code>下面的橙色云朵，把它变成<strong>灰色</strong>，即DNS Only，然后点击<code>Continue</code></li>
-<li>这里会提示你修改你的域名服务器，页面上提供了两个域名服务器地址，需要我们回到购买域名的网站进行修改</li>
-<li>打开<a href="https://sg.godaddy.com/zh">Godaddy</a>，在右上角的用户名那里点击打开下拉菜单，然后点击<code>我的产品</code></li>
-<li>点击你的域名右侧的<code>DNS</code></li>
-<li>在跳转的页面上点击蓝色的<code>更改</code>按钮</li>
-<li>选择自定义，如果有别的域名服务器需要先删掉，然后把Cloudflare提供的两个域名服务器粘贴进去，点击保存</li>
-<li>回到Cloudflare页面并继续点击<code>continue</code>，如果提示你还没有修改域名服务器的话就等待一段时间（几分钟到几个小时）。等到域名服务器生效就好了，生效的话Cloudflare会发邮件给你；或者页面提示<code>Great news! Cloudflare is now protecting your site</code>就说明可以使用了</li>
-</ol>
-<h2 id="V2Ray设置"><a href="#V2Ray设置" class="headerlink" title="V2Ray设置"></a>V2Ray设置</h2><p>先前我们用的是mKCP协议，现在需要换成<code>WebSocket+TLS</code></p>
-<ol>
-<li>使用Xshell连接VPS</li>
-<li>输入命令<code>v2ray config</code>并回车</li>
-<li>修改传输协议为<code>WebSocket+TLS</code></li>
-<li>输入你的二级域名并回车，如<code>test.xxxxx.xxx</code></li>
-<li>确认域名正确并回车</li>
-<li>如果域名解析错误会报错提示并退出脚本</li>
-<li><code>是否自动配置TLS</code>选择Y回车</li>
-<li>其它选项默认即可</li>
-<li>输入<code>v2ray status</code>查看V2Ray状态,确保V2Ray和Caddy都是正在运行状态</li>
-<li>输入<code>v2ray url</code>生成VMess链接并复制</li>
-<li>返回<code>Cloudflare</code>域名管理界面，点击<code>Crypto</code>选项，将SSL后的选项设置为<code>Full</code>并确认<code>Universal SSL Status</code>状态为<code>Active Certificate</code>，不是的话可能要稍微等一会，等待证书申请成功（脸黑的话需要等很长时间，但是不会超过24小时，一般很快）</li>
-<li>打开<code>Cloudflare</code>的<code>DNS</code>选项，点击<code>Status</code>下面的灰色云朵，把它恢复为橙色</li>
-<li>把刚才复制的<code>VMess</code>连接重新导入你的客户端就完成了</li>
-</ol>
-<h1 id="常用命令汇总"><a href="#常用命令汇总" class="headerlink" title="常用命令汇总"></a>常用命令汇总</h1><ul>
-<li>启动V2Ray——<code>v2ray start</code></li>
-<li>关闭V2Ray——<code>v2ray stop</code></li>
-<li>重启V2Ray——<code>v2ray restart</code></li>
-<li>更新V2Ray——<code>v2ray update</code></li>
-<li>更新V2Ray管理脚本——<code>v2ray update</code></li>
-<li>查看V2Ray状态——<code>v2ray status</code></li>
-<li>查看V2Ray配置——<code>v2ray inf</code></li>
-<li>修改V2Ray配置——<code>v2ray config</code></li>
-<li>生成配置文件链接——<code>v2ray link</code></li>
-<li>生成配置信息链接——<code>v2ray infolink</code></li>
-<li>生成配置二维码链接——<code>v2ray qr</code></li>
-<li>查看V2Ray日志——<code>v2ray log</code></li>
-<li>生成VMess链接——<code>v2ray url</code></li>
-</ul>
-<h1 id="懒人大礼包"><a href="#懒人大礼包" class="headerlink" title="懒人大礼包"></a>懒人大礼包</h1><p>懒人大礼包是<code>Bandwagon</code>(一家VPS供应商，被墙之前用户巨多，俗称搬瓦工)官方出品的梯子<code>Just My Socks</code>，使用搬瓦工的优质<code>CN2 GIA</code>线路并且支持被墙自动换IP，也就是说IP被墙后你不用自己动手，<code>Just My Socks</code>官方会为你提供一条龙服务，你甚至感受不到它的存在。<strong>虽然它还是个ShadowSocks</strong><br>这套服务的包月金额最低2.88美元，按照19年7月的汇率大概是19.8元人民币,包年是198元人民币，支持自支付宝付款。<br>因为官方过于作死，已经被墙了，需要使用备用网址<a href="https://justmysocks1.net/members/cart.php?gid=1">Just My Socks</a><br>目前主要有三种套餐，Just My Socks 100、Just My Socks 500和Just My Socks 1000，以100为例，官网的信息是这样的<code>100G/mo at 1Gbps | 3 devices</code>，意思就是每个月100G的流量，带宽是1Gbps，支持3台设备使用，一般人这个就够用了，土豪随意</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
-<li>注册登陆，不废话</li>
-<li>选择需要的套餐，点击<code>Order Now</code></li>
-<li>在<code>Choose Billing Cycle</code>可以选择付款周期，包月<code>Monthly</code>，包季度<code>Quarterly</code>，包半年<code>Semi-Annually</code>和包年<code>Annually</code>，周期越长越便宜</li>
-<li>在<code>Apply Promo Code</code>中输入优惠码<code>JMS9272283</code>可以享受5.2%的优惠，完成后点击右侧<code>Checkout</code></li>
-<li>没注册的话这一步可以继续注册，填写基本信息，国家选择<code>China</code>，付款方式选择<code>Alipay</code>，勾选下面的<code>I have read and agree to the Terms of Service</code>然后点击<code>Complete Order</code>，支付宝扫码付款</li>
-<li>付款完成后在官网顶栏选择<code>Services</code>，在下拉菜单中选择<code>My Services</code>，可以看到已经购买的产品，<code>Status</code>状态为<code>Active</code>，即为激活可用状态</li>
-<li>点击你的产品就可以看到ShadowSocks的相关信息了，其中<ul>
-<li><code>ShadowSocks Encryption</code>是加密方式</li>
-<li><code>ShadowSocks Port</code>是端口</li>
-<li><code>ShadowSocks Paaword</code>是密码</li>
-<li><code>ShadowSocks Server IP</code>是服务器地址，这个地址会有多个，都可以同时用</li>
-</ul>
-</li>
-<li>在V2Ray客户端选择服务器，点击<code>添加ShadowSocks服务器</code>并输入相关信息就可以用了，可以多添加几个，防止某个节点失效，因为<code>Just My Socks</code>的自动检测需要时间</li>
-</ol>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>在页面左侧的<code>Actions</code>菜单中可以切换端口、密码和加密方式，觉得套餐不能满足需求或不满意可以在<code>Actions</code>菜单中选择修改套餐和退款，在<code>Overview</code>中可以更改付款周期，注意<strong>密码和端口的更改是自动生成</strong>的，不支持自定义。<br>更改成功会提示<code>Changes saved. Please wait 1 minute for settings to propagate to all servers.</code>，就是说需要等待1分钟将设置同步到所有服务器，1分钟后重新点击左侧的<code>Service Information</code>就可以看到更新后的信息了</p>
-<ol>
-<li>更改密码，点击<code>Change password</code>即可</li>
-<li>更改端口，点击<code>Change port</code>即可</li>
-<li>更改加密方式，点击<code>Switch to aes-256-gcm</code>和<code>Switch to aes-256-cfb</code>可以切换两种加密方式，建议选择<code>aes-256-gcm</code></li>
-<li>修改套餐，点击<code>Upgrade/Downgrade</code>，选择合适的套餐后付款即可</li>
-<li>更改付款周期,点击<code>Modify billing cycle</code>,选择的合适的周期后点击后面的<code>Change billing cycle</code>,可能会提示<code>Billing cycle has been modified successfully. Your next invoice will reflect new billing period</code>，意思是周期修改成功，但不会立即生效，会在下一个周期生效</li>
-<li>退款，点击<code>Request Refund</code>，然后再点击<code>Request full refund for this service</code>。<br>这个的操作稍微复杂一些，而且相同身份信息只有一次退款机会，意思就是如果你用同一个支付宝给不同的账号付款，你只有一个账号的退款机会。<br>同时你还要满足以下条件<ul>
-<li>客户账户信誉良好，未违反服务条款</li>
-<li>以前没有付款或目前没争议</li>
-<li>每月数据传输使用量低于10%</li>
-<li>客户帐户是 7 天内创建的</li>
-<li>客户当前账号没有退款过<br>这些都没有问题的话经过审核通过就会将退款原路返回</li>
-</ul>
-</li>
-</ol>
-<p><strong>技术无罪</strong></p>
-<blockquote>
-<p>参考：<a href="https://github.com/233boy/v2ray/wiki/V2Ray%E6%90%AD%E5%BB%BA%E8%AF%A6%E7%BB%86%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B">233boy</a>、<a href="https://www.i5seo.com/">长沙SEO霜天博客</a>、<a href="https://blog.sprov.xyz/2019/03/11/cdn-v2ray-safe-proxy/">sprov</a>、<a href="https://octopuspalm.top/2018/08/18/Linux%20%E7%B3%BB%E7%BB%9F%E4%B8%8Bv2ray%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8/">THE WORLD OF ABCDLSJ</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>折腾</category>
-      </categories>
-      <tags>
-        <tag>V2Ray</tag>
       </tags>
   </entry>
   <entry>
@@ -4202,6 +4202,231 @@
       </tags>
   </entry>
   <entry>
+    <title>Windows Terminal 美化</title>
+    <url>/Windows-Terminal-%E7%BE%8E%E5%8C%96.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">一个每天都要面对的东西，不好看会影响心情的🐶。（终于要把欠下的博文写完了，腹泻式更新结束咯）</blockquote>
+
+<span id="more"></span>
+
+<div class="note primary"><p>搜到的很多方法已经过时了，最后还是老老实实跟着<a class="btn" href="https://ohmyposh.dev/docs/"><i class="fa fa-blog fa-fw"></i>Oh My Posh 官方文档</a>来配置了</p></div>
+
+<h1 id="更新PowerShell"><a href="#更新PowerShell" class="headerlink" title="更新PowerShell"></a>更新PowerShell</h1><p>首先使用<code>$psversiontable</code>命令查询PowerShell版本，系统自带的是5.1版本，现在最新的版本是7.2，两个版本相互独立，可以同时安装，这里我安装了新版本。</p>
+<div class="note info"><p><a class="btn" href="https://github.com/PowerShell/PowerShell/releases/download/v7.2.4/PowerShell-7.2.4-win-x64.msi"><i class="fa fa-download fa-fw"></i>PowerShell-7.2.4-win-x64.msi</a></p></div>
+
+<p>安装后打开<code>Windows Terminal</code>，在<code>设置</code>里将<code>默认配置文件</code>修改为<code>PowerShell</code>(系统自带的版本叫Windows PowerShell)<br><img data-src="https://s2.loli.net/2022/05/27/H3hMnolzSsZktxc.png" alt="ps1.png"></p>
+<h1 id="更换字体"><a href="#更换字体" class="headerlink" title="更换字体"></a>更换字体</h1><p>选择字体的时候要选用含有<code>Nerd fonts</code>的字体，否则一些图标会显示为乱码。字体我使用了<code>sarasa-mono-sc-nerd-font</code>，即<code>附加了Nerd字体的简体等距更纱黑体</code>。下载链接如下，我下载的是<code>sarasa-mono-sc-nerd-font.zip</code></p>
+<div class="note info"><p><a class="btn" href="https://github.com/jonz94/Sarasa-Gothic-Nerd-Fonts/releases/tag/v0.36.3"><i class="fa fa-download fa-fw"></i>Sarasa Gothic Nerd Fonts</a></p></div>
+
+<div class="note default"><p>Nerd Fonts 是一个使用大量字体图标来解决程序员在开发过程中缺少合适字体的问题的项目。它可以从流行的字体图标库中将大量外部字体引入待开发的项目中，它支持的字体图标库包括 Font Awesome, Devicons, Octicons等。</p></div>
+
+<div class="note default"><p>等距更纱黑体是由Iosevka和思源黑体组合而成的免费开源字体，适合在终端中使用</p></div>
+
+<h2 id="字体后缀"><a href="#字体后缀" class="headerlink" title="字体后缀"></a>字体后缀</h2><div class="note primary"><p>引用自<a class="btn" href="https://forum.ubuntu.org.cn/viewtopic.php?t=492571"><i class="fa fa-blog fa-fw"></i>zrqlx126</a>的文章，特此感谢</p></div>
+
+<p>下载后解压并安装需要的字体，字体后缀的意思如下</p>
+<h3 id="附加术语"><a href="#附加术语" class="headerlink" title="附加术语"></a>附加术语</h3><ul>
+<li><code>unhinted</code>－无微调字体</li>
+<li><code>ttf</code>－TrueType字体文件格式</li>
+<li><code>ttc</code>－TrueType字体集文件格式（更纱黑体按照字重进行分类，合并了相近ttf字体文件）</li>
+</ul>
+<h3 id="第一个连字符后的名称"><a href="#第一个连字符后的名称" class="headerlink" title="第一个连字符后的名称"></a>第一个连字符后的名称</h3><ul>
+<li><code>gothic</code>－引号为全宽</li>
+<li><code>ui</code>－引号为窄的</li>
+<li><code>mono</code>－破折号为全宽</li>
+<li><code>term</code>－破折号为半宽</li>
+<li><code>fixed</code>－不连字、且破折号为半宽</li>
+</ul>
+<h3 id="第二个连字符后的名称"><a href="#第二个连字符后的名称" class="headerlink" title="第二个连字符后的名称"></a>第二个连字符后的名称</h3><ul>
+<li><code>cl</code>－古典汉字字形</li>
+<li><code>sc</code>－简体汉字字形</li>
+<li><code>tc</code>－繁体汉字字形</li>
+<li><code>j</code>－日文汉字字形</li>
+<li><code>k</code>－韩文汉字字形</li>
+<li><code>hc</code>－香港汉字字形</li>
+</ul>
+<h3 id="第三个连字符后的名称"><a href="#第三个连字符后的名称" class="headerlink" title="第三个连字符后的名称"></a>第三个连字符后的名称</h3><ul>
+<li><code>slab</code>－超厚笔划字形</li>
+<li><code>regular</code>－常规字体</li>
+<li><code>italic</code>－斜体字体</li>
+<li><code>extralight</code>－超细字体</li>
+<li><code>light</code>－细体字体</li>
+<li><code>semibold</code>－半粗字体</li>
+<li><code>bold</code>－粗体字体</li>
+<li><code>extralightitalic</code>－超细斜体</li>
+<li><code>lightitalic</code>－细斜字体</li>
+<li><code>semibolditalic</code>－半粗斜体</li>
+<li><code>bolditalic</code>－粗斜字体</li>
+</ul>
+<h3 id="第四个连字符后的名称"><a href="#第四个连字符后的名称" class="headerlink" title="第四个连字符后的名称"></a>第四个连字符后的名称</h3><ul>
+<li><code>nerd</code>－附加了Nerd fonts</li>
+</ul>
+<p>然后在Windows Terminal的<code>设置</code>-<code>配置文件</code>-<code>PowerShell</code>-<code>外观</code>-<code>字体</code>中将字体设置为<code>等距更纱黑体 SC Nerd Font</code>。<br><img data-src="https://s2.loli.net/2022/05/28/vEdZ485tBU6AhIj.png" alt="字体更换.png"></p>
+<h1 id="安装美化模块"><a href="#安装美化模块" class="headerlink" title="安装美化模块"></a>安装美化模块</h1><p>使用<code>winget</code>安装美化模块<code>Oh My Posh</code></p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">winget install <span class="built_in">oh</span><span class="literal">-my-posh</span></span><br></pre></td></tr></table></figure>
+
+<p>然后重启Windows Terminal，使用下面的命令打开PowerShell的配置文件，如果没有配置文件的话会提示创建</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">notepad <span class="variable">$PROFILE</span></span><br></pre></td></tr></table></figure>
+
+<p>粘贴并保存</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line"><span class="built_in">oh</span><span class="literal">-my-posh</span> init pwsh | <span class="built_in">Invoke-Expression</span></span><br></pre></td></tr></table></figure>
+
+<p>执行下面的命令重载配置文件或者重启Windows Terminal就能看到变化了</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">. <span class="variable">$PROFILE</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h1><p>Oh My Posh提供了很多主题，可以输入下面的命令或者去官网查看主题预览</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-PoshThemes</span></span><br></pre></td></tr></table></figure>
+<div class="note info"><p><a class="btn" href="https://ohmyposh.dev/docs/themes"><i class="fa fa-download fa-fw"></i>主题预览</a></p></div>
+
+<p>找到合适的就把下面的命令复制到PowerShell配置文件中</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line"><span class="built_in">oh</span><span class="literal">-my-posh</span> init pwsh <span class="literal">--config</span> <span class="string">&quot;<span class="variable">$env:POSH_THEMES_PATH</span>/主题名称.omp.json&quot;</span> | <span class="built_in">Invoke-Expression</span></span><br></pre></td></tr></table></figure>
+
+<p>例如我选用的<code>takuya</code>主题配置为</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line"><span class="built_in">oh</span><span class="literal">-my-posh</span> init pwsh <span class="literal">--config</span> <span class="string">&quot;<span class="variable">$env:POSH_THEMES_PATH</span>/takuya.omp.json&quot;</span> | <span class="built_in">Invoke-Expression</span></span><br></pre></td></tr></table></figure>
+
+<p>但是我不太喜欢主题的配色，想自己调整一下，首先导出当前的主题</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line"><span class="built_in">oh</span><span class="literal">-my-posh</span> config export <span class="literal">--output</span> ~/.pwshtheme.omp.json</span><br></pre></td></tr></table></figure>
+
+<p>路径自己修改，这里导出的路径是<code>C:\Users\用户名\.pwshtheme.omp.json</code>，而自带的主题文件在<code>C:\Users\用户名\AppData\Local\Programs\oh-my-posh\themes</code>。然后打开文件修改配色即可。</p>
+<p>如果想要修改更多内容请参照官方文档说明</p>
+<div class="note info"><p><a class="btn" href="https://ohmyposh.dev/docs/configuration/overview"><i class="fa fa-download fa-fw"></i>主题配置详解</a></p></div>
+
+<p>修改完成后使用<code>notepad $PROFILE</code>打开PowerShell的配置文件，替换掉原来的主题配置，注意路径。</p>
+<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="addition">+ oh-my-posh init pwsh --config &quot;~/.pwshtheme.omp.json&quot; | Invoke-Expression</span></span><br><span class="line"><span class="deletion">- oh-my-posh init pwsh --config &quot;$env:POSH_THEMES_PATH/takuya.omp.json&quot; | Invoke-Expression</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="安装Scoop"><a href="#安装Scoop" class="headerlink" title="安装Scoop"></a>安装Scoop</h1><div class="note primary"><p>下面的内容参考了<a class="btn" href="https://p3terx.com/archives/scoop-the-best-windows-package-manager.html"><i class="fa fa-blog fa-fw"></i>P3TERX</a>的文章，特此感谢</p></div>
+
+<p>Scoop 是一个 Win­dows 包管理工具，下面的Neofetch需要使用Scoop来安装</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Invoke-WebRequest</span> get.scoop.sh | <span class="built_in">Invoke-Expression</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="配置代理"><a href="#配置代理" class="headerlink" title="配置代理"></a>配置代理</h2><p>然后为Scoop配置代理，结合自己梯子的端口修改端口号，不然会一直报错</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">scoop config proxy localhost:<span class="number">1080</span></span><br></pre></td></tr></table></figure>
+
+<p>取消代理命令为</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">scoop config <span class="built_in">rm</span> proxy</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装aria2"><a href="#安装aria2" class="headerlink" title="安装aria2"></a>安装aria2</h2><p>aria2可以为scoop开启多线程下载</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">scoop install aria2</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装extras-bucket"><a href="#安装extras-bucket" class="headerlink" title="安装extras bucket"></a>安装extras bucket</h2><p>可以为scoop添加额外的bucket。bucket就是一个软件仓库，Scoop安装后会有Main bucket，但是它的收录条件较为严格，所以最好再安装一个<code>extras bucket</code>，extras bucket可以提供更多的软件，甚至有Steam，不过不建议这么干就是咯。</p>
+<p>安装命令如下</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">scoop bucket add extras</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
+<li><code>scoop update</code> —— 更新 scoop 及软件包列表</li>
+<li><code>scoop install -k &lt;app&gt;</code> —— 非全局安装（并禁止安装包缓存）</li>
+<li><code>scoop install -gk &lt;app&gt;</code> —— 全局安装（并禁止安装包缓存）</li>
+<li><code>scoop uninstall -p &lt;app&gt;</code> —— 卸载非全局软件（并删除配置文件）</li>
+<li><code>scoop uninstall -gp &lt;app&gt;</code> —— 卸载全局软件（并删除配置文件）</li>
+<li><code>scoop update -k *</code> —— 更新所有非全局软件（并禁止安装包缓存）</li>
+<li><code>scoop update -gk *</code> —— 更新所有软件（并禁止安装包缓存）</li>
+<li><code>scoop cleanup -k *</code> —— 删除所有旧版本非全局软件（并删除软件包缓存）</li>
+<li><code>scoop cleanup -gk *</code> —— 删除所有旧版本软件（并删除软件包缓存）</li>
+<li><code>scoop cache rm *</code> —— 清除软件包缓存</li>
+<li><code>scoop bucket list</code> —— 查看所有bucket</li>
+</ul>
+<h1 id="辅助模块"><a href="#辅助模块" class="headerlink" title="辅助模块"></a>辅助模块</h1><div class="note primary"><p>下面的内容参考引用了<a class="btn" href="https://asmcn.icopy.site/awesome/awesome-powershell/"><i class="fa fa-blog fa-fw"></i>Awesome PowerShell</a>，特此感谢</p></div>
+
+<h2 id="检查脚本执行策略"><a href="#检查脚本执行策略" class="headerlink" title="检查脚本执行策略"></a>检查脚本执行策略</h2><p>首先检查脚本执行策略设置，共有四种策略</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-ExecutionPolicy</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Restricted</code>——默认的设置， 不允许任何script运行</li>
+<li><code>AllSigned</code>——只能运行经过数字证书签名的script</li>
+<li><code>RemoteSigned</code>——运行本地的script不需要数字签名，但是运行从网络上下载的script必须要有数字签名</li>
+<li><code>Unrestricted</code>——允许所有的script运行</li>
+</ul>
+<p>如果不是<code>RemoteSigned</code>或者<code>Unrestricted</code>的话执行下面的命令修改策略，否则一些模块无法安装</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Set-ExecutionPolicy</span> RemoteSigned <span class="literal">-Scope</span> CurrentUser <span class="literal">-Confirm</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="posh-git"><a href="#posh-git" class="headerlink" title="posh-git"></a>posh-git</h2><p><a href="https://github.com/dahlbyk/posh-git">posh-git</a>是一个PowerShell模块，它将Git和PowerShell整合在一起，可以在PowerShell中显示Git状态的汇总信息。它也为常见的git命令、分支名称、路径等提供<code>Tab</code>补全功能。</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">PowerShellGet\<span class="built_in">Install-Module</span> posh<span class="literal">-git</span> <span class="literal">-Scope</span> CurrentUser <span class="literal">-Force</span></span><br></pre></td></tr></table></figure>
+
+<p>然后执行下面的命令来引入模块</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Add-PoshGitToProfile</span></span><br></pre></td></tr></table></figure>
+
+<p>或者在PowerShell配置文件中添加</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> posh<span class="literal">-git</span></span><br></pre></td></tr></table></figure>
+
+<p>然后重载配置文件或者重启Windows Terminal，输入<code>git fe</code>，然后按下<code>Tab</code>，如果能够自动补全为<code>git fetch</code>就说明成功了</p>
+<h2 id="PSReadLine"><a href="#PSReadLine" class="headerlink" title="PSReadLine"></a>PSReadLine</h2><div class="note primary"><p>下面的内容参考引用了微软官方文档<a class="btn" href="https://docs.microsoft.com/zh-cn/powershell/module/psreadline/about/about_psreadline?view=powershell-7.2"><i class="fa fa-blog fa-fw"></i>about_PSReadLine</a></p></div>
+
+<p><a href="https://docs.microsoft.com/zh-cn/powershell/module/psreadline/about/about_psreadline?view=powershell-7.2">PSReadLine 2.1</a> 为 PowerShell 控制台提供了强大的命令行编辑体验。 提供以下功能：</p>
+<ul>
+<li>命令行的语法着色</li>
+<li>语法错误的直观指示</li>
+<li>(编辑和历史记录的更好的多行体验)</li>
+<li>自定义键绑定</li>
+<li>Cmd 和 Emacs 模式</li>
+<li>许多配置选项</li>
+<li>在 Cmd 模式下，Bash 样式完成 (可选，默认值为 Emacs 模式)</li>
+<li>Emacs yank&#x2F;kill 循环</li>
+<li>基于 PowerShell 令牌的 “word” 移动和删除</li>
+<li>预测 IntelliSense</li>
+</ul>
+<p>PSReadLine 2.1.0 随 PowerShell 7.2 一起提供，并在所有支持的 PowerShell 版本中受支持。所以就不需要额外安装了。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>首先打开配置文件</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">notepad <span class="variable">$PROFILE</span></span><br></pre></td></tr></table></figure>
+
+<p>粘贴下面的内容</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Set-PSReadLineOption</span> <span class="literal">-PredictionSource</span> <span class="built_in">History</span> <span class="comment"># 设置预测文本来源为历史记录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Set-PSReadlineKeyHandler</span> <span class="literal">-Key</span> Tab <span class="literal">-Function</span> Complete <span class="comment"># 设置 Tab 键补全</span></span><br><span class="line"><span class="built_in">Set-PSReadLineKeyHandler</span> <span class="literal">-Chord</span> <span class="string">&quot;Ctrl+RightArrow&quot;</span> <span class="literal">-Function</span> ForwardWord <span class="comment"># 设置 ctrl + 向右键逐字补全</span></span><br><span class="line"><span class="built_in">Set-PSReadLineKeyHandler</span> <span class="literal">-Key</span> <span class="string">&quot;Ctrl+z&quot;</span> <span class="literal">-Function</span> Undo <span class="comment"># 设置 Ctrl+z 为撤销</span></span><br><span class="line"><span class="built_in">Set-PSReadLineKeyHandler</span> <span class="literal">-Key</span> UpArrow <span class="literal">-Function</span> HistorySearchBackward <span class="comment"># 设置向上键为后向搜索历史记录</span></span><br><span class="line"><span class="built_in">Set-PSReadLineKeyHandler</span> <span class="literal">-Key</span> DownArrow <span class="literal">-Function</span> HistorySearchForward <span class="comment"># 设置向下键为前向搜索历史纪录</span></span><br></pre></td></tr></table></figure>
+
+<p>保存后重载配置文件或者重启Windows Terminal</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ul>
+<li><code>→</code> —— 自动补全联想内容</li>
+<li><code>CTRL</code>+<code>→</code> —— 逐字补全联想内容</li>
+<li><code>↑</code>和<code>↓</code> —— 搜索历史命令</li>
+<li><code>Tab</code> —— 补全</li>
+<li><code>CTRL</code>+<code>z</code> —— 撤销</li>
+</ul>
+<h2 id="ZLocation"><a href="#ZLocation" class="headerlink" title="ZLocation"></a>ZLocation</h2><p><a href="https://github.com/vors/ZLocation">ZLocation</a>是Jump-Location的翻版，它可以基于以前运行的命令数量追踪你最常用的目录。在一个短暂的学习阶段之后，<code>z</code>将带你到最受欢迎的目录，该目录与命令行上给出的所有正则表达式相匹配。你可以使用Tab-Completion&#x2F;Intellisense来挑选不是首选的目录。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>使用下面的命令一键安装+配置</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> ZLocation <span class="literal">-Scope</span> CurrentUser; <span class="built_in">Import-Module</span> ZLocation; <span class="built_in">Add-Content</span> <span class="literal">-Value</span> <span class="string">&quot;`r`n`r`nImport-Module ZLocation`r`n&quot;</span> <span class="literal">-Encoding</span> utf8 <span class="literal">-Path</span> <span class="variable">$PROFILE</span>.CurrentUserAllHosts</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><ul>
+<li><code>z</code> —— 显示已知的文件夹以及它们的权重</li>
+<li><code>z c:</code> —— 切到C盘</li>
+<li><code>z zlo</code> —— 切到ZLocation文件夹（简写）</li>
+<li><code>z -l foo</code> —— 查看所有与foo匹配的位置</li>
+<li><code>z -</code> —— 跳转到前一个跳转的目录或者初始文件夹</li>
+</ul>
+<h2 id="The-Fuck"><a href="#The-Fuck" class="headerlink" title="The Fuck"></a>The Fuck</h2><p><a href="https://github.com/nvbn/thefuck">The Fuck</a>是一个很好玩的东西，可以输入<code>fuck</code>来修正前一条报错的指令。</p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>安装The Fuck前需要安装<code>Python(3.4+)</code>、<code>pip</code>和<code>python-dev</code>。安装命令为</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">pip install thefuck</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h3><p>打开PowerShell的配置文件</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">notepad <span class="variable">$PROFILE</span></span><br></pre></td></tr></table></figure>
+
+<p>粘贴下面的内容</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line"><span class="variable">$env:PYTHONIOENCODING</span>=<span class="string">&quot;utf-8&quot;</span></span><br><span class="line"><span class="built_in">iex</span> <span class="string">&quot;<span class="variable">$</span>(thefuck --alias)&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>保存后重载配置文件或者重启Windows Terminal</p>
+<h3 id="使用-2"><a href="#使用-2" class="headerlink" title="使用"></a>使用</h3><p>输入错误的命令后再输入<code>fuck</code>，然后按<code>Enter</code>确认<br><img data-src="https://s2.loli.net/2022/05/28/UbaGKjvyqoBOJ2A.png" alt="thefuxk.png"></p>
+<h3 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h3><figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">pip3 install thefuck <span class="literal">--upgrade</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Neofetch"><a href="#Neofetch" class="headerlink" title="Neofetch"></a>Neofetch</h2><p><a href="https://github.com/dylanaraps/neofetch">Neofetch</a>是一个用bash 3.2+编写的命令行系统信息工具。Neofetch可以显示PC操作系统、软件和硬件的信息。</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">scoop install neofetch</span><br></pre></td></tr></table></figure>
+
+<p>然后输入<code>neofetch</code>回车即可查看自己的系统信息。</p>
+<h1 id="Windows-Terminal设置"><a href="#Windows-Terminal设置" class="headerlink" title="Windows Terminal设置"></a>Windows Terminal设置</h1><p>以下设置可以单独针对<code>PowerShell</code>生效，也可以在<code>设置</code>-<code>配置文件</code>-<code>默认值</code>种调整为默认配置，对所有未进行单独设置的<code>shell</code>生效。</p>
+<h2 id="配色方案"><a href="#配色方案" class="headerlink" title="配色方案"></a>配色方案</h2><p>上面调整了<code>PowerShell</code>的主题，但是输入输出的字体配色还是原来的亚子，它们是由Windows Terminal的<code>配色方案</code>控制的。默认有8种配色方案，不过嘛，都挺辣眼睛的。好在可以自己创建配色方案。</p>
+<p>打开Windows Terminal的<code>设置</code>，找到<code>配色方案</code>，点击右侧的<code>新增</code>，创建自己的配色方案，然后逐个更改颜色。修改完成后点击<code>保存</code>.<br><img data-src="https://s2.loli.net/2022/05/28/Cgb5uS6xpYVIhyl.png" alt="配色方案.png"></p>
+<p>然后去下面的<code>Powershell</code>配置文件，找到<code>外观</code>-<code>配色方案</code>，将它调整为自己刚才创建的配色方案。<br><img data-src="https://s2.loli.net/2022/05/28/3CLDR59KiXU4QsO.png" alt="配色方案2.png"></p>
+<h2 id="亚克力效果"><a href="#亚克力效果" class="headerlink" title="亚克力效果"></a>亚克力效果</h2><p>打开Windows Terminal的<code>设置</code>，找到<code>Show acrylic in tab row (requires relaunch)</code>并开启，重启Windows Terminal可以看到顶栏已经开启了亚克力效果。</p>
+<p>然后去下面的<code>Powershell</code>配置文件，找到<code>外观</code>-<code>透明度</code>-<code>Enable acrylic</code>并开启，然后可以看到窗口背景也开启了亚克力效果。可以根据自己喜好微调透明度，我调成了85%。</p>
+<h2 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h2><p>依然在<code>Powershell</code>配置文件中，找到<code>外观</code>-<code>背景图像</code>-<code>背景图像路径</code>，选择背景图片，然后调整<code>背景图像不透明度</code>。</p>
+<h1 id="完工"><a href="#完工" class="headerlink" title="完工"></a>完工</h1><p>折腾了一下午，终于搞完了，附上一张完工图，比原来的红蓝配色好多咯<br><img data-src="https://s2.loli.net/2022/05/28/r2enDMoJpIlZjyt.png" alt="ps完工.png"></p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>Win10</tag>
+        <tag>Win11</tag>
+        <tag>Windows Terminal</tag>
+        <tag>美化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>npm常用命令</title>
     <url>/npm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">收集了一些npm的命令，以及主题升级时常用的命令</blockquote>
@@ -4481,8 +4706,8 @@
       </categories>
       <tags>
         <tag>Win10</tag>
-        <tag>软件</tag>
         <tag>Windows Terminal</tag>
+        <tag>软件</tag>
       </tags>
   </entry>
   <entry>
