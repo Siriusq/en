@@ -9,7 +9,7 @@ window.onload = function() {
             window.location.href = href.replace('/en/', '/');
         }
         else {
-            window.location.href = href.replace(/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i, '$1en/$2');
+            window.location.href = href.replace(/(^https:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i, '$1en/$2');
         }
         if(typeof(_prevOnload) === 'function') {
             _prevOnload();
