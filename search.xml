@@ -235,122 +235,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo Next JSDelivr 被墙解决方案</title>
-    <url>/Hexo-Next-JSDelivr-%E8%A2%AB%E5%A2%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">GFW坏事做尽，又玩DNS污染，我上一篇记录JSDelivr使用方法的博客还没写完，JSDelivr就没了😭</blockquote>
-
-<span id="more"></span>
-
-<p>今天更新网站的时候突然发现加载速度巨慢，开控制台一看一片报错，和JSDelivr有关的资源全部不能加载，经确认JSDelivr已经被墙😭。因为Next主题默认使用JSDelivr作为第三方插件（如Gitalk、FancyBox）的CDN提供方，所以JSDelivr被墙后网站基本瘫痪。</p>
-<p><img data-src="https://s2.loli.net/2022/05/23/DZbmI2lfGTpoRNy.png" alt="ping"></p>
-<p>emmm估计用不了太久就会全图变红了。其实JSDelivr被墙已经有过预兆了，因为滥用的太多，去年年底JSDelivr在国内的ICP备案就被吊销了，抽风了一段时间后又恢复了正常，强撑了半年之后还是被疯掉了，令人惋惜。</p>
-<h1 id="主题第三方插件修复"><a href="#主题第三方插件修复" class="headerlink" title="主题第三方插件修复"></a>主题第三方插件修复</h1><p>有三种解决方案，第一种解决方案是更换CDN提供方，第二种方案是把第三方插件全部部署到自己的网站上，第三种方案是使用自己的CDN，但是过于麻烦，就不写了🐶。</p>
-<h2 id="更换CDN提供方"><a href="#更换CDN提供方" class="headerlink" title="更换CDN提供方"></a>更换CDN提供方</h2><p>Next官方提供了<code>jsdelivr</code>、<code>unpkg</code>和<code>cdnjs</code>三家CDN供应商，经实测<code>unpkg</code>和<code>cdnjs</code>目前仍能正常访问，所以把第三方插件的CDN切换过去就好了</p>
-<ul>
-<li>打开<code>_config.next.yml</code></li>
-<li>定位到到<code>CDN Settings</code></li>
-<li>修改<code>plugins: jsdelivr</code>为<code>plugins: unpkg</code>或者<code>plugins: cdnjs</code></li>
-</ul>
-<h2 id="本地部署"><a href="#本地部署" class="headerlink" title="本地部署"></a>本地部署</h2><p>Next官方也有一个集合了主题中使用到的第三方插件的仓库</p>
-<div class="note info"><p><a class="btn" href="https://github.com/next-theme/plugins"><i class="fa fa-torii-gate fa-fw"></i>Next第三方插件库</a></p></div>
-
-<ul>
-<li>首先安装第三方插件库，报错的话检查<code>@next-theme/plugins</code>和<code>hexo-theme-next</code>两者版本号是否相同<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install @next-theme/plugins</span><br></pre></td></tr></table></figure></li>
-<li>修改<code>plugins: jsdelivr</code>为<code>plugins: local</code></li>
-</ul>
-<h1 id="自己的资源"><a href="#自己的资源" class="headerlink" title="自己的资源"></a>自己的资源</h1><p>自己的资源就没办法咯，毕竟JSDelivr这么好用的仅此一家，<code>unpkg</code>和<code>cdnjs</code>都没法上自己的资源。能想到的只有把资源部署到自己的网站和自己找托管两种方法了。我就只能吭哧吭哧的把自己的资源搬回到网站上了😭</p>
-]]></content>
-      <categories>
-        <category>网站配置</category>
-      </categories>
-      <tags>
-        <tag>HEXO</tag>
-        <tag>Next</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo Next 7.7 双语切换</title>
-    <url>/Hexo-Next-7-7-%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">一年前通过在Google的疯狂查找和尝试，实现了在7.1版本的Next主题上进行中英双语的切换。但是Bug多多（切换到英文界面后点击关于、归档等标签还会跳转回中文界面），而我本人又是拖延症+懒癌晚期，一直没有尝试修复。最近借着给Next主题升级的机会顺便解决这个问题。折腾了两天，终于成功实现了理想中的中英双语切换效果，搞得毕设都没怎么做。</blockquote>
-
-<span id="more"></span>
-
-<div class="note danger"><h1 id="时效提醒"><a href="#时效提醒" class="headerlink" title="时效提醒"></a>时效提醒</h1><p>本文写于2020年3月！请注意时效，部分内容可能已过期！</p>
-</div>
-
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>我最初的想法是：在Github上新建一个仓库，然后开启新仓库的 Github Pages 作为英文网站使用，这样中英文的网站就可以相互独立，互不干扰，只需要在两个网站上添加一个切换按钮就可以了。但是查询后发现每个 Github 账号只能拥有一个个人主页，这就很尴尬了，难不成要再注册一个账号来作为英文网站使用吗？未免太过麻烦。就在我一筹莫展的时候，发现了<strong>chitanda</strong>大佬的文章<a href="https://segmentfault.com/a/1190000003946969">单个GitHub帐号下添加多个GitHub Pages的相关问题</a>。</p>
-<blockquote>
-<p>根据官方文档，GitHub Pages分为两类:个人&#x2F;组织主页以及项目主页，两者基本上没啥区别，但是有以下几点不同:（该文场景下个人和组织帐号没什么区别，所以下文为了行文方便将统一用个人主页代指）</p>
-<ul>
-<li>个人主页必须要和用户的GitHub帐号同名，所以每个用户有且只能有一个repo作为个人主页，且必须是<username>&#x2F;<username>.github.io的形式；而项目主页的命名则没有这种限制，且数量有任意多个。</li>
-<li>不考虑绑定的自定义域名的前提下，个人主页的GitHub二级域名为<username>.github.io;项目主页的GitHub二级域名为<username>.github.io&#x2F;<projectname>,没有<projectname>.<username>.github.io这种方式</li>
-<li>个人主页的展示内容以master分支里的文件为准；而项目主页的展示内容以gh-pages分支内的文件为准</li>
-</ul>
-</blockquote>
-<p>这样的话，如果在Github里新建一个仓库，用项目主页的方式来部署英文网站，中英文网站应该还是相互独立的，英文网站的的域名格式是<code>中文域名/仓库名/</code>，也就不用再单独配置新的域名，听起来好像能行？那就试一下吧</p>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>这里以我自己的域名<code>siriusq.top</code>和英文网站仓库名<code>en</code>为例</p>
-<h2 id="创建项目主页"><a href="#创建项目主页" class="headerlink" title="创建项目主页"></a>创建项目主页</h2><ul>
-<li>在 Github 新建一个名为<code>en</code>的<code>Repositories</code></li>
-<li>进入新建的<code>Repositories</code>，点击<code>Settings</code></li>
-<li>下拉到<code>Github Pages</code>选项</li>
-<li>点击<code>Choose a theme</code>，然后随便选一个主题</li>
-<li>成功建立项目主页和后<code>Github Pages</code>选项会显示<code>Your site is published at https://siriusq.top/en/</code></li>
-<li>至此英文网站的项目主页创建成功</li>
-</ul>
-<h2 id="建立本地英文网站目录"><a href="#建立本地英文网站目录" class="headerlink" title="建立本地英文网站目录"></a>建立本地英文网站目录</h2><p>复制现在的中文博客文件夹并重命名，名字随意，这里以我自己的中文文件夹名<code>Hexo</code>和复制出来的英文文件夹名<code>Hexoen</code>为例</p>
-<ul>
-<li>打开<code>./Hexoen/_config.yml</code>文件，依次修改配置如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">language: en</span><br><span class="line">url: https://siriusq.top/en/ # 用自己的 域名/仓库名/ 替换 siriusq.top/en/</span><br><span class="line">root: /en/ # 用自己的仓库名替换 en</span><br><span class="line">repo: git@github.com:Siriusq/en.git # 用自己的 用户名/仓库名 替换 Siriusq/en</span><br></pre></td></tr></table></figure></li>
-<li>删除<code>./Hexoen/source</code>下的<code>CNAME</code>文件（如果有的话）</li>
-</ul>
-<h2 id="加入中文切换按钮"><a href="#加入中文切换按钮" class="headerlink" title="加入中文切换按钮"></a>加入中文切换按钮</h2><ul>
-<li>打开<code>./Hexoen/source/_data/next.yml</code>文件<ul>
-<li>在<code>Menu Settings</code>下的<code>menu：</code>中加入<code>switch_lang</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: / || home</span><br><span class="line">about: /about/ || user</span><br><span class="line">tags: /tags/ || tags</span><br><span class="line">categories: /categories/ || th</span><br><span class="line">archives: /archives/ || archive</span><br><span class="line">switch_lang: https://siriusq.top || language # 将siriusq.top替换成你的中文网站域名</span><br><span class="line">#schedule: /schedule/ || calendar</span><br><span class="line">#sitemap: /sitemap.xml || sitemap</span><br><span class="line">#commonweal: /<span class="number">404</span>/ || heartbeat</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>打开<code>./Hexoen/themes/next/languages/en.yml</code>文件<ul>
-<li>在<code>menu:</code>下添加<code> switch_lang: 简体中文</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: Home</span><br><span class="line">archives: Archives</span><br><span class="line">categories: Categories</span><br><span class="line">tags: Tags</span><br><span class="line">about: About</span><br><span class="line">switch_lang: 简体中文</span><br><span class="line">search: Search</span><br><span class="line">schedule: Schedule</span><br><span class="line">sitemap: Sitemap</span><br><span class="line">commonweal: Commonweal <span class="number">404</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h2 id="加入英文切换按钮"><a href="#加入英文切换按钮" class="headerlink" title="加入英文切换按钮"></a>加入英文切换按钮</h2><ul>
-<li>打开<code>./Hexo/source/_data/next.yml</code>文件<ul>
-<li>在<code>Menu Settings</code>下的<code>menu：</code>中加入<code>switch_lang</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: / || home</span><br><span class="line">about: /about/ || user</span><br><span class="line">tags: /tags/ || tags</span><br><span class="line">categories: /categories/ || th</span><br><span class="line">archives: /archives/ || archive</span><br><span class="line">switch_lang: https://siriusq.top/en/ || language # 将siriusq.top/en/替换成你的英文网站域名</span><br><span class="line">#schedule: /schedule/ || calendar</span><br><span class="line">#sitemap: /sitemap.xml || sitemap</span><br><span class="line">#commonweal: /<span class="number">404</span>/ || heartbeat</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>打开<code>./Hexoen/themes/next/languages/en.yml</code>文件<ul>
-<li>在<code>menu:</code>下添加<code> switch_lang: 简体中文</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: 首页</span><br><span class="line">archives: 归档</span><br><span class="line">categories: 分类</span><br><span class="line">tags: 标签</span><br><span class="line">about: 关于</span><br><span class="line">switch_lang: English</span><br><span class="line">search: 搜索</span><br><span class="line">schedule: 日程表</span><br><span class="line">sitemap: 站点地图</span><br><span class="line">commonweal: 公益 <span class="number">404</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h2 id="添加切换判断条件"><a href="#添加切换判断条件" class="headerlink" title="添加切换判断条件"></a>添加切换判断条件</h2><p><strong>中文网站</strong><br>打开<code>./Hexo/themes/next/layout/_partials/head/head-unique.swig</code>，在最下方粘贴代码</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">  <span class="comment">// Wait for the page to load first</span></span><br><span class="line">  <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">      switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">          <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">          <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en/&#x27;</span>);</span><br><span class="line">          <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">              <span class="title function_">_prevOnload</span>();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;j</span><br></pre></td></tr></table></figure>
-
-<p><strong>英文网站</strong><br>打开<code>./Hexoen/themes/next/layout/_partials/head/head-unique.swig</code>，在最下方粘贴代码</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">  <span class="comment">// Wait for the page to load first</span></span><br><span class="line">  <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">      switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">          <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">          <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en/&#x27;</span>);</span><br><span class="line">          <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">              <span class="title function_">_prevOnload</span>();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>分别在两个文件夹执行hexo三连操作，将网站部署到Github，过一会就能访问了</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><ul>
-<li>由于两个网站是相互独立的，所以给两个网站用不同的主题在理论上也是可行的，我只给英文网站修改了下404页面</li>
-<li>一点瑕疵：开启PJAX的话，在页面完全加载之前点击切换按钮的话会卡一下才跳转</li>
-<li>二点瑕疵：网站相互独立，所以跳转的时候网页是完全重新加载的，PJAX无效</li>
-<li>注意事项：写博客的时候，中英文目录下的markdown文件名请保持一致，否则切换的时候会跳转到404页面</li>
-</ul>
-<p>折腾这些东西真的太费时间了，毕设一点没动，现在很慌张。有问题欢迎评论区留言，最近可能回复不及时。</p>
-<p>不多说了，我要滚去做毕设了</p>
-<p>ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;┌(;￣◇￣)┘</p>
-]]></content>
-      <categories>
-        <category>网站配置</category>
-      </categories>
-      <tags>
-        <tag>HEXO</tag>
-        <tag>Next</tag>
-        <tag>i18n</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo博客踩坑指北</title>
     <url>/Hexo%E5%8D%9A%E5%AE%A2%E8%B8%A9%E5%9D%91%E6%8C%87%E5%8C%97.html</url>
     <content><![CDATA[<p>记录总结用HEXO和Github Page搭建博客时踩过的坑，主要包括以下</p>
@@ -559,6 +443,122 @@
 <blockquote>
 <p>参考<a href="https://wm4n.github.io/Hexo-NexT-%E5%90%8C%E6%99%82%E6%94%AF%E6%8F%B4%E5%A4%9A%E8%AA%9E%E7%B3%BB/">wm4n</a></p>
 </blockquote>
+]]></content>
+      <categories>
+        <category>网站配置</category>
+      </categories>
+      <tags>
+        <tag>HEXO</tag>
+        <tag>Next</tag>
+        <tag>i18n</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo Next JSDelivr 被墙解决方案</title>
+    <url>/Hexo-Next-JSDelivr-%E8%A2%AB%E5%A2%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">GFW坏事做尽，又玩DNS污染，我上一篇记录JSDelivr使用方法的博客还没写完，JSDelivr就没了😭</blockquote>
+
+<span id="more"></span>
+
+<p>今天更新网站的时候突然发现加载速度巨慢，开控制台一看一片报错，和JSDelivr有关的资源全部不能加载，经确认JSDelivr已经被墙😭。因为Next主题默认使用JSDelivr作为第三方插件（如Gitalk、FancyBox）的CDN提供方，所以JSDelivr被墙后网站基本瘫痪。</p>
+<p><img data-src="https://s2.loli.net/2022/05/23/DZbmI2lfGTpoRNy.png" alt="ping"></p>
+<p>emmm估计用不了太久就会全图变红了。其实JSDelivr被墙已经有过预兆了，因为滥用的太多，去年年底JSDelivr在国内的ICP备案就被吊销了，抽风了一段时间后又恢复了正常，强撑了半年之后还是被疯掉了，令人惋惜。</p>
+<h1 id="主题第三方插件修复"><a href="#主题第三方插件修复" class="headerlink" title="主题第三方插件修复"></a>主题第三方插件修复</h1><p>有三种解决方案，第一种解决方案是更换CDN提供方，第二种方案是把第三方插件全部部署到自己的网站上，第三种方案是使用自己的CDN，但是过于麻烦，就不写了🐶。</p>
+<h2 id="更换CDN提供方"><a href="#更换CDN提供方" class="headerlink" title="更换CDN提供方"></a>更换CDN提供方</h2><p>Next官方提供了<code>jsdelivr</code>、<code>unpkg</code>和<code>cdnjs</code>三家CDN供应商，经实测<code>unpkg</code>和<code>cdnjs</code>目前仍能正常访问，所以把第三方插件的CDN切换过去就好了</p>
+<ul>
+<li>打开<code>_config.next.yml</code></li>
+<li>定位到到<code>CDN Settings</code></li>
+<li>修改<code>plugins: jsdelivr</code>为<code>plugins: unpkg</code>或者<code>plugins: cdnjs</code></li>
+</ul>
+<h2 id="本地部署"><a href="#本地部署" class="headerlink" title="本地部署"></a>本地部署</h2><p>Next官方也有一个集合了主题中使用到的第三方插件的仓库</p>
+<div class="note info"><p><a class="btn" href="https://github.com/next-theme/plugins"><i class="fa fa-torii-gate fa-fw"></i>Next第三方插件库</a></p></div>
+
+<ul>
+<li>首先安装第三方插件库，报错的话检查<code>@next-theme/plugins</code>和<code>hexo-theme-next</code>两者版本号是否相同<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install @next-theme/plugins</span><br></pre></td></tr></table></figure></li>
+<li>修改<code>plugins: jsdelivr</code>为<code>plugins: local</code></li>
+</ul>
+<h1 id="自己的资源"><a href="#自己的资源" class="headerlink" title="自己的资源"></a>自己的资源</h1><p>自己的资源就没办法咯，毕竟JSDelivr这么好用的仅此一家，<code>unpkg</code>和<code>cdnjs</code>都没法上自己的资源。能想到的只有把资源部署到自己的网站和自己找托管两种方法了。我就只能吭哧吭哧的把自己的资源搬回到网站上了😭</p>
+]]></content>
+      <categories>
+        <category>网站配置</category>
+      </categories>
+      <tags>
+        <tag>HEXO</tag>
+        <tag>Next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo Next 7.7 双语切换</title>
+    <url>/Hexo-Next-7-7-%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">一年前通过在Google的疯狂查找和尝试，实现了在7.1版本的Next主题上进行中英双语的切换。但是Bug多多（切换到英文界面后点击关于、归档等标签还会跳转回中文界面），而我本人又是拖延症+懒癌晚期，一直没有尝试修复。最近借着给Next主题升级的机会顺便解决这个问题。折腾了两天，终于成功实现了理想中的中英双语切换效果，搞得毕设都没怎么做。</blockquote>
+
+<span id="more"></span>
+
+<div class="note danger"><h1 id="时效提醒"><a href="#时效提醒" class="headerlink" title="时效提醒"></a>时效提醒</h1><p>本文写于2020年3月！请注意时效，部分内容可能已过期！</p>
+</div>
+
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>我最初的想法是：在Github上新建一个仓库，然后开启新仓库的 Github Pages 作为英文网站使用，这样中英文的网站就可以相互独立，互不干扰，只需要在两个网站上添加一个切换按钮就可以了。但是查询后发现每个 Github 账号只能拥有一个个人主页，这就很尴尬了，难不成要再注册一个账号来作为英文网站使用吗？未免太过麻烦。就在我一筹莫展的时候，发现了<strong>chitanda</strong>大佬的文章<a href="https://segmentfault.com/a/1190000003946969">单个GitHub帐号下添加多个GitHub Pages的相关问题</a>。</p>
+<blockquote>
+<p>根据官方文档，GitHub Pages分为两类:个人&#x2F;组织主页以及项目主页，两者基本上没啥区别，但是有以下几点不同:（该文场景下个人和组织帐号没什么区别，所以下文为了行文方便将统一用个人主页代指）</p>
+<ul>
+<li>个人主页必须要和用户的GitHub帐号同名，所以每个用户有且只能有一个repo作为个人主页，且必须是<username>&#x2F;<username>.github.io的形式；而项目主页的命名则没有这种限制，且数量有任意多个。</li>
+<li>不考虑绑定的自定义域名的前提下，个人主页的GitHub二级域名为<username>.github.io;项目主页的GitHub二级域名为<username>.github.io&#x2F;<projectname>,没有<projectname>.<username>.github.io这种方式</li>
+<li>个人主页的展示内容以master分支里的文件为准；而项目主页的展示内容以gh-pages分支内的文件为准</li>
+</ul>
+</blockquote>
+<p>这样的话，如果在Github里新建一个仓库，用项目主页的方式来部署英文网站，中英文网站应该还是相互独立的，英文网站的的域名格式是<code>中文域名/仓库名/</code>，也就不用再单独配置新的域名，听起来好像能行？那就试一下吧</p>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>这里以我自己的域名<code>siriusq.top</code>和英文网站仓库名<code>en</code>为例</p>
+<h2 id="创建项目主页"><a href="#创建项目主页" class="headerlink" title="创建项目主页"></a>创建项目主页</h2><ul>
+<li>在 Github 新建一个名为<code>en</code>的<code>Repositories</code></li>
+<li>进入新建的<code>Repositories</code>，点击<code>Settings</code></li>
+<li>下拉到<code>Github Pages</code>选项</li>
+<li>点击<code>Choose a theme</code>，然后随便选一个主题</li>
+<li>成功建立项目主页和后<code>Github Pages</code>选项会显示<code>Your site is published at https://siriusq.top/en/</code></li>
+<li>至此英文网站的项目主页创建成功</li>
+</ul>
+<h2 id="建立本地英文网站目录"><a href="#建立本地英文网站目录" class="headerlink" title="建立本地英文网站目录"></a>建立本地英文网站目录</h2><p>复制现在的中文博客文件夹并重命名，名字随意，这里以我自己的中文文件夹名<code>Hexo</code>和复制出来的英文文件夹名<code>Hexoen</code>为例</p>
+<ul>
+<li>打开<code>./Hexoen/_config.yml</code>文件，依次修改配置如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">language: en</span><br><span class="line">url: https://siriusq.top/en/ # 用自己的 域名/仓库名/ 替换 siriusq.top/en/</span><br><span class="line">root: /en/ # 用自己的仓库名替换 en</span><br><span class="line">repo: git@github.com:Siriusq/en.git # 用自己的 用户名/仓库名 替换 Siriusq/en</span><br></pre></td></tr></table></figure></li>
+<li>删除<code>./Hexoen/source</code>下的<code>CNAME</code>文件（如果有的话）</li>
+</ul>
+<h2 id="加入中文切换按钮"><a href="#加入中文切换按钮" class="headerlink" title="加入中文切换按钮"></a>加入中文切换按钮</h2><ul>
+<li>打开<code>./Hexoen/source/_data/next.yml</code>文件<ul>
+<li>在<code>Menu Settings</code>下的<code>menu：</code>中加入<code>switch_lang</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: / || home</span><br><span class="line">about: /about/ || user</span><br><span class="line">tags: /tags/ || tags</span><br><span class="line">categories: /categories/ || th</span><br><span class="line">archives: /archives/ || archive</span><br><span class="line">switch_lang: https://siriusq.top || language # 将siriusq.top替换成你的中文网站域名</span><br><span class="line">#schedule: /schedule/ || calendar</span><br><span class="line">#sitemap: /sitemap.xml || sitemap</span><br><span class="line">#commonweal: /<span class="number">404</span>/ || heartbeat</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>打开<code>./Hexoen/themes/next/languages/en.yml</code>文件<ul>
+<li>在<code>menu:</code>下添加<code> switch_lang: 简体中文</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: Home</span><br><span class="line">archives: Archives</span><br><span class="line">categories: Categories</span><br><span class="line">tags: Tags</span><br><span class="line">about: About</span><br><span class="line">switch_lang: 简体中文</span><br><span class="line">search: Search</span><br><span class="line">schedule: Schedule</span><br><span class="line">sitemap: Sitemap</span><br><span class="line">commonweal: Commonweal <span class="number">404</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="加入英文切换按钮"><a href="#加入英文切换按钮" class="headerlink" title="加入英文切换按钮"></a>加入英文切换按钮</h2><ul>
+<li>打开<code>./Hexo/source/_data/next.yml</code>文件<ul>
+<li>在<code>Menu Settings</code>下的<code>menu：</code>中加入<code>switch_lang</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: / || home</span><br><span class="line">about: /about/ || user</span><br><span class="line">tags: /tags/ || tags</span><br><span class="line">categories: /categories/ || th</span><br><span class="line">archives: /archives/ || archive</span><br><span class="line">switch_lang: https://siriusq.top/en/ || language # 将siriusq.top/en/替换成你的英文网站域名</span><br><span class="line">#schedule: /schedule/ || calendar</span><br><span class="line">#sitemap: /sitemap.xml || sitemap</span><br><span class="line">#commonweal: /<span class="number">404</span>/ || heartbeat</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>打开<code>./Hexoen/themes/next/languages/en.yml</code>文件<ul>
+<li>在<code>menu:</code>下添加<code> switch_lang: 简体中文</code>，样式如下<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">home: 首页</span><br><span class="line">archives: 归档</span><br><span class="line">categories: 分类</span><br><span class="line">tags: 标签</span><br><span class="line">about: 关于</span><br><span class="line">switch_lang: English</span><br><span class="line">search: 搜索</span><br><span class="line">schedule: 日程表</span><br><span class="line">sitemap: 站点地图</span><br><span class="line">commonweal: 公益 <span class="number">404</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="添加切换判断条件"><a href="#添加切换判断条件" class="headerlink" title="添加切换判断条件"></a>添加切换判断条件</h2><p><strong>中文网站</strong><br>打开<code>./Hexo/themes/next/layout/_partials/head/head-unique.swig</code>，在最下方粘贴代码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">  <span class="comment">// Wait for the page to load first</span></span><br><span class="line">  <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">      switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">          <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">          <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en/&#x27;</span>);</span><br><span class="line">          <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">              <span class="title function_">_prevOnload</span>();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;j</span><br></pre></td></tr></table></figure>
+
+<p><strong>英文网站</strong><br>打开<code>./Hexoen/themes/next/layout/_partials/head/head-unique.swig</code>，在最下方粘贴代码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">  <span class="comment">// Wait for the page to load first</span></span><br><span class="line">  <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">      switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">          <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">          <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en/&#x27;</span>);</span><br><span class="line">          <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">              <span class="title function_">_prevOnload</span>();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>分别在两个文件夹执行hexo三连操作，将网站部署到Github，过一会就能访问了</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><ul>
+<li>由于两个网站是相互独立的，所以给两个网站用不同的主题在理论上也是可行的，我只给英文网站修改了下404页面</li>
+<li>一点瑕疵：开启PJAX的话，在页面完全加载之前点击切换按钮的话会卡一下才跳转</li>
+<li>二点瑕疵：网站相互独立，所以跳转的时候网页是完全重新加载的，PJAX无效</li>
+<li>注意事项：写博客的时候，中英文目录下的markdown文件名请保持一致，否则切换的时候会跳转到404页面</li>
+</ul>
+<p>折腾这些东西真的太费时间了，毕设一点没动，现在很慌张。有问题欢迎评论区留言，最近可能回复不及时。</p>
+<p>不多说了，我要滚去做毕设了</p>
+<p>ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;┌(;￣◇￣)┘</p>
 ]]></content>
       <categories>
         <category>网站配置</category>
@@ -2145,6 +2145,36 @@
       </tags>
   </entry>
   <entry>
+    <title>Outlook邮件导出</title>
+    <url>/Outlook%E9%82%AE%E4%BB%B6%E5%AF%BC%E5%87%BA.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">毕业之后没有了Outlook的催命提示音，日子巴适的很🐶。不过学校给的账户6月就要被注销了（扣扣嗖嗖），趁着还有时间把邮件导出来留作纪念吧</blockquote>
+
+<span id="more"></span>
+
+<h1 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h1><p>首先打开Outlook的<code>选项</code>（先点击左上角的文件，然后选项在左下角），然后点击<code>高级</code>-<code>导出</code><br><img data-src="https://s2.loli.net/2022/05/25/SpfZscu2qKrGhFY.png" alt="选项"></p>
+<p>选择<code>导出到文件</code>，然后<code>下一页</code><br><img data-src="https://s2.loli.net/2022/05/25/xhowU4E6HMlgFzL.png" alt="导入和导出向导"></p>
+<p>选择<code>Outlook数据文件(.pst)</code>，然后<code>下一页</code><br><img data-src="https://s2.loli.net/2022/05/25/Urat5VqPMETOHpS.png" alt="导出到文件"></p>
+<p>选择需要导出的内容，全部导出的话就选择最上面的邮箱地址，然后<code>下一页</code><br><img data-src="https://s2.loli.net/2022/05/25/HqKQLYjk6MEUTFx.png" alt="导出Outlook数据文件"></p>
+<p>选择导出文件的位置，然后<code>完成</code><br><img data-src="https://s2.loli.net/2022/05/25/4YWkOsjAPcnLJaw.png" alt="选择导出文件位置"></p>
+<p>然后是<code>创建数据文件密码</code>，非必需<br><img data-src="https://s2.loli.net/2022/05/25/pAUZCEXmy4M31Vu.png" alt="添加可选密码"><br><img data-src="https://s2.loli.net/2022/05/25/gUwv1VXuiNjczHI.png" alt="输入密码"></p>
+<p>到这里导出就结束了</p>
+<h1 id="添加邮箱别名"><a href="#添加邮箱别名" class="headerlink" title="添加邮箱别名"></a>添加邮箱别名</h1><p>导出之后又想把它导入到自己的邮箱里了（纯属闲的蛋疼，其实直接把所有邮件打包发送到自己的邮箱就行），不过我的微软账户使用其他的邮箱注册的，给的Outlook地址是随机生成的一串字母数字，很辣眼睛，所以就添加个别名吧。</p>
+<p>我这里登陆的是网页版Outlook，先点击右上角的设置，然后右侧边栏最底下有<code>查看全部Outlook设置</code>。在弹窗里选择<code>右键</code>-<code>同步电子右键</code>-<code>管理或选择主别名</code><br><img data-src="https://s2.loli.net/2022/05/25/WVwLSFP4zClypRG.png" alt="管理或选择主别名"></p>
+<p>在跳转的页面选择<code>添加电子邮件</code><br><img data-src="https://s2.loli.net/2022/05/25/TC2OgrAsRNkYxdl.png" alt="添加电子邮件"></p>
+<p>添加别名就完成了<br><img data-src="https://s2.loli.net/2022/05/25/CGNFuAjmw1YH8qR.png" alt="添加别名"></p>
+<h1 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h1><p>先点击左上角的<code>文件</code>，然后选择<code>打开和导出</code>-<code>打开Outlook数据文件</code><br><img data-src="https://s2.loli.net/2022/05/25/4bJTqcYNexEfs5m.png" alt="打开Outlook数据文件"></p>
+<p>选择<code>从另一程序或文件导入</code>，然后一路下一页就完事了，前面设置过密码的话会要求输入密码<br><img data-src="https://s2.loli.net/2022/05/25/VB5IcH4zpbAo3Rr.png" alt="导入向导"></p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>Outlook</tag>
+        <tag>备份</tag>
+        <tag>留学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Next主题美化(仅7.1版本)</title>
     <url>/Next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96.html</url>
     <content><![CDATA[<p>2020年更新：此方法不适用于新版本Next主题！！！</p>
@@ -2756,36 +2786,6 @@
         <tag>Win10</tag>
         <tag>OneDrive</tag>
         <tag>mklink</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Outlook邮件导出</title>
-    <url>/Outlook%E9%82%AE%E4%BB%B6%E5%AF%BC%E5%87%BA.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">毕业之后没有了Outlook的催命提示音，日子巴适的很🐶。不过学校给的账户6月就要被注销了（扣扣嗖嗖），趁着还有时间把邮件导出来留作纪念吧</blockquote>
-
-<span id="more"></span>
-
-<h1 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h1><p>首先打开Outlook的<code>选项</code>（先点击左上角的文件，然后选项在左下角），然后点击<code>高级</code>-<code>导出</code><br><img data-src="https://s2.loli.net/2022/05/25/SpfZscu2qKrGhFY.png" alt="选项"></p>
-<p>选择<code>导出到文件</code>，然后<code>下一页</code><br><img data-src="https://s2.loli.net/2022/05/25/xhowU4E6HMlgFzL.png" alt="导入和导出向导"></p>
-<p>选择<code>Outlook数据文件(.pst)</code>，然后<code>下一页</code><br><img data-src="https://s2.loli.net/2022/05/25/Urat5VqPMETOHpS.png" alt="导出到文件"></p>
-<p>选择需要导出的内容，全部导出的话就选择最上面的邮箱地址，然后<code>下一页</code><br><img data-src="https://s2.loli.net/2022/05/25/HqKQLYjk6MEUTFx.png" alt="导出Outlook数据文件"></p>
-<p>选择导出文件的位置，然后<code>完成</code><br><img data-src="https://s2.loli.net/2022/05/25/4YWkOsjAPcnLJaw.png" alt="选择导出文件位置"></p>
-<p>然后是<code>创建数据文件密码</code>，非必需<br><img data-src="https://s2.loli.net/2022/05/25/pAUZCEXmy4M31Vu.png" alt="添加可选密码"><br><img data-src="https://s2.loli.net/2022/05/25/gUwv1VXuiNjczHI.png" alt="输入密码"></p>
-<p>到这里导出就结束了</p>
-<h1 id="添加邮箱别名"><a href="#添加邮箱别名" class="headerlink" title="添加邮箱别名"></a>添加邮箱别名</h1><p>导出之后又想把它导入到自己的邮箱里了（纯属闲的蛋疼，其实直接把所有邮件打包发送到自己的邮箱就行），不过我的微软账户使用其他的邮箱注册的，给的Outlook地址是随机生成的一串字母数字，很辣眼睛，所以就添加个别名吧。</p>
-<p>我这里登陆的是网页版Outlook，先点击右上角的设置，然后右侧边栏最底下有<code>查看全部Outlook设置</code>。在弹窗里选择<code>右键</code>-<code>同步电子右键</code>-<code>管理或选择主别名</code><br><img data-src="https://s2.loli.net/2022/05/25/WVwLSFP4zClypRG.png" alt="管理或选择主别名"></p>
-<p>在跳转的页面选择<code>添加电子邮件</code><br><img data-src="https://s2.loli.net/2022/05/25/TC2OgrAsRNkYxdl.png" alt="添加电子邮件"></p>
-<p>添加别名就完成了<br><img data-src="https://s2.loli.net/2022/05/25/CGNFuAjmw1YH8qR.png" alt="添加别名"></p>
-<h1 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h1><p>先点击左上角的<code>文件</code>，然后选择<code>打开和导出</code>-<code>打开Outlook数据文件</code><br><img data-src="https://s2.loli.net/2022/05/25/4bJTqcYNexEfs5m.png" alt="打开Outlook数据文件"></p>
-<p>选择<code>从另一程序或文件导入</code>，然后一路下一页就完事了，前面设置过密码的话会要求输入密码<br><img data-src="https://s2.loli.net/2022/05/25/VB5IcH4zpbAo3Rr.png" alt="导入向导"></p>
-]]></content>
-      <categories>
-        <category>折腾</category>
-      </categories>
-      <tags>
-        <tag>Outlook</tag>
-        <tag>备份</tag>
-        <tag>留学</tag>
       </tags>
   </entry>
   <entry>
@@ -3793,8 +3793,17 @@
 </ol>
 <p><img data-src="https://s2.loli.net/2022/06/02/MGDFkbQCelVUPgu.png" alt="wsa5.png"></p>
 <h2 id="adb修改captive-portal"><a href="#adb修改captive-portal" class="headerlink" title="adb修改captive_portal"></a>adb修改captive_portal</h2><p>事实证明这个玩意儿纯属掩耳盗铃，打开终端，执行</p>
-<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">58526</span></span><br><span class="line">adb shell settings put global captive_portal_https_url https://www.google.cn/generate_204</span><br><span class="line">adb shell settings put global captive_portal_http_url http://www.google.cn/generate_204</span><br></pre></td></tr></table></figure>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">58526</span></span><br><span class="line">adb shell settings put global captive_portal_https_url https://connect.rom.miui.com/generate_204</span><br><span class="line">adb shell settings put global captive_portal_http_url http://connect.rom.miui.com/generate_204</span><br></pre></td></tr></table></figure>
 <p>这个操作的唯一作用是在能联网但是仍然提示网络连接受限的情况下去掉烦人的提示。。。</p>
+<blockquote>
+<p>Captive portal（强制门户）是在授予新连接至Wi-Fi的用户更广的网络（互联网）访问权限之前在其网页浏览器呈现中的网页，其常用于呈现可能需要认证或接受最终用户许可协议&#x2F;可接受使用策略的着陆页或登录页。强制门户应用于方方面面的移动宽带服务中（如有线连接、计费Wi-Fi及家庭热点），同时也可提供对企业或家庭有线网络（公寓、酒店和商业中心的网络）的访问权限。</p>
+</blockquote>
+<p>因为WSA默认用谷歌的Captive Portal来检测是否联网，但是国内肯定连不上，所以就会提示网络受限，只要把检测服务器换成国内的就行了，这里白嫖小米的嘿嘿，还可以嫖苹果、华为和vivo的，把链接换了就行</p>
+<ul>
+<li>苹果 <a href="http://www.apple.com/library/test/success.html">http://www.apple.com/library/test/success.html</a></li>
+<li>华为 <a href="http://connectivitycheck.platform.hicloud.com/generate_204">http://connectivitycheck.platform.hicloud.com/generate_204</a></li>
+<li>vivo <a href="http://wifi.vivo.com.cn/generate_204">http://wifi.vivo.com.cn/generate_204</a></li>
+</ul>
 <h2 id="USB网络共享"><a href="#USB网络共享" class="headerlink" title="USB网络共享"></a>USB网络共享</h2><p>这个方法算是曲线救国，实在没办法的话可以用，但是重启之后可能需要重新设置</p>
 <ol>
 <li>打开前面安装的<code>WSA Toolbox</code>，点击中间的<code>Android设置</code></li>
@@ -4292,39 +4301,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Windows 11 右键菜单改回 Windows 10 样式</title>
-    <url>/Windows-11-%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E6%94%B9%E5%9B%9E-Windows-10-%E6%A0%B7%E5%BC%8F.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">巨硬迷惑操作之两级右键菜单，真该把提出这个需求的产品经理祭天，好在还能通过祖传注册表修改大法改回去</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>前排提示，修改注册表有风险，请谨慎操作</p></div>
-
-<h1 id="命令行修改"><a href="#命令行修改" class="headerlink" title="命令行修改"></a>命令行修改</h1><p>下面是命令行大法，按下<code>WIN</code>+<code>R</code>，输入<code>cmd</code>后回车，运行下面的指令<br><img data-src="https://s2.loli.net/2022/05/26/U1tImjKdg95kcrJ.png" alt="wt00.png"></p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">reg add HKCU\Software\Classes\CLSID\&#123;<span class="number">86</span>ca1aa0-<span class="number">34</span>aa-<span class="number">4</span>e8b-a509-<span class="number">50</span>c905bae2a2&#125;\InprocServer32 /f /ve</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>/f</code>表示不弹出确认窗口，静默执行添加注册表任务</li>
-<li><code>/ve</code>表示添加到注册表中的项为空值<code>null</code></li>
-</ul>
-<p>按下<code>CTRL</code>+<code>SHIFT</code>+<code>ESC</code>打开任务管理器，找到<code>Windows资源管理器</code>，点击右下角<code>重新启动</code>就完事了<br><img data-src="https://s2.loli.net/2022/05/26/SUImc6zHprZdnD8.png" alt="wt03.png"></p>
-<h1 id="注册表编辑器手动修改"><a href="#注册表编辑器手动修改" class="headerlink" title="注册表编辑器手动修改"></a>注册表编辑器手动修改</h1><p>按下<code>WIN</code>+<code>R</code>，输入<code>regedit</code>后回车，打开注册表编辑器<br><img data-src="https://s2.loli.net/2022/05/26/ESuqQDpA7wjNX3U.png" alt="wt07.png"></p>
-<p>定位到<code>HKEY_CURRENT_USER\SOFTWARE\CLASSES\CLSID</code>，右键单击CLSID，选择<code>新建</code>-<code>项</code>，命名为<code>&#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&#125;</code><br><img data-src="https://s2.loli.net/2022/05/26/OUEzy2KhC19XDxa.png" alt="wt01.png"></p>
-<p>右键单击新建的项，选择<code>新建</code>-<code>项</code>，命名为<code>InprocServer32</code><br><img data-src="https://s2.loli.net/2022/05/26/QDtdvyes8mhxHJz.png" alt="wt02.png"></p>
-<p>双击打开<code>InprocServer32</code>右侧的<code>默认</code>，不需要填写任何东西，直接点击<code>确定</code>，然后关闭注册表编辑器，并重启Windows资源管理器<br><img data-src="https://s2.loli.net/2022/05/26/GbFELW5PlveiSCh.png" alt="wt05.png"></p>
-<p>然后就能见到亲切的经典Window10右键菜单咯<br><img data-src="https://s2.loli.net/2022/05/26/ZxVlu7rLwDY3sam.png" alt="wt06.png"></p>
-]]></content>
-      <categories>
-        <category>折腾</category>
-      </categories>
-      <tags>
-        <tag>Win10</tag>
-        <tag>Win11</tag>
-        <tag>右键菜单</tag>
-        <tag>注册表</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Windows Terminal 美化</title>
     <url>/Windows-Terminal-%E7%BE%8E%E5%8C%96.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">一个每天都要面对的东西，不好看会影响心情的🐶。（终于要把欠下的博文写完了，腹泻式更新结束咯）</blockquote>
@@ -4554,6 +4530,39 @@
         <tag>Win11</tag>
         <tag>Windows Terminal</tag>
         <tag>美化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows 11 右键菜单改回 Windows 10 样式</title>
+    <url>/Windows-11-%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E6%94%B9%E5%9B%9E-Windows-10-%E6%A0%B7%E5%BC%8F.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">巨硬迷惑操作之两级右键菜单，真该把提出这个需求的产品经理祭天，好在还能通过祖传注册表修改大法改回去</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>前排提示，修改注册表有风险，请谨慎操作</p></div>
+
+<h1 id="命令行修改"><a href="#命令行修改" class="headerlink" title="命令行修改"></a>命令行修改</h1><p>下面是命令行大法，按下<code>WIN</code>+<code>R</code>，输入<code>cmd</code>后回车，运行下面的指令<br><img data-src="https://s2.loli.net/2022/05/26/U1tImjKdg95kcrJ.png" alt="wt00.png"></p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">reg add HKCU\Software\Classes\CLSID\&#123;<span class="number">86</span>ca1aa0-<span class="number">34</span>aa-<span class="number">4</span>e8b-a509-<span class="number">50</span>c905bae2a2&#125;\InprocServer32 /f /ve</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>/f</code>表示不弹出确认窗口，静默执行添加注册表任务</li>
+<li><code>/ve</code>表示添加到注册表中的项为空值<code>null</code></li>
+</ul>
+<p>按下<code>CTRL</code>+<code>SHIFT</code>+<code>ESC</code>打开任务管理器，找到<code>Windows资源管理器</code>，点击右下角<code>重新启动</code>就完事了<br><img data-src="https://s2.loli.net/2022/05/26/SUImc6zHprZdnD8.png" alt="wt03.png"></p>
+<h1 id="注册表编辑器手动修改"><a href="#注册表编辑器手动修改" class="headerlink" title="注册表编辑器手动修改"></a>注册表编辑器手动修改</h1><p>按下<code>WIN</code>+<code>R</code>，输入<code>regedit</code>后回车，打开注册表编辑器<br><img data-src="https://s2.loli.net/2022/05/26/ESuqQDpA7wjNX3U.png" alt="wt07.png"></p>
+<p>定位到<code>HKEY_CURRENT_USER\SOFTWARE\CLASSES\CLSID</code>，右键单击CLSID，选择<code>新建</code>-<code>项</code>，命名为<code>&#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&#125;</code><br><img data-src="https://s2.loli.net/2022/05/26/OUEzy2KhC19XDxa.png" alt="wt01.png"></p>
+<p>右键单击新建的项，选择<code>新建</code>-<code>项</code>，命名为<code>InprocServer32</code><br><img data-src="https://s2.loli.net/2022/05/26/QDtdvyes8mhxHJz.png" alt="wt02.png"></p>
+<p>双击打开<code>InprocServer32</code>右侧的<code>默认</code>，不需要填写任何东西，直接点击<code>确定</code>，然后关闭注册表编辑器，并重启Windows资源管理器<br><img data-src="https://s2.loli.net/2022/05/26/GbFELW5PlveiSCh.png" alt="wt05.png"></p>
+<p>然后就能见到亲切的经典Window10右键菜单咯<br><img data-src="https://s2.loli.net/2022/05/26/ZxVlu7rLwDY3sam.png" alt="wt06.png"></p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>Win10</tag>
+        <tag>Win11</tag>
+        <tag>右键菜单</tag>
+        <tag>注册表</tag>
       </tags>
   </entry>
   <entry>
@@ -4838,437 +4847,6 @@
         <tag>Win10</tag>
         <tag>Windows Terminal</tag>
         <tag>软件</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>笔记本改造计划</title>
-    <url>/%E7%AC%94%E8%AE%B0%E6%9C%AC%E6%94%B9%E9%80%A0%E8%AE%A1%E5%88%92.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">准备折腾一下笔记本，毕竟不用做建筑狗了，这个笔记本是当年高考完暑假买的，年少无知买了个商务本，众所周知，商务本=性能垃圾+贵，所以大二配完台式后给笔记本装了个Fedora，然后就一直在吃灰，这几天升级Fedora的时候崩了，但是今年9月要去国外读书，笔记本还是得用。计划安装 Win10 LTSC，Ubuntu 18.04 LTS，Macos Mojave三系统，把机械硬盘换成固态，升级网卡</blockquote>
-
-<span id="more"></span>
-
-<p>老规矩先上配置<br>型号：Acer TravelMate P645-SG<br>CPU：Intel Core i7-5500U （2.4GHz&#x2F;2C4T）（垃圾的一批）<br>GPU：NVIDIA 840M 2G (拆掉独显提升性能系列)<br>内存：8G DDR3L 1600Mhz<br>SSD：建兴L8T 128G msata接口<br>HDD：西数 500G 5400转蓝盘<br>网卡：Intel 7265NGW</p>
-<p>准备升级硬件<br>网卡：换成DW1560，方便黑苹果用，淘宝330<br>硬盘：机械硬盘换成三星860EVO 500G，京东559<br>内存：这个还在纠结，准备把插槽4G的换成8G</p>
-<h1 id="硬件升级"><a href="#硬件升级" class="headerlink" title="硬件升级"></a>硬件升级</h1><p>实不相瞒，我这几天拆了四五次电脑，螺丝都给拧花了一个，下面是拆机图，红色框里是网卡的位置，我已经拆了，绿框是内存，黄框是新换的SSD<br><img data-src="https://s2.loli.net/2022/05/13/hlnmf9TeY4is6Xp.jpg" alt="拆机图"><br>估计当年脑子里进了不少水，选了建筑专业就算了，买个笔记本也这么奇葩，青黄不接的5代低压CPU + 青黄不接的8系亮机显卡，唯一的优点就是续航长？</p>
-<h2 id="网卡"><a href="#网卡" class="headerlink" title="网卡"></a>网卡</h2><p>原装的英特尔网卡当然是不能用了，所以要去某宝买黑苹果可以用的网卡，买之前注意接口和网卡长度，一般都是<code>ngff</code>的小卡</p>
-<p>安装的时候把原来的天线接口断开，用指甲挑一下就开了，然后拧螺丝换上新的，再把天线接上</p>
-<p>DW1560在我的笔记本上有一点问题，蓝牙不能用，三个系统都搜索不到蓝牙设备，查阅资料后发现需要屏蔽背面两个识别针脚，最简单粗暴的方法就是用胶带把这两个贴上，下面上图</p>
-<p><img data-src="https://s2.loli.net/2022/05/13/6t4XJmzknyBwLg7.jpg" alt="网卡"></p>
-<p>需要屏蔽的就是红圈里右侧的两个针脚，手残党最好找个镊子贴胶带，注意不要贴到左边的两个。屏蔽之后BIOS自检时间会变长一点，问题不大</p>
-<h2 id="SSD"><a href="#SSD" class="headerlink" title="SSD"></a>SSD</h2><p>老电脑，只有一个MSATA和一个SATA3的接口，上不了M.2就很难受</p>
-<p>把原来的500G蓝盘拆下来扔到硬盘盒里做了移动硬盘，虽然速度很垃圾但是勉强能用，分个区给mac做备份</p>
-<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><p>这个笔记本内存是板载4G + 插槽4G的，就更难受了，升级内存的话只能是4G+8G这种逼死强迫症的组合，所以暂时搁置，到时候不够用了再说</p>
-<h1 id="Win10-LTSC-安装"><a href="#Win10-LTSC-安装" class="headerlink" title="Win10 LTSC 安装"></a>Win10 LTSC 安装</h1><p>首先安装的是老坛酸菜，放在128G的固态中，选择它主要是为了省电+节省硬盘空间</p>
-<h2 id="下载镜像文件"><a href="#下载镜像文件" class="headerlink" title="下载镜像文件"></a>下载镜像文件</h2><p>Win10的镜像文件都可以在<code>MSDN, I Tell You</code>上面下载，下面是传送门</p>
-<a class="btn" href="https://msdn.itellyou.cn/?tdsourcetag=s_pcqq_aiomsg"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<p>在左侧操作系统栏中找到相对应的版本下载即可，上面的都是<code>ed2k</code>链接，建议使用迅雷下载（莫得办法），另外有能力的话可以给站长一些支持，毕竟坚持十几年也很不容易</p>
-<h2 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h2><p>win10的镜像越来越大了，现在1903的<code>install.wim</code>已经超过4G。所以还是要用UltraISO来刻录，以前<code>install.wim</code>都不到4个G，制作安装盘的时候直接把iso解压到U盘就可以用了。</p>
-<p>老坛酸菜的镜像没有大于4G的文件，所以找一个8G及以上的U盘，把镜像直接解压到U盘就可以了</p>
-<h3 id="UltraISO刻录教程"><a href="#UltraISO刻录教程" class="headerlink" title="UltraISO刻录教程"></a>UltraISO刻录教程</h3><p>安装ltsc的请跳过，这个是制作1903启动盘的步骤</p>
-<ul>
-<li>插入U盘</li>
-<li>以管理员身份运行UltraISO</li>
-<li>选择<code>文件</code>——<code>打开</code></li>
-<li>在弹出窗口中找到要用的ISO文件，点击<code>打开</code></li>
-<li>点击<code>启动</code>——<code>写入硬盘镜像</code></li>
-<li>在弹出窗口中选择好自己的U盘</li>
-<li>写入方式使用默认的<code>USB-HDD+</code></li>
-<li>点击<code>写入</code></li>
-</ul>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
-<li>插上启动盘，然后开机狂按<code>F2</code>进入<code>BIOS</code></li>
-<li>设置U盘为首选启动项</li>
-<li>保存并退出BIOS</li>
-<li>系统转一会圈之后就会进入语言选择界面，一般默认就行，点击<code>下一步</code></li>
-<li>使用<code>Shift</code>+<code>F10</code>打开终端</li>
-<li>输入<code>diskpart</code>打开磁盘管理</li>
-<li>输入<code>list disk</code>，列出硬盘</li>
-<li>找到安装目标磁盘的序号，输入<code>select disk 序号</code>回车</li>
-<li>输入<code>clean</code>回车</li>
-<li>输入<code>convert gpt</code>转换gpt格式</li>
-<li>点击<code>现在安装</code></li>
-<li>接受条款然后点击<code>下一步</code></li>
-<li>选择<code>自定义</code></li>
-<li>选择目标磁盘，点击<code>下一步</code></li>
-<li>重启的时候拔下启动U盘</li>
-<li>剩下的一路无脑下一步就装完了</li>
-</ul>
-<h2 id="激活"><a href="#激活" class="headerlink" title="激活"></a>激活</h2><p>LTSC没有数字权利激活(明明LTSB有的，咋到新版本就没了呢，强迫症表示不爽)，所以要用<code>KMS激活</code><br>右键单击开始菜单微软图标，使用管理员身份运行<code>PowerShell</code>，依次输入下列指令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">slmgr -ipk M7XTQ-FN8P6-TTKYV-9D4CC-J462D</span><br><span class="line">slmgr -skms kms.03k.org</span><br><span class="line">slmgr -ato</span><br><span class="line">slmgr -dlv</span><br></pre></td></tr></table></figure>
-
-<p>中途会弹出对话框，全点确定就行</p>
-<p>剩下的过程就是安装软件，我另一篇文章总结了一些好用的软件，附上传送门</p>
-<a class="btn" href="https://siriusq.top/%E8%BD%AF%E4%BB%B6%E6%95%B4%E7%90%86.html"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<h1 id="Ubuntu-18-04-LTS-安装"><a href="#Ubuntu-18-04-LTS-安装" class="headerlink" title="Ubuntu 18.04 LTS 安装"></a>Ubuntu 18.04 LTS 安装</h1><h2 id="下载镜像文件-1"><a href="#下载镜像文件-1" class="headerlink" title="下载镜像文件"></a>下载镜像文件</h2><p>Ubuntu的镜像文件去官网下，传送门</p>
-<a class="btn" href="https://ubuntu.com/download/desktop"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<h2 id="制作启动盘-1"><a href="#制作启动盘-1" class="headerlink" title="制作启动盘"></a>制作启动盘</h2><p>Ubuntu的启动盘可以使用软件刻录，我比较懒，就直接把iso镜像解压到U盘里了，然后在bios页面添加U盘对应的efi启动项，就可以就如安装程序了</p>
-<h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><ul>
-<li>选择<code>install ubuntu</code>并回车开始安装</li>
-<li>选择语言以及键盘布局</li>
-<li>选择<code>最小安装</code>节省时间</li>
-<li><code>装Ubuntu更新</code>这个看心情选</li>
-<li><code>安装类型</code>选择<code>其他选项</code></li>
-<li>找到要安装Ubuntu的目标磁盘</li>
-<li>点击左下角的<code>+</code>进行分区，分区方法有很多种，我分了三个区<ul>
-<li>第一个是<code>EFI系统分区</code>，我分了512M</li>
-<li>第二个是<code>交换空间</code>，也就是虚拟内存，和你的实际内存一样大就行，我分了8192M，也就是8G</li>
-<li>第三个是主分区，挂载点是<code>/</code>，用于<code>Ext4日志文件系统</code>，看个人需求，我分了160G</li>
-</ul>
-</li>
-<li>分区完成后选中<code>efi</code>分区然后点击<code>现在安装</code></li>
-<li>选择时区，创建用户名和密码</li>
-<li>安装完成后会要求重启</li>
-</ul>
-<h2 id="添加grub引导"><a href="#添加grub引导" class="headerlink" title="添加grub引导"></a>添加grub引导</h2><p>重启后你会神奇的发现直接俄进入了windows系统，因为ubuntu没有添加引导，我又用懒人方法在bios中添加了grub的efi启动项，然后把他设为首选启动项，这样Ubuntu和Win就可以共存了</p>
-<h1 id="Macos-Mojave-10-14-6-折腾"><a href="#Macos-Mojave-10-14-6-折腾" class="headerlink" title="Macos Mojave 10.14.6 折腾"></a>Macos Mojave 10.14.6 折腾</h1><p>最后一个也是最难搞的一个就是黑苹果了，折腾了好几天，绕了不少弯，安装流派依旧是<code>Vanilla</code></p>
-<p>我制作安装盘的过程嘛。一言难尽，直接放上参考教程，<a href="https://fewtarius.gitbook.io/laptopguide/">The Vanilla Laptop Guide</a>，这个网站我到最后修复睡眠问题的时候才发现，早点发现的话就不用绕那么多圈子了。</p>
-<p><strong>建议直接使用上面的方法，下面是本人的折腾记录</strong>，我会把我的EFI上传到github，下载下来替换掉刻录启动盘的时候生成的，直接用就行，记得在修改机型的相关信息</p>
-<p>完美程度95%</p>
-<ul>
-<li>读卡器和视频输出我用不到就没搞</li>
-<li>读卡器据说有<code>Sinetek-rtsx.kext</code>可以驱动，有需要的可以试一下，我没有SD卡没法测试</li>
-<li>手头没有多余的视频线，不知道能不外接显示器，等回学校再测试一下</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="center">类别</th>
-<th align="center">驱动</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">电池</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">显示器</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">亮度调节</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">睡眠</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">USB</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">键盘</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">触摸板</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">声卡</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">CPU变频</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">Airdrop</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">读卡器</td>
-<td align="center">N&#x2F;A</td>
-</tr>
-<tr>
-<td align="center">HDMI输出</td>
-<td align="center">N&#x2F;A</td>
-</tr>
-<tr>
-<td align="center">VGA输出</td>
-<td align="center">N&#x2F;A</td>
-</tr>
-</tbody></table>
-<hr>
-<p>下面是我一言难尽的折腾过程，请点击下面传送门跳过</p>
-<a class="btn" href="#EFI%E4%B8%8B%E8%BD%BD"><i class="fa fa-paper-plane fa-fw"></i>我是传送门</a>
-
-<h2 id="制作启动盘-2"><a href="#制作启动盘-2" class="headerlink" title="制作启动盘"></a>制作启动盘</h2><p>下面只是我九曲十八弯的安装盘翻车记录，仅供参考，因为一些细节记不清了，启动盘我是用台式机上的黑果刻的，安装第二台黑果的时候有另一台黑果用会简单不少</p>
-<ul>
-<li>一开始的我还是在win上用gibmacos制作，因为这个方法用的是恢复镜像，所以安装的时候要在线下载安装镜像，然而我的网卡一直不能驱动，所以就很尴尬的卡住了</li>
-<li>然后我就满世界的找教程，慌不择路的选了一个，跟着它一步一步的走，然后发现，我怎么搞了个PE盘？这镜像明明是Mojave 10.14.6 啊？？？</li>
-<li>然后我又下载了Mojave的官方镜像，刻录完后用Clover添加了EFI分区，换上了Vanilla的plist，开机发现没有install macos这个选项，再次尬住</li>
-<li>最后我是这么解决掉。。。把最后一次刻录的EFI分区文件整个替换成了第一步在win上刻录的那个EFI分区文件，然后再换上Vanilla的plist文件，简直蠢到家了</li>
-</ul>
-<h3 id="Mojave-原版镜像下载"><a href="#Mojave-原版镜像下载" class="headerlink" title="Mojave 原版镜像下载"></a>Mojave 原版镜像下载</h3><p>原版镜像可以用<code>macOS Mojave Patcher Tool</code>下载</p>
-<a class="btn" href="http://dosdude1.com/mojave/"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<p>下载完成后打开软件，在顶栏中选择<code>Tools</code>-<code>Download macOS Mojave</code>即可</p>
-<h3 id="刻录安装盘"><a href="#刻录安装盘" class="headerlink" title="刻录安装盘"></a>刻录安装盘</h3><p>这一步我用的软件是<code>DiskMaker X 8 for MacOS Mojave</code></p>
-<a class="btn" href="https://diskmakerx.com/download/"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<p>注意不要下载最新的，那是给Catalina用的</p>
-<ul>
-<li>下载完成后打开软件，会提示你是否更新，选择<code>Not now, thanks</code>即可</li>
-<li>选择<code>Select a macOS Installation App</code>，找到上一步下载的安装镜像，点击选取</li>
-<li>选择<code>An 8 GB USB thumb drive（ERASE ALL DISL）</code></li>
-<li>选择你的U盘然后点击<code>Choose this disk</code></li>
-<li>最后会要求你输入密码，然后等待一段时间会提示你安装盘刻录完成</li>
-</ul>
-<h3 id="创建EFI分区"><a href="#创建EFI分区" class="headerlink" title="创建EFI分区"></a>创建EFI分区</h3><p>这一步需要使用<code>Clover EFI bootloader</code></p>
-<a class="btn" href="https://sourceforge.net/projects/cloverefiboot/"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<p>下载安装，一路继续，在<code>安装类型</code>那里点击左下角的<code>自定</code>，<code>安装位置</code>选择自己的U盘</p>
-<p><strong>UEFI设置</strong></p>
-<ul>
-<li>仅安装UEFI开机版本</li>
-<li>安装Clover到EFI系统区</li>
-<li>在UEFI Drivers里面勾选这三个选项<ul>
-<li>AptioMemoryFix</li>
-<li>PartitionDxe</li>
-<li>ApfsLoader</li>
-</ul>
-</li>
-</ul>
-<p>不知道为什么，我这样创建的安装盘没能成功进入安装页面，所以我把第一次用gibmacos创建的EFI文件夹直接复制到U盘上替换掉了原来的EFI文件夹</p>
-<h3 id="替换config-plist"><a href="#替换config-plist" class="headerlink" title="替换config.plist"></a>替换config.plist</h3><p>这一步要找到自己的CPU所对应的<code>config.plist</code>文件，下载后替换EFI文件中的<code>config.plist</code>。github上已经有大神按照CPU代数制作了相应的文件，记得把机型设置成<code>MacBook Air7,2</code></p>
-<a class="btn" href="https://github.com/corpnewt/Hackintosh-Guide/tree/master/Configs"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<p>这里说明一下CPU的代号对应问题</p>
-<ul>
-<li>CoffeeLake - 第八代CPU</li>
-<li>Haswell - 第四代CPU</li>
-<li>Ivy Bridge - 第三代CPU</li>
-<li>KabyLake -第七代CPU</li>
-<li>Skylake - 第六代CPU</li>
-</ul>
-<p>没错，中间单单少了我那奇葩的第五代CPU-Broadwell，所以我就用第四代的文件代替了，第五代就是第四代的一个小升级，差不多能用</p>
-<p>由于Github上并没有下载按钮，所以我们需要点击要下载的文件，然后点击页面上方的<code>Raw</code>，右键另存为<code>config.plist</code></p>
-<h3 id="加载kext"><a href="#加载kext" class="headerlink" title="加载kext"></a>加载kext</h3><p>kext就相当于驱动，由于苹果的官方驱动只针对特定型号的硬件，所以我们需要找到适合自己硬件的kext来驱动，需要的文件有</p>
-<ul>
-<li><a href="https://github.com/acidanthera/VirtualSMC/releases">VirtualSMC.kext</a> - 最核心的kext，下载下来的压缩包里有几个附属kext，也要一起使用</li>
-<li><a href="https://github.com/acidanthera/Lilu/releases">Lilu.kext</a> - 我觉得这是个类似运行库的东西</li>
-<li><a href="https://github.com/acidanthera/WhateverGreen/releases">WhateverGreen.kext</a> - 显卡补丁</li>
-<li><a href="https://github.com/acidanthera/VoodooPS2/releases">VoodooPS2.kext</a> - 键盘和触摸板的驱动</li>
-<li><a href="https://github.com/acidanthera/AppleALC/releases">AppleALC.kext</a> - 声卡补丁</li>
-<li><a href="https://github.com/Mieze/IntelMausiEthernet">IntelMausiEthernet.kext</a> - 有线网卡补丁</li>
-<li><a href="https://github.com/acidanthera/AirportBrcmFixup/releases">AirportBrcmFixup.kext</a> - 无线补丁</li>
-<li><a href="https://bitbucket.org/RehabMan/os-x-brcmpatchram/downloads/">BrcmFirmwareData.kext</a> - 无线网卡补丁</li>
-<li><a href="https://bitbucket.org/RehabMan/os-x-brcmpatchram/downloads/">BrcmPatchRAM2.kext</a> - 和上一个在一个压缩包里</li>
-<li><a href="https://bitbucket.org/RehabMan/os-x-fake-pci-id/downloads/">FakePCIID.kext</a> - pci补丁</li>
-<li><a href="https://bitbucket.org/RehabMan/os-x-fake-pci-id/downloads/">FakePCIID_Broadcom_WiFi.kext</a> - 和上一个在一个压缩包里</li>
-</ul>
-<p>把这些文件放到<code>./EFI/CLOVER/kext/Other</code>路径中</p>
-<h2 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h2><p>上一篇中写过一部分，复制粘贴大法</p>
-<h3 id="BIOS设置"><a href="#BIOS设置" class="headerlink" title="BIOS设置"></a>BIOS设置</h3><ol>
-<li>开机进入BIOS(快捷键为F2)，将所有设置设为默认</li>
-<li>关闭<code>Secure boot</code>,保存退出</li>
-<li>重启再次进入BIOS，选择<code>Boot Device</code>的首选项为<strong>U盘</strong></li>
-<li>从U盘引导后会进入Clover菜单，选择<code>Boot macOS Install from OS X Base System</code>回车，Clover默认会开启啰嗦模式，就是在屏幕上滚动显示状态，跑完就会进入MacOS安装程序，出现选择语言的菜单</li>
-</ol>
-<h3 id="格式化磁盘"><a href="#格式化磁盘" class="headerlink" title="格式化磁盘"></a>格式化磁盘</h3><p>安装之前需要对目标磁盘进行格式化</p>
-<ol>
-<li>双击<code>磁盘工具</code></li>
-<li>点击左上角<code>显示</code>选项的下拉菜单并选择<code>显示所有设备</code></li>
-<li>点击顶部的<code>抹掉</code></li>
-<li>选择用于安装MacOS的硬盘，并将其设置为<ul>
-<li>名称: （设置硬盘的名称）</li>
-<li>格式： Mac OS 扩展（日志式）</li>
-<li>方案: GUID 分区图</li>
-</ul>
-</li>
-<li>点击右下方的<code>抹掉</code></li>
-<li>关闭<code>Disk Utility</code></li>
-</ol>
-<h3 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h3><ol>
-<li>选择<code>安装macOS</code>，点击继续</li>
-<li>选择用于安装的磁盘</li>
-<li>等待大概十几分钟，安装完成后会自动重启</li>
-</ol>
-<h3 id="系统设置"><a href="#系统设置" class="headerlink" title="系统设置"></a>系统设置</h3><p>重启后再次选择U盘引导，进入Clover，选择<code>Boot macOS from 你硬盘的名字</code>，等待Clover啰嗦模式跑完就会进入欢迎使用页面，选择国家和键盘balabala的不多说</p>
-<ul>
-<li>传输信息到这台Mac - 现在不传输任何信息</li>
-<li>AppleID登陆可以先跳过，后面可能需要修改机型，修改完后还要重新登录</li>
-<li>条款与条件 - 全部同意</li>
-<li>快捷设置 - 选择自定设置，然后把<code>分析</code>里面的勾选取消，黑苹果就没有必要来分析了hhhhh</li>
-</ul>
-<p>等待一会就能够进入系统了</p>
-<h2 id="配置系统"><a href="#配置系统" class="headerlink" title="配置系统"></a>配置系统</h2><p>现在我们仍然需要通过安装U盘进行启动，这一步我们将把EFI文件从U盘复制到启动盘，然后就不需要U盘了<br>首先需要下载下面的两个软件</p>
-<ul>
-<li><a href="https://sourceforge.net/projects/cloverefiboot/">Clover EFI bootloader</a></li>
-<li><a href="https://mackie100projects.altervista.org/download-clover-configurator/">clover Configurator</a></li>
-</ul>
-<h3 id="Clover-EFI-bootloader设置"><a href="#Clover-EFI-bootloader设置" class="headerlink" title="Clover EFI bootloader设置"></a>Clover EFI bootloader设置</h3><p>下载安装，一路继续，在<code>安装类型</code>那里点击左下角的<code>自定</code>，具体设置如下</p>
-<ul>
-<li>仅安装UEFI开机版本</li>
-<li>安装Clover到EFI系统区</li>
-<li>在UEFI Drivers里面勾选这三个选项<ul>
-<li>AptioMemoryFix</li>
-<li>PartitionDxe</li>
-<li>ApfsLoader</li>
-</ul>
-</li>
-<li>安装RC Scripts到目标磁区</li>
-</ul>
-<h3 id="EFI文件替换"><a href="#EFI文件替换" class="headerlink" title="EFI文件替换"></a>EFI文件替换</h3><ol>
-<li>下载安装然后打开<code>Clover Configurator</code></li>
-<li>点击左侧菜单里的<code>挂载分区</code></li>
-<li>在右下找到安装macOS的硬盘，点击旁边的<code>挂载分区</code></li>
-<li>再点击旁边的<code>打开分区</code>，会打开<code>EFI</code>文件夹</li>
-<li>打开安装U盘<code>CLover</code>，把里面的文件拷贝到上一步打开的文件夹</li>
-<li>此时系统会提醒有重复文件，点击替换</li>
-</ol>
-<p>此时重启就可以进入bios把首选启动项改成clover了，U盘可以推出了</p>
-<h2 id="驱动安装"><a href="#驱动安装" class="headerlink" title="驱动安装"></a>驱动安装</h2><p>部分驱动使用<code>Clover Configurator</code>安装，在<code>安装驱动</code>的<code>UEFI驱动</code>里面勾选下面的选项，我不太确定那些是必须的hhh</p>
-<ul>
-<li>ApfsDriverLoader</li>
-<li>AptioInputFix</li>
-<li>AptioMemoryFix</li>
-<li>AudioDce</li>
-<li>DataHubDxe</li>
-<li>FSInject</li>
-<li>HFSPlus</li>
-<li>PartitionDxe</li>
-<li>Ps2MouseDxe</li>
-<li>SMCHelper</li>
-<li>UsbKbDxe</li>
-<li>UsbMouseDxe</li>
-</ul>
-<p><strong>下面的步骤需要使用<code>Hackintool</code>来进行设置</strong></p>
-<a class="btn" href="https://www.tonymacx86.com/threads/release-hackintool-v2-8-6.254559/"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<h3 id="声卡"><a href="#声卡" class="headerlink" title="声卡"></a>声卡</h3><p>前面已经安装了AppleALC的声卡驱动，但是此时还没有声音</p>
-<ol>
-<li>点击<code>音频</code></li>
-<li>在下面的<code>Layout ID</code>中选择数值，我选择的是127</li>
-</ol>
-<h3 id="核显"><a href="#核显" class="headerlink" title="核显"></a>核显</h3><ol>
-<li>点击<code>应用补丁</code></li>
-<li>在<code>CPU架构</code>中选择<code>Broadwell</code>，平台ID选择<code>0x16160002</code></li>
-<li>点击下面的<code>应用补丁</code></li>
-<li>在通用中勾选<ol>
-<li>设备属性</li>
-<li>自动侦测变化</li>
-<li>全部</li>
-<li>接口</li>
-<li>基本显存</li>
-<li>图形卡</li>
-<li>音频</li>
-</ol>
-</li>
-<li>在高级中勾选<ol>
-<li>DVMT 32MB预分配</li>
-<li>禁用eGPU</li>
-<li>将DP映射到HDMI</li>
-<li>仿冒图形卡ID</li>
-<li>显存2048MB</li>
-<li>启用HDMI20（4K）</li>
-<li>USB端口数限制</li>
-</ol>
-</li>
-<li>点击生成补丁</li>
-</ol>
-<h3 id="显示器"><a href="#显示器" class="headerlink" title="显示器"></a>显示器</h3><ol>
-<li>点击<code>显示器</code></li>
-<li>选中自己的显示器</li>
-<li>在注入EDID中选择合适的比例，选择合适的分辨率</li>
-<li>点击下面的加号</li>
-<li>点击右下角的导出按钮</li>
-<li>把生成的kext文件复制到<code>./EFI/CLOVER/kext/Other</code>路径中</li>
-</ol>
-<p>点击顶栏的<code>文件</code>，选择导出引导工具Config.plist，替换掉EFI分区中的文件，重启</p>
-<h3 id="USB"><a href="#USB" class="headerlink" title="USB"></a>USB</h3><p>USB和睡眠的关系比较大，很多时候睡眠失败都是USB的锅，USB需要使用Hackintool定制端口</p>
-<ul>
-<li>首先先到<code>Clover Configurator</code>的内核与驱动补丁中打开解除USB端口数量限制的补丁，相关补丁在注释中会标明</li>
-<li>打开<code>Hackintool</code>，点击USB，可以在下面看到，已经连接过的端口是绿色的</li>
-<li>准备好一个USB3.0的U盘，一个USB2.0的设备，比如键盘鼠标，打开记事本</li>
-<li>把笔记本的USB接口依次用2.0和3.0的设备插一遍，记录下对应的名称</li>
-<li>如果有Type-C的话要正反插，端口不变的就是Type-C+sw，变化的就是Type-C</li>
-<li>根据记录选择连接器类型，没有插过的就选择internal</li>
-<li>选中没有变绿的接口，点击下面的减号删掉</li>
-<li>注意，保证接口数量小于等于15个，USB3.0的算两个</li>
-<li>点击右下角的导出图标</li>
-<li>把生成的ssdt文件放到<code>./EFI/CLOVER/ACPI/patched</code>路径中</li>
-<li>把生成的USBport.kext放到<code>./EFI/CLOVER/kext/Other</code>路径中</li>
-<li>回到<code>Clover Configurator</code>的内核与驱动补丁中关闭解除USB端口数量限制的补丁</li>
-<li>重启</li>
-</ul>
-<p><strong>下面的这些设置需要使用SSDT进行设置，首先下载maciASL</strong></p>
-<a class="btn" href="https://github.com/acidanthera/MaciASL/releases"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<h3 id="亮度"><a href="#亮度" class="headerlink" title="亮度"></a>亮度</h3><p>亮度设置其实有两个方法，第一种是在<code>Clover Configurator</code>中勾选添加PLNF，简单粗暴，但是这个方法和电池驱动有冲突，水火不容，所以建议采用ssdt的方法，下载下面的ssdt文件，然后放到<code>./EFI/CLOVER/ACPI/patched</code>路径中</p>
-<a class="btn" href="https://raw.githubusercontent.com/acidanthera/WhateverGreen/master/Manual/SSDT-PNLF.dsl"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<p>重启之后在偏好设置中会出现显示器亮度滑块，但是不能用键盘调节屏幕亮度，这个我试了很多种方法是都没能成功使用原来的键位调节亮度，所以只用了一个简单粗暴的方法，打开系统偏好设置-键盘-快捷键，点击显示器，点击降低和提高显示器亮度，按下想用的快捷键，注意不要发生冲突</p>
-<h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><p>CPU部分主要是变频的问题，不打补丁的话cpu一直处在睿频模式，很耗电，打补丁使用的是<a href="https://github.com/Piker-Alpha/ssdtPRGen.sh">ssdtPRGen</a></p>
-<ul>
-<li>打开终端</li>
-<li>输入命令<code>curl -o ~/ssdtPRGen.sh https://raw.githubusercontent.com/Piker-Alpha/ssdtPRGen.sh/Beta/ssdtPRGen.sh</code>下载</li>
-<li>输入命令<code>chmod +x ~/ssdtPRGen.sh</code>授予运行权限</li>
-<li>运行脚本，根据提示进行选择，最后会生成ssdt文件</li>
-<li>把生成的ssdt文件放到<code>./EFI/CLOVER/ACPI/patched</code>路径中</li>
-<li>重启</li>
-</ul>
-<p>通过安装软件来判断cpu是否能变频，我用的是<code>Intel Power Gadget</code></p>
-<a class="btn" href="https://software.intel.com/en-us/articles/intel-power-gadget"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<p>做完这些之后基本就是完美黑苹果了，登陆你的Apple ID，接着设置就好了</p>
-<p>以上</p>
-<hr>
-<h2 id="EFI下载"><a href="#EFI下载" class="headerlink" title="EFI下载"></a>EFI下载</h2><p>下载后解压，在<code>Clover Configurator</code>中生成自己的机型相关参数</p>
-<a class="btn" href="https://github.com/Siriusq/Acer-TMP645-Hackintosh/releases/download/v1.0/EFI.zip"><i class="fa fa-arrow-right fa-fw"></i>Acer TravelMate P645-SG</a>
-
-<p>到BIOS里设置clover默认启动就能愉快的用三系统了</p>
-<h1 id="Ubuntu的美化"><a href="#Ubuntu的美化" class="headerlink" title="Ubuntu的美化"></a>Ubuntu的美化</h1><p>实在是看不惯Ubuntu的基佬紫风格，美化一下。打开终端安装插件<code>apt install chrome-gnome-shell</code></p>
-<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><p>使用的主题是<code>Arc Theme</code></p>
-<a class="btn" href="https://github.com/arc-design/arc-theme"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
-
-<ul>
-<li>打开终端输入<code>sudo apt install arc-theme</code>直接安装</li>
-<li>安装完成后打开<code>优化</code></li>
-<li>把<code>主题</code>的<code>应用程序</code>和<code>Shell</code>设置为arc主题即可</li>
-</ul>
-<h2 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h2><p>主题换完后图标也要换，我用的是Papirus</p>
-<ul>
-<li>打开终端，依次输入下面三条命令</li>
-<li><code>sudo add-apt-repository ppa:papirus/papirus</code></li>
-<li><code>sudo apt-get update</code></li>
-<li><code>sudo apt-get install papirus-icon-theme</code></li>
-<li>安装完成后打开<code>优化</code></li>
-<li>把<code>主题</code>的<code>图标</code>设置为papirus即可</li>
-</ul>
-<h2 id="终端"><a href="#终端" class="headerlink" title="终端"></a>终端</h2><ul>
-<li>打开终端</li>
-<li>点击顶栏-<code>配置文件首选项</code></li>
-<li>选择配置文件</li>
-<li>点击<code>颜色</code></li>
-<li>勾选<code>使用透明背景</code></li>
-</ul>
-<h1 id="一点微小的工作"><a href="#一点微小的工作" class="headerlink" title="一点微小的工作"></a>一点微小的工作</h1><p>三系统装完之后进入win10会发现时间不对，慢了8个小时，因为Win10默认BIOS时间为本地时间，而Mac和Linux则是把BIOS时间作为UTC，正好和北京时间相差8小时，所以需要做一点微小的工作调整一下</p>
-<ul>
-<li>使用<code>Win+R</code>打开运行窗口</li>
-<li>输入<code>regedit</code>打开注册表编辑器</li>
-<li>打开路径<code>HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/TimeZoneInformation/</code></li>
-<li>右键新建<code>DWORD</code></li>
-<li>命名为<code>RealTimeIsUniversal</code></li>
-<li>设置数值为<code>1</code></li>
-<li>重启</li>
-</ul>
-<p>折腾的差不多了，开学前的日子就要愉快的肝代码了hhh</p>
-<blockquote>
-<p>感谢：<a href="https://vanilla.amd-osx.com/">AMD OS X Vanilla</a>、<a href="https://fewtarius.gitbook.io/laptopguide/">The Vanilla Laptop Guide</a>、<a href="https://hackintosh.gitbook.io/-r-hackintosh-vanilla-desktop-guide/config.plist-per-hardware/haswell">hackintosh.gitbook.io</a>、<a href="https://sleele.com/2019/06/07/%e4%bd%bf%e7%94%a8hackintool%e5%ae%9a%e5%88%b6%e9%bb%91%e8%8b%b9%e6%9e%9cusb%e9%a9%b1%e5%8a%a8/">sleele的博客</a>、<a href="https://blog.daliansky.net/">黑果小兵</a>、<a href="https://www.cnblogs.com/SemiconductorKING/p/7702410.html">SemiconductorKING</a> 提供的帮助！</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>搞机</category>
-      </categories>
-      <tags>
-        <tag>搞机</tag>
-        <tag>黑苹果</tag>
-        <tag>多系统</tag>
       </tags>
   </entry>
   <entry>
@@ -5714,379 +5292,434 @@
       </tags>
   </entry>
   <entry>
-    <title>英国留学后续日志</title>
-    <url>/%E8%8B%B1%E5%9B%BD%E7%95%99%E5%AD%A6%E5%90%8E%E7%BB%AD%E6%97%A5%E5%BF%97.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">今天终于等到了格拉的uncon，开一贴记录一下换取uncon及后续签证申请的相关事宜。另外格拉上个月正式宣布部分专业延期开学至21年1月，CS院的所有专业都包含在内，所以下半年就要上家里蹲大学了，慢慢更</blockquote>
+    <title>笔记本改造计划</title>
+    <url>/%E7%AC%94%E8%AE%B0%E6%9C%AC%E6%94%B9%E9%80%A0%E8%AE%A1%E5%88%92.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">准备折腾一下笔记本，毕竟不用做建筑狗了，这个笔记本是当年高考完暑假买的，年少无知买了个商务本，众所周知，商务本=性能垃圾+贵，所以大二配完台式后给笔记本装了个Fedora，然后就一直在吃灰，这几天升级Fedora的时候崩了，但是今年9月要去国外读书，笔记本还是得用。计划安装 Win10 LTSC，Ubuntu 18.04 LTS，Macos Mojave三系统，把机械硬盘换成固态，升级网卡</blockquote>
 
 <span id="more"></span>
 
-<h1 id="预定住宿"><a href="#预定住宿" class="headerlink" title="预定住宿"></a>预定住宿</h1><p>英国留学住宿的选择主要有：校内的宿舍（或者学校官方的宿舍）、合租House、校外的学生公寓。大多数人都会选择校外的学生公寓，比较方便，不需要管水电煤等费用，相较house更加安全。公寓的房型主要分En-suite和Studio两种，En-suite一般是有4-6间卧室的套间，每个卧室内有独立卫浴，共享厨房与起居室，类似于国内的合租；Studio则是单人单间，房间内带有厨房和卫浴，类似于自己单独租的房子。Studio相对于En-suite隐私性更好，更安静，<del>也更贵。</del></p>
-<p>一般来说拿到offer之后就可以定房间了，比较想去的几个学校都可以先定上，订的越早越便宜，而且选择的空间也比较大。尽量找不需要押金的公寓，这样跑路的话直接找人转租或者取消就可以了。</p>
-<p>格拉附近比较热门的公寓有 West View（西景）、West Village（西村）、Vita、KC、TS、DM等，下边是出自格拉CS微信群的对比（图片来自某位不愿透露姓名的翟翟）</p>
-<p><img data-src="https://s2.loli.net/2022/05/13/UjZV4PTEzoOiKXk.jpg" alt="英国留学后续日志"></p>
-<p>预定的话可以直接去公寓官网订，也可以找中介，中介有异乡好居和学旅家，我找了学旅家，两家都说有（薛定谔的）返现，不知道什么时候能拿到，拿到回来更。</p>
-<h1 id="换取Uncon"><a href="#换取Uncon" class="headerlink" title="换取Uncon"></a>换取Uncon</h1><p>本科毕业之前大家的offer都是conditional offer，毕业后收集好缺少的材料并扫描成PDF，传到申请系统里去，就可以坐等发uncon了。我是6月24号上传到全部材料，7月7号在申请系统里查到了uncon，8号凌晨收到了邮件。一般毕业季换uncon的时间会长一些，因为换的人太多了。</p>
-<p>换uncon需要扫描上传的材料有</p>
-<ul>
-<li>毕业证原件</li>
-<li>学位证原件</li>
-<li>毕业证翻译件（自己翻译完盖学校的章就可以，不需要放照片）</li>
-<li>学位证翻译件（同上）</li>
-<li>包含所有课程的英文成绩单</li>
-<li>包含所有课程的中文成绩单（这个看具体学校，我在格拉只上传了英文的成绩单）</li>
-</ul>
-<p>下面是我用的毕业证与学位证的翻译件，格式没法调，需要word的康康百度云吧</p>
-<a class="btn" href="https://pan.baidu.com/s/1APNgOpkZaNnytagDF3rhYg"><i class="fa fa-arrow-right fa-fw"></i>密码uwbt</a>
+<p>老规矩先上配置<br>型号：Acer TravelMate P645-SG<br>CPU：Intel Core i7-5500U （2.4GHz&#x2F;2C4T）（垃圾的一批）<br>GPU：NVIDIA 840M 2G (拆掉独显提升性能系列)<br>内存：8G DDR3L 1600Mhz<br>SSD：建兴L8T 128G msata接口<br>HDD：西数 500G 5400转蓝盘<br>网卡：Intel 7265NGW</p>
+<p>准备升级硬件<br>网卡：换成DW1560，方便黑苹果用，淘宝330<br>硬盘：机械硬盘换成三星860EVO 500G，京东559<br>内存：这个还在纠结，准备把插槽4G的换成8G</p>
+<h1 id="硬件升级"><a href="#硬件升级" class="headerlink" title="硬件升级"></a>硬件升级</h1><p>实不相瞒，我这几天拆了四五次电脑，螺丝都给拧花了一个，下面是拆机图，红色框里是网卡的位置，我已经拆了，绿框是内存，黄框是新换的SSD<br><img data-src="https://s2.loli.net/2022/05/13/hlnmf9TeY4is6Xp.jpg" alt="拆机图"><br>估计当年脑子里进了不少水，选了建筑专业就算了，买个笔记本也这么奇葩，青黄不接的5代低压CPU + 青黄不接的8系亮机显卡，唯一的优点就是续航长？</p>
+<h2 id="网卡"><a href="#网卡" class="headerlink" title="网卡"></a>网卡</h2><p>原装的英特尔网卡当然是不能用了，所以要去某宝买黑苹果可以用的网卡，买之前注意接口和网卡长度，一般都是<code>ngff</code>的小卡</p>
+<p>安装的时候把原来的天线接口断开，用指甲挑一下就开了，然后拧螺丝换上新的，再把天线接上</p>
+<p>DW1560在我的笔记本上有一点问题，蓝牙不能用，三个系统都搜索不到蓝牙设备，查阅资料后发现需要屏蔽背面两个识别针脚，最简单粗暴的方法就是用胶带把这两个贴上，下面上图</p>
+<p><img data-src="https://s2.loli.net/2022/05/13/6t4XJmzknyBwLg7.jpg" alt="网卡"></p>
+<p>需要屏蔽的就是红圈里右侧的两个针脚，手残党最好找个镊子贴胶带，注意不要贴到左边的两个。屏蔽之后BIOS自检时间会变长一点，问题不大</p>
+<h2 id="SSD"><a href="#SSD" class="headerlink" title="SSD"></a>SSD</h2><p>老电脑，只有一个MSATA和一个SATA3的接口，上不了M.2就很难受</p>
+<p>把原来的500G蓝盘拆下来扔到硬盘盒里做了移动硬盘，虽然速度很垃圾但是勉强能用，分个区给mac做备份</p>
+<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><p>这个笔记本内存是板载4G + 插槽4G的，就更难受了，升级内存的话只能是4G+8G这种逼死强迫症的组合，所以暂时搁置，到时候不够用了再说</p>
+<h1 id="Win10-LTSC-安装"><a href="#Win10-LTSC-安装" class="headerlink" title="Win10 LTSC 安装"></a>Win10 LTSC 安装</h1><p>首先安装的是老坛酸菜，放在128G的固态中，选择它主要是为了省电+节省硬盘空间</p>
+<h2 id="下载镜像文件"><a href="#下载镜像文件" class="headerlink" title="下载镜像文件"></a>下载镜像文件</h2><p>Win10的镜像文件都可以在<code>MSDN, I Tell You</code>上面下载，下面是传送门</p>
+<a class="btn" href="https://msdn.itellyou.cn/?tdsourcetag=s_pcqq_aiomsg"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
 
-<div class="tabs" id="first-unique-name"><ul class="nav-tabs"><li class="tab active"><a href="#first-unique-name-1"><i class="fa fa-pencil"></i>学士学位证书翻译</a></li><li class="tab"><a href="#first-unique-name-2"><i class="fa fa-pencil"></i>毕业证书翻译</a></li></ul><div class="tab-content"><div class="tab-pane active" id="first-unique-name-1"><p><strong>学士学位证明翻译</strong></p>
-<p>Bachelor’s Degree Certificate</p>
-<p>This is to certify that XXX, male, born on June 26, 1997, has completed an undergraduate program in Architecture at XXXXX University and graduated. According to Regulations of the People’s Republic of China on Academic Degrees, he is awarded the degree of Bachelor of Science in Architecture.</p>
-<p>Chairman of Degree Evaluation Committee: Xxxxx Xxx      XXXXX University<br>Certificate No.: XXXXXXXXXXXXXX      June 18th, 2020</p></div><div class="tab-pane" id="first-unique-name-2"><p><strong>毕业证书翻译</strong></p>
-<p>Graduation Certificate</p>
-<p>XXX XXX, male, born on June 26, 1997, studied a five-year program in Architecture at our school from September 2015 to June 2020. Having completed all courses specified in the teaching plan and passed the examinations, he is allowed to graduate.</p>
-<p>School: XXXXX University      President: Xxxxx Xxx<br>Certificate No.: XXXXXXXXXXXXXXXX      June 12th, 2020</p></div></div></div>
+<p>在左侧操作系统栏中找到相对应的版本下载即可，上面的都是<code>ed2k</code>链接，建议使用迅雷下载（莫得办法），另外有能力的话可以给站长一些支持，毕竟坚持十几年也很不容易</p>
+<h2 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h2><p>win10的镜像越来越大了，现在1903的<code>install.wim</code>已经超过4G。所以还是要用UltraISO来刻录，以前<code>install.wim</code>都不到4个G，制作安装盘的时候直接把iso解压到U盘就可以用了。</p>
+<p>老坛酸菜的镜像没有大于4G的文件，所以找一个8G及以上的U盘，把镜像直接解压到U盘就可以了</p>
+<h3 id="UltraISO刻录教程"><a href="#UltraISO刻录教程" class="headerlink" title="UltraISO刻录教程"></a>UltraISO刻录教程</h3><p>安装ltsc的请跳过，这个是制作1903启动盘的步骤</p>
+<ul>
+<li>插入U盘</li>
+<li>以管理员身份运行UltraISO</li>
+<li>选择<code>文件</code>——<code>打开</code></li>
+<li>在弹出窗口中找到要用的ISO文件，点击<code>打开</code></li>
+<li>点击<code>启动</code>——<code>写入硬盘镜像</code></li>
+<li>在弹出窗口中选择好自己的U盘</li>
+<li>写入方式使用默认的<code>USB-HDD+</code></li>
+<li>点击<code>写入</code></li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li>插上启动盘，然后开机狂按<code>F2</code>进入<code>BIOS</code></li>
+<li>设置U盘为首选启动项</li>
+<li>保存并退出BIOS</li>
+<li>系统转一会圈之后就会进入语言选择界面，一般默认就行，点击<code>下一步</code></li>
+<li>使用<code>Shift</code>+<code>F10</code>打开终端</li>
+<li>输入<code>diskpart</code>打开磁盘管理</li>
+<li>输入<code>list disk</code>，列出硬盘</li>
+<li>找到安装目标磁盘的序号，输入<code>select disk 序号</code>回车</li>
+<li>输入<code>clean</code>回车</li>
+<li>输入<code>convert gpt</code>转换gpt格式</li>
+<li>点击<code>现在安装</code></li>
+<li>接受条款然后点击<code>下一步</code></li>
+<li>选择<code>自定义</code></li>
+<li>选择目标磁盘，点击<code>下一步</code></li>
+<li>重启的时候拔下启动U盘</li>
+<li>剩下的一路无脑下一步就装完了</li>
+</ul>
+<h2 id="激活"><a href="#激活" class="headerlink" title="激活"></a>激活</h2><p>LTSC没有数字权利激活(明明LTSB有的，咋到新版本就没了呢，强迫症表示不爽)，所以要用<code>KMS激活</code><br>右键单击开始菜单微软图标，使用管理员身份运行<code>PowerShell</code>，依次输入下列指令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">slmgr -ipk M7XTQ-FN8P6-TTKYV-9D4CC-J462D</span><br><span class="line">slmgr -skms kms.03k.org</span><br><span class="line">slmgr -ato</span><br><span class="line">slmgr -dlv</span><br></pre></td></tr></table></figure>
 
-<h1 id="保证金"><a href="#保证金" class="headerlink" title="保证金"></a>保证金</h1><p>保证金是一项英国政府判断你是否有足够的经济能力完成学业的依据，具体的操作是开一个存款证明，办签证时会随机抽查存款证明，抽到了会发邮件给你。</p>
-<ul>
-<li>保证金金额大概在30w人民币，具体数额是按照学费+所在地区9个月生活费来算的，为了保险起见会在这个数额上再加几千英镑，生活费伦敦地区标准为1265镑&#x2F;月，其他地区为1015镑&#x2F;月</li>
-<li>一般存定期并设置自动转存</li>
-<li>存满28天之后就可以在网上预约签证了</li>
-<li>然后在办理签证的前几天去银行开存款证明和流水，不用开太早，因为存款证明开具日期和网上签证预约日期的间隔不能超过31天</li>
-<li>英镑和人民币可以混存，总金额够了就行</li>
-<li>最好存在自己名下，存在父母名下需要多开具亲子关系证明以及授权使用资金的证明</li>
-<li>建议存在中农工建这类大行，不建议存在农村信用社一类的地方</li>
-<li>不能用理财产品代替</li>
-</ul>
-<p><img data-src="https://s2.loli.net/2022/05/13/K2Eq8rUmZeNtBgY.png" alt="英国留学后续日志"></p>
-<h1 id="换汇"><a href="#换汇" class="headerlink" title="换汇"></a>换汇</h1><p>在去英国之前建议提前换好英镑，在常用的银行换就可以，到英国办好当地银行卡后通过跨境汇款转过去。下面是一些情报</p>
-<ul>
-<li>购买英镑的时候分为<strong>现汇</strong>和<strong>现钞</strong>两个选项，现汇就是存在银行卡里的钱，现钞就是换取的纸币</li>
-<li>换汇一般就是购买英镑现汇存在银行卡里</li>
-<li>临行前可以换一部分现钞，供落地后应急用，不用太多，海关不允许携带5000美元以上的等值外币出境</li>
-<li>每人每年的换汇额度是5万美元</li>
-<li>换汇的时候看的是<strong>购汇汇率</strong>而不是<strong>结汇汇率</strong>。购汇汇率是你向银行购买英镑的汇率，结汇汇率是你向银行出售英镑的汇率</li>
-<li>建议像我一样的贫困人口每天多看两眼汇率，万一英镑再跌到8.1呢</li>
-<li>英镑存定期的利息非常低，三个月存期利率只有0.1%，而人民币的是1.35%</li>
-<li>跨境汇款有被锁的风险，建议出国前把身份证银行卡留给父母，以防万一</li>
-<li>换汇之后可以在手机银行APP上预约到银行网点去现钞，我取了1000英镑，小城市里只有50英镑的大额纸钞，大城市可能会换到5磅10磅这样的小面值</li>
-</ul>
-<h1 id="肺结核体检"><a href="#肺结核体检" class="headerlink" title="肺结核体检"></a>肺结核体检</h1><p>肺结核体检是办理T4签证的必要材料，一般在办签证前两三个月就可以做了。</p>
-<ul>
-<li>肺结核体检需要到指定的医院做，否则无效。定点医院共有15家，医院地址以及联系方式请看<a href="https://www.gov.uk/government/publications/tuberculosis-test-for-a-uk-visa-clinics-in-china/approved-tuberculosis-testing-clinics-in-china"><strong>签证官网</strong></a></li>
-<li>费用为550元人民币，收费方式为现金或支付宝，不支持医保卡、信用卡或其他支付方式</li>
-<li>需要提前预约，通常提前一或两个工作天预约即可</li>
-<li>预约方式有电话和邮件两种，部分医院（如济南出国移民体检中心）还可以在网站上预约</li>
-<li>无需空腹，正常饮食</li>
-<li>需要携带的材料<ul>
-<li>有效期半年以上的护照原件，不接受任何其他证件</li>
-<li>护照复印件一张</li>
-<li>两张半年内35mmx45mm免冠白底彩照（需要露出眉毛及耳朵）</li>
+<p>中途会弹出对话框，全点确定就行</p>
+<p>剩下的过程就是安装软件，我另一篇文章总结了一些好用的软件，附上传送门</p>
+<a class="btn" href="https://siriusq.top/%E8%BD%AF%E4%BB%B6%E6%95%B4%E7%90%86.html"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<h1 id="Ubuntu-18-04-LTS-安装"><a href="#Ubuntu-18-04-LTS-安装" class="headerlink" title="Ubuntu 18.04 LTS 安装"></a>Ubuntu 18.04 LTS 安装</h1><h2 id="下载镜像文件-1"><a href="#下载镜像文件-1" class="headerlink" title="下载镜像文件"></a>下载镜像文件</h2><p>Ubuntu的镜像文件去官网下，传送门</p>
+<a class="btn" href="https://ubuntu.com/download/desktop"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<h2 id="制作启动盘-1"><a href="#制作启动盘-1" class="headerlink" title="制作启动盘"></a>制作启动盘</h2><p>Ubuntu的启动盘可以使用软件刻录，我比较懒，就直接把iso镜像解压到U盘里了，然后在bios页面添加U盘对应的efi启动项，就可以就如安装程序了</p>
+<h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><ul>
+<li>选择<code>install ubuntu</code>并回车开始安装</li>
+<li>选择语言以及键盘布局</li>
+<li>选择<code>最小安装</code>节省时间</li>
+<li><code>装Ubuntu更新</code>这个看心情选</li>
+<li><code>安装类型</code>选择<code>其他选项</code></li>
+<li>找到要安装Ubuntu的目标磁盘</li>
+<li>点击左下角的<code>+</code>进行分区，分区方法有很多种，我分了三个区<ul>
+<li>第一个是<code>EFI系统分区</code>，我分了512M</li>
+<li>第二个是<code>交换空间</code>，也就是虚拟内存，和你的实际内存一样大就行，我分了8192M，也就是8G</li>
+<li>第三个是主分区，挂载点是<code>/</code>，用于<code>Ext4日志文件系统</code>，看个人需求，我分了160G</li>
 </ul>
 </li>
-<li>流程很快，耗时约为半小时，换上衣服拍下胸片，然后医生询问下病史就结束了</li>
-<li>体检结果正常的话，上午体检下午可以出结果并发出证书，下午体检则需第二天早上才能发出证书。</li>
-<li>凭护照取证书，如果不方便可以发快递到付，建议自取</li>
-<li>证书有效期通常为六个月，特殊情况下为三个月</li>
-<li>如果出现问题的话，医院会要求做痰培养了，这个过程就很漫长了，需要等两个月。但是如果你认为身体没有问题的话建议换一家医院重新做体检，不要说自己在其他医院做过（信息来源：知乎）</li>
-<li>英国地址填自己的学校，懒的话可以不填，没什么影响</li>
+<li>分区完成后选中<code>efi</code>分区然后点击<code>现在安装</code></li>
+<li>选择时区，创建用户名和密码</li>
+<li>安装完成后会要求重启</li>
 </ul>
-<p>下面是我10月13日在济南做肺结核的记录</p>
+<h2 id="添加grub引导"><a href="#添加grub引导" class="headerlink" title="添加grub引导"></a>添加grub引导</h2><p>重启后你会神奇的发现直接俄进入了windows系统，因为ubuntu没有添加引导，我又用懒人方法在bios中添加了grub的efi启动项，然后把他设为首选启动项，这样Ubuntu和Win就可以共存了</p>
+<h1 id="Macos-Mojave-10-14-6-折腾"><a href="#Macos-Mojave-10-14-6-折腾" class="headerlink" title="Macos Mojave 10.14.6 折腾"></a>Macos Mojave 10.14.6 折腾</h1><p>最后一个也是最难搞的一个就是黑苹果了，折腾了好几天，绕了不少弯，安装流派依旧是<code>Vanilla</code></p>
+<p>我制作安装盘的过程嘛。一言难尽，直接放上参考教程，<a href="https://fewtarius.gitbook.io/laptopguide/">The Vanilla Laptop Guide</a>，这个网站我到最后修复睡眠问题的时候才发现，早点发现的话就不用绕那么多圈子了。</p>
+<p><strong>建议直接使用上面的方法，下面是本人的折腾记录</strong>，我会把我的EFI上传到github，下载下来替换掉刻录启动盘的时候生成的，直接用就行，记得在修改机型的相关信息</p>
+<p>完美程度95%</p>
 <ul>
-<li>济南的肺结核检测在山医大三院的出国体检中心做，地址是天桥区无影山路38号，进门后右手边红屋顶的房子就是</li>
-<li>我是七点四十五到的，医院大门口会有保安测体温。</li>
-<li>我到的时候前面只有三个人。进入体检中心后出示身份证和健康码，然后在门口机器上取号</li>
-<li>取号后领两张表，再测一次体温，工作人员会把体温写在表的右上角，过程中有什么疑问随时可以问工作人员</li>
-<li>填完表等到八点半，拿着护照去拍照，拍完给一张黑白的照片</li>
-<li>拍完照出来等待叫号，叫到自己的号就拿着材料去最里面的服务台</li>
-<li>把护照原件、复印件、刚拍的黑白照片、两张小两寸白底照片（要在背面也上自己名字）、填写的两张表格交给工作人员</li>
-<li>然后会拍照，还有在一张表上签字</li>
-<li>然后付款，支付宝现金均可</li>
-<li>付完款后工作人员把护照原件还给你，并给一个手环，手环是开储物柜用的，上面有对应的柜子编号</li>
-<li>拿着手环去玻璃门那里刷脸进去，进去之后有工作人员引导你到更衣室并给一件蓝色的上衣</li>
-<li>把上衣首饰全部摘掉，穿上那件蓝色的衣服，只带着护照和手环出去</li>
-<li>工作人员会告诉你去哪个房间做检测，在机器上做一个类似叉腰的动作，双肩向上同时贴到机器上，然后工作人员会让深吸一口气憋住，然后等工作人员喊可以了就可以出来了</li>
-<li>出来之后回到更衣室把衣服换好，然后把蓝色上衣扔进门口的回收箱</li>
-<li>走廊里的工作人员会让你到另一侧的医生室，医生会问一些问题，比如有没有得过肺结核、有没有和结合病人有过接触</li>
-<li>然后摘口罩拍照</li>
-<li>然后出去找走廊里的小姐姐把你带出去</li>
-<li>出去之后回到大门口的前台把手环还回去就可以溜了</li>
-<li>工作人员说因为疫情的原因，第二天下午三点后才能取报告，但是实测当天下午四点半就可以拿到，可以打电话问一下</li>
+<li>读卡器和视频输出我用不到就没搞</li>
+<li>读卡器据说有<code>Sinetek-rtsx.kext</code>可以驱动，有需要的可以试一下，我没有SD卡没法测试</li>
+<li>手头没有多余的视频线，不知道能不外接显示器，等回学校再测试一下</li>
 </ul>
-<h1 id="国际旅行健康证"><a href="#国际旅行健康证" class="headerlink" title="国际旅行健康证"></a>国际旅行健康证</h1><p>这个健康证还有一个疫苗接种证都是很迷惑的东西，俗称小红本和小黄本。根据目前了解的信息，两者都是可做可不做的，入境时有非常小的概率抽查国际旅行健康证，被查到没有证也没什么事，只是耽误一点时间去做个免费体检，大概半小时，疫苗接种证则没听说过有被查到的。所以这俩我就不打算做了</p>
-<h1 id="签证"><a href="#签证" class="headerlink" title="签证"></a>签证</h1><h2 id="预约"><a href="#预约" class="headerlink" title="预约"></a>预约</h2><p>签证需要等CAS下来才能去办，CAS一般在入学前的3个月开始陆续发放，办理签证前需要在网上预约，最近学生签证也改名了，原来叫 Tier 4，现在直接叫 student visa。预约的时候建议挂全局代理，预约网站在国内的使用体验极差。</p>
-<a class="btn" href="https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/sort/country-nationality?p=student_out_uk&_ga=2.246378372.1460787317.1603017805-1850455343.1600247708"><i class="fa fa-home fa-fw"></i>预约网址</a>
+<table>
+<thead>
+<tr>
+<th align="center">类别</th>
+<th align="center">驱动</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">电池</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">显示器</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">亮度调节</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">睡眠</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">USB</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">键盘</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">触摸板</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">声卡</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">CPU变频</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">Airdrop</td>
+<td align="center">OK</td>
+</tr>
+<tr>
+<td align="center">读卡器</td>
+<td align="center">N&#x2F;A</td>
+</tr>
+<tr>
+<td align="center">HDMI输出</td>
+<td align="center">N&#x2F;A</td>
+</tr>
+<tr>
+<td align="center">VGA输出</td>
+<td align="center">N&#x2F;A</td>
+</tr>
+</tbody></table>
+<hr>
+<p>下面是我一言难尽的折腾过程，请点击下面传送门跳过</p>
+<a class="btn" href="#EFI%E4%B8%8B%E8%BD%BD"><i class="fa fa-paper-plane fa-fw"></i>我是传送门</a>
 
-<p>预约的步骤可以去看<a href="https://weibo.com/u/7305573611">@PhD威宇</a>的微博文章<a href="https://weibo.com/ttarticle/p/show?id=2309404537047783178301">保姆级手把手教你申请T4签证</a>，大佬写的非常详细，佩服大佬的耐心。T4和现在的 student visa 稍有出入，大体的步骤都是一样的。（我才不是因为懒不想写）</p>
-<p><strong>注意下载checklist</strong></p>
-<p>按照步骤交完签证申请费和IHS之后会跳转到VFS的网站上，这个网站是用来上传材料和预约递签日期地点用的，有一些增(keng)值(qian)服务可以选。这个网站深得学校教务选课系统的真传，同款土豆服务器，而且不挂全局代理基本没法用，挂了全局代理也会有各种各样的bug。</p>
-<p>Student visa 一般只有两个材料需要上传，checklist 会有说明</p>
+<h2 id="制作启动盘-2"><a href="#制作启动盘-2" class="headerlink" title="制作启动盘"></a>制作启动盘</h2><p>下面只是我九曲十八弯的安装盘翻车记录，仅供参考，因为一些细节记不清了，启动盘我是用台式机上的黑果刻的，安装第二台黑果的时候有另一台黑果用会简单不少</p>
 <ul>
-<li>护照信息页</li>
-<li>肺结核报告</li>
+<li>一开始的我还是在win上用gibmacos制作，因为这个方法用的是恢复镜像，所以安装的时候要在线下载安装镜像，然而我的网卡一直不能驱动，所以就很尴尬的卡住了</li>
+<li>然后我就满世界的找教程，慌不择路的选了一个，跟着它一步一步的走，然后发现，我怎么搞了个PE盘？这镜像明明是Mojave 10.14.6 啊？？？</li>
+<li>然后我又下载了Mojave的官方镜像，刻录完后用Clover添加了EFI分区，换上了Vanilla的plist，开机发现没有install macos这个选项，再次尬住</li>
+<li>最后我是这么解决掉。。。把最后一次刻录的EFI分区文件整个替换成了第一步在win上刻录的那个EFI分区文件，然后再换上Vanilla的plist文件，简直蠢到家了</li>
 </ul>
-<p>建议提前在网站上上传好材料，如果去签证中心现场上传的话会收取100块钱的扫描费用（奸商！）。</p>
-<p>另外一些签证中心（说的就是你济南，还有西安）还会收取服务费，大概500块钱，在VFS那个网站上交。</p>
-<p>预约的时候可以隔几个小时上去一次，看看有没有更早的位置。我一开始预约的是23号递签，后来刷出来了14号和16号的，就在网站上更改了预约时间，更改免费。</p>
-<p>预约好时间、传完材料、交完钱之后会发给你一个<code>Appointment Confirmation Notice</code>，记得打印出来带着</p>
-<h2 id="递签"><a href="#递签" class="headerlink" title="递签"></a>递签</h2><p>我最终去递签的时候只带了下面几个材料</p>
+<h3 id="Mojave-原版镜像下载"><a href="#Mojave-原版镜像下载" class="headerlink" title="Mojave 原版镜像下载"></a>Mojave 原版镜像下载</h3><p>原版镜像可以用<code>macOS Mojave Patcher Tool</code>下载</p>
+<a class="btn" href="http://dosdude1.com/mojave/"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<p>下载完成后打开软件，在顶栏中选择<code>Tools</code>-<code>Download macOS Mojave</code>即可</p>
+<h3 id="刻录安装盘"><a href="#刻录安装盘" class="headerlink" title="刻录安装盘"></a>刻录安装盘</h3><p>这一步我用的软件是<code>DiskMaker X 8 for MacOS Mojave</code></p>
+<a class="btn" href="https://diskmakerx.com/download/"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<p>注意不要下载最新的，那是给Catalina用的</p>
 <ul>
-<li>护照原件</li>
-<li>checklist</li>
-<li>Appointment Confirmation Notice</li>
-<li>肺结核报告原件</li>
+<li>下载完成后打开软件，会提示你是否更新，选择<code>Not now, thanks</code>即可</li>
+<li>选择<code>Select a macOS Installation App</code>，找到上一步下载的安装镜像，点击选取</li>
+<li>选择<code>An 8 GB USB thumb drive（ERASE ALL DISL）</code></li>
+<li>选择你的U盘然后点击<code>Choose this disk</code></li>
+<li>最后会要求你输入密码，然后等待一段时间会提示你安装盘刻录完成</li>
 </ul>
-<p>最后工作人员收走了这些材料</p>
+<h3 id="创建EFI分区"><a href="#创建EFI分区" class="headerlink" title="创建EFI分区"></a>创建EFI分区</h3><p>这一步需要使用<code>Clover EFI bootloader</code></p>
+<a class="btn" href="https://sourceforge.net/projects/cloverefiboot/"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<p>下载安装，一路继续，在<code>安装类型</code>那里点击左下角的<code>自定</code>，<code>安装位置</code>选择自己的U盘</p>
+<p><strong>UEFI设置</strong></p>
 <ul>
-<li>护照原件</li>
-<li>checklist 的第一页</li>
-<li>Appointment Confirmation Notice</li>
+<li>仅安装UEFI开机版本</li>
+<li>安装Clover到EFI系统区</li>
+<li>在UEFI Drivers里面勾选这三个选项<ul>
+<li>AptioMemoryFix</li>
+<li>PartitionDxe</li>
+<li>ApfsLoader</li>
 </ul>
-<p>下面是我在济南递签的流程，我是12:13进去的，12:25就出来了</p>
+</li>
+</ul>
+<p>不知道为什么，我这样创建的安装盘没能成功进入安装页面，所以我把第一次用gibmacos创建的EFI文件夹直接复制到U盘上替换掉了原来的EFI文件夹</p>
+<h3 id="替换config-plist"><a href="#替换config-plist" class="headerlink" title="替换config.plist"></a>替换config.plist</h3><p>这一步要找到自己的CPU所对应的<code>config.plist</code>文件，下载后替换EFI文件中的<code>config.plist</code>。github上已经有大神按照CPU代数制作了相应的文件，记得把机型设置成<code>MacBook Air7,2</code></p>
+<a class="btn" href="https://github.com/corpnewt/Hackintosh-Guide/tree/master/Configs"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<p>这里说明一下CPU的代号对应问题</p>
 <ul>
-<li>济南签证中心地址在济南市历下区经十路11890号北京银行5楼</li>
-<li>从北京银行大厦的南门进，进去后在右手边向保安大叔出示健康码并测量体温</li>
-<li>用微信扫描桌面立牌上的二维码，填写姓名手机号等个人信息进行登记</li>
-<li>做四号电梯（最里面右手边那个）上5楼</li>
-<li>出电梯后左手边可以看到工作人员在柜台前面，会问是不是来办签证，然后带你到签证中心门口，测量体温后经过安检门进入</li>
-<li>进入之后出示护照、checklist、notice这几个材料，然后工作人员会问姓名和出生日期，并给你一张号码纸</li>
-<li>进去等叫号，左手边有几排椅子，椅子前面的柱子上挂着电视，会显示叫号信息</li>
-<li>人少的话工作人员就让直接去柜台，去柜台交护照、checklist、notice</li>
-<li>工作人员会问你办不办加急，问护照是自取还是快递，快递的话会给你一张快递单填写，然后交现金80元，可以找零</li>
-<li>工作人员没有提起过短信服务，短信也确实没什么用</li>
-<li>等一会工作人员会把不要的材料都退给你，快递的会给一张EMS快递单回执</li>
-<li>再回去等叫号，叫到号去7号室拍照录指纹</li>
-<li>先会让你报一下姓名和出生日期，然后摘眼镜和口罩拍照</li>
-<li>然后采指纹，先是右手四个手指并排，然后左手四个手指，最后是两个大拇指一起</li>
-<li>结束之后会给你张回执，就可以走了</li>
-<li>回家默默等快递把护照寄回来</li>
+<li>CoffeeLake - 第八代CPU</li>
+<li>Haswell - 第四代CPU</li>
+<li>Ivy Bridge - 第三代CPU</li>
+<li>KabyLake -第七代CPU</li>
+<li>Skylake - 第六代CPU</li>
 </ul>
-<h1 id="订机票"><a href="#订机票" class="headerlink" title="订机票"></a>订机票</h1><p>机票我是在携程买的，也可以直接官网购买或者打电话购买</p>
-<p>机票最好早买，早买一般都很便宜。我亲眼见证了我的机票从4200元涨价到了5500元，现在涨到了15000元。我在5500的时候买入的，买入第二天晚上就涨到了15000。</p>
-<p>我们买的一般都是留学生机票，会有额外的行李额度，一般是两件不超过23kg的28寸托运行李和一件不超过20寸的手提行李，我一开始以为需要签证才能购买留学生机票，所以错过了4200的低价，其实买的时候完全不需要签证等证明材料。携程的要求是在飞机起飞前三天上传好签证、cas、offer、护照等证明材料就可以。能早买就早买吧。</p>
-<p>另外由于今年疫情的影响，有些飞机是不一定能飞的，没有经过民航局审批，但是他也在卖票，建议买票之前先查询一下。因为有些航空公司退票只给退代金券，就很坑。</p>
-<p>飞英国的机票除了去伦敦的，基本都要转机，转机机场一般有荷兰阿姆斯特丹、芬兰赫尔辛基、阿联酋迪拜、伦敦希思罗等。购票时看好是否是行李直挂，不是直挂的话转机的时候需要重新办理行李托运手续，麻烦且耗时，要留足充分的时间。</p>
-<p>此外如果飞到大学所在城市的机票很贵的话可以看一下飞往临近城市的机票，举个栗子，我是一开始打算从上海飞格拉斯哥，但是去格拉斯哥的机票已经都在一万多了，然鹅去爱丁堡的机票只有五千多，所以我就买了去爱宝的机票，落地后再几个人一起包车直接到格拉宿舍楼下，包车大概在100胖，三四个人一起分担也不贵。</p>
-<h1 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h1><p>注册一般分为学术注册（Academic Registration）和财务注册（Financial Registration），学校会给提前发一封邮件告诉你注册的网址、用户名和密码，记得修改自己的密码。</p>
-<h2 id="学术注册"><a href="#学术注册" class="headerlink" title="学术注册"></a>学术注册</h2><p>这里以格拉为例，学术注册包含以下内容</p>
+<p>没错，中间单单少了我那奇葩的第五代CPU-Broadwell，所以我就用第四代的文件代替了，第五代就是第四代的一个小升级，差不多能用</p>
+<p>由于Github上并没有下载按钮，所以我们需要点击要下载的文件，然后点击页面上方的<code>Raw</code>，右键另存为<code>config.plist</code></p>
+<h3 id="加载kext"><a href="#加载kext" class="headerlink" title="加载kext"></a>加载kext</h3><p>kext就相当于驱动，由于苹果的官方驱动只针对特定型号的硬件，所以我们需要找到适合自己硬件的kext来驱动，需要的文件有</p>
 <ul>
-<li>确认课程信息</li>
-<li>确认姓名、性别、出生日期以及学生ID</li>
-<li>填写宗教信仰与国籍</li>
-<li>填写在英国的住址（Term Address）</li>
-<li>填写个人邮箱地址与电话号码</li>
-<li>是否有残疾</li>
-<li>添加紧急联系人</li>
-<li>填写 Statistical Information，就跟查户口一样，包括性取向、有没有孩子等问题</li>
-<li>上传照片，这个照片会用在学生证上，照片的标准和护照的一样</li>
-<li>上传护照ID页</li>
+<li><a href="https://github.com/acidanthera/VirtualSMC/releases">VirtualSMC.kext</a> - 最核心的kext，下载下来的压缩包里有几个附属kext，也要一起使用</li>
+<li><a href="https://github.com/acidanthera/Lilu/releases">Lilu.kext</a> - 我觉得这是个类似运行库的东西</li>
+<li><a href="https://github.com/acidanthera/WhateverGreen/releases">WhateverGreen.kext</a> - 显卡补丁</li>
+<li><a href="https://github.com/acidanthera/VoodooPS2/releases">VoodooPS2.kext</a> - 键盘和触摸板的驱动</li>
+<li><a href="https://github.com/acidanthera/AppleALC/releases">AppleALC.kext</a> - 声卡补丁</li>
+<li><a href="https://github.com/Mieze/IntelMausiEthernet">IntelMausiEthernet.kext</a> - 有线网卡补丁</li>
+<li><a href="https://github.com/acidanthera/AirportBrcmFixup/releases">AirportBrcmFixup.kext</a> - 无线补丁</li>
+<li><a href="https://bitbucket.org/RehabMan/os-x-brcmpatchram/downloads/">BrcmFirmwareData.kext</a> - 无线网卡补丁</li>
+<li><a href="https://bitbucket.org/RehabMan/os-x-brcmpatchram/downloads/">BrcmPatchRAM2.kext</a> - 和上一个在一个压缩包里</li>
+<li><a href="https://bitbucket.org/RehabMan/os-x-fake-pci-id/downloads/">FakePCIID.kext</a> - pci补丁</li>
+<li><a href="https://bitbucket.org/RehabMan/os-x-fake-pci-id/downloads/">FakePCIID_Broadcom_WiFi.kext</a> - 和上一个在一个压缩包里</li>
 </ul>
-<p>学术注册完成后就可以选课（Enroll）了</p>
-<h2 id="财务注册"><a href="#财务注册" class="headerlink" title="财务注册"></a>财务注册</h2><p>财务注册就是交学费，常见的方式有电汇、信用卡付款等，也有部分学校支持支付宝或银联卡支付。</p>
-<p>我用的方法是信用卡分期付款，部分学校对于全款付学费会有优惠折扣，然而格拉并没有。。。如果学校对全款支付学费没有优惠的话建议使用分期付款，毕竟能把暂时不用交的前放在英国的银行账户里吃利息，几万英镑产生的利息也不少的。</p>
-<p>我交学费的过程比较曲折。。。一开始我用的信用卡是建行的VISA卡，但是这张卡只能用人民币还款，我早买下的英镑不能拿来还款，所以果断办新卡。我先把建设银行账户里的英镑跨行转账到了中国银行的账户里，然后办了中国银行的卓隽英镑卡，可以直接用英镑还款。</p>
-<p>这张卡建议在中国银行的APP上申请，下卡非常快，我从申请到拿到卡只用了3天。注意申请的时候职业不要选择学生，直接选择待业，剩下的收入啥的胡乱写就行。咱也不知道为啥，这张卡明明是给留学生用的，但是选择学生身份申请的话大概率直接秒拒，很迷惑。另外不建议到网点去办理，工作人员对这类卡不太了解，而且办卡速度很慢，我还在微博上看到有人网点办英镑卡，结果拿到手是美元卡，没法用。</p>
-<p>我当时拿到的额度是1000英镑，少得可怜，而格拉分期付款的第一笔款需要2933磅。如果不嫌麻烦的话可以分三次刷1000英镑，刷完一次就还款。然而我比较懒，就我直接向信用卡里转账了3000磅，一次划掉。</p>
-<h1 id="行李指南"><a href="#行李指南" class="headerlink" title="行李指南"></a>行李指南</h1><p>我在国内买了很多杂七杂八的行李，也不知道行李箱里能不能装得下hhh</p>
-<p>下面只是我想到的行李，到时候不一定会全带</p>
-<h2 id="登机行李"><a href="#登机行李" class="headerlink" title="登机行李"></a>登机行李</h2><h3 id="文件证件类"><a href="#文件证件类" class="headerlink" title="文件证件类"></a>文件证件类</h3><ol>
-<li>护照</li>
-<li>与护照一起寄回来的BRP说明</li>
-<li>CAS</li>
-<li>租房合同</li>
-<li>语言成绩单</li>
-<li>学术成绩单</li>
-<li>毕业证学位证（记得把外面的壳子拔下来，壳子没用）</li>
-<li>证件照</li>
-<li>入境前48小时填写的那张表</li>
-<li>肺结核报告</li>
+<p>把这些文件放到<code>./EFI/CLOVER/kext/Other</code>路径中</p>
+<h2 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h2><p>上一篇中写过一部分，复制粘贴大法</p>
+<h3 id="BIOS设置"><a href="#BIOS设置" class="headerlink" title="BIOS设置"></a>BIOS设置</h3><ol>
+<li>开机进入BIOS(快捷键为F2)，将所有设置设为默认</li>
+<li>关闭<code>Secure boot</code>,保存退出</li>
+<li>重启再次进入BIOS，选择<code>Boot Device</code>的首选项为<strong>U盘</strong></li>
+<li>从U盘引导后会进入Clover菜单，选择<code>Boot macOS Install from OS X Base System</code>回车，Clover默认会开启啰嗦模式，就是在屏幕上滚动显示状态，跑完就会进入MacOS安装程序，出现选择语言的菜单</li>
 </ol>
-<h3 id="现金卡片"><a href="#现金卡片" class="headerlink" title="现金卡片"></a>现金卡片</h3><ol>
-<li>银行卡</li>
-<li>英国手机卡</li>
-<li>卡针</li>
-<li>英镑现金</li>
-<li>签字笔</li>
-</ol>
-<h3 id="防疫物资（少量）"><a href="#防疫物资（少量）" class="headerlink" title="防疫物资（少量）"></a>防疫物资（少量）</h3><ol>
-<li>口罩</li>
-<li>一次性手套</li>
-<li>护目镜或面罩</li>
-</ol>
-<h3 id="电子产品"><a href="#电子产品" class="headerlink" title="电子产品"></a>电子产品</h3><ol>
-<li>手机</li>
-<li>充电宝</li>
-<li>相机</li>
-<li>电脑</li>
-<li>平板</li>
-<li>充电器</li>
-<li>数据线</li>
-<li>耳机</li>
-<li>多国旅行转换插头</li>
-</ol>
-<h3 id="葛优瘫用品"><a href="#葛优瘫用品" class="headerlink" title="葛优瘫用品"></a>葛优瘫用品</h3><ol>
-<li>拖鞋</li>
-<li>颈枕</li>
-<li>眼罩</li>
-<li>耳塞</li>
-<li>旅行洗漱包</li>
-<li>小零食</li>
-</ol>
-<h2 id="托运行李"><a href="#托运行李" class="headerlink" title="托运行李"></a>托运行李</h2><h3 id="药品防疫类"><a href="#药品防疫类" class="headerlink" title="药品防疫类"></a>药品防疫类</h3><ol>
-<li>口罩</li>
-<li>一次性手套</li>
-<li>面罩</li>
-<li>创可贴</li>
-<li>酒精棉片&#x2F;酒精湿巾</li>
-<li>感冒灵</li>
-<li>藿香正气胶囊</li>
-<li>西瓜霜</li>
-<li>甲硝锉</li>
-<li>诺氟沙星</li>
-<li>皮炎平</li>
-<li>红霉素软膏</li>
-<li>体温计&#x2F;测温枪</li>
-<li>个人日常用药</li>
-<li>紫外线杀毒灯</li>
-</ol>
-<h3 id="电子产品及配件"><a href="#电子产品及配件" class="headerlink" title="电子产品及配件"></a>电子产品及配件</h3><ol>
-<li>英标转换插头</li>
-<li>插排</li>
-<li>充电电池套装</li>
-<li>鼠标键盘</li>
-<li>剃须刀</li>
-<li>各种充电器</li>
-<li>耳机</li>
-<li>计算器</li>
-<li>移动硬盘</li>
-<li>U盘&#x2F;读卡器</li>
-<li>路由器</li>
-<li>手机壳</li>
-<li>钢化膜</li>
-<li>手机平板折叠支架</li>
-<li>笔记本电脑支架</li>
-<li>相机三脚架</li>
-<li>网线</li>
-<li>鼠标垫</li>
-</ol>
-<h3 id="生活用品及工具"><a href="#生活用品及工具" class="headerlink" title="生活用品及工具"></a>生活用品及工具</h3><ol>
-<li>指甲钳挖耳勺套装</li>
-<li>无痕挂钩</li>
-<li>肥皂盒</li>
-<li>零钱包</li>
-<li>筷子</li>
-<li>饭盒</li>
-<li>保温杯</li>
-<li>折叠盆</li>
-<li>吸盘花洒支架</li>
-<li>螺丝刀</li>
-<li>瑞士军刀&#x2F;多功能工具钳</li>
-<li>洗衣袋</li>
-<li>地漏防堵塞过滤网</li>
-<li>折叠衣架</li>
-<li>镊子</li>
-<li>折叠烧水壶</li>
-<li>烘鞋器</li>
-<li>台灯</li>
-<li>USB小风扇</li>
-<li>加湿器</li>
-<li>牙刷</li>
-</ol>
-<h3 id="衣物"><a href="#衣物" class="headerlink" title="衣物"></a>衣物</h3><ol>
-<li>冲锋衣</li>
-<li>内衣内裤</li>
-<li>袜子</li>
-<li>两三双鞋子</li>
-<li>卫衣</li>
-<li>外套</li>
-<li>羽绒服</li>
-<li>毛巾</li>
-</ol>
-<h3 id="行李箱配件"><a href="#行李箱配件" class="headerlink" title="行李箱配件"></a>行李箱配件</h3><p>主要是为了让自己的箱子更醒目，在转盘领行李的时候可以一眼看到，防止拿错</p>
+<h3 id="格式化磁盘"><a href="#格式化磁盘" class="headerlink" title="格式化磁盘"></a>格式化磁盘</h3><p>安装之前需要对目标磁盘进行格式化</p>
 <ol>
-<li>彩色行李箱绑带</li>
-<li>行李挂牌</li>
-<li>行李箱套</li>
+<li>双击<code>磁盘工具</code></li>
+<li>点击左上角<code>显示</code>选项的下拉菜单并选择<code>显示所有设备</code></li>
+<li>点击顶部的<code>抹掉</code></li>
+<li>选择用于安装MacOS的硬盘，并将其设置为<ul>
+<li>名称: （设置硬盘的名称）</li>
+<li>格式： Mac OS 扩展（日志式）</li>
+<li>方案: GUID 分区图</li>
+</ul>
+</li>
+<li>点击右下方的<code>抹掉</code></li>
+<li>关闭<code>Disk Utility</code></li>
 </ol>
-<h1 id="落地后续"><a href="#落地后续" class="headerlink" title="落地后续"></a>落地后续</h1><p>预计1月到英国更新，另开一个新的博文记录</p>
+<h3 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h3><ol>
+<li>选择<code>安装macOS</code>，点击继续</li>
+<li>选择用于安装的磁盘</li>
+<li>等待大概十几分钟，安装完成后会自动重启</li>
+</ol>
+<h3 id="系统设置"><a href="#系统设置" class="headerlink" title="系统设置"></a>系统设置</h3><p>重启后再次选择U盘引导，进入Clover，选择<code>Boot macOS from 你硬盘的名字</code>，等待Clover啰嗦模式跑完就会进入欢迎使用页面，选择国家和键盘balabala的不多说</p>
+<ul>
+<li>传输信息到这台Mac - 现在不传输任何信息</li>
+<li>AppleID登陆可以先跳过，后面可能需要修改机型，修改完后还要重新登录</li>
+<li>条款与条件 - 全部同意</li>
+<li>快捷设置 - 选择自定设置，然后把<code>分析</code>里面的勾选取消，黑苹果就没有必要来分析了hhhhh</li>
+</ul>
+<p>等待一会就能够进入系统了</p>
+<h2 id="配置系统"><a href="#配置系统" class="headerlink" title="配置系统"></a>配置系统</h2><p>现在我们仍然需要通过安装U盘进行启动，这一步我们将把EFI文件从U盘复制到启动盘，然后就不需要U盘了<br>首先需要下载下面的两个软件</p>
+<ul>
+<li><a href="https://sourceforge.net/projects/cloverefiboot/">Clover EFI bootloader</a></li>
+<li><a href="https://mackie100projects.altervista.org/download-clover-configurator/">clover Configurator</a></li>
+</ul>
+<h3 id="Clover-EFI-bootloader设置"><a href="#Clover-EFI-bootloader设置" class="headerlink" title="Clover EFI bootloader设置"></a>Clover EFI bootloader设置</h3><p>下载安装，一路继续，在<code>安装类型</code>那里点击左下角的<code>自定</code>，具体设置如下</p>
+<ul>
+<li>仅安装UEFI开机版本</li>
+<li>安装Clover到EFI系统区</li>
+<li>在UEFI Drivers里面勾选这三个选项<ul>
+<li>AptioMemoryFix</li>
+<li>PartitionDxe</li>
+<li>ApfsLoader</li>
+</ul>
+</li>
+<li>安装RC Scripts到目标磁区</li>
+</ul>
+<h3 id="EFI文件替换"><a href="#EFI文件替换" class="headerlink" title="EFI文件替换"></a>EFI文件替换</h3><ol>
+<li>下载安装然后打开<code>Clover Configurator</code></li>
+<li>点击左侧菜单里的<code>挂载分区</code></li>
+<li>在右下找到安装macOS的硬盘，点击旁边的<code>挂载分区</code></li>
+<li>再点击旁边的<code>打开分区</code>，会打开<code>EFI</code>文件夹</li>
+<li>打开安装U盘<code>CLover</code>，把里面的文件拷贝到上一步打开的文件夹</li>
+<li>此时系统会提醒有重复文件，点击替换</li>
+</ol>
+<p>此时重启就可以进入bios把首选启动项改成clover了，U盘可以推出了</p>
+<h2 id="驱动安装"><a href="#驱动安装" class="headerlink" title="驱动安装"></a>驱动安装</h2><p>部分驱动使用<code>Clover Configurator</code>安装，在<code>安装驱动</code>的<code>UEFI驱动</code>里面勾选下面的选项，我不太确定那些是必须的hhh</p>
+<ul>
+<li>ApfsDriverLoader</li>
+<li>AptioInputFix</li>
+<li>AptioMemoryFix</li>
+<li>AudioDce</li>
+<li>DataHubDxe</li>
+<li>FSInject</li>
+<li>HFSPlus</li>
+<li>PartitionDxe</li>
+<li>Ps2MouseDxe</li>
+<li>SMCHelper</li>
+<li>UsbKbDxe</li>
+<li>UsbMouseDxe</li>
+</ul>
+<p><strong>下面的步骤需要使用<code>Hackintool</code>来进行设置</strong></p>
+<a class="btn" href="https://www.tonymacx86.com/threads/release-hackintool-v2-8-6.254559/"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<h3 id="声卡"><a href="#声卡" class="headerlink" title="声卡"></a>声卡</h3><p>前面已经安装了AppleALC的声卡驱动，但是此时还没有声音</p>
+<ol>
+<li>点击<code>音频</code></li>
+<li>在下面的<code>Layout ID</code>中选择数值，我选择的是127</li>
+</ol>
+<h3 id="核显"><a href="#核显" class="headerlink" title="核显"></a>核显</h3><ol>
+<li>点击<code>应用补丁</code></li>
+<li>在<code>CPU架构</code>中选择<code>Broadwell</code>，平台ID选择<code>0x16160002</code></li>
+<li>点击下面的<code>应用补丁</code></li>
+<li>在通用中勾选<ol>
+<li>设备属性</li>
+<li>自动侦测变化</li>
+<li>全部</li>
+<li>接口</li>
+<li>基本显存</li>
+<li>图形卡</li>
+<li>音频</li>
+</ol>
+</li>
+<li>在高级中勾选<ol>
+<li>DVMT 32MB预分配</li>
+<li>禁用eGPU</li>
+<li>将DP映射到HDMI</li>
+<li>仿冒图形卡ID</li>
+<li>显存2048MB</li>
+<li>启用HDMI20（4K）</li>
+<li>USB端口数限制</li>
+</ol>
+</li>
+<li>点击生成补丁</li>
+</ol>
+<h3 id="显示器"><a href="#显示器" class="headerlink" title="显示器"></a>显示器</h3><ol>
+<li>点击<code>显示器</code></li>
+<li>选中自己的显示器</li>
+<li>在注入EDID中选择合适的比例，选择合适的分辨率</li>
+<li>点击下面的加号</li>
+<li>点击右下角的导出按钮</li>
+<li>把生成的kext文件复制到<code>./EFI/CLOVER/kext/Other</code>路径中</li>
+</ol>
+<p>点击顶栏的<code>文件</code>，选择导出引导工具Config.plist，替换掉EFI分区中的文件，重启</p>
+<h3 id="USB"><a href="#USB" class="headerlink" title="USB"></a>USB</h3><p>USB和睡眠的关系比较大，很多时候睡眠失败都是USB的锅，USB需要使用Hackintool定制端口</p>
+<ul>
+<li>首先先到<code>Clover Configurator</code>的内核与驱动补丁中打开解除USB端口数量限制的补丁，相关补丁在注释中会标明</li>
+<li>打开<code>Hackintool</code>，点击USB，可以在下面看到，已经连接过的端口是绿色的</li>
+<li>准备好一个USB3.0的U盘，一个USB2.0的设备，比如键盘鼠标，打开记事本</li>
+<li>把笔记本的USB接口依次用2.0和3.0的设备插一遍，记录下对应的名称</li>
+<li>如果有Type-C的话要正反插，端口不变的就是Type-C+sw，变化的就是Type-C</li>
+<li>根据记录选择连接器类型，没有插过的就选择internal</li>
+<li>选中没有变绿的接口，点击下面的减号删掉</li>
+<li>注意，保证接口数量小于等于15个，USB3.0的算两个</li>
+<li>点击右下角的导出图标</li>
+<li>把生成的ssdt文件放到<code>./EFI/CLOVER/ACPI/patched</code>路径中</li>
+<li>把生成的USBport.kext放到<code>./EFI/CLOVER/kext/Other</code>路径中</li>
+<li>回到<code>Clover Configurator</code>的内核与驱动补丁中关闭解除USB端口数量限制的补丁</li>
+<li>重启</li>
+</ul>
+<p><strong>下面的这些设置需要使用SSDT进行设置，首先下载maciASL</strong></p>
+<a class="btn" href="https://github.com/acidanthera/MaciASL/releases"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<h3 id="亮度"><a href="#亮度" class="headerlink" title="亮度"></a>亮度</h3><p>亮度设置其实有两个方法，第一种是在<code>Clover Configurator</code>中勾选添加PLNF，简单粗暴，但是这个方法和电池驱动有冲突，水火不容，所以建议采用ssdt的方法，下载下面的ssdt文件，然后放到<code>./EFI/CLOVER/ACPI/patched</code>路径中</p>
+<a class="btn" href="https://raw.githubusercontent.com/acidanthera/WhateverGreen/master/Manual/SSDT-PNLF.dsl"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<p>重启之后在偏好设置中会出现显示器亮度滑块，但是不能用键盘调节屏幕亮度，这个我试了很多种方法是都没能成功使用原来的键位调节亮度，所以只用了一个简单粗暴的方法，打开系统偏好设置-键盘-快捷键，点击显示器，点击降低和提高显示器亮度，按下想用的快捷键，注意不要发生冲突</p>
+<h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><p>CPU部分主要是变频的问题，不打补丁的话cpu一直处在睿频模式，很耗电，打补丁使用的是<a href="https://github.com/Piker-Alpha/ssdtPRGen.sh">ssdtPRGen</a></p>
+<ul>
+<li>打开终端</li>
+<li>输入命令<code>curl -o ~/ssdtPRGen.sh https://raw.githubusercontent.com/Piker-Alpha/ssdtPRGen.sh/Beta/ssdtPRGen.sh</code>下载</li>
+<li>输入命令<code>chmod +x ~/ssdtPRGen.sh</code>授予运行权限</li>
+<li>运行脚本，根据提示进行选择，最后会生成ssdt文件</li>
+<li>把生成的ssdt文件放到<code>./EFI/CLOVER/ACPI/patched</code>路径中</li>
+<li>重启</li>
+</ul>
+<p>通过安装软件来判断cpu是否能变频，我用的是<code>Intel Power Gadget</code></p>
+<a class="btn" href="https://software.intel.com/en-us/articles/intel-power-gadget"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<p>做完这些之后基本就是完美黑苹果了，登陆你的Apple ID，接着设置就好了</p>
+<p>以上</p>
+<hr>
+<h2 id="EFI下载"><a href="#EFI下载" class="headerlink" title="EFI下载"></a>EFI下载</h2><p>下载后解压，在<code>Clover Configurator</code>中生成自己的机型相关参数</p>
+<a class="btn" href="https://github.com/Siriusq/Acer-TMP645-Hackintosh/releases/download/v1.0/EFI.zip"><i class="fa fa-arrow-right fa-fw"></i>Acer TravelMate P645-SG</a>
+
+<p>到BIOS里设置clover默认启动就能愉快的用三系统了</p>
+<h1 id="Ubuntu的美化"><a href="#Ubuntu的美化" class="headerlink" title="Ubuntu的美化"></a>Ubuntu的美化</h1><p>实在是看不惯Ubuntu的基佬紫风格，美化一下。打开终端安装插件<code>apt install chrome-gnome-shell</code></p>
+<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><p>使用的主题是<code>Arc Theme</code></p>
+<a class="btn" href="https://github.com/arc-design/arc-theme"><i class="fa fa-arrow-right fa-fw"></i>传送门</a>
+
+<ul>
+<li>打开终端输入<code>sudo apt install arc-theme</code>直接安装</li>
+<li>安装完成后打开<code>优化</code></li>
+<li>把<code>主题</code>的<code>应用程序</code>和<code>Shell</code>设置为arc主题即可</li>
+</ul>
+<h2 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h2><p>主题换完后图标也要换，我用的是Papirus</p>
+<ul>
+<li>打开终端，依次输入下面三条命令</li>
+<li><code>sudo add-apt-repository ppa:papirus/papirus</code></li>
+<li><code>sudo apt-get update</code></li>
+<li><code>sudo apt-get install papirus-icon-theme</code></li>
+<li>安装完成后打开<code>优化</code></li>
+<li>把<code>主题</code>的<code>图标</code>设置为papirus即可</li>
+</ul>
+<h2 id="终端"><a href="#终端" class="headerlink" title="终端"></a>终端</h2><ul>
+<li>打开终端</li>
+<li>点击顶栏-<code>配置文件首选项</code></li>
+<li>选择配置文件</li>
+<li>点击<code>颜色</code></li>
+<li>勾选<code>使用透明背景</code></li>
+</ul>
+<h1 id="一点微小的工作"><a href="#一点微小的工作" class="headerlink" title="一点微小的工作"></a>一点微小的工作</h1><p>三系统装完之后进入win10会发现时间不对，慢了8个小时，因为Win10默认BIOS时间为本地时间，而Mac和Linux则是把BIOS时间作为UTC，正好和北京时间相差8小时，所以需要做一点微小的工作调整一下</p>
+<ul>
+<li>使用<code>Win+R</code>打开运行窗口</li>
+<li>输入<code>regedit</code>打开注册表编辑器</li>
+<li>打开路径<code>HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/TimeZoneInformation/</code></li>
+<li>右键新建<code>DWORD</code></li>
+<li>命名为<code>RealTimeIsUniversal</code></li>
+<li>设置数值为<code>1</code></li>
+<li>重启</li>
+</ul>
+<p>折腾的差不多了，开学前的日子就要愉快的肝代码了hhh</p>
+<blockquote>
+<p>感谢：<a href="https://vanilla.amd-osx.com/">AMD OS X Vanilla</a>、<a href="https://fewtarius.gitbook.io/laptopguide/">The Vanilla Laptop Guide</a>、<a href="https://hackintosh.gitbook.io/-r-hackintosh-vanilla-desktop-guide/config.plist-per-hardware/haswell">hackintosh.gitbook.io</a>、<a href="https://sleele.com/2019/06/07/%e4%bd%bf%e7%94%a8hackintool%e5%ae%9a%e5%88%b6%e9%bb%91%e8%8b%b9%e6%9e%9cusb%e9%a9%b1%e5%8a%a8/">sleele的博客</a>、<a href="https://blog.daliansky.net/">黑果小兵</a>、<a href="https://www.cnblogs.com/SemiconductorKING/p/7702410.html">SemiconductorKING</a> 提供的帮助！</p>
+</blockquote>
 ]]></content>
       <categories>
-        <category>留学</category>
+        <category>搞机</category>
       </categories>
       <tags>
-        <tag>留学</tag>
-        <tag>攻略</tag>
-        <tag>英国</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>英国行李清单</title>
-    <url>/%E8%8B%B1%E5%9B%BD%E8%A1%8C%E6%9D%8E%E6%B8%85%E5%8D%95.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">结合本鸽子逛了三个月英国超市的经历，整理了一下来英国建议带的东西 && 不建议带的东西，针对不建议带的东西列出了购买方式</blockquote>
-
-<span id="more"></span>
-
-<h1 id="建议带"><a href="#建议带" class="headerlink" title="建议带"></a>建议带</h1><p>这一类一般是在英国很难买到，或者是价格高得离谱的东西</p>
-<ul>
-<li>挂钩 ⭐⭐⭐⭐⭐ 英国挂钩的价格就真的离谱，一个的价格我在淘宝能买一盒</li>
-<li>围裙 ⭐⭐⭐⭐ 价格同样离谱，一样的钱淘宝能买十条</li>
-<li>油壶 ⭐⭐⭐ 找遍了各个超市，最后在一家街角小卖店里找到了，但是非常难用，会漏油</li>
-<li>备用手机 ⭐⭐⭐⭐ 万一手机坏了还能撑一下，这边买手机可太贵了</li>
-<li>理发器 ⭐⭐⭐ 这边理一次发的价格就能买个理发器了，而且疫情期间不太敢让理发师上门，我就老老实实给自己理了一个狗啃头</li>
-<li>中标插排 ⭐⭐⭐⭐ 基本只有中超有，价格偏贵</li>
-<li>转接插头 ⭐⭐⭐⭐ 英超虽然有，但是价格离谱</li>
-<li>冲锋衣 ⭐⭐⭐⭐⭐ 妖风 + 下雨天出门必备，这边服装店目前不开门</li>
-<li>SIM卡针 ⭐⭐⭐⭐ 不占地方</li>
-<li>充电宝 ⭐⭐⭐⭐ 这边价格偏高</li>
-</ul>
-<h1 id="可带可不带"><a href="#可带可不带" class="headerlink" title="可带可不带"></a>可带可不带</h1><p>这一类一般是体积较小，重量较轻，可有可无或者在英国也能买到且价格不离谱的东西</p>
-<ul>
-<li>路由器 ⭐⭐⭐ 需要的话还是自己带一个，英国价格有点离谱</li>
-<li>网线 ⭐ 价格差不多</li>
-<li>USB小风扇 ⭐⭐⭐ 英国宿舍基本没空调，夏天还是会热的</li>
-<li>温湿度计 ⭐ 有需要可以带一个看下室内温湿度，这边价格比较高</li>
-<li>肥皂盒 ⭐ 一磅店就有，只不过款式不太好看</li>
-<li>数据线 ⭐⭐ 编织线的价格和国内差不多</li>
-<li>台灯 ⭐ 我宿舍书桌上面有两个巨亮的射灯，所以台灯就华丽丽的吃灰了，这边的台灯价格稍贵</li>
-<li>相机三脚架 ⭐⭐ 有需要的可以带一个轻便的，这边价格基本翻倍了</li>
-<li>小加湿器 ⭐⭐ 小的话可以带一个，eBay上最便宜的也要7磅，还没一卷卫生纸大</li>
-<li>筷子 ⭐ 中超就有，价格可以接受</li>
-<li>折叠盆 ⭐ 这边盆子质量稍差，但也不是不能用，而且中超也有国内那种盆子</li>
-<li>保温杯 ⭐ 价格和国内差不多</li>
-<li>指甲钳 ⭐⭐ 有得卖，但是不清楚质量如何</li>
-<li>电池 ⭐ 这边价格稍高，但也可以接受，充电电池可以带，干电池就算了吧</li>
-<li>牙杯 ⭐ 一磅店的塑料杯子就能用hhh</li>
-<li>削皮器 ⭐ 中超英超都有，价格不贵</li>
-<li>鞋刷 ⭐ 同上</li>
-<li>多功能刀 ⭐ 相当于临时的工具箱吧，这边价格很贵</li>
-<li>U盘 ⭐ 价格不算很贵</li>
-<li>拖鞋⭐⭐⭐ 这边的款式有点丑的</li>
-<li>钢化膜 ⭐⭐ 价格小贵</li>
-<li>笔记本支架 ⭐⭐ 预防颈椎病（狗头）</li>
-<li>备用眼镜 ⭐ 来了之后可以白嫖的（再次狗头）</li>
-<li>洗衣袋 ⭐⭐ 这边价格有点贵</li>
-</ul>
-<h1 id="不建议带"><a href="#不建议带" class="headerlink" title="不建议带"></a>不建议带</h1><p>这一类就是体积太大，重量太沉，或者在英国能以更低价格买到的东西</p>
-<ul>
-<li>肥皂 ❌ homebargain有的买， 80p两块</li>
-<li>电饭煲 ❌❌❌ 这个是真的没必要，收二手就可以，自己带的话又重又占地方，还要浪费一个转换插头，收不到二手网购也差不多价格，可能没有国内那么丰富的功能</li>
-<li>电吹风 ❌❌❌ 同上</li>
-<li>大加湿器 ❌❌❌ 同上</li>
-<li>折叠水壶 ❌ 用几次就吃灰的东西，落地之后直接去大点的超市买烧水壶就可以，或者提前网购</li>
-<li>菜刀 ❌❌ 太沉了，中超就有，价格可以接受</li>
-<li>电动牙刷刷头 ❌ 别的不知道，反正欧乐B的比国内便宜不少</li>
-<li>雨伞 ❌ 遇到妖风基本报废，淘宝那种抗台风的可以试一下？</li>
-<li>锅碗瓢盆 ❌❌❌ 真的没必要，大点的超市都有，样式也还行</li>
-<li>被子 ❌❌❌ 除非行李箱空一半（手动狗头）</li>
-<li>纱窗 ❌❌ 亚马逊就有，而且学生公寓的窗子基本只能开一道缝隙，根本就装不上</li>
-</ul>
-]]></content>
-      <categories>
-        <category>留学</category>
-      </categories>
-      <tags>
-        <tag>留学</tag>
-        <tag>攻略</tag>
-        <tag>英国</tag>
+        <tag>搞机</tag>
+        <tag>黑苹果</tag>
+        <tag>多系统</tag>
       </tags>
   </entry>
   <entry>
@@ -6606,6 +6239,382 @@ OFFICIAL
 <p>有了卡之后预约的时候就选择苏格兰历史会员票，然后付款页面就是0磅咯~</p>
 <h1 id="TBC。。。"><a href="#TBC。。。" class="headerlink" title="TBC。。。"></a>TBC。。。</h1><p>咕咕咕咕咕咕，牙医注册的我放弃了，因为白嫖的补牙材料好像是黑色的，不如回国搞了hhh</p>
 <h1 id="KC-Room-Tour"><a href="#KC-Room-Tour" class="headerlink" title="KC Room Tour"></a>KC Room Tour</h1><p>这个可能要无限期咕咕咕了，公寓staff来把空房间的门都给锁上了，进不去没法拍，只能等室友来了（淦*4）</p>
+]]></content>
+      <categories>
+        <category>留学</category>
+      </categories>
+      <tags>
+        <tag>留学</tag>
+        <tag>攻略</tag>
+        <tag>英国</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>英国留学后续日志</title>
+    <url>/%E8%8B%B1%E5%9B%BD%E7%95%99%E5%AD%A6%E5%90%8E%E7%BB%AD%E6%97%A5%E5%BF%97.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">今天终于等到了格拉的uncon，开一贴记录一下换取uncon及后续签证申请的相关事宜。另外格拉上个月正式宣布部分专业延期开学至21年1月，CS院的所有专业都包含在内，所以下半年就要上家里蹲大学了，慢慢更</blockquote>
+
+<span id="more"></span>
+
+<h1 id="预定住宿"><a href="#预定住宿" class="headerlink" title="预定住宿"></a>预定住宿</h1><p>英国留学住宿的选择主要有：校内的宿舍（或者学校官方的宿舍）、合租House、校外的学生公寓。大多数人都会选择校外的学生公寓，比较方便，不需要管水电煤等费用，相较house更加安全。公寓的房型主要分En-suite和Studio两种，En-suite一般是有4-6间卧室的套间，每个卧室内有独立卫浴，共享厨房与起居室，类似于国内的合租；Studio则是单人单间，房间内带有厨房和卫浴，类似于自己单独租的房子。Studio相对于En-suite隐私性更好，更安静，<del>也更贵。</del></p>
+<p>一般来说拿到offer之后就可以定房间了，比较想去的几个学校都可以先定上，订的越早越便宜，而且选择的空间也比较大。尽量找不需要押金的公寓，这样跑路的话直接找人转租或者取消就可以了。</p>
+<p>格拉附近比较热门的公寓有 West View（西景）、West Village（西村）、Vita、KC、TS、DM等，下边是出自格拉CS微信群的对比（图片来自某位不愿透露姓名的翟翟）</p>
+<p><img data-src="https://s2.loli.net/2022/05/13/UjZV4PTEzoOiKXk.jpg" alt="英国留学后续日志"></p>
+<p>预定的话可以直接去公寓官网订，也可以找中介，中介有异乡好居和学旅家，我找了学旅家，两家都说有（薛定谔的）返现，不知道什么时候能拿到，拿到回来更。</p>
+<h1 id="换取Uncon"><a href="#换取Uncon" class="headerlink" title="换取Uncon"></a>换取Uncon</h1><p>本科毕业之前大家的offer都是conditional offer，毕业后收集好缺少的材料并扫描成PDF，传到申请系统里去，就可以坐等发uncon了。我是6月24号上传到全部材料，7月7号在申请系统里查到了uncon，8号凌晨收到了邮件。一般毕业季换uncon的时间会长一些，因为换的人太多了。</p>
+<p>换uncon需要扫描上传的材料有</p>
+<ul>
+<li>毕业证原件</li>
+<li>学位证原件</li>
+<li>毕业证翻译件（自己翻译完盖学校的章就可以，不需要放照片）</li>
+<li>学位证翻译件（同上）</li>
+<li>包含所有课程的英文成绩单</li>
+<li>包含所有课程的中文成绩单（这个看具体学校，我在格拉只上传了英文的成绩单）</li>
+</ul>
+<p>下面是我用的毕业证与学位证的翻译件，格式没法调，需要word的康康百度云吧</p>
+<a class="btn" href="https://pan.baidu.com/s/1APNgOpkZaNnytagDF3rhYg"><i class="fa fa-arrow-right fa-fw"></i>密码uwbt</a>
+
+<div class="tabs" id="first-unique-name"><ul class="nav-tabs"><li class="tab active"><a href="#first-unique-name-1"><i class="fa fa-pencil"></i>学士学位证书翻译</a></li><li class="tab"><a href="#first-unique-name-2"><i class="fa fa-pencil"></i>毕业证书翻译</a></li></ul><div class="tab-content"><div class="tab-pane active" id="first-unique-name-1"><p><strong>学士学位证明翻译</strong></p>
+<p>Bachelor’s Degree Certificate</p>
+<p>This is to certify that XXX, male, born on June 26, 1997, has completed an undergraduate program in Architecture at XXXXX University and graduated. According to Regulations of the People’s Republic of China on Academic Degrees, he is awarded the degree of Bachelor of Science in Architecture.</p>
+<p>Chairman of Degree Evaluation Committee: Xxxxx Xxx      XXXXX University<br>Certificate No.: XXXXXXXXXXXXXX      June 18th, 2020</p></div><div class="tab-pane" id="first-unique-name-2"><p><strong>毕业证书翻译</strong></p>
+<p>Graduation Certificate</p>
+<p>XXX XXX, male, born on June 26, 1997, studied a five-year program in Architecture at our school from September 2015 to June 2020. Having completed all courses specified in the teaching plan and passed the examinations, he is allowed to graduate.</p>
+<p>School: XXXXX University      President: Xxxxx Xxx<br>Certificate No.: XXXXXXXXXXXXXXXX      June 12th, 2020</p></div></div></div>
+
+<h1 id="保证金"><a href="#保证金" class="headerlink" title="保证金"></a>保证金</h1><p>保证金是一项英国政府判断你是否有足够的经济能力完成学业的依据，具体的操作是开一个存款证明，办签证时会随机抽查存款证明，抽到了会发邮件给你。</p>
+<ul>
+<li>保证金金额大概在30w人民币，具体数额是按照学费+所在地区9个月生活费来算的，为了保险起见会在这个数额上再加几千英镑，生活费伦敦地区标准为1265镑&#x2F;月，其他地区为1015镑&#x2F;月</li>
+<li>一般存定期并设置自动转存</li>
+<li>存满28天之后就可以在网上预约签证了</li>
+<li>然后在办理签证的前几天去银行开存款证明和流水，不用开太早，因为存款证明开具日期和网上签证预约日期的间隔不能超过31天</li>
+<li>英镑和人民币可以混存，总金额够了就行</li>
+<li>最好存在自己名下，存在父母名下需要多开具亲子关系证明以及授权使用资金的证明</li>
+<li>建议存在中农工建这类大行，不建议存在农村信用社一类的地方</li>
+<li>不能用理财产品代替</li>
+</ul>
+<p><img data-src="https://s2.loli.net/2022/05/13/K2Eq8rUmZeNtBgY.png" alt="英国留学后续日志"></p>
+<h1 id="换汇"><a href="#换汇" class="headerlink" title="换汇"></a>换汇</h1><p>在去英国之前建议提前换好英镑，在常用的银行换就可以，到英国办好当地银行卡后通过跨境汇款转过去。下面是一些情报</p>
+<ul>
+<li>购买英镑的时候分为<strong>现汇</strong>和<strong>现钞</strong>两个选项，现汇就是存在银行卡里的钱，现钞就是换取的纸币</li>
+<li>换汇一般就是购买英镑现汇存在银行卡里</li>
+<li>临行前可以换一部分现钞，供落地后应急用，不用太多，海关不允许携带5000美元以上的等值外币出境</li>
+<li>每人每年的换汇额度是5万美元</li>
+<li>换汇的时候看的是<strong>购汇汇率</strong>而不是<strong>结汇汇率</strong>。购汇汇率是你向银行购买英镑的汇率，结汇汇率是你向银行出售英镑的汇率</li>
+<li>建议像我一样的贫困人口每天多看两眼汇率，万一英镑再跌到8.1呢</li>
+<li>英镑存定期的利息非常低，三个月存期利率只有0.1%，而人民币的是1.35%</li>
+<li>跨境汇款有被锁的风险，建议出国前把身份证银行卡留给父母，以防万一</li>
+<li>换汇之后可以在手机银行APP上预约到银行网点去现钞，我取了1000英镑，小城市里只有50英镑的大额纸钞，大城市可能会换到5磅10磅这样的小面值</li>
+</ul>
+<h1 id="肺结核体检"><a href="#肺结核体检" class="headerlink" title="肺结核体检"></a>肺结核体检</h1><p>肺结核体检是办理T4签证的必要材料，一般在办签证前两三个月就可以做了。</p>
+<ul>
+<li>肺结核体检需要到指定的医院做，否则无效。定点医院共有15家，医院地址以及联系方式请看<a href="https://www.gov.uk/government/publications/tuberculosis-test-for-a-uk-visa-clinics-in-china/approved-tuberculosis-testing-clinics-in-china"><strong>签证官网</strong></a></li>
+<li>费用为550元人民币，收费方式为现金或支付宝，不支持医保卡、信用卡或其他支付方式</li>
+<li>需要提前预约，通常提前一或两个工作天预约即可</li>
+<li>预约方式有电话和邮件两种，部分医院（如济南出国移民体检中心）还可以在网站上预约</li>
+<li>无需空腹，正常饮食</li>
+<li>需要携带的材料<ul>
+<li>有效期半年以上的护照原件，不接受任何其他证件</li>
+<li>护照复印件一张</li>
+<li>两张半年内35mmx45mm免冠白底彩照（需要露出眉毛及耳朵）</li>
+</ul>
+</li>
+<li>流程很快，耗时约为半小时，换上衣服拍下胸片，然后医生询问下病史就结束了</li>
+<li>体检结果正常的话，上午体检下午可以出结果并发出证书，下午体检则需第二天早上才能发出证书。</li>
+<li>凭护照取证书，如果不方便可以发快递到付，建议自取</li>
+<li>证书有效期通常为六个月，特殊情况下为三个月</li>
+<li>如果出现问题的话，医院会要求做痰培养了，这个过程就很漫长了，需要等两个月。但是如果你认为身体没有问题的话建议换一家医院重新做体检，不要说自己在其他医院做过（信息来源：知乎）</li>
+<li>英国地址填自己的学校，懒的话可以不填，没什么影响</li>
+</ul>
+<p>下面是我10月13日在济南做肺结核的记录</p>
+<ul>
+<li>济南的肺结核检测在山医大三院的出国体检中心做，地址是天桥区无影山路38号，进门后右手边红屋顶的房子就是</li>
+<li>我是七点四十五到的，医院大门口会有保安测体温。</li>
+<li>我到的时候前面只有三个人。进入体检中心后出示身份证和健康码，然后在门口机器上取号</li>
+<li>取号后领两张表，再测一次体温，工作人员会把体温写在表的右上角，过程中有什么疑问随时可以问工作人员</li>
+<li>填完表等到八点半，拿着护照去拍照，拍完给一张黑白的照片</li>
+<li>拍完照出来等待叫号，叫到自己的号就拿着材料去最里面的服务台</li>
+<li>把护照原件、复印件、刚拍的黑白照片、两张小两寸白底照片（要在背面也上自己名字）、填写的两张表格交给工作人员</li>
+<li>然后会拍照，还有在一张表上签字</li>
+<li>然后付款，支付宝现金均可</li>
+<li>付完款后工作人员把护照原件还给你，并给一个手环，手环是开储物柜用的，上面有对应的柜子编号</li>
+<li>拿着手环去玻璃门那里刷脸进去，进去之后有工作人员引导你到更衣室并给一件蓝色的上衣</li>
+<li>把上衣首饰全部摘掉，穿上那件蓝色的衣服，只带着护照和手环出去</li>
+<li>工作人员会告诉你去哪个房间做检测，在机器上做一个类似叉腰的动作，双肩向上同时贴到机器上，然后工作人员会让深吸一口气憋住，然后等工作人员喊可以了就可以出来了</li>
+<li>出来之后回到更衣室把衣服换好，然后把蓝色上衣扔进门口的回收箱</li>
+<li>走廊里的工作人员会让你到另一侧的医生室，医生会问一些问题，比如有没有得过肺结核、有没有和结合病人有过接触</li>
+<li>然后摘口罩拍照</li>
+<li>然后出去找走廊里的小姐姐把你带出去</li>
+<li>出去之后回到大门口的前台把手环还回去就可以溜了</li>
+<li>工作人员说因为疫情的原因，第二天下午三点后才能取报告，但是实测当天下午四点半就可以拿到，可以打电话问一下</li>
+</ul>
+<h1 id="国际旅行健康证"><a href="#国际旅行健康证" class="headerlink" title="国际旅行健康证"></a>国际旅行健康证</h1><p>这个健康证还有一个疫苗接种证都是很迷惑的东西，俗称小红本和小黄本。根据目前了解的信息，两者都是可做可不做的，入境时有非常小的概率抽查国际旅行健康证，被查到没有证也没什么事，只是耽误一点时间去做个免费体检，大概半小时，疫苗接种证则没听说过有被查到的。所以这俩我就不打算做了</p>
+<h1 id="签证"><a href="#签证" class="headerlink" title="签证"></a>签证</h1><h2 id="预约"><a href="#预约" class="headerlink" title="预约"></a>预约</h2><p>签证需要等CAS下来才能去办，CAS一般在入学前的3个月开始陆续发放，办理签证前需要在网上预约，最近学生签证也改名了，原来叫 Tier 4，现在直接叫 student visa。预约的时候建议挂全局代理，预约网站在国内的使用体验极差。</p>
+<a class="btn" href="https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/sort/country-nationality?p=student_out_uk&_ga=2.246378372.1460787317.1603017805-1850455343.1600247708"><i class="fa fa-home fa-fw"></i>预约网址</a>
+
+<p>预约的步骤可以去看<a href="https://weibo.com/u/7305573611">@PhD威宇</a>的微博文章<a href="https://weibo.com/ttarticle/p/show?id=2309404537047783178301">保姆级手把手教你申请T4签证</a>，大佬写的非常详细，佩服大佬的耐心。T4和现在的 student visa 稍有出入，大体的步骤都是一样的。（我才不是因为懒不想写）</p>
+<p><strong>注意下载checklist</strong></p>
+<p>按照步骤交完签证申请费和IHS之后会跳转到VFS的网站上，这个网站是用来上传材料和预约递签日期地点用的，有一些增(keng)值(qian)服务可以选。这个网站深得学校教务选课系统的真传，同款土豆服务器，而且不挂全局代理基本没法用，挂了全局代理也会有各种各样的bug。</p>
+<p>Student visa 一般只有两个材料需要上传，checklist 会有说明</p>
+<ul>
+<li>护照信息页</li>
+<li>肺结核报告</li>
+</ul>
+<p>建议提前在网站上上传好材料，如果去签证中心现场上传的话会收取100块钱的扫描费用（奸商！）。</p>
+<p>另外一些签证中心（说的就是你济南，还有西安）还会收取服务费，大概500块钱，在VFS那个网站上交。</p>
+<p>预约的时候可以隔几个小时上去一次，看看有没有更早的位置。我一开始预约的是23号递签，后来刷出来了14号和16号的，就在网站上更改了预约时间，更改免费。</p>
+<p>预约好时间、传完材料、交完钱之后会发给你一个<code>Appointment Confirmation Notice</code>，记得打印出来带着</p>
+<h2 id="递签"><a href="#递签" class="headerlink" title="递签"></a>递签</h2><p>我最终去递签的时候只带了下面几个材料</p>
+<ul>
+<li>护照原件</li>
+<li>checklist</li>
+<li>Appointment Confirmation Notice</li>
+<li>肺结核报告原件</li>
+</ul>
+<p>最后工作人员收走了这些材料</p>
+<ul>
+<li>护照原件</li>
+<li>checklist 的第一页</li>
+<li>Appointment Confirmation Notice</li>
+</ul>
+<p>下面是我在济南递签的流程，我是12:13进去的，12:25就出来了</p>
+<ul>
+<li>济南签证中心地址在济南市历下区经十路11890号北京银行5楼</li>
+<li>从北京银行大厦的南门进，进去后在右手边向保安大叔出示健康码并测量体温</li>
+<li>用微信扫描桌面立牌上的二维码，填写姓名手机号等个人信息进行登记</li>
+<li>做四号电梯（最里面右手边那个）上5楼</li>
+<li>出电梯后左手边可以看到工作人员在柜台前面，会问是不是来办签证，然后带你到签证中心门口，测量体温后经过安检门进入</li>
+<li>进入之后出示护照、checklist、notice这几个材料，然后工作人员会问姓名和出生日期，并给你一张号码纸</li>
+<li>进去等叫号，左手边有几排椅子，椅子前面的柱子上挂着电视，会显示叫号信息</li>
+<li>人少的话工作人员就让直接去柜台，去柜台交护照、checklist、notice</li>
+<li>工作人员会问你办不办加急，问护照是自取还是快递，快递的话会给你一张快递单填写，然后交现金80元，可以找零</li>
+<li>工作人员没有提起过短信服务，短信也确实没什么用</li>
+<li>等一会工作人员会把不要的材料都退给你，快递的会给一张EMS快递单回执</li>
+<li>再回去等叫号，叫到号去7号室拍照录指纹</li>
+<li>先会让你报一下姓名和出生日期，然后摘眼镜和口罩拍照</li>
+<li>然后采指纹，先是右手四个手指并排，然后左手四个手指，最后是两个大拇指一起</li>
+<li>结束之后会给你张回执，就可以走了</li>
+<li>回家默默等快递把护照寄回来</li>
+</ul>
+<h1 id="订机票"><a href="#订机票" class="headerlink" title="订机票"></a>订机票</h1><p>机票我是在携程买的，也可以直接官网购买或者打电话购买</p>
+<p>机票最好早买，早买一般都很便宜。我亲眼见证了我的机票从4200元涨价到了5500元，现在涨到了15000元。我在5500的时候买入的，买入第二天晚上就涨到了15000。</p>
+<p>我们买的一般都是留学生机票，会有额外的行李额度，一般是两件不超过23kg的28寸托运行李和一件不超过20寸的手提行李，我一开始以为需要签证才能购买留学生机票，所以错过了4200的低价，其实买的时候完全不需要签证等证明材料。携程的要求是在飞机起飞前三天上传好签证、cas、offer、护照等证明材料就可以。能早买就早买吧。</p>
+<p>另外由于今年疫情的影响，有些飞机是不一定能飞的，没有经过民航局审批，但是他也在卖票，建议买票之前先查询一下。因为有些航空公司退票只给退代金券，就很坑。</p>
+<p>飞英国的机票除了去伦敦的，基本都要转机，转机机场一般有荷兰阿姆斯特丹、芬兰赫尔辛基、阿联酋迪拜、伦敦希思罗等。购票时看好是否是行李直挂，不是直挂的话转机的时候需要重新办理行李托运手续，麻烦且耗时，要留足充分的时间。</p>
+<p>此外如果飞到大学所在城市的机票很贵的话可以看一下飞往临近城市的机票，举个栗子，我是一开始打算从上海飞格拉斯哥，但是去格拉斯哥的机票已经都在一万多了，然鹅去爱丁堡的机票只有五千多，所以我就买了去爱宝的机票，落地后再几个人一起包车直接到格拉宿舍楼下，包车大概在100胖，三四个人一起分担也不贵。</p>
+<h1 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h1><p>注册一般分为学术注册（Academic Registration）和财务注册（Financial Registration），学校会给提前发一封邮件告诉你注册的网址、用户名和密码，记得修改自己的密码。</p>
+<h2 id="学术注册"><a href="#学术注册" class="headerlink" title="学术注册"></a>学术注册</h2><p>这里以格拉为例，学术注册包含以下内容</p>
+<ul>
+<li>确认课程信息</li>
+<li>确认姓名、性别、出生日期以及学生ID</li>
+<li>填写宗教信仰与国籍</li>
+<li>填写在英国的住址（Term Address）</li>
+<li>填写个人邮箱地址与电话号码</li>
+<li>是否有残疾</li>
+<li>添加紧急联系人</li>
+<li>填写 Statistical Information，就跟查户口一样，包括性取向、有没有孩子等问题</li>
+<li>上传照片，这个照片会用在学生证上，照片的标准和护照的一样</li>
+<li>上传护照ID页</li>
+</ul>
+<p>学术注册完成后就可以选课（Enroll）了</p>
+<h2 id="财务注册"><a href="#财务注册" class="headerlink" title="财务注册"></a>财务注册</h2><p>财务注册就是交学费，常见的方式有电汇、信用卡付款等，也有部分学校支持支付宝或银联卡支付。</p>
+<p>我用的方法是信用卡分期付款，部分学校对于全款付学费会有优惠折扣，然而格拉并没有。。。如果学校对全款支付学费没有优惠的话建议使用分期付款，毕竟能把暂时不用交的前放在英国的银行账户里吃利息，几万英镑产生的利息也不少的。</p>
+<p>我交学费的过程比较曲折。。。一开始我用的信用卡是建行的VISA卡，但是这张卡只能用人民币还款，我早买下的英镑不能拿来还款，所以果断办新卡。我先把建设银行账户里的英镑跨行转账到了中国银行的账户里，然后办了中国银行的卓隽英镑卡，可以直接用英镑还款。</p>
+<p>这张卡建议在中国银行的APP上申请，下卡非常快，我从申请到拿到卡只用了3天。注意申请的时候职业不要选择学生，直接选择待业，剩下的收入啥的胡乱写就行。咱也不知道为啥，这张卡明明是给留学生用的，但是选择学生身份申请的话大概率直接秒拒，很迷惑。另外不建议到网点去办理，工作人员对这类卡不太了解，而且办卡速度很慢，我还在微博上看到有人网点办英镑卡，结果拿到手是美元卡，没法用。</p>
+<p>我当时拿到的额度是1000英镑，少得可怜，而格拉分期付款的第一笔款需要2933磅。如果不嫌麻烦的话可以分三次刷1000英镑，刷完一次就还款。然而我比较懒，就我直接向信用卡里转账了3000磅，一次划掉。</p>
+<h1 id="行李指南"><a href="#行李指南" class="headerlink" title="行李指南"></a>行李指南</h1><p>我在国内买了很多杂七杂八的行李，也不知道行李箱里能不能装得下hhh</p>
+<p>下面只是我想到的行李，到时候不一定会全带</p>
+<h2 id="登机行李"><a href="#登机行李" class="headerlink" title="登机行李"></a>登机行李</h2><h3 id="文件证件类"><a href="#文件证件类" class="headerlink" title="文件证件类"></a>文件证件类</h3><ol>
+<li>护照</li>
+<li>与护照一起寄回来的BRP说明</li>
+<li>CAS</li>
+<li>租房合同</li>
+<li>语言成绩单</li>
+<li>学术成绩单</li>
+<li>毕业证学位证（记得把外面的壳子拔下来，壳子没用）</li>
+<li>证件照</li>
+<li>入境前48小时填写的那张表</li>
+<li>肺结核报告</li>
+</ol>
+<h3 id="现金卡片"><a href="#现金卡片" class="headerlink" title="现金卡片"></a>现金卡片</h3><ol>
+<li>银行卡</li>
+<li>英国手机卡</li>
+<li>卡针</li>
+<li>英镑现金</li>
+<li>签字笔</li>
+</ol>
+<h3 id="防疫物资（少量）"><a href="#防疫物资（少量）" class="headerlink" title="防疫物资（少量）"></a>防疫物资（少量）</h3><ol>
+<li>口罩</li>
+<li>一次性手套</li>
+<li>护目镜或面罩</li>
+</ol>
+<h3 id="电子产品"><a href="#电子产品" class="headerlink" title="电子产品"></a>电子产品</h3><ol>
+<li>手机</li>
+<li>充电宝</li>
+<li>相机</li>
+<li>电脑</li>
+<li>平板</li>
+<li>充电器</li>
+<li>数据线</li>
+<li>耳机</li>
+<li>多国旅行转换插头</li>
+</ol>
+<h3 id="葛优瘫用品"><a href="#葛优瘫用品" class="headerlink" title="葛优瘫用品"></a>葛优瘫用品</h3><ol>
+<li>拖鞋</li>
+<li>颈枕</li>
+<li>眼罩</li>
+<li>耳塞</li>
+<li>旅行洗漱包</li>
+<li>小零食</li>
+</ol>
+<h2 id="托运行李"><a href="#托运行李" class="headerlink" title="托运行李"></a>托运行李</h2><h3 id="药品防疫类"><a href="#药品防疫类" class="headerlink" title="药品防疫类"></a>药品防疫类</h3><ol>
+<li>口罩</li>
+<li>一次性手套</li>
+<li>面罩</li>
+<li>创可贴</li>
+<li>酒精棉片&#x2F;酒精湿巾</li>
+<li>感冒灵</li>
+<li>藿香正气胶囊</li>
+<li>西瓜霜</li>
+<li>甲硝锉</li>
+<li>诺氟沙星</li>
+<li>皮炎平</li>
+<li>红霉素软膏</li>
+<li>体温计&#x2F;测温枪</li>
+<li>个人日常用药</li>
+<li>紫外线杀毒灯</li>
+</ol>
+<h3 id="电子产品及配件"><a href="#电子产品及配件" class="headerlink" title="电子产品及配件"></a>电子产品及配件</h3><ol>
+<li>英标转换插头</li>
+<li>插排</li>
+<li>充电电池套装</li>
+<li>鼠标键盘</li>
+<li>剃须刀</li>
+<li>各种充电器</li>
+<li>耳机</li>
+<li>计算器</li>
+<li>移动硬盘</li>
+<li>U盘&#x2F;读卡器</li>
+<li>路由器</li>
+<li>手机壳</li>
+<li>钢化膜</li>
+<li>手机平板折叠支架</li>
+<li>笔记本电脑支架</li>
+<li>相机三脚架</li>
+<li>网线</li>
+<li>鼠标垫</li>
+</ol>
+<h3 id="生活用品及工具"><a href="#生活用品及工具" class="headerlink" title="生活用品及工具"></a>生活用品及工具</h3><ol>
+<li>指甲钳挖耳勺套装</li>
+<li>无痕挂钩</li>
+<li>肥皂盒</li>
+<li>零钱包</li>
+<li>筷子</li>
+<li>饭盒</li>
+<li>保温杯</li>
+<li>折叠盆</li>
+<li>吸盘花洒支架</li>
+<li>螺丝刀</li>
+<li>瑞士军刀&#x2F;多功能工具钳</li>
+<li>洗衣袋</li>
+<li>地漏防堵塞过滤网</li>
+<li>折叠衣架</li>
+<li>镊子</li>
+<li>折叠烧水壶</li>
+<li>烘鞋器</li>
+<li>台灯</li>
+<li>USB小风扇</li>
+<li>加湿器</li>
+<li>牙刷</li>
+</ol>
+<h3 id="衣物"><a href="#衣物" class="headerlink" title="衣物"></a>衣物</h3><ol>
+<li>冲锋衣</li>
+<li>内衣内裤</li>
+<li>袜子</li>
+<li>两三双鞋子</li>
+<li>卫衣</li>
+<li>外套</li>
+<li>羽绒服</li>
+<li>毛巾</li>
+</ol>
+<h3 id="行李箱配件"><a href="#行李箱配件" class="headerlink" title="行李箱配件"></a>行李箱配件</h3><p>主要是为了让自己的箱子更醒目，在转盘领行李的时候可以一眼看到，防止拿错</p>
+<ol>
+<li>彩色行李箱绑带</li>
+<li>行李挂牌</li>
+<li>行李箱套</li>
+</ol>
+<h1 id="落地后续"><a href="#落地后续" class="headerlink" title="落地后续"></a>落地后续</h1><p>预计1月到英国更新，另开一个新的博文记录</p>
+]]></content>
+      <categories>
+        <category>留学</category>
+      </categories>
+      <tags>
+        <tag>留学</tag>
+        <tag>攻略</tag>
+        <tag>英国</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>英国行李清单</title>
+    <url>/%E8%8B%B1%E5%9B%BD%E8%A1%8C%E6%9D%8E%E6%B8%85%E5%8D%95.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">结合本鸽子逛了三个月英国超市的经历，整理了一下来英国建议带的东西 && 不建议带的东西，针对不建议带的东西列出了购买方式</blockquote>
+
+<span id="more"></span>
+
+<h1 id="建议带"><a href="#建议带" class="headerlink" title="建议带"></a>建议带</h1><p>这一类一般是在英国很难买到，或者是价格高得离谱的东西</p>
+<ul>
+<li>挂钩 ⭐⭐⭐⭐⭐ 英国挂钩的价格就真的离谱，一个的价格我在淘宝能买一盒</li>
+<li>围裙 ⭐⭐⭐⭐ 价格同样离谱，一样的钱淘宝能买十条</li>
+<li>油壶 ⭐⭐⭐ 找遍了各个超市，最后在一家街角小卖店里找到了，但是非常难用，会漏油</li>
+<li>备用手机 ⭐⭐⭐⭐ 万一手机坏了还能撑一下，这边买手机可太贵了</li>
+<li>理发器 ⭐⭐⭐ 这边理一次发的价格就能买个理发器了，而且疫情期间不太敢让理发师上门，我就老老实实给自己理了一个狗啃头</li>
+<li>中标插排 ⭐⭐⭐⭐ 基本只有中超有，价格偏贵</li>
+<li>转接插头 ⭐⭐⭐⭐ 英超虽然有，但是价格离谱</li>
+<li>冲锋衣 ⭐⭐⭐⭐⭐ 妖风 + 下雨天出门必备，这边服装店目前不开门</li>
+<li>SIM卡针 ⭐⭐⭐⭐ 不占地方</li>
+<li>充电宝 ⭐⭐⭐⭐ 这边价格偏高</li>
+</ul>
+<h1 id="可带可不带"><a href="#可带可不带" class="headerlink" title="可带可不带"></a>可带可不带</h1><p>这一类一般是体积较小，重量较轻，可有可无或者在英国也能买到且价格不离谱的东西</p>
+<ul>
+<li>路由器 ⭐⭐⭐ 需要的话还是自己带一个，英国价格有点离谱</li>
+<li>网线 ⭐ 价格差不多</li>
+<li>USB小风扇 ⭐⭐⭐ 英国宿舍基本没空调，夏天还是会热的</li>
+<li>温湿度计 ⭐ 有需要可以带一个看下室内温湿度，这边价格比较高</li>
+<li>肥皂盒 ⭐ 一磅店就有，只不过款式不太好看</li>
+<li>数据线 ⭐⭐ 编织线的价格和国内差不多</li>
+<li>台灯 ⭐ 我宿舍书桌上面有两个巨亮的射灯，所以台灯就华丽丽的吃灰了，这边的台灯价格稍贵</li>
+<li>相机三脚架 ⭐⭐ 有需要的可以带一个轻便的，这边价格基本翻倍了</li>
+<li>小加湿器 ⭐⭐ 小的话可以带一个，eBay上最便宜的也要7磅，还没一卷卫生纸大</li>
+<li>筷子 ⭐ 中超就有，价格可以接受</li>
+<li>折叠盆 ⭐ 这边盆子质量稍差，但也不是不能用，而且中超也有国内那种盆子</li>
+<li>保温杯 ⭐ 价格和国内差不多</li>
+<li>指甲钳 ⭐⭐ 有得卖，但是不清楚质量如何</li>
+<li>电池 ⭐ 这边价格稍高，但也可以接受，充电电池可以带，干电池就算了吧</li>
+<li>牙杯 ⭐ 一磅店的塑料杯子就能用hhh</li>
+<li>削皮器 ⭐ 中超英超都有，价格不贵</li>
+<li>鞋刷 ⭐ 同上</li>
+<li>多功能刀 ⭐ 相当于临时的工具箱吧，这边价格很贵</li>
+<li>U盘 ⭐ 价格不算很贵</li>
+<li>拖鞋⭐⭐⭐ 这边的款式有点丑的</li>
+<li>钢化膜 ⭐⭐ 价格小贵</li>
+<li>笔记本支架 ⭐⭐ 预防颈椎病（狗头）</li>
+<li>备用眼镜 ⭐ 来了之后可以白嫖的（再次狗头）</li>
+<li>洗衣袋 ⭐⭐ 这边价格有点贵</li>
+</ul>
+<h1 id="不建议带"><a href="#不建议带" class="headerlink" title="不建议带"></a>不建议带</h1><p>这一类就是体积太大，重量太沉，或者在英国能以更低价格买到的东西</p>
+<ul>
+<li>肥皂 ❌ homebargain有的买， 80p两块</li>
+<li>电饭煲 ❌❌❌ 这个是真的没必要，收二手就可以，自己带的话又重又占地方，还要浪费一个转换插头，收不到二手网购也差不多价格，可能没有国内那么丰富的功能</li>
+<li>电吹风 ❌❌❌ 同上</li>
+<li>大加湿器 ❌❌❌ 同上</li>
+<li>折叠水壶 ❌ 用几次就吃灰的东西，落地之后直接去大点的超市买烧水壶就可以，或者提前网购</li>
+<li>菜刀 ❌❌ 太沉了，中超就有，价格可以接受</li>
+<li>电动牙刷刷头 ❌ 别的不知道，反正欧乐B的比国内便宜不少</li>
+<li>雨伞 ❌ 遇到妖风基本报废，淘宝那种抗台风的可以试一下？</li>
+<li>锅碗瓢盆 ❌❌❌ 真的没必要，大点的超市都有，样式也还行</li>
+<li>被子 ❌❌❌ 除非行李箱空一半（手动狗头）</li>
+<li>纱窗 ❌❌ 亚马逊就有，而且学生公寓的窗子基本只能开一道缝隙，根本就装不上</li>
+</ul>
 ]]></content>
       <categories>
         <category>留学</category>
