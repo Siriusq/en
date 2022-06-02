@@ -46,66 +46,6 @@
       </tags>
   </entry>
   <entry>
-    <title>HEXO部署</title>
-    <url>/HEXO%E9%83%A8%E7%BD%B2.html</url>
-    <content><![CDATA[<p>博客已经搭建成功了，下一步是用Hexo配合Markdown写博客了</p>
-<h1 id="Hexo写作流程"><a href="#Hexo写作流程" class="headerlink" title="Hexo写作流程"></a>Hexo写作流程</h1><p>博客写作流程相对于搭建要简单太多了，只需要以下几步：</p>
-<ul>
-<li>创建新博客文件</li>
-<li>生成新网页</li>
-<li>部署到Github Page</li>
-</ul>
-<span id="more"></span>
-
-<h2 id="创建新博客文件"><a href="#创建新博客文件" class="headerlink" title="创建新博客文件"></a>创建新博客文件</h2><ol>
-<li><p>在博客文件夹中右键打开Git bash</p>
-</li>
-<li><p>输入<code>hexo new &quot;博客标题&quot;</code> 新建一个md文件，双引号内的名字就是文章标题</p>
-</li>
-<li><p>进入<code>博客根目录/source/_posts</code> 文件夹，可以看到新创建的文件<code>博客标题.md</code>,md后缀代表Markdown文件</p>
-</li>
-<li><p>双击使用安装的Markdown编辑器打开进行编辑</p>
-<ul>
-<li>文件内会默认生成以下内容(以本博客为例）：  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   ---`</span><br><span class="line">   title: HEXO&amp;Markdown</span><br><span class="line">date: 2019-04-04 10:50:41</span><br><span class="line">tags: [Hexo,Markdown]</span><br><span class="line">   ---`</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>其中<code>title</code>就是博客标题</li>
-<li><code>date</code>是博客的创建时间，不用修改</li>
-<li><code>tags</code>是博客的标签</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>踩坑：<br>此处注意冒号后面的空格</p>
-</blockquote>
-<ul>
-<li>在<code>---</code>分割线后就是我们写博文的地方了，按照Markdown语法规则编写即可</li>
-</ul>
-</li>
-<li><p>编写完成后保存</p>
-</li>
-</ol>
-<h2 id="生成新网页并部署"><a href="#生成新网页并部署" class="headerlink" title="生成新网页并部署"></a>生成新网页并部署</h2><ol>
-<li>打开Git bash</li>
-<li>输入命令<code>hexo clean</code>清除网页缓存</li>
-<li>输入命令<code>hexo g</code>生成新的网页文件</li>
-<li>（可选）输入命令<code>hexo s</code>生成本地服务并前往返回的网址预览网页<blockquote>
-<p>踩坑：<br>Git bash内的复制命令并不是熟悉的<code>ctrl c</code>，而是<code>ctrl ins</code>，使用<code>ctrl c</code>复制预览网址会结束本地服务进程，所以预览网页会没反应</p>
-</blockquote>
-</li>
-<li>输入命令<code>hexo d</code>将网页部署到Github Page</li>
-</ol>
-<hr>
-<p><strong>以上是完整流程，每次更新博客的时候都要重复一遍上述流程</strong><br>省事的话可以合并命令，直接用<code>hexo cl</code>和<code>hexo g -d</code>即可更新</p>
-]]></content>
-      <categories>
-        <category>网站配置</category>
-      </categories>
-      <tags>
-        <tag>HEXO</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Grasshopper</title>
     <url>/Grasshopper.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">把大二到现在攒下来的用来画（shui）分析图的Grasshopper电池做一下汇总，并记录一下简易使用方法供建筑狗使用，感兴趣的话为何不尝试一下转行程序猿呢（~~劝退~~）</blockquote>
@@ -235,6 +175,100 @@
       </tags>
   </entry>
   <entry>
+    <title>HEXO部署</title>
+    <url>/HEXO%E9%83%A8%E7%BD%B2.html</url>
+    <content><![CDATA[<p>博客已经搭建成功了，下一步是用Hexo配合Markdown写博客了</p>
+<h1 id="Hexo写作流程"><a href="#Hexo写作流程" class="headerlink" title="Hexo写作流程"></a>Hexo写作流程</h1><p>博客写作流程相对于搭建要简单太多了，只需要以下几步：</p>
+<ul>
+<li>创建新博客文件</li>
+<li>生成新网页</li>
+<li>部署到Github Page</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="创建新博客文件"><a href="#创建新博客文件" class="headerlink" title="创建新博客文件"></a>创建新博客文件</h2><ol>
+<li><p>在博客文件夹中右键打开Git bash</p>
+</li>
+<li><p>输入<code>hexo new &quot;博客标题&quot;</code> 新建一个md文件，双引号内的名字就是文章标题</p>
+</li>
+<li><p>进入<code>博客根目录/source/_posts</code> 文件夹，可以看到新创建的文件<code>博客标题.md</code>,md后缀代表Markdown文件</p>
+</li>
+<li><p>双击使用安装的Markdown编辑器打开进行编辑</p>
+<ul>
+<li>文件内会默认生成以下内容(以本博客为例）：  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   ---`</span><br><span class="line">   title: HEXO&amp;Markdown</span><br><span class="line">date: 2019-04-04 10:50:41</span><br><span class="line">tags: [Hexo,Markdown]</span><br><span class="line">   ---`</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其中<code>title</code>就是博客标题</li>
+<li><code>date</code>是博客的创建时间，不用修改</li>
+<li><code>tags</code>是博客的标签</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>踩坑：<br>此处注意冒号后面的空格</p>
+</blockquote>
+<ul>
+<li>在<code>---</code>分割线后就是我们写博文的地方了，按照Markdown语法规则编写即可</li>
+</ul>
+</li>
+<li><p>编写完成后保存</p>
+</li>
+</ol>
+<h2 id="生成新网页并部署"><a href="#生成新网页并部署" class="headerlink" title="生成新网页并部署"></a>生成新网页并部署</h2><ol>
+<li>打开Git bash</li>
+<li>输入命令<code>hexo clean</code>清除网页缓存</li>
+<li>输入命令<code>hexo g</code>生成新的网页文件</li>
+<li>（可选）输入命令<code>hexo s</code>生成本地服务并前往返回的网址预览网页<blockquote>
+<p>踩坑：<br>Git bash内的复制命令并不是熟悉的<code>ctrl c</code>，而是<code>ctrl ins</code>，使用<code>ctrl c</code>复制预览网址会结束本地服务进程，所以预览网页会没反应</p>
+</blockquote>
+</li>
+<li>输入命令<code>hexo d</code>将网页部署到Github Page</li>
+</ol>
+<hr>
+<p><strong>以上是完整流程，每次更新博客的时候都要重复一遍上述流程</strong><br>省事的话可以合并命令，直接用<code>hexo cl</code>和<code>hexo g -d</code>即可更新</p>
+]]></content>
+      <categories>
+        <category>网站配置</category>
+      </categories>
+      <tags>
+        <tag>HEXO</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo Next JSDelivr 被墙解决方案</title>
+    <url>/Hexo-Next-JSDelivr-%E8%A2%AB%E5%A2%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">GFW坏事做尽，又玩DNS污染，我上一篇记录JSDelivr使用方法的博客还没写完，JSDelivr就没了😭</blockquote>
+
+<span id="more"></span>
+
+<p>今天更新网站的时候突然发现加载速度巨慢，开控制台一看一片报错，和JSDelivr有关的资源全部不能加载，经确认JSDelivr已经被墙😭。因为Next主题默认使用JSDelivr作为第三方插件（如Gitalk、FancyBox）的CDN提供方，所以JSDelivr被墙后网站基本瘫痪。</p>
+<p><img data-src="https://s2.loli.net/2022/05/23/DZbmI2lfGTpoRNy.png" alt="ping"></p>
+<p>emmm估计用不了太久就会全图变红了。其实JSDelivr被墙已经有过预兆了，因为滥用的太多，去年年底JSDelivr在国内的ICP备案就被吊销了，抽风了一段时间后又恢复了正常，强撑了半年之后还是被疯掉了，令人惋惜。</p>
+<h1 id="主题第三方插件修复"><a href="#主题第三方插件修复" class="headerlink" title="主题第三方插件修复"></a>主题第三方插件修复</h1><p>有三种解决方案，第一种解决方案是更换CDN提供方，第二种方案是把第三方插件全部部署到自己的网站上，第三种方案是使用自己的CDN，但是过于麻烦，就不写了🐶。</p>
+<h2 id="更换CDN提供方"><a href="#更换CDN提供方" class="headerlink" title="更换CDN提供方"></a>更换CDN提供方</h2><p>Next官方提供了<code>jsdelivr</code>、<code>unpkg</code>和<code>cdnjs</code>三家CDN供应商，经实测<code>unpkg</code>和<code>cdnjs</code>目前仍能正常访问，所以把第三方插件的CDN切换过去就好了</p>
+<ul>
+<li>打开<code>_config.next.yml</code></li>
+<li>定位到到<code>CDN Settings</code></li>
+<li>修改<code>plugins: jsdelivr</code>为<code>plugins: unpkg</code>或者<code>plugins: cdnjs</code></li>
+</ul>
+<h2 id="本地部署"><a href="#本地部署" class="headerlink" title="本地部署"></a>本地部署</h2><p>Next官方也有一个集合了主题中使用到的第三方插件的仓库</p>
+<div class="note info"><p><a class="btn" href="https://github.com/next-theme/plugins"><i class="fa fa-torii-gate fa-fw"></i>Next第三方插件库</a></p></div>
+
+<ul>
+<li>首先安装第三方插件库，报错的话检查<code>@next-theme/plugins</code>和<code>hexo-theme-next</code>两者版本号是否相同<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install @next-theme/plugins</span><br></pre></td></tr></table></figure></li>
+<li>修改<code>plugins: jsdelivr</code>为<code>plugins: local</code></li>
+</ul>
+<h1 id="自己的资源"><a href="#自己的资源" class="headerlink" title="自己的资源"></a>自己的资源</h1><p>自己的资源就没办法咯，毕竟JSDelivr这么好用的仅此一家，<code>unpkg</code>和<code>cdnjs</code>都没法上自己的资源。能想到的只有把资源部署到自己的网站和自己找托管两种方法了。我就只能吭哧吭哧的把自己的资源搬回到网站上了😭</p>
+]]></content>
+      <categories>
+        <category>网站配置</category>
+      </categories>
+      <tags>
+        <tag>HEXO</tag>
+        <tag>Next</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo Next 7.7 双语切换</title>
     <url>/Hexo-Next-7-7-%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">一年前通过在Google的疯狂查找和尝试，实现了在7.1版本的Next主题上进行中英双语的切换。但是Bug多多（切换到英文界面后点击关于、归档等标签还会跳转回中文界面），而我本人又是拖延症+懒癌晚期，一直没有尝试修复。最近借着给Next主题升级的机会顺便解决这个问题。折腾了两天，终于成功实现了理想中的中英双语切换效果，搞得毕设都没怎么做。</blockquote>
@@ -314,40 +348,6 @@
         <tag>HEXO</tag>
         <tag>Next</tag>
         <tag>i18n</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo Next JSDelivr 被墙解决方案</title>
-    <url>/Hexo-Next-JSDelivr-%E8%A2%AB%E5%A2%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">GFW坏事做尽，又玩DNS污染，我上一篇记录JSDelivr使用方法的博客还没写完，JSDelivr就没了😭</blockquote>
-
-<span id="more"></span>
-
-<p>今天更新网站的时候突然发现加载速度巨慢，开控制台一看一片报错，和JSDelivr有关的资源全部不能加载，经确认JSDelivr已经被墙😭。因为Next主题默认使用JSDelivr作为第三方插件（如Gitalk、FancyBox）的CDN提供方，所以JSDelivr被墙后网站基本瘫痪。</p>
-<p><img data-src="https://s2.loli.net/2022/05/23/DZbmI2lfGTpoRNy.png" alt="ping"></p>
-<p>emmm估计用不了太久就会全图变红了。其实JSDelivr被墙已经有过预兆了，因为滥用的太多，去年年底JSDelivr在国内的ICP备案就被吊销了，抽风了一段时间后又恢复了正常，强撑了半年之后还是被疯掉了，令人惋惜。</p>
-<h1 id="主题第三方插件修复"><a href="#主题第三方插件修复" class="headerlink" title="主题第三方插件修复"></a>主题第三方插件修复</h1><p>有三种解决方案，第一种解决方案是更换CDN提供方，第二种方案是把第三方插件全部部署到自己的网站上，第三种方案是使用自己的CDN，但是过于麻烦，就不写了🐶。</p>
-<h2 id="更换CDN提供方"><a href="#更换CDN提供方" class="headerlink" title="更换CDN提供方"></a>更换CDN提供方</h2><p>Next官方提供了<code>jsdelivr</code>、<code>unpkg</code>和<code>cdnjs</code>三家CDN供应商，经实测<code>unpkg</code>和<code>cdnjs</code>目前仍能正常访问，所以把第三方插件的CDN切换过去就好了</p>
-<ul>
-<li>打开<code>_config.next.yml</code></li>
-<li>定位到到<code>CDN Settings</code></li>
-<li>修改<code>plugins: jsdelivr</code>为<code>plugins: unpkg</code>或者<code>plugins: cdnjs</code></li>
-</ul>
-<h2 id="本地部署"><a href="#本地部署" class="headerlink" title="本地部署"></a>本地部署</h2><p>Next官方也有一个集合了主题中使用到的第三方插件的仓库</p>
-<div class="note info"><p><a class="btn" href="https://github.com/next-theme/plugins"><i class="fa fa-torii-gate fa-fw"></i>Next第三方插件库</a></p></div>
-
-<ul>
-<li>首先安装第三方插件库，报错的话检查<code>@next-theme/plugins</code>和<code>hexo-theme-next</code>两者版本号是否相同<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install @next-theme/plugins</span><br></pre></td></tr></table></figure></li>
-<li>修改<code>plugins: jsdelivr</code>为<code>plugins: local</code></li>
-</ul>
-<h1 id="自己的资源"><a href="#自己的资源" class="headerlink" title="自己的资源"></a>自己的资源</h1><p>自己的资源就没办法咯，毕竟JSDelivr这么好用的仅此一家，<code>unpkg</code>和<code>cdnjs</code>都没法上自己的资源。能想到的只有把资源部署到自己的网站和自己找托管两种方法了。我就只能吭哧吭哧的把自己的资源搬回到网站上了😭</p>
-]]></content>
-      <categories>
-        <category>网站配置</category>
-      </categories>
-      <tags>
-        <tag>HEXO</tag>
-        <tag>Next</tag>
       </tags>
   </entry>
   <entry>
@@ -1706,6 +1706,8 @@
 <li>自定义代码块样式</li>
 <li>关于页面增加Github贡献墙</li>
 <li>内容不满一屏footer也置底</li>
+<li>文章结束提醒</li>
+<li>加密&#x2F;隐藏文章</li>
 <li><del>部分js、css文件通过JSDelivr分发</del></li>
 <li>船新的404页面</li>
 </ul>
@@ -1865,13 +1867,19 @@
 <li>打开<code>waifu.css</code>，修改看板娘配置<ul>
 <li><code>#waifu</code>中的参数可以调整看板娘位置。其中<code>left: 0;</code>表示看板娘显示在屏幕左边，修改为<code>right: 0;</code>则会显示在右侧</li>
 <li><code>#waifu-tool</code>中的参数可以调整看板娘旁边工具栏样式</li>
-<li><code>#waifu-tips</code>中的参数可以调整看板娘对话框样式</li>
+<li><code>#waifu-tips</code>中的参数可以调整看板娘对话框样式，添加color可以调整字体颜色</li>
 </ul>
 </li>
 </ol>
 <h3 id="引入js"><a href="#引入js" class="headerlink" title="引入js"></a>引入js</h3><p>打开<code>source/_data/head.njk</code>，粘贴下面的代码</p>
 <figure class="highlight html"><figcaption><span>head.njk</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;/live2d-widget/autoload.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>然后<code>hexo s</code>就能去浏览器里<del>调戏</del>自己的看板娘啦~</p>
+<h1 id="文章结束提醒"><a href="#文章结束提醒" class="headerlink" title="文章结束提醒"></a>文章结束提醒</h1><ul>
+<li>打开<code>_config.next.yml</code></li>
+<li>定位到到<code>custom_file_path:</code></li>
+<li>取消<code>postBodyEnd: source/_data/post-body-end.njk</code>的注释</li>
+<li>新建<code>./source/_data/post-body-end.njk</code>，粘贴下面的代码<figure class="highlight html"><figcaption><span>head.njk</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  &#123;% if not is_index %&#125;</span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;text-align:center;color: #ccc;font-size:14px;&quot;</span>&gt;</span></span><br><span class="line">          ---------- 我是有底线哒 <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-dice-d20&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> 感谢您的阅读 ----------</span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
 <h1 id="隐藏文章"><a href="#隐藏文章" class="headerlink" title="隐藏文章"></a>隐藏文章</h1><p>hexo-hide-posts插件可以实现在博客中隐藏指定的文章，并使它们仅可通过链接访问。当一篇文章被设置为「隐藏」时，它不会出现在任何列表中（包括首页、存档、分类页面、标签页面、Feed、站点地图等），也不会被搜索引擎索引（前提是搜索引擎遵守 noindex 标签）。只有知道文章链接的人才可以访问被隐藏的文章。</p>
 <div class="note info"><p><a class="btn" href="https://github.com/prinsss/hexo-hide-posts/blob/master/README_ZH.md"><i class="fa fa-torii-gate fa-fw"></i>hexo-hide-posts</a></p></div>
 
@@ -1910,6 +1918,230 @@
       <tags>
         <tag>HEXO</tag>
         <tag>Next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Next升级+Mac迁移 </title>
+    <url>/Next%E5%8D%87%E7%BA%A7-Mac%E8%BF%81%E7%A7%BB.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">写博客到现在已经快一年了，Next主题也更新了好多版本，新增的pjax真的是太香了，果断更新。顺便把Hexo迁移到mac上面来</blockquote>
+
+<span id="more"></span>
+
+<h1 id="更新说明"><a href="#更新说明" class="headerlink" title="更新说明"></a>更新说明</h1><p>Next主题从7.1到7.7.2的变动较大，直接升级的话小问题比较多，所以这次升级采用了重新安装的方式</p>
+<h2 id="版本对比"><a href="#版本对比" class="headerlink" title="版本对比"></a>版本对比</h2><p>升级前Hexo版本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo: 3.8.0</span><br><span class="line">hexo-cli: 3.1.0</span><br><span class="line">os: Windows_NT 10.0.17763 win32 x64</span><br><span class="line">node: 12.14.1</span><br><span class="line">next: 7.1</span><br></pre></td></tr></table></figure>
+<p>升级后Hexo版本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo: 4.2.0</span><br><span class="line">hexo-cli: 3.1.0</span><br><span class="line">os: Darwin 18.7.0 darwin x64</span><br><span class="line">node: 13.10.1</span><br><span class="line">next: 7.7.2</span><br></pre></td></tr></table></figure>
+
+<h2 id="新增功能"><a href="#新增功能" class="headerlink" title="新增功能"></a>新增功能</h2><ul>
+<li>pjax（局部刷新加载页面）</li>
+<li>DarkMode夜间模式（支持Mac等的夜间模式）</li>
+<li>Gitalk评论（Gitment凉了之后一直没设置评论系统，这次顺路加上）</li>
+<li>Mediumzoom（图片插件）</li>
+<li>中英切换（新）</li>
+<li>CDN（进行中）</li>
+<li>Echarts</li>
+</ul>
+<h2 id="移除功能"><a href="#移除功能" class="headerlink" title="移除功能"></a>移除功能</h2><ul>
+<li>动态背景（占用资源较大，在手机平板等设备上造成卡顿、发热、耗电快等问题）</li>
+<li>i18n-generator（一年也没写过英语的博客，而且这个方案缺陷太大，正在寻找其他解决方案）</li>
+<li>网易云音乐挂件（使用频率极低，拖慢加载速度）</li>
+</ul>
+<h2 id="保留功能"><a href="#保留功能" class="headerlink" title="保留功能"></a>保留功能</h2><ul>
+<li>站内搜索</li>
+<li>字数与阅读时长统计</li>
+<li>网站运行时间</li>
+<li>加载进度条</li>
+<li>崩溃欺骗</li>
+<li>背景图片</li>
+<li>鼠标点击特效</li>
+<li>不蒜子</li>
+<li>Live2D看板娘</li>
+</ul>
+<h1 id="Mac安装过程"><a href="#Mac安装过程" class="headerlink" title="Mac安装过程"></a>Mac安装过程</h1><h2 id="安装软件依赖"><a href="#安装软件依赖" class="headerlink" title="安装软件依赖"></a>安装软件依赖</h2><p>首先下载安装<code>git</code>和<code>node.js</code>,官网如下</p>
+<ul>
+<li><a href="https://git-scm.com/">git</a></li>
+<li><a href="https://nodejs.org/en/">node.js</a></li>
+</ul>
+<p>安装完成后在终端分别输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git --version</span><br><span class="line">node -v</span><br></pre></td></tr></table></figure>
+<p>检测是否安装成功，成功的话会返回软件版本号</p>
+<h2 id="配置本地目录"><a href="#配置本地目录" class="headerlink" title="配置本地目录"></a>配置本地目录</h2><ul>
+<li>新建一个用于存放博客文件的文件夹</li>
+<li>新建位于文件夹位置的终端窗口</li>
+<li>输入<code>npm install hexo -g</code>安装hexo<ul>
+<li>这一步可能会报错，报错的话使用命令<code>sudo npm install --unsafe-perm --verbose -g hexo</code>来安装hexo</li>
+</ul>
+</li>
+<li>输入<code>npm install</code>安装其他依赖</li>
+<li>输入<code>npm install hexo-deployer-git --save</code>安装部署插件</li>
+<li>输入<code>hexo v</code>查看是否安装成功，成功会返回版本号</li>
+</ul>
+<h2 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h2><ul>
+<li>打开终端</li>
+<li>输入<code>ls -al ~/.ssh</code>检查是否有以前生成的 SSH Key，没有的话继续</li>
+<li>输入<code>ssh-keygen -t rsa -C &quot;Guthub邮箱地址&quot;</code> 然后回车三连</li>
+<li>此时终端会显示文件的生成路径，根据路径找到并打开<code>id_rsa.pub</code></li>
+<li>复制里面的所有内容</li>
+<li>打开Github，在右上角个人头像下拉菜单中找到<code>Settings</code></li>
+<li>打开<code>SSH and GPG keys</code>,点击右上角<code>New SSH key</code></li>
+<li><code>Title</code>随便填,然后在<code>Key</code>中粘贴</li>
+<li>点击<code>Add SSH key</code></li>
+<li>回到Git bash，输入<code>ssh -T git@github.com</code>回车</li>
+<li>首次输入可能会有提醒，输入<code>yes</code>回车即可</li>
+<li>成功返回<code>Hi 用户名! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code>就代表成功了</li>
+<li>输入<code>git config --global user.name &quot;用户名&quot;</code></li>
+<li>输入<code>git config --global user.email  &quot;邮箱地址&quot;</code></li>
+</ul>
+<h2 id="安装Next主题"><a href="#安装Next主题" class="headerlink" title="安装Next主题"></a>安装Next主题</h2><p>在终端输入下面的命令安装最新的Next主题</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<h1 id="Next主题自定义"><a href="#Next主题自定义" class="headerlink" title="Next主题自定义"></a>Next主题自定义</h1><p>Hexo的配置过程我就不说了，根据原来的<code>_config.yml</code>配置就行，下面要说的是Next主题的配置</p>
+<h2 id="配置文件分离"><a href="#配置文件分离" class="headerlink" title="配置文件分离"></a>配置文件分离</h2><p>Next主题在7.3之后分离了配置文件与主题，详情请见<a href="https://tding.top/archives/2bd6d82.html">小丁的个人博客</a>。</p>
+<ul>
+<li>新建文件夹<code>hexo/source/_data</code></li>
+<li>将<code>./themes/next/_config.yml</code>复制到<code>hexo/source/_data</code>路径下并重命名为<code>next.yml</code></li>
+<li>将<code>next.yml</code>中的<code>override</code>设置为<code>true</code>即可作为主题的配置文件使用</li>
+<li>在<code>hexo/source/_data</code>中新建<code>body-end.swig</code>和<code>styles.styl</code>文件</li>
+<li>然后在<code>next.yml</code>的<code>custom_file_path</code>中删除前面的<code>#</code>来启用<code>bodyEnd</code>和<code>style</code></li>
+<li><code>custom_file_path</code>中的其他选项根据需要创建相关文件并启用</li>
+</ul>
+<h2 id="Pjax"><a href="#Pjax" class="headerlink" title="Pjax"></a>Pjax</h2><p>Pjax是基于Ajax的插件，能实现网页局部无刷新载入，听起来很香，然而存在一些小问题：</p>
+<ul>
+<li>使用Mediumzoom时，从归档进入博文不会加载图片，需要刷新网页才能加载</li>
+<li>Echarts图表全部需要刷新才能显示，否则只有一片空白</li>
+</ul>
+<p>安装Pjax</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/theme-next-pjax source/lib/pjax</span><br></pre></td></tr></table></figure>
+<p>在<code>next.yml</code>中搜索<code>pjax</code>并设置为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pjax: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="Darkmode"><a href="#Darkmode" class="headerlink" title="Darkmode"></a>Darkmode</h2><p>Next主题新增了暗色模式，能够配合系统的暗色主题使用<br>在<code>next.yml</code>中搜索<code>darkmode</code>并设置为<code>auto</code>即可根据系统主题切换亮色&#x2F;暗色模式</p>
+<h2 id="Gitalk评论"><a href="#Gitalk评论" class="headerlink" title="Gitalk评论"></a>Gitalk评论</h2><p>评论系统，一开始想用Valine来着，结果要实名制，果断弃了</p>
+<ul>
+<li>在Github新建一个仓库<code>gitalk-comment</code>，用来存放评论产生的issues</li>
+<li>点击右上角<code>头像 - Setting - Developer settings - OAuth Apps - New OAuth Apps</code></li>
+<li><code>Application name</code> 随便填</li>
+<li><code>Homepage URL</code>和<code>Authorization callback URL</code>都填自己的博客地址</li>
+<li>点击 <code>Register application</code></li>
+<li>在<code>next.yml</code>中搜索<code>gitalk</code></li>
+<li>复制得到的<code>Cilent ID</code>和<code>Cilent secret</code>到相应位置粘贴</li>
+<li>设置<code>enable</code>为<code>true</code></li>
+<li><code>github_id</code>和<code>admin_user</code>为你的用户名</li>
+<li><code>repo</code>为刚才创建的仓库名<code>gitalk-comment</code></li>
+<li><code>distraction_free_mode</code>是类似facobook的评论遮罩功能</li>
+</ul>
+<p><code>next.yml</code>中的具体配置如下</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"># Gitalk</span><br><span class="line"># For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk</span><br><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  github_id: Siriusq # GitHub repo owner</span><br><span class="line">  repo: gitalk-commnet # Repository name to store issues</span><br><span class="line">  client_id: xxxxxxxx # GitHub Application Client ID</span><br><span class="line">  client_secret: xxxxxxxx # GitHub Application Client Secret</span><br><span class="line">  admin_user: Siriusq # GitHub repo owner and collaborators, only these guys can initialize gitHub issues</span><br><span class="line">  distraction_free_mode: false # Facebook-like distraction free mode</span><br><span class="line">  # Gitalk<span class="string">&#x27;s display language depends on user&#x27;</span>s browser or system environment</span><br><span class="line">  # If you want everyone visiting your site to see a uniform language, you can set a force language value</span><br><span class="line">  # Available values: en | es-ES | fr | ru | zh-CN | zh-TW</span><br><span class="line">  language:</span><br></pre></td></tr></table></figure>
+
+<h2 id="Mediumzoom"><a href="#Mediumzoom" class="headerlink" title="Mediumzoom"></a>Mediumzoom</h2><p>模仿Medium图片查看方式的插件<br>安装</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install medium-zoom</span><br></pre></td></tr></table></figure>
+<p>在<code>next.yml</code>中搜索<code>mediumzoom</code>并设置为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mediumzoom: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="中英切换"><a href="#中英切换" class="headerlink" title="中英切换"></a>中英切换</h2><p>请移步另一篇博客<a href="https://siriusq.top/Hexo-Next-7-7-%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html">Hexo Next 7.7 双语切换</a></p>
+<h2 id="站内搜索"><a href="#站内搜索" class="headerlink" title="站内搜索"></a>站内搜索</h2><p>查找博客内的内容<br>安装</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb</span><br></pre></td></tr></table></figure>
+<p>在<code>next.yml</code>中搜索<code>local_search</code>并设置为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enable: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="字数与阅读时长统计"><a href="#字数与阅读时长统计" class="headerlink" title="字数与阅读时长统计"></a>字数与阅读时长统计</h2><p>安装</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-symbols-count-<span class="built_in">time</span></span><br></pre></td></tr></table></figure>
+<p>在根目录的<code>_config.yml</code>中添加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br><span class="line">  exclude_codeblock: false</span><br><span class="line">  awl: 4</span><br><span class="line">  wpm: 275</span><br><span class="line">  suffix: &quot;mins.&quot;</span><br></pre></td></tr></table></figure>
+<p>然后在<code>next.yml</code>中搜索<code>symbols_count_time</code>并设置为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加jquery"><a href="#添加jquery" class="headerlink" title="添加jquery"></a>添加jquery</h2><ul>
+<li>新版的Next主题移除了jquery，导致一些老得自定义设置会失效，我直接从老版本的Next主题复制过来了，路径是<code>./hexo/themes/next/source/libs/jquery/jquert-2.2.0.min.js</code>，也可以到<a href="https://code.jquery.com/jquery/">官网</a>下载</li>
+<li>将jquery放置在<code>./hexo/source/js</code>路径下</li>
+<li>在<code>./hexo/source/_data/body-end.swig</code>添加，版本不同的话记得改下面的版本<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!--jquery--&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/js/jquery-2.2.0.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="网站运行时间"><a href="#网站运行时间" class="headerlink" title="网站运行时间"></a>网站运行时间</h2><p>打开<code>./hexo/themes/next/layout/_partials/footer.swig</code>并添加下列代码</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">span</span> id=&quot;timeDate&quot;&gt;载入天数...&lt;/<span class="selector-tag">span</span>&gt;&lt;<span class="selector-tag">span</span> id=&quot;times&quot;&gt;载入时分秒...&lt;/<span class="selector-tag">span</span>&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="selector-tag">var</span> now = new Date();</span><br><span class="line">    function createtime() &#123;</span><br><span class="line">        <span class="selector-tag">var</span> grt= new Date(&quot;<span class="number">03</span>/<span class="number">31</span>/<span class="number">2019</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span><span class="string">&quot;);</span></span><br><span class="line"><span class="string">        now.setTime(now.getTime()+250);</span></span><br><span class="line"><span class="string">        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);</span></span><br><span class="line"><span class="string">        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);</span></span><br><span class="line"><span class="string">        if(String(hnum).length ==1 )&#123;hnum = &quot;</span><span class="number">0</span><span class="string">&quot; + hnum;&#125; minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);</span></span><br><span class="line"><span class="string">        mnum = Math.floor(minutes); if(String(mnum).length ==1 )&#123;mnum = &quot;</span><span class="number">0</span><span class="string">&quot; + mnum;&#125;</span></span><br><span class="line"><span class="string">        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);</span></span><br><span class="line"><span class="string">        snum = Math.round(seconds); if(String(snum).length ==1 )&#123;snum = &quot;</span><span class="number">0</span><span class="string">&quot; + snum;&#125;</span></span><br><span class="line"><span class="string">        document.getElementById(&quot;</span>timeDate<span class="string">&quot;).innerHTML = &quot;</span>本站已安全运行 <span class="string">&quot;+dnum+&quot;</span> 天 <span class="string">&quot;;</span></span><br><span class="line"><span class="string">        document.getElementById(&quot;</span>times<span class="string">&quot;).innerHTML = hnum + &quot;</span> 小时 <span class="string">&quot; + mnum + &quot;</span> 分 <span class="string">&quot; + snum + &quot;</span> 秒<span class="string">&quot;;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">setInterval(&quot;</span><span class="built_in">createtime</span>()<span class="string">&quot;,250);</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="加载进度条"><a href="#加载进度条" class="headerlink" title="加载进度条"></a>加载进度条</h2><p>显示当前网页的加载进度<br>安装</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/theme-next-pace source/lib/pace</span><br></pre></td></tr></table></figure>
+<p>在<code>next.yml</code>中搜索<code>Progress bar in the top during page loading</code>并设置为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pace:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="崩溃欺骗"><a href="#崩溃欺骗" class="headerlink" title="崩溃欺骗"></a>崩溃欺骗</h2><p>在网页标题中添加崩溃欺骗效果，离开页面后标题会更改，切换回来后会恢复正常，需要配合<strong>jquery</strong>使用</p>
+<p>在<code>./hexo/source/js</code>中新建<code>crash_cheat</code>文件，复制下列代码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!--崩溃欺骗--&gt;</span><br><span class="line"> <span class="keyword">var</span> <span class="title class_">OriginTitle</span> = <span class="variable language_">document</span>.<span class="property">title</span>;</span><br><span class="line"> <span class="keyword">var</span> titleTime;</span><br><span class="line"> <span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;visibilitychange&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">     <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="property">hidden</span>) &#123;</span><br><span class="line">         $(<span class="string">&#x27;[rel=&quot;icon&quot;]&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&#x27;href&#x27;</span>, <span class="string">&quot;/img/TEP.ico&quot;</span>);</span><br><span class="line">         <span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">&#x27;╭(°A°`)╮ 页面崩溃啦 ~&#x27;</span>;</span><br><span class="line">         <span class="built_in">clearTimeout</span>(titleTime);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">else</span> &#123;</span><br><span class="line">         $(<span class="string">&#x27;[rel=&quot;icon&quot;]&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&#x27;href&#x27;</span>, <span class="string">&quot;/favicon.ico&quot;</span>);</span><br><span class="line">         <span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">&#x27;(ฅ&gt;ω&lt;*ฅ) 噫又好了~&#x27;</span> + <span class="title class_">OriginTitle</span>;</span><br><span class="line">         titleTime = <span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">             <span class="variable language_">document</span>.<span class="property">title</span> = <span class="title class_">OriginTitle</span>;</span><br><span class="line">         &#125;, <span class="number">2000</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<p>然后在<code>./hexo/source/_data/body-end.swig</code>中添加</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;!--崩溃欺骗--&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; <span class="attribute">src</span>=&quot;/js/crash_cheat<span class="selector-class">.js</span>&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h2><p>将背景图片放置在<code>./hexo/themes/next/source/images</code>中并命名为<code>background.jpg</code><br>然后在<code>./hexo/source/_data/styles.styl</code>中添加</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">url</span>(<span class="string">/images/background.jpg</span>);//图片路径</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;//是否重复平铺</span><br><span class="line">    <span class="attribute">background-attachment</span>: fixed;//是否随着网页上下滚动而滚动，fixed为固定</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">50%</span> <span class="number">50%</span>;//图片位置</span><br><span class="line">    <span class="attribute">background-size</span>: cover;//图片展示大小</span><br><span class="line">    -webkit-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    -o-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    -moz-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    -ms-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0.9</span>;</span><br><span class="line">    <span class="selector-tag">footer</span> &gt; <span class="selector-tag">div</span> &gt; <span class="selector-tag">div</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>:<span class="number">#000000</span>;//底部文字颜色</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="鼠标点击特效"><a href="#鼠标点击特效" class="headerlink" title="鼠标点击特效"></a>鼠标点击特效</h2><p>根据<a href="https://tding.top/archives/2bd6d82.html">小丁的个人博客</a>更换了鼠标点击的特效，原来的特效对低性能设备不友好<br>在<code>./hexo/themes/next/source/js/cursor</code>中新建<code>fireworks.js</code>，并添加</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">class Circle &#123;</span><br><span class="line">  constructor(&#123; origin, speed, <span class="attribute">color</span>, angle, context &#125;) &#123;</span><br><span class="line">    this<span class="selector-class">.origin</span> = origin</span><br><span class="line">    this<span class="selector-class">.position</span> = &#123; ..<span class="selector-class">.this</span><span class="selector-class">.origin</span> &#125;</span><br><span class="line">    this<span class="selector-class">.color</span> = <span class="attribute">color</span></span><br><span class="line">    this<span class="selector-class">.speed</span> = speed</span><br><span class="line">    this<span class="selector-class">.angle</span> = angle</span><br><span class="line">    this<span class="selector-class">.context</span> = context</span><br><span class="line">    this<span class="selector-class">.renderCount</span> = <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  draw() &#123;</span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.fillStyle</span> = this<span class="selector-class">.color</span></span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.beginPath</span>()</span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.arc</span>(this<span class="selector-class">.position</span><span class="selector-class">.x</span>, this<span class="selector-class">.position</span><span class="selector-class">.y</span>, <span class="number">2</span>, <span class="number">0</span>, Math<span class="selector-class">.PI</span> * <span class="number">2</span>)</span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.fill</span>()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  move() &#123;</span><br><span class="line">    this<span class="selector-class">.position</span><span class="selector-class">.x</span> = (Math<span class="selector-class">.sin</span>(this<span class="selector-class">.angle</span>) * this<span class="selector-class">.speed</span>) + this<span class="selector-class">.position</span><span class="selector-class">.x</span></span><br><span class="line">    this<span class="selector-class">.position</span><span class="selector-class">.y</span> = (Math<span class="selector-class">.cos</span>(this<span class="selector-class">.angle</span>) * this<span class="selector-class">.speed</span>) + this<span class="selector-class">.position</span><span class="selector-class">.y</span> + (this<span class="selector-class">.renderCount</span> * <span class="number">0.3</span>)</span><br><span class="line">    this<span class="selector-class">.renderCount</span>++</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Boom &#123;</span><br><span class="line">  constructor (&#123; origin, context, circleCount = <span class="number">16</span>, area &#125;) &#123;</span><br><span class="line">    this<span class="selector-class">.origin</span> = origin</span><br><span class="line">    this<span class="selector-class">.context</span> = context</span><br><span class="line">    this<span class="selector-class">.circleCount</span> = circleCount</span><br><span class="line">    this<span class="selector-class">.area</span> = area</span><br><span class="line">    this<span class="selector-class">.stop</span> = false</span><br><span class="line">    this<span class="selector-class">.circles</span> = <span class="selector-attr">[]</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomArray(range) &#123;</span><br><span class="line">    const length = range<span class="selector-class">.length</span></span><br><span class="line">    const randomIndex = Math<span class="selector-class">.floor</span>(length * Math<span class="selector-class">.random</span>())</span><br><span class="line">    return range<span class="selector-attr">[randomIndex]</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomColor() &#123;</span><br><span class="line">    const range = <span class="selector-attr">[<span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;9&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>, <span class="string">&#x27;F&#x27;</span>]</span></span><br><span class="line">    return &#x27;#&#x27; + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomRange(start, end) &#123;</span><br><span class="line">    return (end - start) * Math<span class="selector-class">.random</span>() + start</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  init() &#123;</span><br><span class="line">    for(let <span class="selector-tag">i</span> = <span class="number">0</span>; <span class="selector-tag">i</span> &lt; this<span class="selector-class">.circleCount</span>; <span class="selector-tag">i</span>++) &#123;</span><br><span class="line">      const circle = new Circle(&#123;</span><br><span class="line">        context: this.context,</span><br><span class="line">        origin: this.origin,</span><br><span class="line">        color: this.<span class="built_in">randomColor</span>(),</span><br><span class="line">        angle: this.<span class="built_in">randomRange</span>(Math.PI - <span class="number">1</span>, Math.PI + <span class="number">1</span>),</span><br><span class="line">        speed: this.<span class="built_in">randomRange</span>(<span class="number">1</span>, <span class="number">6</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">      this<span class="selector-class">.circles</span><span class="selector-class">.push</span>(circle)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  move() &#123;</span><br><span class="line">    this<span class="selector-class">.circles</span><span class="selector-class">.forEach</span>((circle, index) =&gt; &#123;</span><br><span class="line">      if (circle<span class="selector-class">.position</span><span class="selector-class">.x</span> &gt; this<span class="selector-class">.area</span><span class="selector-class">.width</span> || circle<span class="selector-class">.position</span><span class="selector-class">.y</span> &gt; this<span class="selector-class">.area</span><span class="selector-class">.height</span>) &#123;</span><br><span class="line">        return this<span class="selector-class">.circles</span><span class="selector-class">.splice</span>(index, <span class="number">1</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      circle<span class="selector-class">.move</span>()</span><br><span class="line">    &#125;)</span><br><span class="line">    if (this<span class="selector-class">.circles</span><span class="selector-class">.length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      this<span class="selector-class">.stop</span> = true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  draw() &#123;</span><br><span class="line">    this<span class="selector-class">.circles</span><span class="selector-class">.forEach</span>(circle =&gt; circle<span class="selector-class">.draw</span>())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class CursorSpecialEffects &#123;</span><br><span class="line">  constructor() &#123;</span><br><span class="line">    this<span class="selector-class">.computerCanvas</span> = document<span class="selector-class">.createElement</span>(&#x27;<span class="selector-tag">canvas</span>&#x27;)</span><br><span class="line">    this<span class="selector-class">.renderCanvas</span> = document<span class="selector-class">.createElement</span>(&#x27;<span class="selector-tag">canvas</span>&#x27;)</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.computerContext</span> = this<span class="selector-class">.computerCanvas</span><span class="selector-class">.getContext</span>(&#x27;<span class="number">2</span>d&#x27;)</span><br><span class="line">    this<span class="selector-class">.renderContext</span> = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.getContext</span>(&#x27;<span class="number">2</span>d&#x27;)</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.globalWidth</span> = window<span class="selector-class">.innerWidth</span></span><br><span class="line">    this<span class="selector-class">.globalHeight</span> = window<span class="selector-class">.innerHeight</span></span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.booms</span> = <span class="selector-attr">[]</span></span><br><span class="line">    this<span class="selector-class">.running</span> = false</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleMouseDown(e) &#123;</span><br><span class="line">    const boom = new Boom(&#123;</span><br><span class="line">      origin: &#123; x: e.clientX, y: e.clientY &#125;,</span><br><span class="line">      context: this.computerContext,</span><br><span class="line">      area: &#123;</span><br><span class="line">        <span class="attribute">width</span>: this.globalWidth,</span><br><span class="line">        height: this.globalHeight</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    boom<span class="selector-class">.init</span>()</span><br><span class="line">    this<span class="selector-class">.booms</span><span class="selector-class">.push</span>(boom)</span><br><span class="line">    this<span class="selector-class">.running</span> || this<span class="selector-class">.run</span>()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handlePageHide() &#123;</span><br><span class="line">    this<span class="selector-class">.booms</span> = <span class="selector-attr">[]</span></span><br><span class="line">    this<span class="selector-class">.running</span> = false</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  init() &#123;</span><br><span class="line">    const style = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.style</span></span><br><span class="line">    style<span class="selector-class">.position</span> = &#x27;fixed&#x27;</span><br><span class="line">    style<span class="selector-class">.top</span> = style<span class="selector-class">.left</span> = <span class="number">0</span></span><br><span class="line">    style<span class="selector-class">.zIndex</span> = &#x27;<span class="number">999999999999999999999999999999999999999999</span>&#x27;</span><br><span class="line">    style<span class="selector-class">.pointerEvents</span> = &#x27;<span class="attribute">none</span>&#x27;</span><br><span class="line"></span><br><span class="line">    style<span class="selector-class">.width</span> = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.width</span> = this<span class="selector-class">.computerCanvas</span><span class="selector-class">.width</span> = this<span class="selector-class">.globalWidth</span></span><br><span class="line">    style<span class="selector-class">.height</span> = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.height</span> = this<span class="selector-class">.computerCanvas</span><span class="selector-class">.height</span> = this<span class="selector-class">.globalHeight</span></span><br><span class="line"></span><br><span class="line">    document<span class="selector-class">.body</span><span class="selector-class">.append</span>(this<span class="selector-class">.renderCanvas</span>)</span><br><span class="line"></span><br><span class="line">    window<span class="selector-class">.addEventListener</span>(&#x27;mousedown&#x27;, this<span class="selector-class">.handleMouseDown</span><span class="selector-class">.bind</span>(this))</span><br><span class="line">    window<span class="selector-class">.addEventListener</span>(&#x27;pagehide&#x27;, this<span class="selector-class">.handlePageHide</span><span class="selector-class">.bind</span>(this))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  run() &#123;</span><br><span class="line">    this<span class="selector-class">.running</span> = true</span><br><span class="line">    if (this<span class="selector-class">.booms</span><span class="selector-class">.length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      return this<span class="selector-class">.running</span> = false</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    requestAnimationFrame(this<span class="selector-class">.run</span><span class="selector-class">.bind</span>(this))</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.computerContext</span><span class="selector-class">.clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, this<span class="selector-class">.globalWidth</span>, this<span class="selector-class">.globalHeight</span>)</span><br><span class="line">    this<span class="selector-class">.renderContext</span><span class="selector-class">.clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, this<span class="selector-class">.globalWidth</span>, this<span class="selector-class">.globalHeight</span>)</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.booms</span><span class="selector-class">.forEach</span>((boom, index) =&gt; &#123;</span><br><span class="line">      if (boom<span class="selector-class">.stop</span>) &#123;</span><br><span class="line">        return this<span class="selector-class">.booms</span><span class="selector-class">.splice</span>(index, <span class="number">1</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      boom<span class="selector-class">.move</span>()</span><br><span class="line">      boom<span class="selector-class">.draw</span>()</span><br><span class="line">    &#125;)</span><br><span class="line">    this<span class="selector-class">.renderContext</span><span class="selector-class">.drawImage</span>(this<span class="selector-class">.computerCanvas</span>, <span class="number">0</span>, <span class="number">0</span>, this<span class="selector-class">.globalWidth</span>, this<span class="selector-class">.globalHeight</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const cursorSpecialEffects = new CursorSpecialEffects()</span><br><span class="line">cursorSpecialEffects<span class="selector-class">.init</span>()</span><br></pre></td></tr></table></figure>
+
+<p>然后在<code>./hexo/source/_data/body-end.swig</code>中添加</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;# 鼠标点击特效 #&#125;</span><br><span class="line">&#123;% if theme<span class="selector-class">.cursor_effect</span> == &quot;fireworks&quot; %&#125;</span><br><span class="line">  &lt;script async <span class="attribute">src</span>=&quot;/js/<span class="attribute">cursor</span>/fireworks<span class="selector-class">.js</span>&quot;&gt;&lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>next.yml</code>中添加</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"># 鼠标点击特效</span><br><span class="line">cursor_effect: fireworks</span><br></pre></td></tr></table></figure>
+
+<h2 id="不蒜子"><a href="#不蒜子" class="headerlink" title="不蒜子"></a>不蒜子</h2><p>Next内置了不蒜子统计<br>在<code>next.yml</code>中搜索<code>busuanzi_count</code>并设置为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enable: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义单行代码颜色"><a href="#自定义单行代码颜色" class="headerlink" title="自定义单行代码颜色"></a>自定义单行代码颜色</h2><p>在<code>./hexo/source/_data/styles.styl</code>中添加</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">code</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#ff511A</span>;</span><br><span class="line">    //<span class="attribute">background</span>: <span class="number">#fbf7f8</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">2px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Live2D看板娘"><a href="#Live2D看板娘" class="headerlink" title="Live2D看板娘"></a>Live2D看板娘</h2><p>以我安装的<code>tororo</code>为例，其他模型请见<a href="https://github.com/xiazeyu/live2d-widget-models">官方文档</a><br>安装</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br><span class="line">npm install live2d-widget-model-tororo</span><br></pre></td></tr></table></figure>
+<p>在<code>next.yml</code>中搜索<code>Progress bar in the top during page loading</code>并设置为</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  enable: true 							# 开启Live2D</span><br><span class="line">  scriptFrom: local 					   # 插件来源</span><br><span class="line">  pluginRootPath: live2dw/ 				# 插件根目录(相对路径)</span><br><span class="line">  pluginJsPath: lib/ 					  # 脚本文件路径(相对于插件根目录路径)</span><br><span class="line">  pluginModelPath: assets/ 				# 模型文件路径(相对于插件根目录)</span><br><span class="line">  tagMode: false 						  # 是否标签模式</span><br><span class="line">  debug: false 							# 是否开启调试模式</span><br><span class="line">  model:</span><br><span class="line">    use: live2d-widget-model-wanko 		# 选择模型</span><br><span class="line">  display:</span><br><span class="line">    position: right						# 模型在页面上的位置</span><br><span class="line">    width: <span class="number">150</span> 							# 模型宽度</span><br><span class="line">    height: <span class="number">300</span> 		 				  # 模型高度</span><br><span class="line">  mobile:</span><br><span class="line">    show: true 							# 是否在手机端显示</span><br><span class="line">  react:</span><br><span class="line">    opacity: <span class="number">1</span> 							# 设置模型透明度</span><br></pre></td></tr></table></figure>
+
+<h2 id="Echarts"><a href="#Echarts" class="headerlink" title="Echarts"></a>Echarts</h2><p>熊家的可视化图表，与PJAX有冲突，开启PJAX的情况下需要刷新页面才能成功加载。谷歌搜到说要修改PJAX，但是本人水平有限没能成功</p>
+<p>安装的插件使用的是4.3，某些图表不能正常显示，需要手动修改为最新的，这个版本失效的话就到ECharts官网上随便打开一个示例，然后用浏览器控制台找到最新js文件的地址替换。</p>
+<p>打开<code>./hexo/node_modules/hexo-tag-echarts4/template.html</code>，修改<code>&lt;script src=&quot;https://cdn.bootcss.com/echarts/4.3.0/echarts.common.min.js&quot;&gt;&lt;/script&gt;</code>为<code>&lt;script src=&quot;https://www.echartsjs.com/examples/vendors/echarts/echarts.min.js?_v_=1584687926098&quot;&gt;&lt;/script&gt;</code></p>
+<p>此外，一些地图类的图表需要引入地图的js，也是开控制台找，然后加入到<code>./hexo/node_modules/hexo-tag-echarts4/template.html</code>中，例如中国地图和世界地图的js</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;script <span class="attribute">src</span>=&quot;https://www.echartsjs.com/examples/vendors/echarts/map/js/china.js?_v_=<span class="number">1584687926098</span><span class="string">&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script src=&quot;</span>https://www.echartsjs.com/examples/vendors/echarts/map/js/world.js?_v_=<span class="number">1584687926098</span><span class="string">&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>总之就是缺什么补什么</p>
+<p>安装</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-tag-echarts4 --save</span><br></pre></td></tr></table></figure>
+
+<p>使用<br>400代表图表的高度是400px，85%表示相对宽度是85%，不标明的话默认值是高度400px，宽度81%</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;% echarts <span class="number">400</span> &#x27;<span class="number">85%</span>&#x27; %&#125;</span><br><span class="line">\\TODO echarts contents goes here</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;% echarts %&#125;</span><br><span class="line">option = &#123;</span><br><span class="line">    xAxis: &#123;</span><br><span class="line">        type: <span class="string">&#x27;category&#x27;</span>,</span><br><span class="line">        data: [<span class="string">&#x27;Mon&#x27;</span>, <span class="string">&#x27;Tue&#x27;</span>, <span class="string">&#x27;Wed&#x27;</span>, <span class="string">&#x27;Thu&#x27;</span>, <span class="string">&#x27;Fri&#x27;</span>, <span class="string">&#x27;Sat&#x27;</span>, <span class="string">&#x27;Sun&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    yAxis: &#123;</span><br><span class="line">        type: <span class="string">&#x27;value&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    series: [&#123;</span><br><span class="line">        data: [<span class="number">820</span>, <span class="number">932</span>, <span class="number">901</span>, <span class="number">934</span>, <span class="number">1290</span>, <span class="number">1330</span>, <span class="number">1320</span>],</span><br><span class="line">        type: <span class="string">&#x27;line&#x27;</span></span><br><span class="line">    &#125;]</span><br><span class="line">&#125;;</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2022.5.13 已废弃</p>
+<h2 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h2><p>Github的服务器在境外，网站加载时间巨长，而使用CDN加速可以有效缓解这一问题</p>
+<ul>
+<li>登陆<a href="https://www.cloudflare.com/">Cloudflare</a></li>
+<li>输入你的域名并点击点击<code>Add site</code></li>
+<li>选择套餐，选<code>free</code>就好</li>
+<li>点击<code>Confirm plan</code></li>
+<li>Cloudflare会先扫描你的DNS记录，稍等一会会出现你域名现在的解析记录</li>
+<li>点击<code>Continue</code></li>
+<li>打开你域名服务商的网站，用Cloudflare给的两个DNS服务器替换掉原来的服务器</li>
+<li>完成后回到Cloudflare，点击<code>Done, check nameservers</code></li>
+<li>然后慢慢等待生效，生效后会有邮件提醒</li>
+<li>等待的时候可以做一些设置</li>
+<li>SSL&#x2F;TLS选项<ul>
+<li>Mode使用默认的Full</li>
+<li>Always Use HTTPS设置为On</li>
+<li>Opportunistic Encryption设置为On</li>
+<li>Authenticated Origin Pills设置为On</li>
+</ul>
+</li>
+</ul>
+<p>填坑完成，毕设期间估计要咕咕咕3个月了┏(＾0＾)┛</p>
+<blockquote>
+<p>参考: <a href="https://tding.top/archives/2bd6d82.html">小丁的个人博客</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>网站配置</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>MacOS</tag>
       </tags>
   </entry>
   <entry>
@@ -2386,230 +2618,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Next升级+Mac迁移 </title>
-    <url>/Next%E5%8D%87%E7%BA%A7-Mac%E8%BF%81%E7%A7%BB.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">写博客到现在已经快一年了，Next主题也更新了好多版本，新增的pjax真的是太香了，果断更新。顺便把Hexo迁移到mac上面来</blockquote>
-
-<span id="more"></span>
-
-<h1 id="更新说明"><a href="#更新说明" class="headerlink" title="更新说明"></a>更新说明</h1><p>Next主题从7.1到7.7.2的变动较大，直接升级的话小问题比较多，所以这次升级采用了重新安装的方式</p>
-<h2 id="版本对比"><a href="#版本对比" class="headerlink" title="版本对比"></a>版本对比</h2><p>升级前Hexo版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo: 3.8.0</span><br><span class="line">hexo-cli: 3.1.0</span><br><span class="line">os: Windows_NT 10.0.17763 win32 x64</span><br><span class="line">node: 12.14.1</span><br><span class="line">next: 7.1</span><br></pre></td></tr></table></figure>
-<p>升级后Hexo版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo: 4.2.0</span><br><span class="line">hexo-cli: 3.1.0</span><br><span class="line">os: Darwin 18.7.0 darwin x64</span><br><span class="line">node: 13.10.1</span><br><span class="line">next: 7.7.2</span><br></pre></td></tr></table></figure>
-
-<h2 id="新增功能"><a href="#新增功能" class="headerlink" title="新增功能"></a>新增功能</h2><ul>
-<li>pjax（局部刷新加载页面）</li>
-<li>DarkMode夜间模式（支持Mac等的夜间模式）</li>
-<li>Gitalk评论（Gitment凉了之后一直没设置评论系统，这次顺路加上）</li>
-<li>Mediumzoom（图片插件）</li>
-<li>中英切换（新）</li>
-<li>CDN（进行中）</li>
-<li>Echarts</li>
-</ul>
-<h2 id="移除功能"><a href="#移除功能" class="headerlink" title="移除功能"></a>移除功能</h2><ul>
-<li>动态背景（占用资源较大，在手机平板等设备上造成卡顿、发热、耗电快等问题）</li>
-<li>i18n-generator（一年也没写过英语的博客，而且这个方案缺陷太大，正在寻找其他解决方案）</li>
-<li>网易云音乐挂件（使用频率极低，拖慢加载速度）</li>
-</ul>
-<h2 id="保留功能"><a href="#保留功能" class="headerlink" title="保留功能"></a>保留功能</h2><ul>
-<li>站内搜索</li>
-<li>字数与阅读时长统计</li>
-<li>网站运行时间</li>
-<li>加载进度条</li>
-<li>崩溃欺骗</li>
-<li>背景图片</li>
-<li>鼠标点击特效</li>
-<li>不蒜子</li>
-<li>Live2D看板娘</li>
-</ul>
-<h1 id="Mac安装过程"><a href="#Mac安装过程" class="headerlink" title="Mac安装过程"></a>Mac安装过程</h1><h2 id="安装软件依赖"><a href="#安装软件依赖" class="headerlink" title="安装软件依赖"></a>安装软件依赖</h2><p>首先下载安装<code>git</code>和<code>node.js</code>,官网如下</p>
-<ul>
-<li><a href="https://git-scm.com/">git</a></li>
-<li><a href="https://nodejs.org/en/">node.js</a></li>
-</ul>
-<p>安装完成后在终端分别输入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git --version</span><br><span class="line">node -v</span><br></pre></td></tr></table></figure>
-<p>检测是否安装成功，成功的话会返回软件版本号</p>
-<h2 id="配置本地目录"><a href="#配置本地目录" class="headerlink" title="配置本地目录"></a>配置本地目录</h2><ul>
-<li>新建一个用于存放博客文件的文件夹</li>
-<li>新建位于文件夹位置的终端窗口</li>
-<li>输入<code>npm install hexo -g</code>安装hexo<ul>
-<li>这一步可能会报错，报错的话使用命令<code>sudo npm install --unsafe-perm --verbose -g hexo</code>来安装hexo</li>
-</ul>
-</li>
-<li>输入<code>npm install</code>安装其他依赖</li>
-<li>输入<code>npm install hexo-deployer-git --save</code>安装部署插件</li>
-<li>输入<code>hexo v</code>查看是否安装成功，成功会返回版本号</li>
-</ul>
-<h2 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h2><ul>
-<li>打开终端</li>
-<li>输入<code>ls -al ~/.ssh</code>检查是否有以前生成的 SSH Key，没有的话继续</li>
-<li>输入<code>ssh-keygen -t rsa -C &quot;Guthub邮箱地址&quot;</code> 然后回车三连</li>
-<li>此时终端会显示文件的生成路径，根据路径找到并打开<code>id_rsa.pub</code></li>
-<li>复制里面的所有内容</li>
-<li>打开Github，在右上角个人头像下拉菜单中找到<code>Settings</code></li>
-<li>打开<code>SSH and GPG keys</code>,点击右上角<code>New SSH key</code></li>
-<li><code>Title</code>随便填,然后在<code>Key</code>中粘贴</li>
-<li>点击<code>Add SSH key</code></li>
-<li>回到Git bash，输入<code>ssh -T git@github.com</code>回车</li>
-<li>首次输入可能会有提醒，输入<code>yes</code>回车即可</li>
-<li>成功返回<code>Hi 用户名! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code>就代表成功了</li>
-<li>输入<code>git config --global user.name &quot;用户名&quot;</code></li>
-<li>输入<code>git config --global user.email  &quot;邮箱地址&quot;</code></li>
-</ul>
-<h2 id="安装Next主题"><a href="#安装Next主题" class="headerlink" title="安装Next主题"></a>安装Next主题</h2><p>在终端输入下面的命令安装最新的Next主题</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-
-<h1 id="Next主题自定义"><a href="#Next主题自定义" class="headerlink" title="Next主题自定义"></a>Next主题自定义</h1><p>Hexo的配置过程我就不说了，根据原来的<code>_config.yml</code>配置就行，下面要说的是Next主题的配置</p>
-<h2 id="配置文件分离"><a href="#配置文件分离" class="headerlink" title="配置文件分离"></a>配置文件分离</h2><p>Next主题在7.3之后分离了配置文件与主题，详情请见<a href="https://tding.top/archives/2bd6d82.html">小丁的个人博客</a>。</p>
-<ul>
-<li>新建文件夹<code>hexo/source/_data</code></li>
-<li>将<code>./themes/next/_config.yml</code>复制到<code>hexo/source/_data</code>路径下并重命名为<code>next.yml</code></li>
-<li>将<code>next.yml</code>中的<code>override</code>设置为<code>true</code>即可作为主题的配置文件使用</li>
-<li>在<code>hexo/source/_data</code>中新建<code>body-end.swig</code>和<code>styles.styl</code>文件</li>
-<li>然后在<code>next.yml</code>的<code>custom_file_path</code>中删除前面的<code>#</code>来启用<code>bodyEnd</code>和<code>style</code></li>
-<li><code>custom_file_path</code>中的其他选项根据需要创建相关文件并启用</li>
-</ul>
-<h2 id="Pjax"><a href="#Pjax" class="headerlink" title="Pjax"></a>Pjax</h2><p>Pjax是基于Ajax的插件，能实现网页局部无刷新载入，听起来很香，然而存在一些小问题：</p>
-<ul>
-<li>使用Mediumzoom时，从归档进入博文不会加载图片，需要刷新网页才能加载</li>
-<li>Echarts图表全部需要刷新才能显示，否则只有一片空白</li>
-</ul>
-<p>安装Pjax</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/theme-next-pjax source/lib/pjax</span><br></pre></td></tr></table></figure>
-<p>在<code>next.yml</code>中搜索<code>pjax</code>并设置为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pjax: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="Darkmode"><a href="#Darkmode" class="headerlink" title="Darkmode"></a>Darkmode</h2><p>Next主题新增了暗色模式，能够配合系统的暗色主题使用<br>在<code>next.yml</code>中搜索<code>darkmode</code>并设置为<code>auto</code>即可根据系统主题切换亮色&#x2F;暗色模式</p>
-<h2 id="Gitalk评论"><a href="#Gitalk评论" class="headerlink" title="Gitalk评论"></a>Gitalk评论</h2><p>评论系统，一开始想用Valine来着，结果要实名制，果断弃了</p>
-<ul>
-<li>在Github新建一个仓库<code>gitalk-comment</code>，用来存放评论产生的issues</li>
-<li>点击右上角<code>头像 - Setting - Developer settings - OAuth Apps - New OAuth Apps</code></li>
-<li><code>Application name</code> 随便填</li>
-<li><code>Homepage URL</code>和<code>Authorization callback URL</code>都填自己的博客地址</li>
-<li>点击 <code>Register application</code></li>
-<li>在<code>next.yml</code>中搜索<code>gitalk</code></li>
-<li>复制得到的<code>Cilent ID</code>和<code>Cilent secret</code>到相应位置粘贴</li>
-<li>设置<code>enable</code>为<code>true</code></li>
-<li><code>github_id</code>和<code>admin_user</code>为你的用户名</li>
-<li><code>repo</code>为刚才创建的仓库名<code>gitalk-comment</code></li>
-<li><code>distraction_free_mode</code>是类似facobook的评论遮罩功能</li>
-</ul>
-<p><code>next.yml</code>中的具体配置如下</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"># Gitalk</span><br><span class="line"># For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk</span><br><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  github_id: Siriusq # GitHub repo owner</span><br><span class="line">  repo: gitalk-commnet # Repository name to store issues</span><br><span class="line">  client_id: xxxxxxxx # GitHub Application Client ID</span><br><span class="line">  client_secret: xxxxxxxx # GitHub Application Client Secret</span><br><span class="line">  admin_user: Siriusq # GitHub repo owner and collaborators, only these guys can initialize gitHub issues</span><br><span class="line">  distraction_free_mode: false # Facebook-like distraction free mode</span><br><span class="line">  # Gitalk<span class="string">&#x27;s display language depends on user&#x27;</span>s browser or system environment</span><br><span class="line">  # If you want everyone visiting your site to see a uniform language, you can set a force language value</span><br><span class="line">  # Available values: en | es-ES | fr | ru | zh-CN | zh-TW</span><br><span class="line">  language:</span><br></pre></td></tr></table></figure>
-
-<h2 id="Mediumzoom"><a href="#Mediumzoom" class="headerlink" title="Mediumzoom"></a>Mediumzoom</h2><p>模仿Medium图片查看方式的插件<br>安装</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install medium-zoom</span><br></pre></td></tr></table></figure>
-<p>在<code>next.yml</code>中搜索<code>mediumzoom</code>并设置为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mediumzoom: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="中英切换"><a href="#中英切换" class="headerlink" title="中英切换"></a>中英切换</h2><p>请移步另一篇博客<a href="https://siriusq.top/Hexo-Next-7-7-%E5%8F%8C%E8%AF%AD%E5%88%87%E6%8D%A2.html">Hexo Next 7.7 双语切换</a></p>
-<h2 id="站内搜索"><a href="#站内搜索" class="headerlink" title="站内搜索"></a>站内搜索</h2><p>查找博客内的内容<br>安装</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb</span><br></pre></td></tr></table></figure>
-<p>在<code>next.yml</code>中搜索<code>local_search</code>并设置为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enable: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="字数与阅读时长统计"><a href="#字数与阅读时长统计" class="headerlink" title="字数与阅读时长统计"></a>字数与阅读时长统计</h2><p>安装</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-symbols-count-<span class="built_in">time</span></span><br></pre></td></tr></table></figure>
-<p>在根目录的<code>_config.yml</code>中添加</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br><span class="line">  exclude_codeblock: false</span><br><span class="line">  awl: 4</span><br><span class="line">  wpm: 275</span><br><span class="line">  suffix: &quot;mins.&quot;</span><br></pre></td></tr></table></figure>
-<p>然后在<code>next.yml</code>中搜索<code>symbols_count_time</code>并设置为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="添加jquery"><a href="#添加jquery" class="headerlink" title="添加jquery"></a>添加jquery</h2><ul>
-<li>新版的Next主题移除了jquery，导致一些老得自定义设置会失效，我直接从老版本的Next主题复制过来了，路径是<code>./hexo/themes/next/source/libs/jquery/jquert-2.2.0.min.js</code>，也可以到<a href="https://code.jquery.com/jquery/">官网</a>下载</li>
-<li>将jquery放置在<code>./hexo/source/js</code>路径下</li>
-<li>在<code>./hexo/source/_data/body-end.swig</code>添加，版本不同的话记得改下面的版本<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!--jquery--&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/js/jquery-2.2.0.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="网站运行时间"><a href="#网站运行时间" class="headerlink" title="网站运行时间"></a>网站运行时间</h2><p>打开<code>./hexo/themes/next/layout/_partials/footer.swig</code>并添加下列代码</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">span</span> id=&quot;timeDate&quot;&gt;载入天数...&lt;/<span class="selector-tag">span</span>&gt;&lt;<span class="selector-tag">span</span> id=&quot;times&quot;&gt;载入时分秒...&lt;/<span class="selector-tag">span</span>&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="selector-tag">var</span> now = new Date();</span><br><span class="line">    function createtime() &#123;</span><br><span class="line">        <span class="selector-tag">var</span> grt= new Date(&quot;<span class="number">03</span>/<span class="number">31</span>/<span class="number">2019</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span><span class="string">&quot;);</span></span><br><span class="line"><span class="string">        now.setTime(now.getTime()+250);</span></span><br><span class="line"><span class="string">        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);</span></span><br><span class="line"><span class="string">        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);</span></span><br><span class="line"><span class="string">        if(String(hnum).length ==1 )&#123;hnum = &quot;</span><span class="number">0</span><span class="string">&quot; + hnum;&#125; minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);</span></span><br><span class="line"><span class="string">        mnum = Math.floor(minutes); if(String(mnum).length ==1 )&#123;mnum = &quot;</span><span class="number">0</span><span class="string">&quot; + mnum;&#125;</span></span><br><span class="line"><span class="string">        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);</span></span><br><span class="line"><span class="string">        snum = Math.round(seconds); if(String(snum).length ==1 )&#123;snum = &quot;</span><span class="number">0</span><span class="string">&quot; + snum;&#125;</span></span><br><span class="line"><span class="string">        document.getElementById(&quot;</span>timeDate<span class="string">&quot;).innerHTML = &quot;</span>本站已安全运行 <span class="string">&quot;+dnum+&quot;</span> 天 <span class="string">&quot;;</span></span><br><span class="line"><span class="string">        document.getElementById(&quot;</span>times<span class="string">&quot;).innerHTML = hnum + &quot;</span> 小时 <span class="string">&quot; + mnum + &quot;</span> 分 <span class="string">&quot; + snum + &quot;</span> 秒<span class="string">&quot;;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">setInterval(&quot;</span><span class="built_in">createtime</span>()<span class="string">&quot;,250);</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="加载进度条"><a href="#加载进度条" class="headerlink" title="加载进度条"></a>加载进度条</h2><p>显示当前网页的加载进度<br>安装</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/theme-next-pace source/lib/pace</span><br></pre></td></tr></table></figure>
-<p>在<code>next.yml</code>中搜索<code>Progress bar in the top during page loading</code>并设置为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pace:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="崩溃欺骗"><a href="#崩溃欺骗" class="headerlink" title="崩溃欺骗"></a>崩溃欺骗</h2><p>在网页标题中添加崩溃欺骗效果，离开页面后标题会更改，切换回来后会恢复正常，需要配合<strong>jquery</strong>使用</p>
-<p>在<code>./hexo/source/js</code>中新建<code>crash_cheat</code>文件，复制下列代码</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!--崩溃欺骗--&gt;</span><br><span class="line"> <span class="keyword">var</span> <span class="title class_">OriginTitle</span> = <span class="variable language_">document</span>.<span class="property">title</span>;</span><br><span class="line"> <span class="keyword">var</span> titleTime;</span><br><span class="line"> <span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;visibilitychange&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">     <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="property">hidden</span>) &#123;</span><br><span class="line">         $(<span class="string">&#x27;[rel=&quot;icon&quot;]&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&#x27;href&#x27;</span>, <span class="string">&quot;/img/TEP.ico&quot;</span>);</span><br><span class="line">         <span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">&#x27;╭(°A°`)╮ 页面崩溃啦 ~&#x27;</span>;</span><br><span class="line">         <span class="built_in">clearTimeout</span>(titleTime);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">else</span> &#123;</span><br><span class="line">         $(<span class="string">&#x27;[rel=&quot;icon&quot;]&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&#x27;href&#x27;</span>, <span class="string">&quot;/favicon.ico&quot;</span>);</span><br><span class="line">         <span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">&#x27;(ฅ&gt;ω&lt;*ฅ) 噫又好了~&#x27;</span> + <span class="title class_">OriginTitle</span>;</span><br><span class="line">         titleTime = <span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">             <span class="variable language_">document</span>.<span class="property">title</span> = <span class="title class_">OriginTitle</span>;</span><br><span class="line">         &#125;, <span class="number">2000</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
-<p>然后在<code>./hexo/source/_data/body-end.swig</code>中添加</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;!--崩溃欺骗--&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; <span class="attribute">src</span>=&quot;/js/crash_cheat<span class="selector-class">.js</span>&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h2><p>将背景图片放置在<code>./hexo/themes/next/source/images</code>中并命名为<code>background.jpg</code><br>然后在<code>./hexo/source/_data/styles.styl</code>中添加</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">url</span>(<span class="string">/images/background.jpg</span>);//图片路径</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;//是否重复平铺</span><br><span class="line">    <span class="attribute">background-attachment</span>: fixed;//是否随着网页上下滚动而滚动，fixed为固定</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">50%</span> <span class="number">50%</span>;//图片位置</span><br><span class="line">    <span class="attribute">background-size</span>: cover;//图片展示大小</span><br><span class="line">    -webkit-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    -o-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    -moz-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    -ms-<span class="attribute">background-size</span>: cover;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0.9</span>;</span><br><span class="line">    <span class="selector-tag">footer</span> &gt; <span class="selector-tag">div</span> &gt; <span class="selector-tag">div</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>:<span class="number">#000000</span>;//底部文字颜色</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="鼠标点击特效"><a href="#鼠标点击特效" class="headerlink" title="鼠标点击特效"></a>鼠标点击特效</h2><p>根据<a href="https://tding.top/archives/2bd6d82.html">小丁的个人博客</a>更换了鼠标点击的特效，原来的特效对低性能设备不友好<br>在<code>./hexo/themes/next/source/js/cursor</code>中新建<code>fireworks.js</code>，并添加</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">class Circle &#123;</span><br><span class="line">  constructor(&#123; origin, speed, <span class="attribute">color</span>, angle, context &#125;) &#123;</span><br><span class="line">    this<span class="selector-class">.origin</span> = origin</span><br><span class="line">    this<span class="selector-class">.position</span> = &#123; ..<span class="selector-class">.this</span><span class="selector-class">.origin</span> &#125;</span><br><span class="line">    this<span class="selector-class">.color</span> = <span class="attribute">color</span></span><br><span class="line">    this<span class="selector-class">.speed</span> = speed</span><br><span class="line">    this<span class="selector-class">.angle</span> = angle</span><br><span class="line">    this<span class="selector-class">.context</span> = context</span><br><span class="line">    this<span class="selector-class">.renderCount</span> = <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  draw() &#123;</span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.fillStyle</span> = this<span class="selector-class">.color</span></span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.beginPath</span>()</span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.arc</span>(this<span class="selector-class">.position</span><span class="selector-class">.x</span>, this<span class="selector-class">.position</span><span class="selector-class">.y</span>, <span class="number">2</span>, <span class="number">0</span>, Math<span class="selector-class">.PI</span> * <span class="number">2</span>)</span><br><span class="line">    this<span class="selector-class">.context</span><span class="selector-class">.fill</span>()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  move() &#123;</span><br><span class="line">    this<span class="selector-class">.position</span><span class="selector-class">.x</span> = (Math<span class="selector-class">.sin</span>(this<span class="selector-class">.angle</span>) * this<span class="selector-class">.speed</span>) + this<span class="selector-class">.position</span><span class="selector-class">.x</span></span><br><span class="line">    this<span class="selector-class">.position</span><span class="selector-class">.y</span> = (Math<span class="selector-class">.cos</span>(this<span class="selector-class">.angle</span>) * this<span class="selector-class">.speed</span>) + this<span class="selector-class">.position</span><span class="selector-class">.y</span> + (this<span class="selector-class">.renderCount</span> * <span class="number">0.3</span>)</span><br><span class="line">    this<span class="selector-class">.renderCount</span>++</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Boom &#123;</span><br><span class="line">  constructor (&#123; origin, context, circleCount = <span class="number">16</span>, area &#125;) &#123;</span><br><span class="line">    this<span class="selector-class">.origin</span> = origin</span><br><span class="line">    this<span class="selector-class">.context</span> = context</span><br><span class="line">    this<span class="selector-class">.circleCount</span> = circleCount</span><br><span class="line">    this<span class="selector-class">.area</span> = area</span><br><span class="line">    this<span class="selector-class">.stop</span> = false</span><br><span class="line">    this<span class="selector-class">.circles</span> = <span class="selector-attr">[]</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomArray(range) &#123;</span><br><span class="line">    const length = range<span class="selector-class">.length</span></span><br><span class="line">    const randomIndex = Math<span class="selector-class">.floor</span>(length * Math<span class="selector-class">.random</span>())</span><br><span class="line">    return range<span class="selector-attr">[randomIndex]</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomColor() &#123;</span><br><span class="line">    const range = <span class="selector-attr">[<span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;9&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>, <span class="string">&#x27;F&#x27;</span>]</span></span><br><span class="line">    return &#x27;#&#x27; + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range) + this<span class="selector-class">.randomArray</span>(range)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomRange(start, end) &#123;</span><br><span class="line">    return (end - start) * Math<span class="selector-class">.random</span>() + start</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  init() &#123;</span><br><span class="line">    for(let <span class="selector-tag">i</span> = <span class="number">0</span>; <span class="selector-tag">i</span> &lt; this<span class="selector-class">.circleCount</span>; <span class="selector-tag">i</span>++) &#123;</span><br><span class="line">      const circle = new Circle(&#123;</span><br><span class="line">        context: this.context,</span><br><span class="line">        origin: this.origin,</span><br><span class="line">        color: this.<span class="built_in">randomColor</span>(),</span><br><span class="line">        angle: this.<span class="built_in">randomRange</span>(Math.PI - <span class="number">1</span>, Math.PI + <span class="number">1</span>),</span><br><span class="line">        speed: this.<span class="built_in">randomRange</span>(<span class="number">1</span>, <span class="number">6</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">      this<span class="selector-class">.circles</span><span class="selector-class">.push</span>(circle)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  move() &#123;</span><br><span class="line">    this<span class="selector-class">.circles</span><span class="selector-class">.forEach</span>((circle, index) =&gt; &#123;</span><br><span class="line">      if (circle<span class="selector-class">.position</span><span class="selector-class">.x</span> &gt; this<span class="selector-class">.area</span><span class="selector-class">.width</span> || circle<span class="selector-class">.position</span><span class="selector-class">.y</span> &gt; this<span class="selector-class">.area</span><span class="selector-class">.height</span>) &#123;</span><br><span class="line">        return this<span class="selector-class">.circles</span><span class="selector-class">.splice</span>(index, <span class="number">1</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      circle<span class="selector-class">.move</span>()</span><br><span class="line">    &#125;)</span><br><span class="line">    if (this<span class="selector-class">.circles</span><span class="selector-class">.length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      this<span class="selector-class">.stop</span> = true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  draw() &#123;</span><br><span class="line">    this<span class="selector-class">.circles</span><span class="selector-class">.forEach</span>(circle =&gt; circle<span class="selector-class">.draw</span>())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class CursorSpecialEffects &#123;</span><br><span class="line">  constructor() &#123;</span><br><span class="line">    this<span class="selector-class">.computerCanvas</span> = document<span class="selector-class">.createElement</span>(&#x27;<span class="selector-tag">canvas</span>&#x27;)</span><br><span class="line">    this<span class="selector-class">.renderCanvas</span> = document<span class="selector-class">.createElement</span>(&#x27;<span class="selector-tag">canvas</span>&#x27;)</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.computerContext</span> = this<span class="selector-class">.computerCanvas</span><span class="selector-class">.getContext</span>(&#x27;<span class="number">2</span>d&#x27;)</span><br><span class="line">    this<span class="selector-class">.renderContext</span> = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.getContext</span>(&#x27;<span class="number">2</span>d&#x27;)</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.globalWidth</span> = window<span class="selector-class">.innerWidth</span></span><br><span class="line">    this<span class="selector-class">.globalHeight</span> = window<span class="selector-class">.innerHeight</span></span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.booms</span> = <span class="selector-attr">[]</span></span><br><span class="line">    this<span class="selector-class">.running</span> = false</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleMouseDown(e) &#123;</span><br><span class="line">    const boom = new Boom(&#123;</span><br><span class="line">      origin: &#123; x: e.clientX, y: e.clientY &#125;,</span><br><span class="line">      context: this.computerContext,</span><br><span class="line">      area: &#123;</span><br><span class="line">        <span class="attribute">width</span>: this.globalWidth,</span><br><span class="line">        height: this.globalHeight</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    boom<span class="selector-class">.init</span>()</span><br><span class="line">    this<span class="selector-class">.booms</span><span class="selector-class">.push</span>(boom)</span><br><span class="line">    this<span class="selector-class">.running</span> || this<span class="selector-class">.run</span>()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handlePageHide() &#123;</span><br><span class="line">    this<span class="selector-class">.booms</span> = <span class="selector-attr">[]</span></span><br><span class="line">    this<span class="selector-class">.running</span> = false</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  init() &#123;</span><br><span class="line">    const style = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.style</span></span><br><span class="line">    style<span class="selector-class">.position</span> = &#x27;fixed&#x27;</span><br><span class="line">    style<span class="selector-class">.top</span> = style<span class="selector-class">.left</span> = <span class="number">0</span></span><br><span class="line">    style<span class="selector-class">.zIndex</span> = &#x27;<span class="number">999999999999999999999999999999999999999999</span>&#x27;</span><br><span class="line">    style<span class="selector-class">.pointerEvents</span> = &#x27;<span class="attribute">none</span>&#x27;</span><br><span class="line"></span><br><span class="line">    style<span class="selector-class">.width</span> = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.width</span> = this<span class="selector-class">.computerCanvas</span><span class="selector-class">.width</span> = this<span class="selector-class">.globalWidth</span></span><br><span class="line">    style<span class="selector-class">.height</span> = this<span class="selector-class">.renderCanvas</span><span class="selector-class">.height</span> = this<span class="selector-class">.computerCanvas</span><span class="selector-class">.height</span> = this<span class="selector-class">.globalHeight</span></span><br><span class="line"></span><br><span class="line">    document<span class="selector-class">.body</span><span class="selector-class">.append</span>(this<span class="selector-class">.renderCanvas</span>)</span><br><span class="line"></span><br><span class="line">    window<span class="selector-class">.addEventListener</span>(&#x27;mousedown&#x27;, this<span class="selector-class">.handleMouseDown</span><span class="selector-class">.bind</span>(this))</span><br><span class="line">    window<span class="selector-class">.addEventListener</span>(&#x27;pagehide&#x27;, this<span class="selector-class">.handlePageHide</span><span class="selector-class">.bind</span>(this))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  run() &#123;</span><br><span class="line">    this<span class="selector-class">.running</span> = true</span><br><span class="line">    if (this<span class="selector-class">.booms</span><span class="selector-class">.length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      return this<span class="selector-class">.running</span> = false</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    requestAnimationFrame(this<span class="selector-class">.run</span><span class="selector-class">.bind</span>(this))</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.computerContext</span><span class="selector-class">.clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, this<span class="selector-class">.globalWidth</span>, this<span class="selector-class">.globalHeight</span>)</span><br><span class="line">    this<span class="selector-class">.renderContext</span><span class="selector-class">.clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, this<span class="selector-class">.globalWidth</span>, this<span class="selector-class">.globalHeight</span>)</span><br><span class="line"></span><br><span class="line">    this<span class="selector-class">.booms</span><span class="selector-class">.forEach</span>((boom, index) =&gt; &#123;</span><br><span class="line">      if (boom<span class="selector-class">.stop</span>) &#123;</span><br><span class="line">        return this<span class="selector-class">.booms</span><span class="selector-class">.splice</span>(index, <span class="number">1</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      boom<span class="selector-class">.move</span>()</span><br><span class="line">      boom<span class="selector-class">.draw</span>()</span><br><span class="line">    &#125;)</span><br><span class="line">    this<span class="selector-class">.renderContext</span><span class="selector-class">.drawImage</span>(this<span class="selector-class">.computerCanvas</span>, <span class="number">0</span>, <span class="number">0</span>, this<span class="selector-class">.globalWidth</span>, this<span class="selector-class">.globalHeight</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const cursorSpecialEffects = new CursorSpecialEffects()</span><br><span class="line">cursorSpecialEffects<span class="selector-class">.init</span>()</span><br></pre></td></tr></table></figure>
-
-<p>然后在<code>./hexo/source/_data/body-end.swig</code>中添加</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;# 鼠标点击特效 #&#125;</span><br><span class="line">&#123;% if theme<span class="selector-class">.cursor_effect</span> == &quot;fireworks&quot; %&#125;</span><br><span class="line">  &lt;script async <span class="attribute">src</span>=&quot;/js/<span class="attribute">cursor</span>/fireworks<span class="selector-class">.js</span>&quot;&gt;&lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在<code>next.yml</code>中添加</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"># 鼠标点击特效</span><br><span class="line">cursor_effect: fireworks</span><br></pre></td></tr></table></figure>
-
-<h2 id="不蒜子"><a href="#不蒜子" class="headerlink" title="不蒜子"></a>不蒜子</h2><p>Next内置了不蒜子统计<br>在<code>next.yml</code>中搜索<code>busuanzi_count</code>并设置为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enable: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="自定义单行代码颜色"><a href="#自定义单行代码颜色" class="headerlink" title="自定义单行代码颜色"></a>自定义单行代码颜色</h2><p>在<code>./hexo/source/_data/styles.styl</code>中添加</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">code</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#ff511A</span>;</span><br><span class="line">    //<span class="attribute">background</span>: <span class="number">#fbf7f8</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">2px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Live2D看板娘"><a href="#Live2D看板娘" class="headerlink" title="Live2D看板娘"></a>Live2D看板娘</h2><p>以我安装的<code>tororo</code>为例，其他模型请见<a href="https://github.com/xiazeyu/live2d-widget-models">官方文档</a><br>安装</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br><span class="line">npm install live2d-widget-model-tororo</span><br></pre></td></tr></table></figure>
-<p>在<code>next.yml</code>中搜索<code>Progress bar in the top during page loading</code>并设置为</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  enable: true 							# 开启Live2D</span><br><span class="line">  scriptFrom: local 					   # 插件来源</span><br><span class="line">  pluginRootPath: live2dw/ 				# 插件根目录(相对路径)</span><br><span class="line">  pluginJsPath: lib/ 					  # 脚本文件路径(相对于插件根目录路径)</span><br><span class="line">  pluginModelPath: assets/ 				# 模型文件路径(相对于插件根目录)</span><br><span class="line">  tagMode: false 						  # 是否标签模式</span><br><span class="line">  debug: false 							# 是否开启调试模式</span><br><span class="line">  model:</span><br><span class="line">    use: live2d-widget-model-wanko 		# 选择模型</span><br><span class="line">  display:</span><br><span class="line">    position: right						# 模型在页面上的位置</span><br><span class="line">    width: <span class="number">150</span> 							# 模型宽度</span><br><span class="line">    height: <span class="number">300</span> 		 				  # 模型高度</span><br><span class="line">  mobile:</span><br><span class="line">    show: true 							# 是否在手机端显示</span><br><span class="line">  react:</span><br><span class="line">    opacity: <span class="number">1</span> 							# 设置模型透明度</span><br></pre></td></tr></table></figure>
-
-<h2 id="Echarts"><a href="#Echarts" class="headerlink" title="Echarts"></a>Echarts</h2><p>熊家的可视化图表，与PJAX有冲突，开启PJAX的情况下需要刷新页面才能成功加载。谷歌搜到说要修改PJAX，但是本人水平有限没能成功</p>
-<p>安装的插件使用的是4.3，某些图表不能正常显示，需要手动修改为最新的，这个版本失效的话就到ECharts官网上随便打开一个示例，然后用浏览器控制台找到最新js文件的地址替换。</p>
-<p>打开<code>./hexo/node_modules/hexo-tag-echarts4/template.html</code>，修改<code>&lt;script src=&quot;https://cdn.bootcss.com/echarts/4.3.0/echarts.common.min.js&quot;&gt;&lt;/script&gt;</code>为<code>&lt;script src=&quot;https://www.echartsjs.com/examples/vendors/echarts/echarts.min.js?_v_=1584687926098&quot;&gt;&lt;/script&gt;</code></p>
-<p>此外，一些地图类的图表需要引入地图的js，也是开控制台找，然后加入到<code>./hexo/node_modules/hexo-tag-echarts4/template.html</code>中，例如中国地图和世界地图的js</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;script <span class="attribute">src</span>=&quot;https://www.echartsjs.com/examples/vendors/echarts/map/js/china.js?_v_=<span class="number">1584687926098</span><span class="string">&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script src=&quot;</span>https://www.echartsjs.com/examples/vendors/echarts/map/js/world.js?_v_=<span class="number">1584687926098</span><span class="string">&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>总之就是缺什么补什么</p>
-<p>安装</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-tag-echarts4 --save</span><br></pre></td></tr></table></figure>
-
-<p>使用<br>400代表图表的高度是400px，85%表示相对宽度是85%，不标明的话默认值是高度400px，宽度81%</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;% echarts <span class="number">400</span> &#x27;<span class="number">85%</span>&#x27; %&#125;</span><br><span class="line">\\TODO echarts contents goes here</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>示例</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;% echarts %&#125;</span><br><span class="line">option = &#123;</span><br><span class="line">    xAxis: &#123;</span><br><span class="line">        type: <span class="string">&#x27;category&#x27;</span>,</span><br><span class="line">        data: [<span class="string">&#x27;Mon&#x27;</span>, <span class="string">&#x27;Tue&#x27;</span>, <span class="string">&#x27;Wed&#x27;</span>, <span class="string">&#x27;Thu&#x27;</span>, <span class="string">&#x27;Fri&#x27;</span>, <span class="string">&#x27;Sat&#x27;</span>, <span class="string">&#x27;Sun&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    yAxis: &#123;</span><br><span class="line">        type: <span class="string">&#x27;value&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    series: [&#123;</span><br><span class="line">        data: [<span class="number">820</span>, <span class="number">932</span>, <span class="number">901</span>, <span class="number">934</span>, <span class="number">1290</span>, <span class="number">1330</span>, <span class="number">1320</span>],</span><br><span class="line">        type: <span class="string">&#x27;line&#x27;</span></span><br><span class="line">    &#125;]</span><br><span class="line">&#125;;</span><br><span class="line">&#123;% endecharts %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2022.5.13 已废弃</p>
-<h2 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h2><p>Github的服务器在境外，网站加载时间巨长，而使用CDN加速可以有效缓解这一问题</p>
-<ul>
-<li>登陆<a href="https://www.cloudflare.com/">Cloudflare</a></li>
-<li>输入你的域名并点击点击<code>Add site</code></li>
-<li>选择套餐，选<code>free</code>就好</li>
-<li>点击<code>Confirm plan</code></li>
-<li>Cloudflare会先扫描你的DNS记录，稍等一会会出现你域名现在的解析记录</li>
-<li>点击<code>Continue</code></li>
-<li>打开你域名服务商的网站，用Cloudflare给的两个DNS服务器替换掉原来的服务器</li>
-<li>完成后回到Cloudflare，点击<code>Done, check nameservers</code></li>
-<li>然后慢慢等待生效，生效后会有邮件提醒</li>
-<li>等待的时候可以做一些设置</li>
-<li>SSL&#x2F;TLS选项<ul>
-<li>Mode使用默认的Full</li>
-<li>Always Use HTTPS设置为On</li>
-<li>Opportunistic Encryption设置为On</li>
-<li>Authenticated Origin Pills设置为On</li>
-</ul>
-</li>
-</ul>
-<p>填坑完成，毕设期间估计要咕咕咕3个月了┏(＾0＾)┛</p>
-<blockquote>
-<p>参考: <a href="https://tding.top/archives/2bd6d82.html">小丁的个人博客</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>网站配置</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>MacOS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>OneDrive同步本地任意文件夹</title>
     <url>/OneDrive%E5%90%8C%E6%AD%A5%E6%9C%AC%E5%9C%B0%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E5%A4%B9.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">使用mklink命令创建OneDrive与博客Markdown文件夹的符号链接，实现同步的目的</blockquote>
@@ -2778,6 +2786,253 @@
         <tag>Outlook</tag>
         <tag>备份</tag>
         <tag>留学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PTE不完全指南</title>
+    <url>/PTE%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">我12月27日在武汉湖北大学考场考完了PTE，等了三天之后出了成绩，成绩单在下面，顺利达到格拉的入学要求。记录一下备考的经验，祝大家早日和语言考试分手（雅思就是个死渣男）</blockquote>
+
+<p><img data-src="https://s2.loli.net/2022/05/13/X3K2jQ8mRNSeMY5.png" alt="PTE"></p>
+<span id="more"></span>
+
+<p>首先讲一下大概的时间线，我是今年5月份开始了解PTE。因为4月考的雅思没有达到录取要求，更主要的是复习一个月去考和第一次裸考的成绩基本一样，只有阅读涨了0.5分。。。</p>
+<ul>
+<li>5月在B站稍微了解了下PTE，然后就在准备研究生申请的事情</li>
+<li>十月底格拉来了offer，con雅思6.5（写作6.5，其他6.0）或者PTE68（62），虽然他官网些写的是PTE60(59)</li>
+<li>双十一开始复习，双十一在淘宝买了Voucher报了名，然后主要练习口语，每天大概2个小时，中间忙着订格拉的宿舍，大部分时间在摸鱼</li>
+<li>十二月之后开始练所有的题型，每天大概4-6个小时</li>
+<li>12月11号做了官方模考A卷，总分66，听62 说70 读65 写64，然后格拉要求总分68，就跟慌，11号以后每天复习时间大概在6-8小时</li>
+<li>12月21号做了模考C卷，总分67，都说C卷最接近真实考试难度，所以我更慌了</li>
+<li>12月25号做了模考B卷，总分70</li>
+<li>12月26号飞去武汉，27号上午9点考试</li>
+<li>12月30号中午1点收到出成绩的邮件（这里不得不吐槽武汉考场，出成绩是真的慢，我同学29号下午在广州白云考的，30号早上7点多就出分了）</li>
+</ul>
+<h1 id="关于PTE"><a href="#关于PTE" class="headerlink" title="关于PTE"></a>关于PTE</h1><p>PTE是英国培生教育集团推出的英语语言能力考试，全程机考，程序自动评分，目前英国大部分学校是认可的</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
+<li>PTE不会像雅思那样人为压分，只要下功夫练习就一定会有进步，不像雅思，花老大的力气也不涨分</li>
+<li>PTE出分速度快，一般1-5个工作日</li>
+<li>PTE考位相对宽松，不用担心抢不到位置</li>
+</ol>
+<h2 id="适合人群"><a href="#适合人群" class="headerlink" title="适合人群"></a>适合人群</h2><p>PTE适合听力&#x2F;阅读比较好的考生，因为它的听力和阅读难度比较大，尤其是听力<br>PTE的写作和口语比雅思要简单，也适合雅思一直卡口语&#x2F;写作小分的考生</p>
+<h1 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h1><p>题型上次介绍过，再列个表概括一下</p>
+<table>
+<thead>
+<tr>
+<th align="center">部分</th>
+<th align="center">题型</th>
+<th>要求</th>
+<th align="center">题目数量</th>
+<th>交叉评分</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Speaking</td>
+<td align="center">RA</td>
+<td>朗读屏幕上的一段话，40s准备40s朗读，短句子给的时间会相应减少</td>
+<td align="center">6-7</td>
+<td>Reading and speaking &#x2F; Oral fluency, pronunciation</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">RS</td>
+<td>电脑播放一句话的录音，听完后马上复述出来</td>
+<td align="center">10-12</td>
+<td>Listening and speaking &#x2F; Oral fluency, pronunciation</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">DI</td>
+<td>描述给出的图片，25s准备，40s叙述</td>
+<td align="center">6-7</td>
+<td>Speaking &#x2F; Oral fluency, pronunciation</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">RL</td>
+<td>听一段录音，然后简单复述录音讲了什么，需要做笔记</td>
+<td align="center">3-4</td>
+<td>Listening and speaking &#x2F; Oral fluency, pronunciation</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">ASQ</td>
+<td>回答听到的问题，一般答案是一个单词，都是常识性问题</td>
+<td align="center">10-12</td>
+<td>Listening and speaking &#x2F; Vocabulary</td>
+</tr>
+<tr>
+<td align="center">Writing</td>
+<td align="center">SWT</td>
+<td>给出一段文章，用5-75个单词概括这段话，只能写一句话，每题10min</td>
+<td align="center">2-3</td>
+<td>Reading and writing &#x2F; Grammar, vocabulary</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">WE</td>
+<td>类似雅思大作文，每题20min</td>
+<td align="center">1-2</td>
+<td>Writing &#x2F; Grammar, vocabulary, spelling, written discourse</td>
+</tr>
+<tr>
+<td align="center">Reading</td>
+<td align="center">FIBW</td>
+<td>完形填空的变种，将合适的单词拖拽到文章的空里</td>
+<td align="center">5-6</td>
+<td>Reading and writing</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">FIB</td>
+<td>类似完形填空，从下拉菜单里选择缺少的单词</td>
+<td align="center">4-5</td>
+<td>Reading</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">RO</td>
+<td>给几句打乱顺序的话，重新排序</td>
+<td align="center">2-3</td>
+<td>Reading</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">MCM</td>
+<td>多选题</td>
+<td align="center">2-3</td>
+<td>Reading</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">MCS</td>
+<td>单选题</td>
+<td align="center">2-3</td>
+<td>Reading</td>
+</tr>
+<tr>
+<td align="center">Listening</td>
+<td align="center">SST</td>
+<td>听一段录音，然后总结一段50-70词的小文章，需要做笔记</td>
+<td align="center">2-3</td>
+<td>Listening and writing &#x2F; Grammar, vocabulary, spelling</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">FIB</td>
+<td>听录音，然后拼写出缺少的单词</td>
+<td align="center">2-3</td>
+<td>Listening and writing</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">WFD</td>
+<td>听一句话，然后拼写出来</td>
+<td align="center">3-4</td>
+<td>Listening and writing</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">MCS</td>
+<td>单选题</td>
+<td align="center">2-3</td>
+<td>Listening</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">MCM</td>
+<td>多选题</td>
+<td align="center">2-3</td>
+<td>Listening</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">SMW</td>
+<td>播放一段录音，最后几个单词会剪掉，选择被剪掉的单词</td>
+<td align="center">2-3</td>
+<td>Listening</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">HIW</td>
+<td>播放一段录音，录音和下面的文章有不一样的词，点选出不同的词</td>
+<td align="center">2-3</td>
+<td>Listening and reading</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">HCS</td>
+<td>播放一段录音，选出最能概括录音的总结</td>
+<td align="center">2-3</td>
+<td>Listening and reading</td>
+</tr>
+</tbody></table>
+<h1 id="答题经验"><a href="#答题经验" class="headerlink" title="答题经验"></a>答题经验</h1><h2 id="Speaking"><a href="#Speaking" class="headerlink" title="Speaking"></a>Speaking</h2><p><strong>口语部分最重要的就是流利度，我的经验就是一直说不要停，念错了也不要倒回去重新念，一直往下说就好，注意意群和停顿，另外录音开始后要及时说，3s内不说的话系统会自动关闭麦克风并跳到下一题</strong></p>
+<h3 id="RA"><a href="#RA" class="headerlink" title="RA"></a>RA</h3><p>在准备时间里小声读一遍，不会念的词猜一下，数字年份之类的提前多念几遍</p>
+<h3 id="RS"><a href="#RS" class="headerlink" title="RS"></a>RS</h3><p>我是鱼的记忆，长的句子记不住，只能记住一半多，能说多少说多少吧，不要卡壳就好<br>这个部分我个人来不及记笔记，也不是很建议记笔记，来不及反应</p>
+<h3 id="RL-x2F-DI"><a href="#RL-x2F-DI" class="headerlink" title="RL&#x2F;DI"></a>RL&#x2F;DI</h3><p>这两个题就是套模板保证流利度，把模板记熟练，考试的时候无脑说。不用纠结语法，这俩题目不考语法<br>RL来不及记句子的话就记关键词，然后往模板里套就行</p>
+<h3 id="ASQ"><a href="#ASQ" class="headerlink" title="ASQ"></a>ASQ</h3><p>这个题很蛋疼，对词汇量要求挺高，最好在考试之前过一遍机经，分值不高不必太纠结</p>
+<h2 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h2><p><strong>写作要注意拼写，打字的时候打错的概率还是挺大的，每道题最好留2分钟检查一下拼写</strong><br>吐槽一下考场的键盘，武汉考场用的是那种巧克力键盘，真的难用，建议练习的时候找那种廉价的薄膜键盘就行，用机械键盘练习的话考试会很不习惯的</p>
+<h3 id="SWT"><a href="#SWT" class="headerlink" title="SWT"></a>SWT</h3><p>一般第一句话就是关键句，文章里面举得例子可以无视，注意只能有1个句号</p>
+<h3 id="WE"><a href="#WE" class="headerlink" title="WE"></a>WE</h3><p>从雅思转过来可能很不习惯这道题，200-300词的文章却要20分钟写完，莫得办法，只能用模板。模板百度就有，也可以去知乎豆瓣上找或者留邮箱要，拿到模板要看一下有没有错误，有些无良机构给的模板真的是无法直视。<br>留邮箱的话注意拿到资料后及时删除留下的邮箱，不然某垃圾机构会一直给你发垃圾邮件（没错说的就是你PTE在线学院）等offer的时候看见垃圾邮件恨不得想吃了他，每次来邮件都以为是来Offer了</p>
+<h2 id="Reading"><a href="#Reading" class="headerlink" title="Reading"></a>Reading</h2><p>阅读的重点就是词汇量，多背单词<br><strong>做题的时候注意时间，阅读是整体计时，在低分值的单选多选题目上不用纠结，给其他题目留足时间</strong></p>
+<h3 id="RO"><a href="#RO" class="headerlink" title="RO"></a>RO</h3><p>这部分有点玄学，经验就是找一下句子前后的逻辑和连接词，实在找不出来就背机经吧</p>
+<h3 id="MCM-x2F-MCS"><a href="#MCM-x2F-MCS" class="headerlink" title="MCM&#x2F;MCS"></a>MCM&#x2F;MCS</h3><p>多选和单选都很直接，不会像雅思那样故意挖坑，不要在这两道题上浪费太多时间，分值不高。<br>多选拿不准的话就选最确定的那一个，选错的话倒扣分的</p>
+<h3 id="FIB-x2F-FIBW"><a href="#FIB-x2F-FIBW" class="headerlink" title="FIB&#x2F;FIBW"></a>FIB&#x2F;FIBW</h3><p>这两道题最考验词汇量，一开始练的时候真的是一脸懵逼，不过可以根据词性排除一些选项，增加蒙对的概率。。。</p>
+<h2 id="Listening"><a href="#Listening" class="headerlink" title="Listening"></a>Listening</h2><p><strong>听力部分除SST外也是整体计时，注意合理分配时间，因为分值最大的WFD是最后才出现的，有很多人来不及做完WFD就被系统强制交卷了，建议给WFD留3-4分钟</strong></p>
+<h3 id="SWT-1"><a href="#SWT-1" class="headerlink" title="SWT"></a>SWT</h3><p>这部分是单独计时的，播放录音的时间也包含在里面<br>一般第一句话会是主题句，另外反复出现的词也要留意<br>记笔记的话尽量记完整的句子，最好不要用模板，因为有词数限制，模板就是浪费宝贵的空间<br>同样建议留出时间检查拼写</p>
+<h3 id="FIB"><a href="#FIB" class="headerlink" title="FIB"></a>FIB</h3><p>这道题主要考察拼写，建议用笔把词语记下来<br>亲测武汉考场不能用<code>tab</code>键切换到下一个空，直接打的话需要另一只手操作鼠标，来不及</p>
+<h3 id="WFD"><a href="#WFD" class="headerlink" title="WFD"></a>WFD</h3><p>这道题是重头戏，建议考试之前背机经，一个单词就是一分<br>听的时候注意单复数和时态，听完后先回想一下大概意思<br>记笔记的话建议练习首字母法，即记下来每个单词的首字母，然后再把其他的字母填上<br>做完后检查一遍拼写</p>
+<h3 id="MCM"><a href="#MCM" class="headerlink" title="MCM"></a>MCM</h3><p>同阅读多选，选对一个1分，选错倒扣分<br>不确定的话不要选</p>
+<h3 id="HIW"><a href="#HIW" class="headerlink" title="HIW"></a>HIW</h3><p>这个题选错的话也是倒扣分，所以没听清楚的就不要选了</p>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><h2 id="报名注意事项"><a href="#报名注意事项" class="headerlink" title="报名注意事项"></a>报名注意事项</h2><ol>
+<li>报名的时候名字全部大写，名在前面姓在后面，中间空格，和身份证上的拼写一致</li>
+<li>留常用的邮箱，出成绩的话会发邮件通知你的</li>
+</ol>
+<h2 id="Voucher"><a href="#Voucher" class="headerlink" title="Voucher"></a>Voucher</h2><p>官方的优惠券，能省点钱，淘宝可入，会发给你一个优惠码，报名缴费的时候填写优惠码就行了<br>淘宝上的仅限中国大陆考区使用，有效期一般12个月，退考后可以继续用</p>
+<h2 id="练习平台"><a href="#练习平台" class="headerlink" title="练习平台"></a>练习平台</h2><p>现在主流的联系平台主要有羊驼、黑科技和猩际，我三家都有用，各有千秋，每家平台都有不少水军。豆瓣一搜索PTE全是某科技的回答，知乎就是某驼的多，每家平台都说自己评分准，但是不要过于相信他们的评分，仅供参考，目前羊驼的口语打分偏低，猩际的偏高，某科技口语是5分制，不好评价</p>
+<ul>
+<li>羊驼 - 在它家买的Voucher，送了一个半月会员，刚好够用，优点是口语练习实时出成绩，口语成绩是90分制，比较直观，有手机APP和网页版</li>
+<li>黑科技 - 开了1个月的会员，主要练习作文，优点是可以查看其他人的优秀作文，有微信小程序和网页版</li>
+<li>猩际 - 白嫖的，也用来练习写作，优点是会标出写作错误的地方，它家的公开课可以看一下，适合入门</li>
+</ul>
+<h2 id="机经"><a href="#机经" class="headerlink" title="机经"></a>机经</h2><p>PTE的一个神器就是机经，尤其是前几年题库少的时候，不过培生一直在更新题库，所以不建议过于依赖机经<br>有几家机构会有预测题，据说准确率蛮高的，后悔没有背<br>我知道的有下面两家，具体不作评价，没怎么看</p>
+<ul>
+<li>羊驼 - 它家的在APP里或者微信公众号里可以找到下载链接</li>
+<li>萤火虫 - 它家的在微信公众号里有下载链接</li>
+</ul>
+<h2 id="模考"><a href="#模考" class="headerlink" title="模考"></a>模考</h2><p>PTE官方推出了三套模考，和考试的时候使用的是一套打分模式，有ABC三套，强烈建议考试之前做几套官方模拟，要不然就是在烧钱，<br>一般最后考试的分数都会比模考高几分的，因为考场耳机的收音效果比较好<br>模考的时候不要使用蓝牙耳机，录音效果差，很容易出现口语10分的情况。<br>有条件的买一个带麦的头戴式耳机，不放心的可以去闲鱼收一个二手的官方考试同款耳机，不过没太大必要，一个耳机四五百，拿来买排骨吃它不香吗<br>淘宝上可以买到模考的账号，可以单个买也可以买套装，套装价格大概430元</p>
+<ul>
+<li>A卷 - 难度最大，不太适合一开始就做，容易打击信心</li>
+<li>B卷 - 难度最低</li>
+<li>C卷 - 难度最接近真实考试</li>
+</ul>
+<p>另外这几家机构也有自己的模拟考试，价格比较便宜，可以练手用</p>
+<h2 id="考试当天注意事项"><a href="#考试当天注意事项" class="headerlink" title="考试当天注意事项"></a>考试当天注意事项</h2><ol>
+<li>提前半小时到达考场，可以带点材料，在休息室可以看材料</li>
+<li>考场有专门存包的柜子，柜子很大，小号的行李箱也能塞进去，每个人会给一把钥匙，这个柜子中途是不允许开的，可以提前把水杯拿出来，考场提供饮用水，可以自己接</li>
+<li>电子设备都要关机放进柜子里</li>
+<li>考场桌子上有3M的耳塞，做写作和阅读的时候可以带上，因为你做到写作的时候可能还有人在做口语</li>
+<li>国内考生带身份证就行，没必要带护照，我两个都带了，然后只拿了身份证进去</li>
+<li>考试之前不要喝太多水，因为考完 口语、写作和阅读之后才会有10分钟的休息时间，大概在11点左右，憋两个小时很酸爽</li>
+<li>中间的10分钟休息是可选的，建议休息，休息的时候举手找考官来帮你暂停考试，休息的时候注意时间，因为入场的时候要重新检查，记得出去的时候带着证件</li>
+<li>电脑有异常及时找考官记录，要不然考完就没办法了，武汉考场的考官很nice，态度很友好</li>
+<li>口语部分不要念太大声，一是保护自己的嗓子；二是会干扰别人，别人举报你的话会被写报告的（当然其他人声音太大的话你也可以举报）；考场的耳机收音效果都是不错的，没必要喊太大声，武汉考场的话你自己在说的时候基本听不到别人说话的声音</li>
+<li>口语部分说完之后就可以点<code>Next</code>,避免录进去别人的声音，虽然概率不大</li>
+<li>耳机麦克的位置我是放在上嘴唇和鼻尖中间，距离脸部大概2-3指的距离</li>
+<li>试音的时候不要跟着别人念<code>Testing testing one two three</code>，找几个爆破音念或者念屏幕上的注意事项，看看会不会喷麦</li>
+<li>考试的笔不用的时候一定要扣好笔帽，要不然干了就写不出字来了，考场记笔记用的本子是塑料材质，比较滑</li>
+<li>耳机一旦调好就不要再动了</li>
+</ol>
+<p>需要模板的可以给我发邮件，我当时找了不少，虽然没用到几个<br>要说的就这么多了，祝大家早日通过考试~~~<br>BTW，2020新年快乐~~~</p>
+]]></content>
+      <categories>
+        <category>留学</category>
+      </categories>
+      <tags>
+        <tag>留学</tag>
+        <tag>PTE</tag>
+        <tag>攻略</tag>
       </tags>
   </entry>
   <entry>
@@ -3157,253 +3412,6 @@
       </tags>
   </entry>
   <entry>
-    <title>PTE不完全指南</title>
-    <url>/PTE%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">我12月27日在武汉湖北大学考场考完了PTE，等了三天之后出了成绩，成绩单在下面，顺利达到格拉的入学要求。记录一下备考的经验，祝大家早日和语言考试分手（雅思就是个死渣男）</blockquote>
-
-<p><img data-src="https://s2.loli.net/2022/05/13/X3K2jQ8mRNSeMY5.png" alt="PTE"></p>
-<span id="more"></span>
-
-<p>首先讲一下大概的时间线，我是今年5月份开始了解PTE。因为4月考的雅思没有达到录取要求，更主要的是复习一个月去考和第一次裸考的成绩基本一样，只有阅读涨了0.5分。。。</p>
-<ul>
-<li>5月在B站稍微了解了下PTE，然后就在准备研究生申请的事情</li>
-<li>十月底格拉来了offer，con雅思6.5（写作6.5，其他6.0）或者PTE68（62），虽然他官网些写的是PTE60(59)</li>
-<li>双十一开始复习，双十一在淘宝买了Voucher报了名，然后主要练习口语，每天大概2个小时，中间忙着订格拉的宿舍，大部分时间在摸鱼</li>
-<li>十二月之后开始练所有的题型，每天大概4-6个小时</li>
-<li>12月11号做了官方模考A卷，总分66，听62 说70 读65 写64，然后格拉要求总分68，就跟慌，11号以后每天复习时间大概在6-8小时</li>
-<li>12月21号做了模考C卷，总分67，都说C卷最接近真实考试难度，所以我更慌了</li>
-<li>12月25号做了模考B卷，总分70</li>
-<li>12月26号飞去武汉，27号上午9点考试</li>
-<li>12月30号中午1点收到出成绩的邮件（这里不得不吐槽武汉考场，出成绩是真的慢，我同学29号下午在广州白云考的，30号早上7点多就出分了）</li>
-</ul>
-<h1 id="关于PTE"><a href="#关于PTE" class="headerlink" title="关于PTE"></a>关于PTE</h1><p>PTE是英国培生教育集团推出的英语语言能力考试，全程机考，程序自动评分，目前英国大部分学校是认可的</p>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
-<li>PTE不会像雅思那样人为压分，只要下功夫练习就一定会有进步，不像雅思，花老大的力气也不涨分</li>
-<li>PTE出分速度快，一般1-5个工作日</li>
-<li>PTE考位相对宽松，不用担心抢不到位置</li>
-</ol>
-<h2 id="适合人群"><a href="#适合人群" class="headerlink" title="适合人群"></a>适合人群</h2><p>PTE适合听力&#x2F;阅读比较好的考生，因为它的听力和阅读难度比较大，尤其是听力<br>PTE的写作和口语比雅思要简单，也适合雅思一直卡口语&#x2F;写作小分的考生</p>
-<h1 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h1><p>题型上次介绍过，再列个表概括一下</p>
-<table>
-<thead>
-<tr>
-<th align="center">部分</th>
-<th align="center">题型</th>
-<th>要求</th>
-<th align="center">题目数量</th>
-<th>交叉评分</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Speaking</td>
-<td align="center">RA</td>
-<td>朗读屏幕上的一段话，40s准备40s朗读，短句子给的时间会相应减少</td>
-<td align="center">6-7</td>
-<td>Reading and speaking &#x2F; Oral fluency, pronunciation</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">RS</td>
-<td>电脑播放一句话的录音，听完后马上复述出来</td>
-<td align="center">10-12</td>
-<td>Listening and speaking &#x2F; Oral fluency, pronunciation</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">DI</td>
-<td>描述给出的图片，25s准备，40s叙述</td>
-<td align="center">6-7</td>
-<td>Speaking &#x2F; Oral fluency, pronunciation</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">RL</td>
-<td>听一段录音，然后简单复述录音讲了什么，需要做笔记</td>
-<td align="center">3-4</td>
-<td>Listening and speaking &#x2F; Oral fluency, pronunciation</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">ASQ</td>
-<td>回答听到的问题，一般答案是一个单词，都是常识性问题</td>
-<td align="center">10-12</td>
-<td>Listening and speaking &#x2F; Vocabulary</td>
-</tr>
-<tr>
-<td align="center">Writing</td>
-<td align="center">SWT</td>
-<td>给出一段文章，用5-75个单词概括这段话，只能写一句话，每题10min</td>
-<td align="center">2-3</td>
-<td>Reading and writing &#x2F; Grammar, vocabulary</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">WE</td>
-<td>类似雅思大作文，每题20min</td>
-<td align="center">1-2</td>
-<td>Writing &#x2F; Grammar, vocabulary, spelling, written discourse</td>
-</tr>
-<tr>
-<td align="center">Reading</td>
-<td align="center">FIBW</td>
-<td>完形填空的变种，将合适的单词拖拽到文章的空里</td>
-<td align="center">5-6</td>
-<td>Reading and writing</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">FIB</td>
-<td>类似完形填空，从下拉菜单里选择缺少的单词</td>
-<td align="center">4-5</td>
-<td>Reading</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">RO</td>
-<td>给几句打乱顺序的话，重新排序</td>
-<td align="center">2-3</td>
-<td>Reading</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">MCM</td>
-<td>多选题</td>
-<td align="center">2-3</td>
-<td>Reading</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">MCS</td>
-<td>单选题</td>
-<td align="center">2-3</td>
-<td>Reading</td>
-</tr>
-<tr>
-<td align="center">Listening</td>
-<td align="center">SST</td>
-<td>听一段录音，然后总结一段50-70词的小文章，需要做笔记</td>
-<td align="center">2-3</td>
-<td>Listening and writing &#x2F; Grammar, vocabulary, spelling</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">FIB</td>
-<td>听录音，然后拼写出缺少的单词</td>
-<td align="center">2-3</td>
-<td>Listening and writing</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">WFD</td>
-<td>听一句话，然后拼写出来</td>
-<td align="center">3-4</td>
-<td>Listening and writing</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">MCS</td>
-<td>单选题</td>
-<td align="center">2-3</td>
-<td>Listening</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">MCM</td>
-<td>多选题</td>
-<td align="center">2-3</td>
-<td>Listening</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">SMW</td>
-<td>播放一段录音，最后几个单词会剪掉，选择被剪掉的单词</td>
-<td align="center">2-3</td>
-<td>Listening</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">HIW</td>
-<td>播放一段录音，录音和下面的文章有不一样的词，点选出不同的词</td>
-<td align="center">2-3</td>
-<td>Listening and reading</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">HCS</td>
-<td>播放一段录音，选出最能概括录音的总结</td>
-<td align="center">2-3</td>
-<td>Listening and reading</td>
-</tr>
-</tbody></table>
-<h1 id="答题经验"><a href="#答题经验" class="headerlink" title="答题经验"></a>答题经验</h1><h2 id="Speaking"><a href="#Speaking" class="headerlink" title="Speaking"></a>Speaking</h2><p><strong>口语部分最重要的就是流利度，我的经验就是一直说不要停，念错了也不要倒回去重新念，一直往下说就好，注意意群和停顿，另外录音开始后要及时说，3s内不说的话系统会自动关闭麦克风并跳到下一题</strong></p>
-<h3 id="RA"><a href="#RA" class="headerlink" title="RA"></a>RA</h3><p>在准备时间里小声读一遍，不会念的词猜一下，数字年份之类的提前多念几遍</p>
-<h3 id="RS"><a href="#RS" class="headerlink" title="RS"></a>RS</h3><p>我是鱼的记忆，长的句子记不住，只能记住一半多，能说多少说多少吧，不要卡壳就好<br>这个部分我个人来不及记笔记，也不是很建议记笔记，来不及反应</p>
-<h3 id="RL-x2F-DI"><a href="#RL-x2F-DI" class="headerlink" title="RL&#x2F;DI"></a>RL&#x2F;DI</h3><p>这两个题就是套模板保证流利度，把模板记熟练，考试的时候无脑说。不用纠结语法，这俩题目不考语法<br>RL来不及记句子的话就记关键词，然后往模板里套就行</p>
-<h3 id="ASQ"><a href="#ASQ" class="headerlink" title="ASQ"></a>ASQ</h3><p>这个题很蛋疼，对词汇量要求挺高，最好在考试之前过一遍机经，分值不高不必太纠结</p>
-<h2 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h2><p><strong>写作要注意拼写，打字的时候打错的概率还是挺大的，每道题最好留2分钟检查一下拼写</strong><br>吐槽一下考场的键盘，武汉考场用的是那种巧克力键盘，真的难用，建议练习的时候找那种廉价的薄膜键盘就行，用机械键盘练习的话考试会很不习惯的</p>
-<h3 id="SWT"><a href="#SWT" class="headerlink" title="SWT"></a>SWT</h3><p>一般第一句话就是关键句，文章里面举得例子可以无视，注意只能有1个句号</p>
-<h3 id="WE"><a href="#WE" class="headerlink" title="WE"></a>WE</h3><p>从雅思转过来可能很不习惯这道题，200-300词的文章却要20分钟写完，莫得办法，只能用模板。模板百度就有，也可以去知乎豆瓣上找或者留邮箱要，拿到模板要看一下有没有错误，有些无良机构给的模板真的是无法直视。<br>留邮箱的话注意拿到资料后及时删除留下的邮箱，不然某垃圾机构会一直给你发垃圾邮件（没错说的就是你PTE在线学院）等offer的时候看见垃圾邮件恨不得想吃了他，每次来邮件都以为是来Offer了</p>
-<h2 id="Reading"><a href="#Reading" class="headerlink" title="Reading"></a>Reading</h2><p>阅读的重点就是词汇量，多背单词<br><strong>做题的时候注意时间，阅读是整体计时，在低分值的单选多选题目上不用纠结，给其他题目留足时间</strong></p>
-<h3 id="RO"><a href="#RO" class="headerlink" title="RO"></a>RO</h3><p>这部分有点玄学，经验就是找一下句子前后的逻辑和连接词，实在找不出来就背机经吧</p>
-<h3 id="MCM-x2F-MCS"><a href="#MCM-x2F-MCS" class="headerlink" title="MCM&#x2F;MCS"></a>MCM&#x2F;MCS</h3><p>多选和单选都很直接，不会像雅思那样故意挖坑，不要在这两道题上浪费太多时间，分值不高。<br>多选拿不准的话就选最确定的那一个，选错的话倒扣分的</p>
-<h3 id="FIB-x2F-FIBW"><a href="#FIB-x2F-FIBW" class="headerlink" title="FIB&#x2F;FIBW"></a>FIB&#x2F;FIBW</h3><p>这两道题最考验词汇量，一开始练的时候真的是一脸懵逼，不过可以根据词性排除一些选项，增加蒙对的概率。。。</p>
-<h2 id="Listening"><a href="#Listening" class="headerlink" title="Listening"></a>Listening</h2><p><strong>听力部分除SST外也是整体计时，注意合理分配时间，因为分值最大的WFD是最后才出现的，有很多人来不及做完WFD就被系统强制交卷了，建议给WFD留3-4分钟</strong></p>
-<h3 id="SWT-1"><a href="#SWT-1" class="headerlink" title="SWT"></a>SWT</h3><p>这部分是单独计时的，播放录音的时间也包含在里面<br>一般第一句话会是主题句，另外反复出现的词也要留意<br>记笔记的话尽量记完整的句子，最好不要用模板，因为有词数限制，模板就是浪费宝贵的空间<br>同样建议留出时间检查拼写</p>
-<h3 id="FIB"><a href="#FIB" class="headerlink" title="FIB"></a>FIB</h3><p>这道题主要考察拼写，建议用笔把词语记下来<br>亲测武汉考场不能用<code>tab</code>键切换到下一个空，直接打的话需要另一只手操作鼠标，来不及</p>
-<h3 id="WFD"><a href="#WFD" class="headerlink" title="WFD"></a>WFD</h3><p>这道题是重头戏，建议考试之前背机经，一个单词就是一分<br>听的时候注意单复数和时态，听完后先回想一下大概意思<br>记笔记的话建议练习首字母法，即记下来每个单词的首字母，然后再把其他的字母填上<br>做完后检查一遍拼写</p>
-<h3 id="MCM"><a href="#MCM" class="headerlink" title="MCM"></a>MCM</h3><p>同阅读多选，选对一个1分，选错倒扣分<br>不确定的话不要选</p>
-<h3 id="HIW"><a href="#HIW" class="headerlink" title="HIW"></a>HIW</h3><p>这个题选错的话也是倒扣分，所以没听清楚的就不要选了</p>
-<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><h2 id="报名注意事项"><a href="#报名注意事项" class="headerlink" title="报名注意事项"></a>报名注意事项</h2><ol>
-<li>报名的时候名字全部大写，名在前面姓在后面，中间空格，和身份证上的拼写一致</li>
-<li>留常用的邮箱，出成绩的话会发邮件通知你的</li>
-</ol>
-<h2 id="Voucher"><a href="#Voucher" class="headerlink" title="Voucher"></a>Voucher</h2><p>官方的优惠券，能省点钱，淘宝可入，会发给你一个优惠码，报名缴费的时候填写优惠码就行了<br>淘宝上的仅限中国大陆考区使用，有效期一般12个月，退考后可以继续用</p>
-<h2 id="练习平台"><a href="#练习平台" class="headerlink" title="练习平台"></a>练习平台</h2><p>现在主流的联系平台主要有羊驼、黑科技和猩际，我三家都有用，各有千秋，每家平台都有不少水军。豆瓣一搜索PTE全是某科技的回答，知乎就是某驼的多，每家平台都说自己评分准，但是不要过于相信他们的评分，仅供参考，目前羊驼的口语打分偏低，猩际的偏高，某科技口语是5分制，不好评价</p>
-<ul>
-<li>羊驼 - 在它家买的Voucher，送了一个半月会员，刚好够用，优点是口语练习实时出成绩，口语成绩是90分制，比较直观，有手机APP和网页版</li>
-<li>黑科技 - 开了1个月的会员，主要练习作文，优点是可以查看其他人的优秀作文，有微信小程序和网页版</li>
-<li>猩际 - 白嫖的，也用来练习写作，优点是会标出写作错误的地方，它家的公开课可以看一下，适合入门</li>
-</ul>
-<h2 id="机经"><a href="#机经" class="headerlink" title="机经"></a>机经</h2><p>PTE的一个神器就是机经，尤其是前几年题库少的时候，不过培生一直在更新题库，所以不建议过于依赖机经<br>有几家机构会有预测题，据说准确率蛮高的，后悔没有背<br>我知道的有下面两家，具体不作评价，没怎么看</p>
-<ul>
-<li>羊驼 - 它家的在APP里或者微信公众号里可以找到下载链接</li>
-<li>萤火虫 - 它家的在微信公众号里有下载链接</li>
-</ul>
-<h2 id="模考"><a href="#模考" class="headerlink" title="模考"></a>模考</h2><p>PTE官方推出了三套模考，和考试的时候使用的是一套打分模式，有ABC三套，强烈建议考试之前做几套官方模拟，要不然就是在烧钱，<br>一般最后考试的分数都会比模考高几分的，因为考场耳机的收音效果比较好<br>模考的时候不要使用蓝牙耳机，录音效果差，很容易出现口语10分的情况。<br>有条件的买一个带麦的头戴式耳机，不放心的可以去闲鱼收一个二手的官方考试同款耳机，不过没太大必要，一个耳机四五百，拿来买排骨吃它不香吗<br>淘宝上可以买到模考的账号，可以单个买也可以买套装，套装价格大概430元</p>
-<ul>
-<li>A卷 - 难度最大，不太适合一开始就做，容易打击信心</li>
-<li>B卷 - 难度最低</li>
-<li>C卷 - 难度最接近真实考试</li>
-</ul>
-<p>另外这几家机构也有自己的模拟考试，价格比较便宜，可以练手用</p>
-<h2 id="考试当天注意事项"><a href="#考试当天注意事项" class="headerlink" title="考试当天注意事项"></a>考试当天注意事项</h2><ol>
-<li>提前半小时到达考场，可以带点材料，在休息室可以看材料</li>
-<li>考场有专门存包的柜子，柜子很大，小号的行李箱也能塞进去，每个人会给一把钥匙，这个柜子中途是不允许开的，可以提前把水杯拿出来，考场提供饮用水，可以自己接</li>
-<li>电子设备都要关机放进柜子里</li>
-<li>考场桌子上有3M的耳塞，做写作和阅读的时候可以带上，因为你做到写作的时候可能还有人在做口语</li>
-<li>国内考生带身份证就行，没必要带护照，我两个都带了，然后只拿了身份证进去</li>
-<li>考试之前不要喝太多水，因为考完 口语、写作和阅读之后才会有10分钟的休息时间，大概在11点左右，憋两个小时很酸爽</li>
-<li>中间的10分钟休息是可选的，建议休息，休息的时候举手找考官来帮你暂停考试，休息的时候注意时间，因为入场的时候要重新检查，记得出去的时候带着证件</li>
-<li>电脑有异常及时找考官记录，要不然考完就没办法了，武汉考场的考官很nice，态度很友好</li>
-<li>口语部分不要念太大声，一是保护自己的嗓子；二是会干扰别人，别人举报你的话会被写报告的（当然其他人声音太大的话你也可以举报）；考场的耳机收音效果都是不错的，没必要喊太大声，武汉考场的话你自己在说的时候基本听不到别人说话的声音</li>
-<li>口语部分说完之后就可以点<code>Next</code>,避免录进去别人的声音，虽然概率不大</li>
-<li>耳机麦克的位置我是放在上嘴唇和鼻尖中间，距离脸部大概2-3指的距离</li>
-<li>试音的时候不要跟着别人念<code>Testing testing one two three</code>，找几个爆破音念或者念屏幕上的注意事项，看看会不会喷麦</li>
-<li>考试的笔不用的时候一定要扣好笔帽，要不然干了就写不出字来了，考场记笔记用的本子是塑料材质，比较滑</li>
-<li>耳机一旦调好就不要再动了</li>
-</ol>
-<p>需要模板的可以给我发邮件，我当时找了不少，虽然没用到几个<br>要说的就这么多了，祝大家早日通过考试~~~<br>BTW，2020新年快乐~~~</p>
-]]></content>
-      <categories>
-        <category>留学</category>
-      </categories>
-      <tags>
-        <tag>留学</tag>
-        <tag>PTE</tag>
-        <tag>攻略</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>碎碎念</title>
     <url>/Purpose.html</url>
     <content><![CDATA[<h3 id="01"><a href="#01" class="headerlink" title="01"></a>01</h3><p>建立博客的目的嘛，就是记录一些自己踩过的坑咯，然后记录下每次因为感兴趣而开始的折腾，在世界上留下存在的痕迹吧，就这样。</p>
@@ -3717,6 +3725,139 @@
         <tag>搞机</tag>
         <tag>黑苹果</tag>
         <tag>多系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WSA 折腾日志</title>
+    <url>/WSA-%E6%8A%98%E8%85%BE%E6%97%A5%E5%BF%97.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">记录WSA的安装、联网、设置代理以及安装应用的折腾过程</blockquote>
+
+<span id="more"></span>
+
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><div class="note warning"><p>记得去BIOS开启CPU虚拟化</p>
+</div>
+
+<h2 id="Windows设置调整"><a href="#Windows设置调整" class="headerlink" title="Windows设置调整"></a>Windows设置调整</h2><p>打开<code>设置</code>-<code>应用</code>-<code>可选功能</code>-<code>更多Windows功能</code>，勾选<code>虚拟机平台</code>，等待安装并重启<br><img data-src="https://s2.loli.net/2022/06/02/cdf8ypRustXqS3v.png" alt="wsa2.png"></p>
+<p>然后在<code>设置</code>-<code>隐私和安全性</code>-<code>开发者选项</code>-<code>开发人员模式</code>中打开开关<br><img data-src="https://s2.loli.net/2022/06/02/P45KeiDczAdgbXh.png" alt="wsa3.png"></p>
+<h2 id="安装adb"><a href="#安装adb" class="headerlink" title="安装adb"></a>安装adb</h2><div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/download.webp"></object>
+<p>adb 下载</p><p>下载适用于 Windows 的 SDK Platform-Tools</p>
+<a href="https://developer.android.com/studio/releases/platform-tools"></a>
+</div></div>
+
+<ol>
+<li>下载完成后把安装包扔到固定的位置再解压，因为下面需要设置环境变量</li>
+<li><code>Win</code> + <code>S</code>搜索并打开<code>编辑系统环境变量</code></li>
+<li>在系统变量中新建变量<code>adb</code>，变量值为刚才解压的文件夹路径，如<code>D:\Program Files\platform-tools</code></li>
+<li>双击打开系统变量中名为<code>Path</code>的变量，然后新建变量<code>%adb%</code></li>
+<li>确定三连</li>
+<li>在终端中输入<code>adb version</code>查看是否设置成功</li>
+</ol>
+<p><img data-src="https://s2.loli.net/2022/06/02/NatckrIXWZC5Oxh.png" alt="wsa4.png"></p>
+<h2 id="安装WSA-Toolbox"><a href="#安装WSA-Toolbox" class="headerlink" title="安装WSA Toolbox"></a>安装WSA Toolbox</h2><div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/download.webp"></object>
+<p>WSA Toolbox</p><p>Provides utilities & tools for WSA</p>
+<a href="https://apps.microsoft.com/store/detail/wsa-toolbox/9PPSP2MKVTGT?hl=en-us&gl=US"></a>
+</div></div>
+
+<p>这个工具在国区微软应用商店被下架了，只能通过上面链接安装了。后续会需要它来打开WSA的Android系统设置。</p>
+<hr>
+<h1 id="安装WSA"><a href="#安装WSA" class="headerlink" title="安装WSA"></a>安装WSA</h1><p>这里我使用的是集成了root、Magisk与Google Play的整合包，省下一些麻烦。</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/github.webp"></object>
+<p>Magisk</p><p>LSPosed Magisk on WSA (with Google Apps)</p>
+<a href="https://github.com/LSPosed/MagiskOnWSA"></a>
+</div></div>
+
+<ol>
+<li>首先fork一份代码到自己的仓库，然后在fork后的仓库中点击左上角的<code>Actions</code>。</li>
+<li>在<code>Workflow</code>中点击<code>Build WSA</code></li>
+<li>点击右侧的<code>Run workflow</code>，在下拉菜单中选择<code>Build arch</code>为<code>x64</code>，选择<code>Variants of gapps</code>为<code>pico</code></li>
+<li>最后点击绿色的<code>Run workflow</code>，等待build操作完成，一般需要等待五六分钟。<br><img data-src="https://s2.loli.net/2022/06/02/6SdWlJb9LfIa4cV.png" alt="wsa1.png"></li>
+<li>下载build完成的包，注意不要使用多线程下载器</li>
+<li>解压</li>
+<li>右键单击<code>Install.ps1</code>，选择<code>Run with PowerShell</code>，等待安装完成，安装完成后会打开Play商店</li>
+<li>打开<code>基于Android的Windows子系统设置</code>，打开<code>开发人员模式</code>，记录下出现的ip，一般都是<code>127.0.0.1:58526</code><br><img data-src="https://s2.loli.net/2022/06/02/uZAeSJEXPFKyGx3.png" alt="wsa9.png"></li>
+</ol>
+<hr>
+<h1 id="联网的坑"><a href="#联网的坑" class="headerlink" title="联网的坑"></a>联网的坑</h1><p>在没有设置代理的情况下Play商店是连不上的，但是可以通过亚马逊应用商店来判断是否有网络连接，正常的话请跳过本章，本章专为像我一样的大冤种准备。<br>我在安装完WSA后怎么也连不上网，一直提示VritWifi连接受限。试了很多种方法，下面是Google大总结，不妨挨个尝试一下。</p>
+<h2 id="更改防火墙规则"><a href="#更改防火墙规则" class="headerlink" title="更改防火墙规则"></a>更改防火墙规则</h2><p>以管理员身份运行终端，执行命令添加防火墙规则</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line"><span class="built_in">New-NetFirewallRule</span> <span class="literal">-DisplayName</span> <span class="string">&quot;WSL&quot;</span> <span class="literal">-Direction</span> Inbound <span class="literal">-InterfaceAlias</span> <span class="string">&quot;vEthernet (WSL)&quot;</span> <span class="literal">-Action</span> Allow</span><br></pre></td></tr></table></figure>
+<p>然而这个对我无效。。。</p>
+<h2 id="更换DNS"><a href="#更换DNS" class="headerlink" title="更换DNS"></a>更换DNS</h2><p>更改WSA默认的DNS设置，然而对我依然无效</p>
+<ol>
+<li>打开前面安装的<code>WSA Toolbox</code>，点击中间的<code>Android设置</code></li>
+<li>打开<code>网络和互联网</code>-<code>互联网</code>-<code>WLAN</code>-<code>VritWifi</code></li>
+<li>点击右上角的设置</li>
+<li>把<code>DNS 1</code>更换为<code>8.8.4.4</code>或者<code>114.114.115.115</code>等常用DNS</li>
+</ol>
+<p><img data-src="https://s2.loli.net/2022/06/02/MGDFkbQCelVUPgu.png" alt="wsa5.png"></p>
+<h2 id="adb修改captive-portal"><a href="#adb修改captive-portal" class="headerlink" title="adb修改captive_portal"></a>adb修改captive_portal</h2><p>事实证明这个玩意儿纯属掩耳盗铃，打开终端，执行</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">58526</span></span><br><span class="line">adb shell settings put global captive_portal_https_url https://www.google.cn/generate_204</span><br><span class="line">adb shell settings put global captive_portal_http_url http://www.google.cn/generate_204</span><br></pre></td></tr></table></figure>
+<p>这个操作的唯一作用是在能联网但是仍然提示网络连接受限的情况下去掉烦人的提示。。。</p>
+<h2 id="USB网络共享"><a href="#USB网络共享" class="headerlink" title="USB网络共享"></a>USB网络共享</h2><p>这个方法算是曲线救国，实在没办法的话可以用，但是重启之后可能需要重新设置</p>
+<ol>
+<li>打开前面安装的<code>WSA Toolbox</code>，点击中间的<code>Android设置</code></li>
+<li>打开<code>系统</code>-<code>开发者选型</code></li>
+<li>打开<code>使用开发者选型</code>开关</li>
+<li>下滑，找到<code>网络</code>-<code>默认USB设置</code></li>
+<li>设置为<code>USB网络共享</code></li>
+</ol>
+<h2 id="开启Hyper-V功能"><a href="#开启Hyper-V功能" class="headerlink" title="开启Hyper-V功能"></a>开启Hyper-V功能</h2><div class="note primary"><p>搜到了知乎<a href="https://zhuanlan.zhihu.com/p/431557897">希尔顿</a>的文章，发现他额外开启了Hyper-V功能，试了一下，没想到真能行了🤣。毕竟按照官方文档的说法是不需要开启Hyper-V的</p>
+</div>
+
+<ol>
+<li>打开<code>设置</code>-<code>应用</code>-<code>可选功能</code>-<code>更多Windows功能</code></li>
+<li>展开<code>Hyper-V</code></li>
+<li>勾选<code>Hyper-V平台</code></li>
+<li>等待安装完成</li>
+</ol>
+<p><img data-src="https://s2.loli.net/2022/06/02/HJIWBZVYlC3pT7s.png" alt="wsa6.png"></p>
+<p>然后就神奇的连上网了，原理我到现在也没搞懂🤯</p>
+<hr>
+<h1 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h1><h2 id="正常操作"><a href="#正常操作" class="headerlink" title="正常操作"></a>正常操作</h2><p>我用的客户端是V2rayN。如果用Clash的话直接谷歌就成，教程很多。</p>
+<ol>
+<li>打开V2rayN，在<code>设置</code>-<code>参数设置</code>-<code>基础设置</code>中勾选<code>允许来自局域网的连接</code></li>
+<li>记下最下面显示的局域网http端口号，默认是<code>10811</code><br><img data-src="https://s2.loli.net/2022/06/02/CmPInWYB536VjwS.png" alt="wsa7.png"></li>
+<li>在终端中运行下面的命令，注意把<code>127.0.0.1:58526</code>替换成在<code>基于Android的Windows子系统设置</code>记下的ip，一般都是这个<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">58526</span></span><br></pre></td></tr></table></figure></li>
+<li>在终端输入<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure></li>
+<li>找到目前使用的网卡的ip地址，例如我的就是192.168.50.70<br><img data-src="https://s2.loli.net/2022/06/02/Vh3JBqGuFPoNMd9.png" alt="wsa8.png"></li>
+<li>在终端运行下面的命令，注意把ip换成自己的网卡的<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb shell settings put global http_proxy <span class="number">192.168</span>.<span class="number">50.70</span>:<span class="number">10811</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>如果想要取消代理的话用下面的命令</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb shell settings put global http_proxy :<span class="number">0</span></span><br><span class="line">adb shell settings delete global http_proxy</span><br></pre></td></tr></table></figure>
+
+<h2 id="曲线救国"><a href="#曲线救国" class="headerlink" title="曲线救国"></a>曲线救国</h2><p>如果上面的方法不行的话，可以在WSA中单独安装设置代理软件，如V2rayNG</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/github.webp"></object>
+<p>V2rayNG</p><p>A V2Ray client for Android</p>
+<a href="https://github.com/2dust/v2rayNG/releases"></a>
+</div></div>
+
+<hr>
+<h1 id="旁加载安装apk"><a href="#旁加载安装apk" class="headerlink" title="旁加载安装apk"></a>旁加载安装apk</h1><p>如果没有代理可用的话，自然也就不能通过Play商店安装应用了，不过好在可以用旁加载的方式安装应用。</p>
+<ol>
+<li>在终端中运行下面的命令，注意把<code>127.0.0.1:58526</code>替换成在<code>基于Android的Windows子系统设置</code>记下的ip，一般都是这个<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">58526</span></span><br></pre></td></tr></table></figure></li>
+<li>cd到apk所在的文件夹</li>
+<li>执行<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb install apk名</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>国内的应用商店我用的是酷安</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/link.webp"></object>
+<p>酷安APP</p><p>发现科技新生活</p>
+<a href="https://www.coolapk.com/"></a>
+</div></div>]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>Win11</tag>
+        <tag>WSA</tag>
+        <tag>Android</tag>
+        <tag>V2ray</tag>
+        <tag>Google Play</tag>
+        <tag>Magisk</tag>
+        <tag>adb</tag>
       </tags>
   </entry>
   <entry>
@@ -5878,6 +6019,77 @@
       </tags>
   </entry>
   <entry>
+    <title>英国行李清单</title>
+    <url>/%E8%8B%B1%E5%9B%BD%E8%A1%8C%E6%9D%8E%E6%B8%85%E5%8D%95.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">结合本鸽子逛了三个月英国超市的经历，整理了一下来英国建议带的东西 && 不建议带的东西，针对不建议带的东西列出了购买方式</blockquote>
+
+<span id="more"></span>
+
+<h1 id="建议带"><a href="#建议带" class="headerlink" title="建议带"></a>建议带</h1><p>这一类一般是在英国很难买到，或者是价格高得离谱的东西</p>
+<ul>
+<li>挂钩 ⭐⭐⭐⭐⭐ 英国挂钩的价格就真的离谱，一个的价格我在淘宝能买一盒</li>
+<li>围裙 ⭐⭐⭐⭐ 价格同样离谱，一样的钱淘宝能买十条</li>
+<li>油壶 ⭐⭐⭐ 找遍了各个超市，最后在一家街角小卖店里找到了，但是非常难用，会漏油</li>
+<li>备用手机 ⭐⭐⭐⭐ 万一手机坏了还能撑一下，这边买手机可太贵了</li>
+<li>理发器 ⭐⭐⭐ 这边理一次发的价格就能买个理发器了，而且疫情期间不太敢让理发师上门，我就老老实实给自己理了一个狗啃头</li>
+<li>中标插排 ⭐⭐⭐⭐ 基本只有中超有，价格偏贵</li>
+<li>转接插头 ⭐⭐⭐⭐ 英超虽然有，但是价格离谱</li>
+<li>冲锋衣 ⭐⭐⭐⭐⭐ 妖风 + 下雨天出门必备，这边服装店目前不开门</li>
+<li>SIM卡针 ⭐⭐⭐⭐ 不占地方</li>
+<li>充电宝 ⭐⭐⭐⭐ 这边价格偏高</li>
+</ul>
+<h1 id="可带可不带"><a href="#可带可不带" class="headerlink" title="可带可不带"></a>可带可不带</h1><p>这一类一般是体积较小，重量较轻，可有可无或者在英国也能买到且价格不离谱的东西</p>
+<ul>
+<li>路由器 ⭐⭐⭐ 需要的话还是自己带一个，英国价格有点离谱</li>
+<li>网线 ⭐ 价格差不多</li>
+<li>USB小风扇 ⭐⭐⭐ 英国宿舍基本没空调，夏天还是会热的</li>
+<li>温湿度计 ⭐ 有需要可以带一个看下室内温湿度，这边价格比较高</li>
+<li>肥皂盒 ⭐ 一磅店就有，只不过款式不太好看</li>
+<li>数据线 ⭐⭐ 编织线的价格和国内差不多</li>
+<li>台灯 ⭐ 我宿舍书桌上面有两个巨亮的射灯，所以台灯就华丽丽的吃灰了，这边的台灯价格稍贵</li>
+<li>相机三脚架 ⭐⭐ 有需要的可以带一个轻便的，这边价格基本翻倍了</li>
+<li>小加湿器 ⭐⭐ 小的话可以带一个，eBay上最便宜的也要7磅，还没一卷卫生纸大</li>
+<li>筷子 ⭐ 中超就有，价格可以接受</li>
+<li>折叠盆 ⭐ 这边盆子质量稍差，但也不是不能用，而且中超也有国内那种盆子</li>
+<li>保温杯 ⭐ 价格和国内差不多</li>
+<li>指甲钳 ⭐⭐ 有得卖，但是不清楚质量如何</li>
+<li>电池 ⭐ 这边价格稍高，但也可以接受，充电电池可以带，干电池就算了吧</li>
+<li>牙杯 ⭐ 一磅店的塑料杯子就能用hhh</li>
+<li>削皮器 ⭐ 中超英超都有，价格不贵</li>
+<li>鞋刷 ⭐ 同上</li>
+<li>多功能刀 ⭐ 相当于临时的工具箱吧，这边价格很贵</li>
+<li>U盘 ⭐ 价格不算很贵</li>
+<li>拖鞋⭐⭐⭐ 这边的款式有点丑的</li>
+<li>钢化膜 ⭐⭐ 价格小贵</li>
+<li>笔记本支架 ⭐⭐ 预防颈椎病（狗头）</li>
+<li>备用眼镜 ⭐ 来了之后可以白嫖的（再次狗头）</li>
+<li>洗衣袋 ⭐⭐ 这边价格有点贵</li>
+</ul>
+<h1 id="不建议带"><a href="#不建议带" class="headerlink" title="不建议带"></a>不建议带</h1><p>这一类就是体积太大，重量太沉，或者在英国能以更低价格买到的东西</p>
+<ul>
+<li>肥皂 ❌ homebargain有的买， 80p两块</li>
+<li>电饭煲 ❌❌❌ 这个是真的没必要，收二手就可以，自己带的话又重又占地方，还要浪费一个转换插头，收不到二手网购也差不多价格，可能没有国内那么丰富的功能</li>
+<li>电吹风 ❌❌❌ 同上</li>
+<li>大加湿器 ❌❌❌ 同上</li>
+<li>折叠水壶 ❌ 用几次就吃灰的东西，落地之后直接去大点的超市买烧水壶就可以，或者提前网购</li>
+<li>菜刀 ❌❌ 太沉了，中超就有，价格可以接受</li>
+<li>电动牙刷刷头 ❌ 别的不知道，反正欧乐B的比国内便宜不少</li>
+<li>雨伞 ❌ 遇到妖风基本报废，淘宝那种抗台风的可以试一下？</li>
+<li>锅碗瓢盆 ❌❌❌ 真的没必要，大点的超市都有，样式也还行</li>
+<li>被子 ❌❌❌ 除非行李箱空一半（手动狗头）</li>
+<li>纱窗 ❌❌ 亚马逊就有，而且学生公寓的窗子基本只能开一道缝隙，根本就装不上</li>
+</ul>
+]]></content>
+      <categories>
+        <category>留学</category>
+      </categories>
+      <tags>
+        <tag>留学</tag>
+        <tag>攻略</tag>
+        <tag>英国</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>英国落地日记</title>
     <url>/%E8%8B%B1%E5%9B%BD%E8%90%BD%E5%9C%B0%E6%97%A5%E8%AE%B0.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">落地英国一个月的老鸽子又回来了~~~这可能又是一篇巨长的博文，打算记录下在英国这一年的生活，内含BRP、GP、银行卡等攻略，或许还能放个Vlog？（咕咕咕）</blockquote>
@@ -6455,77 +6667,6 @@ OFFICIAL
         <tag>搞机</tag>
         <tag>表盘</tag>
         <tag>荣耀 magic watch</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>英国行李清单</title>
-    <url>/%E8%8B%B1%E5%9B%BD%E8%A1%8C%E6%9D%8E%E6%B8%85%E5%8D%95.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">结合本鸽子逛了三个月英国超市的经历，整理了一下来英国建议带的东西 && 不建议带的东西，针对不建议带的东西列出了购买方式</blockquote>
-
-<span id="more"></span>
-
-<h1 id="建议带"><a href="#建议带" class="headerlink" title="建议带"></a>建议带</h1><p>这一类一般是在英国很难买到，或者是价格高得离谱的东西</p>
-<ul>
-<li>挂钩 ⭐⭐⭐⭐⭐ 英国挂钩的价格就真的离谱，一个的价格我在淘宝能买一盒</li>
-<li>围裙 ⭐⭐⭐⭐ 价格同样离谱，一样的钱淘宝能买十条</li>
-<li>油壶 ⭐⭐⭐ 找遍了各个超市，最后在一家街角小卖店里找到了，但是非常难用，会漏油</li>
-<li>备用手机 ⭐⭐⭐⭐ 万一手机坏了还能撑一下，这边买手机可太贵了</li>
-<li>理发器 ⭐⭐⭐ 这边理一次发的价格就能买个理发器了，而且疫情期间不太敢让理发师上门，我就老老实实给自己理了一个狗啃头</li>
-<li>中标插排 ⭐⭐⭐⭐ 基本只有中超有，价格偏贵</li>
-<li>转接插头 ⭐⭐⭐⭐ 英超虽然有，但是价格离谱</li>
-<li>冲锋衣 ⭐⭐⭐⭐⭐ 妖风 + 下雨天出门必备，这边服装店目前不开门</li>
-<li>SIM卡针 ⭐⭐⭐⭐ 不占地方</li>
-<li>充电宝 ⭐⭐⭐⭐ 这边价格偏高</li>
-</ul>
-<h1 id="可带可不带"><a href="#可带可不带" class="headerlink" title="可带可不带"></a>可带可不带</h1><p>这一类一般是体积较小，重量较轻，可有可无或者在英国也能买到且价格不离谱的东西</p>
-<ul>
-<li>路由器 ⭐⭐⭐ 需要的话还是自己带一个，英国价格有点离谱</li>
-<li>网线 ⭐ 价格差不多</li>
-<li>USB小风扇 ⭐⭐⭐ 英国宿舍基本没空调，夏天还是会热的</li>
-<li>温湿度计 ⭐ 有需要可以带一个看下室内温湿度，这边价格比较高</li>
-<li>肥皂盒 ⭐ 一磅店就有，只不过款式不太好看</li>
-<li>数据线 ⭐⭐ 编织线的价格和国内差不多</li>
-<li>台灯 ⭐ 我宿舍书桌上面有两个巨亮的射灯，所以台灯就华丽丽的吃灰了，这边的台灯价格稍贵</li>
-<li>相机三脚架 ⭐⭐ 有需要的可以带一个轻便的，这边价格基本翻倍了</li>
-<li>小加湿器 ⭐⭐ 小的话可以带一个，eBay上最便宜的也要7磅，还没一卷卫生纸大</li>
-<li>筷子 ⭐ 中超就有，价格可以接受</li>
-<li>折叠盆 ⭐ 这边盆子质量稍差，但也不是不能用，而且中超也有国内那种盆子</li>
-<li>保温杯 ⭐ 价格和国内差不多</li>
-<li>指甲钳 ⭐⭐ 有得卖，但是不清楚质量如何</li>
-<li>电池 ⭐ 这边价格稍高，但也可以接受，充电电池可以带，干电池就算了吧</li>
-<li>牙杯 ⭐ 一磅店的塑料杯子就能用hhh</li>
-<li>削皮器 ⭐ 中超英超都有，价格不贵</li>
-<li>鞋刷 ⭐ 同上</li>
-<li>多功能刀 ⭐ 相当于临时的工具箱吧，这边价格很贵</li>
-<li>U盘 ⭐ 价格不算很贵</li>
-<li>拖鞋⭐⭐⭐ 这边的款式有点丑的</li>
-<li>钢化膜 ⭐⭐ 价格小贵</li>
-<li>笔记本支架 ⭐⭐ 预防颈椎病（狗头）</li>
-<li>备用眼镜 ⭐ 来了之后可以白嫖的（再次狗头）</li>
-<li>洗衣袋 ⭐⭐ 这边价格有点贵</li>
-</ul>
-<h1 id="不建议带"><a href="#不建议带" class="headerlink" title="不建议带"></a>不建议带</h1><p>这一类就是体积太大，重量太沉，或者在英国能以更低价格买到的东西</p>
-<ul>
-<li>肥皂 ❌ homebargain有的买， 80p两块</li>
-<li>电饭煲 ❌❌❌ 这个是真的没必要，收二手就可以，自己带的话又重又占地方，还要浪费一个转换插头，收不到二手网购也差不多价格，可能没有国内那么丰富的功能</li>
-<li>电吹风 ❌❌❌ 同上</li>
-<li>大加湿器 ❌❌❌ 同上</li>
-<li>折叠水壶 ❌ 用几次就吃灰的东西，落地之后直接去大点的超市买烧水壶就可以，或者提前网购</li>
-<li>菜刀 ❌❌ 太沉了，中超就有，价格可以接受</li>
-<li>电动牙刷刷头 ❌ 别的不知道，反正欧乐B的比国内便宜不少</li>
-<li>雨伞 ❌ 遇到妖风基本报废，淘宝那种抗台风的可以试一下？</li>
-<li>锅碗瓢盆 ❌❌❌ 真的没必要，大点的超市都有，样式也还行</li>
-<li>被子 ❌❌❌ 除非行李箱空一半（手动狗头）</li>
-<li>纱窗 ❌❌ 亚马逊就有，而且学生公寓的窗子基本只能开一道缝隙，根本就装不上</li>
-</ul>
-]]></content>
-      <categories>
-        <category>留学</category>
-      </categories>
-      <tags>
-        <tag>留学</tag>
-        <tag>攻略</tag>
-        <tag>英国</tag>
       </tags>
   </entry>
   <entry>
