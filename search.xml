@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>First blog</title>
+    <url>/en/New.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">First blog，LOL</blockquote>
+]]></content>
+      <categories>
+        <category>Dairy</category>
+      </categories>
+      <tags>
+        <tag>Blog</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Purpose</title>
     <url>/en/Purpose.html</url>
     <content><![CDATA[<h3 id="01"><a href="#01" class="headerlink" title="01"></a>01</h3><p>The purpose of this personal website is to record some technical problems I have encountered, share my experience, and leave traces of my existence in the world, that’s it.</p>
@@ -13,18 +25,6 @@
 <li>Some tutorials（like build this blog）</li>
 </ul>
 <h3 id="03"><a href="#03" class="headerlink" title="03"></a>03</h3><p>I will update this blog when I get some new ideas~</p>
-]]></content>
-      <categories>
-        <category>Dairy</category>
-      </categories>
-      <tags>
-        <tag>Blog</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>First blog</title>
-    <url>/en/New.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">First blog，LOL</blockquote>
 ]]></content>
       <categories>
         <category>Dairy</category>
