@@ -8,7 +8,7 @@
      }
      else {
          $('[rel="icon"]').attr('href', "/images/favicon.png");
-         document.title = '(ฅ>ω<*ฅ) Psych!' + OriginTitle;
+         document.title = '(ฅ>ω<*ฅ) Psych!  ' + OriginTitle;
          titleTime = setTimeout(function () {
              document.title = OriginTitle;
          }, 2000);

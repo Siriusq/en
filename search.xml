@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>First blog</title>
-    <url>/en/New.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">First blog，LOL</blockquote>
-]]></content>
-      <categories>
-        <category>Dairy</category>
-      </categories>
-      <tags>
-        <tag>Blog</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Purpose</title>
     <url>/en/Purpose.html</url>
     <content><![CDATA[<h3 id="01"><a href="#01" class="headerlink" title="01"></a>01</h3><p>The purpose of this personal website is to record some technical problems I have encountered, share my experience, and leave traces of my existence in the world, that’s it.</p>
@@ -31,6 +19,87 @@
       </categories>
       <tags>
         <tag>Blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>First blog</title>
+    <url>/en/New.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">First blog，LOL</blockquote>
+]]></content>
+      <categories>
+        <category>Dairy</category>
+      </categories>
+      <tags>
+        <tag>Blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo Next 8 Language Switch</title>
+    <url>/en/hexo-hext-8-language-switch.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">This blog post provides a solution for switching languages(e.g. Chinese and English) for blogs that use the Hexo framework with the Next theme.</blockquote>
+
+<span id="more"></span>
+
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Before you start the configuration, please check if this solution is suitable for you~😊</p>
+<ol>
+<li>The switch function in this solution will only switch five pages - Home, About, Archives, Tags and Categories - to the corresponding page in the other language. If you switch languages in a blog post, it will jump to the homepage of another language.</li>
+<li>The Chinese and English sites are still independent, and use different repositories in GitHub, because I think the two sites can do backups for each other, so that if one crashes, you can quickly recover from the other one’s files.</li>
+<li>This solution is applicable to Next8 and requires the same major theme version of the Chinese and English sites.</li>
+<li>The language of the Live2D plugin is not translated into English yet.</li>
+</ol>
+<p>If there are no issues, you can start configuring it. I will use my own domain name <code>siriusq.top</code> and the new English website repository name <code>en</code> as an example.</p>
+<h1 id="Create-a-GitHub-Pages-for-the-English-Site’s"><a href="#Create-a-GitHub-Pages-for-the-English-Site’s" class="headerlink" title="Create a GitHub Pages for the English Site’s"></a>Create a GitHub Pages for the English Site’s</h1><ol>
+<li>Create a new repository named <code>en</code> in GitHub.</li>
+<li>Go to the new repository and click <code>Settings</code>.</li>
+<li>Go to the <code>Pages</code> option in the sidebar.</li>
+<li>In <code>Source</code>, set the branch as the main branch <code>Master</code> or <code>Main</code>.</li>
+<li>Click the <code>Choose a theme</code> button, and then choose a theme of your choice.</li>
+<li>Once the page is created successfully, you will get a notice saying <code>Your site is published at https://siriusq.top/en/</code>.</li>
+</ol>
+<p><img data-src="https://s2.loli.net/2022/06/08/ToAdWHgVDkRIpOU.png" alt="创建英文Pages"></p>
+<h1 id="Local-File-Configuration"><a href="#Local-File-Configuration" class="headerlink" title="Local File Configuration"></a>Local File Configuration</h1><ol>
+<li>Uncomment <code>#sidebar: source/_data/sidebar.njk</code> in <code>_config.next.yml</code>.</li>
+<li>Create a new txt file in the <code>. /source/js/</code> directory and rename it to <code>switch_language.js</code>.</li>
+<li>Create a new txt file in <code>. /source/_data/</code> directory and rename it to <code>sidebar.njk</code>.</li>
+</ol>
+<h1 id="Create-the-Local-Directory-for-the-English-Site"><a href="#Create-the-Local-Directory-for-the-English-Site" class="headerlink" title="Create the Local Directory for the English Site"></a>Create the Local Directory for the English Site</h1><p>Copy and paste the current Chinese blog folder and rename it as you wish, here I’ll take the Chinese folder name <code>cn</code> and the copied English folder name <code>en</code> as an example.</p>
+<ol>
+<li>Delete the <code>CNAME</code> file under <code>en/source/</code> (if there is one).</li>
+<li>Open the <code>en/_config.yml</code> file and modify the configuration as follows.  <figure class="highlight yml"><figcaption><span>en/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">language:</span> <span class="string">en</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://siriusq.top/en/</span> <span class="comment"># replace siriusq.top/en/ with your own domain name/repository name/ </span></span><br><span class="line"><span class="attr">repo:</span> <span class="string">git@github.com:Siriusq/en.git</span> <span class="comment"># replace Siriusq/en with your own username/repository name</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="Create-Language-Switch-Button"><a href="#Create-Language-Switch-Button" class="headerlink" title="Create Language Switch Button"></a>Create Language Switch Button</h1><h2 id="Chinese-to-English-Switch-Button"><a href="#Chinese-to-English-Switch-Button" class="headerlink" title="Chinese to English Switch Button"></a>Chinese to English Switch Button</h2><p>Open <code>cn/_config.next.yml</code>, find <code>menu:</code>, add <code>Switch to English</code> to it, then replace <code>https://siriusq.top/en/</code> with your English site link.</p>
+<figure class="highlight yml"><figcaption><span>cn/_config.next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-user</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-th</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span></span><br><span class="line">  <span class="attr">Switch to English:</span> <span class="string">https://siriusq.top/en/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-language</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="English-to-Chinese-Switch-Button"><a href="#English-to-Chinese-Switch-Button" class="headerlink" title="English to Chinese Switch Button"></a>English to Chinese Switch Button</h2><p>Open <code>en/_config.next.yml</code>, find <code>menu:</code>, add <code>Switch to Chinese</code> to it, then replace <code>https://siriusq.top</code> with your Chinese site link.</p>
+<figure class="highlight yml"><figcaption><span>en/_config.next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-user</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-th</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span></span><br><span class="line">  <span class="attr">Switch to Chinese:</span> <span class="string">https://siriusq.top</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-language</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Switching-Code"><a href="#Switching-Code" class="headerlink" title="Switching Code"></a>Switching Code</h1><h2 id="Chinese-Site"><a href="#Chinese-Site" class="headerlink" title="Chinese Site"></a>Chinese Site</h2><ol>
+<li>Edit the <code>cn/source/js/switch_language.js</code> file created earlier and paste the following code, adjusting it according to your domain name.<figure class="highlight js"><figcaption><span>cn/source/js/switch_language.js</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch-to-english&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">    switchLang.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">        <span class="keyword">var</span> includesKeywords = href.<span class="title function_">includes</span>(<span class="string">&quot;/about/&quot;</span>) || href.<span class="title function_">includes</span>(<span class="string">&quot;/tags/&quot;</span>)|| href.<span class="title function_">includes</span>(<span class="string">&quot;/categories/&quot;</span>) || href.<span class="title function_">includes</span>(<span class="string">&quot;/archives/&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (includesKeywords) &#123;</span><br><span class="line">            <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;.top/&#x27;</span>, <span class="string">&#x27;.top/en/&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = <span class="string">&quot;https://siriusq.top/en/&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> (_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">            <span class="title function_">_prevOnload</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Edit the <code>cn/source/_data/sidebar.njk</code> file created earlier and paste the following code.<figure class="highlight html"><figcaption><span>cn/source/_data/sidebar.njk</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;/js/switch_language.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="英文网站"><a href="#英文网站" class="headerlink" title="英文网站"></a>英文网站</h2><ol>
+<li>Edit the <code>en/source/js/switch_language.js</code> file created earlier and paste the following code, adjusting it according to your domain name.<figure class="highlight js"><figcaption><span>en/source/js/switch_language.js</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch-to-chinese&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">    switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">        <span class="keyword">var</span> includesKeywords = href.<span class="title function_">includes</span>(<span class="string">&quot;/en/about/&quot;</span>) || href.<span class="title function_">includes</span>(<span class="string">&quot;/en/tags/&quot;</span>)|| href.<span class="title function_">includes</span>(<span class="string">&quot;/en/categories/&quot;</span>) || href.<span class="title function_">includes</span>(<span class="string">&quot;/en/archives/&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span>(includesKeywords) &#123;</span><br><span class="line">            <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = <span class="string">&quot;https://siriusq.top&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">            <span class="title function_">_prevOnload</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Edit the <code>en/source/_data/sidebar.njk</code> file created earlier and paste the following code.<figure class="highlight html"><figcaption><span>en/source/_data/sidebar.njk</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;/en/js/switch_language.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h1><p>Use the following command to deploy two websites separately.</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">hexo cl &amp;&amp; hexo g <span class="literal">-d</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><p>There are still some plugins and pages in the local directory of the English site that require you to manually set the language.</p>
+<ol>
+<li>The creative_commons plugin’s language setting in <code>_config.next.yml</code>.</li>
+<li>Content of subtitle, description, etc. in <code>_config.next.yml</code></li>
+<li>Font settings.</li>
+<li>about page, tags page, categories page, archives page, etc.</li>
+<li>Custom 404page.</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Website Configuration</category>
+      </categories>
+      <tags>
+        <tag>HEXO</tag>
+        <tag>Next</tag>
+        <tag>i18n</tag>
       </tags>
   </entry>
 </search>
