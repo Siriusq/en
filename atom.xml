@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Sirius</title>
+  <icon>https://siriusq.top/en/icon.png</icon>
+  <subtitle>May the Force be with you</subtitle>
+  <link href="https://siriusq.top/en/atom.xml" rel="self"/>
+  
+  <link href="https://siriusq.top/en/"/>
+  <updated>2023-10-06T13:15:43.506Z</updated>
+  <id>https://siriusq.top/en/</id>
+  
+  <author>
+    <name>Sirius</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quick Setup Guide for LaTeX in VSCode</title>
+    <link href="https://siriusq.top/en/latex-vscode-quick-config.html"/>
+    <id>https://siriusq.top/en/latex-vscode-quick-config.html</id>
+    <published>2023-10-03T13:24:09.000Z</published>
+    <updated>2023-10-06T13:15:43.506Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;A guide on installing the TeX environment and quickly configuring LaTeX in VSCode.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Coding" scheme="https://siriusq.top/en/categories/Coding/"/>
+    
+    
+    <category term="VSCode" scheme="https://siriusq.top/en/tags/VSCode/"/>
+    
+    <category term="LaTeX" scheme="https://siriusq.top/en/tags/LaTeX/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Accessing Windows Shared Folders on iPhone.</title>
+    <link href="https://siriusq.top/en/ios-windows-file-share.html"/>
+    <id>https://siriusq.top/en/ios-windows-file-share.html</id>
+    <published>2023-09-15T12:34:06.000Z</published>
+    <updated>2023-10-01T08:55:29.100Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Because the local network file transfer software I&#39;ve been using doesn&#39;t work on Win11 anymore, and I couldn&#39;t find a good alternative, I decided to resort to the old method of using Windows shared folders to transfer files to iOS devices.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    
+    <category term="iOS" scheme="https://siriusq.top/en/tags/iOS/"/>
+    
+    <category term="Shared Folders" scheme="https://siriusq.top/en/tags/Shared-Folders/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Stellaris Mod Creation and Upload Log</title>
+    <link href="https://siriusq.top/en/stellaris-mod.html"/>
+    <id>https://siriusq.top/en/stellaris-mod.html</id>
+    <published>2023-08-29T12:33:11.000Z</published>
+    <updated>2023-09-06T10:48:10.444Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;How to become a qualified 4th crisis without using the console.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    
+    
+    <category term="MOD" scheme="https://siriusq.top/en/tags/MOD/"/>
+    
+    <category term="Stellaris" scheme="https://siriusq.top/en/tags/Stellaris/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Bongo Paw Clicker Development Summary</title>
+    <link href="https://siriusq.top/en/bongo-paw-blicker.html"/>
+    <id>https://siriusq.top/en/bongo-paw-blicker.html</id>
+    <published>2023-08-14T08:02:21.000Z</published>
+    <updated>2023-08-21T13:47:57.034Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;This article is a development record of Bongo Paw Clicker, documenting the issues I encountered during the development of the auto clicker.&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img data-src=&quot;https://s2.loli.net/2023/08/21/Yv84gpx6mU2TFfK.webp&quot; alt=&quot;en-preview.webp&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Coding" scheme="https://siriusq.top/en/categories/Coding/"/>
+    
+    
+    <category term="WPF" scheme="https://siriusq.top/en/tags/WPF/"/>
+    
+    <category term="Bongo Paw Clicker" scheme="https://siriusq.top/en/tags/Bongo-Paw-Clicker/"/>
+    
+    <category term="Log" scheme="https://siriusq.top/en/tags/Log/"/>
+    
+    <category term="C#" scheme="https://siriusq.top/en/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Enabling Integrated Graphics with Discrete Graphics Installed</title>
+    <link href="https://siriusq.top/en/turn-on-igpu.html"/>
+    <id>https://siriusq.top/en/turn-on-igpu.html</id>
+    <published>2023-04-30T11:38:12.000Z</published>
+    <updated>2023-07-07T10:25:20.619Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Though practically speaking, the motherboard automatically blocks out the integrated graphics when a discrete graphics is plugged in. Although Intel&#39;s integrated graphics has poorer gaming performance, its video encoding and decoding capabilities are excellent. A graphics without a full encoder like the 6500xt can cause significant stuttering and frame drops when it comes to video clips, or in-game recording and pushing streams, so calling on the integrated graphics can take the burden off the discrete graphics and CPU for a smoother experience.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    
+    
+    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    
+    <category term="PC" scheme="https://siriusq.top/en/tags/PC/"/>
+    
+    <category term="GPU" scheme="https://siriusq.top/en/tags/GPU/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MacBook Pro Headless</title>
+    <link href="https://siriusq.top/en/macbook-pro-headless.html"/>
+    <id>https://siriusq.top/en/macbook-pro-headless.html</id>
+    <published>2023-03-31T13:16:46.000Z</published>
+    <updated>2023-07-07T10:14:12.493Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Get a Mac at the lowest price XD&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img data-src=&quot;https://s2.loli.net/2023/07/01/m29rQx1G8WTtO3A.jpg&quot; alt=&quot;MBPHeadless.jpg&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Hardware" scheme="https://siriusq.top/en/categories/Hardware/"/>
+    
+    
+    <category term="macOS" scheme="https://siriusq.top/en/tags/macOS/"/>
+    
+    <category term="MacBook Pro" scheme="https://siriusq.top/en/tags/MacBook-Pro/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Change the Installation Path of Adobe Series Software and Disable Auto-Update</title>
+    <link href="https://siriusq.top/en/change-adobe-install-path.html"/>
+    <id>https://siriusq.top/en/change-adobe-install-path.html</id>
+    <published>2022-12-18T09:52:26.000Z</published>
+    <updated>2023-07-16T11:34:44.052Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;As I still use a 256GB SSD as my main drive and Adobe will stubbornly install their enormously space-consuming software to the C drive without asking me, I decided to find a way to change its installation path, as well as block its auto-update program from networking cause its quite annoying.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    
+    <category term="Adobe" scheme="https://siriusq.top/en/tags/Adobe/"/>
+    
+    <category term="Firewall" scheme="https://siriusq.top/en/tags/Firewall/"/>
+    
+    <category term="bash" scheme="https://siriusq.top/en/tags/bash/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>A Certain Solution for the Issue of Utools Not Displaying All Local Search Results.</title>
+    <link href="https://siriusq.top/en/utools-file-search.html"/>
+    <id>https://siriusq.top/en/utools-file-search.html</id>
+    <published>2022-07-23T03:41:49.000Z</published>
+    <updated>2023-09-12T08:16:02.982Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;A few days ago, I discovered that the local search feature of uTools could only load about 20 search results. When I scrolled to the bottom, new search results wouldn&#39;t load. However, when using Everything search separately, the results were normal. After tinkering for a while, I remembered that I had adjusted the system font size. After restoring the font size to the default settings in the system, the issue was resolved.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    
+    
+    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    
+    <category term="utools" scheme="https://siriusq.top/en/tags/utools/"/>
+    
+    <category term="Bug" scheme="https://siriusq.top/en/tags/Bug/"/>
+    
+    <category term="Zoom" scheme="https://siriusq.top/en/tags/Zoom/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Solution for Windows waking up from sleep mode with window shifted to the top left corner and reduced in size</title>
+    <link href="https://siriusq.top/en/window-shifted-and-reduce-size-after-wakeup.html"/>
+    <id>https://siriusq.top/en/window-shifted-and-reduce-size-after-wakeup.html</id>
+    <published>2022-07-22T10:04:37.000Z</published>
+    <updated>2023-08-12T12:40:59.894Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Ever since I switched back to a 2K monitor at home, every time I wake the computer from sleep, all open windows end up in the upper-left corner and their size is reduced to half of what it was. Strangely, these windows still appear to be in maximized state. The culprit behind this issue is the DP&#39;s Hot Plug Detection feature.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    
+    
+    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    
+    <category term="Win10" scheme="https://siriusq.top/en/tags/Win10/"/>
+    
+    <category term="DP" scheme="https://siriusq.top/en/tags/DP/"/>
+    
+    <category term="Hot Plug Detection" scheme="https://siriusq.top/en/tags/Hot-Plug-Detection/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Block App Open Screen Ads on iOS</title>
+    <link href="https://siriusq.top/en/block-app-open-screen-ads-on-ios.html"/>
+    <id>https://siriusq.top/en/block-app-open-screen-ads-on-ios.html</id>
+    <published>2022-07-13T16:01:39.000Z</published>
+    <updated>2023-08-12T13:05:42.578Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Chinese internet companies really have no shame. They came up with this shake-to-display ad that redirects you to an advertisement page just by shaking your phone. I almost fell for it, but going back to an older version of the app on iOS is too complicated. I couldn&#39;t stand it anymore, so I eventually decided to capture the network traffic and used Shadowrocket&#39;s rules to block these disgusting ads.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    
+    
+    <category term="iOS" scheme="https://siriusq.top/en/tags/iOS/"/>
+    
+    <category term="Ad Block" scheme="https://siriusq.top/en/tags/Ad-Block/"/>
+    
+    <category term="ShadowRocket" scheme="https://siriusq.top/en/tags/ShadowRocket/"/>
+    
+    <category term="packet analyzer" scheme="https://siriusq.top/en/tags/packet-analyzer/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Clash for Windows - From Starting to Giving Up</title>
+    <link href="https://siriusq.top/en/clash.html"/>
+    <id>https://siriusq.top/en/clash.html</id>
+    <published>2022-07-13T08:25:33.000Z</published>
+    <updated>2023-08-13T11:16:24.283Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Recently, my V2RayN has been acting up and frequently disconnecting. I spent quite some time looking through GitHub issues, trying to find solutions to the disconnection problems. Unfortunately, I didn&#39;t find any viable solutions. So, I decided to switch to Clash. However, configuring Clash is a bit more complex than V2RayN. With a lot going on recently, I eventually gave up on fine-tuning it and settled for making it work. Hence, this record from getting started to giving up.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    
+    
+    <category term="Clash" scheme="https://siriusq.top/en/tags/Clash/"/>
+    
+    <category term="GFW" scheme="https://siriusq.top/en/tags/GFW/"/>
+    
+    <category term="Freedom" scheme="https://siriusq.top/en/tags/Freedom/"/>
+    
+    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Solution for ASUS Aura Sync Not Recognizing G.Skill Trident Z RGB</title>
+    <link href="https://siriusq.top/en/aura-sync.html"/>
+    <id>https://siriusq.top/en/aura-sync.html</id>
+    <published>2022-07-10T11:34:43.000Z</published>
+    <updated>2023-08-12T12:40:57.904Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;This article is also known as &quot;The Series of Annoying Incidents Caused by My Impulsive Upgrade of Armoury Crate.&quot; Now, let&#39;s introduce the main characters of this story: ASUS B460-I GAMING and two G.Skill Trident Z RGB sticks.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    
+    
+    <category term="ITX" scheme="https://siriusq.top/en/tags/ITX/"/>
+    
+    <category term="DIY" scheme="https://siriusq.top/en/tags/DIY/"/>
+    
+    <category term="Asus" scheme="https://siriusq.top/en/tags/Asus/"/>
+    
+    <category term="Aura Sync" scheme="https://siriusq.top/en/tags/Aura-Sync/"/>
+    
+    <category term="Armoury Crate" scheme="https://siriusq.top/en/tags/Armoury-Crate/"/>
+    
+    <category term="Trident Z" scheme="https://siriusq.top/en/tags/Trident-Z/"/>
+    
+    <category term="G.Skill" scheme="https://siriusq.top/en/tags/G-Skill/"/>
+    
+    <category term="RGB" scheme="https://siriusq.top/en/tags/RGB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Enable Cloudflare Acceleration and HTTPS on GitHub Pages</title>
+    <link href="https://siriusq.top/en/github-pages-cloudflare-https.html"/>
+    <id>https://siriusq.top/en/github-pages-cloudflare-https.html</id>
+    <published>2022-06-11T13:00:07.000Z</published>
+    <updated>2023-09-13T03:03:50.695Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;A few days ago, when transferring the domain, I found that GitHub Pages hadn&#39;t fully enabled HTTPS, and the A records set in Cloudflare were also incomplete, so I went through the process again and decided to document it along the way.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Website Configuration" scheme="https://siriusq.top/en/categories/Website-Configuration/"/>
+    
+    
+    <category term="Hexo" scheme="https://siriusq.top/en/tags/Hexo/"/>
+    
+    <category term="GitHub Pages" scheme="https://siriusq.top/en/tags/GitHub-Pages/"/>
+    
+    <category term="Cloudflare" scheme="https://siriusq.top/en/tags/Cloudflare/"/>
+    
+    <category term="HTTPS" scheme="https://siriusq.top/en/tags/HTTPS/"/>
+    
+    <category term="CDN" scheme="https://siriusq.top/en/tags/CDN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo Next 8 Bilingual Switching</title>
+    <link href="https://siriusq.top/en/hexo-hext-8-bilingual-switching.html"/>
+    <id>https://siriusq.top/en/hexo-hext-8-bilingual-switching.html</id>
+    <published>2022-06-07T13:21:18.000Z</published>
+    <updated>2023-09-13T03:04:06.220Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;This blog post provides a solution for switching languages(e.g. Chinese and English) for blogs that use the Hexo framework with the Next theme.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Website Configuration" scheme="https://siriusq.top/en/categories/Website-Configuration/"/>
+    
+    
+    <category term="HEXO" scheme="https://siriusq.top/en/tags/HEXO/"/>
+    
+    <category term="Next" scheme="https://siriusq.top/en/tags/Next/"/>
+    
+    <category term="i18n" scheme="https://siriusq.top/en/tags/i18n/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Transferring Domain Names From Alibaba Cloud to Namesilo</title>
+    <link href="https://siriusq.top/en/transfer-domain.html"/>
+    <id>https://siriusq.top/en/transfer-domain.html</id>
+    <published>2022-06-04T15:02:46.000Z</published>
+    <updated>2023-08-13T12:41:40.399Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Today, on a whim, I decided to look up the WHOIS information for my domain name and discovered that the domain I registered with Alibaba Cloud is in a completely exposed state. My name and province are all publicly visible... After some research, I found out that Alibaba Cloud discontinued WHOIS privacy protection back in 2018, and for three years my domain has been out in the open without my knowledge. With a sense of &quot;better late than never,&quot; combined with the frustrating real-name verification process, I made the decision to transfer my domain out of Alibaba Cloud. The process of transferring was also marred by Alibaba Cloud&#39;s frustrating practices.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Website Configuration" scheme="https://siriusq.top/en/categories/Website-Configuration/"/>
+    
+    
+    <category term="Aliyun" scheme="https://siriusq.top/en/tags/Aliyun/"/>
+    
+    <category term="NameSilo" scheme="https://siriusq.top/en/tags/NameSilo/"/>
+    
+    <category term="Domain" scheme="https://siriusq.top/en/tags/Domain/"/>
+    
+    <category term="WHOIS" scheme="https://siriusq.top/en/tags/WHOIS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Installation and Configuration of WSA</title>
+    <link href="https://siriusq.top/en/wsa.html"/>
+    <id>https://siriusq.top/en/wsa.html</id>
+    <published>2022-06-02T08:04:48.000Z</published>
+    <updated>2023-09-13T10:16:47.750Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Documenting the process of setting up WSA, establishing an internet connection, configuring a proxy, and installing applications.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    
+    <category term="WSA" scheme="https://siriusq.top/en/tags/WSA/"/>
+    
+    <category term="Android" scheme="https://siriusq.top/en/tags/Android/"/>
+    
+    <category term="V2ray" scheme="https://siriusq.top/en/tags/V2ray/"/>
+    
+    <category term="Google Play" scheme="https://siriusq.top/en/tags/Google-Play/"/>
+    
+    <category term="Magisk" scheme="https://siriusq.top/en/tags/Magisk/"/>
+    
+    <category term="adb" scheme="https://siriusq.top/en/tags/adb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Customizing Windows Terminal</title>
+    <link href="https://siriusq.top/en/windows-terminal.html"/>
+    <id>https://siriusq.top/en/windows-terminal.html</id>
+    <published>2022-05-26T15:40:47.000Z</published>
+    <updated>2023-08-12T12:22:45.470Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Something you have to face every day, and if it doesn&#39;t look good, it can affect your mood 🐶. (Finally going to finish the overdue blog posts, the diarrhea-style updates are ending.)&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    
+    
+    <category term="Windows Terminal" scheme="https://siriusq.top/en/tags/Windows-Terminal/"/>
+    
+    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    
+    <category term="Win10" scheme="https://siriusq.top/en/tags/Win10/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Change Windows 11 Right-Click Menu Style Back to Windows 10 Style</title>
+    <link href="https://siriusq.top/en/windows-11-right-click-menu.html"/>
+    <id>https://siriusq.top/en/windows-11-right-click-menu.html</id>
+    <published>2022-05-26T14:58:05.000Z</published>
+    <updated>2023-09-13T10:38:43.241Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Microsoft&#39;s Confusing Move: They turned Windows 11&#39;s right-click menu into a two-level menu, which is very inconvenient. The product manager who suggested this change should be held accountable. Fortunately, you can still use the registry editing method to revert it.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    
+    <category term="Right-Click Menu" scheme="https://siriusq.top/en/tags/Right-Click-Menu/"/>
+    
+    <category term="Registry" scheme="https://siriusq.top/en/tags/Registry/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Common Commands for npm</title>
+    <link href="https://siriusq.top/en/npm.html"/>
+    <id>https://siriusq.top/en/npm.html</id>
+    <published>2022-05-26T02:19:28.000Z</published>
+    <updated>2023-08-13T12:47:35.131Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;A collection of npm commands, as well as commands commonly used for Next theme upgrades.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Coding" scheme="https://siriusq.top/en/categories/Coding/"/>
+    
+    
+    <category term="Hexo" scheme="https://siriusq.top/en/tags/Hexo/"/>
+    
+    <category term="Next" scheme="https://siriusq.top/en/tags/Next/"/>
+    
+    <category term="npm" scheme="https://siriusq.top/en/tags/npm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Sync Any Local Folder with OneDrive</title>
+    <link href="https://siriusq.top/en/sync-any-local-folder-with-onedrive.html"/>
+    <id>https://siriusq.top/en/sync-any-local-folder-with-onedrive.html</id>
+    <published>2022-05-25T04:17:43.000Z</published>
+    <updated>2023-09-14T03:50:01.542Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Create symbolic links using the &#39;mklink&#39; command to synchronize OneDrive and the blog&#39;s post folder.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    
+    <category term="OneDrive" scheme="https://siriusq.top/en/tags/OneDrive/"/>
+    
+    <category term="mklink" scheme="https://siriusq.top/en/tags/mklink/"/>
+    
+  </entry>
+  
+</feed>
