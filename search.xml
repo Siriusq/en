@@ -13,27 +13,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Purpose</title>
-    <url>/en/Purpose.html</url>
-    <content><![CDATA[<h3 id="01"><a href="#01" class="headerlink" title="01"></a>01</h3><p>The purpose of this personal website is to record some technical problems I have encountered, share my experience, and leave traces of my existence in the world, that’s it.</p>
-<h3 id="02"><a href="#02" class="headerlink" title="02"></a>02</h3><p>The major contents of the blog are documented as follows.</p>
-<ul>
-<li>Site configuration</li>
-<li>Experience in studying abroad</li>
-<li>Algorithm problems</li>
-<li>Mini-games(just for fun)</li>
-<li>Some tutorials（like build this blog）</li>
-</ul>
-<h3 id="03"><a href="#03" class="headerlink" title="03"></a>03</h3><p>I will update this blog when I get some new ideas~</p>
-]]></content>
-      <categories>
-        <category>Dairy</category>
-      </categories>
-      <tags>
-        <tag>Blog</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Add Windows Terminal to the Right-click Menu</title>
     <url>/en/add-windows-terminal-to-the-right-click-menu.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">Windows Terminal is now available on the Microsoft Store, so I switched from Fluent Terminal to Windows Terminal. Here's a record of the process to add it to the right-click menu.</blockquote>
@@ -77,6 +56,27 @@
         <tag>Software</tag>
         <tag>Windows</tag>
         <tag>Windows Terminal</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Purpose</title>
+    <url>/en/Purpose.html</url>
+    <content><![CDATA[<h3 id="01"><a href="#01" class="headerlink" title="01"></a>01</h3><p>The purpose of this personal website is to record some technical problems I have encountered, share my experience, and leave traces of my existence in the world, that’s it.</p>
+<h3 id="02"><a href="#02" class="headerlink" title="02"></a>02</h3><p>The major contents of the blog are documented as follows.</p>
+<ul>
+<li>Site configuration</li>
+<li>Experience in studying abroad</li>
+<li>Algorithm problems</li>
+<li>Mini-games(just for fun)</li>
+<li>Some tutorials（like build this blog）</li>
+</ul>
+<h3 id="03"><a href="#03" class="headerlink" title="03"></a>03</h3><p>I will update this blog when I get some new ideas~</p>
+]]></content>
+      <categories>
+        <category>Dairy</category>
+      </categories>
+      <tags>
+        <tag>Blog</tag>
       </tags>
   </entry>
   <entry>
@@ -3485,6 +3485,83 @@
       </tags>
   </entry>
   <entry>
+    <title>MacBook Pro Headless</title>
+    <url>/en/macbook-pro-headless.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Get a Mac at the lowest price XD</blockquote>
+
+<p><img data-src="https://s2.loli.net/2023/07/01/m29rQx1G8WTtO3A.jpg" alt="MBPHeadless.jpg"></p>
+<span id="more"></span>
+
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Since Hackintosh are so cumbersome to upgrade and maintain, I started thinking about how to get a cheap Mac for the least amount of money (sure enough the end of all Hackintosh is Mac). The cheapest Mac currently available on Apple’s website is the M2-chip Mac Mini, which starts at RMB4,499 and is still configured with Apple’s ancestral 8G RAM and 256G hard drive, while the 16G RAM is priced at RMB5,999, which is way out of budget. I then went to XianYu, a second-hand trading platform in China, and had to admit that Apple’s products do hold their value, with second-hand Mac Mini’s with 8G RAM and M1 chips still selling for around RMB3,000 and those with 16G RAM for around RMB4,000. The average price of a second-hand MacBook is more than RMB5,000, even the old MBP 2017 with 8G RAM and 128G storage still costs more than RMB2,000. But XianYu’s magical recommendation algorithm led me to a great discovery: the MacBook Mini, also known as the MacBook Headless, which is, in simpler language, a second-hand MacBook without a screen, for slightly over RMB1,000. Since my usage scenario is writing code, my core requirement is 16G and more RAM. Also my laptop is usually used with an external monitor, so it doesn’t matter if it has a screen or not. It seems like a bit of a bargain to have macOS + large touchpad + audio + Touch Bar for just over RMB1,000.</p>
+<h1 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h1><h2 id="Pros"><a href="#Pros" class="headerlink" title="Pros"></a>Pros</h2><ul>
+<li>Cheap, which is the top advantage.</li>
+<li>It’s more of a hassle-free option than the Hackintosh.</li>
+<li>Comes with a trackpad, keyboard, audio and fingerprint scanner.</li>
+</ul>
+<h2 id="Cons"><a href="#Cons" class="headerlink" title="Cons"></a>Cons</h2><ul>
+<li>Used products, there are bound to be defects.</li>
+<li>It must have been dismantled, as the screen has to be removed and components may have been replaced.</li>
+<li>The keyboard and battery are more likely to be defective.</li>
+<li>Warranty is approximately non-existent.</li>
+<li>Requires an external monitor to use.</li>
+<li>Older models, mostly 16-19 models with Intel processors, almost none with M1 chips, so performance is normal.</li>
+<li>Very troublesome to reinstall the system.</li>
+</ul>
+<h2 id="Suitable-Groups-and-Scenarios"><a href="#Suitable-Groups-and-Scenarios" class="headerlink" title="Suitable Groups and Scenarios"></a>Suitable Groups and Scenarios</h2><ul>
+<li>Getting Started with iOS Development.</li>
+<li>Want to try macOS, but don’t want to spend too much money or effort.</li>
+<li>Relatively fixed usage location, no need for mobility.</li>
+<li>Preferably with a 4K monitor, but of course 2K and 1080p will work too, the one I use is a 2K monitor.</li>
+</ul>
+<h1 id="Source-of-Products"><a href="#Source-of-Products" class="headerlink" title="Source of Products"></a>Source of Products</h1><p>There are many different opinions about the source of these marvelous Macs. There are two mainstream stories: one says that they come from Macs with broken screens, which are sold directly to recyclers who remove the screens and sell them because the screens are too expensive to repair; the other says that they come from MBPs used as servers, and that server suppliers, in order to save space and install a few more Macs in their cabinets, remove their screens, and sell them when they are obsolete.</p>
+<h1 id="Where-to-Buy"><a href="#Where-to-Buy" class="headerlink" title="Where to Buy"></a>Where to Buy</h1><p>I found some of the earliest users of such MBPs when I searched for their experiences on zhihu.com and bilibili.com. They had already done detailed research on such products and concluded two more reliable idle fish sellers based on their experiences, MacBook and Apple (Translated names), from which I bought mine.</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/link.webp"></object>
+<p>MacBook lower body experience sharing</p><p>江sir爱数码</p>
+<a href="https://zhuanlan.zhihu.com/p/599745126"></a>
+</div></div>
+
+<h1 id="Feelings-of-Use"><a href="#Feelings-of-Use" class="headerlink" title="Feelings of Use"></a>Feelings of Use</h1><p>The model I purchased was a 2017 MacBook Pro 15 (model A1707) with a 7700HQ processor in 4 cores and 8 threads, a Radeon Pro 555 2G graphics card, 16G of RAM, and a 512G solid state drive, which cost me RMB 1,600.</p>
+<h2 id="Condition"><a href="#Condition" class="headerlink" title="Condition"></a>Condition</h2><p>The MBP I have is in pretty good condition, with no obvious scratches or knocks to the casing, and only small chunks knocked off on the edges of the P and 0 keys of the keyboard. All parts are in good condition except for the lack of a camera and screen. The battery should have been replaced by the seller and has a cycle count of 0. The serial numbers shown on the system also all match those on the body.</p>
+<h2 id="OS-Reinstallation"><a href="#OS-Reinstallation" class="headerlink" title="OS Reinstallation"></a>OS Reinstallation</h2><p>I’m a bit of a cyber-cleaner and the first thing I do when my electronics arrive is reinstall the system. But my MBP can’t enter recovery mode, and it supposedly requires an external 4K monitor with a Type-C video cable to do so. If something goes wrong in the future, I’ll have to find a 4K monitor to reinstall it, which is a bit of a hassle.</p>
+<h2 id="Monitor"><a href="#Monitor" class="headerlink" title="Monitor"></a>Monitor</h2><p>It is recommended to use with a 4K monitor, preferably supporting Type-C cable direct connection, for the following reasons:</p>
+<ul>
+<li>MBP only has Type-C ports, there are no HDMI and DP, and other common video output ports, if the monitor does not support Type-C you need an adaptation cable or adapter, the one I bought had serious heat issues.</li>
+<li>The font displayed on the 2K monitor is quite narrow, although it can be solved by scaling the font within the software, it is still not as comfortable as HiDPI.</li>
+<li>Non-4K monitors cannot turn on HiDPI properly, there is a <a href="https://github.com/xzhih/one-key-hidpi/blob/master/README-zh.md">plugin to force HiDPI on</a> on GitHub, but it is risky as you might have to go into recovery mode if you fail to force it on. and I cannot get into recovery mode to fix it, so it’s trapped.</li>
+<li>The brightness of the monitor can’t be adjusted via software, probably because the adaptation cable I’m using doesn’t support the DDC&#x2F;CI protocol.</li>
+</ul>
+<p>Also be careful when selecting your monitor resolution in system settings. I had a 2K monitor that could select 4K output in system settings, I was curious and clicked on it, then the monitor went black and a pop-up said the resolution didn’t match. I ended up clicking around without being able to see anything, and after half a minute of clicking I finally hit the 2K output option.😭😭😭</p>
+<p>Nevertheless, macOS font rendering is still much stronger than that of Windows, and the senses are more delicate, I now use the Mac to read PDFs.</p>
+<h2 id="Keyboard"><a href="#Keyboard" class="headerlink" title="Keyboard"></a>Keyboard</h2><p>The feeling of the MBP’s butterfly keyboard is very unpleasant, the key range is too short and the typing is uncomfortable, so it is best to use an external keyboard. There are also keyboard covers for sale on Taobao, as shown below, which can save space on the desk.</p>
+<p><img data-src="https://s2.loli.net/2023/07/01/Cx2HZ7vzSEIQpFy.jpg" alt="MBP keyboard cover.jpg"></p>
+<p>If you use a Bluetooth keyboard and a 2.4GHz wireless mouse at the same time, the two will interfere and the mouse will often get stuck, which is an annoying problem with Apple.</p>
+<h2 id="Fingerprint-Recognition"><a href="#Fingerprint-Recognition" class="headerlink" title="Fingerprint Recognition"></a>Fingerprint Recognition</h2><p>The MBP has a great fingerprint recognition experience, much better than the fingerprint module I use on Windows, but the problem is that the surface material leaves fingerprint marks quite a lot.</p>
+<h2 id="Touchpad"><a href="#Touchpad" class="headerlink" title="Touchpad"></a>Touchpad</h2><p>The Mac’s trackpad offers a much better experience than other laptops, with force touch and a huge touch area, the only downside is that it can be uncomfortable on your fingertips after swiping for a long time.</p>
+<h2 id="Performance-amp-Noise"><a href="#Performance-amp-Noise" class="headerlink" title="Performance &amp; Noise"></a>Performance &amp; Noise</h2><p>This MBP is, after all, an old model released 5 years ago. Its performance is adequate for running small projects, but the launch speed of the software is rather slow. The fan runs at full speed when it’s running XCode compilation, and the area behind the keyboard can get very hot, but it’s not too noisy</p>
+<h2 id="Facetime"><a href="#Facetime" class="headerlink" title="Facetime"></a>Facetime</h2><p>As the MBP camera is mounted on top of the screen, it has been removed from these Macs as well. If you want to use Facetime, you have to connect an external camera or use the continuity camera function on your iPhone.</p>
+<p>After connecting my iPhone to the MBP with the cable, there was no prompt to let me turn on the continuity camera, nor a corresponding setting option available in Facetime. Then I tried to connect an external camera to the MBP, then the continuity camera prompt popped up immediately, and you can still use the continuity camera function after removing the external camera. </p>
+<div class="note success"><p>New way to activate the camera<br>I found a simpler way to activate the camera in <a href="https://zhuanlan.zhihu.com/p/599745126">江Sir的知乎专栏</a></p>
+<ul>
+<li>Connect your iPhone to your Mac with a data cable</li>
+<li>Open QuickTime Player and click on New in the top left corner</li>
+<li>The Mac will be presented with an introduction to the continuity camera feature, click Continue.</li>
+<li>The iPhone will also ask you to enable the continuity camera function.</li>
+<li>Then you can continue to use it without the cable.</li>
+</ul>
+</div>
+
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p><img data-src="https://s2.loli.net/2023/07/01/ROkL7QVCsFayBJv.jpg" alt="真香.jpg"></p>
+]]></content>
+      <categories>
+        <category>Hardware</category>
+      </categories>
+      <tags>
+        <tag>macOS</tag>
+        <tag>MacBook Pro</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Quick Setup Guide for LaTeX in VSCode</title>
     <url>/en/latex-vscode-quick-config.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">A guide on installing the TeX environment and quickly configuring LaTeX in VSCode.</blockquote>
@@ -3662,83 +3739,6 @@
       <tags>
         <tag>VSCode</tag>
         <tag>LaTeX</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MacBook Pro Headless</title>
-    <url>/en/macbook-pro-headless.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Get a Mac at the lowest price XD</blockquote>
-
-<p><img data-src="https://s2.loli.net/2023/07/01/m29rQx1G8WTtO3A.jpg" alt="MBPHeadless.jpg"></p>
-<span id="more"></span>
-
-<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Since Hackintosh are so cumbersome to upgrade and maintain, I started thinking about how to get a cheap Mac for the least amount of money (sure enough the end of all Hackintosh is Mac). The cheapest Mac currently available on Apple’s website is the M2-chip Mac Mini, which starts at RMB4,499 and is still configured with Apple’s ancestral 8G RAM and 256G hard drive, while the 16G RAM is priced at RMB5,999, which is way out of budget. I then went to XianYu, a second-hand trading platform in China, and had to admit that Apple’s products do hold their value, with second-hand Mac Mini’s with 8G RAM and M1 chips still selling for around RMB3,000 and those with 16G RAM for around RMB4,000. The average price of a second-hand MacBook is more than RMB5,000, even the old MBP 2017 with 8G RAM and 128G storage still costs more than RMB2,000. But XianYu’s magical recommendation algorithm led me to a great discovery: the MacBook Mini, also known as the MacBook Headless, which is, in simpler language, a second-hand MacBook without a screen, for slightly over RMB1,000. Since my usage scenario is writing code, my core requirement is 16G and more RAM. Also my laptop is usually used with an external monitor, so it doesn’t matter if it has a screen or not. It seems like a bit of a bargain to have macOS + large touchpad + audio + Touch Bar for just over RMB1,000.</p>
-<h1 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h1><h2 id="Pros"><a href="#Pros" class="headerlink" title="Pros"></a>Pros</h2><ul>
-<li>Cheap, which is the top advantage.</li>
-<li>It’s more of a hassle-free option than the Hackintosh.</li>
-<li>Comes with a trackpad, keyboard, audio and fingerprint scanner.</li>
-</ul>
-<h2 id="Cons"><a href="#Cons" class="headerlink" title="Cons"></a>Cons</h2><ul>
-<li>Used products, there are bound to be defects.</li>
-<li>It must have been dismantled, as the screen has to be removed and components may have been replaced.</li>
-<li>The keyboard and battery are more likely to be defective.</li>
-<li>Warranty is approximately non-existent.</li>
-<li>Requires an external monitor to use.</li>
-<li>Older models, mostly 16-19 models with Intel processors, almost none with M1 chips, so performance is normal.</li>
-<li>Very troublesome to reinstall the system.</li>
-</ul>
-<h2 id="Suitable-Groups-and-Scenarios"><a href="#Suitable-Groups-and-Scenarios" class="headerlink" title="Suitable Groups and Scenarios"></a>Suitable Groups and Scenarios</h2><ul>
-<li>Getting Started with iOS Development.</li>
-<li>Want to try macOS, but don’t want to spend too much money or effort.</li>
-<li>Relatively fixed usage location, no need for mobility.</li>
-<li>Preferably with a 4K monitor, but of course 2K and 1080p will work too, the one I use is a 2K monitor.</li>
-</ul>
-<h1 id="Source-of-Products"><a href="#Source-of-Products" class="headerlink" title="Source of Products"></a>Source of Products</h1><p>There are many different opinions about the source of these marvelous Macs. There are two mainstream stories: one says that they come from Macs with broken screens, which are sold directly to recyclers who remove the screens and sell them because the screens are too expensive to repair; the other says that they come from MBPs used as servers, and that server suppliers, in order to save space and install a few more Macs in their cabinets, remove their screens, and sell them when they are obsolete.</p>
-<h1 id="Where-to-Buy"><a href="#Where-to-Buy" class="headerlink" title="Where to Buy"></a>Where to Buy</h1><p>I found some of the earliest users of such MBPs when I searched for their experiences on zhihu.com and bilibili.com. They had already done detailed research on such products and concluded two more reliable idle fish sellers based on their experiences, MacBook and Apple (Translated names), from which I bought mine.</p>
-<div class="link-grid"><div class="link-grid-container">
-<object class="link-grid-image" data="/images/link/link.webp"></object>
-<p>MacBook lower body experience sharing</p><p>江sir爱数码</p>
-<a href="https://zhuanlan.zhihu.com/p/599745126"></a>
-</div></div>
-
-<h1 id="Feelings-of-Use"><a href="#Feelings-of-Use" class="headerlink" title="Feelings of Use"></a>Feelings of Use</h1><p>The model I purchased was a 2017 MacBook Pro 15 (model A1707) with a 7700HQ processor in 4 cores and 8 threads, a Radeon Pro 555 2G graphics card, 16G of RAM, and a 512G solid state drive, which cost me RMB 1,600.</p>
-<h2 id="Condition"><a href="#Condition" class="headerlink" title="Condition"></a>Condition</h2><p>The MBP I have is in pretty good condition, with no obvious scratches or knocks to the casing, and only small chunks knocked off on the edges of the P and 0 keys of the keyboard. All parts are in good condition except for the lack of a camera and screen. The battery should have been replaced by the seller and has a cycle count of 0. The serial numbers shown on the system also all match those on the body.</p>
-<h2 id="OS-Reinstallation"><a href="#OS-Reinstallation" class="headerlink" title="OS Reinstallation"></a>OS Reinstallation</h2><p>I’m a bit of a cyber-cleaner and the first thing I do when my electronics arrive is reinstall the system. But my MBP can’t enter recovery mode, and it supposedly requires an external 4K monitor with a Type-C video cable to do so. If something goes wrong in the future, I’ll have to find a 4K monitor to reinstall it, which is a bit of a hassle.</p>
-<h2 id="Monitor"><a href="#Monitor" class="headerlink" title="Monitor"></a>Monitor</h2><p>It is recommended to use with a 4K monitor, preferably supporting Type-C cable direct connection, for the following reasons:</p>
-<ul>
-<li>MBP only has Type-C ports, there are no HDMI and DP, and other common video output ports, if the monitor does not support Type-C you need an adaptation cable or adapter, the one I bought had serious heat issues.</li>
-<li>The font displayed on the 2K monitor is quite narrow, although it can be solved by scaling the font within the software, it is still not as comfortable as HiDPI.</li>
-<li>Non-4K monitors cannot turn on HiDPI properly, there is a <a href="https://github.com/xzhih/one-key-hidpi/blob/master/README-zh.md">plugin to force HiDPI on</a> on GitHub, but it is risky as you might have to go into recovery mode if you fail to force it on. and I cannot get into recovery mode to fix it, so it’s trapped.</li>
-<li>The brightness of the monitor can’t be adjusted via software, probably because the adaptation cable I’m using doesn’t support the DDC&#x2F;CI protocol.</li>
-</ul>
-<p>Also be careful when selecting your monitor resolution in system settings. I had a 2K monitor that could select 4K output in system settings, I was curious and clicked on it, then the monitor went black and a pop-up said the resolution didn’t match. I ended up clicking around without being able to see anything, and after half a minute of clicking I finally hit the 2K output option.😭😭😭</p>
-<p>Nevertheless, macOS font rendering is still much stronger than that of Windows, and the senses are more delicate, I now use the Mac to read PDFs.</p>
-<h2 id="Keyboard"><a href="#Keyboard" class="headerlink" title="Keyboard"></a>Keyboard</h2><p>The feeling of the MBP’s butterfly keyboard is very unpleasant, the key range is too short and the typing is uncomfortable, so it is best to use an external keyboard. There are also keyboard covers for sale on Taobao, as shown below, which can save space on the desk.</p>
-<p><img data-src="https://s2.loli.net/2023/07/01/Cx2HZ7vzSEIQpFy.jpg" alt="MBP keyboard cover.jpg"></p>
-<p>If you use a Bluetooth keyboard and a 2.4GHz wireless mouse at the same time, the two will interfere and the mouse will often get stuck, which is an annoying problem with Apple.</p>
-<h2 id="Fingerprint-Recognition"><a href="#Fingerprint-Recognition" class="headerlink" title="Fingerprint Recognition"></a>Fingerprint Recognition</h2><p>The MBP has a great fingerprint recognition experience, much better than the fingerprint module I use on Windows, but the problem is that the surface material leaves fingerprint marks quite a lot.</p>
-<h2 id="Touchpad"><a href="#Touchpad" class="headerlink" title="Touchpad"></a>Touchpad</h2><p>The Mac’s trackpad offers a much better experience than other laptops, with force touch and a huge touch area, the only downside is that it can be uncomfortable on your fingertips after swiping for a long time.</p>
-<h2 id="Performance-amp-Noise"><a href="#Performance-amp-Noise" class="headerlink" title="Performance &amp; Noise"></a>Performance &amp; Noise</h2><p>This MBP is, after all, an old model released 5 years ago. Its performance is adequate for running small projects, but the launch speed of the software is rather slow. The fan runs at full speed when it’s running XCode compilation, and the area behind the keyboard can get very hot, but it’s not too noisy</p>
-<h2 id="Facetime"><a href="#Facetime" class="headerlink" title="Facetime"></a>Facetime</h2><p>As the MBP camera is mounted on top of the screen, it has been removed from these Macs as well. If you want to use Facetime, you have to connect an external camera or use the continuity camera function on your iPhone.</p>
-<p>After connecting my iPhone to the MBP with the cable, there was no prompt to let me turn on the continuity camera, nor a corresponding setting option available in Facetime. Then I tried to connect an external camera to the MBP, then the continuity camera prompt popped up immediately, and you can still use the continuity camera function after removing the external camera. </p>
-<div class="note success"><p>New way to activate the camera<br>I found a simpler way to activate the camera in <a href="https://zhuanlan.zhihu.com/p/599745126">江Sir的知乎专栏</a></p>
-<ul>
-<li>Connect your iPhone to your Mac with a data cable</li>
-<li>Open QuickTime Player and click on New in the top left corner</li>
-<li>The Mac will be presented with an introduction to the continuity camera feature, click Continue.</li>
-<li>The iPhone will also ask you to enable the continuity camera function.</li>
-<li>Then you can continue to use it without the cable.</li>
-</ul>
-</div>
-
-<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p><img data-src="https://s2.loli.net/2023/07/01/ROkL7QVCsFayBJv.jpg" alt="真香.jpg"></p>
-]]></content>
-      <categories>
-        <category>Hardware</category>
-      </categories>
-      <tags>
-        <tag>macOS</tag>
-        <tag>MacBook Pro</tag>
       </tags>
   </entry>
   <entry>
@@ -5019,93 +5019,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Common Commands for npm</title>
-    <url>/en/npm.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">A collection of npm commands, as well as commands commonly used for Next theme upgrades.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from <a href="https://siriusq.top/npm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html">my Chinese blog post</a> with the aid of ChatGpt.</p>
-</div>
-
-<p>npm is the default package manager for the JavaScript runtime environment Node.js.</p>
-<h1 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h1><div class="note primary"><p>Reference: <a class="btn" href="https://segmentfault.com/a/1190000019141975"><i class="fa fa-blog fa-fw"></i>jm365</a></p></div>
-
-<h2 id="Help"><a href="#Help" class="headerlink" title="Help"></a>Help</h2><ul>
-<li><code>npm -l</code> View usage information for all commands.</li>
-<li><code>npm &lt;command&gt; -h</code> View usage information for a specific command.</li>
-<li><code>npm help &lt;command&gt;</code> View detailed usage information for a specific command.</li>
-<li><code>npm -v</code> View the installed version of npm.</li>
-<li><code>npm config list -l</code> View the configuration settings for npm.</li>
-<li><code>npm ls</code> View all locally installed modules.</li>
-<li><code>npm ls -g</code> View all globally installed modules.</li>
-<li><code>npm ls &lt;moduleName&gt;</code> View the local installation status of a specific module.</li>
-<li><code>npm ls &lt;moduleName&gt; -g</code> View the global installation status of a specific module.</li>
-<li><code>npm view &lt;moduleName&gt;</code> View information about a specific module in the current registry.</li>
-<li><code>npm view &lt;moduleName&gt; versions</code> View all historical versions of a specific module in the current registry.</li>
-<li><code>npm view &lt;moduleName&gt; version</code> View the latest version of a specific module in the current registry.</li>
-</ul>
-<h2 id="Creating-a-Project"><a href="#Creating-a-Project" class="headerlink" title="Creating a Project"></a>Creating a Project</h2><ul>
-<li><code>npm init</code> Initialize a project in the current directory.</li>
-</ul>
-<h2 id="Installation-x2F-Uninstallation"><a href="#Installation-x2F-Uninstallation" class="headerlink" title="Installation&#x2F;Uninstallation"></a>Installation&#x2F;Uninstallation</h2><ul>
-<li><code>npm i/install &lt;moduleName&gt;</code> Install a module; both <code>i</code> and <code>install</code> have the same function.</li>
-<li><code>npm i &lt;moduleName&gt;@x.x.x</code> Install a specific version of a module.</li>
-<li><code>npm i &lt;moduleName&gt; --save</code> Install and save to the <code>dependencies</code> in the <code>package.json</code> file.</li>
-<li><code>npm i &lt;moduleName&gt; --save-dev</code> Install and save to the <code>devDependencies</code> in the <code>package.json</code> file.</li>
-<li><code>npm i &lt;moduleName&gt; -g</code> Globally install a module.</li>
-</ul>
-<h2 id="Uninstallation"><a href="#Uninstallation" class="headerlink" title="Uninstallation"></a>Uninstallation</h2><ul>
-<li><code>npm uninstall &lt;moduleName&gt;</code> Uninstall a specified local module.</li>
-<li><code>npm uninstall &lt;moduleName&gt; -g</code> Uninstall a specified global module.</li>
-</ul>
-<h2 id="Updating"><a href="#Updating" class="headerlink" title="Updating"></a>Updating</h2><ul>
-<li><code>npm update</code> Update modules according to the descriptions in <code>package.json</code>, and save the updated version descriptions to <code>package.json</code>. <code>^a.b.c</code> updates to the latest version under <code>a</code>, <code>~a.b.c</code> updates to the latest version under <code>a.b</code>, and <code>a.b.c</code> won’t be updated.</li>
-<li><code>npm update &lt;moduleName&gt;</code> Update a specified local module.</li>
-<li><code>npm update &lt;moduleName&gt;@x.x.x</code> Update a specified local module to a specific version.</li>
-<li><code>npm update &lt;moduleName&gt; -g</code> Update a specified global module.</li>
-<li><code>npm update &lt;moduleName&gt;@x.x.x -g</code> Update a specified global module to a specific version.</li>
-</ul>
-<h2 id="npm-Registry"><a href="#npm-Registry" class="headerlink" title="npm Registry"></a>npm Registry</h2><ul>
-<li><code>npm config get registry</code> View the current npm registry address.</li>
-<li><code>npm config set registry &lt;registryAddress&gt;</code> Set the npm registry to the specified address.</li>
-</ul>
-<h1 id="Introduction-to-package-json"><a href="#Introduction-to-package-json" class="headerlink" title="Introduction to package.json"></a>Introduction to package.json</h1><p>The <code>package.json</code> file is the manifest of your project, where <code>npm</code> and <code>yarn</code> store the names and versions of all installed packages. The <code>npm install</code> command uses it to download the required modules. Below are explanations of fields in <code>package.json</code>.</p>
-<ul>
-<li><code>version</code> indicates the current version.</li>
-<li><code>name</code> sets the name of the application&#x2F;package.</li>
-<li><code>description</code> provides a short description of the application&#x2F;package.</li>
-<li><code>main</code> specifies the entry point of the application.</li>
-<li><code>private</code> if set to true, prevents accidental publishing of the application&#x2F;package to npm.</li>
-<li><code>scripts</code> defines a set of runnable Node.js scripts.</li>
-<li><code>dependencies</code> lists npm packages installed as dependencies.</li>
-<li><code>devDependencies</code> lists npm packages installed as development dependencies.</li>
-<li><code>engines</code> specifies the versions of Node.js this package&#x2F;application runs on.</li>
-<li><code>browserslist</code> indicates which browsers (and versions) to support.</li>
-</ul>
-<h1 id="Common-Commands-for-Theme-Upgrades"><a href="#Common-Commands-for-Theme-Upgrades" class="headerlink" title="Common Commands for Theme Upgrades"></a>Common Commands for Theme Upgrades</h1><p>List installed packages:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm ls</span><br></pre></td></tr></table></figure>
-
-<p>Check for packages that need an update:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm-check</span><br></pre></td></tr></table></figure>
-
-<p>Upgrade a theme to the latest version:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-theme-next@latest</span><br></pre></td></tr></table></figure>
-
-<p>Or:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm update hexo-theme-next</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Coding</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Next</tag>
-        <tag>npm</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Next Theme Customization (Version 7.10)</title>
     <url>/en/next-theme-customization.html</url>
     <content><![CDATA[<p>The blog theme has been changed to <a href="https://github.com/theme-next/hexo-theme-next">Next</a>. This blog post is only applicable to the Next 7.10 theme.<br><img data-src="https://s2.loli.net/2022/05/13/wn7zegYd1hSMAqQ.jpg" alt="201904121"></p>
@@ -5630,6 +5543,93 @@
       <tags>
         <tag>Hexo</tag>
         <tag>Next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Common Commands for npm</title>
+    <url>/en/npm.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">A collection of npm commands, as well as commands commonly used for Next theme upgrades.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from <a href="https://siriusq.top/npm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html">my Chinese blog post</a> with the aid of ChatGpt.</p>
+</div>
+
+<p>npm is the default package manager for the JavaScript runtime environment Node.js.</p>
+<h1 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h1><div class="note primary"><p>Reference: <a class="btn" href="https://segmentfault.com/a/1190000019141975"><i class="fa fa-blog fa-fw"></i>jm365</a></p></div>
+
+<h2 id="Help"><a href="#Help" class="headerlink" title="Help"></a>Help</h2><ul>
+<li><code>npm -l</code> View usage information for all commands.</li>
+<li><code>npm &lt;command&gt; -h</code> View usage information for a specific command.</li>
+<li><code>npm help &lt;command&gt;</code> View detailed usage information for a specific command.</li>
+<li><code>npm -v</code> View the installed version of npm.</li>
+<li><code>npm config list -l</code> View the configuration settings for npm.</li>
+<li><code>npm ls</code> View all locally installed modules.</li>
+<li><code>npm ls -g</code> View all globally installed modules.</li>
+<li><code>npm ls &lt;moduleName&gt;</code> View the local installation status of a specific module.</li>
+<li><code>npm ls &lt;moduleName&gt; -g</code> View the global installation status of a specific module.</li>
+<li><code>npm view &lt;moduleName&gt;</code> View information about a specific module in the current registry.</li>
+<li><code>npm view &lt;moduleName&gt; versions</code> View all historical versions of a specific module in the current registry.</li>
+<li><code>npm view &lt;moduleName&gt; version</code> View the latest version of a specific module in the current registry.</li>
+</ul>
+<h2 id="Creating-a-Project"><a href="#Creating-a-Project" class="headerlink" title="Creating a Project"></a>Creating a Project</h2><ul>
+<li><code>npm init</code> Initialize a project in the current directory.</li>
+</ul>
+<h2 id="Installation-x2F-Uninstallation"><a href="#Installation-x2F-Uninstallation" class="headerlink" title="Installation&#x2F;Uninstallation"></a>Installation&#x2F;Uninstallation</h2><ul>
+<li><code>npm i/install &lt;moduleName&gt;</code> Install a module; both <code>i</code> and <code>install</code> have the same function.</li>
+<li><code>npm i &lt;moduleName&gt;@x.x.x</code> Install a specific version of a module.</li>
+<li><code>npm i &lt;moduleName&gt; --save</code> Install and save to the <code>dependencies</code> in the <code>package.json</code> file.</li>
+<li><code>npm i &lt;moduleName&gt; --save-dev</code> Install and save to the <code>devDependencies</code> in the <code>package.json</code> file.</li>
+<li><code>npm i &lt;moduleName&gt; -g</code> Globally install a module.</li>
+</ul>
+<h2 id="Uninstallation"><a href="#Uninstallation" class="headerlink" title="Uninstallation"></a>Uninstallation</h2><ul>
+<li><code>npm uninstall &lt;moduleName&gt;</code> Uninstall a specified local module.</li>
+<li><code>npm uninstall &lt;moduleName&gt; -g</code> Uninstall a specified global module.</li>
+</ul>
+<h2 id="Updating"><a href="#Updating" class="headerlink" title="Updating"></a>Updating</h2><ul>
+<li><code>npm update</code> Update modules according to the descriptions in <code>package.json</code>, and save the updated version descriptions to <code>package.json</code>. <code>^a.b.c</code> updates to the latest version under <code>a</code>, <code>~a.b.c</code> updates to the latest version under <code>a.b</code>, and <code>a.b.c</code> won’t be updated.</li>
+<li><code>npm update &lt;moduleName&gt;</code> Update a specified local module.</li>
+<li><code>npm update &lt;moduleName&gt;@x.x.x</code> Update a specified local module to a specific version.</li>
+<li><code>npm update &lt;moduleName&gt; -g</code> Update a specified global module.</li>
+<li><code>npm update &lt;moduleName&gt;@x.x.x -g</code> Update a specified global module to a specific version.</li>
+</ul>
+<h2 id="npm-Registry"><a href="#npm-Registry" class="headerlink" title="npm Registry"></a>npm Registry</h2><ul>
+<li><code>npm config get registry</code> View the current npm registry address.</li>
+<li><code>npm config set registry &lt;registryAddress&gt;</code> Set the npm registry to the specified address.</li>
+</ul>
+<h1 id="Introduction-to-package-json"><a href="#Introduction-to-package-json" class="headerlink" title="Introduction to package.json"></a>Introduction to package.json</h1><p>The <code>package.json</code> file is the manifest of your project, where <code>npm</code> and <code>yarn</code> store the names and versions of all installed packages. The <code>npm install</code> command uses it to download the required modules. Below are explanations of fields in <code>package.json</code>.</p>
+<ul>
+<li><code>version</code> indicates the current version.</li>
+<li><code>name</code> sets the name of the application&#x2F;package.</li>
+<li><code>description</code> provides a short description of the application&#x2F;package.</li>
+<li><code>main</code> specifies the entry point of the application.</li>
+<li><code>private</code> if set to true, prevents accidental publishing of the application&#x2F;package to npm.</li>
+<li><code>scripts</code> defines a set of runnable Node.js scripts.</li>
+<li><code>dependencies</code> lists npm packages installed as dependencies.</li>
+<li><code>devDependencies</code> lists npm packages installed as development dependencies.</li>
+<li><code>engines</code> specifies the versions of Node.js this package&#x2F;application runs on.</li>
+<li><code>browserslist</code> indicates which browsers (and versions) to support.</li>
+</ul>
+<h1 id="Common-Commands-for-Theme-Upgrades"><a href="#Common-Commands-for-Theme-Upgrades" class="headerlink" title="Common Commands for Theme Upgrades"></a>Common Commands for Theme Upgrades</h1><p>List installed packages:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm ls</span><br></pre></td></tr></table></figure>
+
+<p>Check for packages that need an update:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm-check</span><br></pre></td></tr></table></figure>
+
+<p>Upgrade a theme to the latest version:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-theme-next@latest</span><br></pre></td></tr></table></figure>
+
+<p>Or:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm update hexo-theme-next</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Coding</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Next</tag>
+        <tag>npm</tag>
       </tags>
   </entry>
   <entry>
