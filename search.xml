@@ -80,6 +80,21 @@
       </tags>
   </entry>
   <entry>
+    <title>Automatically Update the Recent Blog Posts Section in the Profile ReadMe When a GitHub Pages-Based Blog Is Updated.</title>
+    <url>/en/auto-update-profile-latest-blog-posts.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">This post is under construction......</blockquote>
+
+<span id="more"></span>]]></content>
+      <categories>
+        <category>Website Configuration</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>GitHub Pages</tag>
+        <tag>GitHub Actions</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Solution for ASUS Aura Sync Not Recognizing G.Skill Trident Z RGB</title>
     <url>/en/aura-sync.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">This article is also known as "The Series of Annoying Incidents Caused by My Impulsive Upgrade of Armoury Crate." Now, let's introduce the main characters of this story: ASUS B460-I GAMING and two G.Skill Trident Z RGB sticks.</blockquote>
@@ -703,21 +718,6 @@
         <tag>Software</tag>
         <tag>Windows</tag>
         <tag>macOS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Automatically Update the Recent Blog Posts Section in the Profile ReadMe When a GitHub Pages-Based Blog Is Updated.</title>
-    <url>/en/auto-update-profile-latest-blog-posts.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">This post is under construction......</blockquote>
-
-<span id="more"></span>]]></content>
-      <categories>
-        <category>Website Configuration</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>GitHub Pages</tag>
-        <tag>GitHub Actions</tag>
       </tags>
   </entry>
   <entry>
@@ -1970,6 +1970,76 @@
       </tags>
   </entry>
   <entry>
+    <title>Enable Cloudflare Acceleration and HTTPS on GitHub Pages</title>
+    <url>/en/github-pages-cloudflare-https.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">A few days ago, when transferring the domain, I found that GitHub Pages hadn't fully enabled HTTPS, and the A records set in Cloudflare were also incomplete, so I went through the process again and decided to document it along the way.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<h1 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h1><h2 id="Cloudflare"><a href="#Cloudflare" class="headerlink" title="Cloudflare"></a>Cloudflare</h2><p>I’ve previously configured Cloudflare, but I’ll provide a brief summary with some images.</p>
+<ol>
+<li>Log in to Cloudflare and click on <code>Add site</code> in the top menu.<br><img data-src="https://dash.cloudflare.com/" alt="Cloudflare Dashboard"></li>
+<li>Enter your domain name, and then click the <code>Add site</code> button. I’m adding a random one for demonstration purposes.<br><img data-src="https://s2.loli.net/2022/06/12/FaLBvrE9Rl2esN4.png" alt="Add Site"></li>
+<li>Choose a plan; usually, the <code>Free</code> plan is sufficient.<br><img data-src="https://s2.loli.net/2022/06/12/47TOxsBYAMdz9ul.png" alt="Choose Plan"></li>
+<li>Cloudflare will automatically fetch your domain’s DNS records. Skip this for now and scroll to the bottom of the page, then click the <code>Continue</code> button. We’ll come back to configure it later.<br><img data-src="https://s2.loli.net/2022/06/12/F4MPguhfd8bkvS9.png" alt="Continue"></li>
+<li>Copy the domain name servers provided by Cloudflare and replace the existing ones with your domain registrar.<br><img data-src="https://s2.loli.net/2022/06/12/2IB3agoAJcWpNr8.png" alt="Change DNS Servers"><br><img data-src="https://s2.loli.net/2022/06/12/EgkBH4AyjSJbmnU.png" alt="Change DNS Servers"></li>
+<li>Return to Cloudflare and click <code>Done, check nameservers</code>.</li>
+<li>Now, patiently wait for it to take effect. You will receive an email notification once it’s active. While waiting, you can set up <code>SSL/TLS</code>.<ol>
+<li>In the <code>Overview</code> section, set the Encryption Mode to <code>Full</code>.<br><img data-src="https://s2.loli.net/2022/06/12/tKcsr2RdWbBoFSz.png" alt="Encryption Mode"></li>
+<li>Then, in <code>Edge Certificates</code>, enable <code>Always Use HTTPS</code> and <code>Opportunistic Encryption</code>, among others.<br><img data-src="https://s2.loli.net/2022/06/12/bXdgpHsTMcDok8L.png" alt="Edge Certificates"></li>
+<li>In <code>Origin Server</code>, enable <code>Authenticated Origin Pulls</code>.<br><img data-src="https://s2.loli.net/2022/06/12/fkxNsFb1uG2IwWh.png" alt="Origin Server"></li>
+</ol>
+</li>
+<li>After it becomes active, go to the <code>DNS</code> settings and add four A records and one CNAME record.<ol>
+<li>For the CNAME record, set the NAME to <code>www</code> and the Content to GitHub Pages’ default domain, i.e., <code>username.github.io</code>.</li>
+<li>For the A records, set the Name to either <code>@</code> or your domain and the Content to:<ol>
+<li>185.199.108.153</li>
+<li>185.199.109.153</li>
+<li>185.199.110.153</li>
+<li>185.199.111.153</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Confirm that the Proxy status for each record is set to <code>Proxied</code>, indicated by an orange cloud icon.<br><img data-src="https://s2.loli.net/2022/06/12/ogYE2MFOfkbqDa7.png" alt="Proxy Status"></li>
+</ol>
+<h2 id="GitHub-Pages-Configuration"><a href="#GitHub-Pages-Configuration" class="headerlink" title="GitHub Pages Configuration"></a>GitHub Pages Configuration</h2><ol>
+<li>Open your website’s repository settings, go to <code>Settings</code>-<code>Pages</code>.</li>
+<li>In <code>Custom domain</code>, enter your domain name. After clicking Save, it will automatically generate a CNAME file.</li>
+</ol>
+<h1 id="Enable-Full-strict-Mode-Encryption"><a href="#Enable-Full-strict-Mode-Encryption" class="headerlink" title="Enable Full (strict) Mode Encryption"></a>Enable Full (strict) Mode Encryption</h1><p>The difference between Full (strict) mode and Full mode is that Full (strict) mode uses valid certificates signed by trusted CAs or Cloudflare Origin CA and verifies the certificate for each request. On the other hand, Full mode uses unverified self-signed certificates. GitHub Pages can obtain a free trusted certificate by enabling <code>Enforce HTTPS</code>, meeting the conditions to enable Full (strict) mode. Here’s an issue I discovered today: I couldn’t enable <code>Enforce HTTPS</code> in my Pages settings. The checkbox was grayed out. It turned out that the Cloudflare proxy status caused this issue. Here’s the solution:</p>
+<ol>
+<li>In Cloudflare’s DNS settings, change the Proxy status for all records to <code>DNS Only</code>, indicated by grayed-out clouds.<br><img data-src="https://s2.loli.net/2022/06/12/Fn9XR7VoGNktHid.png" alt="https00.png"></li>
+<li>Go back to your Pages settings and refresh the page. Now, you can check <code>Enforce HTTPS</code>.</li>
+<li>GitHub will automatically apply for an SSL certificate. Having this certificate enables you to enable Full (strict) mode in Cloudflare.<br><img data-src="https://s2.loli.net/2022/06/12/EjMkopVYmPnRvwb.png" alt="https01.png"><br><img data-src="https://s2.loli.net/2022/06/12/QSFCK7NGnoqyH8V.png" alt="https02.png"></li>
+<li>After Pages’ HTTPS takes effect, return to Cloudflare and change the Proxy status for the records back to <code>Proxied</code>, indicated by orange clouds.</li>
+<li>In <code>SSL/TLS</code> settings, set the Encryption Mode to <code>Full (strict)</code>.<br><img data-src="https://s2.loli.net/2022/06/12/Wmwr3A7sN15gHnX.png" alt="https03.png"></li>
+</ol>
+<h1 id="DNS-Record-Types-Overview"><a href="#DNS-Record-Types-Overview" class="headerlink" title="DNS Record Types Overview"></a>DNS Record Types Overview</h1><div class="note primary"><p>Some content is sourced from <a class="btn" href="https://en.wikipedia.org/wiki/List_of_DNS_record_types"><i class="fa fa-blog fa-fw"></i>Wikipedia</a>.</p>
+</div>
+<h2 id="A-Record"><a href="#A-Record" class="headerlink" title="A Record"></a>A Record</h2><p>An A record (Address record) is used to specify the IP address associated with a hostname (or domain name). Users can point the web server of their domain name to their own web server. It returns a 32-bit IPv4 address.</p>
+<h2 id="AAAA-Record"><a href="#AAAA-Record" class="headerlink" title="AAAA Record"></a>AAAA Record</h2><p>An AAAA record (AAAA record) is used to resolve a domain name to an IPv6 address in DNS. Users can map a domain name to an IPv6 address and also resolve subdomains to IPv6 addresses. It returns a 128-bit IPv6 address.</p>
+<h2 id="CNAME-Record"><a href="#CNAME-Record" class="headerlink" title="CNAME Record"></a>CNAME Record</h2><p>A CNAME record (Canonical Name Record) is used to map one domain name (alias) to another domain name (canonical name). When a DNS resolver encounters a CNAME record, it will restart the query process with the mapped target. CNAME records can be used for CDN acceleration by aliasing domain name resolution for websites.</p>
+<h2 id="NS-Record"><a href="#NS-Record" class="headerlink" title="NS Record"></a>NS Record</h2><p>An NS (Name Server) record is a domain name server record used to specify which DNS server is responsible for resolving the domain. If you need to delegate subdomains to other DNS service providers, you should add NS records.</p>
+<h2 id="MX-Record"><a href="#MX-Record" class="headerlink" title="MX Record"></a>MX Record</h2><p>An MX (Mail Exchanger) record is used to specify the mail server responsible for handling email sent to the recipient’s domain.</p>
+<h2 id="TXT-Record"><a href="#TXT-Record" class="headerlink" title="TXT Record"></a>TXT Record</h2><p>A TXT (Text) record is typically used to provide explanations or additional information for a hostname or domain name.</p>
+<h2 id="TTL"><a href="#TTL" class="headerlink" title="TTL"></a>TTL</h2><p>TTL (Time To Live) indicates the cache time for a DNS record on a DNS server, measured in seconds. When a local DNS server receives a resolution request for a specific domain name, it needs to send a resolution request to the authoritative DNS server specified by that domain name. The obtained resolution record will be stored in the local DNS server for a period. During this time, if the local DNS server receives another resolution request for the same domain name, it will not send a resolution request to the authoritative DNS server again. Instead, it will directly return the resolution record stored in the local DNS server.</p>
+]]></content>
+      <categories>
+        <category>Website Configuration</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>GitHub Pages</tag>
+        <tag>Cloudflare</tag>
+        <tag>HTTPS</tag>
+        <tag>CDN</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Tutorial for Making a Paint Job Mod in Euro Truck Simulator  2</title>
     <url>/en/ets2-paintjob.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">You may not believe it, but I started playing ETS2 because I wanted to learn how to drive in the UK, but I couldn't find the perfect paint job for the game, so I made my own.</blockquote>
@@ -2076,76 +2146,6 @@
       <tags>
         <tag>ETS2</tag>
         <tag>MOD</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Enable Cloudflare Acceleration and HTTPS on GitHub Pages</title>
-    <url>/en/github-pages-cloudflare-https.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">A few days ago, when transferring the domain, I found that GitHub Pages hadn't fully enabled HTTPS, and the A records set in Cloudflare were also incomplete, so I went through the process again and decided to document it along the way.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<h1 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h1><h2 id="Cloudflare"><a href="#Cloudflare" class="headerlink" title="Cloudflare"></a>Cloudflare</h2><p>I’ve previously configured Cloudflare, but I’ll provide a brief summary with some images.</p>
-<ol>
-<li>Log in to Cloudflare and click on <code>Add site</code> in the top menu.<br><img data-src="https://dash.cloudflare.com/" alt="Cloudflare Dashboard"></li>
-<li>Enter your domain name, and then click the <code>Add site</code> button. I’m adding a random one for demonstration purposes.<br><img data-src="https://s2.loli.net/2022/06/12/FaLBvrE9Rl2esN4.png" alt="Add Site"></li>
-<li>Choose a plan; usually, the <code>Free</code> plan is sufficient.<br><img data-src="https://s2.loli.net/2022/06/12/47TOxsBYAMdz9ul.png" alt="Choose Plan"></li>
-<li>Cloudflare will automatically fetch your domain’s DNS records. Skip this for now and scroll to the bottom of the page, then click the <code>Continue</code> button. We’ll come back to configure it later.<br><img data-src="https://s2.loli.net/2022/06/12/F4MPguhfd8bkvS9.png" alt="Continue"></li>
-<li>Copy the domain name servers provided by Cloudflare and replace the existing ones with your domain registrar.<br><img data-src="https://s2.loli.net/2022/06/12/2IB3agoAJcWpNr8.png" alt="Change DNS Servers"><br><img data-src="https://s2.loli.net/2022/06/12/EgkBH4AyjSJbmnU.png" alt="Change DNS Servers"></li>
-<li>Return to Cloudflare and click <code>Done, check nameservers</code>.</li>
-<li>Now, patiently wait for it to take effect. You will receive an email notification once it’s active. While waiting, you can set up <code>SSL/TLS</code>.<ol>
-<li>In the <code>Overview</code> section, set the Encryption Mode to <code>Full</code>.<br><img data-src="https://s2.loli.net/2022/06/12/tKcsr2RdWbBoFSz.png" alt="Encryption Mode"></li>
-<li>Then, in <code>Edge Certificates</code>, enable <code>Always Use HTTPS</code> and <code>Opportunistic Encryption</code>, among others.<br><img data-src="https://s2.loli.net/2022/06/12/bXdgpHsTMcDok8L.png" alt="Edge Certificates"></li>
-<li>In <code>Origin Server</code>, enable <code>Authenticated Origin Pulls</code>.<br><img data-src="https://s2.loli.net/2022/06/12/fkxNsFb1uG2IwWh.png" alt="Origin Server"></li>
-</ol>
-</li>
-<li>After it becomes active, go to the <code>DNS</code> settings and add four A records and one CNAME record.<ol>
-<li>For the CNAME record, set the NAME to <code>www</code> and the Content to GitHub Pages’ default domain, i.e., <code>username.github.io</code>.</li>
-<li>For the A records, set the Name to either <code>@</code> or your domain and the Content to:<ol>
-<li>185.199.108.153</li>
-<li>185.199.109.153</li>
-<li>185.199.110.153</li>
-<li>185.199.111.153</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>Confirm that the Proxy status for each record is set to <code>Proxied</code>, indicated by an orange cloud icon.<br><img data-src="https://s2.loli.net/2022/06/12/ogYE2MFOfkbqDa7.png" alt="Proxy Status"></li>
-</ol>
-<h2 id="GitHub-Pages-Configuration"><a href="#GitHub-Pages-Configuration" class="headerlink" title="GitHub Pages Configuration"></a>GitHub Pages Configuration</h2><ol>
-<li>Open your website’s repository settings, go to <code>Settings</code>-<code>Pages</code>.</li>
-<li>In <code>Custom domain</code>, enter your domain name. After clicking Save, it will automatically generate a CNAME file.</li>
-</ol>
-<h1 id="Enable-Full-strict-Mode-Encryption"><a href="#Enable-Full-strict-Mode-Encryption" class="headerlink" title="Enable Full (strict) Mode Encryption"></a>Enable Full (strict) Mode Encryption</h1><p>The difference between Full (strict) mode and Full mode is that Full (strict) mode uses valid certificates signed by trusted CAs or Cloudflare Origin CA and verifies the certificate for each request. On the other hand, Full mode uses unverified self-signed certificates. GitHub Pages can obtain a free trusted certificate by enabling <code>Enforce HTTPS</code>, meeting the conditions to enable Full (strict) mode. Here’s an issue I discovered today: I couldn’t enable <code>Enforce HTTPS</code> in my Pages settings. The checkbox was grayed out. It turned out that the Cloudflare proxy status caused this issue. Here’s the solution:</p>
-<ol>
-<li>In Cloudflare’s DNS settings, change the Proxy status for all records to <code>DNS Only</code>, indicated by grayed-out clouds.<br><img data-src="https://s2.loli.net/2022/06/12/Fn9XR7VoGNktHid.png" alt="https00.png"></li>
-<li>Go back to your Pages settings and refresh the page. Now, you can check <code>Enforce HTTPS</code>.</li>
-<li>GitHub will automatically apply for an SSL certificate. Having this certificate enables you to enable Full (strict) mode in Cloudflare.<br><img data-src="https://s2.loli.net/2022/06/12/EjMkopVYmPnRvwb.png" alt="https01.png"><br><img data-src="https://s2.loli.net/2022/06/12/QSFCK7NGnoqyH8V.png" alt="https02.png"></li>
-<li>After Pages’ HTTPS takes effect, return to Cloudflare and change the Proxy status for the records back to <code>Proxied</code>, indicated by orange clouds.</li>
-<li>In <code>SSL/TLS</code> settings, set the Encryption Mode to <code>Full (strict)</code>.<br><img data-src="https://s2.loli.net/2022/06/12/Wmwr3A7sN15gHnX.png" alt="https03.png"></li>
-</ol>
-<h1 id="DNS-Record-Types-Overview"><a href="#DNS-Record-Types-Overview" class="headerlink" title="DNS Record Types Overview"></a>DNS Record Types Overview</h1><div class="note primary"><p>Some content is sourced from <a class="btn" href="https://en.wikipedia.org/wiki/List_of_DNS_record_types"><i class="fa fa-blog fa-fw"></i>Wikipedia</a>.</p>
-</div>
-<h2 id="A-Record"><a href="#A-Record" class="headerlink" title="A Record"></a>A Record</h2><p>An A record (Address record) is used to specify the IP address associated with a hostname (or domain name). Users can point the web server of their domain name to their own web server. It returns a 32-bit IPv4 address.</p>
-<h2 id="AAAA-Record"><a href="#AAAA-Record" class="headerlink" title="AAAA Record"></a>AAAA Record</h2><p>An AAAA record (AAAA record) is used to resolve a domain name to an IPv6 address in DNS. Users can map a domain name to an IPv6 address and also resolve subdomains to IPv6 addresses. It returns a 128-bit IPv6 address.</p>
-<h2 id="CNAME-Record"><a href="#CNAME-Record" class="headerlink" title="CNAME Record"></a>CNAME Record</h2><p>A CNAME record (Canonical Name Record) is used to map one domain name (alias) to another domain name (canonical name). When a DNS resolver encounters a CNAME record, it will restart the query process with the mapped target. CNAME records can be used for CDN acceleration by aliasing domain name resolution for websites.</p>
-<h2 id="NS-Record"><a href="#NS-Record" class="headerlink" title="NS Record"></a>NS Record</h2><p>An NS (Name Server) record is a domain name server record used to specify which DNS server is responsible for resolving the domain. If you need to delegate subdomains to other DNS service providers, you should add NS records.</p>
-<h2 id="MX-Record"><a href="#MX-Record" class="headerlink" title="MX Record"></a>MX Record</h2><p>An MX (Mail Exchanger) record is used to specify the mail server responsible for handling email sent to the recipient’s domain.</p>
-<h2 id="TXT-Record"><a href="#TXT-Record" class="headerlink" title="TXT Record"></a>TXT Record</h2><p>A TXT (Text) record is typically used to provide explanations or additional information for a hostname or domain name.</p>
-<h2 id="TTL"><a href="#TTL" class="headerlink" title="TTL"></a>TTL</h2><p>TTL (Time To Live) indicates the cache time for a DNS record on a DNS server, measured in seconds. When a local DNS server receives a resolution request for a specific domain name, it needs to send a resolution request to the authoritative DNS server specified by that domain name. The obtained resolution record will be stored in the local DNS server for a period. During this time, if the local DNS server receives another resolution request for the same domain name, it will not send a resolution request to the authoritative DNS server again. Instead, it will directly return the resolution record stored in the local DNS server.</p>
-]]></content>
-      <categories>
-        <category>Website Configuration</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>GitHub Pages</tag>
-        <tag>Cloudflare</tag>
-        <tag>HTTPS</tag>
-        <tag>CDN</tag>
       </tags>
   </entry>
   <entry>
@@ -2600,6 +2600,72 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo Next 7.1 Bilingual Switching</title>
+    <url>/en/hexo-next-7-1-bilingual-switching.html</url>
+    <content><![CDATA[<p>2020 Update: This method has too many bugs and has been abandoned. It only applies to Next theme version 7.1. For a new method, please refer to <a href="https://siriusq.top/en/hexo-next-7-7-bilingual-switching.html">Hexo Next 7.7 Bilingual Switching</a>.</p>
+<hr>
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<p>For those who need an English version of their website, you’ll need to add a bilingual switching feature. Hexo has support for website internationalization, known as <a href="https://hexo.io/zh-cn/docs/internationalization.html">i18n</a>. However, it has some limitations, as different language articles are mixed together, making it look messy. To address this, follow the steps below:</p>
+<h1 id="Plugin-Installation"><a href="#Plugin-Installation" class="headerlink" title="Plugin Installation"></a>Plugin Installation</h1><p>Install the Hexo internationalization plugin, i18n, by running the following command in your blog’s root directory:</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-i18n</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="Important-Notes"><a href="#Important-Notes" class="headerlink" title="Important Notes"></a>Important Notes</h2><p>Ensure that the <strong>i18n</strong> plugin is placed as the last entry in the <code>dependencies</code> section of your root directory’s <code>package.json</code> file. You will need to manually adjust this whenever you install a new plugin because every new plugin installation reorders the plugins alphabetically. The format should look like this, with no comma at the end of the last item:</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;bookmark&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.2.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;clipboard&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.4&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;gitment&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.8.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-asset-image&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-deployer-git&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-archive&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.1.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.1.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-index&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.2.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-search&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.4.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-sitemap&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-helper-live2d&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.1.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-prism-plugin&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.3.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-renderer-ejs&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-renderer-marked&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.2&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-renderer-stylus&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-server&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-symbols-count-time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.4.4&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-wordcount&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^6.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;live2d-widget-model-tororo&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;live2d-widget-model-z16&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-i18n&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.7&quot;</span></span><br><span class="line"> <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Modify-Configuration-File"><a href="#Modify-Configuration-File" class="headerlink" title="Modify Configuration File"></a>Modify Configuration File</h1><p>Open the configuration file <code>_config.yml</code> in your blog’s root directory and make the following changes under the <code>language</code> section:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># language:</span></span><br><span class="line"><span class="comment"># - zh-CN</span></span><br><span class="line"><span class="comment"># - en</span></span><br><span class="line"><span class="attr">language:</span> [<span class="string">zh-CN</span>, <span class="string">en</span>]</span><br><span class="line"><span class="attr">i18n:</span></span><br><span class="line">  <span class="attr">type:</span> [<span class="string">page</span>, <span class="string">post</span>]</span><br><span class="line">  <span class="attr">generator:</span> [<span class="string">index</span>, <span class="string">archive</span>, <span class="string">category</span>, <span class="string">tag</span>]</span><br></pre></td></tr></table></figure>
+
+<p>After making these changes, run <code>hexo cl</code> and <code>hexo g</code> to regenerate the <code>public</code> folder. At this point, a new directory <code>/en</code> will be generated to store the English site files. However, different language sites are still mixed together. To separate them properly, you need to add conditional generation rules for different language pages.</p>
+<h1 id="Add-Generation-Conditions"><a href="#Add-Generation-Conditions" class="headerlink" title="Add Generation Conditions"></a>Add Generation Conditions</h1><p>Open <code>.\themes\next\layout\index.swig</code> and add the following code at the end:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;% block content %&#125;</span><br><span class="line">  &lt;section id=<span class="string">&quot;posts&quot;</span> <span class="keyword">class</span>=<span class="string">&quot;posts-expand&quot;</span>&gt;</span><br><span class="line">    &#123;% <span class="keyword">for</span> post <span class="keyword">in</span> page.<span class="property">posts</span> %&#125;  </span><br><span class="line">      &#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">        &#123;&#123; post_template.<span class="title function_">render</span>(post, <span class="literal">true</span>) &#125;&#125;</span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line">  &lt;/section&gt;</span><br><span class="line">  &#123;% include <span class="string">&#x27;_partials/pagination.swig&#x27;</span> %&#125;</span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Now, articles will only be generated if their language matches the page language exactly. Similarly, in files such as <code>tag.swig</code>, <code>category.swig</code>, <code>archive.swig</code>, etc., you can search for and set the <code>post_template.render(post)</code> condition to hide articles in other languages. Here’s an example:</p>
+<p><strong>tag</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> post <span class="keyword">in</span> page.<span class="property">posts</span> %&#125;</span><br><span class="line"> &#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">   &#123;&#123; post_template.<span class="title function_">render</span>(post) &#125;&#125;</span><br><span class="line"> &#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>archive</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">  &#123;&#123; post_template.<span class="title function_">render</span>(post) &#125;&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>category</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> post <span class="keyword">in</span> page.<span class="property">posts</span> %&#125;</span><br><span class="line"> &#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">  &#123;&#123; post_template.<span class="title function_">render</span>(post) &#125;&#125;</span><br><span class="line"> &#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Article-Writing-Format"><a href="#Article-Writing-Format" class="headerlink" title="Article Writing Format"></a>Article Writing Format</h1><p>In the blog post’s front matter, add <code>lang:</code> to differentiate between articles in different languages. For example, use <code>lang: zh-CN</code> for Chinese and <code>lang: en</code> for English, like this:</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">title: Hexo Bilingual Switching</span><br><span class="line">date: 2019-04-09 17:12:53</span><br><span class="line">lang: en</span><br><span class="line">tags: [HEXO]</span><br><span class="line">categories: Blog</span><br></pre></td></tr></table></figure>
+
+<h1 id="Adding-Language-Switching-Button"><a href="#Adding-Language-Switching-Button" class="headerlink" title="Adding Language Switching Button"></a>Adding Language Switching Button</h1><p>Open the Next theme configuration file <code>.\themes\next\_config.yml</code> and under <code>Menu: </code>, add <code>switch_lang: </code>, like this:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu</span>:</span><br><span class="line">  <span class="attr">home</span>: / || home</span><br><span class="line">  <span class="attr">about</span>: <span class="regexp">/about/</span> || user</span><br><span class="line">  <span class="attr">tags</span>: <span class="regexp">/tags/</span> || tags</span><br><span class="line">  <span class="attr">categories</span>: <span class="regexp">/categories/</span> || th</span><br><span class="line">  <span class="attr">archives</span>: <span class="regexp">/archives/</span> || archive</span><br><span class="line">  <span class="attr">switch_lang</span>: /en || language</span><br><span class="line">  #<span class="attr">schedule</span>: <span class="regexp">/schedule/</span> || calendar</span><br><span class="line">  #<span class="attr">sitemap</span>: /sitemap.<span class="property">xml</span> || sitemap</span><br><span class="line">  #<span class="attr">commonweal</span>: <span class="regexp">/404/</span> || heartbeat</span><br></pre></td></tr></table></figure>
+
+<p>Open the <code>zh-CN.yml</code> and <code>en.yml</code> files under <code>.\themes\next\languages</code>, and add <code>switch_lang:</code> under <code>menu: </code> in both files.</p>
+<p><strong>zh-CN</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu</span>:</span><br><span class="line">  <span class="attr">home</span>: 首页</span><br><span class="line">  <span class="attr">archives</span>: 归档</span><br><span class="line">  <span class="attr">categories</span>: 分类</span><br><span class="line">  <span class="attr">tags</span>: 标签</span><br><span class="line">  <span class="attr">switch_lang</span>: <span class="title class_">English</span></span><br><span class="line">  <span class="attr">about</span>: 关于</span><br><span class="line">  <span class="attr">search</span>: 搜索</span><br><span class="line">  <span class="attr">schedule</span>: 日程表</span><br><span class="line">  <span class="attr">sitemap</span>: 站点地图</span><br><span class="line">  <span class="attr">commonweal</span>: 公益 <span class="number">404</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>en</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu</span>:</span><br><span class="line">  <span class="attr">home</span>: <span class="title class_">Home</span></span><br><span class="line">  <span class="attr">archives</span>: <span class="title class_">Archives</span></span><br><span class="line">  <span class="attr">categories</span>: <span class="title class_">Categories</span></span><br><span class="line">  <span class="attr">tags</span>: <span class="title class_">Tags</span></span><br><span class="line">  <span class="attr">switch_lang</span>: zh-<span class="variable constant_">CN</span></span><br><span class="line">  <span class="attr">about</span>: <span class="title class_">About</span></span><br><span class="line">  <span class="attr">search</span>: <span class="title class_">Search</span></span><br><span class="line">  <span class="attr">schedule</span>: <span class="title class_">Schedule</span></span><br><span class="line">  <span class="attr">sitemap</span>: <span class="title class_">Sitemap</span></span><br><span class="line">  <span class="attr">commonweal</span>: <span class="title class_">Commonweal</span> <span class="number">404</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Adding-Conditional-Statements"><a href="#Adding-Conditional-Statements" class="headerlink" title="Adding Conditional Statements"></a>Adding Conditional Statements</h1><p>At this point, the links are still one-way, meaning you can only navigate to the English page but cannot return to the Chinese page. Therefore, you need to add conditional statements.</p>
+<p>In .\themes\next\layout_partials\head\head-unique.swig, add the following code to redirect the language switch button back to the Chinese page after loading the English page:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">    <span class="comment">// Wait for the page to load first</span></span><br><span class="line">    <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">        switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">            <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en&#x27;</span>);</span><br><span class="line">            <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">                <span class="title function_">_prevOnload</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>As a JavaScript newbie, I struggled with this for a while. <code>document.getElementsByClassName</code> returns an array, and I kept getting errors while debugging. I had to add <code>[0]</code> at the end to get the class name.</p>
+<h1 id="Limitations"><a href="#Limitations" class="headerlink" title="Limitations"></a>Limitations</h1><p>Although the above method can achieve language switching, when you click on tags, archives, categories, and other links on the English page, it will redirect you to the Chinese page. To switch to the corresponding Chinese page, you need to click the English switch button again on the redirected page. If there are better solutions, please feel free to leave comments in the comment section.</p>
+<blockquote>
+<p>Reference: <a href="https://wm4n.github.io/Hexo-NexT-%E5%90%8C%E6%99%82%E6%94%AF%E6%8F%B4%E5%A4%9A%E8%AA%9E%E7%B3%BB/">wm4n</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Website Configuration</category>
+      </categories>
+      <tags>
+        <tag>HEXO</tag>
+        <tag>Next</tag>
+        <tag>i18n</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo Next 7.7 Bilingual Switching</title>
     <url>/en/hexo-next-7-7-bilingual-switching.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">One year ago, through frantic searching and experimentation on Google, I managed to implement bilingual switching (between Chinese and English) on the 7.1 version of the Next theme. However, it came with numerous bugs (such as switching to the English interface and then clicking on tags like "About" or "Archives" would redirect back to the Chinese interface). Given my procrastination tendencies and advanced laziness, I never got around to fixing it. Recently, I took the opportunity during an upgrade of the Next theme to address this issue. After two days of tinkering, I finally succeeded in achieving the desired bilingual switching effect, even to the extent that it distracted me from my undergraduate thesis project.</blockquote>
@@ -2674,72 +2740,6 @@
 <p>It indeed takes a lot of time to tinker with these things. My undergraduate thesis hasn’t progressed at all, and I’m feeling quite anxious now. If you have any questions, feel free to leave a comment in the comment section, although I might not be able to respond promptly.</p>
 <p>Without further ado, I’m rolling up my sleeves to work on my thesis!</p>
 <p>ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;ε&#x3D;┌(;￣◇￣)┘</p>
-]]></content>
-      <categories>
-        <category>Website Configuration</category>
-      </categories>
-      <tags>
-        <tag>HEXO</tag>
-        <tag>Next</tag>
-        <tag>i18n</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo Next 7.1 Bilingual Switching</title>
-    <url>/en/hexo-next-7-1-bilingual-switching.html</url>
-    <content><![CDATA[<p>2020 Update: This method has too many bugs and has been abandoned. It only applies to Next theme version 7.1. For a new method, please refer to <a href="https://siriusq.top/en/hexo-next-7-7-bilingual-switching.html">Hexo Next 7.7 Bilingual Switching</a>.</p>
-<hr>
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<p>For those who need an English version of their website, you’ll need to add a bilingual switching feature. Hexo has support for website internationalization, known as <a href="https://hexo.io/zh-cn/docs/internationalization.html">i18n</a>. However, it has some limitations, as different language articles are mixed together, making it look messy. To address this, follow the steps below:</p>
-<h1 id="Plugin-Installation"><a href="#Plugin-Installation" class="headerlink" title="Plugin Installation"></a>Plugin Installation</h1><p>Install the Hexo internationalization plugin, i18n, by running the following command in your blog’s root directory:</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-i18n</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h2 id="Important-Notes"><a href="#Important-Notes" class="headerlink" title="Important Notes"></a>Important Notes</h2><p>Ensure that the <strong>i18n</strong> plugin is placed as the last entry in the <code>dependencies</code> section of your root directory’s <code>package.json</code> file. You will need to manually adjust this whenever you install a new plugin because every new plugin installation reorders the plugins alphabetically. The format should look like this, with no comma at the end of the last item:</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;bookmark&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.2.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;clipboard&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.4&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;gitment&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.8.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-asset-image&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-deployer-git&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-archive&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.1.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.1.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-index&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.2.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-search&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.4.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-sitemap&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-helper-live2d&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.1.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-prism-plugin&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.3.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-renderer-ejs&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-renderer-marked&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.2&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-renderer-stylus&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-server&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-symbols-count-time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.4.4&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-wordcount&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^6.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;live2d-widget-model-tororo&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;live2d-widget-model-z16&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-i18n&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.7&quot;</span></span><br><span class="line"> <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="Modify-Configuration-File"><a href="#Modify-Configuration-File" class="headerlink" title="Modify Configuration File"></a>Modify Configuration File</h1><p>Open the configuration file <code>_config.yml</code> in your blog’s root directory and make the following changes under the <code>language</code> section:</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># language:</span></span><br><span class="line"><span class="comment"># - zh-CN</span></span><br><span class="line"><span class="comment"># - en</span></span><br><span class="line"><span class="attr">language:</span> [<span class="string">zh-CN</span>, <span class="string">en</span>]</span><br><span class="line"><span class="attr">i18n:</span></span><br><span class="line">  <span class="attr">type:</span> [<span class="string">page</span>, <span class="string">post</span>]</span><br><span class="line">  <span class="attr">generator:</span> [<span class="string">index</span>, <span class="string">archive</span>, <span class="string">category</span>, <span class="string">tag</span>]</span><br></pre></td></tr></table></figure>
-
-<p>After making these changes, run <code>hexo cl</code> and <code>hexo g</code> to regenerate the <code>public</code> folder. At this point, a new directory <code>/en</code> will be generated to store the English site files. However, different language sites are still mixed together. To separate them properly, you need to add conditional generation rules for different language pages.</p>
-<h1 id="Add-Generation-Conditions"><a href="#Add-Generation-Conditions" class="headerlink" title="Add Generation Conditions"></a>Add Generation Conditions</h1><p>Open <code>.\themes\next\layout\index.swig</code> and add the following code at the end:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;% block content %&#125;</span><br><span class="line">  &lt;section id=<span class="string">&quot;posts&quot;</span> <span class="keyword">class</span>=<span class="string">&quot;posts-expand&quot;</span>&gt;</span><br><span class="line">    &#123;% <span class="keyword">for</span> post <span class="keyword">in</span> page.<span class="property">posts</span> %&#125;  </span><br><span class="line">      &#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">        &#123;&#123; post_template.<span class="title function_">render</span>(post, <span class="literal">true</span>) &#125;&#125;</span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line">  &lt;/section&gt;</span><br><span class="line">  &#123;% include <span class="string">&#x27;_partials/pagination.swig&#x27;</span> %&#125;</span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Now, articles will only be generated if their language matches the page language exactly. Similarly, in files such as <code>tag.swig</code>, <code>category.swig</code>, <code>archive.swig</code>, etc., you can search for and set the <code>post_template.render(post)</code> condition to hide articles in other languages. Here’s an example:</p>
-<p><strong>tag</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> post <span class="keyword">in</span> page.<span class="property">posts</span> %&#125;</span><br><span class="line"> &#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">   &#123;&#123; post_template.<span class="title function_">render</span>(post) &#125;&#125;</span><br><span class="line"> &#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>archive</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">  &#123;&#123; post_template.<span class="title function_">render</span>(post) &#125;&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>category</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> post <span class="keyword">in</span> page.<span class="property">posts</span> %&#125;</span><br><span class="line"> &#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">  &#123;&#123; post_template.<span class="title function_">render</span>(post) &#125;&#125;</span><br><span class="line"> &#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Article-Writing-Format"><a href="#Article-Writing-Format" class="headerlink" title="Article Writing Format"></a>Article Writing Format</h1><p>In the blog post’s front matter, add <code>lang:</code> to differentiate between articles in different languages. For example, use <code>lang: zh-CN</code> for Chinese and <code>lang: en</code> for English, like this:</p>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">title: Hexo Bilingual Switching</span><br><span class="line">date: 2019-04-09 17:12:53</span><br><span class="line">lang: en</span><br><span class="line">tags: [HEXO]</span><br><span class="line">categories: Blog</span><br></pre></td></tr></table></figure>
-
-<h1 id="Adding-Language-Switching-Button"><a href="#Adding-Language-Switching-Button" class="headerlink" title="Adding Language Switching Button"></a>Adding Language Switching Button</h1><p>Open the Next theme configuration file <code>.\themes\next\_config.yml</code> and under <code>Menu: </code>, add <code>switch_lang: </code>, like this:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu</span>:</span><br><span class="line">  <span class="attr">home</span>: / || home</span><br><span class="line">  <span class="attr">about</span>: <span class="regexp">/about/</span> || user</span><br><span class="line">  <span class="attr">tags</span>: <span class="regexp">/tags/</span> || tags</span><br><span class="line">  <span class="attr">categories</span>: <span class="regexp">/categories/</span> || th</span><br><span class="line">  <span class="attr">archives</span>: <span class="regexp">/archives/</span> || archive</span><br><span class="line">  <span class="attr">switch_lang</span>: /en || language</span><br><span class="line">  #<span class="attr">schedule</span>: <span class="regexp">/schedule/</span> || calendar</span><br><span class="line">  #<span class="attr">sitemap</span>: /sitemap.<span class="property">xml</span> || sitemap</span><br><span class="line">  #<span class="attr">commonweal</span>: <span class="regexp">/404/</span> || heartbeat</span><br></pre></td></tr></table></figure>
-
-<p>Open the <code>zh-CN.yml</code> and <code>en.yml</code> files under <code>.\themes\next\languages</code>, and add <code>switch_lang:</code> under <code>menu: </code> in both files.</p>
-<p><strong>zh-CN</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu</span>:</span><br><span class="line">  <span class="attr">home</span>: 首页</span><br><span class="line">  <span class="attr">archives</span>: 归档</span><br><span class="line">  <span class="attr">categories</span>: 分类</span><br><span class="line">  <span class="attr">tags</span>: 标签</span><br><span class="line">  <span class="attr">switch_lang</span>: <span class="title class_">English</span></span><br><span class="line">  <span class="attr">about</span>: 关于</span><br><span class="line">  <span class="attr">search</span>: 搜索</span><br><span class="line">  <span class="attr">schedule</span>: 日程表</span><br><span class="line">  <span class="attr">sitemap</span>: 站点地图</span><br><span class="line">  <span class="attr">commonweal</span>: 公益 <span class="number">404</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>en</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu</span>:</span><br><span class="line">  <span class="attr">home</span>: <span class="title class_">Home</span></span><br><span class="line">  <span class="attr">archives</span>: <span class="title class_">Archives</span></span><br><span class="line">  <span class="attr">categories</span>: <span class="title class_">Categories</span></span><br><span class="line">  <span class="attr">tags</span>: <span class="title class_">Tags</span></span><br><span class="line">  <span class="attr">switch_lang</span>: zh-<span class="variable constant_">CN</span></span><br><span class="line">  <span class="attr">about</span>: <span class="title class_">About</span></span><br><span class="line">  <span class="attr">search</span>: <span class="title class_">Search</span></span><br><span class="line">  <span class="attr">schedule</span>: <span class="title class_">Schedule</span></span><br><span class="line">  <span class="attr">sitemap</span>: <span class="title class_">Sitemap</span></span><br><span class="line">  <span class="attr">commonweal</span>: <span class="title class_">Commonweal</span> <span class="number">404</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="Adding-Conditional-Statements"><a href="#Adding-Conditional-Statements" class="headerlink" title="Adding Conditional Statements"></a>Adding Conditional Statements</h1><p>At this point, the links are still one-way, meaning you can only navigate to the English page but cannot return to the Chinese page. Therefore, you need to add conditional statements.</p>
-<p>In .\themes\next\layout_partials\head\head-unique.swig, add the following code to redirect the language switch button back to the Chinese page after loading the English page:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">    <span class="comment">// Wait for the page to load first</span></span><br><span class="line">    <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">        switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">            <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en&#x27;</span>);</span><br><span class="line">            <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">                <span class="title function_">_prevOnload</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>As a JavaScript newbie, I struggled with this for a while. <code>document.getElementsByClassName</code> returns an array, and I kept getting errors while debugging. I had to add <code>[0]</code> at the end to get the class name.</p>
-<h1 id="Limitations"><a href="#Limitations" class="headerlink" title="Limitations"></a>Limitations</h1><p>Although the above method can achieve language switching, when you click on tags, archives, categories, and other links on the English page, it will redirect you to the Chinese page. To switch to the corresponding Chinese page, you need to click the English switch button again on the redirected page. If there are better solutions, please feel free to leave comments in the comment section.</p>
-<blockquote>
-<p>Reference: <a href="https://wm4n.github.io/Hexo-NexT-%E5%90%8C%E6%99%82%E6%94%AF%E6%8F%B4%E5%A4%9A%E8%AA%9E%E7%B3%BB/">wm4n</a></p>
-</blockquote>
 ]]></content>
       <categories>
         <category>Website Configuration</category>
@@ -3048,186 +3048,6 @@
       <tags>
         <tag>Jupyter</tag>
         <tag>Win10</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Quick Setup Guide for LaTeX in VSCode</title>
-    <url>/en/latex-vscode-quick-config.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">A guide on installing the TeX environment and quickly configuring LaTeX in VSCode.</blockquote>
-
-<span id="more"></span>
-
-<h1 id="TeX-Live-Installation"><a href="#TeX-Live-Installation" class="headerlink" title="TeX Live Installation"></a>TeX Live Installation</h1><p>First, go to the <a href="https://www.tug.org/texlive/index.html#concise">TeX Live official website</a> to download the installation files. The links below provide the download pages for both Windows and Mac versions.</p>
-<div class="link-grid"><div class="link-grid-container">
-<object class="link-grid-image" data="/images/link/link.webp"></object>
-<p>TeX Live ISO image</p><p>Acquiring TeX Live as an ISO image</p>
-<a href="https://www.tug.org/texlive/acquire-iso.html"></a>
-</div><div class="link-grid-container">
-<object class="link-grid-image" data="/images/link/link.webp"></object>
-<p>MacTeX.pkg</p><p>MacTeX is a package that installs TeX Live on the Macintosh.</p>
-<a href="https://www.tug.org/mactex/mactex-download.html"></a>
-</div></div>
-
-<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p>For Windows users, it’s recommended to use the <code>ISO</code> file for installation. The ISO file is approximately 4GB and contains all the necessary files, so there’s no need for an online installation. If you have a good internet connection, you can also choose to download <code>install-tl-windows.exe</code>, which is only 20MB. Simply double-click it to start the online installation, which is more convenient. However, please note that when using <code>install-tl-windows.exe</code>, the program estimates that it may take several hours to complete the download and installation, whereas downloading the ISO file only takes a few minutes.</p>
-<p>After opening the download page, choose <code>download from a nearby CTAN mirror</code> to go to the nearest mirror site, then click to download <code>texlive.iso</code>. </p>
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/rtv86aQ3NoJeygY.webp" alt="Download from a nearby CTAN mirror"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/cuwyg4mZVAdPsFJ.webp" alt="Download texlive.iso"></div></div></div>
-
-<p>Once the download is complete, mount the ISO file and run <code>install-tl-windows.bat</code> as administrator. After the installation program finishes loading, click the “Install” button. The installation time depends on your computer’s performance, but it typically takes around 30 minutes. After a successful installation, click the “Close” button to exit the installation program.</p>
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/egBY1N8vUp5fwmV.webp" alt="Installation Root"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/PA9rod7y2NktUEJ.webp" alt="Loading"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/1dfC7RnsILpUJKh.webp" alt="Install"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/A2pZSEaxkrHeR3d.webp" alt="Success"></div></div></div>
-
-<h2 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h2><p>For macOS users, simply click the download link for MacTeX.pkg on the download page. The size of the installation package is 5.2GB. After downloading, double-click the package to open it, and then follow the on-screen instructions to complete the installation.</p>
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/OMBXEcRnWstlv9A.png" alt="Download MacTeX.pkg"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/6AZdueKySU5cvwb.png" alt="Agree"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/2bXlRiMTSBvIZGu.png" alt="Installing"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/cN5oU1z6kZihFJE.png" alt="Success"></div></div></div>
-
-<h1 id="VSCode-Extensions-Installation"><a href="#VSCode-Extensions-Installation" class="headerlink" title="VSCode Extensions Installation"></a>VSCode Extensions Installation</h1><p>Search for and install the <code>LaTeX Workshop</code> and <code>LaTeX Utilities</code> extensions in the VSCode Extension Marketplace. The former adds LaTeX support to VSCode, while the latter provides useful features such as automatic formatting for pasted text and integration with Zotero.</p>
-<p><img data-src="https://s2.loli.net/2023/10/06/xqgKzTueOnMVod9.webp" alt="VSCode Extensions Installation"></p>
-<h1 id="LaTeX-Workshop-Configuration"><a href="#LaTeX-Workshop-Configuration" class="headerlink" title="LaTeX Workshop Configuration"></a>LaTeX Workshop Configuration</h1><p>Open VSCode’s settings using the shortcut <code>Ctrl</code> + <code>,</code>. For the following operations, it’s recommended to use the search bar in the settings to quickly locate them.</p>
-<h2 id="Auto-Build"><a href="#Auto-Build" class="headerlink" title="Auto Build"></a>Auto Build</h2><p><img data-src="https://s2.loli.net/2023/10/06/JmdOsAWTgotPQSh.webp" alt="Auto Build.webp"></p>
-<p>Search for <code>latex run</code> and adjust the <code>Latex-workshop &gt; Latex &gt; Auto Build: Run</code> option. I recommend choosing <code>OnSave</code>.</p>
-<ul>
-<li><code>never</code>: No automatic build .</li>
-<li><code>OnSave</code>: Automatically build when saving a <code>.tex</code> file.</li>
-<li><code>OnFileChange</code>: Automatically build when any file in the dependencies changes, including changes made outside of VSCode.</li>
-</ul>
-<h2 id="Auto-Clean"><a href="#Auto-Clean" class="headerlink" title="Auto Clean"></a>Auto Clean</h2><p>This option automatically cleans (deletes) compiled auxiliary files and output files to ensure that each LaTeX compilation starts from scratch without being affected by previous compilations.</p>
-<p><img data-src="https://s2.loli.net/2023/10/06/c1vBzWIOdTlP7ZQ.webp" alt="Auto Clean.webp"></p>
-<p>Search for <code>latex run</code> and adjust the <code>Latex-workshop &gt; Latex &gt; Auto Clean: Run</code> option. I recommend choosing <code>OnFailed</code>.</p>
-<ul>
-<li><code>never</code>: No automatic cleaning.</li>
-<li><code>OnFailed</code>: Only clean automatically when compilation fails.</li>
-<li><code>OnSucceeded</code>: Only clean automatically when compilation succeeds.</li>
-<li><code>OnBuilt</code>: Clean automatically after compilation, regardless of success.</li>
-</ul>
-<details class="note success"><summary><p>Detailed Explanation</p>
-</summary>
-<p>Specifically, this option serves the following purposes:</p>
-<ol>
-<li><strong>Auto Cleaning</strong>: When you build a LaTeX document, it generates auxiliary files (e.g., <code>.aux</code>, <code>.log</code>, <code>.bbl</code>, <code>.blg</code>, etc.) and the resulting PDF file. These files are typically used to record compilation information, aid in cross-referencing, and generate references, among other tasks. When the “Auto Clean: Run” option is enabled, the plugin automatically deletes these auxiliary files and previously generated PDF files each time you run a LaTeX compilation.</li>
-<li><strong>Avoiding Interference from Old Files</strong>: If you’ve made modifications to your document between different compilations, old auxiliary files might cause issues, such as cross-reference errors or incorrect references. By automatically cleaning these files, you ensure that each compilation starts from a clean slate, reducing potential interference and errors.</li>
-<li><strong>Saving Disk Space</strong>: LaTeX compilations generate many temporary files, and over time, these files can consume a significant amount of disk space. Auto cleaning helps you regularly remove these no longer needed files, saving disk space.</li>
-</ol>
-<p>Please note that when using the “Auto Clean: Run” option, make sure you don’t need to retain the compiled auxiliary files or output files for other purposes (e.g., generating references) because they will be deleted. If you need to keep these files, you can disable this option and manage them manually.</p>
-<blockquote>
-<p>By ChatGPT</p>
-</blockquote>
-
-</details>
-
-<h2 id="Add-Compilation-Recipe"><a href="#Add-Compilation-Recipe" class="headerlink" title="Add Compilation Recipe"></a>Add Compilation Recipe</h2><p>In LaTeX Workshop’s default compilation recipe, there is only one compilation chain that includes <code>bibtex</code>, which is <code>pdflatex -&gt; bibtex -&gt; pdflatex * 2</code>. Now, let’s add another compilation chain containing <code>bibtex</code>: <code>xelatex -&gt; bibtex -&gt; xelatex*2</code>.</p>
-<details class="note success"><summary><p>Difference Between PdfTeX and XeTeX</p>
-</summary>
-<p>PdfTeX and XeTeX are two TeX engines used for typesetting documents, and they have some important differences:</p>
-<ol>
-<li>Font Support:<ul>
-<li>PdfTeX: PdfTeX primarily supports traditional TeX fonts like Computer Modern. Using other fonts often requires complex configuration and font mapping.</li>
-<li>XeTeX: XeTeX is more flexible and can directly use fonts installed on your system, including TrueType and OpenType fonts. This makes handling documents with multiple languages and different font styles easier.</li>
-</ul>
-</li>
-<li>Character Encoding:<ul>
-<li>PdfTeX: PdfTeX typically requires specific input encodings (e.g., UTF-8) to handle non-ASCII characters and has limited support.</li>
-<li>XeTeX: XeTeX natively supports Unicode encoding, making it easy to work with various languages and symbols without additional configuration.</li>
-</ul>
-</li>
-<li>Multilingual Support:<ul>
-<li>PdfTeX: It supports multiple languages but requires careful configuration for handling specific language requirements.</li>
-<li>XeTeX: Provides more direct and straightforward support for multilingual documents, especially those containing multiple languages and scripts.</li>
-</ul>
-</li>
-<li>Output Formats:<ul>
-<li>PdfTeX: Generates output in PDF format.</li>
-<li>XeTeX: Can also generate PDF but supports other formats like DVI and PostScript.</li>
-</ul>
-</li>
-</ol>
-<p>In summary, PdfTeX is suitable for traditional TeX document typesetting tasks, while XeTeX is better for handling multilingual documents, complex font requirements, and Unicode characters. The choice of which engine to use depends on your specific needs and project requirements.</p>
-<blockquote>
-<p>By ChatGPT</p>
-</blockquote>
-
-</details>
-
-<details class="note success"><summary><p>About BibTeX</p>
-</summary>
-<p>BibTeX is a tool for managing citations and references in LaTeX documents. It is typically used alongside LaTeX to create a well-formatted list of references and citations automatically.</p>
-<p>Here’s how BibTeX works:</p>
-<ol>
-<li>Create a Bibliography Database: You create a BibTeX database file (usually with a <code>.bib</code> file extension) that contains information about all the references you want to use. Each reference entry includes metadata such as authors, title, publication details, etc.</li>
-<li>Reference Citations in LaTeX: In your LaTeX document, you use the <code>\cite{key}</code> command to reference these entries, where <code>key</code> is the identifier for a particular reference in your BibTeX database.</li>
-<li>Compile the Document: You compile your LaTeX document, and then run BibTeX, which looks up the citations in the <code>.aux</code> file generated during the first LaTeX compilation. BibTeX uses this information to create a list of references and format the citations.</li>
-<li>Generate the References: BibTeX generates a formatted list of references based on your citations, applying the appropriate citation style (e.g., APA, MLA) and sorting.</li>
-</ol>
-<p>BibTeX’s advantage is its ability to automatically handle citations and formatting, making it convenient for longer papers and academic articles. However, it’s essential to choose the right bibliography style and perform any necessary customizations according to the requirements of your journal or publishing institution.</p>
-<blockquote>
-<p>By ChatGPT</p>
-</blockquote>
-
-</details>
-
-<p><img data-src="https://s2.loli.net/2023/10/06/WbyZSiL5dk1MFGo.webp" alt="Recipes"></p>
-<p>Search for <code>Latex: Recipes</code>, find <code>Latex-workshop &gt; Latex: Recipes</code> and then click on <code>Edit in settings.json</code>. Use <code>Ctrl+F</code> to locate <code>latex-workshop.latex.recipes</code> in settings.json and add a new compilation chain as follows, making sure not to miss the trailing <code>,</code>:</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xelatex -&gt; bibtex -&gt; xelatex*2&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;tools&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;xelatexmk&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;bibtex&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;xelatexmk&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;xelatexmk&quot;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<details class="note success"><summary><p>Why Multiple XeLaTeX Compilations?</p>
-</summary>
-<p>In LaTeX’s compilation chain, it’s common to perform two <code>xelatex</code> compilations for documents that involve bibliographic references (using <code>bibtex</code> or <code>biblatex</code>). Here’s why two <code>xelatex</code> compilations are typically necessary:</p>
-<ol>
-<li>First <code>xelatex</code> Compilation:<ul>
-<li>The first compilation is primarily for processing the document’s content, generating reference labels, and inserting placeholders for citations.</li>
-<li>When you use the <code>\cite{key}</code> command to reference a bibliography entry, the first compilation inserts placeholders like <code>[?]</code> to indicate the citation’s position.</li>
-<li>This step also generates an auxiliary file (usually a <code>.aux</code> file) that contains information about the citations.</li>
-</ul>
-</li>
-<li>Running <code>bibtex</code>:<ul>
-<li>Next, you run the <code>bibtex</code> tool, which reads the citation information from the <code>.aux</code> file and generates the reference list and detailed citation information based on your BibTeX database (typically a <code>.bib</code> file).</li>
-<li>The information generated by <code>bibtex</code> is stored in a <code>.bbl</code> file.</li>
-</ul>
-</li>
-<li>Second <code>xelatex</code> Compilation:<ul>
-<li>The purpose of the second compilation is to insert the generated reference list and detailed citations into the document to replace the placeholders.</li>
-<li>During this compilation, LaTeX knows the details of each citation and formats them correctly in the document.</li>
-<li>This compilation also updates the citation labels in the document.</li>
-</ul>
-</li>
-<li>Third <code>xelatex</code> Compilation (Optional):<ul>
-<li>If your document contains cross-references (such as referencing sections or figures), you may need to run <code>xelatex</code> again to ensure all cross-reference numbers are correct.</li>
-</ul>
-</li>
-</ol>
-<p>So, the multiple <code>xelatex</code> compilations are necessary to ensure that the bibliographic citations and reference list are correctly integrated into the document. This is the standard workflow for handling citations in LaTeX. In some cases, if there are no cross-references or if citations do not affect other parts of the document, only two compilations may be needed without the third.</p>
-<blockquote>
-<p>By ChatGPT</p>
-</blockquote>
-
-</details>
-
-<h2 id="Default-Recipe"><a href="#Default-Recipe" class="headerlink" title="Default Recipe"></a>Default Recipe</h2><p>This option defines the default recipe to be used when no other compilation recipe is explicitly specified, including the automatic compilation set earlier.</p>
-<p><img data-src="https://s2.loli.net/2023/10/06/9CUzAGhcZfNVlLS.webp" alt="Default Recipe.webp"></p>
-<p>Search for <code>latex recipe default</code>, and adjust the <code>Latex-workshop &gt; Latex &gt; Recipe: Default</code> option. I recommend choosing <code>lastUsed</code>.</p>
-<ul>
-<li><code>first</code>: The first compilation option in the configuration file.</li>
-<li><code>lastUsed</code>: The compilation option used last time.</li>
-</ul>
-<h2 id="Disable-Warning-amp-Error-Message"><a href="#Disable-Warning-amp-Error-Message" class="headerlink" title="Disable Warning &amp; Error Message"></a>Disable Warning &amp; Error Message</h2><p>By default, VSCode displays message pop-ups in the lower-right corner when the build fails, which need to be manually closed. Since these messages are also visible in the terminal, you can choose to disable these pop-ups.</p>
-<p>Search for <code>latex message show</code> and uncheck the <code>Latex-workshop &gt; Message &gt; Error: Show</code> and <code>Latex-workshop &gt; Message &gt; Warning: Show</code> options.</p>
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/32T5rc7sRSaAHGf.webp" alt="Warning Message.webp"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/iTOLUpPYsIFB8l4.webp" alt="Error Message.webp"></div></div></div>
-
-<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><p>When you open a <code>.tex</code> file using VSCode, you will see a TEX option in the left sidebar. You can use this option to select compilation options and view the PDF output, among other operations.</p>
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/JMpIfran4KEuPic.webp" alt="Build.webp"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/XGPqzkKINi4AQ6d.webp" alt="PDF&amp;Log.webp"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/v9HR26jTgBYypld.webp" alt="Navigate.webp"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/AiMrFKVxwI3g19P.webp" alt="Citation.webp"></div></div></div>
-
-<blockquote>
-<p>References:</p>
-<ol>
-<li><a href="https://zhuanlan.zhihu.com/p/166523064">Visual Studio Code (vscode)配置LaTeX</a> by <a href="https://www.zhihu.com/people/Ali-loner">Ali-loner</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/108095566">VS Code + LaTeX</a> by <a href="https://www.zhihu.com/people/Thesharing">柏星</a></li>
-<li><a href="https://github.com/James-Yu/LaTeX-Workshop/wiki">LaTeX Workshop Wiki</a> by <a href="https://github.com/James-Yu">James Yu</a></li>
-</ol>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Coding</category>
-      </categories>
-      <tags>
-        <tag>VSCode</tag>
-        <tag>LaTeX</tag>
       </tags>
   </entry>
   <entry>
@@ -3662,6 +3482,186 @@
       <tags>
         <tag>Hackintosh</tag>
         <tag>Multisystem</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Quick Setup Guide for LaTeX in VSCode</title>
+    <url>/en/latex-vscode-quick-config.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">A guide on installing the TeX environment and quickly configuring LaTeX in VSCode.</blockquote>
+
+<span id="more"></span>
+
+<h1 id="TeX-Live-Installation"><a href="#TeX-Live-Installation" class="headerlink" title="TeX Live Installation"></a>TeX Live Installation</h1><p>First, go to the <a href="https://www.tug.org/texlive/index.html#concise">TeX Live official website</a> to download the installation files. The links below provide the download pages for both Windows and Mac versions.</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/link.webp"></object>
+<p>TeX Live ISO image</p><p>Acquiring TeX Live as an ISO image</p>
+<a href="https://www.tug.org/texlive/acquire-iso.html"></a>
+</div><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/link.webp"></object>
+<p>MacTeX.pkg</p><p>MacTeX is a package that installs TeX Live on the Macintosh.</p>
+<a href="https://www.tug.org/mactex/mactex-download.html"></a>
+</div></div>
+
+<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p>For Windows users, it’s recommended to use the <code>ISO</code> file for installation. The ISO file is approximately 4GB and contains all the necessary files, so there’s no need for an online installation. If you have a good internet connection, you can also choose to download <code>install-tl-windows.exe</code>, which is only 20MB. Simply double-click it to start the online installation, which is more convenient. However, please note that when using <code>install-tl-windows.exe</code>, the program estimates that it may take several hours to complete the download and installation, whereas downloading the ISO file only takes a few minutes.</p>
+<p>After opening the download page, choose <code>download from a nearby CTAN mirror</code> to go to the nearest mirror site, then click to download <code>texlive.iso</code>. </p>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/rtv86aQ3NoJeygY.webp" alt="Download from a nearby CTAN mirror"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/cuwyg4mZVAdPsFJ.webp" alt="Download texlive.iso"></div></div></div>
+
+<p>Once the download is complete, mount the ISO file and run <code>install-tl-windows.bat</code> as administrator. After the installation program finishes loading, click the “Install” button. The installation time depends on your computer’s performance, but it typically takes around 30 minutes. After a successful installation, click the “Close” button to exit the installation program.</p>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/egBY1N8vUp5fwmV.webp" alt="Installation Root"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/PA9rod7y2NktUEJ.webp" alt="Loading"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/1dfC7RnsILpUJKh.webp" alt="Install"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/A2pZSEaxkrHeR3d.webp" alt="Success"></div></div></div>
+
+<h2 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h2><p>For macOS users, simply click the download link for MacTeX.pkg on the download page. The size of the installation package is 5.2GB. After downloading, double-click the package to open it, and then follow the on-screen instructions to complete the installation.</p>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/OMBXEcRnWstlv9A.png" alt="Download MacTeX.pkg"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/6AZdueKySU5cvwb.png" alt="Agree"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/2bXlRiMTSBvIZGu.png" alt="Installing"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/cN5oU1z6kZihFJE.png" alt="Success"></div></div></div>
+
+<h1 id="VSCode-Extensions-Installation"><a href="#VSCode-Extensions-Installation" class="headerlink" title="VSCode Extensions Installation"></a>VSCode Extensions Installation</h1><p>Search for and install the <code>LaTeX Workshop</code> and <code>LaTeX Utilities</code> extensions in the VSCode Extension Marketplace. The former adds LaTeX support to VSCode, while the latter provides useful features such as automatic formatting for pasted text and integration with Zotero.</p>
+<p><img data-src="https://s2.loli.net/2023/10/06/xqgKzTueOnMVod9.webp" alt="VSCode Extensions Installation"></p>
+<h1 id="LaTeX-Workshop-Configuration"><a href="#LaTeX-Workshop-Configuration" class="headerlink" title="LaTeX Workshop Configuration"></a>LaTeX Workshop Configuration</h1><p>Open VSCode’s settings using the shortcut <code>Ctrl</code> + <code>,</code>. For the following operations, it’s recommended to use the search bar in the settings to quickly locate them.</p>
+<h2 id="Auto-Build"><a href="#Auto-Build" class="headerlink" title="Auto Build"></a>Auto Build</h2><p><img data-src="https://s2.loli.net/2023/10/06/JmdOsAWTgotPQSh.webp" alt="Auto Build.webp"></p>
+<p>Search for <code>latex run</code> and adjust the <code>Latex-workshop &gt; Latex &gt; Auto Build: Run</code> option. I recommend choosing <code>OnSave</code>.</p>
+<ul>
+<li><code>never</code>: No automatic build .</li>
+<li><code>OnSave</code>: Automatically build when saving a <code>.tex</code> file.</li>
+<li><code>OnFileChange</code>: Automatically build when any file in the dependencies changes, including changes made outside of VSCode.</li>
+</ul>
+<h2 id="Auto-Clean"><a href="#Auto-Clean" class="headerlink" title="Auto Clean"></a>Auto Clean</h2><p>This option automatically cleans (deletes) compiled auxiliary files and output files to ensure that each LaTeX compilation starts from scratch without being affected by previous compilations.</p>
+<p><img data-src="https://s2.loli.net/2023/10/06/c1vBzWIOdTlP7ZQ.webp" alt="Auto Clean.webp"></p>
+<p>Search for <code>latex run</code> and adjust the <code>Latex-workshop &gt; Latex &gt; Auto Clean: Run</code> option. I recommend choosing <code>OnFailed</code>.</p>
+<ul>
+<li><code>never</code>: No automatic cleaning.</li>
+<li><code>OnFailed</code>: Only clean automatically when compilation fails.</li>
+<li><code>OnSucceeded</code>: Only clean automatically when compilation succeeds.</li>
+<li><code>OnBuilt</code>: Clean automatically after compilation, regardless of success.</li>
+</ul>
+<details class="note success"><summary><p>Detailed Explanation</p>
+</summary>
+<p>Specifically, this option serves the following purposes:</p>
+<ol>
+<li><strong>Auto Cleaning</strong>: When you build a LaTeX document, it generates auxiliary files (e.g., <code>.aux</code>, <code>.log</code>, <code>.bbl</code>, <code>.blg</code>, etc.) and the resulting PDF file. These files are typically used to record compilation information, aid in cross-referencing, and generate references, among other tasks. When the “Auto Clean: Run” option is enabled, the plugin automatically deletes these auxiliary files and previously generated PDF files each time you run a LaTeX compilation.</li>
+<li><strong>Avoiding Interference from Old Files</strong>: If you’ve made modifications to your document between different compilations, old auxiliary files might cause issues, such as cross-reference errors or incorrect references. By automatically cleaning these files, you ensure that each compilation starts from a clean slate, reducing potential interference and errors.</li>
+<li><strong>Saving Disk Space</strong>: LaTeX compilations generate many temporary files, and over time, these files can consume a significant amount of disk space. Auto cleaning helps you regularly remove these no longer needed files, saving disk space.</li>
+</ol>
+<p>Please note that when using the “Auto Clean: Run” option, make sure you don’t need to retain the compiled auxiliary files or output files for other purposes (e.g., generating references) because they will be deleted. If you need to keep these files, you can disable this option and manage them manually.</p>
+<blockquote>
+<p>By ChatGPT</p>
+</blockquote>
+
+</details>
+
+<h2 id="Add-Compilation-Recipe"><a href="#Add-Compilation-Recipe" class="headerlink" title="Add Compilation Recipe"></a>Add Compilation Recipe</h2><p>In LaTeX Workshop’s default compilation recipe, there is only one compilation chain that includes <code>bibtex</code>, which is <code>pdflatex -&gt; bibtex -&gt; pdflatex * 2</code>. Now, let’s add another compilation chain containing <code>bibtex</code>: <code>xelatex -&gt; bibtex -&gt; xelatex*2</code>.</p>
+<details class="note success"><summary><p>Difference Between PdfTeX and XeTeX</p>
+</summary>
+<p>PdfTeX and XeTeX are two TeX engines used for typesetting documents, and they have some important differences:</p>
+<ol>
+<li>Font Support:<ul>
+<li>PdfTeX: PdfTeX primarily supports traditional TeX fonts like Computer Modern. Using other fonts often requires complex configuration and font mapping.</li>
+<li>XeTeX: XeTeX is more flexible and can directly use fonts installed on your system, including TrueType and OpenType fonts. This makes handling documents with multiple languages and different font styles easier.</li>
+</ul>
+</li>
+<li>Character Encoding:<ul>
+<li>PdfTeX: PdfTeX typically requires specific input encodings (e.g., UTF-8) to handle non-ASCII characters and has limited support.</li>
+<li>XeTeX: XeTeX natively supports Unicode encoding, making it easy to work with various languages and symbols without additional configuration.</li>
+</ul>
+</li>
+<li>Multilingual Support:<ul>
+<li>PdfTeX: It supports multiple languages but requires careful configuration for handling specific language requirements.</li>
+<li>XeTeX: Provides more direct and straightforward support for multilingual documents, especially those containing multiple languages and scripts.</li>
+</ul>
+</li>
+<li>Output Formats:<ul>
+<li>PdfTeX: Generates output in PDF format.</li>
+<li>XeTeX: Can also generate PDF but supports other formats like DVI and PostScript.</li>
+</ul>
+</li>
+</ol>
+<p>In summary, PdfTeX is suitable for traditional TeX document typesetting tasks, while XeTeX is better for handling multilingual documents, complex font requirements, and Unicode characters. The choice of which engine to use depends on your specific needs and project requirements.</p>
+<blockquote>
+<p>By ChatGPT</p>
+</blockquote>
+
+</details>
+
+<details class="note success"><summary><p>About BibTeX</p>
+</summary>
+<p>BibTeX is a tool for managing citations and references in LaTeX documents. It is typically used alongside LaTeX to create a well-formatted list of references and citations automatically.</p>
+<p>Here’s how BibTeX works:</p>
+<ol>
+<li>Create a Bibliography Database: You create a BibTeX database file (usually with a <code>.bib</code> file extension) that contains information about all the references you want to use. Each reference entry includes metadata such as authors, title, publication details, etc.</li>
+<li>Reference Citations in LaTeX: In your LaTeX document, you use the <code>\cite{key}</code> command to reference these entries, where <code>key</code> is the identifier for a particular reference in your BibTeX database.</li>
+<li>Compile the Document: You compile your LaTeX document, and then run BibTeX, which looks up the citations in the <code>.aux</code> file generated during the first LaTeX compilation. BibTeX uses this information to create a list of references and format the citations.</li>
+<li>Generate the References: BibTeX generates a formatted list of references based on your citations, applying the appropriate citation style (e.g., APA, MLA) and sorting.</li>
+</ol>
+<p>BibTeX’s advantage is its ability to automatically handle citations and formatting, making it convenient for longer papers and academic articles. However, it’s essential to choose the right bibliography style and perform any necessary customizations according to the requirements of your journal or publishing institution.</p>
+<blockquote>
+<p>By ChatGPT</p>
+</blockquote>
+
+</details>
+
+<p><img data-src="https://s2.loli.net/2023/10/06/WbyZSiL5dk1MFGo.webp" alt="Recipes"></p>
+<p>Search for <code>Latex: Recipes</code>, find <code>Latex-workshop &gt; Latex: Recipes</code> and then click on <code>Edit in settings.json</code>. Use <code>Ctrl+F</code> to locate <code>latex-workshop.latex.recipes</code> in settings.json and add a new compilation chain as follows, making sure not to miss the trailing <code>,</code>:</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xelatex -&gt; bibtex -&gt; xelatex*2&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;tools&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;xelatexmk&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;bibtex&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;xelatexmk&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;xelatexmk&quot;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<details class="note success"><summary><p>Why Multiple XeLaTeX Compilations?</p>
+</summary>
+<p>In LaTeX’s compilation chain, it’s common to perform two <code>xelatex</code> compilations for documents that involve bibliographic references (using <code>bibtex</code> or <code>biblatex</code>). Here’s why two <code>xelatex</code> compilations are typically necessary:</p>
+<ol>
+<li>First <code>xelatex</code> Compilation:<ul>
+<li>The first compilation is primarily for processing the document’s content, generating reference labels, and inserting placeholders for citations.</li>
+<li>When you use the <code>\cite{key}</code> command to reference a bibliography entry, the first compilation inserts placeholders like <code>[?]</code> to indicate the citation’s position.</li>
+<li>This step also generates an auxiliary file (usually a <code>.aux</code> file) that contains information about the citations.</li>
+</ul>
+</li>
+<li>Running <code>bibtex</code>:<ul>
+<li>Next, you run the <code>bibtex</code> tool, which reads the citation information from the <code>.aux</code> file and generates the reference list and detailed citation information based on your BibTeX database (typically a <code>.bib</code> file).</li>
+<li>The information generated by <code>bibtex</code> is stored in a <code>.bbl</code> file.</li>
+</ul>
+</li>
+<li>Second <code>xelatex</code> Compilation:<ul>
+<li>The purpose of the second compilation is to insert the generated reference list and detailed citations into the document to replace the placeholders.</li>
+<li>During this compilation, LaTeX knows the details of each citation and formats them correctly in the document.</li>
+<li>This compilation also updates the citation labels in the document.</li>
+</ul>
+</li>
+<li>Third <code>xelatex</code> Compilation (Optional):<ul>
+<li>If your document contains cross-references (such as referencing sections or figures), you may need to run <code>xelatex</code> again to ensure all cross-reference numbers are correct.</li>
+</ul>
+</li>
+</ol>
+<p>So, the multiple <code>xelatex</code> compilations are necessary to ensure that the bibliographic citations and reference list are correctly integrated into the document. This is the standard workflow for handling citations in LaTeX. In some cases, if there are no cross-references or if citations do not affect other parts of the document, only two compilations may be needed without the third.</p>
+<blockquote>
+<p>By ChatGPT</p>
+</blockquote>
+
+</details>
+
+<h2 id="Default-Recipe"><a href="#Default-Recipe" class="headerlink" title="Default Recipe"></a>Default Recipe</h2><p>This option defines the default recipe to be used when no other compilation recipe is explicitly specified, including the automatic compilation set earlier.</p>
+<p><img data-src="https://s2.loli.net/2023/10/06/9CUzAGhcZfNVlLS.webp" alt="Default Recipe.webp"></p>
+<p>Search for <code>latex recipe default</code>, and adjust the <code>Latex-workshop &gt; Latex &gt; Recipe: Default</code> option. I recommend choosing <code>lastUsed</code>.</p>
+<ul>
+<li><code>first</code>: The first compilation option in the configuration file.</li>
+<li><code>lastUsed</code>: The compilation option used last time.</li>
+</ul>
+<h2 id="Disable-Warning-amp-Error-Message"><a href="#Disable-Warning-amp-Error-Message" class="headerlink" title="Disable Warning &amp; Error Message"></a>Disable Warning &amp; Error Message</h2><p>By default, VSCode displays message pop-ups in the lower-right corner when the build fails, which need to be manually closed. Since these messages are also visible in the terminal, you can choose to disable these pop-ups.</p>
+<p>Search for <code>latex message show</code> and uncheck the <code>Latex-workshop &gt; Message &gt; Error: Show</code> and <code>Latex-workshop &gt; Message &gt; Warning: Show</code> options.</p>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/32T5rc7sRSaAHGf.webp" alt="Warning Message.webp"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/iTOLUpPYsIFB8l4.webp" alt="Error Message.webp"></div></div></div>
+
+<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><p>When you open a <code>.tex</code> file using VSCode, you will see a TEX option in the left sidebar. You can use this option to select compilation options and view the PDF output, among other operations.</p>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/JMpIfran4KEuPic.webp" alt="Build.webp"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/XGPqzkKINi4AQ6d.webp" alt="PDF&amp;Log.webp"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/v9HR26jTgBYypld.webp" alt="Navigate.webp"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/AiMrFKVxwI3g19P.webp" alt="Citation.webp"></div></div></div>
+
+<blockquote>
+<p>References:</p>
+<ol>
+<li><a href="https://zhuanlan.zhihu.com/p/166523064">Visual Studio Code (vscode)配置LaTeX</a> by <a href="https://www.zhihu.com/people/Ali-loner">Ali-loner</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/108095566">VS Code + LaTeX</a> by <a href="https://www.zhihu.com/people/Thesharing">柏星</a></li>
+<li><a href="https://github.com/James-Yu/LaTeX-Workshop/wiki">LaTeX Workshop Wiki</a> by <a href="https://github.com/James-Yu">James Yu</a></li>
+</ol>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Coding</category>
+      </categories>
+      <tags>
+        <tag>VSCode</tag>
+        <tag>LaTeX</tag>
       </tags>
   </entry>
   <entry>
@@ -7543,73 +7543,6 @@
       </tags>
   </entry>
   <entry>
-    <title>My Packing List for Studying Abroad in the UK</title>
-    <url>/en/uk-packing-list.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Based on my three-month experience of shopping at British supermarkets, I've compiled a list of recommended items to bring to the UK and items you may want to avoid bringing. For the items not recommended to bring, I've provided purchasing alternatives.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<h1 id="Recommended-to-Bring"><a href="#Recommended-to-Bring" class="headerlink" title="Recommended to Bring"></a>Recommended to Bring</h1><p>This category includes items that are either difficult to find in the UK or are unreasonably expensive.</p>
-<ul>
-<li>Coat hooks ⭐⭐⭐⭐⭐ Coat hooks in the UK are seriously overpriced. You can buy a whole box of them on Taobao for the price of one in the UK.</li>
-<li>Apron ⭐⭐⭐⭐ Aprons are also unreasonably expensive here. For the same price, you can buy ten on Taobao.</li>
-<li>Oil pot ⭐⭐⭐ I searched various supermarkets, but I finally found one in a small corner shop. However, it’s not very functional and tends to leak.</li>
-<li>Backup phone ⭐⭐⭐⭐ It’s always good to have a backup in case your phone breaks. Phones here are quite expensive.</li>
-<li>Hair clippers ⭐⭐⭐ In the UK, getting a haircut is costly. During the pandemic, I didn’t dare to invite a barber home, so I learned to cut my hair.</li>
-<li>Power strip with a British plug ⭐⭐⭐⭐ These are mostly available in Chinese supermarkets, but they can be quite expensive.</li>
-<li>Plug adapters for UK sockets ⭐⭐⭐⭐ Although available in British supermarkets, they tend to be expensive.</li>
-<li>Waterproof jacket ⭐⭐⭐⭐⭐ A must-have for windy and rainy days. Clothing stores are currently closed.</li>
-<li>SIM card ejector tool ⭐⭐⭐⭐ It doesn’t take up much space.</li>
-<li>Power bank ⭐⭐⭐⭐ Prices for power banks are relatively high here.</li>
-</ul>
-<h1 id="Optional-to-Bring"><a href="#Optional-to-Bring" class="headerlink" title="Optional to Bring"></a>Optional to Bring</h1><p>This category includes items that are small, lightweight, and can be purchased in the UK without unreasonable prices.</p>
-<ul>
-<li>Router ⭐⭐⭐ If you need it, it’s best to bring your own as routers in the UK can be quite pricey.</li>
-<li>Ethernet cable ⭐ It’s not much different in price.</li>
-<li>USB mini fan ⭐⭐⭐ Dorms in the UK generally lack air conditioning, so it can get hot in the summer.</li>
-<li>Hygrometer ⭐ If you need one, it’s best to bring it from home as the prices here are relatively high.</li>
-<li>Soap holder ⭐ Pound shops have them, but the designs might not be very appealing.</li>
-<li>USB cables ⭐⭐ Prices for braided cables are similar to those in China.</li>
-<li>Desk lamp ⭐ I have two bright spotlights on my desk in the dorm, so my desk lamp is just collecting dust. Desk lamps here are slightly more expensive.</li>
-<li>Camera tripod ⭐⭐ If needed, bring a portable one; prices here are nearly double.</li>
-<li>Small humidifier ⭐⭐ If it’s small, you can bring one. The cheapest one on eBay costs £7 and is no larger than a roll of toilet paper.</li>
-<li>Chopsticks ⭐ You can find them in Chinese supermarkets, and the prices are reasonable.</li>
-<li>Foldable basin ⭐ Similar basins are available in Chinese supermarkets, and the quality is slightly better.</li>
-<li>Thermos flask ⭐ Prices are similar to those in China.</li>
-<li>Nail clippers ⭐⭐ If needed, they are available, but I’m not sure about the quality.</li>
-<li>Batteries ⭐ Prices are slightly higher here, but they are acceptable. You can bring rechargeable batteries but avoid regular ones.</li>
-<li>Toothbrush holder ⭐ Pound shops have plastic cups that work just fine.</li>
-<li>Vegetable peeler ⭐⭐ Both Chinese and British supermarkets have them, and the prices are reasonable.</li>
-<li>Shoe brush ⭐ Same as above.</li>
-<li>Swiss Army knife ⭐ It can serve as a temporary toolbox. Prices here are quite high.</li>
-<li>USB drive ⭐ Prices are not much higher.</li>
-</ul>
-<h1 id="Not-Recommended-to-Bring"><a href="#Not-Recommended-to-Bring" class="headerlink" title="Not Recommended to Bring"></a>Not Recommended to Bring</h1><p>This category includes items that are too large, heavy, or available at lower prices in the UK.</p>
-<ul>
-<li>Soap ❌ You can buy soap for 80p for two bars at Home Bargains.</li>
-<li>Electric rice cooker ❌❌❌ There’s really no need for this. You can buy a second-hand one or order one online when you arrive. Carrying your own is heavy, takes up space, and requires an adapter plug. The options here may not have as many functions as those in China.</li>
-<li>Hairdryer ❌❌❌ Same as above.</li>
-<li>Large humidifier ❌❌❌ Same as above.</li>
-<li>Foldable kettle ❌ You will use it a few times, and it will collect dust afterward. Buy an electric kettle at a big supermarket or order one online before arrival.</li>
-<li>Kitchen knife ❌❌ It’s too heavy. Chinese supermarkets have them at reasonable prices.</li>
-<li>Electric toothbrush heads ❌ For Oral-B toothbrushes, they are cheaper here than in China.</li>
-<li>Umbrella ❌ The wind here can be quite strong, and umbrellas tend to break easily. You might want to try those designed to withstand typhoons from Taobao.</li>
-<li>Cookware ❌❌❌ Really not necessary. Large supermarkets have a decent selection, and the styles are fine.</li>
-<li>Duvet ❌❌❌ Unless your suitcase is only half full (insert dog head here).</li>
-<li>Window screen ❌❌ You can find them on Amazon, and the windows in student accommodations can only open a small gap; they can’t accommodate screens.</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Study in UK</category>
-      </categories>
-      <tags>
-        <tag>Study in UK</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Diary in the UK</title>
     <url>/en/uk-diary.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">Landing in the UK after one month, the I am back again~~~ This might be another lengthy blog post, as I plan to document my life in the UK for this year. It will include guides on BRP, GP, bank cards, and perhaps even a Vlog? (Maybe)</blockquote>
@@ -8116,6 +8049,73 @@ OFFICIAL
 <p>Once you have the card, when booking tickets, choose the <code>Scottish Heritage Member Ticket</code> option, and the payment page will show £0.</p>
 <h1 id="To-Be-Continued…"><a href="#To-Be-Continued…" class="headerlink" title="To Be Continued…"></a>To Be Continued…</h1><p>More content to come, but I’ll be delaying it indefinitely. I gave up on registering with the dentist because the materials used for free dental work seem to be black, so I’ll just wait until I’m back in China to deal with it.</p>
 <h1 id="KC-Room-Tour"><a href="#KC-Room-Tour" class="headerlink" title="KC Room Tour"></a>KC Room Tour</h1><p>This might be postponed indefinitely as well. The apartment staff have locked all the doors to vacant rooms, so I can’t access them for filming. I’ll have to wait until my roommates arrive. (Sigh x4)</p>
+]]></content>
+      <categories>
+        <category>Study in UK</category>
+      </categories>
+      <tags>
+        <tag>Study in UK</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>My Packing List for Studying Abroad in the UK</title>
+    <url>/en/uk-packing-list.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Based on my three-month experience of shopping at British supermarkets, I've compiled a list of recommended items to bring to the UK and items you may want to avoid bringing. For the items not recommended to bring, I've provided purchasing alternatives.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<h1 id="Recommended-to-Bring"><a href="#Recommended-to-Bring" class="headerlink" title="Recommended to Bring"></a>Recommended to Bring</h1><p>This category includes items that are either difficult to find in the UK or are unreasonably expensive.</p>
+<ul>
+<li>Coat hooks ⭐⭐⭐⭐⭐ Coat hooks in the UK are seriously overpriced. You can buy a whole box of them on Taobao for the price of one in the UK.</li>
+<li>Apron ⭐⭐⭐⭐ Aprons are also unreasonably expensive here. For the same price, you can buy ten on Taobao.</li>
+<li>Oil pot ⭐⭐⭐ I searched various supermarkets, but I finally found one in a small corner shop. However, it’s not very functional and tends to leak.</li>
+<li>Backup phone ⭐⭐⭐⭐ It’s always good to have a backup in case your phone breaks. Phones here are quite expensive.</li>
+<li>Hair clippers ⭐⭐⭐ In the UK, getting a haircut is costly. During the pandemic, I didn’t dare to invite a barber home, so I learned to cut my hair.</li>
+<li>Power strip with a British plug ⭐⭐⭐⭐ These are mostly available in Chinese supermarkets, but they can be quite expensive.</li>
+<li>Plug adapters for UK sockets ⭐⭐⭐⭐ Although available in British supermarkets, they tend to be expensive.</li>
+<li>Waterproof jacket ⭐⭐⭐⭐⭐ A must-have for windy and rainy days. Clothing stores are currently closed.</li>
+<li>SIM card ejector tool ⭐⭐⭐⭐ It doesn’t take up much space.</li>
+<li>Power bank ⭐⭐⭐⭐ Prices for power banks are relatively high here.</li>
+</ul>
+<h1 id="Optional-to-Bring"><a href="#Optional-to-Bring" class="headerlink" title="Optional to Bring"></a>Optional to Bring</h1><p>This category includes items that are small, lightweight, and can be purchased in the UK without unreasonable prices.</p>
+<ul>
+<li>Router ⭐⭐⭐ If you need it, it’s best to bring your own as routers in the UK can be quite pricey.</li>
+<li>Ethernet cable ⭐ It’s not much different in price.</li>
+<li>USB mini fan ⭐⭐⭐ Dorms in the UK generally lack air conditioning, so it can get hot in the summer.</li>
+<li>Hygrometer ⭐ If you need one, it’s best to bring it from home as the prices here are relatively high.</li>
+<li>Soap holder ⭐ Pound shops have them, but the designs might not be very appealing.</li>
+<li>USB cables ⭐⭐ Prices for braided cables are similar to those in China.</li>
+<li>Desk lamp ⭐ I have two bright spotlights on my desk in the dorm, so my desk lamp is just collecting dust. Desk lamps here are slightly more expensive.</li>
+<li>Camera tripod ⭐⭐ If needed, bring a portable one; prices here are nearly double.</li>
+<li>Small humidifier ⭐⭐ If it’s small, you can bring one. The cheapest one on eBay costs £7 and is no larger than a roll of toilet paper.</li>
+<li>Chopsticks ⭐ You can find them in Chinese supermarkets, and the prices are reasonable.</li>
+<li>Foldable basin ⭐ Similar basins are available in Chinese supermarkets, and the quality is slightly better.</li>
+<li>Thermos flask ⭐ Prices are similar to those in China.</li>
+<li>Nail clippers ⭐⭐ If needed, they are available, but I’m not sure about the quality.</li>
+<li>Batteries ⭐ Prices are slightly higher here, but they are acceptable. You can bring rechargeable batteries but avoid regular ones.</li>
+<li>Toothbrush holder ⭐ Pound shops have plastic cups that work just fine.</li>
+<li>Vegetable peeler ⭐⭐ Both Chinese and British supermarkets have them, and the prices are reasonable.</li>
+<li>Shoe brush ⭐ Same as above.</li>
+<li>Swiss Army knife ⭐ It can serve as a temporary toolbox. Prices here are quite high.</li>
+<li>USB drive ⭐ Prices are not much higher.</li>
+</ul>
+<h1 id="Not-Recommended-to-Bring"><a href="#Not-Recommended-to-Bring" class="headerlink" title="Not Recommended to Bring"></a>Not Recommended to Bring</h1><p>This category includes items that are too large, heavy, or available at lower prices in the UK.</p>
+<ul>
+<li>Soap ❌ You can buy soap for 80p for two bars at Home Bargains.</li>
+<li>Electric rice cooker ❌❌❌ There’s really no need for this. You can buy a second-hand one or order one online when you arrive. Carrying your own is heavy, takes up space, and requires an adapter plug. The options here may not have as many functions as those in China.</li>
+<li>Hairdryer ❌❌❌ Same as above.</li>
+<li>Large humidifier ❌❌❌ Same as above.</li>
+<li>Foldable kettle ❌ You will use it a few times, and it will collect dust afterward. Buy an electric kettle at a big supermarket or order one online before arrival.</li>
+<li>Kitchen knife ❌❌ It’s too heavy. Chinese supermarkets have them at reasonable prices.</li>
+<li>Electric toothbrush heads ❌ For Oral-B toothbrushes, they are cheaper here than in China.</li>
+<li>Umbrella ❌ The wind here can be quite strong, and umbrellas tend to break easily. You might want to try those designed to withstand typhoons from Taobao.</li>
+<li>Cookware ❌❌❌ Really not necessary. Large supermarkets have a decent selection, and the styles are fine.</li>
+<li>Duvet ❌❌❌ Unless your suitcase is only half full (insert dog head here).</li>
+<li>Window screen ❌❌ You can find them on Amazon, and the windows in student accommodations can only open a small gap; they can’t accommodate screens.</li>
+</ul>
 ]]></content>
       <categories>
         <category>Study in UK</category>
