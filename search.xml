@@ -13,6 +13,27 @@
       </tags>
   </entry>
   <entry>
+    <title>Purpose</title>
+    <url>/en/Purpose.html</url>
+    <content><![CDATA[<h3 id="01"><a href="#01" class="headerlink" title="01"></a>01</h3><p>The purpose of this personal website is to record some technical problems I have encountered, share my experience, and leave traces of my existence in the world, that’s it.</p>
+<h3 id="02"><a href="#02" class="headerlink" title="02"></a>02</h3><p>The major contents of the blog are documented as follows.</p>
+<ul>
+<li>Site configuration</li>
+<li>Experience in studying abroad</li>
+<li>Algorithm problems</li>
+<li>Mini-games(just for fun)</li>
+<li>Some tutorials（like build this blog）</li>
+</ul>
+<h3 id="03"><a href="#03" class="headerlink" title="03"></a>03</h3><p>I will update this blog when I get some new ideas~</p>
+]]></content>
+      <categories>
+        <category>Dairy</category>
+      </categories>
+      <tags>
+        <tag>Blog</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Solution for ASUS Aura Sync Not Recognizing G.Skill Trident Z RGB</title>
     <url>/en/aura-sync.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">This article is also known as "The Series of Annoying Incidents Caused by My Impulsive Upgrade of Armoury Crate." Now, let's introduce the main characters of this story: ASUS B460-I GAMING and two G.Skill Trident Z RGB sticks.</blockquote>
@@ -74,27 +95,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Purpose</title>
-    <url>/en/Purpose.html</url>
-    <content><![CDATA[<h3 id="01"><a href="#01" class="headerlink" title="01"></a>01</h3><p>The purpose of this personal website is to record some technical problems I have encountered, share my experience, and leave traces of my existence in the world, that’s it.</p>
-<h3 id="02"><a href="#02" class="headerlink" title="02"></a>02</h3><p>The major contents of the blog are documented as follows.</p>
-<ul>
-<li>Site configuration</li>
-<li>Experience in studying abroad</li>
-<li>Algorithm problems</li>
-<li>Mini-games(just for fun)</li>
-<li>Some tutorials（like build this blog）</li>
-</ul>
-<h3 id="03"><a href="#03" class="headerlink" title="03"></a>03</h3><p>I will update this blog when I get some new ideas~</p>
-]]></content>
-      <categories>
-        <category>Dairy</category>
-      </categories>
-      <tags>
-        <tag>Blog</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Add Windows Terminal to the Right-click Menu</title>
     <url>/en/add-windows-terminal-to-the-right-click-menu.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">Windows Terminal is now available on the Microsoft Store, so I switched from Fluent Terminal to Windows Terminal. Here's a record of the process to add it to the right-click menu.</blockquote>
@@ -145,7 +145,10 @@
     <url>/en/auto-update-profile-latest-blog-posts.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">This post is under construction......</blockquote>
 
-<span id="more"></span>]]></content>
+<span id="more"></span>
+
+<p>It worked! I will update this post tomorrow!</p>
+]]></content>
       <categories>
         <category>Website Configuration</category>
       </categories>
@@ -2079,40 +2082,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Adding Google Indexing to Hexo-based Website</title>
-    <url>/en/google-index.html</url>
-    <content><![CDATA[<p>Currently, the website cannot be found through search engines. If you want it to be discoverable, you need to add it to search engine indexing. Here, I’ll use Google as an example for the process.</p>
-<p><strong>The steps include:</strong></p>
-<ul>
-<li>Generating a sitemap</li>
-<li>Verifying the site<span id="more"></span></li>
-</ul>
-<h3 id="Generating-a-Sitemap"><a href="#Generating-a-Sitemap" class="headerlink" title="Generating a Sitemap"></a>Generating a Sitemap</h3><ol>
-<li>Open Git bash in the root directory of your blog.</li>
-<li>Run the command <code>npm install hexo-generator-sitemap --save</code> to install the sitemap generation plugin.</li>
-<li>Open the configuration file <code>_config.yml</code> in the root directory of your blog, add the following content:<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># <span class="title class_">Generate</span> sitemap automatically</span><br><span class="line"><span class="attr">sitemap</span>:</span><br><span class="line">  <span class="attr">path</span>: sitemap.<span class="property">xml</span></span><br></pre></td></tr></table></figure></li>
-<li>Run <code>hexo g</code> to generate the <code>sitemap.xml</code> file in the <code>/public</code> directory of your blog’s root directory.</li>
-</ol>
-<h3 id="Verifying-the-Site"><a href="#Verifying-the-Site" class="headerlink" title="Verifying the Site"></a>Verifying the Site</h3><ol>
-<li>Open <a href="https://www.google.com/webmasters/">Google Search Console</a> and click on “Sign in” at the top right corner.</li>
-<li>Choose a property and enter your site’s domain name, then click “Continue.”</li>
-<li>Download the Google verification file and place it in <code>blog/themes/next/source</code>.</li>
-<li>Execute <code>hexo cl</code>, <code>hexo g</code>, and <code>hexo d</code> consecutively.</li>
-<li>Go back to Google Search Console for verification.</li>
-<li>Search <code>site:domain</code> on Google to see your website.</li>
-</ol>
-<hr>
-<p>Now, your articles and website can be found on Google. Task completed~!</p>
-]]></content>
-      <categories>
-        <category>Website Configuration</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>SEO</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Enable Cloudflare Acceleration and HTTPS on GitHub Pages</title>
     <url>/en/github-pages-cloudflare-https.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">A few days ago, when transferring the domain, I found that GitHub Pages hadn't fully enabled HTTPS, and the A records set in Cloudflare were also incomplete, so I went through the process again and decided to document it along the way.</blockquote>
@@ -2180,6 +2149,40 @@
         <tag>Cloudflare</tag>
         <tag>HTTPS</tag>
         <tag>CDN</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Adding Google Indexing to Hexo-based Website</title>
+    <url>/en/google-index.html</url>
+    <content><![CDATA[<p>Currently, the website cannot be found through search engines. If you want it to be discoverable, you need to add it to search engine indexing. Here, I’ll use Google as an example for the process.</p>
+<p><strong>The steps include:</strong></p>
+<ul>
+<li>Generating a sitemap</li>
+<li>Verifying the site<span id="more"></span></li>
+</ul>
+<h3 id="Generating-a-Sitemap"><a href="#Generating-a-Sitemap" class="headerlink" title="Generating a Sitemap"></a>Generating a Sitemap</h3><ol>
+<li>Open Git bash in the root directory of your blog.</li>
+<li>Run the command <code>npm install hexo-generator-sitemap --save</code> to install the sitemap generation plugin.</li>
+<li>Open the configuration file <code>_config.yml</code> in the root directory of your blog, add the following content:<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># <span class="title class_">Generate</span> sitemap automatically</span><br><span class="line"><span class="attr">sitemap</span>:</span><br><span class="line">  <span class="attr">path</span>: sitemap.<span class="property">xml</span></span><br></pre></td></tr></table></figure></li>
+<li>Run <code>hexo g</code> to generate the <code>sitemap.xml</code> file in the <code>/public</code> directory of your blog’s root directory.</li>
+</ol>
+<h3 id="Verifying-the-Site"><a href="#Verifying-the-Site" class="headerlink" title="Verifying the Site"></a>Verifying the Site</h3><ol>
+<li>Open <a href="https://www.google.com/webmasters/">Google Search Console</a> and click on “Sign in” at the top right corner.</li>
+<li>Choose a property and enter your site’s domain name, then click “Continue.”</li>
+<li>Download the Google verification file and place it in <code>blog/themes/next/source</code>.</li>
+<li>Execute <code>hexo cl</code>, <code>hexo g</code>, and <code>hexo d</code> consecutively.</li>
+<li>Go back to Google Search Console for verification.</li>
+<li>Search <code>site:domain</code> on Google to see your website.</li>
+</ol>
+<hr>
+<p>Now, your articles and website can be found on Google. Task completed~!</p>
+]]></content>
+      <categories>
+        <category>Website Configuration</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>SEO</tag>
       </tags>
   </entry>
   <entry>
@@ -5546,6 +5549,39 @@
       </tags>
   </entry>
   <entry>
+    <title>Export Outlook Emails</title>
+    <url>/en/outlook-export.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">After graduating, there are no more Outlook deadline reminders, and life is quite relaxing. However, the school's account will be deactivated in June (it's approaching quickly), so let's take advantage of the remaining time to export the emails as a keepsake.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<h1 id="Exporting"><a href="#Exporting" class="headerlink" title="Exporting"></a>Exporting</h1><p>Start by opening Outlook’s ‘Options’ (click on ‘File’ in the upper left corner, then choose ‘Options’ in the lower-left corner). Next, click on ‘Advanced’ and then ‘Export.’<br><img data-src="https://s2.loli.net/2022/05/25/SpfZscu2qKrGhFY.png" alt="Options"></p>
+<p>Select ‘Export to a file’ and then click ‘Next.’<br><img data-src="https://s2.loli.net/2022/05/25/xhowU4E6HMlgFzL.png" alt="Import and Export Wizard"></p>
+<p>Choose ‘Outlook Data File (.pst)’ and click ‘Next.’<br><img data-src="https://s2.loli.net/2022/05/25/Urat5VqPMETOHpS.png" alt="Export to a File"></p>
+<p>Select the content you want to export. If you want to export everything, choose the topmost email address, and then click ‘Next.’<br><img data-src="https://s2.loli.net/2022/05/25/HqKQLYjk6MEUTFx.png" alt="Export Outlook Data File"></p>
+<p>Choose the location where you want to export the file, and then click ‘Finish.’<br><img data-src="https://s2.loli.net/2022/05/25/4YWkOsjAPcnLJaw.png" alt="Select Export File Location"></p>
+<p>Next, you can ‘Create a password for the data file’ if desired.<br><img data-src="https://s2.loli.net/2022/05/25/pAUZCEXmy4M31Vu.png" alt="Add Optional Password"><br><img data-src="https://s2.loli.net/2022/05/25/gUwv1VXuiNjczHI.png" alt="Enter Password"></p>
+<p>At this point, the export process is complete.</p>
+<h1 id="Adding-an-Email-Alias"><a href="#Adding-an-Email-Alias" class="headerlink" title="Adding an Email Alias"></a>Adding an Email Alias</h1><p>After exporting, if you want to import it into your own mailbox (which is a bit whimsical, as you can simply forward all emails to your own mailbox), but if your Microsoft account is registered with a different email, and you have been given a random and unattractive Outlook address, you may want to add an alias.</p>
+<p>Here, I’m using the web version of Outlook. Start by clicking on the settings in the upper right corner, then at the bottom of the right sidebar, click on ‘View all Outlook settings’ in the popup.<br><img data-src="https://s2.loli.net/2022/05/25/WVwLSFP4zClypRG.png" alt="Manage or Choose Primary Alias"></p>
+<p>On the page that opens, select ‘Add email.’<br><img data-src="https://s2.loli.net/2022/05/25/TC2OgrAsRNkYxdl.png" alt="Add Email"></p>
+<p>Adding the alias is now complete.<br><img data-src="https://s2.loli.net/2022/05/25/CGNFuAjmw1YH8qR.png" alt="Add Alias"></p>
+<h1 id="Importing"><a href="#Importing" class="headerlink" title="Importing"></a>Importing</h1><p>Start by clicking on ‘File’ in the upper left corner, then select ‘Open &amp; Export’ - ‘Open Outlook Data File.’<br><img data-src="https://s2.loli.net/2022/05/25/4bJTqcYNexEfs5m.png" alt="Open Outlook Data File"></p>
+<p>Choose ‘Import from another program or file,’ and then simply follow the prompts, entering the password if you set one earlier.<br><img data-src="https://s2.loli.net/2022/05/25/VB5IcH4zpbAo3Rr.png" alt="Import Wizard"></p>
+]]></content>
+      <categories>
+        <category>Geek</category>
+      </categories>
+      <tags>
+        <tag>Outlook</tag>
+        <tag>Backup</tag>
+        <tag>Study in UK</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Common Commands for npm</title>
     <url>/en/npm.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">A collection of npm commands, as well as commands commonly used for Next theme upgrades.</blockquote>
@@ -5630,39 +5666,6 @@
         <tag>Hexo</tag>
         <tag>Next</tag>
         <tag>npm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Export Outlook Emails</title>
-    <url>/en/outlook-export.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">After graduating, there are no more Outlook deadline reminders, and life is quite relaxing. However, the school's account will be deactivated in June (it's approaching quickly), so let's take advantage of the remaining time to export the emails as a keepsake.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<h1 id="Exporting"><a href="#Exporting" class="headerlink" title="Exporting"></a>Exporting</h1><p>Start by opening Outlook’s ‘Options’ (click on ‘File’ in the upper left corner, then choose ‘Options’ in the lower-left corner). Next, click on ‘Advanced’ and then ‘Export.’<br><img data-src="https://s2.loli.net/2022/05/25/SpfZscu2qKrGhFY.png" alt="Options"></p>
-<p>Select ‘Export to a file’ and then click ‘Next.’<br><img data-src="https://s2.loli.net/2022/05/25/xhowU4E6HMlgFzL.png" alt="Import and Export Wizard"></p>
-<p>Choose ‘Outlook Data File (.pst)’ and click ‘Next.’<br><img data-src="https://s2.loli.net/2022/05/25/Urat5VqPMETOHpS.png" alt="Export to a File"></p>
-<p>Select the content you want to export. If you want to export everything, choose the topmost email address, and then click ‘Next.’<br><img data-src="https://s2.loli.net/2022/05/25/HqKQLYjk6MEUTFx.png" alt="Export Outlook Data File"></p>
-<p>Choose the location where you want to export the file, and then click ‘Finish.’<br><img data-src="https://s2.loli.net/2022/05/25/4YWkOsjAPcnLJaw.png" alt="Select Export File Location"></p>
-<p>Next, you can ‘Create a password for the data file’ if desired.<br><img data-src="https://s2.loli.net/2022/05/25/pAUZCEXmy4M31Vu.png" alt="Add Optional Password"><br><img data-src="https://s2.loli.net/2022/05/25/gUwv1VXuiNjczHI.png" alt="Enter Password"></p>
-<p>At this point, the export process is complete.</p>
-<h1 id="Adding-an-Email-Alias"><a href="#Adding-an-Email-Alias" class="headerlink" title="Adding an Email Alias"></a>Adding an Email Alias</h1><p>After exporting, if you want to import it into your own mailbox (which is a bit whimsical, as you can simply forward all emails to your own mailbox), but if your Microsoft account is registered with a different email, and you have been given a random and unattractive Outlook address, you may want to add an alias.</p>
-<p>Here, I’m using the web version of Outlook. Start by clicking on the settings in the upper right corner, then at the bottom of the right sidebar, click on ‘View all Outlook settings’ in the popup.<br><img data-src="https://s2.loli.net/2022/05/25/WVwLSFP4zClypRG.png" alt="Manage or Choose Primary Alias"></p>
-<p>On the page that opens, select ‘Add email.’<br><img data-src="https://s2.loli.net/2022/05/25/TC2OgrAsRNkYxdl.png" alt="Add Email"></p>
-<p>Adding the alias is now complete.<br><img data-src="https://s2.loli.net/2022/05/25/CGNFuAjmw1YH8qR.png" alt="Add Alias"></p>
-<h1 id="Importing"><a href="#Importing" class="headerlink" title="Importing"></a>Importing</h1><p>Start by clicking on ‘File’ in the upper left corner, then select ‘Open &amp; Export’ - ‘Open Outlook Data File.’<br><img data-src="https://s2.loli.net/2022/05/25/4bJTqcYNexEfs5m.png" alt="Open Outlook Data File"></p>
-<p>Choose ‘Import from another program or file,’ and then simply follow the prompts, entering the password if you set one earlier.<br><img data-src="https://s2.loli.net/2022/05/25/VB5IcH4zpbAo3Rr.png" alt="Import Wizard"></p>
-]]></content>
-      <categories>
-        <category>Geek</category>
-      </categories>
-      <tags>
-        <tag>Outlook</tag>
-        <tag>Backup</tag>
-        <tag>Study in UK</tag>
       </tags>
   </entry>
   <entry>
@@ -5912,321 +5915,6 @@
       <tags>
         <tag>Study in UK</tag>
         <tag>PTE</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ryzen Hackintosh</title>
-    <url>/en/ryzen-hackintosh.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">After three days of tinkering, I finally managed to successfully install macOS on my PC. I bought a salvaged Apple Wi-Fi card on a popular e-commerce platform, and it works almost perfectly. The installed system is macOS High Sierra (10.13.6 17G65), and yes, I'm writing this article on macOS (feeling proud.jpg).</blockquote>
-
-<p><img data-src="https://s2.loli.net/2022/05/13/TX95J8QoaSFbUHV.jpg" alt="1"></p>
-<p>The method of installing Hackintosh on Ryzen is Vanilla, which involves modifying the config.plist file to achieve a Hackintosh setup. After all, Apple primarily uses Intel processors, so the methods in this article only support certain AMD CPUs.</p>
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<p>The advantage of using this method to install Hackintosh is that you can use features like iMessage, FaceTime, Handoff, and Siri. The drawback is that 32-bit applications cannot be used.</p>
-<p>This method requires downloading several files, so it’s recommended to create a folder to store the related files.</p>
-<p>First, let’s introduce the configuration of the desktop computer. Originally, I wanted to use an NVMe SSD, but the motherboard’s second M.2 slot was not fully functional, so I switched to a more convenient SATA SSD.</p>
-<ul>
-<li>CPU: AMD Ryzen 1700</li>
-<li>GPU: NVIDIA GTX 1060 6GB</li>
-<li>Motherboard: ASRock X370 Killer SLI</li>
-<li>RAM: Apacer Blade 8G*2 DDR4 3000</li>
-<li>SSD1: Samsung SM961 256G (Windows 10)</li>
-<li>SSD2: Plextor M8VG 256G (MacOS)</li>
-<li>HDD: Seagate ST2000DM008 2T</li>
-<li>Bluetooth + Wi-Fi Card: BCM943602CS (a salvaged card from Apple MacBook Pro, plug and play)</li>
-</ul>
-<h1 id="Creating-the-Installation-USB-Drive"><a href="#Creating-the-Installation-USB-Drive" class="headerlink" title="Creating the Installation USB Drive"></a>Creating the Installation USB Drive</h1><h2 id="Preparations"><a href="#Preparations" class="headerlink" title="Preparations"></a>Preparations</h2><p>To create an installation USB drive, you’ll need the following items:</p>
-<ul>
-<li>gibMacOS: A program written in Python for downloading macOS components directly from Apple <a class="btn" href="https://github.com/corpnewt/gibMacOS">Download from Github</a></li>
-<li>AMD Vanilla: Kernel patches for AMD CPUs <a class="btn" href="https://github.com/AMD-OSX/AMD_Vanilla">Download from Github</a></li>
-<li>A USB drive with a capacity of at least <strong>8GB</strong>, USB 3.0 is recommended for faster speeds</li>
-<li>Wired internet connection</li>
-</ul>
-<p>Note that gibMacOS requires a <strong>Python</strong> environment, which you will need to set up yourself or find instructions online.</p>
-<p>AMD Vanilla files are divided into two categories: 15h_16h for FX series and A series CPUs, and 17h for Ryzen, Threadripper, and Athlon 2xxGE series processors. Download the appropriate files based on your CPU model.</p>
-<h2 id="Download-macOS-Installer"><a href="#Download-macOS-Installer" class="headerlink" title="Download macOS Installer"></a>Download macOS Installer</h2><p>Open the <code>gibMacOS</code> folder and run the <code>gibMacOS</code> script. Choose the macOS version you want to install by entering the corresponding number before the version and pressing Enter. The script will start downloading the macOS installer and create a folder structure like <code>gibMacOS/macos Downloads/publicrelease/version</code> in the same directory.</p>
-<ul>
-<li>The official guide suggests entering ‘r’ before selecting the version to speed up the download, but in practice, it doesn’t make a significant difference, and the download is usually quite fast.</li>
-<li>After the download is complete, you’ll see a prompt. If there are any entries under ‘Failed,’ it means those components failed to download, and you may need to run the program again to retry. If it still doesn’t work, consider using a VPN for better success.</li>
-</ul>
-<h2 id="Create-the-USB-Installation-Drive"><a href="#Create-the-USB-Installation-Drive" class="headerlink" title="Create the USB Installation Drive"></a>Create the USB Installation Drive</h2><ul>
-<li>Open the <code>gibMacOS</code> folder and run the <code>MakeInstall</code> script with administrator privileges. The first run will download necessary dependencies, but the download speed may be slow or fail, so you might need a VPN.</li>
-<li>After the download is complete, you’ll be asked to select your USB device. Enter the corresponding number next to your USB drive, and press Enter. Confirm that the selection is correct, and enter ‘y’ and press Enter. Make sure you double-check, as the selected disk will be formatted.</li>
-<li>After formatting, you’ll be prompted to enter the path to the previously downloaded macOS installer. Simply copy and paste the download path and press Enter.</li>
-<li>The writing process takes some time, so be patient. After it’s completed, press Enter and close the script.</li>
-</ul>
-<h1 id="Clover-Configuration"><a href="#Clover-Configuration" class="headerlink" title="Clover Configuration"></a>Clover Configuration</h1><p>After the burning process, you will see a disk named ‘CLOVER’ in your file manager. However, it is not complete yet; you need to add kernel patches and driver files.</p>
-<h2 id="CPU-Kernel-Patch"><a href="#CPU-Kernel-Patch" class="headerlink" title="CPU Kernel Patch"></a>CPU Kernel Patch</h2><p>Copy the <code>config.plist</code> from the downloaded AMD Vanilla corresponding to your version and paste it into the <code>CLOVER/EFI/CLOVER</code> directory. Replace the existing file. You will frequently use this file after installation.</p>
-<h2 id="Bootloader-Patch"><a href="#Bootloader-Patch" class="headerlink" title="Bootloader Patch"></a>Bootloader Patch</h2><p>Depending on the boot method, there are two categories: Legacy and UEFI.</p>
-<ul>
-<li>First, open the <code>CLOVER/EFI/CLOVER/drivers64UEFI</code> folder (or <code>CLOVER/EFI/CLOVER/drivers</code> if not present).</li>
-<li>For UEFI boot, delete the <code>BIOS</code> and <code>off</code> folders. Then, delete all files in the <code>UEFI</code> folder except <code>APFSDriverLoader.efi</code>, <code>HFSPlus.efi</code>, and <code>AptioMemoryFix.efi</code>. Copy these three files to the parent directory.</li>
-<li>For Legacy boot, delete the <code>UEFI</code> and <code>off</code> folders. Then, delete all files in the <code>BIOS</code> folder except <code>APFSDriverLoader</code> and <code>HFSPlus</code>. Copy these two files to the parent directory.</li>
-</ul>
-<h2 id="Kext-Driver-Patch"><a href="#Kext-Driver-Patch" class="headerlink" title="Kext Driver Patch"></a>Kext Driver Patch</h2><p>Kext files are macOS kernel extensions commonly used in Hackintosh (macOS on non-Apple hardware). They are typically used for device drivers and run in the core of the system.</p>
-<p>For this part, you will need to identify your hardware model and Google the required driver file names. The following files are usually sufficient. Files from GitHub should be downloaded from the ‘release’ section.</p>
-<p><strong>After extracting all downloaded files, place them in the <code>CLOVER/EFI/CLOVER/kext/Other</code> directory. Additionally, delete the <code>FakeSMC.kext</code> file in that directory.</strong></p>
-<h3 id="Essential-Files"><a href="#Essential-Files" class="headerlink" title="Essential Files"></a>Essential Files</h3><ul>
-<li><code>VirtualSMC.kext</code>: This file emulates the real SMC functionality on a Mac, making the system think it’s a genuine Mac. Without it, Hackintosh won’t work. <a class="btn" href="https://github.com/acidanthera/VirtualSMC/releases/download/1.0.7/VirtualSMC-1.0.7-RELEASE.zip">Download 1.0.7</a></li>
-<li><code>NullCPUPowerManagement.kext</code>: This file disables CPU power management, which is designed for Intel CPUs. AMD platforms do not support this program. You can find a usable file from <a href="https://space.bilibili.com/319160358?spm_id_from=333.788.b_765f7570696e666f.1">某某大神_</a> <a class="btn" href="https://github.com/corpnewt/NullCPUPowerManagement">Download from Lanzou</a></li>
-</ul>
-<h3 id="Network-Cards"><a href="#Network-Cards" class="headerlink" title="Network Cards"></a>Network Cards</h3><ul>
-<li><a href="https://github.com/Mieze/IntelMausiEthernet">IntelMausiEthernet.kext</a>: For most newer Intel network cards.</li>
-<li><a href="https://sourceforge.net/projects/osx86drivers/">AppleIntelE1000e.kext</a>: For older Intel network cards but may cause issues on newer ones.</li>
-<li><a href="https://github.com/Mieze/AtherosE2200Ethernet">AtherosE2200Ethernet.kext</a>: For most Atheros and Killer network cards.</li>
-<li><a href="https://github.com/Mieze/RTL8111_driver_for_OS_X">RealtekRTL8111.kext</a>: For most gigabit Realtek network cards.</li>
-<li><a href="https://github.com/Mieze/RealtekRTL8100">RealtekRTL8100.kext</a>: For 10&#x2F;100 Realtek network cards.</li>
-<li><a href="https://cdn.discordapp.com/attachments/390417931659378688/556912824228773888/SmallTree-Intel-211-AT-PCIe-GBE.kext.zip">SmallTree-Intel-211-AT-PCIe-GBE.kext</a>: For Intel I211-AT and related network cards.</li>
-<li><a href="http://down2.121down.com:8181/soft/AppleIGB.kext.zip">AppleIGB</a>: This is the one initially used, later replaced with the one above.</li>
-</ul>
-<h3 id="Graphics-Cards"><a href="#Graphics-Cards" class="headerlink" title="Graphics Cards"></a>Graphics Cards</h3><ul>
-<li><a href="https://github.com/acidanthera/WhateverGreen">Whatevergreen.kext</a>: This file fixes various graphics card issues.</li>
-<li><a href="https://github.com/acidanthera/Lilu">Lilu.kext</a>: This file is used as a loader for other files.</li>
-</ul>
-<h3 id="Wi-Fi-and-Bluetooth"><a href="#Wi-Fi-and-Bluetooth" class="headerlink" title="Wi-Fi and Bluetooth"></a>Wi-Fi and Bluetooth</h3><p>This section is only relevant if you’re using a non-native Wi-Fi card. It’s recommended to get a genuine Apple salvaged Wi-Fi card, such as BCM94360CD, BCM943602CS, or BCM94360CS2, as they work seamlessly and unlock features like Airdrop and Handoff.</p>
-<ul>
-<li><a href="https://github.com/acidanthera/AirportBrcmFixup">AirportBrcmFixup.kext</a></li>
-<li><a href="https://github.com/RehabMan/OS-X-BrcmPatchRAM">OS-X-BrcmPatchRAM</a></li>
-</ul>
-<h3 id="Audio"><a href="#Audio" class="headerlink" title="Audio"></a>Audio</h3><ul>
-<li><a href="https://github.com/acidanthera/AppleALC">AppleALC.kext</a>: This file can drive most audio cards.</li>
-</ul>
-<h3 id="Miscellaneous"><a href="#Miscellaneous" class="headerlink" title="Miscellaneous"></a>Miscellaneous</h3><p>Here’s a collection of kext files. You may need to use a VPN to access them.</p>
-<a class="btn" href="https://1drv.ms/f/s!AiP7m5LaOED-m-J8-MLJGnOgAqnjGw">Download from Onedrive</a>
-
-<p>Now your installation drive is ready, and the next step is to proceed with the installation.</p>
-<h1 id="Installation-of-the-System"><a href="#Installation-of-the-System" class="headerlink" title="Installation of the System"></a>Installation of the System</h1><p>This step may encounter various issues, such as freezing or error messages. If that happens, you can try to power off or restart (it can be a bit unpredictable), and you might need to restart multiple times.</p>
-<h2 id="BIOS-Settings"><a href="#BIOS-Settings" class="headerlink" title="BIOS Settings"></a>BIOS Settings</h2><ol>
-<li>Restart your computer and enter the BIOS (search for the shortcut key; usually F2 or DEL). Set all settings to default, save, and exit.</li>
-<li>Re-enter the BIOS and adjust the following settings. These options are for reference; I only loaded the default settings on my motherboard and disabled CSM, leaving others at Auto.<ul>
-<li>AMD-V &#x2F; SVM &#x3D; Disabled</li>
-<li>SATA Ports &#x3D; AHCI</li>
-<li>IOMMU &#x3D; Disabled</li>
-<li>APU &#x3D; Disabled</li>
-<li>HPET &#x3D; Enabled</li>
-<li>EHCI Hands-off &#x3D; Enabled</li>
-<li>XHCI Hands-off &#x3D; Enabled (ignore this if you only have USB 3.0 ports like me)</li>
-<li>Serial Port &#x3D; Disabled</li>
-<li>Parallel Port &#x3D; Disabled</li>
-<li>CSM &#x3D; Disable (for UEFI boot)</li>
-</ul>
-</li>
-<li>Save and exit. After restarting, select the <strong>USB drive</strong> as the preferred <code>Boot Device</code>. The shortcut key to do this varies depending on your motherboard; please search for it or refer to online resources.</li>
-<li>When booting from the USB drive, you’ll enter the Clover menu. Choose <code>Boot macOS Install from OS X Base System</code> and press Enter. Clover usually defaults to verbose mode, which means it will display the status as it loads. Once it completes, you’ll enter the macOS installation program. You might encounter a language selection menu; I only saw it the first time I installed macOS. For subsequent reinstallations, it was in Simplified Chinese by default.</li>
-</ol>
-<h2 id="Disk-Formatting"><a href="#Disk-Formatting" class="headerlink" title="Disk Formatting"></a>Disk Formatting</h2><p>macOS uses a journaling file system different from Windows, so you need to format the target disk before installation.</p>
-<ol>
-<li>Double-click <code>Disk Utility</code>.</li>
-<li>Click the dropdown menu in the top-left corner labeled <code>View</code> and select <code>Show All Devices</code>.</li>
-<li>Click <code>Erase</code> at the top.</li>
-<li>Select the hard drive where you want to install macOS and configure it as follows:<ul>
-<li>Name: (Set the name for your hard drive)</li>
-<li>Format: Mac OS Extended (Journaled)</li>
-<li>Scheme: GUID Partition Map</li>
-</ul>
-</li>
-<li>Click <code>Erase</code> in the bottom right corner.</li>
-<li>Close <code>Disk Utility</code>.</li>
-</ol>
-<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>During this process, you’ll need an internet connection to download components. Note that the server is overseas, so step 2 below may be somewhat unstable. If you encounter issues like <code>failed to download,</code> you may need to shut down and restart, then reformat the hard drive (you might need to format it twice; it’s a bit of a mystical issue). If possible, set up a VPN on your router for smoother downloads.</p>
-<ol>
-<li>Choose <code>Install macOS</code>, then click <code>Continue</code>.</li>
-<li>Click <code>Continue</code> again. At this point, you might receive a prompt about being unable to download something.</li>
-<li>Select the disk where you want to install macOS.</li>
-<li>Wait for about ten to fifteen minutes. After the installation is complete, your computer will automatically restart.</li>
-</ol>
-<h2 id="System-Setup"><a href="#System-Setup" class="headerlink" title="System Setup"></a>System Setup</h2><p>After rebooting, select the USB drive for booting again, enter Clover, and choose <code>Boot macOS from [Your Hard Drive&#39;s Name]</code>. Wait for the Clover verbose mode to complete, and you’ll reach the welcome page. Choose your country, keyboard settings, etc.</p>
-<ul>
-<li><strong>Transfer Information to This Mac</strong>: For now, select <code>Don&#39;t transfer any information.</code></li>
-<li><strong>Sign in with Your Apple ID</strong>: You can skip this for now, but later you might need to change your device model, and after that, sign in again.</li>
-<li><strong>Terms and Conditions</strong>: Agree to all.</li>
-<li><strong>Express Set Up</strong>: Choose <code>Set Up Later</code> and uncheck everything in <code>Analytics</code> to prevent macOS from analyzing.</li>
-</ul>
-<p>After a short wait, you’ll be inside the system.</p>
-<h1 id="System-Configuration"><a href="#System-Configuration" class="headerlink" title="System Configuration"></a>System Configuration</h1><p>We still need to boot through the installation USB drive for this step. Here, we’ll copy the EFI files from the USB drive to the boot drive, eliminating the need for the USB drive.</p>
-<p>First, you’ll need to download the following two pieces of software:</p>
-<ul>
-<li><a href="https://sourceforge.net/projects/cloverefiboot/">Clover EFI bootloader</a></li>
-<li><a href="https://mackie100projects.altervista.org/download-clover-configurator/">Clover Configurator</a></li>
-</ul>
-<h2 id="Clover-EFI-Bootloader-Configuration"><a href="#Clover-EFI-Bootloader-Configuration" class="headerlink" title="Clover EFI Bootloader Configuration"></a>Clover EFI Bootloader Configuration</h2><p>Download and install Clover EFI bootloader. Proceed with the installation and select <code>Customize</code> at the <code>Installation Type</code> step.</p>
-<p><strong>For UEFI Settings</strong></p>
-<ul>
-<li>Install only UEFI version</li>
-<li>Install Clover in the ESP</li>
-<li>In UEFI Drivers, select these three options:<ul>
-<li>AptioMemoryFix</li>
-<li>PartitionDxe</li>
-<li>ApfsLoader</li>
-</ul>
-</li>
-<li>Install RC Scripts on the target volume</li>
-</ul>
-<p><strong>For Legacy Settings</strong></p>
-<ul>
-<li>Boot0ss</li>
-<li>Clover EFI Sata</li>
-<li>Install Clover in the ESP</li>
-<li>In Bios Drivers, 64bit, select <code>ApfsLoader</code></li>
-<li>Install RC Scripts on the target volume</li>
-</ul>
-<h2 id="Replacing-EFI-Files"><a href="#Replacing-EFI-Files" class="headerlink" title="Replacing EFI Files"></a>Replacing EFI Files</h2><ol>
-<li>Download, install, and open Clover Configurator.</li>
-<li>Click on <code>Mount EFI</code> from the left-hand menu.</li>
-<li>In the bottom-right corner, find your macOS installation hard drive and click <code>Mount Partition</code> next to it.</li>
-<li>Click <code>Open Partition,</code> which will open the EFI folder.</li>
-<li>Open your installation USB drive’s <code>CLOVER</code> folder and copy its contents into the previously opened folder.</li>
-<li>You’ll receive a system prompt indicating duplicate files; click <code>Merge.</code></li>
-<li>Replace the <code>./EFI/CLOVER/config.plist</code> on your installation hard drive with the one from your USB drive.</li>
-</ol>
-<p>Now, you can reboot your system, enter the BIOS, and change the preferred boot device to your installation hard drive. You can safely remove the USB drive at this point.</p>
-<h1 id="Driver-Installation"><a href="#Driver-Installation" class="headerlink" title="Driver Installation"></a>Driver Installation</h1><p>Driver installation requires frequent use of the <code>./EFI/CLOVER/config.plist</code> file, which can be opened with Clover Configurator. After installation, restart your system for the changes to take effect.</p>
-<h2 id="Nvidia-Webdriver"><a href="#Nvidia-Webdriver" class="headerlink" title="Nvidia Webdriver"></a>Nvidia Webdriver</h2><p>I only have a GTX 1060, so I’m providing the installation package for 10-series graphics cards here. For other types, please search for the appropriate drivers.</p>
-<a class="btn" href="https://images.nvidia.com/mac/pkg/387/WebDriver-387.10.10.10.40.105.pkg">Download 387.10.10.10.40.105 (17G65)</a>
-
-<ul>
-<li>After downloading and installing, it will ask you to restart. After the restart, open <code>./EFI/CLOVER/config.plist</code>. Right-click in the <code>Arguments</code> section under <code>Boot Parameters</code> and select <code>nvda_drv=1</code>.</li>
-<li>If your screen is still lagging or tearing after the restart, it means the Webdriver is not enabled. You’ll need to find the Nvidia icon in the top bar, click on it, and select the driver from the dropdown menu. Restart to apply the changes.</li>
-</ul>
-<h2 id="Audio-1"><a href="#Audio-1" class="headerlink" title="Audio"></a>Audio</h2><p>You’ve already installed the AppleALC audio driver earlier, but you won’t have sound yet. You need to configure it in the <code>config.plist</code> file:</p>
-<ol>
-<li>Find your audio card’s folder <a href="https://github.com/acidanthera/AppleALC/tree/master/Resources">here</a>. In the folder, you’ll find files starting with <code>layout.</code> Note down any random number from one of these files.</li>
-<li>Open the <code>config.plist</code> file using Clover Configurator.</li>
-<li>Locate <code>Device Properties.</code></li>
-<li>In the top right corner, find <code>Audio.</code> Enter the number you noted down next to <code>Inject.</code></li>
-<li>Check the boxes next to <code>AFG Low Power State</code> and <code>Reset HDA.</code></li>
-</ol>
-<h2 id="USB"><a href="#USB" class="headerlink" title="USB"></a>USB</h2><p>I initially used the following method to install USB drivers, but it can cause issues when you have multiple devices connected, and Bluetooth and the camera might not work:</p>
-<ol>
-<li>Download the <a href="https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/">USBInjectALL</a> driver.</li>
-<li>After downloading, move it to the <code>./EFI/CLOVER/kext/Other</code> directory on your EFI partition.</li>
-<li>Open the <code>config.plist</code> file using Clover Configurator.</li>
-<li>Find <code>Device Properties.</code></li>
-<li>Under the <code>USB</code> section, check the following three options:<ul>
-<li>Inject</li>
-<li>Add ClockID</li>
-<li>Fix Ownership</li>
-</ul>
-</li>
-</ol>
-<p>However, for Ryzen processors, you need to use a specific USB patch. A talented developer on <a href="https://github.com/XLNCs/ryzenusbfix">GitHub</a> has created a script for this. Copy and paste the following command into Terminal, execute it, and then restart:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -s -o ~/Desktop/ryzenusbfix.sh https://raw.githubusercontent.com/XLNCs/ryzenusbfix/master/ryzenusbfix.sh &amp;&amp; chmod +x ~/Desktop/ryzenusbfix.sh &amp;&amp; ~/Desktop/ryzenusbfix.sh</span><br></pre></td></tr></table></figure>
-
-<h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2><p>This section is for reference only, as everyone’s configuration is different. Open <code>./EFI/CLOVER/config.plist</code> and, under <code>Install Drivers,</code> choose other driver files you want to load. Here, I’ve downloaded the following files from the UEFI 64-bit driver section:</p>
-<ul>
-<li>ApfsDriverLoader</li>
-<li>AptioMemoryFix</li>
-<li>EmuVariableUefi</li>
-<li>HFSPlus</li>
-<li>NTFS</li>
-<li>AudioDxe</li>
-</ul>
-<h1 id="Other-Adjustments"><a href="#Other-Adjustments" class="headerlink" title="Other Adjustments"></a>Other Adjustments</h1><h2 id="Change-Clover-Theme"><a href="#Change-Clover-Theme" class="headerlink" title="Change Clover Theme"></a>Change Clover Theme</h2><p>The default Clover boot menu is in text mode, which may not look very appealing. To enhance it with a theme, I found a nice theme on GitHub called <a href="https://github.com/burpsuite/clover_theme">Simple</a>. Here’s how to use it as an example:</p>
-<ol>
-<li>Download and unzip the theme folder, then place it in the <code>./EFI/CLOVER/theme</code> directory. Also, copy the <code>theme.plist</code> file from within the theme folder to the parent directory (the <code>theme</code> folder itself).</li>
-<li>Open the <code>./EFI/CLOVER/config.plist</code> file.</li>
-<li>Navigate to the <code>Boot Screen</code> section and enter the name of the theme, in this case, <code>Simple,</code> into the <code>Theme</code> field.</li>
-<li>Uncheck the <code>Text Mode</code> option below.</li>
-<li>Adjust the resolution as needed (there’s no 21:9 resolution, so I chose 1920x1080, which seemed to work well as it filled the screen).</li>
-</ol>
-<h2 id="Modify-CPU-Model"><a href="#Modify-CPU-Model" class="headerlink" title="Modify CPU Model"></a>Modify CPU Model</h2><p>This step is just for personal satisfaction since macOS can’t recognize Ryzen processors, resulting in the CPU showing up as <code>Unknown</code> in the <code>About This Mac</code> section. What we can do is modify the file corresponding to the <code>Unknown</code> CPU to display custom content.</p>
-<ol>
-<li>Download BBEdit or TextWrangler.</li>
-<li>Open the files in <code>/System/Library/PrivateFrameworks/AppleSystemInfo.framework/Versions/A/Resources/zh_CN.lproj/</code>.</li>
-<li>Find <code>UnknownCPUKind</code> and modify the text <code>未知</code> (Unknown) to whatever you’d like.</li>
-<li>Save the changes. Now, the CPU in <code>About This Mac</code> will display the content you entered.</li>
-</ol>
-<h2 id="Modify-Model-Identifier"><a href="#Modify-Model-Identifier" class="headerlink" title="Modify Model Identifier"></a>Modify Model Identifier</h2><p>Open <code>./EFI/CLOVER/config.plist</code> and under the <code>Model Settings</code> section, select the right-most option with up and down arrows to open a dropdown menu. Choose the model identifier that suits your system.</p>
-<h2 id="Enable-Native-NTFS-Read-x2F-Write"><a href="#Enable-Native-NTFS-Read-x2F-Write" class="headerlink" title="Enable Native NTFS Read&#x2F;Write"></a>Enable Native NTFS Read&#x2F;Write</h2><p>Currently, macOS can only read NTFS-formatted drives but can’t write to them. However, macOS does have the capability to write to NTFS drives, but it’s not enabled by default due to licensing issues (NTFS is a Microsoft format). Here’s how to enable it:</p>
-<ol>
-<li>Open Terminal and enter the command <code>diskutil list</code> to list your drives. Find the drive you want to enable for read and write access and note its <code>NAME</code>.</li>
-<li>Enter the command <code>sudo nano /etc/fstab</code> and press Enter, then enter your password.</li>
-<li>Add the line <code>LABEL=NAME none ntfs rw,auto,nobrowse</code> where <code>NAME</code> is the name of the drive you noted earlier.</li>
-<li>Use <code>Control+X</code> to exit, then press Y to confirm and Enter to save.</li>
-<li>Restart your system, and you should be able to write to the NTFS drive.</li>
-<li>If you can’t see the drive in Finder, you can create a symbolic link to it on your desktop using the command <code>sudo ln -s /Volumes/NAME ~/Desktop/NAME</code>, where <code>NAME</code> is the name of the drive.</li>
-</ol>
-<h2 id="Create-a-macOS-Virtual-Machine"><a href="#Create-a-macOS-Virtual-Machine" class="headerlink" title="Create a macOS Virtual Machine"></a>Create a macOS Virtual Machine</h2><p>This section provides an alternative method in case the installation process fails. If you prefer not to install directly on your disk, you can use a lazy method of creating a virtual machine. Here’s how I did it in the past:</p>
-<ol>
-<li>The virtual machine image is shared by <a href="https://forum.amd-osx.com/viewtopic.php?t=1899">Shamme</a> on the forum. Download and extract it using the following link:<a class="btn" href="https://hackintosher.com/wp-content/uploads/SierraAMD_VM.zip.torrent.zip">Download SierraAMD_VM.zip.torrent.zip</a></li>
-<li>Next, you’ll need to install VMware. Download and install it from the <a href="https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html">VMware official website</a>.</li>
-<li>Open VMware and click on <code>Create a New Virtual Machine.</code></li>
-<li>Select <code>Typical</code> and click Next.</li>
-<li>Check <code>I will install the operating system later</code> and click Next.</li>
-<li>For the guest operating system, select <code>Other</code> and <code>Other (64-bit).</code></li>
-<li>Edit the virtual machine name and choose its location.</li>
-<li>Set the disk size; a larger size like 60GB is recommended, but 40GB should suffice. Choose <code>Store virtual disk as a single file.</code></li>
-<li>Click Finish.</li>
-<li>Click <code>Edit Virtual Machine Settings.</code></li>
-<li>Increase the memory size to 2048MB (2GB) or more.</li>
-<li><strong>Uncheck</strong> <code>Connect at power on</code> under <code>CD/DVD (IDE).</code></li>
-<li>Click on <code>Hard Disk (IDE)</code> and then click the <code>Remove</code> button below.</li>
-<li>Click the <code>Add</code> button.</li>
-<li>Select <code>Hard Disk</code> and click Next.</li>
-<li>Choose <code>SCSI.</code></li>
-<li>Select <code>Use an existing virtual disk.</code></li>
-<li>Click <code>Browse</code> and locate the downloaded file from step 1. Open it.</li>
-<li>Click Finish.</li>
-<li>Choose <code>Keep Existing Format.</code></li>
-<li>Click <code>OK.</code></li>
-<li>Click <code>Power on this virtual machine.</code></li>
-<li>Press Enter twice and wait for it to load to the Welcome page.</li>
-<li>Check <code>Show all</code> and select <code>China,</code> then click <code>Continue.</code></li>
-<li>Choose the appropriate input method.</li>
-<li>Select <code>Don&#39;t transfer any information now.</code></li>
-<li>Click <code>Continue,</code> then choose <code>Don&#39;t use.</code></li>
-<li>Select <code>Don&#39;t sign in,</code> then choose <code>Skip.</code></li>
-<li>Click <code>Agree</code> and then click <code>Agree</code> again.</li>
-<li>Enter your username and password.</li>
-<li>Choose your time zone on the map.</li>
-<li><strong>Uncheck</strong> <code>Share Mac Analytics with Apple,</code> and wait a moment to enter the system.</li>
-</ol>
-<h2 id="About-Software"><a href="#About-Software" class="headerlink" title="About Software"></a>About Software</h2><p>Here’s a list of software I’ve gathered:</p>
-<ul>
-<li>Be cautious - <strong>CPU-S</strong>: Do not install if you have a Ryzen CPU. I tried to test CPU frequency, but it caused my system to crash and restart. After logging in, it continued to restart, and I had to reinstall the system.</li>
-<li>Cloud Sync - <strong>OneDrive</strong>: For synchronizing common documents.</li>
-<li>FTP - <strong>Transmit</strong>: Connects to various cloud services like Dropbox and Google Drive.</li>
-<li>Hardware Monitoring - <strong>iStat Menus</strong>: Monitor your system’s hardware status.</li>
-<li>Backup - <strong>Carbon Copy Cloner</strong>: Use it for backups as Time Machine tends to freeze around 400MB.</li>
-<li>Study tools? - Steam has a macOS client as well.</li>
-<li>Ad Blocker for Browsers - Safari’s <a href="https://safari-extensions.apple.com/details/?id=org.adblockplus.adblockplussafari-GRYYZR985A">Adblock Plus Extension</a>.</li>
-<li>Media Player - <strong>Movist</strong>: Unlike most media players, which are like PowerPoint for video playback, QuickTime’s format support is limited. Movist, based on QuickTime, resolves this issue.</li>
-<li>Note-taking - <strong>OneNote</strong>: Syncs seamlessly across three platforms.</li>
-<li>Uninstaller - <strong>App Cleaner</strong>: A cleaner uninstaller.</li>
-<li>Download Manager - <strong>Free Download Manager</strong>: It’s in the name, free.</li>
-<li>Video Downloader - <strong>Downie</strong>: Download YouTube videos.</li>
-<li>Window Manager - <strong>Magnet</strong>: It’s not related to torrents, but it helps manage windows. Windows has had this feature for a while, but Mac relies on third-party software.</li>
-<li>Translation - <strong>EuDic</strong>: It’s a habit; iOS can sync dictionaries.</li>
-<li>Swiss Army Knife - <strong>VS Code</strong>: Not just for coding; it’s great for Markdown too.</li>
-<li>VPN - <strong>ShadowsocksX-NG</strong>: The small plane version.</li>
-<li>3D Rendering - <strong>VRayX</strong>: For heavyweight tasks.</li>
-<li>Benchmarking - <strong>CINEBENCH</strong>: Ryzen is supposed to score high; why doesn’t it feel that way?</li>
-<li>Office Software - <strong>Office</strong>: Microsoft’s suite works better, with Keynote being the exception.</li>
-<li>Screenshot - <strong>Snipaste</strong>: Capture and annotate.</li>
-<li>Smooth Scrolling - <strong>MOS</strong>: Say goodbye to choppy mouse wheel scrolling.</li>
-<li>Cheat Sheet - <strong>Cheatsheet</strong>: Hold Command to view shortcuts.</li>
-<li>iPhone Touchpad - <strong>FullControl</strong>: Control your Mac with your iPhone.</li>
-<li>Workhorse - <strong>Xcode</strong>: If you’re installing Hackintosh, you probably want to use it.</li>
-</ul>
-<h2 id="Keyboard-Shortcuts"><a href="#Keyboard-Shortcuts" class="headerlink" title="Keyboard Shortcuts"></a>Keyboard Shortcuts</h2><p>Keyboard shortcuts can drive dual-boot users insane. On macOS, copy is <code>Command+C</code>, while on Windows, it’s <code>Ctrl+C</code>. However, the keyboard’s <code>Command</code> key corresponds to the <code>Windows</code> key.</p>
-<ul>
-<li>Most <code>Ctrl</code> shortcuts on Windows work with <code>Command</code> on macOS.</li>
-<li>Show&#x2F;Hide hidden files: <code>Command + Shift + .</code></li>
-</ul>
-<blockquote>
-<p>References: <a href="https://vanilla.amd-osx.com/">AMD OS X Vanilla</a>、<a href="https://hackintosher.com/">Hackintosher</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Hardware</category>
-      </categories>
-      <tags>
-        <tag>Hackintosh</tag>
-        <tag>Multisystem</tag>
       </tags>
   </entry>
   <entry>
@@ -6604,6 +6292,321 @@
       <tags>
         <tag>Study in UK</tag>
         <tag>PTE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ryzen Hackintosh</title>
+    <url>/en/ryzen-hackintosh.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">After three days of tinkering, I finally managed to successfully install macOS on my PC. I bought a salvaged Apple Wi-Fi card on a popular e-commerce platform, and it works almost perfectly. The installed system is macOS High Sierra (10.13.6 17G65), and yes, I'm writing this article on macOS (feeling proud.jpg).</blockquote>
+
+<p><img data-src="https://s2.loli.net/2022/05/13/TX95J8QoaSFbUHV.jpg" alt="1"></p>
+<p>The method of installing Hackintosh on Ryzen is Vanilla, which involves modifying the config.plist file to achieve a Hackintosh setup. After all, Apple primarily uses Intel processors, so the methods in this article only support certain AMD CPUs.</p>
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<p>The advantage of using this method to install Hackintosh is that you can use features like iMessage, FaceTime, Handoff, and Siri. The drawback is that 32-bit applications cannot be used.</p>
+<p>This method requires downloading several files, so it’s recommended to create a folder to store the related files.</p>
+<p>First, let’s introduce the configuration of the desktop computer. Originally, I wanted to use an NVMe SSD, but the motherboard’s second M.2 slot was not fully functional, so I switched to a more convenient SATA SSD.</p>
+<ul>
+<li>CPU: AMD Ryzen 1700</li>
+<li>GPU: NVIDIA GTX 1060 6GB</li>
+<li>Motherboard: ASRock X370 Killer SLI</li>
+<li>RAM: Apacer Blade 8G*2 DDR4 3000</li>
+<li>SSD1: Samsung SM961 256G (Windows 10)</li>
+<li>SSD2: Plextor M8VG 256G (MacOS)</li>
+<li>HDD: Seagate ST2000DM008 2T</li>
+<li>Bluetooth + Wi-Fi Card: BCM943602CS (a salvaged card from Apple MacBook Pro, plug and play)</li>
+</ul>
+<h1 id="Creating-the-Installation-USB-Drive"><a href="#Creating-the-Installation-USB-Drive" class="headerlink" title="Creating the Installation USB Drive"></a>Creating the Installation USB Drive</h1><h2 id="Preparations"><a href="#Preparations" class="headerlink" title="Preparations"></a>Preparations</h2><p>To create an installation USB drive, you’ll need the following items:</p>
+<ul>
+<li>gibMacOS: A program written in Python for downloading macOS components directly from Apple <a class="btn" href="https://github.com/corpnewt/gibMacOS">Download from Github</a></li>
+<li>AMD Vanilla: Kernel patches for AMD CPUs <a class="btn" href="https://github.com/AMD-OSX/AMD_Vanilla">Download from Github</a></li>
+<li>A USB drive with a capacity of at least <strong>8GB</strong>, USB 3.0 is recommended for faster speeds</li>
+<li>Wired internet connection</li>
+</ul>
+<p>Note that gibMacOS requires a <strong>Python</strong> environment, which you will need to set up yourself or find instructions online.</p>
+<p>AMD Vanilla files are divided into two categories: 15h_16h for FX series and A series CPUs, and 17h for Ryzen, Threadripper, and Athlon 2xxGE series processors. Download the appropriate files based on your CPU model.</p>
+<h2 id="Download-macOS-Installer"><a href="#Download-macOS-Installer" class="headerlink" title="Download macOS Installer"></a>Download macOS Installer</h2><p>Open the <code>gibMacOS</code> folder and run the <code>gibMacOS</code> script. Choose the macOS version you want to install by entering the corresponding number before the version and pressing Enter. The script will start downloading the macOS installer and create a folder structure like <code>gibMacOS/macos Downloads/publicrelease/version</code> in the same directory.</p>
+<ul>
+<li>The official guide suggests entering ‘r’ before selecting the version to speed up the download, but in practice, it doesn’t make a significant difference, and the download is usually quite fast.</li>
+<li>After the download is complete, you’ll see a prompt. If there are any entries under ‘Failed,’ it means those components failed to download, and you may need to run the program again to retry. If it still doesn’t work, consider using a VPN for better success.</li>
+</ul>
+<h2 id="Create-the-USB-Installation-Drive"><a href="#Create-the-USB-Installation-Drive" class="headerlink" title="Create the USB Installation Drive"></a>Create the USB Installation Drive</h2><ul>
+<li>Open the <code>gibMacOS</code> folder and run the <code>MakeInstall</code> script with administrator privileges. The first run will download necessary dependencies, but the download speed may be slow or fail, so you might need a VPN.</li>
+<li>After the download is complete, you’ll be asked to select your USB device. Enter the corresponding number next to your USB drive, and press Enter. Confirm that the selection is correct, and enter ‘y’ and press Enter. Make sure you double-check, as the selected disk will be formatted.</li>
+<li>After formatting, you’ll be prompted to enter the path to the previously downloaded macOS installer. Simply copy and paste the download path and press Enter.</li>
+<li>The writing process takes some time, so be patient. After it’s completed, press Enter and close the script.</li>
+</ul>
+<h1 id="Clover-Configuration"><a href="#Clover-Configuration" class="headerlink" title="Clover Configuration"></a>Clover Configuration</h1><p>After the burning process, you will see a disk named ‘CLOVER’ in your file manager. However, it is not complete yet; you need to add kernel patches and driver files.</p>
+<h2 id="CPU-Kernel-Patch"><a href="#CPU-Kernel-Patch" class="headerlink" title="CPU Kernel Patch"></a>CPU Kernel Patch</h2><p>Copy the <code>config.plist</code> from the downloaded AMD Vanilla corresponding to your version and paste it into the <code>CLOVER/EFI/CLOVER</code> directory. Replace the existing file. You will frequently use this file after installation.</p>
+<h2 id="Bootloader-Patch"><a href="#Bootloader-Patch" class="headerlink" title="Bootloader Patch"></a>Bootloader Patch</h2><p>Depending on the boot method, there are two categories: Legacy and UEFI.</p>
+<ul>
+<li>First, open the <code>CLOVER/EFI/CLOVER/drivers64UEFI</code> folder (or <code>CLOVER/EFI/CLOVER/drivers</code> if not present).</li>
+<li>For UEFI boot, delete the <code>BIOS</code> and <code>off</code> folders. Then, delete all files in the <code>UEFI</code> folder except <code>APFSDriverLoader.efi</code>, <code>HFSPlus.efi</code>, and <code>AptioMemoryFix.efi</code>. Copy these three files to the parent directory.</li>
+<li>For Legacy boot, delete the <code>UEFI</code> and <code>off</code> folders. Then, delete all files in the <code>BIOS</code> folder except <code>APFSDriverLoader</code> and <code>HFSPlus</code>. Copy these two files to the parent directory.</li>
+</ul>
+<h2 id="Kext-Driver-Patch"><a href="#Kext-Driver-Patch" class="headerlink" title="Kext Driver Patch"></a>Kext Driver Patch</h2><p>Kext files are macOS kernel extensions commonly used in Hackintosh (macOS on non-Apple hardware). They are typically used for device drivers and run in the core of the system.</p>
+<p>For this part, you will need to identify your hardware model and Google the required driver file names. The following files are usually sufficient. Files from GitHub should be downloaded from the ‘release’ section.</p>
+<p><strong>After extracting all downloaded files, place them in the <code>CLOVER/EFI/CLOVER/kext/Other</code> directory. Additionally, delete the <code>FakeSMC.kext</code> file in that directory.</strong></p>
+<h3 id="Essential-Files"><a href="#Essential-Files" class="headerlink" title="Essential Files"></a>Essential Files</h3><ul>
+<li><code>VirtualSMC.kext</code>: This file emulates the real SMC functionality on a Mac, making the system think it’s a genuine Mac. Without it, Hackintosh won’t work. <a class="btn" href="https://github.com/acidanthera/VirtualSMC/releases/download/1.0.7/VirtualSMC-1.0.7-RELEASE.zip">Download 1.0.7</a></li>
+<li><code>NullCPUPowerManagement.kext</code>: This file disables CPU power management, which is designed for Intel CPUs. AMD platforms do not support this program. You can find a usable file from <a href="https://space.bilibili.com/319160358?spm_id_from=333.788.b_765f7570696e666f.1">某某大神_</a> <a class="btn" href="https://github.com/corpnewt/NullCPUPowerManagement">Download from Lanzou</a></li>
+</ul>
+<h3 id="Network-Cards"><a href="#Network-Cards" class="headerlink" title="Network Cards"></a>Network Cards</h3><ul>
+<li><a href="https://github.com/Mieze/IntelMausiEthernet">IntelMausiEthernet.kext</a>: For most newer Intel network cards.</li>
+<li><a href="https://sourceforge.net/projects/osx86drivers/">AppleIntelE1000e.kext</a>: For older Intel network cards but may cause issues on newer ones.</li>
+<li><a href="https://github.com/Mieze/AtherosE2200Ethernet">AtherosE2200Ethernet.kext</a>: For most Atheros and Killer network cards.</li>
+<li><a href="https://github.com/Mieze/RTL8111_driver_for_OS_X">RealtekRTL8111.kext</a>: For most gigabit Realtek network cards.</li>
+<li><a href="https://github.com/Mieze/RealtekRTL8100">RealtekRTL8100.kext</a>: For 10&#x2F;100 Realtek network cards.</li>
+<li><a href="https://cdn.discordapp.com/attachments/390417931659378688/556912824228773888/SmallTree-Intel-211-AT-PCIe-GBE.kext.zip">SmallTree-Intel-211-AT-PCIe-GBE.kext</a>: For Intel I211-AT and related network cards.</li>
+<li><a href="http://down2.121down.com:8181/soft/AppleIGB.kext.zip">AppleIGB</a>: This is the one initially used, later replaced with the one above.</li>
+</ul>
+<h3 id="Graphics-Cards"><a href="#Graphics-Cards" class="headerlink" title="Graphics Cards"></a>Graphics Cards</h3><ul>
+<li><a href="https://github.com/acidanthera/WhateverGreen">Whatevergreen.kext</a>: This file fixes various graphics card issues.</li>
+<li><a href="https://github.com/acidanthera/Lilu">Lilu.kext</a>: This file is used as a loader for other files.</li>
+</ul>
+<h3 id="Wi-Fi-and-Bluetooth"><a href="#Wi-Fi-and-Bluetooth" class="headerlink" title="Wi-Fi and Bluetooth"></a>Wi-Fi and Bluetooth</h3><p>This section is only relevant if you’re using a non-native Wi-Fi card. It’s recommended to get a genuine Apple salvaged Wi-Fi card, such as BCM94360CD, BCM943602CS, or BCM94360CS2, as they work seamlessly and unlock features like Airdrop and Handoff.</p>
+<ul>
+<li><a href="https://github.com/acidanthera/AirportBrcmFixup">AirportBrcmFixup.kext</a></li>
+<li><a href="https://github.com/RehabMan/OS-X-BrcmPatchRAM">OS-X-BrcmPatchRAM</a></li>
+</ul>
+<h3 id="Audio"><a href="#Audio" class="headerlink" title="Audio"></a>Audio</h3><ul>
+<li><a href="https://github.com/acidanthera/AppleALC">AppleALC.kext</a>: This file can drive most audio cards.</li>
+</ul>
+<h3 id="Miscellaneous"><a href="#Miscellaneous" class="headerlink" title="Miscellaneous"></a>Miscellaneous</h3><p>Here’s a collection of kext files. You may need to use a VPN to access them.</p>
+<a class="btn" href="https://1drv.ms/f/s!AiP7m5LaOED-m-J8-MLJGnOgAqnjGw">Download from Onedrive</a>
+
+<p>Now your installation drive is ready, and the next step is to proceed with the installation.</p>
+<h1 id="Installation-of-the-System"><a href="#Installation-of-the-System" class="headerlink" title="Installation of the System"></a>Installation of the System</h1><p>This step may encounter various issues, such as freezing or error messages. If that happens, you can try to power off or restart (it can be a bit unpredictable), and you might need to restart multiple times.</p>
+<h2 id="BIOS-Settings"><a href="#BIOS-Settings" class="headerlink" title="BIOS Settings"></a>BIOS Settings</h2><ol>
+<li>Restart your computer and enter the BIOS (search for the shortcut key; usually F2 or DEL). Set all settings to default, save, and exit.</li>
+<li>Re-enter the BIOS and adjust the following settings. These options are for reference; I only loaded the default settings on my motherboard and disabled CSM, leaving others at Auto.<ul>
+<li>AMD-V &#x2F; SVM &#x3D; Disabled</li>
+<li>SATA Ports &#x3D; AHCI</li>
+<li>IOMMU &#x3D; Disabled</li>
+<li>APU &#x3D; Disabled</li>
+<li>HPET &#x3D; Enabled</li>
+<li>EHCI Hands-off &#x3D; Enabled</li>
+<li>XHCI Hands-off &#x3D; Enabled (ignore this if you only have USB 3.0 ports like me)</li>
+<li>Serial Port &#x3D; Disabled</li>
+<li>Parallel Port &#x3D; Disabled</li>
+<li>CSM &#x3D; Disable (for UEFI boot)</li>
+</ul>
+</li>
+<li>Save and exit. After restarting, select the <strong>USB drive</strong> as the preferred <code>Boot Device</code>. The shortcut key to do this varies depending on your motherboard; please search for it or refer to online resources.</li>
+<li>When booting from the USB drive, you’ll enter the Clover menu. Choose <code>Boot macOS Install from OS X Base System</code> and press Enter. Clover usually defaults to verbose mode, which means it will display the status as it loads. Once it completes, you’ll enter the macOS installation program. You might encounter a language selection menu; I only saw it the first time I installed macOS. For subsequent reinstallations, it was in Simplified Chinese by default.</li>
+</ol>
+<h2 id="Disk-Formatting"><a href="#Disk-Formatting" class="headerlink" title="Disk Formatting"></a>Disk Formatting</h2><p>macOS uses a journaling file system different from Windows, so you need to format the target disk before installation.</p>
+<ol>
+<li>Double-click <code>Disk Utility</code>.</li>
+<li>Click the dropdown menu in the top-left corner labeled <code>View</code> and select <code>Show All Devices</code>.</li>
+<li>Click <code>Erase</code> at the top.</li>
+<li>Select the hard drive where you want to install macOS and configure it as follows:<ul>
+<li>Name: (Set the name for your hard drive)</li>
+<li>Format: Mac OS Extended (Journaled)</li>
+<li>Scheme: GUID Partition Map</li>
+</ul>
+</li>
+<li>Click <code>Erase</code> in the bottom right corner.</li>
+<li>Close <code>Disk Utility</code>.</li>
+</ol>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>During this process, you’ll need an internet connection to download components. Note that the server is overseas, so step 2 below may be somewhat unstable. If you encounter issues like <code>failed to download,</code> you may need to shut down and restart, then reformat the hard drive (you might need to format it twice; it’s a bit of a mystical issue). If possible, set up a VPN on your router for smoother downloads.</p>
+<ol>
+<li>Choose <code>Install macOS</code>, then click <code>Continue</code>.</li>
+<li>Click <code>Continue</code> again. At this point, you might receive a prompt about being unable to download something.</li>
+<li>Select the disk where you want to install macOS.</li>
+<li>Wait for about ten to fifteen minutes. After the installation is complete, your computer will automatically restart.</li>
+</ol>
+<h2 id="System-Setup"><a href="#System-Setup" class="headerlink" title="System Setup"></a>System Setup</h2><p>After rebooting, select the USB drive for booting again, enter Clover, and choose <code>Boot macOS from [Your Hard Drive&#39;s Name]</code>. Wait for the Clover verbose mode to complete, and you’ll reach the welcome page. Choose your country, keyboard settings, etc.</p>
+<ul>
+<li><strong>Transfer Information to This Mac</strong>: For now, select <code>Don&#39;t transfer any information.</code></li>
+<li><strong>Sign in with Your Apple ID</strong>: You can skip this for now, but later you might need to change your device model, and after that, sign in again.</li>
+<li><strong>Terms and Conditions</strong>: Agree to all.</li>
+<li><strong>Express Set Up</strong>: Choose <code>Set Up Later</code> and uncheck everything in <code>Analytics</code> to prevent macOS from analyzing.</li>
+</ul>
+<p>After a short wait, you’ll be inside the system.</p>
+<h1 id="System-Configuration"><a href="#System-Configuration" class="headerlink" title="System Configuration"></a>System Configuration</h1><p>We still need to boot through the installation USB drive for this step. Here, we’ll copy the EFI files from the USB drive to the boot drive, eliminating the need for the USB drive.</p>
+<p>First, you’ll need to download the following two pieces of software:</p>
+<ul>
+<li><a href="https://sourceforge.net/projects/cloverefiboot/">Clover EFI bootloader</a></li>
+<li><a href="https://mackie100projects.altervista.org/download-clover-configurator/">Clover Configurator</a></li>
+</ul>
+<h2 id="Clover-EFI-Bootloader-Configuration"><a href="#Clover-EFI-Bootloader-Configuration" class="headerlink" title="Clover EFI Bootloader Configuration"></a>Clover EFI Bootloader Configuration</h2><p>Download and install Clover EFI bootloader. Proceed with the installation and select <code>Customize</code> at the <code>Installation Type</code> step.</p>
+<p><strong>For UEFI Settings</strong></p>
+<ul>
+<li>Install only UEFI version</li>
+<li>Install Clover in the ESP</li>
+<li>In UEFI Drivers, select these three options:<ul>
+<li>AptioMemoryFix</li>
+<li>PartitionDxe</li>
+<li>ApfsLoader</li>
+</ul>
+</li>
+<li>Install RC Scripts on the target volume</li>
+</ul>
+<p><strong>For Legacy Settings</strong></p>
+<ul>
+<li>Boot0ss</li>
+<li>Clover EFI Sata</li>
+<li>Install Clover in the ESP</li>
+<li>In Bios Drivers, 64bit, select <code>ApfsLoader</code></li>
+<li>Install RC Scripts on the target volume</li>
+</ul>
+<h2 id="Replacing-EFI-Files"><a href="#Replacing-EFI-Files" class="headerlink" title="Replacing EFI Files"></a>Replacing EFI Files</h2><ol>
+<li>Download, install, and open Clover Configurator.</li>
+<li>Click on <code>Mount EFI</code> from the left-hand menu.</li>
+<li>In the bottom-right corner, find your macOS installation hard drive and click <code>Mount Partition</code> next to it.</li>
+<li>Click <code>Open Partition,</code> which will open the EFI folder.</li>
+<li>Open your installation USB drive’s <code>CLOVER</code> folder and copy its contents into the previously opened folder.</li>
+<li>You’ll receive a system prompt indicating duplicate files; click <code>Merge.</code></li>
+<li>Replace the <code>./EFI/CLOVER/config.plist</code> on your installation hard drive with the one from your USB drive.</li>
+</ol>
+<p>Now, you can reboot your system, enter the BIOS, and change the preferred boot device to your installation hard drive. You can safely remove the USB drive at this point.</p>
+<h1 id="Driver-Installation"><a href="#Driver-Installation" class="headerlink" title="Driver Installation"></a>Driver Installation</h1><p>Driver installation requires frequent use of the <code>./EFI/CLOVER/config.plist</code> file, which can be opened with Clover Configurator. After installation, restart your system for the changes to take effect.</p>
+<h2 id="Nvidia-Webdriver"><a href="#Nvidia-Webdriver" class="headerlink" title="Nvidia Webdriver"></a>Nvidia Webdriver</h2><p>I only have a GTX 1060, so I’m providing the installation package for 10-series graphics cards here. For other types, please search for the appropriate drivers.</p>
+<a class="btn" href="https://images.nvidia.com/mac/pkg/387/WebDriver-387.10.10.10.40.105.pkg">Download 387.10.10.10.40.105 (17G65)</a>
+
+<ul>
+<li>After downloading and installing, it will ask you to restart. After the restart, open <code>./EFI/CLOVER/config.plist</code>. Right-click in the <code>Arguments</code> section under <code>Boot Parameters</code> and select <code>nvda_drv=1</code>.</li>
+<li>If your screen is still lagging or tearing after the restart, it means the Webdriver is not enabled. You’ll need to find the Nvidia icon in the top bar, click on it, and select the driver from the dropdown menu. Restart to apply the changes.</li>
+</ul>
+<h2 id="Audio-1"><a href="#Audio-1" class="headerlink" title="Audio"></a>Audio</h2><p>You’ve already installed the AppleALC audio driver earlier, but you won’t have sound yet. You need to configure it in the <code>config.plist</code> file:</p>
+<ol>
+<li>Find your audio card’s folder <a href="https://github.com/acidanthera/AppleALC/tree/master/Resources">here</a>. In the folder, you’ll find files starting with <code>layout.</code> Note down any random number from one of these files.</li>
+<li>Open the <code>config.plist</code> file using Clover Configurator.</li>
+<li>Locate <code>Device Properties.</code></li>
+<li>In the top right corner, find <code>Audio.</code> Enter the number you noted down next to <code>Inject.</code></li>
+<li>Check the boxes next to <code>AFG Low Power State</code> and <code>Reset HDA.</code></li>
+</ol>
+<h2 id="USB"><a href="#USB" class="headerlink" title="USB"></a>USB</h2><p>I initially used the following method to install USB drivers, but it can cause issues when you have multiple devices connected, and Bluetooth and the camera might not work:</p>
+<ol>
+<li>Download the <a href="https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/">USBInjectALL</a> driver.</li>
+<li>After downloading, move it to the <code>./EFI/CLOVER/kext/Other</code> directory on your EFI partition.</li>
+<li>Open the <code>config.plist</code> file using Clover Configurator.</li>
+<li>Find <code>Device Properties.</code></li>
+<li>Under the <code>USB</code> section, check the following three options:<ul>
+<li>Inject</li>
+<li>Add ClockID</li>
+<li>Fix Ownership</li>
+</ul>
+</li>
+</ol>
+<p>However, for Ryzen processors, you need to use a specific USB patch. A talented developer on <a href="https://github.com/XLNCs/ryzenusbfix">GitHub</a> has created a script for this. Copy and paste the following command into Terminal, execute it, and then restart:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -s -o ~/Desktop/ryzenusbfix.sh https://raw.githubusercontent.com/XLNCs/ryzenusbfix/master/ryzenusbfix.sh &amp;&amp; chmod +x ~/Desktop/ryzenusbfix.sh &amp;&amp; ~/Desktop/ryzenusbfix.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2><p>This section is for reference only, as everyone’s configuration is different. Open <code>./EFI/CLOVER/config.plist</code> and, under <code>Install Drivers,</code> choose other driver files you want to load. Here, I’ve downloaded the following files from the UEFI 64-bit driver section:</p>
+<ul>
+<li>ApfsDriverLoader</li>
+<li>AptioMemoryFix</li>
+<li>EmuVariableUefi</li>
+<li>HFSPlus</li>
+<li>NTFS</li>
+<li>AudioDxe</li>
+</ul>
+<h1 id="Other-Adjustments"><a href="#Other-Adjustments" class="headerlink" title="Other Adjustments"></a>Other Adjustments</h1><h2 id="Change-Clover-Theme"><a href="#Change-Clover-Theme" class="headerlink" title="Change Clover Theme"></a>Change Clover Theme</h2><p>The default Clover boot menu is in text mode, which may not look very appealing. To enhance it with a theme, I found a nice theme on GitHub called <a href="https://github.com/burpsuite/clover_theme">Simple</a>. Here’s how to use it as an example:</p>
+<ol>
+<li>Download and unzip the theme folder, then place it in the <code>./EFI/CLOVER/theme</code> directory. Also, copy the <code>theme.plist</code> file from within the theme folder to the parent directory (the <code>theme</code> folder itself).</li>
+<li>Open the <code>./EFI/CLOVER/config.plist</code> file.</li>
+<li>Navigate to the <code>Boot Screen</code> section and enter the name of the theme, in this case, <code>Simple,</code> into the <code>Theme</code> field.</li>
+<li>Uncheck the <code>Text Mode</code> option below.</li>
+<li>Adjust the resolution as needed (there’s no 21:9 resolution, so I chose 1920x1080, which seemed to work well as it filled the screen).</li>
+</ol>
+<h2 id="Modify-CPU-Model"><a href="#Modify-CPU-Model" class="headerlink" title="Modify CPU Model"></a>Modify CPU Model</h2><p>This step is just for personal satisfaction since macOS can’t recognize Ryzen processors, resulting in the CPU showing up as <code>Unknown</code> in the <code>About This Mac</code> section. What we can do is modify the file corresponding to the <code>Unknown</code> CPU to display custom content.</p>
+<ol>
+<li>Download BBEdit or TextWrangler.</li>
+<li>Open the files in <code>/System/Library/PrivateFrameworks/AppleSystemInfo.framework/Versions/A/Resources/zh_CN.lproj/</code>.</li>
+<li>Find <code>UnknownCPUKind</code> and modify the text <code>未知</code> (Unknown) to whatever you’d like.</li>
+<li>Save the changes. Now, the CPU in <code>About This Mac</code> will display the content you entered.</li>
+</ol>
+<h2 id="Modify-Model-Identifier"><a href="#Modify-Model-Identifier" class="headerlink" title="Modify Model Identifier"></a>Modify Model Identifier</h2><p>Open <code>./EFI/CLOVER/config.plist</code> and under the <code>Model Settings</code> section, select the right-most option with up and down arrows to open a dropdown menu. Choose the model identifier that suits your system.</p>
+<h2 id="Enable-Native-NTFS-Read-x2F-Write"><a href="#Enable-Native-NTFS-Read-x2F-Write" class="headerlink" title="Enable Native NTFS Read&#x2F;Write"></a>Enable Native NTFS Read&#x2F;Write</h2><p>Currently, macOS can only read NTFS-formatted drives but can’t write to them. However, macOS does have the capability to write to NTFS drives, but it’s not enabled by default due to licensing issues (NTFS is a Microsoft format). Here’s how to enable it:</p>
+<ol>
+<li>Open Terminal and enter the command <code>diskutil list</code> to list your drives. Find the drive you want to enable for read and write access and note its <code>NAME</code>.</li>
+<li>Enter the command <code>sudo nano /etc/fstab</code> and press Enter, then enter your password.</li>
+<li>Add the line <code>LABEL=NAME none ntfs rw,auto,nobrowse</code> where <code>NAME</code> is the name of the drive you noted earlier.</li>
+<li>Use <code>Control+X</code> to exit, then press Y to confirm and Enter to save.</li>
+<li>Restart your system, and you should be able to write to the NTFS drive.</li>
+<li>If you can’t see the drive in Finder, you can create a symbolic link to it on your desktop using the command <code>sudo ln -s /Volumes/NAME ~/Desktop/NAME</code>, where <code>NAME</code> is the name of the drive.</li>
+</ol>
+<h2 id="Create-a-macOS-Virtual-Machine"><a href="#Create-a-macOS-Virtual-Machine" class="headerlink" title="Create a macOS Virtual Machine"></a>Create a macOS Virtual Machine</h2><p>This section provides an alternative method in case the installation process fails. If you prefer not to install directly on your disk, you can use a lazy method of creating a virtual machine. Here’s how I did it in the past:</p>
+<ol>
+<li>The virtual machine image is shared by <a href="https://forum.amd-osx.com/viewtopic.php?t=1899">Shamme</a> on the forum. Download and extract it using the following link:<a class="btn" href="https://hackintosher.com/wp-content/uploads/SierraAMD_VM.zip.torrent.zip">Download SierraAMD_VM.zip.torrent.zip</a></li>
+<li>Next, you’ll need to install VMware. Download and install it from the <a href="https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html">VMware official website</a>.</li>
+<li>Open VMware and click on <code>Create a New Virtual Machine.</code></li>
+<li>Select <code>Typical</code> and click Next.</li>
+<li>Check <code>I will install the operating system later</code> and click Next.</li>
+<li>For the guest operating system, select <code>Other</code> and <code>Other (64-bit).</code></li>
+<li>Edit the virtual machine name and choose its location.</li>
+<li>Set the disk size; a larger size like 60GB is recommended, but 40GB should suffice. Choose <code>Store virtual disk as a single file.</code></li>
+<li>Click Finish.</li>
+<li>Click <code>Edit Virtual Machine Settings.</code></li>
+<li>Increase the memory size to 2048MB (2GB) or more.</li>
+<li><strong>Uncheck</strong> <code>Connect at power on</code> under <code>CD/DVD (IDE).</code></li>
+<li>Click on <code>Hard Disk (IDE)</code> and then click the <code>Remove</code> button below.</li>
+<li>Click the <code>Add</code> button.</li>
+<li>Select <code>Hard Disk</code> and click Next.</li>
+<li>Choose <code>SCSI.</code></li>
+<li>Select <code>Use an existing virtual disk.</code></li>
+<li>Click <code>Browse</code> and locate the downloaded file from step 1. Open it.</li>
+<li>Click Finish.</li>
+<li>Choose <code>Keep Existing Format.</code></li>
+<li>Click <code>OK.</code></li>
+<li>Click <code>Power on this virtual machine.</code></li>
+<li>Press Enter twice and wait for it to load to the Welcome page.</li>
+<li>Check <code>Show all</code> and select <code>China,</code> then click <code>Continue.</code></li>
+<li>Choose the appropriate input method.</li>
+<li>Select <code>Don&#39;t transfer any information now.</code></li>
+<li>Click <code>Continue,</code> then choose <code>Don&#39;t use.</code></li>
+<li>Select <code>Don&#39;t sign in,</code> then choose <code>Skip.</code></li>
+<li>Click <code>Agree</code> and then click <code>Agree</code> again.</li>
+<li>Enter your username and password.</li>
+<li>Choose your time zone on the map.</li>
+<li><strong>Uncheck</strong> <code>Share Mac Analytics with Apple,</code> and wait a moment to enter the system.</li>
+</ol>
+<h2 id="About-Software"><a href="#About-Software" class="headerlink" title="About Software"></a>About Software</h2><p>Here’s a list of software I’ve gathered:</p>
+<ul>
+<li>Be cautious - <strong>CPU-S</strong>: Do not install if you have a Ryzen CPU. I tried to test CPU frequency, but it caused my system to crash and restart. After logging in, it continued to restart, and I had to reinstall the system.</li>
+<li>Cloud Sync - <strong>OneDrive</strong>: For synchronizing common documents.</li>
+<li>FTP - <strong>Transmit</strong>: Connects to various cloud services like Dropbox and Google Drive.</li>
+<li>Hardware Monitoring - <strong>iStat Menus</strong>: Monitor your system’s hardware status.</li>
+<li>Backup - <strong>Carbon Copy Cloner</strong>: Use it for backups as Time Machine tends to freeze around 400MB.</li>
+<li>Study tools? - Steam has a macOS client as well.</li>
+<li>Ad Blocker for Browsers - Safari’s <a href="https://safari-extensions.apple.com/details/?id=org.adblockplus.adblockplussafari-GRYYZR985A">Adblock Plus Extension</a>.</li>
+<li>Media Player - <strong>Movist</strong>: Unlike most media players, which are like PowerPoint for video playback, QuickTime’s format support is limited. Movist, based on QuickTime, resolves this issue.</li>
+<li>Note-taking - <strong>OneNote</strong>: Syncs seamlessly across three platforms.</li>
+<li>Uninstaller - <strong>App Cleaner</strong>: A cleaner uninstaller.</li>
+<li>Download Manager - <strong>Free Download Manager</strong>: It’s in the name, free.</li>
+<li>Video Downloader - <strong>Downie</strong>: Download YouTube videos.</li>
+<li>Window Manager - <strong>Magnet</strong>: It’s not related to torrents, but it helps manage windows. Windows has had this feature for a while, but Mac relies on third-party software.</li>
+<li>Translation - <strong>EuDic</strong>: It’s a habit; iOS can sync dictionaries.</li>
+<li>Swiss Army Knife - <strong>VS Code</strong>: Not just for coding; it’s great for Markdown too.</li>
+<li>VPN - <strong>ShadowsocksX-NG</strong>: The small plane version.</li>
+<li>3D Rendering - <strong>VRayX</strong>: For heavyweight tasks.</li>
+<li>Benchmarking - <strong>CINEBENCH</strong>: Ryzen is supposed to score high; why doesn’t it feel that way?</li>
+<li>Office Software - <strong>Office</strong>: Microsoft’s suite works better, with Keynote being the exception.</li>
+<li>Screenshot - <strong>Snipaste</strong>: Capture and annotate.</li>
+<li>Smooth Scrolling - <strong>MOS</strong>: Say goodbye to choppy mouse wheel scrolling.</li>
+<li>Cheat Sheet - <strong>Cheatsheet</strong>: Hold Command to view shortcuts.</li>
+<li>iPhone Touchpad - <strong>FullControl</strong>: Control your Mac with your iPhone.</li>
+<li>Workhorse - <strong>Xcode</strong>: If you’re installing Hackintosh, you probably want to use it.</li>
+</ul>
+<h2 id="Keyboard-Shortcuts"><a href="#Keyboard-Shortcuts" class="headerlink" title="Keyboard Shortcuts"></a>Keyboard Shortcuts</h2><p>Keyboard shortcuts can drive dual-boot users insane. On macOS, copy is <code>Command+C</code>, while on Windows, it’s <code>Ctrl+C</code>. However, the keyboard’s <code>Command</code> key corresponds to the <code>Windows</code> key.</p>
+<ul>
+<li>Most <code>Ctrl</code> shortcuts on Windows work with <code>Command</code> on macOS.</li>
+<li>Show&#x2F;Hide hidden files: <code>Command + Shift + .</code></li>
+</ul>
+<blockquote>
+<p>References: <a href="https://vanilla.amd-osx.com/">AMD OS X Vanilla</a>、<a href="https://hackintosher.com/">Hackintosher</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Hardware</category>
+      </categories>
+      <tags>
+        <tag>Hackintosh</tag>
+        <tag>Multisystem</tag>
       </tags>
   </entry>
   <entry>
@@ -7543,6 +7546,73 @@
       </tags>
   </entry>
   <entry>
+    <title>My Packing List for Studying Abroad in the UK</title>
+    <url>/en/uk-packing-list.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Based on my three-month experience of shopping at British supermarkets, I've compiled a list of recommended items to bring to the UK and items you may want to avoid bringing. For the items not recommended to bring, I've provided purchasing alternatives.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<h1 id="Recommended-to-Bring"><a href="#Recommended-to-Bring" class="headerlink" title="Recommended to Bring"></a>Recommended to Bring</h1><p>This category includes items that are either difficult to find in the UK or are unreasonably expensive.</p>
+<ul>
+<li>Coat hooks ⭐⭐⭐⭐⭐ Coat hooks in the UK are seriously overpriced. You can buy a whole box of them on Taobao for the price of one in the UK.</li>
+<li>Apron ⭐⭐⭐⭐ Aprons are also unreasonably expensive here. For the same price, you can buy ten on Taobao.</li>
+<li>Oil pot ⭐⭐⭐ I searched various supermarkets, but I finally found one in a small corner shop. However, it’s not very functional and tends to leak.</li>
+<li>Backup phone ⭐⭐⭐⭐ It’s always good to have a backup in case your phone breaks. Phones here are quite expensive.</li>
+<li>Hair clippers ⭐⭐⭐ In the UK, getting a haircut is costly. During the pandemic, I didn’t dare to invite a barber home, so I learned to cut my hair.</li>
+<li>Power strip with a British plug ⭐⭐⭐⭐ These are mostly available in Chinese supermarkets, but they can be quite expensive.</li>
+<li>Plug adapters for UK sockets ⭐⭐⭐⭐ Although available in British supermarkets, they tend to be expensive.</li>
+<li>Waterproof jacket ⭐⭐⭐⭐⭐ A must-have for windy and rainy days. Clothing stores are currently closed.</li>
+<li>SIM card ejector tool ⭐⭐⭐⭐ It doesn’t take up much space.</li>
+<li>Power bank ⭐⭐⭐⭐ Prices for power banks are relatively high here.</li>
+</ul>
+<h1 id="Optional-to-Bring"><a href="#Optional-to-Bring" class="headerlink" title="Optional to Bring"></a>Optional to Bring</h1><p>This category includes items that are small, lightweight, and can be purchased in the UK without unreasonable prices.</p>
+<ul>
+<li>Router ⭐⭐⭐ If you need it, it’s best to bring your own as routers in the UK can be quite pricey.</li>
+<li>Ethernet cable ⭐ It’s not much different in price.</li>
+<li>USB mini fan ⭐⭐⭐ Dorms in the UK generally lack air conditioning, so it can get hot in the summer.</li>
+<li>Hygrometer ⭐ If you need one, it’s best to bring it from home as the prices here are relatively high.</li>
+<li>Soap holder ⭐ Pound shops have them, but the designs might not be very appealing.</li>
+<li>USB cables ⭐⭐ Prices for braided cables are similar to those in China.</li>
+<li>Desk lamp ⭐ I have two bright spotlights on my desk in the dorm, so my desk lamp is just collecting dust. Desk lamps here are slightly more expensive.</li>
+<li>Camera tripod ⭐⭐ If needed, bring a portable one; prices here are nearly double.</li>
+<li>Small humidifier ⭐⭐ If it’s small, you can bring one. The cheapest one on eBay costs £7 and is no larger than a roll of toilet paper.</li>
+<li>Chopsticks ⭐ You can find them in Chinese supermarkets, and the prices are reasonable.</li>
+<li>Foldable basin ⭐ Similar basins are available in Chinese supermarkets, and the quality is slightly better.</li>
+<li>Thermos flask ⭐ Prices are similar to those in China.</li>
+<li>Nail clippers ⭐⭐ If needed, they are available, but I’m not sure about the quality.</li>
+<li>Batteries ⭐ Prices are slightly higher here, but they are acceptable. You can bring rechargeable batteries but avoid regular ones.</li>
+<li>Toothbrush holder ⭐ Pound shops have plastic cups that work just fine.</li>
+<li>Vegetable peeler ⭐⭐ Both Chinese and British supermarkets have them, and the prices are reasonable.</li>
+<li>Shoe brush ⭐ Same as above.</li>
+<li>Swiss Army knife ⭐ It can serve as a temporary toolbox. Prices here are quite high.</li>
+<li>USB drive ⭐ Prices are not much higher.</li>
+</ul>
+<h1 id="Not-Recommended-to-Bring"><a href="#Not-Recommended-to-Bring" class="headerlink" title="Not Recommended to Bring"></a>Not Recommended to Bring</h1><p>This category includes items that are too large, heavy, or available at lower prices in the UK.</p>
+<ul>
+<li>Soap ❌ You can buy soap for 80p for two bars at Home Bargains.</li>
+<li>Electric rice cooker ❌❌❌ There’s really no need for this. You can buy a second-hand one or order one online when you arrive. Carrying your own is heavy, takes up space, and requires an adapter plug. The options here may not have as many functions as those in China.</li>
+<li>Hairdryer ❌❌❌ Same as above.</li>
+<li>Large humidifier ❌❌❌ Same as above.</li>
+<li>Foldable kettle ❌ You will use it a few times, and it will collect dust afterward. Buy an electric kettle at a big supermarket or order one online before arrival.</li>
+<li>Kitchen knife ❌❌ It’s too heavy. Chinese supermarkets have them at reasonable prices.</li>
+<li>Electric toothbrush heads ❌ For Oral-B toothbrushes, they are cheaper here than in China.</li>
+<li>Umbrella ❌ The wind here can be quite strong, and umbrellas tend to break easily. You might want to try those designed to withstand typhoons from Taobao.</li>
+<li>Cookware ❌❌❌ Really not necessary. Large supermarkets have a decent selection, and the styles are fine.</li>
+<li>Duvet ❌❌❌ Unless your suitcase is only half full (insert dog head here).</li>
+<li>Window screen ❌❌ You can find them on Amazon, and the windows in student accommodations can only open a small gap; they can’t accommodate screens.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Study in UK</category>
+      </categories>
+      <tags>
+        <tag>Study in UK</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Diary in the UK</title>
     <url>/en/uk-diary.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">Landing in the UK after one month, the I am back again~~~ This might be another lengthy blog post, as I plan to document my life in the UK for this year. It will include guides on BRP, GP, bank cards, and perhaps even a Vlog? (Maybe)</blockquote>
@@ -8049,73 +8119,6 @@ OFFICIAL
 <p>Once you have the card, when booking tickets, choose the <code>Scottish Heritage Member Ticket</code> option, and the payment page will show £0.</p>
 <h1 id="To-Be-Continued…"><a href="#To-Be-Continued…" class="headerlink" title="To Be Continued…"></a>To Be Continued…</h1><p>More content to come, but I’ll be delaying it indefinitely. I gave up on registering with the dentist because the materials used for free dental work seem to be black, so I’ll just wait until I’m back in China to deal with it.</p>
 <h1 id="KC-Room-Tour"><a href="#KC-Room-Tour" class="headerlink" title="KC Room Tour"></a>KC Room Tour</h1><p>This might be postponed indefinitely as well. The apartment staff have locked all the doors to vacant rooms, so I can’t access them for filming. I’ll have to wait until my roommates arrive. (Sigh x4)</p>
-]]></content>
-      <categories>
-        <category>Study in UK</category>
-      </categories>
-      <tags>
-        <tag>Study in UK</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>My Packing List for Studying Abroad in the UK</title>
-    <url>/en/uk-packing-list.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Based on my three-month experience of shopping at British supermarkets, I've compiled a list of recommended items to bring to the UK and items you may want to avoid bringing. For the items not recommended to bring, I've provided purchasing alternatives.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<h1 id="Recommended-to-Bring"><a href="#Recommended-to-Bring" class="headerlink" title="Recommended to Bring"></a>Recommended to Bring</h1><p>This category includes items that are either difficult to find in the UK or are unreasonably expensive.</p>
-<ul>
-<li>Coat hooks ⭐⭐⭐⭐⭐ Coat hooks in the UK are seriously overpriced. You can buy a whole box of them on Taobao for the price of one in the UK.</li>
-<li>Apron ⭐⭐⭐⭐ Aprons are also unreasonably expensive here. For the same price, you can buy ten on Taobao.</li>
-<li>Oil pot ⭐⭐⭐ I searched various supermarkets, but I finally found one in a small corner shop. However, it’s not very functional and tends to leak.</li>
-<li>Backup phone ⭐⭐⭐⭐ It’s always good to have a backup in case your phone breaks. Phones here are quite expensive.</li>
-<li>Hair clippers ⭐⭐⭐ In the UK, getting a haircut is costly. During the pandemic, I didn’t dare to invite a barber home, so I learned to cut my hair.</li>
-<li>Power strip with a British plug ⭐⭐⭐⭐ These are mostly available in Chinese supermarkets, but they can be quite expensive.</li>
-<li>Plug adapters for UK sockets ⭐⭐⭐⭐ Although available in British supermarkets, they tend to be expensive.</li>
-<li>Waterproof jacket ⭐⭐⭐⭐⭐ A must-have for windy and rainy days. Clothing stores are currently closed.</li>
-<li>SIM card ejector tool ⭐⭐⭐⭐ It doesn’t take up much space.</li>
-<li>Power bank ⭐⭐⭐⭐ Prices for power banks are relatively high here.</li>
-</ul>
-<h1 id="Optional-to-Bring"><a href="#Optional-to-Bring" class="headerlink" title="Optional to Bring"></a>Optional to Bring</h1><p>This category includes items that are small, lightweight, and can be purchased in the UK without unreasonable prices.</p>
-<ul>
-<li>Router ⭐⭐⭐ If you need it, it’s best to bring your own as routers in the UK can be quite pricey.</li>
-<li>Ethernet cable ⭐ It’s not much different in price.</li>
-<li>USB mini fan ⭐⭐⭐ Dorms in the UK generally lack air conditioning, so it can get hot in the summer.</li>
-<li>Hygrometer ⭐ If you need one, it’s best to bring it from home as the prices here are relatively high.</li>
-<li>Soap holder ⭐ Pound shops have them, but the designs might not be very appealing.</li>
-<li>USB cables ⭐⭐ Prices for braided cables are similar to those in China.</li>
-<li>Desk lamp ⭐ I have two bright spotlights on my desk in the dorm, so my desk lamp is just collecting dust. Desk lamps here are slightly more expensive.</li>
-<li>Camera tripod ⭐⭐ If needed, bring a portable one; prices here are nearly double.</li>
-<li>Small humidifier ⭐⭐ If it’s small, you can bring one. The cheapest one on eBay costs £7 and is no larger than a roll of toilet paper.</li>
-<li>Chopsticks ⭐ You can find them in Chinese supermarkets, and the prices are reasonable.</li>
-<li>Foldable basin ⭐ Similar basins are available in Chinese supermarkets, and the quality is slightly better.</li>
-<li>Thermos flask ⭐ Prices are similar to those in China.</li>
-<li>Nail clippers ⭐⭐ If needed, they are available, but I’m not sure about the quality.</li>
-<li>Batteries ⭐ Prices are slightly higher here, but they are acceptable. You can bring rechargeable batteries but avoid regular ones.</li>
-<li>Toothbrush holder ⭐ Pound shops have plastic cups that work just fine.</li>
-<li>Vegetable peeler ⭐⭐ Both Chinese and British supermarkets have them, and the prices are reasonable.</li>
-<li>Shoe brush ⭐ Same as above.</li>
-<li>Swiss Army knife ⭐ It can serve as a temporary toolbox. Prices here are quite high.</li>
-<li>USB drive ⭐ Prices are not much higher.</li>
-</ul>
-<h1 id="Not-Recommended-to-Bring"><a href="#Not-Recommended-to-Bring" class="headerlink" title="Not Recommended to Bring"></a>Not Recommended to Bring</h1><p>This category includes items that are too large, heavy, or available at lower prices in the UK.</p>
-<ul>
-<li>Soap ❌ You can buy soap for 80p for two bars at Home Bargains.</li>
-<li>Electric rice cooker ❌❌❌ There’s really no need for this. You can buy a second-hand one or order one online when you arrive. Carrying your own is heavy, takes up space, and requires an adapter plug. The options here may not have as many functions as those in China.</li>
-<li>Hairdryer ❌❌❌ Same as above.</li>
-<li>Large humidifier ❌❌❌ Same as above.</li>
-<li>Foldable kettle ❌ You will use it a few times, and it will collect dust afterward. Buy an electric kettle at a big supermarket or order one online before arrival.</li>
-<li>Kitchen knife ❌❌ It’s too heavy. Chinese supermarkets have them at reasonable prices.</li>
-<li>Electric toothbrush heads ❌ For Oral-B toothbrushes, they are cheaper here than in China.</li>
-<li>Umbrella ❌ The wind here can be quite strong, and umbrellas tend to break easily. You might want to try those designed to withstand typhoons from Taobao.</li>
-<li>Cookware ❌❌❌ Really not necessary. Large supermarkets have a decent selection, and the styles are fine.</li>
-<li>Duvet ❌❌❌ Unless your suitcase is only half full (insert dog head here).</li>
-<li>Window screen ❌❌ You can find them on Amazon, and the windows in student accommodations can only open a small gap; they can’t accommodate screens.</li>
-</ul>
 ]]></content>
       <categories>
         <category>Study in UK</category>
