@@ -80,67 +80,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Solution for ASUS Aura Sync Not Recognizing G.Skill Trident Z RGB</title>
-    <url>/en/aura-sync.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">This article is also known as "The Series of Annoying Incidents Caused by My Impulsive Upgrade of Armoury Crate." Now, let's introduce the main characters of this story: ASUS B460-I GAMING and two G.Skill Trident Z RGB sticks.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from <a href="https://siriusq.top/%E5%8D%8E%E7%A1%95AuraSync%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%AB%E5%B9%BB%E5%85%89%E6%88%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html">my Chinese blog post</a> with the aid of ChatGpt.</p>
-</div>
-
-<div class="note danger"><h1 id="The-Beginning-of-the-Disaster"><a href="#The-Beginning-of-the-Disaster" class="headerlink" title="The Beginning of the Disaster"></a>The Beginning of the Disaster</h1><p>ASUS truly put their heart into lighting and their feet into lighting control software. Ever since installing Armoury Crate, it’s been a constant source of problems – often freezing and crashing. After the last update, it took 5-10 seconds just to get a response when opening the main page. So, I upgraded to the latest version 3.1.4.0, hoping it would fix the issue. Little did I know, it brought in new bugs, wasting an entire afternoon of my time.</p>
-<p>After upgrading to version 3.1.4.0, I noticed that the cursor would spin every few seconds. At first, I thought it might be some background program updating, so I didn’t pay much attention to it. However, after half an hour, it was still behaving the same way. The cursor kept oscillating between its normal state and the spinning state, as shown in the image below.</p>
-<p><img data-src="https://s2.loli.net/2022/07/10/AgmkZLu5vVEKocO.png" alt="aura0.png"></p>
-<p>So, I went to the Task Manager and started ending tasks one by one to find the culprit. Finally, I identified the troublemaker as <code>ArmourySocketServer.exe</code>. However, I couldn’t find who was launching it at startup within the services. Coincidentally, while Googling, I discovered that there’s a separate software just for lighting control called <code>Aura Sync</code>. Annoyed, I used the official uninstallation tool to remove Armoury Crate and then installed Aura Sync.</p>
-<p>But well, after a reboot, the awkward yet familiar scene unfolded. Aura Sync couldn’t detect my memory modules. The two G.Skill Trident Z RGB sticks behaved like unruly dogs, gradually losing color control. So, I resorted to the old approach – installed G.Skill’s lighting control software called <code>Trident Z Lighting Control</code> and turned off <code>SPD Write Disabled</code> in the BIOS. After the reboot, things got even more awkward. Aura Sync could now detect the memory, but only one stick. Similarly, G.Skill’s lighting control software could only detect one stick as well. To add to the embarrassment, they were both recognizing the same stick, completely disregarding the other one’s feelings.</p>
-<div class="link-grid"><div class="link-grid-container">
-<object class="link-grid-image" data="/images/link/link.webp"></object>
-<p>Trident Z Lighting Control</p><p>Trident Z Family (RGB, Neo, Royal, Royal Elite, Z5 RGB) - Lighting Control Software</p>
-<a href="https://www.gskill.com/download/1502180912/1551690847/Trident-Z-Family-(RGB,-Royal,-Neo)"></a>
-</div></div>
-
-<p>So, I decided to uninstall G.Skill’s lighting control software, hoping for a fresh start. After unplugging and restarting, Aura Sync still only recognized one stick. Frustrated, I reinstalled Armoury Crate. Strangely, Armoury Crate could detect both memory sticks, but the lagging and spinning caused by ArmourySocketServer still persisted.</p>
-<p>Comparing the background processes and the number of additional software installations between the two – Aura Sync and Armoury Crate – I realized that Aura Sync had significantly fewer lighting-related additional software. Consequently, I terminated ArmourySocketServer.exe, which resolved the spinning issue. As I didn’t really want to use the bulky Armoury Crate, I continued uninstalling software that seemed unrelated to lighting control, ensuring that only the necessary lighting control software was retained. This approach allowed Aura Sync to control all lighting effects smoothly.</p>
-</div>
-
-<div class="note success"><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><ol>
-<li>First, use the official uninstall tool to remove Armoury Crate.<ul>
-<li><a href="https://dlcdnets.asus.com/pub/ASUS/mb/14Utilities/Armoury_Crate_Uninstall_Tool.zip">Armoury Crate Uninstall Tool</a></li>
-</ul>
-</li>
-<li>Restart and enter BIOS. Search for <code>SPD Write Disable</code> and set it to <code>False</code>.</li>
-<li>Reinstall Armoury Crate.<ul>
-<li><a href="https://www.asus.com/supportonly/Armoury%20Crate/HelpDesk_Download/">Armoury Crate</a></li>
-</ul>
-</li>
-<li>Uninstall Asus Framework and any other software associated with Armoury Crate. Keep only the essential software, as shown in the image:<br><img data-src="https://s2.loli.net/2022/07/10/DgLJVQk4zreyEPw.webp" alt="aura2.webp"></li>
-<li>Delete the entire folder <code>C:\Program Files (x86)\ASUS\ArmouryDevice</code>. Make sure to end the relevant processes in Task Manager before deleting. You can use the LockHunter software to help terminate these processes.</li>
-<li>Download Aura Sync using the link provided:<ul>
-<li><a href="https://www.asus.com/campaign/aura/us/download.php">Aura Sync</a><br><img data-src="https://s2.loli.net/2022/07/10/JMeo6KSnfUgjmEW.png" alt="aura1.png"></li>
-</ul>
-</li>
-<li>After downloading, extract the files and then open the properties of each <code>.exe</code> file. Unblock them by checking the “Unblock” option. Make sure to unblock applications in subfolders as well.<br><img data-src="https://s2.loli.net/2022/12/18/qHkQsetM4TmLJEF.png" alt="aura11.png"></li>
-<li>Run <code>Setup.exe</code> as an administrator.</li>
-<li>After installation is complete, restart your system. If the lighting is functioning correctly, you can go back to BIOS and set <code>SPD Write Disable</code> back to <code>True</code>.</li>
-</ol>
-<p><strong>Hopefully, Armoury Crate will improve in the future and behave better (insert manual doge face).</strong></p>
-</div>]]></content>
-      <categories>
-        <category>Geek</category>
-      </categories>
-      <tags>
-        <tag>ITX</tag>
-        <tag>DIY</tag>
-        <tag>Asus</tag>
-        <tag>Aura Sync</tag>
-        <tag>Armoury Crate</tag>
-        <tag>Trident Z</tag>
-        <tag>G.Skill</tag>
-        <tag>RGB</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Awesome Software</title>
     <url>/en/awesome-software.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">A list of excellent software that I have used and am using now, including software for Windows and macOS, some useful Chromium browsers extensions also included.</blockquote>
@@ -703,6 +642,67 @@
         <tag>Software</tag>
         <tag>Windows</tag>
         <tag>macOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Solution for ASUS Aura Sync Not Recognizing G.Skill Trident Z RGB</title>
+    <url>/en/aura-sync.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">This article is also known as "The Series of Annoying Incidents Caused by My Impulsive Upgrade of Armoury Crate." Now, let's introduce the main characters of this story: ASUS B460-I GAMING and two G.Skill Trident Z RGB sticks.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from <a href="https://siriusq.top/%E5%8D%8E%E7%A1%95AuraSync%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%AB%E5%B9%BB%E5%85%89%E6%88%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html">my Chinese blog post</a> with the aid of ChatGpt.</p>
+</div>
+
+<div class="note danger"><h1 id="The-Beginning-of-the-Disaster"><a href="#The-Beginning-of-the-Disaster" class="headerlink" title="The Beginning of the Disaster"></a>The Beginning of the Disaster</h1><p>ASUS truly put their heart into lighting and their feet into lighting control software. Ever since installing Armoury Crate, it’s been a constant source of problems – often freezing and crashing. After the last update, it took 5-10 seconds just to get a response when opening the main page. So, I upgraded to the latest version 3.1.4.0, hoping it would fix the issue. Little did I know, it brought in new bugs, wasting an entire afternoon of my time.</p>
+<p>After upgrading to version 3.1.4.0, I noticed that the cursor would spin every few seconds. At first, I thought it might be some background program updating, so I didn’t pay much attention to it. However, after half an hour, it was still behaving the same way. The cursor kept oscillating between its normal state and the spinning state, as shown in the image below.</p>
+<p><img data-src="https://s2.loli.net/2022/07/10/AgmkZLu5vVEKocO.png" alt="aura0.png"></p>
+<p>So, I went to the Task Manager and started ending tasks one by one to find the culprit. Finally, I identified the troublemaker as <code>ArmourySocketServer.exe</code>. However, I couldn’t find who was launching it at startup within the services. Coincidentally, while Googling, I discovered that there’s a separate software just for lighting control called <code>Aura Sync</code>. Annoyed, I used the official uninstallation tool to remove Armoury Crate and then installed Aura Sync.</p>
+<p>But well, after a reboot, the awkward yet familiar scene unfolded. Aura Sync couldn’t detect my memory modules. The two G.Skill Trident Z RGB sticks behaved like unruly dogs, gradually losing color control. So, I resorted to the old approach – installed G.Skill’s lighting control software called <code>Trident Z Lighting Control</code> and turned off <code>SPD Write Disabled</code> in the BIOS. After the reboot, things got even more awkward. Aura Sync could now detect the memory, but only one stick. Similarly, G.Skill’s lighting control software could only detect one stick as well. To add to the embarrassment, they were both recognizing the same stick, completely disregarding the other one’s feelings.</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/link.webp"></object>
+<p>Trident Z Lighting Control</p><p>Trident Z Family (RGB, Neo, Royal, Royal Elite, Z5 RGB) - Lighting Control Software</p>
+<a href="https://www.gskill.com/download/1502180912/1551690847/Trident-Z-Family-(RGB,-Royal,-Neo)"></a>
+</div></div>
+
+<p>So, I decided to uninstall G.Skill’s lighting control software, hoping for a fresh start. After unplugging and restarting, Aura Sync still only recognized one stick. Frustrated, I reinstalled Armoury Crate. Strangely, Armoury Crate could detect both memory sticks, but the lagging and spinning caused by ArmourySocketServer still persisted.</p>
+<p>Comparing the background processes and the number of additional software installations between the two – Aura Sync and Armoury Crate – I realized that Aura Sync had significantly fewer lighting-related additional software. Consequently, I terminated ArmourySocketServer.exe, which resolved the spinning issue. As I didn’t really want to use the bulky Armoury Crate, I continued uninstalling software that seemed unrelated to lighting control, ensuring that only the necessary lighting control software was retained. This approach allowed Aura Sync to control all lighting effects smoothly.</p>
+</div>
+
+<div class="note success"><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><ol>
+<li>First, use the official uninstall tool to remove Armoury Crate.<ul>
+<li><a href="https://dlcdnets.asus.com/pub/ASUS/mb/14Utilities/Armoury_Crate_Uninstall_Tool.zip">Armoury Crate Uninstall Tool</a></li>
+</ul>
+</li>
+<li>Restart and enter BIOS. Search for <code>SPD Write Disable</code> and set it to <code>False</code>.</li>
+<li>Reinstall Armoury Crate.<ul>
+<li><a href="https://www.asus.com/supportonly/Armoury%20Crate/HelpDesk_Download/">Armoury Crate</a></li>
+</ul>
+</li>
+<li>Uninstall Asus Framework and any other software associated with Armoury Crate. Keep only the essential software, as shown in the image:<br><img data-src="https://s2.loli.net/2022/07/10/DgLJVQk4zreyEPw.webp" alt="aura2.webp"></li>
+<li>Delete the entire folder <code>C:\Program Files (x86)\ASUS\ArmouryDevice</code>. Make sure to end the relevant processes in Task Manager before deleting. You can use the LockHunter software to help terminate these processes.</li>
+<li>Download Aura Sync using the link provided:<ul>
+<li><a href="https://www.asus.com/campaign/aura/us/download.php">Aura Sync</a><br><img data-src="https://s2.loli.net/2022/07/10/JMeo6KSnfUgjmEW.png" alt="aura1.png"></li>
+</ul>
+</li>
+<li>After downloading, extract the files and then open the properties of each <code>.exe</code> file. Unblock them by checking the “Unblock” option. Make sure to unblock applications in subfolders as well.<br><img data-src="https://s2.loli.net/2022/12/18/qHkQsetM4TmLJEF.png" alt="aura11.png"></li>
+<li>Run <code>Setup.exe</code> as an administrator.</li>
+<li>After installation is complete, restart your system. If the lighting is functioning correctly, you can go back to BIOS and set <code>SPD Write Disable</code> back to <code>True</code>.</li>
+</ol>
+<p><strong>Hopefully, Armoury Crate will improve in the future and behave better (insert manual doge face).</strong></p>
+</div>]]></content>
+      <categories>
+        <category>Geek</category>
+      </categories>
+      <tags>
+        <tag>ITX</tag>
+        <tag>DIY</tag>
+        <tag>Asus</tag>
+        <tag>Aura Sync</tag>
+        <tag>Armoury Crate</tag>
+        <tag>Trident Z</tag>
+        <tag>G.Skill</tag>
+        <tag>RGB</tag>
       </tags>
   </entry>
   <entry>
@@ -2015,6 +2015,55 @@
       </tags>
   </entry>
   <entry>
+    <title>Solution for Unable to Load Images on GitHub</title>
+    <url>/en/github-cant-load-images.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Yesterday, when I tried to add images on GitHub, I noticed that the images weren't loading properly. Upon investigation, I found out that GitHub's IP addresses were once again blocked by the Great Firewall (GFW). I resolved this issue by modifying my Hosts file. It's worth noting that this method can also be used to address problems with accessing GitHub when it's entirely blocked.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<h1 id="Principle"><a href="#Principle" class="headerlink" title="Principle"></a>Principle</h1><p>When we access a website through its URL, the website’s domain name needs to be resolved to an IP address through <strong>DNS resolution</strong>. One of the reasons why GitHub may not be accessible is due to the Great Firewall’s (GFW) DNS poisoning, which can cause DNS servers to return incorrect IP addresses. As a result, the website cannot be connected to, and resources such as images fail to load. Another reason is direct IP blocking, where the GFW intercepts data packets with specific IP addresses, preventing data transmission.</p>
+<p>In the early days of the internet when it was smaller in scale and DNS did not exist, domain names were mapped to IP addresses using the <code>Hosts</code> file. As the internet rapidly expanded, relying solely on the <code>Hosts</code> file became insufficient, and that’s when DNS servers came into play.</p>
+<p>Although DNS took over much of what the <code>Hosts</code> file used to do, the <code>Hosts</code> file still maintains a higher priority. Before a computer requests DNS resolution, it first checks if there is a mapping between the domain name to be accessed and an IP address in the local <code>Hosts</code> file. If such a mapping exists, the computer doesn’t need to use DNS servers; it can directly access the IP address associated with the domain name. This makes it possible to add <code>Hosts</code> file mapping records to bypass GFW’s DNS poisoning.</p>
+<h1 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h1><p>Here is a solution for <code>Windows systems</code>:</p>
+<ul>
+<li>Right-click on the Windows icon in the Start menu.</li>
+<li>Select Windows PowerShell (Admin).</li>
+<li>Enter <code>notepad.exe</code> and press Enter to open Notepad.<ul>
+<li>The reason for doing this is that modifying the Hosts file requires administrator privileges, and using Notepad directly won’t allow you to save the changes.</li>
+</ul>
+</li>
+<li>In the Notepad menu, click on File, then Open.</li>
+<li>Navigate to the Hosts file in the path C:\Windows\System32\drivers\etc and open it (for Ubuntu and MacOS, the file path is generally &#x2F;etc&#x2F;hosts; make a copy, replace it, and paste it back after making changes).</li>
+<li>Add the following mappings at the bottom of the file:  <figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"># Github</span><br><span class="line"><span class="number">192</span>.<span class="number">30</span>.<span class="number">253</span>.<span class="number">112</span> github.com</span><br><span class="line"><span class="number">140</span>.<span class="number">82</span>.<span class="number">113</span>.<span class="number">19</span> gist.github.com</span><br><span class="line"><span class="number">185</span>.<span class="number">199</span>.<span class="number">108</span>.<span class="number">153</span> assets-cdn.github.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> raw.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> gist.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> cloud.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> camo.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars0.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars1.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars2.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars3.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars4.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars5.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars6.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars7.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars8.githubusercontent.com</span><br></pre></td></tr></table></figure></li>
+<li>Press <code>Ctrl+S</code> to save the file, then refresh the webpage to access it normally.</li>
+<li>If you still can’t access the website, you need to clear the DNS cache and restart your browser:<ul>
+<li>Windows: <code>ipconfig /flushdns</code></li>
+<li>Ubuntu: <code>sudo systemctl restart nscd</code></li>
+<li>MacOS: <code>sudo killall -HUP mDNSResponder</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="Updating-Hosts"><a href="#Updating-Hosts" class="headerlink" title="Updating Hosts"></a>Updating Hosts</h1><p>Because the GFW continually works to block access to these IP addresses, these IP addresses may be blocked again after some time. Therefore, you need to periodically update your Hosts file to access websites that have been blocked.</p>
+<ul>
+<li>Open <a href="https://www.ipaddress.com/">ipaddress</a>.</li>
+<li>Enter each relevant domain name from the Hosts file one by one.</li>
+<li>Replace the old IP address with the new IP address returned by the website.</li>
+<li>Save the changes.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Geek</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>Github</tag>
+        <tag>Hosts</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Enable Cloudflare Acceleration and HTTPS on GitHub Pages</title>
     <url>/en/github-pages-cloudflare-https.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">A few days ago, when transferring the domain, I found that GitHub Pages hadn't fully enabled HTTPS, and the A records set in Cloudflare were also incomplete, so I went through the process again and decided to document it along the way.</blockquote>
@@ -2085,55 +2134,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Solution for Unable to Load Images on GitHub</title>
-    <url>/en/github-cant-load-images.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Yesterday, when I tried to add images on GitHub, I noticed that the images weren't loading properly. Upon investigation, I found out that GitHub's IP addresses were once again blocked by the Great Firewall (GFW). I resolved this issue by modifying my Hosts file. It's worth noting that this method can also be used to address problems with accessing GitHub when it's entirely blocked.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<h1 id="Principle"><a href="#Principle" class="headerlink" title="Principle"></a>Principle</h1><p>When we access a website through its URL, the website’s domain name needs to be resolved to an IP address through <strong>DNS resolution</strong>. One of the reasons why GitHub may not be accessible is due to the Great Firewall’s (GFW) DNS poisoning, which can cause DNS servers to return incorrect IP addresses. As a result, the website cannot be connected to, and resources such as images fail to load. Another reason is direct IP blocking, where the GFW intercepts data packets with specific IP addresses, preventing data transmission.</p>
-<p>In the early days of the internet when it was smaller in scale and DNS did not exist, domain names were mapped to IP addresses using the <code>Hosts</code> file. As the internet rapidly expanded, relying solely on the <code>Hosts</code> file became insufficient, and that’s when DNS servers came into play.</p>
-<p>Although DNS took over much of what the <code>Hosts</code> file used to do, the <code>Hosts</code> file still maintains a higher priority. Before a computer requests DNS resolution, it first checks if there is a mapping between the domain name to be accessed and an IP address in the local <code>Hosts</code> file. If such a mapping exists, the computer doesn’t need to use DNS servers; it can directly access the IP address associated with the domain name. This makes it possible to add <code>Hosts</code> file mapping records to bypass GFW’s DNS poisoning.</p>
-<h1 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h1><p>Here is a solution for <code>Windows systems</code>:</p>
-<ul>
-<li>Right-click on the Windows icon in the Start menu.</li>
-<li>Select Windows PowerShell (Admin).</li>
-<li>Enter <code>notepad.exe</code> and press Enter to open Notepad.<ul>
-<li>The reason for doing this is that modifying the Hosts file requires administrator privileges, and using Notepad directly won’t allow you to save the changes.</li>
-</ul>
-</li>
-<li>In the Notepad menu, click on File, then Open.</li>
-<li>Navigate to the Hosts file in the path C:\Windows\System32\drivers\etc and open it (for Ubuntu and MacOS, the file path is generally &#x2F;etc&#x2F;hosts; make a copy, replace it, and paste it back after making changes).</li>
-<li>Add the following mappings at the bottom of the file:  <figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"># Github</span><br><span class="line"><span class="number">192</span>.<span class="number">30</span>.<span class="number">253</span>.<span class="number">112</span> github.com</span><br><span class="line"><span class="number">140</span>.<span class="number">82</span>.<span class="number">113</span>.<span class="number">19</span> gist.github.com</span><br><span class="line"><span class="number">185</span>.<span class="number">199</span>.<span class="number">108</span>.<span class="number">153</span> assets-cdn.github.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> raw.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> gist.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> cloud.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> camo.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars0.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars1.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars2.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars3.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars4.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars5.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars6.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars7.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars8.githubusercontent.com</span><br></pre></td></tr></table></figure></li>
-<li>Press <code>Ctrl+S</code> to save the file, then refresh the webpage to access it normally.</li>
-<li>If you still can’t access the website, you need to clear the DNS cache and restart your browser:<ul>
-<li>Windows: <code>ipconfig /flushdns</code></li>
-<li>Ubuntu: <code>sudo systemctl restart nscd</code></li>
-<li>MacOS: <code>sudo killall -HUP mDNSResponder</code></li>
-</ul>
-</li>
-</ul>
-<h1 id="Updating-Hosts"><a href="#Updating-Hosts" class="headerlink" title="Updating Hosts"></a>Updating Hosts</h1><p>Because the GFW continually works to block access to these IP addresses, these IP addresses may be blocked again after some time. Therefore, you need to periodically update your Hosts file to access websites that have been blocked.</p>
-<ul>
-<li>Open <a href="https://www.ipaddress.com/">ipaddress</a>.</li>
-<li>Enter each relevant domain name from the Hosts file one by one.</li>
-<li>Replace the old IP address with the new IP address returned by the website.</li>
-<li>Save the changes.</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Geek</category>
-      </categories>
-      <tags>
-        <tag>Windows</tag>
-        <tag>Github</tag>
-        <tag>Hosts</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Adding Google Indexing to Hexo-based Website</title>
     <url>/en/google-index.html</url>
     <content><![CDATA[<p>Currently, the website cannot be found through search engines. If you want it to be discoverable, you need to add it to search engine indexing. Here, I’ll use Google as an example for the process.</p>
@@ -2165,65 +2165,6 @@
       <tags>
         <tag>Hexo</tag>
         <tag>SEO</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HEXO Deployment</title>
-    <url>/en/hexo-deployment.html</url>
-    <content><![CDATA[<p>The blog has been successfully set up, and the next step is to use Hexo with Markdown to write blog posts.</p>
-<span id="more"></span>
-
-<h1 id="Writing-Process-with-Hexo"><a href="#Writing-Process-with-Hexo" class="headerlink" title="Writing Process with Hexo"></a>Writing Process with Hexo</h1><p>The blogging process is much simpler compared to the setup. It involves just a few steps:</p>
-<ul>
-<li>Create a new blog post file</li>
-<li>Generate a new webpage</li>
-<li>Deploy to Github Page</li>
-</ul>
-<h2 id="Create-a-New-Blog-Post-File"><a href="#Create-a-New-Blog-Post-File" class="headerlink" title="Create a New Blog Post File"></a>Create a New Blog Post File</h2><ol>
-<li><p>Right-click in the blog folder and open Git bash.</p>
-</li>
-<li><p>Enter <code>hexo new &quot;Blog-Title&quot;</code> to create a new Markdown file. The name within the double quotes is the article’s title.</p>
-</li>
-<li><p>Navigate to the <code>blog/source/_posts</code> folder. You’ll see the newly created file, <code>Blog-Title.md</code>, with an <code>.md</code> extension, indicating a Markdown file.</p>
-</li>
-<li><p>Double-click to open it with your installed Markdown editor for editing.</p>
-<ul>
-<li>The file will have default content (using this blog as an example):<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: HEXO&amp;Markdown</span><br><span class="line">date: 2019-04-04 10:50:41</span><br><span class="line">tags: [Hexo, Markdown]</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<ul>
-<li>The <code>title</code> represents the blog title.</li>
-<li>The <code>date</code> is the creation time of the blog, which doesn’t need to be changed.</li>
-<li>The <code>tags</code> represent the blog’s tags.</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>Note:<br>Pay attention to the space after the colons.</p>
-</blockquote>
-<ul>
-<li>After the <code>---</code> divider line, you can start writing your blog post following Markdown syntax rules.</li>
-</ul>
-</li>
-<li><p>Save your changes after writing.</p>
-</li>
-</ol>
-<h2 id="Generate-New-Webpage-and-Deploy"><a href="#Generate-New-Webpage-and-Deploy" class="headerlink" title="Generate New Webpage and Deploy"></a>Generate New Webpage and Deploy</h2><ol>
-<li>Open Git bash.</li>
-<li>Use the command <code>hexo clean</code> to clear the webpage cache.</li>
-<li>Use the command <code>hexo g</code> to generate new webpage files.</li>
-<li>(Optional) Use the command <code>hexo s</code> to generate a local server and preview the webpage by visiting the provided URL.<blockquote>
-<p>Note:<br>The copy command in Git bash is not the familiar <code>ctrl c</code> but <code>ctrl ins</code>. Using <code>ctrl c</code> to copy the preview URL will terminate the local server process, causing the preview to stop working.</p>
-</blockquote>
-</li>
-<li>Use the command <code>hexo d</code> to deploy the webpage to Github Page.</li>
-</ol>
-<hr>
-<p><strong>The above is the complete process. Each time you update your blog, you’ll need to repeat the steps mentioned above.</strong><br>To simplify, you can merge commands and directly use <code>hexo cl</code> and <code>hexo g -d</code> to update.</p>
-]]></content>
-      <categories>
-        <category>Website Configuration</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -2356,6 +2297,65 @@
       <tags>
         <tag>Grasshopper</tag>
         <tag>Architecture</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HEXO Deployment</title>
+    <url>/en/hexo-deployment.html</url>
+    <content><![CDATA[<p>The blog has been successfully set up, and the next step is to use Hexo with Markdown to write blog posts.</p>
+<span id="more"></span>
+
+<h1 id="Writing-Process-with-Hexo"><a href="#Writing-Process-with-Hexo" class="headerlink" title="Writing Process with Hexo"></a>Writing Process with Hexo</h1><p>The blogging process is much simpler compared to the setup. It involves just a few steps:</p>
+<ul>
+<li>Create a new blog post file</li>
+<li>Generate a new webpage</li>
+<li>Deploy to Github Page</li>
+</ul>
+<h2 id="Create-a-New-Blog-Post-File"><a href="#Create-a-New-Blog-Post-File" class="headerlink" title="Create a New Blog Post File"></a>Create a New Blog Post File</h2><ol>
+<li><p>Right-click in the blog folder and open Git bash.</p>
+</li>
+<li><p>Enter <code>hexo new &quot;Blog-Title&quot;</code> to create a new Markdown file. The name within the double quotes is the article’s title.</p>
+</li>
+<li><p>Navigate to the <code>blog/source/_posts</code> folder. You’ll see the newly created file, <code>Blog-Title.md</code>, with an <code>.md</code> extension, indicating a Markdown file.</p>
+</li>
+<li><p>Double-click to open it with your installed Markdown editor for editing.</p>
+<ul>
+<li>The file will have default content (using this blog as an example):<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: HEXO&amp;Markdown</span><br><span class="line">date: 2019-04-04 10:50:41</span><br><span class="line">tags: [Hexo, Markdown]</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<ul>
+<li>The <code>title</code> represents the blog title.</li>
+<li>The <code>date</code> is the creation time of the blog, which doesn’t need to be changed.</li>
+<li>The <code>tags</code> represent the blog’s tags.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Note:<br>Pay attention to the space after the colons.</p>
+</blockquote>
+<ul>
+<li>After the <code>---</code> divider line, you can start writing your blog post following Markdown syntax rules.</li>
+</ul>
+</li>
+<li><p>Save your changes after writing.</p>
+</li>
+</ol>
+<h2 id="Generate-New-Webpage-and-Deploy"><a href="#Generate-New-Webpage-and-Deploy" class="headerlink" title="Generate New Webpage and Deploy"></a>Generate New Webpage and Deploy</h2><ol>
+<li>Open Git bash.</li>
+<li>Use the command <code>hexo clean</code> to clear the webpage cache.</li>
+<li>Use the command <code>hexo g</code> to generate new webpage files.</li>
+<li>(Optional) Use the command <code>hexo s</code> to generate a local server and preview the webpage by visiting the provided URL.<blockquote>
+<p>Note:<br>The copy command in Git bash is not the familiar <code>ctrl c</code> but <code>ctrl ins</code>. Using <code>ctrl c</code> to copy the preview URL will terminate the local server process, causing the preview to stop working.</p>
+</blockquote>
+</li>
+<li>Use the command <code>hexo d</code> to deploy the webpage to Github Page.</li>
+</ol>
+<hr>
+<p><strong>The above is the complete process. Each time you update your blog, you’ll need to repeat the steps mentioned above.</strong><br>To simplify, you can merge commands and directly use <code>hexo cl</code> and <code>hexo g -d</code> to update.</p>
+]]></content>
+      <categories>
+        <category>Website Configuration</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -2513,72 +2513,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo Next 7.1 Bilingual Switching</title>
-    <url>/en/hexo-next-7-1-bilingual-switching.html</url>
-    <content><![CDATA[<p>2020 Update: This method has too many bugs and has been abandoned. It only applies to Next theme version 7.1. For a new method, please refer to <a href="https://siriusq.top/en/hexo-next-7-7-bilingual-switching.html">Hexo Next 7.7 Bilingual Switching</a>.</p>
-<hr>
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<p>For those who need an English version of their website, you’ll need to add a bilingual switching feature. Hexo has support for website internationalization, known as <a href="https://hexo.io/zh-cn/docs/internationalization.html">i18n</a>. However, it has some limitations, as different language articles are mixed together, making it look messy. To address this, follow the steps below:</p>
-<h1 id="Plugin-Installation"><a href="#Plugin-Installation" class="headerlink" title="Plugin Installation"></a>Plugin Installation</h1><p>Install the Hexo internationalization plugin, i18n, by running the following command in your blog’s root directory:</p>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-i18n</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h2 id="Important-Notes"><a href="#Important-Notes" class="headerlink" title="Important Notes"></a>Important Notes</h2><p>Ensure that the <strong>i18n</strong> plugin is placed as the last entry in the <code>dependencies</code> section of your root directory’s <code>package.json</code> file. You will need to manually adjust this whenever you install a new plugin because every new plugin installation reorders the plugins alphabetically. The format should look like this, with no comma at the end of the last item:</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;bookmark&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.2.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;clipboard&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.4&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;gitment&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.8.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-asset-image&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-deployer-git&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-archive&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.1.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.1.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-index&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.2.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-search&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.4.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-sitemap&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-helper-live2d&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.1.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-prism-plugin&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.3.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-renderer-ejs&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-renderer-marked&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.2&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-renderer-stylus&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-server&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-symbols-count-time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.4.4&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-wordcount&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^6.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;live2d-widget-model-tororo&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;live2d-widget-model-z16&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-i18n&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.7&quot;</span></span><br><span class="line"> <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="Modify-Configuration-File"><a href="#Modify-Configuration-File" class="headerlink" title="Modify Configuration File"></a>Modify Configuration File</h1><p>Open the configuration file <code>_config.yml</code> in your blog’s root directory and make the following changes under the <code>language</code> section:</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># language:</span></span><br><span class="line"><span class="comment"># - zh-CN</span></span><br><span class="line"><span class="comment"># - en</span></span><br><span class="line"><span class="attr">language:</span> [<span class="string">zh-CN</span>, <span class="string">en</span>]</span><br><span class="line"><span class="attr">i18n:</span></span><br><span class="line">  <span class="attr">type:</span> [<span class="string">page</span>, <span class="string">post</span>]</span><br><span class="line">  <span class="attr">generator:</span> [<span class="string">index</span>, <span class="string">archive</span>, <span class="string">category</span>, <span class="string">tag</span>]</span><br></pre></td></tr></table></figure>
-
-<p>After making these changes, run <code>hexo cl</code> and <code>hexo g</code> to regenerate the <code>public</code> folder. At this point, a new directory <code>/en</code> will be generated to store the English site files. However, different language sites are still mixed together. To separate them properly, you need to add conditional generation rules for different language pages.</p>
-<h1 id="Add-Generation-Conditions"><a href="#Add-Generation-Conditions" class="headerlink" title="Add Generation Conditions"></a>Add Generation Conditions</h1><p>Open <code>.\themes\next\layout\index.swig</code> and add the following code at the end:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;% block content %&#125;</span><br><span class="line">  &lt;section id=<span class="string">&quot;posts&quot;</span> <span class="keyword">class</span>=<span class="string">&quot;posts-expand&quot;</span>&gt;</span><br><span class="line">    &#123;% <span class="keyword">for</span> post <span class="keyword">in</span> page.<span class="property">posts</span> %&#125;  </span><br><span class="line">      &#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">        &#123;&#123; post_template.<span class="title function_">render</span>(post, <span class="literal">true</span>) &#125;&#125;</span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line">  &lt;/section&gt;</span><br><span class="line">  &#123;% include <span class="string">&#x27;_partials/pagination.swig&#x27;</span> %&#125;</span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Now, articles will only be generated if their language matches the page language exactly. Similarly, in files such as <code>tag.swig</code>, <code>category.swig</code>, <code>archive.swig</code>, etc., you can search for and set the <code>post_template.render(post)</code> condition to hide articles in other languages. Here’s an example:</p>
-<p><strong>tag</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> post <span class="keyword">in</span> page.<span class="property">posts</span> %&#125;</span><br><span class="line"> &#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">   &#123;&#123; post_template.<span class="title function_">render</span>(post) &#125;&#125;</span><br><span class="line"> &#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>archive</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">  &#123;&#123; post_template.<span class="title function_">render</span>(post) &#125;&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>category</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> post <span class="keyword">in</span> page.<span class="property">posts</span> %&#125;</span><br><span class="line"> &#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">  &#123;&#123; post_template.<span class="title function_">render</span>(post) &#125;&#125;</span><br><span class="line"> &#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Article-Writing-Format"><a href="#Article-Writing-Format" class="headerlink" title="Article Writing Format"></a>Article Writing Format</h1><p>In the blog post’s front matter, add <code>lang:</code> to differentiate between articles in different languages. For example, use <code>lang: zh-CN</code> for Chinese and <code>lang: en</code> for English, like this:</p>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">title: Hexo Bilingual Switching</span><br><span class="line">date: 2019-04-09 17:12:53</span><br><span class="line">lang: en</span><br><span class="line">tags: [HEXO]</span><br><span class="line">categories: Blog</span><br></pre></td></tr></table></figure>
-
-<h1 id="Adding-Language-Switching-Button"><a href="#Adding-Language-Switching-Button" class="headerlink" title="Adding Language Switching Button"></a>Adding Language Switching Button</h1><p>Open the Next theme configuration file <code>.\themes\next\_config.yml</code> and under <code>Menu: </code>, add <code>switch_lang: </code>, like this:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu</span>:</span><br><span class="line">  <span class="attr">home</span>: / || home</span><br><span class="line">  <span class="attr">about</span>: <span class="regexp">/about/</span> || user</span><br><span class="line">  <span class="attr">tags</span>: <span class="regexp">/tags/</span> || tags</span><br><span class="line">  <span class="attr">categories</span>: <span class="regexp">/categories/</span> || th</span><br><span class="line">  <span class="attr">archives</span>: <span class="regexp">/archives/</span> || archive</span><br><span class="line">  <span class="attr">switch_lang</span>: /en || language</span><br><span class="line">  #<span class="attr">schedule</span>: <span class="regexp">/schedule/</span> || calendar</span><br><span class="line">  #<span class="attr">sitemap</span>: /sitemap.<span class="property">xml</span> || sitemap</span><br><span class="line">  #<span class="attr">commonweal</span>: <span class="regexp">/404/</span> || heartbeat</span><br></pre></td></tr></table></figure>
-
-<p>Open the <code>zh-CN.yml</code> and <code>en.yml</code> files under <code>.\themes\next\languages</code>, and add <code>switch_lang:</code> under <code>menu: </code> in both files.</p>
-<p><strong>zh-CN</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu</span>:</span><br><span class="line">  <span class="attr">home</span>: 首页</span><br><span class="line">  <span class="attr">archives</span>: 归档</span><br><span class="line">  <span class="attr">categories</span>: 分类</span><br><span class="line">  <span class="attr">tags</span>: 标签</span><br><span class="line">  <span class="attr">switch_lang</span>: <span class="title class_">English</span></span><br><span class="line">  <span class="attr">about</span>: 关于</span><br><span class="line">  <span class="attr">search</span>: 搜索</span><br><span class="line">  <span class="attr">schedule</span>: 日程表</span><br><span class="line">  <span class="attr">sitemap</span>: 站点地图</span><br><span class="line">  <span class="attr">commonweal</span>: 公益 <span class="number">404</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>en</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu</span>:</span><br><span class="line">  <span class="attr">home</span>: <span class="title class_">Home</span></span><br><span class="line">  <span class="attr">archives</span>: <span class="title class_">Archives</span></span><br><span class="line">  <span class="attr">categories</span>: <span class="title class_">Categories</span></span><br><span class="line">  <span class="attr">tags</span>: <span class="title class_">Tags</span></span><br><span class="line">  <span class="attr">switch_lang</span>: zh-<span class="variable constant_">CN</span></span><br><span class="line">  <span class="attr">about</span>: <span class="title class_">About</span></span><br><span class="line">  <span class="attr">search</span>: <span class="title class_">Search</span></span><br><span class="line">  <span class="attr">schedule</span>: <span class="title class_">Schedule</span></span><br><span class="line">  <span class="attr">sitemap</span>: <span class="title class_">Sitemap</span></span><br><span class="line">  <span class="attr">commonweal</span>: <span class="title class_">Commonweal</span> <span class="number">404</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="Adding-Conditional-Statements"><a href="#Adding-Conditional-Statements" class="headerlink" title="Adding Conditional Statements"></a>Adding Conditional Statements</h1><p>At this point, the links are still one-way, meaning you can only navigate to the English page but cannot return to the Chinese page. Therefore, you need to add conditional statements.</p>
-<p>In .\themes\next\layout_partials\head\head-unique.swig, add the following code to redirect the language switch button back to the Chinese page after loading the English page:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">    <span class="comment">// Wait for the page to load first</span></span><br><span class="line">    <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">        switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">            <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en&#x27;</span>);</span><br><span class="line">            <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">                <span class="title function_">_prevOnload</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>As a JavaScript newbie, I struggled with this for a while. <code>document.getElementsByClassName</code> returns an array, and I kept getting errors while debugging. I had to add <code>[0]</code> at the end to get the class name.</p>
-<h1 id="Limitations"><a href="#Limitations" class="headerlink" title="Limitations"></a>Limitations</h1><p>Although the above method can achieve language switching, when you click on tags, archives, categories, and other links on the English page, it will redirect you to the Chinese page. To switch to the corresponding Chinese page, you need to click the English switch button again on the redirected page. If there are better solutions, please feel free to leave comments in the comment section.</p>
-<blockquote>
-<p>Reference: <a href="https://wm4n.github.io/Hexo-NexT-%E5%90%8C%E6%99%82%E6%94%AF%E6%8F%B4%E5%A4%9A%E8%AA%9E%E7%B3%BB/">wm4n</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Website Configuration</category>
-      </categories>
-      <tags>
-        <tag>HEXO</tag>
-        <tag>Next</tag>
-        <tag>i18n</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo Next 8 Bilingual Switching</title>
     <url>/en/hexo-hext-8-bilingual-switching.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">This blog post provides a solution for switching languages(e.g. Chinese and English) for blogs that use the Hexo framework with the Next theme.</blockquote>
@@ -2640,6 +2574,72 @@
 <li>about page, tags page, categories page, archives page, etc.</li>
 <li>Custom 404page.</li>
 </ol>
+]]></content>
+      <categories>
+        <category>Website Configuration</category>
+      </categories>
+      <tags>
+        <tag>HEXO</tag>
+        <tag>Next</tag>
+        <tag>i18n</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo Next 7.1 Bilingual Switching</title>
+    <url>/en/hexo-next-7-1-bilingual-switching.html</url>
+    <content><![CDATA[<p>2020 Update: This method has too many bugs and has been abandoned. It only applies to Next theme version 7.1. For a new method, please refer to <a href="https://siriusq.top/en/hexo-next-7-7-bilingual-switching.html">Hexo Next 7.7 Bilingual Switching</a>.</p>
+<hr>
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<p>For those who need an English version of their website, you’ll need to add a bilingual switching feature. Hexo has support for website internationalization, known as <a href="https://hexo.io/zh-cn/docs/internationalization.html">i18n</a>. However, it has some limitations, as different language articles are mixed together, making it look messy. To address this, follow the steps below:</p>
+<h1 id="Plugin-Installation"><a href="#Plugin-Installation" class="headerlink" title="Plugin Installation"></a>Plugin Installation</h1><p>Install the Hexo internationalization plugin, i18n, by running the following command in your blog’s root directory:</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-i18n</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="Important-Notes"><a href="#Important-Notes" class="headerlink" title="Important Notes"></a>Important Notes</h2><p>Ensure that the <strong>i18n</strong> plugin is placed as the last entry in the <code>dependencies</code> section of your root directory’s <code>package.json</code> file. You will need to manually adjust this whenever you install a new plugin because every new plugin installation reorders the plugins alphabetically. The format should look like this, with no comma at the end of the last item:</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;bookmark&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.2.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;clipboard&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.4&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;gitment&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.8.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-asset-image&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-deployer-git&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-archive&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.1.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.1.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-index&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.2.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-search&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.4.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-sitemap&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-helper-live2d&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.1.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-prism-plugin&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.3.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-renderer-ejs&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-renderer-marked&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.2&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-renderer-stylus&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-server&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.3.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-symbols-count-time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.4.4&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-wordcount&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^6.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;live2d-widget-model-tororo&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;live2d-widget-model-z16&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;hexo-generator-i18n&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.7&quot;</span></span><br><span class="line"> <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Modify-Configuration-File"><a href="#Modify-Configuration-File" class="headerlink" title="Modify Configuration File"></a>Modify Configuration File</h1><p>Open the configuration file <code>_config.yml</code> in your blog’s root directory and make the following changes under the <code>language</code> section:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># language:</span></span><br><span class="line"><span class="comment"># - zh-CN</span></span><br><span class="line"><span class="comment"># - en</span></span><br><span class="line"><span class="attr">language:</span> [<span class="string">zh-CN</span>, <span class="string">en</span>]</span><br><span class="line"><span class="attr">i18n:</span></span><br><span class="line">  <span class="attr">type:</span> [<span class="string">page</span>, <span class="string">post</span>]</span><br><span class="line">  <span class="attr">generator:</span> [<span class="string">index</span>, <span class="string">archive</span>, <span class="string">category</span>, <span class="string">tag</span>]</span><br></pre></td></tr></table></figure>
+
+<p>After making these changes, run <code>hexo cl</code> and <code>hexo g</code> to regenerate the <code>public</code> folder. At this point, a new directory <code>/en</code> will be generated to store the English site files. However, different language sites are still mixed together. To separate them properly, you need to add conditional generation rules for different language pages.</p>
+<h1 id="Add-Generation-Conditions"><a href="#Add-Generation-Conditions" class="headerlink" title="Add Generation Conditions"></a>Add Generation Conditions</h1><p>Open <code>.\themes\next\layout\index.swig</code> and add the following code at the end:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;% block content %&#125;</span><br><span class="line">  &lt;section id=<span class="string">&quot;posts&quot;</span> <span class="keyword">class</span>=<span class="string">&quot;posts-expand&quot;</span>&gt;</span><br><span class="line">    &#123;% <span class="keyword">for</span> post <span class="keyword">in</span> page.<span class="property">posts</span> %&#125;  </span><br><span class="line">      &#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">        &#123;&#123; post_template.<span class="title function_">render</span>(post, <span class="literal">true</span>) &#125;&#125;</span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line">  &lt;/section&gt;</span><br><span class="line">  &#123;% include <span class="string">&#x27;_partials/pagination.swig&#x27;</span> %&#125;</span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Now, articles will only be generated if their language matches the page language exactly. Similarly, in files such as <code>tag.swig</code>, <code>category.swig</code>, <code>archive.swig</code>, etc., you can search for and set the <code>post_template.render(post)</code> condition to hide articles in other languages. Here’s an example:</p>
+<p><strong>tag</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> post <span class="keyword">in</span> page.<span class="property">posts</span> %&#125;</span><br><span class="line"> &#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">   &#123;&#123; post_template.<span class="title function_">render</span>(post) &#125;&#125;</span><br><span class="line"> &#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>archive</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">  &#123;&#123; post_template.<span class="title function_">render</span>(post) &#125;&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>category</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> post <span class="keyword">in</span> page.<span class="property">posts</span> %&#125;</span><br><span class="line"> &#123;% <span class="keyword">if</span> page.<span class="property">lang</span> === post.<span class="property">lang</span> %&#125;</span><br><span class="line">  &#123;&#123; post_template.<span class="title function_">render</span>(post) &#125;&#125;</span><br><span class="line"> &#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Article-Writing-Format"><a href="#Article-Writing-Format" class="headerlink" title="Article Writing Format"></a>Article Writing Format</h1><p>In the blog post’s front matter, add <code>lang:</code> to differentiate between articles in different languages. For example, use <code>lang: zh-CN</code> for Chinese and <code>lang: en</code> for English, like this:</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">title: Hexo Bilingual Switching</span><br><span class="line">date: 2019-04-09 17:12:53</span><br><span class="line">lang: en</span><br><span class="line">tags: [HEXO]</span><br><span class="line">categories: Blog</span><br></pre></td></tr></table></figure>
+
+<h1 id="Adding-Language-Switching-Button"><a href="#Adding-Language-Switching-Button" class="headerlink" title="Adding Language Switching Button"></a>Adding Language Switching Button</h1><p>Open the Next theme configuration file <code>.\themes\next\_config.yml</code> and under <code>Menu: </code>, add <code>switch_lang: </code>, like this:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu</span>:</span><br><span class="line">  <span class="attr">home</span>: / || home</span><br><span class="line">  <span class="attr">about</span>: <span class="regexp">/about/</span> || user</span><br><span class="line">  <span class="attr">tags</span>: <span class="regexp">/tags/</span> || tags</span><br><span class="line">  <span class="attr">categories</span>: <span class="regexp">/categories/</span> || th</span><br><span class="line">  <span class="attr">archives</span>: <span class="regexp">/archives/</span> || archive</span><br><span class="line">  <span class="attr">switch_lang</span>: /en || language</span><br><span class="line">  #<span class="attr">schedule</span>: <span class="regexp">/schedule/</span> || calendar</span><br><span class="line">  #<span class="attr">sitemap</span>: /sitemap.<span class="property">xml</span> || sitemap</span><br><span class="line">  #<span class="attr">commonweal</span>: <span class="regexp">/404/</span> || heartbeat</span><br></pre></td></tr></table></figure>
+
+<p>Open the <code>zh-CN.yml</code> and <code>en.yml</code> files under <code>.\themes\next\languages</code>, and add <code>switch_lang:</code> under <code>menu: </code> in both files.</p>
+<p><strong>zh-CN</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu</span>:</span><br><span class="line">  <span class="attr">home</span>: 首页</span><br><span class="line">  <span class="attr">archives</span>: 归档</span><br><span class="line">  <span class="attr">categories</span>: 分类</span><br><span class="line">  <span class="attr">tags</span>: 标签</span><br><span class="line">  <span class="attr">switch_lang</span>: <span class="title class_">English</span></span><br><span class="line">  <span class="attr">about</span>: 关于</span><br><span class="line">  <span class="attr">search</span>: 搜索</span><br><span class="line">  <span class="attr">schedule</span>: 日程表</span><br><span class="line">  <span class="attr">sitemap</span>: 站点地图</span><br><span class="line">  <span class="attr">commonweal</span>: 公益 <span class="number">404</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>en</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu</span>:</span><br><span class="line">  <span class="attr">home</span>: <span class="title class_">Home</span></span><br><span class="line">  <span class="attr">archives</span>: <span class="title class_">Archives</span></span><br><span class="line">  <span class="attr">categories</span>: <span class="title class_">Categories</span></span><br><span class="line">  <span class="attr">tags</span>: <span class="title class_">Tags</span></span><br><span class="line">  <span class="attr">switch_lang</span>: zh-<span class="variable constant_">CN</span></span><br><span class="line">  <span class="attr">about</span>: <span class="title class_">About</span></span><br><span class="line">  <span class="attr">search</span>: <span class="title class_">Search</span></span><br><span class="line">  <span class="attr">schedule</span>: <span class="title class_">Schedule</span></span><br><span class="line">  <span class="attr">sitemap</span>: <span class="title class_">Sitemap</span></span><br><span class="line">  <span class="attr">commonweal</span>: <span class="title class_">Commonweal</span> <span class="number">404</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Adding-Conditional-Statements"><a href="#Adding-Conditional-Statements" class="headerlink" title="Adding Conditional Statements"></a>Adding Conditional Statements</h1><p>At this point, the links are still one-way, meaning you can only navigate to the English page but cannot return to the Chinese page. Therefore, you need to add conditional statements.</p>
+<p>In .\themes\next\layout_partials\head\head-unique.swig, add the following code to redirect the language switch button back to the Chinese page after loading the English page:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">    <span class="comment">// Wait for the page to load first</span></span><br><span class="line">    <span class="keyword">var</span> _prevOnload = <span class="variable language_">window</span>.<span class="property">onload</span>;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> switchLang = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;menu-item menu-item-switch_lang&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">        switchLang.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">            <span class="keyword">var</span> indexOfEn = href.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&#x27;/en&#x27;</span>);</span><br><span class="line">            <span class="keyword">if</span>(indexOfEn !== -<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="string">&#x27;/en/&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = href.<span class="title function_">replace</span>(<span class="regexp">/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i</span>, <span class="string">&#x27;$1en/$2&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="title function_">typeof</span>(_prevOnload) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">                <span class="title function_">_prevOnload</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>As a JavaScript newbie, I struggled with this for a while. <code>document.getElementsByClassName</code> returns an array, and I kept getting errors while debugging. I had to add <code>[0]</code> at the end to get the class name.</p>
+<h1 id="Limitations"><a href="#Limitations" class="headerlink" title="Limitations"></a>Limitations</h1><p>Although the above method can achieve language switching, when you click on tags, archives, categories, and other links on the English page, it will redirect you to the Chinese page. To switch to the corresponding Chinese page, you need to click the English switch button again on the redirected page. If there are better solutions, please feel free to leave comments in the comment section.</p>
+<blockquote>
+<p>Reference: <a href="https://wm4n.github.io/Hexo-NexT-%E5%90%8C%E6%99%82%E6%94%AF%E6%8F%B4%E5%A4%9A%E8%AA%9E%E7%B3%BB/">wm4n</a></p>
+</blockquote>
 ]]></content>
       <categories>
         <category>Website Configuration</category>
@@ -2900,6 +2900,50 @@
       </tags>
   </entry>
   <entry>
+    <title>Environment Variables Configuration for Java and C</title>
+    <url>/en/java-c-environment-variables-configuration.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">I reinstalled the system yesterday and upgraded to Win10 2004. I thought I could configure the environment variables for Java and C from memory, but in the end, I had to turn to Google for help. So, I'll document it again.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><ol>
+<li>Simply search for <code>environment variables</code> in the taskbar search box, and you will find <code>Edit the system environment variables.</code></li>
+<li>In the popup window, click on <code>Environment Variables</code> in the bottom right corner.</li>
+<li>Under <code>System variables,</code> create a new system variable with the variable name <code>JAVA_HOME</code> and the variable value as the installation path of JDK, which is typically <code>C:\Program Files\Java\jdk-14.0.2</code> by default.</li>
+<li>Create another system variable named <code>CLASSPATH</code> with the variable value as <code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code>.</li>
+<li>Double-click on the <code>Path</code> variable in the system variables section, and click <code>New</code> in the top right corner.</li>
+<li>Add <code>%JAVA_HOME%\bin</code> and <code>%JAVA_HOME%\jre\bin</code> separately.</li>
+<li>Confirm and return to the desktop.</li>
+<li>Open the terminal and enter <code>java -version</code> to check if it was successful. If successful, it will display the Java version.</li>
+<li>If it’s not successful, try restarting and double-check the variables for correctness.</li>
+</ol>
+<h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><ol>
+<li>In Mingw, select <code>mingw32-base</code> and <code>mingw-gcc-g++,</code> selecting more will lead to a very long installation process. You can select them by right-clicking and choosing <code>Mark for Installation.</code></li>
+<li>Click on <code>Installation</code> in the top right corner and choose <code>Apply Changes.</code></li>
+<li>In the popup window, click <code>Apply</code> to confirm.</li>
+<li>Wait patiently… Potato servers often report installation failures.</li>
+<li>After installation, follow the same steps to open system variables.</li>
+<li>Double-click on the <code>Path</code> variable in the system variables section, and click <code>New</code> in the top right corner.</li>
+<li>Add the installation path for Mingw, which is typically <code>C:\MinGW\bin.</code></li>
+<li>Open the terminal and enter <code>gcc -v</code> to check if it was successful.</li>
+<li>If it’s not successful, try restarting.</li>
+</ol>
+<p>Your environment variables should look something like this after configuration:<br><img data-src="https://s2.loli.net/2022/05/13/O49gVDEHBFZ2kzm.png" alt="1"><br><img data-src="https://s2.loli.net/2022/05/13/uLJnsPYEIiHSA1t.png" alt="2"></p>
+]]></content>
+      <categories>
+        <category>Coding</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>Environment Variables</tag>
+        <tag>Java</tag>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Jupyter Notebook Tutorial</title>
     <url>/en/jupyter-notebook.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">With my school start delayed, I found myself with nothing to do at home. I decided to explore MOOCs, and while taking notes, I realized that OneNote couldn't effectively document code – it lacked features like code formatting, indentation, and line numbering. That's when I thought about Jupyter Notebook, a program that had been sitting unused on my computer. I decided to document the installation and usage process.</blockquote>
@@ -2989,50 +3033,6 @@
       <tags>
         <tag>Jupyter</tag>
         <tag>Win10</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Environment Variables Configuration for Java and C</title>
-    <url>/en/java-c-environment-variables-configuration.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">I reinstalled the system yesterday and upgraded to Win10 2004. I thought I could configure the environment variables for Java and C from memory, but in the end, I had to turn to Google for help. So, I'll document it again.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><ol>
-<li>Simply search for <code>environment variables</code> in the taskbar search box, and you will find <code>Edit the system environment variables.</code></li>
-<li>In the popup window, click on <code>Environment Variables</code> in the bottom right corner.</li>
-<li>Under <code>System variables,</code> create a new system variable with the variable name <code>JAVA_HOME</code> and the variable value as the installation path of JDK, which is typically <code>C:\Program Files\Java\jdk-14.0.2</code> by default.</li>
-<li>Create another system variable named <code>CLASSPATH</code> with the variable value as <code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code>.</li>
-<li>Double-click on the <code>Path</code> variable in the system variables section, and click <code>New</code> in the top right corner.</li>
-<li>Add <code>%JAVA_HOME%\bin</code> and <code>%JAVA_HOME%\jre\bin</code> separately.</li>
-<li>Confirm and return to the desktop.</li>
-<li>Open the terminal and enter <code>java -version</code> to check if it was successful. If successful, it will display the Java version.</li>
-<li>If it’s not successful, try restarting and double-check the variables for correctness.</li>
-</ol>
-<h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><ol>
-<li>In Mingw, select <code>mingw32-base</code> and <code>mingw-gcc-g++,</code> selecting more will lead to a very long installation process. You can select them by right-clicking and choosing <code>Mark for Installation.</code></li>
-<li>Click on <code>Installation</code> in the top right corner and choose <code>Apply Changes.</code></li>
-<li>In the popup window, click <code>Apply</code> to confirm.</li>
-<li>Wait patiently… Potato servers often report installation failures.</li>
-<li>After installation, follow the same steps to open system variables.</li>
-<li>Double-click on the <code>Path</code> variable in the system variables section, and click <code>New</code> in the top right corner.</li>
-<li>Add the installation path for Mingw, which is typically <code>C:\MinGW\bin.</code></li>
-<li>Open the terminal and enter <code>gcc -v</code> to check if it was successful.</li>
-<li>If it’s not successful, try restarting.</li>
-</ol>
-<p>Your environment variables should look something like this after configuration:<br><img data-src="https://s2.loli.net/2022/05/13/O49gVDEHBFZ2kzm.png" alt="1"><br><img data-src="https://s2.loli.net/2022/05/13/uLJnsPYEIiHSA1t.png" alt="2"></p>
-]]></content>
-      <categories>
-        <category>Coding</category>
-      </categories>
-      <tags>
-        <tag>Windows</tag>
-        <tag>Environment Variables</tag>
-        <tag>Java</tag>
-        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -6770,54 +6770,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Transferring Domain Names From Alibaba Cloud to Namesilo</title>
-    <url>/en/transfer-domain.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Today, on a whim, I decided to look up the WHOIS information for my domain name and discovered that the domain I registered with Alibaba Cloud is in a completely exposed state. My name and province are all publicly visible... After some research, I found out that Alibaba Cloud discontinued WHOIS privacy protection back in 2018, and for three years my domain has been out in the open without my knowledge. With a sense of "better late than never," combined with the frustrating real-name verification process, I made the decision to transfer my domain out of Alibaba Cloud. The process of transferring was also marred by Alibaba Cloud's frustrating practices.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from <a href="https://siriusq.top/%E9%98%BF%E9%87%8C%E4%BA%91%E5%9F%9F%E5%90%8D%E8%BD%AC%E5%87%BA%E8%87%B3NameSilo.html">my Chinese blog post</a> with the aid of ChatGpt.</p>
-</div>
-
-<h1 id="Transferring-from-Alibaba-Cloud"><a href="#Transferring-from-Alibaba-Cloud" class="headerlink" title="Transferring from Alibaba Cloud"></a>Transferring from Alibaba Cloud</h1><p>First, log in to the <a class="btn" href="https://dc.console.aliyun.com/"><i class="fa fa-link fa-fw"></i>Alibaba Cloud Domain Console</a>. Click on the domain name you want to transfer. The option for “Transfer Domain” will appear in the sidebar of the page you’re redirected to. Interestingly, the option to transfer <em>into</em> Alibaba Cloud is conveniently placed on the homepage. To distinguish between the two, let’s refer to the homepage of the domain console as the “Homepage” and the page you’re taken to after clicking on a domain as the “Domain Management Page.”</p>
-<p><img data-src="https://s2.loli.net/2022/06/04/eGpfiLlvtWVKYUd.png" alt="Transfer Domain"></p>
-<p>During the transfer process, you’ll need to verify your email and undergo security authentication. I used Foxmail for this purpose. However, despite several attempts, I didn’t receive any emails from Alibaba Cloud, even in my spam folder. So, I had to change my email address. If, like me, you’re not receiving emails, congratulations, you’ll need to cancel the transfer and start again.</p>
-<h2 id="Changing-Email-Address"><a href="#Changing-Email-Address" class="headerlink" title="Changing Email Address"></a>Changing Email Address</h2><p>To change your email address, you’ll need to access the “Information Template” in the domain console, which is found in the sidebar of the homepage. Surprisingly, the information template also requires real-name verification. Yes, you read that right. It’s not about personal information, but about the information template. If you don’t complete real-name verification for the information template, the checkboxes next to it won’t work, which means you won’t be able to change your email address. Besides verifying the new email, you’ll also need to wait for the verification process to be completed. It took me several tens of minutes to get through the process.</p>
-<p>After updating the template, go to the “Modify Domain Holder Information (Transfer)” in the domain management page to perform a “Fast Transfer” in order to change the email associated with the domain. Make sure to check “Disable ‘Alibaba Cloud Domain Transfer Prohibited within 60 days after successful domain information modification.’” I really don’t understand why changing an email can be so complicated, and why you have to wait for approval when transferring your own domain to yourself… and wait for several tens of minutes.</p>
-<p><img data-src="https://s2.loli.net/2022/06/04/6FMNoGQCEUThOwc.png" alt="Change Email"></p>
-<h2 id="Receiving-the-Transfer-Code"><a href="#Receiving-the-Transfer-Code" class="headerlink" title="Receiving the Transfer Code"></a>Receiving the Transfer Code</h2><p>Once you’ve completed all the changes, return to the domain transfer section. Repeat the email verification and security authentication process, and you’ll receive the password from Alibaba Cloud in your email.</p>
-<p><img data-src="https://s2.loli.net/2022/06/04/PR4bYylMVHf86jW.png" alt="Transfer Code"></p>
-<h1 id="Transferring-to-NameSilo"><a href="#Transferring-to-NameSilo" class="headerlink" title="Transferring to NameSilo"></a>Transferring to NameSilo</h1><p>For transferring my domain registrar, I chose <a class="btn" href="https://www.namesilo.com/login"><i class="fa fa-link fa-fw"></i>NameSilo</a>. The reason I chose them is because of their affordable prices, where renewal fees remain the same as the initial registration, and they also provide free WHOIS privacy protection. My <code>.top</code> domain costs $4.79 per year, just a few dollars more than Alibaba Cloud.</p>
-<p>If you don’t have an account, start by registering one. Then, in the top menu under <code>Domains</code>, select <code>Transfer a Domain</code>. Enter your domain name in the <code>Domain Transfer</code> section and click on the <code>Search</code> button on the right.</p>
-<p><img data-src="https://s2.loli.net/2022/06/04/YKJL695WZuQfHvw.png" alt="Transfer to NameSilo"></p>
-<p>Next, paste the received transfer authorization code into the <code>Authorization Code</code> field and click on <code>Transfer Domains</code> below. You will be redirected to the payment page, where you can use a coupon code on the right side. I used the code <code>vpsss</code> for a $1 discount. Additionally, you’ll notice that NameSilo provides free WHOIS privacy service here, which means the “naked” state is removed. </p>
-<p><img data-src="https://s2.loli.net/2022/06/04/q9Yzv8yQto2kLUE.png" alt="Payment"></p>
-<p>Finally, proceed to <code>checkout</code> to make the payment. Alipay is supported as a payment method.</p>
-<h1 id="Status-Confirmation"><a href="#Status-Confirmation" class="headerlink" title="Status Confirmation"></a>Status Confirmation</h1><p>After successful payment, you will receive three emails:</p>
-<ul>
-<li>The first email is from NameSilo with the subject “Thank you for your order,” confirming that your payment has been received.</li>
-<li>The second email, also from NameSilo, with the subject “Approved Domain Transfers,” confirms that NameSilo has approved your domain transfer request.</li>
-<li>The third email is from Alibaba Cloud with the subject “阿里云域名转出通知邮件 Notice of Transfer-Out,” confirming that Alibaba Cloud has received notice of the domain transfer.</li>
-</ul>
-<p>At this point, if you go back to Alibaba Cloud’s transfer page, you will see that the status is “In Progress.”</p>
-<p><img data-src="https://s2.loli.net/2022/06/04/IpOedSaUN1Xg2rq.png" alt="Alibaba Cloud Status Confirmation"></p>
-<p>On NameSilo’s Account Home Page, you will see a notification: <code>You have transfers that are pending completion.</code> By entering the <code>Transfer Manager</code>, you can see that the domain is in a <code>Pending Transfers</code> status.</p>
-<p><img data-src="https://s2.loli.net/2022/06/04/NZGF4eYkvP6LM1o.png" alt="NameSilo Status Confirmation"></p>
-<p>Once confirmed, all that’s left to do is wait for the domain transfer to complete. This usually takes around 5-7 days.</p>
-<p>If you now perform a WHOIS query, you’ll find that all the private information has been replaced with “REDACTED FOR PRIVACY.” </p>
-<p><img data-src="https://s2.loli.net/2022/06/22/JYEFZWdSr5AHoqG.png" alt="WHOIS"></p>
-]]></content>
-      <categories>
-        <category>Website Configuration</category>
-      </categories>
-      <tags>
-        <tag>Aliyun</tag>
-        <tag>NameSilo</tag>
-        <tag>Domain</tag>
-        <tag>WHOIS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Sync Any Local Folder with OneDrive</title>
     <url>/en/sync-any-local-folder-with-onedrive.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">Create symbolic links using the 'mklink' command to synchronize OneDrive and the blog's post folder.</blockquote>
@@ -6971,6 +6923,54 @@
         <tag>Windows</tag>
         <tag>OneDrive</tag>
         <tag>mklink</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Transferring Domain Names From Alibaba Cloud to Namesilo</title>
+    <url>/en/transfer-domain.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Today, on a whim, I decided to look up the WHOIS information for my domain name and discovered that the domain I registered with Alibaba Cloud is in a completely exposed state. My name and province are all publicly visible... After some research, I found out that Alibaba Cloud discontinued WHOIS privacy protection back in 2018, and for three years my domain has been out in the open without my knowledge. With a sense of "better late than never," combined with the frustrating real-name verification process, I made the decision to transfer my domain out of Alibaba Cloud. The process of transferring was also marred by Alibaba Cloud's frustrating practices.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from <a href="https://siriusq.top/%E9%98%BF%E9%87%8C%E4%BA%91%E5%9F%9F%E5%90%8D%E8%BD%AC%E5%87%BA%E8%87%B3NameSilo.html">my Chinese blog post</a> with the aid of ChatGpt.</p>
+</div>
+
+<h1 id="Transferring-from-Alibaba-Cloud"><a href="#Transferring-from-Alibaba-Cloud" class="headerlink" title="Transferring from Alibaba Cloud"></a>Transferring from Alibaba Cloud</h1><p>First, log in to the <a class="btn" href="https://dc.console.aliyun.com/"><i class="fa fa-link fa-fw"></i>Alibaba Cloud Domain Console</a>. Click on the domain name you want to transfer. The option for “Transfer Domain” will appear in the sidebar of the page you’re redirected to. Interestingly, the option to transfer <em>into</em> Alibaba Cloud is conveniently placed on the homepage. To distinguish between the two, let’s refer to the homepage of the domain console as the “Homepage” and the page you’re taken to after clicking on a domain as the “Domain Management Page.”</p>
+<p><img data-src="https://s2.loli.net/2022/06/04/eGpfiLlvtWVKYUd.png" alt="Transfer Domain"></p>
+<p>During the transfer process, you’ll need to verify your email and undergo security authentication. I used Foxmail for this purpose. However, despite several attempts, I didn’t receive any emails from Alibaba Cloud, even in my spam folder. So, I had to change my email address. If, like me, you’re not receiving emails, congratulations, you’ll need to cancel the transfer and start again.</p>
+<h2 id="Changing-Email-Address"><a href="#Changing-Email-Address" class="headerlink" title="Changing Email Address"></a>Changing Email Address</h2><p>To change your email address, you’ll need to access the “Information Template” in the domain console, which is found in the sidebar of the homepage. Surprisingly, the information template also requires real-name verification. Yes, you read that right. It’s not about personal information, but about the information template. If you don’t complete real-name verification for the information template, the checkboxes next to it won’t work, which means you won’t be able to change your email address. Besides verifying the new email, you’ll also need to wait for the verification process to be completed. It took me several tens of minutes to get through the process.</p>
+<p>After updating the template, go to the “Modify Domain Holder Information (Transfer)” in the domain management page to perform a “Fast Transfer” in order to change the email associated with the domain. Make sure to check “Disable ‘Alibaba Cloud Domain Transfer Prohibited within 60 days after successful domain information modification.’” I really don’t understand why changing an email can be so complicated, and why you have to wait for approval when transferring your own domain to yourself… and wait for several tens of minutes.</p>
+<p><img data-src="https://s2.loli.net/2022/06/04/6FMNoGQCEUThOwc.png" alt="Change Email"></p>
+<h2 id="Receiving-the-Transfer-Code"><a href="#Receiving-the-Transfer-Code" class="headerlink" title="Receiving the Transfer Code"></a>Receiving the Transfer Code</h2><p>Once you’ve completed all the changes, return to the domain transfer section. Repeat the email verification and security authentication process, and you’ll receive the password from Alibaba Cloud in your email.</p>
+<p><img data-src="https://s2.loli.net/2022/06/04/PR4bYylMVHf86jW.png" alt="Transfer Code"></p>
+<h1 id="Transferring-to-NameSilo"><a href="#Transferring-to-NameSilo" class="headerlink" title="Transferring to NameSilo"></a>Transferring to NameSilo</h1><p>For transferring my domain registrar, I chose <a class="btn" href="https://www.namesilo.com/login"><i class="fa fa-link fa-fw"></i>NameSilo</a>. The reason I chose them is because of their affordable prices, where renewal fees remain the same as the initial registration, and they also provide free WHOIS privacy protection. My <code>.top</code> domain costs $4.79 per year, just a few dollars more than Alibaba Cloud.</p>
+<p>If you don’t have an account, start by registering one. Then, in the top menu under <code>Domains</code>, select <code>Transfer a Domain</code>. Enter your domain name in the <code>Domain Transfer</code> section and click on the <code>Search</code> button on the right.</p>
+<p><img data-src="https://s2.loli.net/2022/06/04/YKJL695WZuQfHvw.png" alt="Transfer to NameSilo"></p>
+<p>Next, paste the received transfer authorization code into the <code>Authorization Code</code> field and click on <code>Transfer Domains</code> below. You will be redirected to the payment page, where you can use a coupon code on the right side. I used the code <code>vpsss</code> for a $1 discount. Additionally, you’ll notice that NameSilo provides free WHOIS privacy service here, which means the “naked” state is removed. </p>
+<p><img data-src="https://s2.loli.net/2022/06/04/q9Yzv8yQto2kLUE.png" alt="Payment"></p>
+<p>Finally, proceed to <code>checkout</code> to make the payment. Alipay is supported as a payment method.</p>
+<h1 id="Status-Confirmation"><a href="#Status-Confirmation" class="headerlink" title="Status Confirmation"></a>Status Confirmation</h1><p>After successful payment, you will receive three emails:</p>
+<ul>
+<li>The first email is from NameSilo with the subject “Thank you for your order,” confirming that your payment has been received.</li>
+<li>The second email, also from NameSilo, with the subject “Approved Domain Transfers,” confirms that NameSilo has approved your domain transfer request.</li>
+<li>The third email is from Alibaba Cloud with the subject “阿里云域名转出通知邮件 Notice of Transfer-Out,” confirming that Alibaba Cloud has received notice of the domain transfer.</li>
+</ul>
+<p>At this point, if you go back to Alibaba Cloud’s transfer page, you will see that the status is “In Progress.”</p>
+<p><img data-src="https://s2.loli.net/2022/06/04/IpOedSaUN1Xg2rq.png" alt="Alibaba Cloud Status Confirmation"></p>
+<p>On NameSilo’s Account Home Page, you will see a notification: <code>You have transfers that are pending completion.</code> By entering the <code>Transfer Manager</code>, you can see that the domain is in a <code>Pending Transfers</code> status.</p>
+<p><img data-src="https://s2.loli.net/2022/06/04/NZGF4eYkvP6LM1o.png" alt="NameSilo Status Confirmation"></p>
+<p>Once confirmed, all that’s left to do is wait for the domain transfer to complete. This usually takes around 5-7 days.</p>
+<p>If you now perform a WHOIS query, you’ll find that all the private information has been replaced with “REDACTED FOR PRIVACY.” </p>
+<p><img data-src="https://s2.loli.net/2022/06/22/JYEFZWdSr5AHoqG.png" alt="WHOIS"></p>
+]]></content>
+      <categories>
+        <category>Website Configuration</category>
+      </categories>
+      <tags>
+        <tag>Aliyun</tag>
+        <tag>NameSilo</tag>
+        <tag>Domain</tag>
+        <tag>WHOIS</tag>
       </tags>
   </entry>
   <entry>
