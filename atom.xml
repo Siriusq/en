@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2023-10-06T13:15:43.506Z</updated>
+  <updated>2023-10-17T09:13:49.930Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Automatically Update the Recent Blog Posts Section in the Profile ReadMe When a GitHub Pages-Based Blog Is Updated.</title>
+    <link href="https://siriusq.top/en/auto-update-profile-latest-blog-posts.html"/>
+    <id>https://siriusq.top/en/auto-update-profile-latest-blog-posts.html</id>
+    <published>2023-10-17T09:10:55.000Z</published>
+    <updated>2023-10-17T09:13:49.930Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;This post is under construction......&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Website Configuration" scheme="https://siriusq.top/en/categories/Website-Configuration/"/>
+    
+    
+    <category term="Hexo" scheme="https://siriusq.top/en/tags/Hexo/"/>
+    
+    <category term="GitHub Pages" scheme="https://siriusq.top/en/tags/GitHub-Pages/"/>
+    
+    <category term="GitHub Actions" scheme="https://siriusq.top/en/tags/GitHub-Actions/"/>
+    
+  </entry>
   
   <entry>
     <title>Quick Setup Guide for LaTeX in VSCode</title>
@@ -484,29 +507,6 @@
     <category term="Next" scheme="https://siriusq.top/en/tags/Next/"/>
     
     <category term="npm" scheme="https://siriusq.top/en/tags/npm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Sync Any Local Folder with OneDrive</title>
-    <link href="https://siriusq.top/en/sync-any-local-folder-with-onedrive.html"/>
-    <id>https://siriusq.top/en/sync-any-local-folder-with-onedrive.html</id>
-    <published>2022-05-25T04:17:43.000Z</published>
-    <updated>2023-09-14T03:50:01.542Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Create symbolic links using the &#39;mklink&#39; command to synchronize OneDrive and the blog&#39;s post folder.&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
-    
-    
-    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
-    
-    <category term="OneDrive" scheme="https://siriusq.top/en/tags/OneDrive/"/>
-    
-    <category term="mklink" scheme="https://siriusq.top/en/tags/mklink/"/>
     
   </entry>
   
