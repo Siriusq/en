@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2023-10-17T16:06:01.730Z</updated>
+  <updated>2023-10-19T13:41:50.233Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -17,14 +17,14 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Automatically Update the Recent Blog Posts Section in the Profile ReadMe When a GitHub Pages-Based Blog Is Updated.</title>
+    <title>Automatically Update the Recent Blog Posts Section in the Profile When a GitHub Pages-Based Blog Is Updated.</title>
     <link href="https://siriusq.top/en/auto-update-profile-latest-blog-posts.html"/>
     <id>https://siriusq.top/en/auto-update-profile-latest-blog-posts.html</id>
     <published>2023-10-17T09:10:55.000Z</published>
-    <updated>2023-10-17T16:06:01.730Z</updated>
+    <updated>2023-10-19T13:41:50.233Z</updated>
     
     
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;This post is under construction......&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;I&#39;ve added a section on my GitHub custom profile page to display the most recent blog updates. However, it&#39;s quite inconvenient to update it manually every time I publish a new blog post. So, following the principle of &quot;laziness is the mother of invention,&quot; I&#39;ve come up with a method to automatically update the recent blog posts section on my profile page after deploying my blog using GitHub Actions.&lt;/blockquote&gt;</summary>
     
     
     

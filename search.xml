@@ -141,14 +141,298 @@
       </tags>
   </entry>
   <entry>
-    <title>Automatically Update the Recent Blog Posts Section in the Profile ReadMe When a GitHub Pages-Based Blog Is Updated.</title>
+    <title>Automatically Update the Recent Blog Posts Section in the Profile When a GitHub Pages-Based Blog Is Updated.</title>
     <url>/en/auto-update-profile-latest-blog-posts.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">This post is under construction......</blockquote>
+    <content><![CDATA[<blockquote class="blockquote-center">I've added a section on my GitHub custom profile page to display the most recent blog updates. However, it's quite inconvenient to update it manually every time I publish a new blog post. So, following the principle of "laziness is the mother of invention," I've come up with a method to automatically update the recent blog posts section on my profile page after deploying my blog using GitHub Actions.</blockquote>
 
 <span id="more"></span>
 
-<p>It worked! I will update this post tomorrow!</p>
-]]></content>
+<div class="note warning"><p>Note: The blogging framework used in this article is Hexo, and the theme is Next. The RSS Feed is in Atom 1.0 format.</p>
+</div>
+
+<h1 id="Principle"><a href="#Principle" class="headerlink" title="Principle"></a>Principle</h1><p><img data-src="https://s2.loli.net/2023/10/19/efvxrmFJIGRqPCT.webp" alt="auto_update_profile.webp"></p>
+<p>The basic principle of this method is as shown in the diagram above. First, we need to set up a Workflow in both the blog repository and the Profile repository. When we execute the <code>hexo deploy</code> operation to push the blog files to the GitHub repository, GitHub Pages will automatically run a Workflow to deploy the blog website. After the deployment is completed, our configured “Trigger Profile Update” Workflow will be triggered. Its purpose is to invoke another Workflow in the Profile repository called “Update Latest Blog Posts.” The Workflow in the Profile repository runs the <code>update-readme.mjs</code> script. This script first accesses the blog’s RSS Feed, reads its content, and uses regular expressions to extract the titles and links of the blog posts. It then reads the <code>README.md</code> file, locates the identifier we’ve set in advance, replaces the existing content within the identifier with the extracted content, and writes the modifications back to the <code>README.md</code> file. Finally, the Workflow pushes the changes back to the repository.</p>
+<h1 id="Enable-RSS-Function"><a href="#Enable-RSS-Function" class="headerlink" title="Enable RSS Function"></a>Enable RSS Function</h1><p>First, we need to enable the RSS functionality of the blog to allow the script to fetch blog titles and URLs. Enabling the RSS functionality in the Hexo framework requires the installation of the <code>hexo-generator-feed</code> plugin, which supports generating feeds in both Atom 1.0 and RSS 2.0 formats.</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure>
+
+<details class="note primary"><summary><p>About Atom 1.0 and RSS 2.0</p>
+</summary>
+<p>Atom 1.0 and RSS 2.0 are standardized formats used for publishing blogs, news, and other web content. They have some differences, primarily in the following aspects:</p>
+<p><strong>1. Data Format:</strong></p>
+<ul>
+<li>Atom 1.0 uses a structured XML data format, which is more uniform and consistent, making it more machine-readable.</li>
+<li>RSS 2.0 also uses XML but has a relatively less uniform structure, which may require more processing during parsing.</li>
+</ul>
+<p><strong>2. Title and Author:</strong></p>
+<ul>
+<li>Atom 1.0 has stricter requirements for metadata like titles and authors, where titles and authors are mandatory fields.</li>
+<li>RSS 2.0 has relatively looser requirements for metadata like titles and authors, and these fields are optional.</li>
+</ul>
+<p><strong>3. Extensibility:</strong></p>
+<ul>
+<li>Atom 1.0 provides more powerful extensibility, allowing the addition of custom metadata and namespaces to meet the needs of various applications.</li>
+<li>RSS 2.0 also supports extensions, but it’s relatively more limited in extensibility compared to Atom.</li>
+</ul>
+<p><strong>4. Publication Date:</strong></p>
+<ul>
+<li>Atom 1.0 uses the “published” element to represent the publication date of a blog post in a standardized date format.</li>
+<li>RSS 2.0 uses the “pubDate” element to represent the publication date, which is relatively more flexible and might require more parsing.</li>
+</ul>
+<p><strong>5. Item Links:</strong></p>
+<ul>
+<li>Atom 1.0 uses the “link” element to represent a fixed link to a blog post.</li>
+<li>RSS 2.0 also uses the “link” element, but it might sometimes represent different types of links, such as a fixed link or a comment link.</li>
+</ul>
+<p>In summary, Atom 1.0 is more standardized and consistent, suitable for applications that require highly structured data. RSS 2.0 is more flexible in some aspects, making it suitable for simpler use cases. The choice between the two standards typically depends on your specific requirements and the data structure and format you prefer.</p>
+<blockquote>
+<p>Sourced from ChatGPT</p>
+</blockquote>
+
+</details>
+
+<p>After the installation, open the Hexo framework’s configuration file <code>_config.yml</code> and add the following configuration:</p>
+<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Rss Feed</span></span><br><span class="line"><span class="attr">feed:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">atom</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">atom.xml</span></span><br><span class="line">  <span class="attr">limit:</span> <span class="number">20</span></span><br><span class="line">  <span class="attr">hub:</span></span><br><span class="line">  <span class="attr">content:</span></span><br><span class="line">  <span class="attr">content_limit:</span> <span class="number">140</span></span><br><span class="line">  <span class="attr">content_limit_delim:</span> <span class="string">&#x27; &#x27;</span></span><br><span class="line">  <span class="attr">order_by:</span> <span class="string">-date</span></span><br><span class="line">  <span class="attr">icon:</span> <span class="string">icon.png</span></span><br><span class="line">  <span class="attr">autodiscovery:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">template:</span></span><br></pre></td></tr></table></figure>
+
+<p>The next steps are for adding an RSS subscribe button to the blog website. You can skip this part if it’s not needed.</p>
+<p>Open the configuration file for the Next theme, <code>_config.next.yml</code>, and use the search feature to quickly locate the <code># Social Links</code> configuration. Under <code>social:</code>, add the following line: <code>RSS Feed: /atom.xml || fa fa-rss</code>. Here’s an example:</p>
+<figure class="highlight yml"><figcaption><span>_config.next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Social Links</span></span><br><span class="line"><span class="comment"># Usage: `Key: permalink || icon`</span></span><br><span class="line"><span class="comment"># Key is the link label showing to end users.</span></span><br><span class="line"><span class="comment"># Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.</span></span><br><span class="line"><span class="attr">social:</span></span><br><span class="line">  <span class="attr">GitHub:</span> <span class="string">https://github.com/Siriusq</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-github</span></span><br><span class="line">  <span class="attr">RSS Feed:</span> <span class="string">/atom.xml</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-rss</span></span><br></pre></td></tr></table></figure>
+
+<p>This will display an RSS subscribe button in the sidebar.</p>
+<div class="note warning"><p>Note: When blog titles contain Chinese characters, viewing <code>atom.xml</code> directly in the browser might display garbled text. However, if you right-click and save it to your local machine and then open it with VSCode, it should display correctly. You don’t need to worry about this issue.</p>
+</div>
+
+
+<h1 id="Elevate-Permissions"><a href="#Elevate-Permissions" class="headerlink" title="Elevate Permissions"></a>Elevate Permissions</h1><h2 id="Obtain-a-GitHub-Token"><a href="#Obtain-a-GitHub-Token" class="headerlink" title="Obtain a GitHub Token"></a>Obtain a GitHub Token</h2><p>In our workflow, we need to make cross-repository calls to GitHub Actions, and the default permissions of GitHub Actions may not be sufficient for these operations. To address this, we need to obtain a Personal Access Token and use it to grant additional access permissions to GitHub Actions.</p>
+<details class="note primary"><summary><p>About Personal Access Tokens</p>
+</summary>
+<p>A GitHub Personal Access Token is a token used for authentication and accessing GitHub’s API. It serves several purposes:</p>
+<ol>
+<li><p><strong>Authentication</strong>: Personal Access Tokens allow you to access GitHub resources in the context of your GitHub account without revealing your password. This provides a more secure way of authentication without exposing your GitHub account password.</p>
+</li>
+<li><p><strong>Access Permissions</strong>: You can configure different permissions for each Personal Access Token, ranging from read-only access to full repository access. This allows you to create tokens with limited, specific capabilities for different use cases and applications.</p>
+</li>
+<li><p><strong>API Access</strong>: You can use Personal Access Tokens to perform various operations through the GitHub API, such as retrieving repository information, creating issues, pushing code, and more. This is useful for automating tasks and integrating GitHub into applications or workflows.</p>
+</li>
+<li><p><strong>Bypassing Limitations</strong>: In some situations, GitHub imposes API limits, such as rate limits. Using a Personal Access Token allows you to bypass these limitations within the context of your account.</p>
+</li>
+<li><p><strong>Application Integration</strong>: Personal Access Tokens can also be used to integrate GitHub into third-party applications, enabling those applications to perform specific GitHub operations.</p>
+</li>
+</ol>
+<p>Personal Access Tokens are powerful tools but should be managed with care to ensure security. Avoid sharing or leaking your tokens, grant only the necessary permissions, and regularly review and revoke tokens that are no longer needed to reduce potential risks.</p>
+<blockquote>
+<p>Sourced from ChatGPT</p>
+</blockquote>
+
+</details>
+
+<ol>
+<li>Click on your profile picture in the upper right corner of the GitHub web page.</li>
+<li>In the dropdown panel, click on &#96;Settings&#96;&#96;.</li>
+<li>On the left sidebar, click on <code>Developer settings</code>.</li>
+<li>Click on <code>Personal access tokens (classic)&quot; under &quot;Access tokens</code>.</li>
+<li>In the upper-right corner, click on <code>Generate new token</code>.</li>
+<li>Choose <code>Generate new token (classic)</code>.</li>
+<li>Set <code>Expiration&quot; to &quot;No expiration</code>.</li>
+<li>Under <code>Select scopes</code>, check the <code>repo</code> option.</li>
+<li>Scroll to the bottom of the page and click <code>Generate token</code>.</li>
+<li>Copy the generated token. Please note that once you leave this page, you won’t be able to see this token again, so be sure to store it securely.</li>
+</ol>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/19/MCX8r6medVjocbq.webp" alt="1-2.webp"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/19/nGbz1mhuYMXlEIV.webp" alt="3.webp"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/19/HyqLWKu5wg8B3hJ.webp" alt="4-6.webp"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/19/8oPj7UqBV4Ynscv.webp" alt="7-8.webp"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/19/y4T2RbD7UEWQY6Z.webp" alt="9.webp"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/19/ZfOqEgM3Yh97oTW.webp" alt="10.webp"></div></div></div>
+
+
+<h2 id="Set-Up-Secrets"><a href="#Set-Up-Secrets" class="headerlink" title="Set Up Secrets"></a>Set Up Secrets</h2><p>The token we obtained has full access to the repository and should not appear in plain text in the workflow files. GitHub allows us to use the “repository secrets” feature to securely store the token as a variable in the repository, reducing the risk of it being exposed.</p>
+<details class="note primary"><summary><p>About Repository Secrets</p>
+</summary>
+<p>GitHub repository secrets are a way to store sensitive or confidential information for use in GitHub Actions workflows, jobs, and other parts of a GitHub repository. These secrets serve several purposes:</p>
+<ol>
+<li><p><strong>Securely Storing Sensitive Data</strong>: Secrets provide a secure way to store sensitive data, such as access tokens, passwords, API keys, and more. This data should not typically be stored in plain text within code or workflow files, as it poses a security risk.</p>
+</li>
+<li><p><strong>Used in GitHub Actions Workflows</strong>: You can pass secrets to GitHub Actions workflows for various automated operations like building, deploying, and testing. This ensures that sensitive information is not exposed in workflow outputs.</p>
+</li>
+<li><p>Accessing External Services: Secrets can be used to access external services and APIs, such as deploying to cloud services or authenticating with integrations. They allow you to securely use these services within workflows without exposing confidential data.</p>
+</li>
+<li><p>Flexibility: Secrets allow you to create and manage multiple secrets as needed. This enables you to use different keys and tokens for various workflows and scenarios, minimizing security risks.</p>
+</li>
+<li><p>Automated Operations: GitHub Actions can automatically use secrets within workflows, eliminating the need to manually input sensitive information and improving the efficiency of automated operations.</p>
+</li>
+<li><p>Updates and Rotation: GitHub repository secrets allow you to periodically update or rotate sensitive information for enhanced security.</p>
+</li>
+</ol>
+<p>Please note that GitHub repository secrets are restricted and undergo security review. Only individuals with appropriate repository access can access and manage them, ensuring the secrets’ security and confidentiality.</p>
+<blockquote>
+<p>Sourced from ChatGPT</p>
+</blockquote>
+
+</details>
+
+<details class="note primary"><summary><p>How Repository Secrets are Used in Workflows</p>
+</summary>
+<p>The principle of using repository secrets in GitHub Actions workflows works as follows:</p>
+<ol>
+<li><p><strong>Creating a Repository Secret</strong>: In your GitHub repository’s settings, you create a repository secret and assign it a name (key) and corresponding value. This secret is stored securely by GitHub and can be accessed only by authorized users and workflows.</p>
+</li>
+<li><p><strong>Environment Variables in Workflows</strong>: In your GitHub Actions workflow file, you can reference a repository secret using <code>$</code> syntax. This syntax allows you to access the value of the repository secret without directly including sensitive information in the workflow file.</p>
+</li>
+<li><p><strong>Passing to Workflow Environment Variables</strong>: When GitHub Actions runs a workflow, it passes the values of repository secrets to environment variables within the workflow’s execution environment. These environment variables are accessible within the workflow and can be used like regular environment variables.</p>
+</li>
+<li><p><strong>Security</strong>: GitHub protects these secrets to ensure they are not exposed or directly accessible outside of the workflow. This means that secrets are not visible in workflow outputs, logs, or other visual outputs. Only the code within the workflow itself can access them.</p>
+</li>
+<li><p><strong>Using Secrets</strong>: Within the workflow, you can use these environment variables, such as access tokens or API keys, to perform operations requiring authentication or sensitive data, such as accessing private repositories, deploying to cloud services, and communicating with external APIs.</p>
+</li>
+</ol>
+<p>In summary, repository secrets provide a secure way to store and access sensitive information within workflows without exposing it to the outside. This enables GitHub Actions to handle sensitive data in automated processes without hard-coding it into workflow files, enhancing security and maintainability.</p>
+<blockquote>
+<p>Sourced from ChatGPT</p>
+</blockquote>
+
+</details>
+
+<p>Here are the steps to set up secrets:</p>
+<ol>
+<li>Open the settings page of your blog repository.</li>
+<li>Click on <code>Actions</code> under <code>Secrets and variables</code> on the left sidebar.</li>
+<li>Click on <code>New repository secret</code>.</li>
+<li>For the <code>Name,</code> I’ve set it as <code>PAT_TOKEN_PROFILE</code>.</li>
+<li>Paste the token obtained in the previous step into the <code>Secret</code>.</li>
+<li>Click <code>Add Secret</code>.</li>
+</ol>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/19/Yb8BGd2ePlEMWRn.webp" alt="1-3.webp"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/19/qzHiYgNlOWtyVLw.webp" alt="4-6.webp"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/19/PItMG7ikaYb3CqF.webp" alt="a.webp"></div></div></div>
+
+<h1 id="Workflows-Configuration"><a href="#Workflows-Configuration" class="headerlink" title="Workflows Configuration"></a>Workflows Configuration</h1><p>Next, let’s configure workflows for both repositories. The blog repository only requires a simple workflow, while the profile repository needs a script file to be created and identifiers to be added to the README.</p>
+<h2 id="Profile-Repository"><a href="#Profile-Repository" class="headerlink" title="Profile Repository"></a>Profile Repository</h2><p>We’ll start with the settings for the Profile repository. Clone the repository to your local machine, edit it locally, and then push it back to GitHub.</p>
+<h3 id="Create-a-Workflow"><a href="#Create-a-Workflow" class="headerlink" title="Create a Workflow"></a>Create a Workflow</h3><p>Create a file named <code>update-readme.yml</code> in your local directory at <code>./source/.github/workflows/</code>. The <code>./.github/workflows/</code> directory is where GitHub Actions stores workflow files by default. Be sure to include the leading <code>.</code> when creating the directory. Copy the following code into this file:</p>
+<figure class="highlight yml"><figcaption><span>update-readme.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Update</span> <span class="string">Latest</span> <span class="string">Blog</span> <span class="string">Posts</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">repository_dispatch:</span></span><br><span class="line">    <span class="attr">types:</span> [<span class="string">update-my-profile</span>]</span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">update-readme:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Setup</span> <span class="string">Node.js</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/setup-node@v2</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">node-version:</span> <span class="number">14</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">dependencies</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">node-fetch</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">node-fetch</span></span><br><span class="line">      </span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">feedparser</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">feedparser</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Update</span> <span class="string">README</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">node</span> <span class="string">update-readme.mjs</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Commit</span> <span class="string">and</span> <span class="string">push</span> <span class="string">changes</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        git config --local user.email &quot;github-actions@github.com&quot;</span></span><br><span class="line"><span class="string">        git config --local user.name &quot;github-actions&quot;</span></span><br><span class="line"><span class="string">        git add README.md</span></span><br><span class="line"><span class="string">        git commit -m &quot;Update README with latest blog posts&quot;</span></span><br><span class="line"><span class="string">        git push</span></span><br></pre></td></tr></table></figure>
+
+<p>The purpose of this workflow is as follows:</p>
+<ol>
+<li>It starts running when a <code>repository_dispatch</code> event is received from the blog repository.</li>
+<li>It installs and sets up the Node.js environment. We use Node 14 in this example, as newer versions of Node may cause GitHub Actions to terminate unexpectedly during execution.</li>
+<li>It installs the necessary Node.js modules, including <code>node-fetch</code> and <code>feedparser</code>:<ul>
+<li><code>node-fetch</code> is a library for making HTTP requests in a Node.js environment. It provides an easy way to initiate HTTP requests and handle responses, similar to the Fetch API in browsers.</li>
+<li><code>feedparser</code> is a Node.js module for parsing RSS and Atom feeds and converting them into JavaScript objects for easier handling.</li>
+</ul>
+</li>
+<li>It runs a Node script.</li>
+<li>It commits and pushes the changes back to the repository.</li>
+</ol>
+<details class="note primary"><summary><p>About repository_dispatch</p>
+</summary>
+<p><code>repository_dispatch</code> is an event type in GitHub Actions that allows you to manually trigger workflows defined in a repository. This feature is useful for scenarios where you need to start automated tasks manually in specific situations.</p>
+<p>Here is more detailed information about <code>repository_dispatch</code>:</p>
+<ul>
+<li><p><strong>Manually Triggering Workflows</strong>: <code>repository_dispatch</code> enables you to manually trigger a GitHub Actions workflow defined in your repository. This means you can start the execution of the workflow when needed, without relying on specific events like push, pull request, and so on.</p>
+</li>
+<li><p><strong>Custom Event Types</strong>: You can specify a custom event type for <code>repository_dispatch</code>. This event type can be defined by you to describe the purpose or operation to be triggered. For example, you can define an event type as “update-my-profile” to indicate triggering a workflow to update a user profile.</p>
+</li>
+<li><p><strong>Payload Data</strong>: You can also choose to include some payload data, which will be sent when triggering the workflow. Payload data is a JSON object that can contain any information you need to pass to the workflow to help it perform specific actions.</p>
+</li>
+<li><p><strong>GitHub API Access Permissions</strong>: Triggering a <code>repository_dispatch</code> event requires appropriate GitHub API permissions. Typically, you need to have push access to the code or be a repository administrator to trigger a <code>repository_dispatch</code> event.</p>
+</li>
+</ul>
+<blockquote>
+<p>Sourced from ChatGPT</p>
+</blockquote>
+
+</details>
+
+<h3 id="Set-Workflow-R-x2F-W-Permissions"><a href="#Set-Workflow-R-x2F-W-Permissions" class="headerlink" title="Set Workflow R&#x2F;W Permissions"></a>Set Workflow R&#x2F;W Permissions</h3><p>By default, workflows have read-only access to the files in the repository. To grant write access, follow these steps:</p>
+<ol>
+<li>Open the <code>Settings</code> for your Profile repository.</li>
+<li>Click on <code>General</code> under the <code>Actions</code> option in the left sidebar.</li>
+<li>Change the <code>Workflow permissions</code> to <code>Read and write permissions</code>.</li>
+<li>Click <code>Save</code>.</li>
+</ol>
+<p><img data-src="https://s2.loli.net/2023/10/19/jUoBOJmAY9utS8h.webp" alt="1-4.webp"></p>
+<h3 id="Create-a-Node-Script"><a href="#Create-a-Node-Script" class="headerlink" title="Create a Node Script"></a>Create a Node Script</h3><p>In the root directory of your Profile repository, create a file named <code>update-readme.mjs</code>. Please note that the file format should be <code>mjs</code> rather than <code>js</code>.</p>
+<p>I initially used the <code>js</code> format, but it resulted in errors during GitHub Actions execution due to module import issues, although the exact reason remains unknown.</p>
+<details class="note primary"><summary><p>About .js and .mjs Formats</p>
+</summary>
+<p>Both <code>.mjs</code> and <code>.js</code> files are extensions for JavaScript files, but they have some key differences:</p>
+<ol>
+<li><p><strong>Module Types</strong>:</p>
+<ul>
+<li><code>.mjs</code> files are recognized as ECMAScript modules (ES modules), which means they utilize the native JavaScript module system with <code>import</code> and <code>export</code> statements for module import and export. ES modules are the official module standard for JavaScript and are commonly used in modern JavaScript development.</li>
+<li><code>.js</code> files can be traditional CommonJS modules (Node.js modules) using the <code>require()</code> and <code>module.exports</code> syntax for module import and export. CommonJS is the module system initially introduced by Node.js but can also be used in browsers with tools like Browserify or Webpack for support.</li>
+</ul>
+</li>
+<li><p><strong>Default Behavior</strong>:</p>
+<ul>
+<li>In Node.js, by default, <code>.js</code> files are treated as CommonJS modules unless explicitly specified in the code to use ES modules. This means you can omit the file extension (e.g., <code>.js</code>), and Node.js will automatically look for CommonJS modules.</li>
+<li><code>.mjs</code> files are treated as ES modules by default, and you need to specify the file extension explicitly during import or execution (e.g., <code>import foo from &#39;./module.mjs&#39;</code>).</li>
+</ul>
+</li>
+<li><p><strong>Browser Support</strong>:</p>
+<ul>
+<li>ES modules are widely supported in browsers, allowing you to use <code>.mjs</code> files as modules in a browser environment.</li>
+<li>Browser support for CommonJS modules is limited and typically requires the use of tools (e.g., Browserify) to transform CommonJS modules into code that can run in a browser.</li>
+</ul>
+</li>
+<li><p><strong>Node.js Versions</strong>:</p>
+<ul>
+<li><code>.mjs</code> files require a Node.js runtime environment of version 13.2.0 or higher to support ES modules’ default behavior. In earlier versions of Node.js, you need to explicitly enable ES module support.</li>
+<li><code>.js</code> files have broader support and work in earlier versions of Node.js without special configuration.</li>
+</ul>
+</li>
+</ol>
+<p>In summary, the choice between <code>.mjs</code> and <code>.js</code> depends on your project requirements and the target environment. If you are working in Node.js and want to use ES modules, you can choose the <code>.mjs</code> file format. If you need to use modules in a browser, ES modules are the more common choice, although you can transform CommonJS modules into ES modules.</p>
+<blockquote>
+<p>Sourced from ChatGPT</p>
+</blockquote>
+
+</details>
+
+<p>The script code is as follows:</p>
+<figure class="highlight mjs"><figcaption><span>update-readme.mjs</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> fetch <span class="keyword">from</span> <span class="string">&#x27;node-fetch&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; readFile, writeFile &#125; <span class="keyword">from</span> <span class="string">&#x27;fs/promises&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">FeedParser</span> <span class="keyword">from</span> <span class="string">&#x27;feedparser&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">updateReadme</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> rssUrl = <span class="string">&#x27;https://siriusq.top/en/atom.xml&#x27;</span>;  <span class="comment">// Replace this with the RSS Feed link of your blog</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">fetch</span>(rssUrl);</span><br><span class="line">    <span class="keyword">const</span> feedparser = <span class="keyword">new</span> <span class="title class_">FeedParser</span>();</span><br><span class="line"></span><br><span class="line">    response.<span class="property">body</span>.<span class="title function_">pipe</span>(feedparser);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> posts = [];</span><br><span class="line"></span><br><span class="line">    feedparser.<span class="title function_">on</span>(<span class="string">&#x27;readable&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">let</span> item;</span><br><span class="line">      <span class="keyword">while</span> ((item = <span class="variable language_">this</span>.<span class="title function_">read</span>())) &#123;</span><br><span class="line">        <span class="keyword">if</span> (posts.<span class="property">length</span> &lt; <span class="number">7</span>) &#123; <span class="comment">// Get the latest 7 blog posts</span></span><br><span class="line">          <span class="keyword">const</span> title = item.<span class="property">title</span>;</span><br><span class="line">          <span class="keyword">const</span> link = item.<span class="property">link</span>;</span><br><span class="line">          posts.<span class="title function_">push</span>(<span class="string">`- [<span class="subst">$&#123;title&#125;</span>](<span class="subst">$&#123;link&#125;</span>)`</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    feedparser.<span class="title function_">on</span>(<span class="string">&#x27;end&#x27;</span>, <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (posts.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// Read the README file</span></span><br><span class="line">        <span class="keyword">const</span> readme = <span class="keyword">await</span> <span class="title function_">readFile</span>(<span class="string">&#x27;README.md&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Update the content between the identifier tags in the README file</span></span><br><span class="line">        <span class="keyword">const</span> updatedReadme = readme.<span class="title function_">replace</span>(</span><br><span class="line">          <span class="regexp">/&lt;!-- Start_Position --&gt;.*&lt;!-- End_Position --&gt;/</span>s,</span><br><span class="line">          <span class="string">`&lt;!-- Start_Position --&gt;\n<span class="subst">$&#123;posts.join(<span class="string">&#x27;\n&#x27;</span>)&#125;</span>\n&lt;!-- End_Position --&gt;`</span></span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Write back to the README file</span></span><br><span class="line">        <span class="keyword">await</span> <span class="title function_">writeFile</span>(<span class="string">&#x27;README.md&#x27;</span>, updatedReadme);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;README updated successfully!&#x27;</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;No blog posts found.&#x27;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;Update failed:&#x27;</span>, error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">updateReadme</span>();</span><br></pre></td></tr></table></figure>
+
+<div class="note warning"><p>Please note:</p>
+<ul>
+<li>Replace <code>const rssUrl = &#39;https://siriusq.top/en/atom.xml&#39;</code> with the RSS Feed link of your blog.</li>
+<li><code>if (posts.length &lt; 7)</code> is used to control the number of blog posts displayed, with the default set to 7 posts.</li>
+</ul>
+</div>
+
+
+<h3 id="Adding-Identifiers-to-README"><a href="#Adding-Identifiers-to-README" class="headerlink" title="Adding Identifiers to README"></a>Adding Identifiers to README</h3><p>Next, we need to add two identifiers to the README file in your Profile repository. When the Workflow is triggered, the content between these two identifiers will automatically update with the latest blog post titles and links.</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">&lt;!-- Start<span class="emphasis">_Position --&gt;</span></span><br><span class="line"><span class="emphasis">&lt;!-- End_</span>Position --&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Here’s an example of what it would look like in your README:</p>
+<figure class="highlight md"><figcaption><span>README.md</span></figcaption><table><tr><td class="code"><pre><span class="line">Other Contents......</span><br><span class="line"></span><br><span class="line"><span class="section">### 📝 Latest Blog Posts</span></span><br><span class="line">The following are my latest 7 blog posts:</span><br><span class="line"></span><br><span class="line">&lt;!-- Start<span class="emphasis">_Position --&gt;</span></span><br><span class="line"><span class="emphasis">- [<span class="string">Quick Setup Guide for LaTeX in VSCode</span>](<span class="link">https://siriusq.top/en/latex-vscode-quick-config.html</span>)</span></span><br><span class="line"><span class="emphasis">- [<span class="string">Accessing Windows Shared Folders on iPhone</span>](<span class="link">https://siriusq.top/en/ios-windows-file-share.html</span>)</span></span><br><span class="line"><span class="emphasis">- [<span class="string">Stellaris Mod Creation and Upload Log</span>](<span class="link">https://siriusq.top/en/stellaris-mod.html</span>)</span></span><br><span class="line"><span class="emphasis">- [<span class="string">Bongo Paw Clicker Development Summary</span>](<span class="link">https://siriusq.top/en/bongo-paw-blicker.html</span>)</span></span><br><span class="line"><span class="emphasis">- [<span class="string">Enabling Integrated Graphics with Discrete Graphics Installed</span>](<span class="link">https://siriusq.top/en/turn-on-igpu.html</span>)</span></span><br><span class="line"><span class="emphasis">- [<span class="string">MacBook Pro Headless</span>](<span class="link">https://siriusq.top/en/macbook-pro-headless.html</span>)</span></span><br><span class="line"><span class="emphasis">&lt;!-- End_</span>Position --&gt;</span><br><span class="line"></span><br><span class="line">Other Contents......</span><br></pre></td></tr></table></figure>
+
+<p>Finally, make sure to push these changes to GitHub.</p>
+<h2 id="Blog-Repository"><a href="#Blog-Repository" class="headerlink" title="Blog Repository"></a>Blog Repository</h2><h3 id="Create-a-Workflow-1"><a href="#Create-a-Workflow-1" class="headerlink" title="Create a Workflow"></a>Create a Workflow</h3><p>The workflow for your blog repository also needs to be created locally and then pushed to the GitHub repository. This is because the Hexo framework completely replaces all files in the GitHub remote repository, including custom GitHub Actions, during deployment.</p>
+<p>To get started, create a file named <code>.github/workflows/update-my-profile.yml</code> in the <code>source</code> directory of your blog. Then, paste the following code into this file:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Trigger</span> <span class="string">Profile</span> <span class="string">Update</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="string">page_build</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">trigger-my-profile-update:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Dispatch</span> <span class="string">event</span> <span class="string">to</span> <span class="string">Profile</span> <span class="string">Repo</span></span><br><span class="line">      <span class="attr">env:</span></span><br><span class="line">        <span class="attr">GITHUB_PROFILE_TOKEN:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.PAT_TOKEN_PROFILE</span> <span class="string">&#125;&#125;</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        curl -X POST \</span></span><br><span class="line"><span class="string">        -H &quot;Authorization: token $GITHUB_PROFILE_TOKEN&quot; \</span></span><br><span class="line"><span class="string">        -H &quot;Accept: application/vnd.github.everest-preview+json&quot; \</span></span><br><span class="line"><span class="string">        https://api.github.com/repos/[USERNAME]/[USERNAME]/dispatches \</span></span><br><span class="line"><span class="string">        --data &#x27;&#123;&quot;event_type&quot;: &quot;update-my-profile&quot;&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>The purpose of this workflow is to trigger another workflow in the Profile repository, which we previously set up as <code>update-my-profile</code>, using the <code>repository_dispatch</code> event. This happens when a page is successfully built in your blog.</p>
+<div class="note warning"><p>Please note:</p>
+<ul>
+<li>Replace the two <code>[USERNAME]</code> placeholders in the second-to-last line with your GitHub username, without the square brackets.</li>
+<li>The value for the <code>GITHUB_PROFILE_TOKEN</code> variable corresponds to the <code>Name</code> of the <code>Secret</code> we set up earlier.</li>
+</ul>
+</div>
+
+
+<h3 id="Modify-Hexo-Configuration"><a href="#Modify-Hexo-Configuration" class="headerlink" title="Modify Hexo Configuration"></a>Modify Hexo Configuration</h3><p>If you were to attempt to regenerate your blog’s static files and deploy them to the remote repository at this point, you might notice that the workflow you just set up is not appearing in GitHub Actions. This is because files and folders with a prefix of <code>.</code> are considered hidden files on Unix and Linux systems, and the <code>hexo g</code> and <code>hexo d</code> commands will, by default, ignore these hidden files. This includes the folder <code>.github</code> where we placed our workflow. To address this, we’ll modify the configuration file of the Hexo framework to include our workflow during the generation and deployment process.</p>
+<p>First, open the Hexo framework’s configuration file, <code>_config.yml</code>. Locate the <code>include</code> setting by searching and add the path to your workflow file:</p>
+<figure class="highlight yaml"><figcaption><span>Workflow file path</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="string">.github/workflows/update-my-profile.yml</span></span><br></pre></td></tr></table></figure>
+
+<p>For example:</p>
+<figure class="highlight yaml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Include / Exclude file(s)</span></span><br><span class="line"><span class="comment">## include:/exclude: options only apply to the &#x27;source/&#x27; folder</span></span><br><span class="line"><span class="attr">include:</span> <span class="string">.github/workflows/update-my-profile.yml</span></span><br><span class="line"><span class="attr">exclude:</span></span><br><span class="line"><span class="attr">ignore:</span></span><br></pre></td></tr></table></figure>
+
+<p>Next, locate the <code>deploy</code> setting by searching and add a line at the bottom with <code>ignore_hidden: false</code>, as shown below:</p>
+<figure class="highlight yaml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:Siriusq/en.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line">  <span class="attr">ignore_hidden:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>Additionally, when the Hexo framework generates static files, it converts YAML files to JSON format, which GitHub Actions does not support. This could cause the previously set up workflow to become ineffective. To resolve this, we need to add the workflow file path to <code>skip_render</code>. This way, the Hexo framework will copy it as is to the public folder when generating files. For example:</p>
+<figure class="highlight yaml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Directory</span></span><br><span class="line"><span class="attr">source_dir:</span> <span class="string">source</span></span><br><span class="line"><span class="attr">public_dir:</span> <span class="string">public</span></span><br><span class="line"><span class="attr">tag_dir:</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">archive_dir:</span> <span class="string">archives</span></span><br><span class="line"><span class="attr">category_dir:</span> <span class="string">categories</span></span><br><span class="line"><span class="attr">code_dir:</span> <span class="string">downloads/code</span></span><br><span class="line"><span class="attr">i18n_dir:</span> <span class="string">:lang</span></span><br><span class="line"><span class="attr">skip_render:</span> <span class="string">.github/workflows/update-my-profile.yml</span></span><br></pre></td></tr></table></figure>
+
+<p>Save your changes, and then run the <code>hexo cl</code> and <code>hexo g -d</code> commands. If all goes well, a few minutes later, you should see your updated Profile automatically.</p>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/19/oMWf2XS6GavL8jt.webp" alt="21.webp"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/19/4WpxQZuj6IOmcDo.webp" alt="22.webp"></div></div></div>
+
+
+<div class="note default"><p>PS: I originally wanted ChatGPT to provide me with a complete solution, including code, where I could simply copy and paste to quickly complete the task. However, ChatGPT has made me deeply realize the frustration of spending 5 minutes generating code and a whole day debugging. My attempt at taking shortcuts has failed miserably.</p>
+<p>The image below reflects my state of mind while writing this blog post.</p>
+<p><img data-src="https://s2.loli.net/2023/10/19/qs9INfATvKBamn2.webp" alt="how-openai-chatgpt-helps-software-development.webp"></p>
+</div>]]></content>
       <categories>
         <category>Website Configuration</category>
       </categories>
@@ -5549,39 +5833,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Export Outlook Emails</title>
-    <url>/en/outlook-export.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">After graduating, there are no more Outlook deadline reminders, and life is quite relaxing. However, the school's account will be deactivated in June (it's approaching quickly), so let's take advantage of the remaining time to export the emails as a keepsake.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<h1 id="Exporting"><a href="#Exporting" class="headerlink" title="Exporting"></a>Exporting</h1><p>Start by opening Outlook’s ‘Options’ (click on ‘File’ in the upper left corner, then choose ‘Options’ in the lower-left corner). Next, click on ‘Advanced’ and then ‘Export.’<br><img data-src="https://s2.loli.net/2022/05/25/SpfZscu2qKrGhFY.png" alt="Options"></p>
-<p>Select ‘Export to a file’ and then click ‘Next.’<br><img data-src="https://s2.loli.net/2022/05/25/xhowU4E6HMlgFzL.png" alt="Import and Export Wizard"></p>
-<p>Choose ‘Outlook Data File (.pst)’ and click ‘Next.’<br><img data-src="https://s2.loli.net/2022/05/25/Urat5VqPMETOHpS.png" alt="Export to a File"></p>
-<p>Select the content you want to export. If you want to export everything, choose the topmost email address, and then click ‘Next.’<br><img data-src="https://s2.loli.net/2022/05/25/HqKQLYjk6MEUTFx.png" alt="Export Outlook Data File"></p>
-<p>Choose the location where you want to export the file, and then click ‘Finish.’<br><img data-src="https://s2.loli.net/2022/05/25/4YWkOsjAPcnLJaw.png" alt="Select Export File Location"></p>
-<p>Next, you can ‘Create a password for the data file’ if desired.<br><img data-src="https://s2.loli.net/2022/05/25/pAUZCEXmy4M31Vu.png" alt="Add Optional Password"><br><img data-src="https://s2.loli.net/2022/05/25/gUwv1VXuiNjczHI.png" alt="Enter Password"></p>
-<p>At this point, the export process is complete.</p>
-<h1 id="Adding-an-Email-Alias"><a href="#Adding-an-Email-Alias" class="headerlink" title="Adding an Email Alias"></a>Adding an Email Alias</h1><p>After exporting, if you want to import it into your own mailbox (which is a bit whimsical, as you can simply forward all emails to your own mailbox), but if your Microsoft account is registered with a different email, and you have been given a random and unattractive Outlook address, you may want to add an alias.</p>
-<p>Here, I’m using the web version of Outlook. Start by clicking on the settings in the upper right corner, then at the bottom of the right sidebar, click on ‘View all Outlook settings’ in the popup.<br><img data-src="https://s2.loli.net/2022/05/25/WVwLSFP4zClypRG.png" alt="Manage or Choose Primary Alias"></p>
-<p>On the page that opens, select ‘Add email.’<br><img data-src="https://s2.loli.net/2022/05/25/TC2OgrAsRNkYxdl.png" alt="Add Email"></p>
-<p>Adding the alias is now complete.<br><img data-src="https://s2.loli.net/2022/05/25/CGNFuAjmw1YH8qR.png" alt="Add Alias"></p>
-<h1 id="Importing"><a href="#Importing" class="headerlink" title="Importing"></a>Importing</h1><p>Start by clicking on ‘File’ in the upper left corner, then select ‘Open &amp; Export’ - ‘Open Outlook Data File.’<br><img data-src="https://s2.loli.net/2022/05/25/4bJTqcYNexEfs5m.png" alt="Open Outlook Data File"></p>
-<p>Choose ‘Import from another program or file,’ and then simply follow the prompts, entering the password if you set one earlier.<br><img data-src="https://s2.loli.net/2022/05/25/VB5IcH4zpbAo3Rr.png" alt="Import Wizard"></p>
-]]></content>
-      <categories>
-        <category>Geek</category>
-      </categories>
-      <tags>
-        <tag>Outlook</tag>
-        <tag>Backup</tag>
-        <tag>Study in UK</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Common Commands for npm</title>
     <url>/en/npm.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">A collection of npm commands, as well as commands commonly used for Next theme upgrades.</blockquote>
@@ -5666,6 +5917,39 @@
         <tag>Hexo</tag>
         <tag>Next</tag>
         <tag>npm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Export Outlook Emails</title>
+    <url>/en/outlook-export.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">After graduating, there are no more Outlook deadline reminders, and life is quite relaxing. However, the school's account will be deactivated in June (it's approaching quickly), so let's take advantage of the remaining time to export the emails as a keepsake.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<h1 id="Exporting"><a href="#Exporting" class="headerlink" title="Exporting"></a>Exporting</h1><p>Start by opening Outlook’s ‘Options’ (click on ‘File’ in the upper left corner, then choose ‘Options’ in the lower-left corner). Next, click on ‘Advanced’ and then ‘Export.’<br><img data-src="https://s2.loli.net/2022/05/25/SpfZscu2qKrGhFY.png" alt="Options"></p>
+<p>Select ‘Export to a file’ and then click ‘Next.’<br><img data-src="https://s2.loli.net/2022/05/25/xhowU4E6HMlgFzL.png" alt="Import and Export Wizard"></p>
+<p>Choose ‘Outlook Data File (.pst)’ and click ‘Next.’<br><img data-src="https://s2.loli.net/2022/05/25/Urat5VqPMETOHpS.png" alt="Export to a File"></p>
+<p>Select the content you want to export. If you want to export everything, choose the topmost email address, and then click ‘Next.’<br><img data-src="https://s2.loli.net/2022/05/25/HqKQLYjk6MEUTFx.png" alt="Export Outlook Data File"></p>
+<p>Choose the location where you want to export the file, and then click ‘Finish.’<br><img data-src="https://s2.loli.net/2022/05/25/4YWkOsjAPcnLJaw.png" alt="Select Export File Location"></p>
+<p>Next, you can ‘Create a password for the data file’ if desired.<br><img data-src="https://s2.loli.net/2022/05/25/pAUZCEXmy4M31Vu.png" alt="Add Optional Password"><br><img data-src="https://s2.loli.net/2022/05/25/gUwv1VXuiNjczHI.png" alt="Enter Password"></p>
+<p>At this point, the export process is complete.</p>
+<h1 id="Adding-an-Email-Alias"><a href="#Adding-an-Email-Alias" class="headerlink" title="Adding an Email Alias"></a>Adding an Email Alias</h1><p>After exporting, if you want to import it into your own mailbox (which is a bit whimsical, as you can simply forward all emails to your own mailbox), but if your Microsoft account is registered with a different email, and you have been given a random and unattractive Outlook address, you may want to add an alias.</p>
+<p>Here, I’m using the web version of Outlook. Start by clicking on the settings in the upper right corner, then at the bottom of the right sidebar, click on ‘View all Outlook settings’ in the popup.<br><img data-src="https://s2.loli.net/2022/05/25/WVwLSFP4zClypRG.png" alt="Manage or Choose Primary Alias"></p>
+<p>On the page that opens, select ‘Add email.’<br><img data-src="https://s2.loli.net/2022/05/25/TC2OgrAsRNkYxdl.png" alt="Add Email"></p>
+<p>Adding the alias is now complete.<br><img data-src="https://s2.loli.net/2022/05/25/CGNFuAjmw1YH8qR.png" alt="Add Alias"></p>
+<h1 id="Importing"><a href="#Importing" class="headerlink" title="Importing"></a>Importing</h1><p>Start by clicking on ‘File’ in the upper left corner, then select ‘Open &amp; Export’ - ‘Open Outlook Data File.’<br><img data-src="https://s2.loli.net/2022/05/25/4bJTqcYNexEfs5m.png" alt="Open Outlook Data File"></p>
+<p>Choose ‘Import from another program or file,’ and then simply follow the prompts, entering the password if you set one earlier.<br><img data-src="https://s2.loli.net/2022/05/25/VB5IcH4zpbAo3Rr.png" alt="Import Wizard"></p>
+]]></content>
+      <categories>
+        <category>Geek</category>
+      </categories>
+      <tags>
+        <tag>Outlook</tag>
+        <tag>Backup</tag>
+        <tag>Study in UK</tag>
       </tags>
   </entry>
   <entry>
@@ -7546,73 +7830,6 @@
       </tags>
   </entry>
   <entry>
-    <title>My Packing List for Studying Abroad in the UK</title>
-    <url>/en/uk-packing-list.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Based on my three-month experience of shopping at British supermarkets, I've compiled a list of recommended items to bring to the UK and items you may want to avoid bringing. For the items not recommended to bring, I've provided purchasing alternatives.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<h1 id="Recommended-to-Bring"><a href="#Recommended-to-Bring" class="headerlink" title="Recommended to Bring"></a>Recommended to Bring</h1><p>This category includes items that are either difficult to find in the UK or are unreasonably expensive.</p>
-<ul>
-<li>Coat hooks ⭐⭐⭐⭐⭐ Coat hooks in the UK are seriously overpriced. You can buy a whole box of them on Taobao for the price of one in the UK.</li>
-<li>Apron ⭐⭐⭐⭐ Aprons are also unreasonably expensive here. For the same price, you can buy ten on Taobao.</li>
-<li>Oil pot ⭐⭐⭐ I searched various supermarkets, but I finally found one in a small corner shop. However, it’s not very functional and tends to leak.</li>
-<li>Backup phone ⭐⭐⭐⭐ It’s always good to have a backup in case your phone breaks. Phones here are quite expensive.</li>
-<li>Hair clippers ⭐⭐⭐ In the UK, getting a haircut is costly. During the pandemic, I didn’t dare to invite a barber home, so I learned to cut my hair.</li>
-<li>Power strip with a British plug ⭐⭐⭐⭐ These are mostly available in Chinese supermarkets, but they can be quite expensive.</li>
-<li>Plug adapters for UK sockets ⭐⭐⭐⭐ Although available in British supermarkets, they tend to be expensive.</li>
-<li>Waterproof jacket ⭐⭐⭐⭐⭐ A must-have for windy and rainy days. Clothing stores are currently closed.</li>
-<li>SIM card ejector tool ⭐⭐⭐⭐ It doesn’t take up much space.</li>
-<li>Power bank ⭐⭐⭐⭐ Prices for power banks are relatively high here.</li>
-</ul>
-<h1 id="Optional-to-Bring"><a href="#Optional-to-Bring" class="headerlink" title="Optional to Bring"></a>Optional to Bring</h1><p>This category includes items that are small, lightweight, and can be purchased in the UK without unreasonable prices.</p>
-<ul>
-<li>Router ⭐⭐⭐ If you need it, it’s best to bring your own as routers in the UK can be quite pricey.</li>
-<li>Ethernet cable ⭐ It’s not much different in price.</li>
-<li>USB mini fan ⭐⭐⭐ Dorms in the UK generally lack air conditioning, so it can get hot in the summer.</li>
-<li>Hygrometer ⭐ If you need one, it’s best to bring it from home as the prices here are relatively high.</li>
-<li>Soap holder ⭐ Pound shops have them, but the designs might not be very appealing.</li>
-<li>USB cables ⭐⭐ Prices for braided cables are similar to those in China.</li>
-<li>Desk lamp ⭐ I have two bright spotlights on my desk in the dorm, so my desk lamp is just collecting dust. Desk lamps here are slightly more expensive.</li>
-<li>Camera tripod ⭐⭐ If needed, bring a portable one; prices here are nearly double.</li>
-<li>Small humidifier ⭐⭐ If it’s small, you can bring one. The cheapest one on eBay costs £7 and is no larger than a roll of toilet paper.</li>
-<li>Chopsticks ⭐ You can find them in Chinese supermarkets, and the prices are reasonable.</li>
-<li>Foldable basin ⭐ Similar basins are available in Chinese supermarkets, and the quality is slightly better.</li>
-<li>Thermos flask ⭐ Prices are similar to those in China.</li>
-<li>Nail clippers ⭐⭐ If needed, they are available, but I’m not sure about the quality.</li>
-<li>Batteries ⭐ Prices are slightly higher here, but they are acceptable. You can bring rechargeable batteries but avoid regular ones.</li>
-<li>Toothbrush holder ⭐ Pound shops have plastic cups that work just fine.</li>
-<li>Vegetable peeler ⭐⭐ Both Chinese and British supermarkets have them, and the prices are reasonable.</li>
-<li>Shoe brush ⭐ Same as above.</li>
-<li>Swiss Army knife ⭐ It can serve as a temporary toolbox. Prices here are quite high.</li>
-<li>USB drive ⭐ Prices are not much higher.</li>
-</ul>
-<h1 id="Not-Recommended-to-Bring"><a href="#Not-Recommended-to-Bring" class="headerlink" title="Not Recommended to Bring"></a>Not Recommended to Bring</h1><p>This category includes items that are too large, heavy, or available at lower prices in the UK.</p>
-<ul>
-<li>Soap ❌ You can buy soap for 80p for two bars at Home Bargains.</li>
-<li>Electric rice cooker ❌❌❌ There’s really no need for this. You can buy a second-hand one or order one online when you arrive. Carrying your own is heavy, takes up space, and requires an adapter plug. The options here may not have as many functions as those in China.</li>
-<li>Hairdryer ❌❌❌ Same as above.</li>
-<li>Large humidifier ❌❌❌ Same as above.</li>
-<li>Foldable kettle ❌ You will use it a few times, and it will collect dust afterward. Buy an electric kettle at a big supermarket or order one online before arrival.</li>
-<li>Kitchen knife ❌❌ It’s too heavy. Chinese supermarkets have them at reasonable prices.</li>
-<li>Electric toothbrush heads ❌ For Oral-B toothbrushes, they are cheaper here than in China.</li>
-<li>Umbrella ❌ The wind here can be quite strong, and umbrellas tend to break easily. You might want to try those designed to withstand typhoons from Taobao.</li>
-<li>Cookware ❌❌❌ Really not necessary. Large supermarkets have a decent selection, and the styles are fine.</li>
-<li>Duvet ❌❌❌ Unless your suitcase is only half full (insert dog head here).</li>
-<li>Window screen ❌❌ You can find them on Amazon, and the windows in student accommodations can only open a small gap; they can’t accommodate screens.</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Study in UK</category>
-      </categories>
-      <tags>
-        <tag>Study in UK</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Diary in the UK</title>
     <url>/en/uk-diary.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">Landing in the UK after one month, the I am back again~~~ This might be another lengthy blog post, as I plan to document my life in the UK for this year. It will include guides on BRP, GP, bank cards, and perhaps even a Vlog? (Maybe)</blockquote>
@@ -8119,6 +8336,73 @@ OFFICIAL
 <p>Once you have the card, when booking tickets, choose the <code>Scottish Heritage Member Ticket</code> option, and the payment page will show £0.</p>
 <h1 id="To-Be-Continued…"><a href="#To-Be-Continued…" class="headerlink" title="To Be Continued…"></a>To Be Continued…</h1><p>More content to come, but I’ll be delaying it indefinitely. I gave up on registering with the dentist because the materials used for free dental work seem to be black, so I’ll just wait until I’m back in China to deal with it.</p>
 <h1 id="KC-Room-Tour"><a href="#KC-Room-Tour" class="headerlink" title="KC Room Tour"></a>KC Room Tour</h1><p>This might be postponed indefinitely as well. The apartment staff have locked all the doors to vacant rooms, so I can’t access them for filming. I’ll have to wait until my roommates arrive. (Sigh x4)</p>
+]]></content>
+      <categories>
+        <category>Study in UK</category>
+      </categories>
+      <tags>
+        <tag>Study in UK</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>My Packing List for Studying Abroad in the UK</title>
+    <url>/en/uk-packing-list.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Based on my three-month experience of shopping at British supermarkets, I've compiled a list of recommended items to bring to the UK and items you may want to avoid bringing. For the items not recommended to bring, I've provided purchasing alternatives.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<h1 id="Recommended-to-Bring"><a href="#Recommended-to-Bring" class="headerlink" title="Recommended to Bring"></a>Recommended to Bring</h1><p>This category includes items that are either difficult to find in the UK or are unreasonably expensive.</p>
+<ul>
+<li>Coat hooks ⭐⭐⭐⭐⭐ Coat hooks in the UK are seriously overpriced. You can buy a whole box of them on Taobao for the price of one in the UK.</li>
+<li>Apron ⭐⭐⭐⭐ Aprons are also unreasonably expensive here. For the same price, you can buy ten on Taobao.</li>
+<li>Oil pot ⭐⭐⭐ I searched various supermarkets, but I finally found one in a small corner shop. However, it’s not very functional and tends to leak.</li>
+<li>Backup phone ⭐⭐⭐⭐ It’s always good to have a backup in case your phone breaks. Phones here are quite expensive.</li>
+<li>Hair clippers ⭐⭐⭐ In the UK, getting a haircut is costly. During the pandemic, I didn’t dare to invite a barber home, so I learned to cut my hair.</li>
+<li>Power strip with a British plug ⭐⭐⭐⭐ These are mostly available in Chinese supermarkets, but they can be quite expensive.</li>
+<li>Plug adapters for UK sockets ⭐⭐⭐⭐ Although available in British supermarkets, they tend to be expensive.</li>
+<li>Waterproof jacket ⭐⭐⭐⭐⭐ A must-have for windy and rainy days. Clothing stores are currently closed.</li>
+<li>SIM card ejector tool ⭐⭐⭐⭐ It doesn’t take up much space.</li>
+<li>Power bank ⭐⭐⭐⭐ Prices for power banks are relatively high here.</li>
+</ul>
+<h1 id="Optional-to-Bring"><a href="#Optional-to-Bring" class="headerlink" title="Optional to Bring"></a>Optional to Bring</h1><p>This category includes items that are small, lightweight, and can be purchased in the UK without unreasonable prices.</p>
+<ul>
+<li>Router ⭐⭐⭐ If you need it, it’s best to bring your own as routers in the UK can be quite pricey.</li>
+<li>Ethernet cable ⭐ It’s not much different in price.</li>
+<li>USB mini fan ⭐⭐⭐ Dorms in the UK generally lack air conditioning, so it can get hot in the summer.</li>
+<li>Hygrometer ⭐ If you need one, it’s best to bring it from home as the prices here are relatively high.</li>
+<li>Soap holder ⭐ Pound shops have them, but the designs might not be very appealing.</li>
+<li>USB cables ⭐⭐ Prices for braided cables are similar to those in China.</li>
+<li>Desk lamp ⭐ I have two bright spotlights on my desk in the dorm, so my desk lamp is just collecting dust. Desk lamps here are slightly more expensive.</li>
+<li>Camera tripod ⭐⭐ If needed, bring a portable one; prices here are nearly double.</li>
+<li>Small humidifier ⭐⭐ If it’s small, you can bring one. The cheapest one on eBay costs £7 and is no larger than a roll of toilet paper.</li>
+<li>Chopsticks ⭐ You can find them in Chinese supermarkets, and the prices are reasonable.</li>
+<li>Foldable basin ⭐ Similar basins are available in Chinese supermarkets, and the quality is slightly better.</li>
+<li>Thermos flask ⭐ Prices are similar to those in China.</li>
+<li>Nail clippers ⭐⭐ If needed, they are available, but I’m not sure about the quality.</li>
+<li>Batteries ⭐ Prices are slightly higher here, but they are acceptable. You can bring rechargeable batteries but avoid regular ones.</li>
+<li>Toothbrush holder ⭐ Pound shops have plastic cups that work just fine.</li>
+<li>Vegetable peeler ⭐⭐ Both Chinese and British supermarkets have them, and the prices are reasonable.</li>
+<li>Shoe brush ⭐ Same as above.</li>
+<li>Swiss Army knife ⭐ It can serve as a temporary toolbox. Prices here are quite high.</li>
+<li>USB drive ⭐ Prices are not much higher.</li>
+</ul>
+<h1 id="Not-Recommended-to-Bring"><a href="#Not-Recommended-to-Bring" class="headerlink" title="Not Recommended to Bring"></a>Not Recommended to Bring</h1><p>This category includes items that are too large, heavy, or available at lower prices in the UK.</p>
+<ul>
+<li>Soap ❌ You can buy soap for 80p for two bars at Home Bargains.</li>
+<li>Electric rice cooker ❌❌❌ There’s really no need for this. You can buy a second-hand one or order one online when you arrive. Carrying your own is heavy, takes up space, and requires an adapter plug. The options here may not have as many functions as those in China.</li>
+<li>Hairdryer ❌❌❌ Same as above.</li>
+<li>Large humidifier ❌❌❌ Same as above.</li>
+<li>Foldable kettle ❌ You will use it a few times, and it will collect dust afterward. Buy an electric kettle at a big supermarket or order one online before arrival.</li>
+<li>Kitchen knife ❌❌ It’s too heavy. Chinese supermarkets have them at reasonable prices.</li>
+<li>Electric toothbrush heads ❌ For Oral-B toothbrushes, they are cheaper here than in China.</li>
+<li>Umbrella ❌ The wind here can be quite strong, and umbrellas tend to break easily. You might want to try those designed to withstand typhoons from Taobao.</li>
+<li>Cookware ❌❌❌ Really not necessary. Large supermarkets have a decent selection, and the styles are fine.</li>
+<li>Duvet ❌❌❌ Unless your suitcase is only half full (insert dog head here).</li>
+<li>Window screen ❌❌ You can find them on Amazon, and the windows in student accommodations can only open a small gap; they can’t accommodate screens.</li>
+</ul>
 ]]></content>
       <categories>
         <category>Study in UK</category>
