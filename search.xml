@@ -13,27 +13,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Purpose</title>
-    <url>/en/Purpose.html</url>
-    <content><![CDATA[<h3 id="01"><a href="#01" class="headerlink" title="01"></a>01</h3><p>The purpose of this personal website is to record some technical problems I have encountered, share my experience, and leave traces of my existence in the world, that’s it.</p>
-<h3 id="02"><a href="#02" class="headerlink" title="02"></a>02</h3><p>The major contents of the blog are documented as follows.</p>
-<ul>
-<li>Site configuration</li>
-<li>Experience in studying abroad</li>
-<li>Algorithm problems</li>
-<li>Mini-games(just for fun)</li>
-<li>Some tutorials（like build this blog）</li>
-</ul>
-<h3 id="03"><a href="#03" class="headerlink" title="03"></a>03</h3><p>I will update this blog when I get some new ideas~</p>
-]]></content>
-      <categories>
-        <category>Dairy</category>
-      </categories>
-      <tags>
-        <tag>Blog</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Add Windows Terminal to the Right-click Menu</title>
     <url>/en/add-windows-terminal-to-the-right-click-menu.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">Windows Terminal is now available on the Microsoft Store, so I switched from Fluent Terminal to Windows Terminal. Here's a record of the process to add it to the right-click menu.</blockquote>
@@ -77,6 +56,27 @@
         <tag>Software</tag>
         <tag>Windows</tag>
         <tag>Windows Terminal</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Purpose</title>
+    <url>/en/Purpose.html</url>
+    <content><![CDATA[<h3 id="01"><a href="#01" class="headerlink" title="01"></a>01</h3><p>The purpose of this personal website is to record some technical problems I have encountered, share my experience, and leave traces of my existence in the world, that’s it.</p>
+<h3 id="02"><a href="#02" class="headerlink" title="02"></a>02</h3><p>The major contents of the blog are documented as follows.</p>
+<ul>
+<li>Site configuration</li>
+<li>Experience in studying abroad</li>
+<li>Algorithm problems</li>
+<li>Mini-games(just for fun)</li>
+<li>Some tutorials（like build this blog）</li>
+</ul>
+<h3 id="03"><a href="#03" class="headerlink" title="03"></a>03</h3><p>I will update this blog when I get some new ideas~</p>
+]]></content>
+      <categories>
+        <category>Dairy</category>
+      </categories>
+      <tags>
+        <tag>Blog</tag>
       </tags>
   </entry>
   <entry>
@@ -141,7 +141,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Automatically Update the Recent Blog Posts Section in the Profile When a GitHub Pages-Based Blog Is Updated.</title>
+    <title>Automatically Update the Recent Blog Posts Section in the Custom Profile README When a GitHub Pages-Based Blog Is Updated.</title>
     <url>/en/auto-update-profile-latest-blog-posts.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">I've added a section on my GitHub custom profile page to display the most recent blog updates. However, it's quite inconvenient to update it manually every time I publish a new blog post. So, following the principle of "laziness is the mother of invention," I've come up with a method to automatically update the recent blog posts section on my profile page after deploying my blog using GitHub Actions.</blockquote>
 
@@ -1106,6 +1106,302 @@
       </tags>
   </entry>
   <entry>
+    <title>Build An ITX PC</title>
+    <url>/en/build-an-itx.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Finally, I graduated with a degree in architecture and I no longer needed a high-performance rendering PC because it was so power-hungry, it was time to celebrate by building a brand new ITX PC!</blockquote>
+
+<p><img data-src="https://s2.loli.net/2022/05/13/xaY62s4ujwMT1FL.png" alt="ITX"></p>
+<span id="more"></span>
+
+<p>As I am going to the UK soon to do a Masters in Computer Science, I need a decent computer to use. However, I can’t stand the harsh noise from my laptop’s cooling fan under high load conditions, and carrying an ATX-sized PC with me on a plane is not practical. All things considered, I decided to build an ITX-sized PC. However, the entire process was much more complicated than my previous ATX setup, as the market demand is relatively small and thus the choice of ITX-sized computer accessories is very limited and often very expensive. So, I spent a lot of effort comparing various brands of accessories (I had nothing to do after graduating anyway) and ended up with the following configuration list.</p>
+<h1 id="Configuration-List"><a href="#Configuration-List" class="headerlink" title="Configuration List"></a>Configuration List</h1><table>
+<thead>
+<tr>
+<th align="left">Component</th>
+<th>Model</th>
+<th>Price(RMB)</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">CPU</td>
+<td>Intel Core i5-10500 @ 3.10GHz 6C12T</td>
+<td>1269</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Motherboard</td>
+<td>ASUS ROG STRIX B460-I GAMING</td>
+<td>1064</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Memory</td>
+<td>G.SKILL Trident Z RGB 16GB*2 DDR4 3000MHz</td>
+<td>1158</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GPU</td>
+<td>Intel UHD Graphics 630</td>
+<td>0</td>
+<td>Integrated Graphics</td>
+</tr>
+<tr>
+<td align="left">SSD 0</td>
+<td>Samsung SM961 (256GB)</td>
+<td>0</td>
+<td>Migrate from my old PC</td>
+</tr>
+<tr>
+<td align="left">HDD 0</td>
+<td>WD Blue 2.5 (500GB)</td>
+<td>0</td>
+<td>Migrate from my old laptop</td>
+</tr>
+<tr>
+<td align="left">Wireless NIC</td>
+<td>Intel Wi-Fi 6 AX200 160MHz</td>
+<td>0</td>
+<td>Included in the motherboard</td>
+</tr>
+<tr>
+<td align="left">PSU</td>
+<td>CORSAIR SF450 Platinum</td>
+<td>585</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Case</td>
+<td>Mechanic Master C24（Oxide yellow）</td>
+<td>688</td>
+<td>With custom silicone wire</td>
+</tr>
+<tr>
+<td align="left">Side Panel</td>
+<td>Black side-translucent acrylic (magnetic)</td>
+<td>50</td>
+<td>Custom-made</td>
+</tr>
+<tr>
+<td align="left">CPU Cooler</td>
+<td>Jonsbo CR1400</td>
+<td>69</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Fans</td>
+<td>Arctic F8 PWM *4</td>
+<td>122.4</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Display</td>
+<td>DELL P2418D 2K</td>
+<td>1349</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Others</td>
+<td>Pikachu Stickers &amp; Models</td>
+<td>47</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Total</td>
+<td></td>
+<td>6401.4</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="Building-Process"><a href="#Building-Process" class="headerlink" title="Building Process"></a>Building Process</h1><p>I initially wanted to buy all the accessories on Jingdong because it has a better product warranty. However, during the Jingdong shop sale on June 18, all the accessories I wanted were out of stock and I had to go to Taobao to buy them.</p>
+<h2 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h2><p>This generation of Intel CPU looks a bit weak compared to AMD’s contemporaries. The 10th generation Cores are still made using the 14nm process, while AMD’s CPUs of the same era are already using TSMC’s 7nm process. But I wanted to install Hackintosh on my computer, and the current AMD CPUs lacked support for Hackintosh, so I eventually chose the Intel CPU.</p>
+<p>The 10th generation Core restores the hyperthreading that was removed in the 9th generation, and from the specs it looks like an upgrade from the 8th generation Core, with the 8th generation i7 becoming the 10th generation i5. The 10500 is essentially the 8700 in a different shell, with the i5 price for the old i7 LOL.</p>
+<p>The Core i5-10500 was released in 2020 with 6 cores and 12 threads. With base clock at 3.1GHz, max speed at 4.5GHz, PL1 at 65W, PL2 at 134W, and 28s Tau. </p>
+<p>In fact, the most cost-effective CPU in the 10th generation Core processors should be the 10600K, with base clock at 4.1GHz, max speed at 4.8GHz, and the brazed thermal conductivity technology used between the CPU core Die and the top cover. Brazing does not deteriorate the thermal conductivity like silicone grease does thus resulting in better durability. However, Intel has kept the 10600k off the shelves in order to clear its 9th generation inventory, but the good news is that the i5 doesn’t produce much heat, thus a quad heatpipe tower cooler is sufficient, so I decided to buy the 10500 with silicone grease filling the CPU core Die and the top cover. If you really want a CPU with brazing technology, you can consider buying a 10400, but it’s like a gamble because there are two models of 10400, one is Q0 stepping (SRH79), which is supposed to be obtained by blocking out four cores from a non-qualified 10-core i9 CPU which uses brazing for thermal conduction; the other is G1 stepping (SRH3D), which is a native 6-core with silicone grease for thermal conduction. Only a few people in the comment section of Jingdong said they got a Q0 stepping CPU, so the probability is very low.</p>
+<h2 id="Motherboard"><a href="#Motherboard" class="headerlink" title="Motherboard"></a>Motherboard</h2><p>Although the Intel CPUs are reasonably priced, the matching motherboards are very expensive. In addition, ITX motherboards are already more expensive than ATX motherboards with the same chipset, which can easily lead to an embarrassing situation where the motherboard is more expensive than the CPU. </p>
+<p>The B460I motherboard is currently only available from ASUS and ASRock, with ASRock’s model being only entry level, priced at ¥749, with only four USB ports, which is not enough. The ASUS model is part of the ROG Strix series and is priced at ¥1299. Although the motherboard has the ROG eye logo on it, the logo is just a sticker without any lighting effects, which is slightly a pity.</p>
+<p>The H470I motherboard is only sold by Gigabyte and ASRock, but Gigabyte sells it for ¥1898, which is too expensive compared to ASRock’s better price&#x2F;performance ratio, and the Z490I motherboard is even more expensive, except for ASRock, which has an entry-level motherboard for ¥1599, while all other brands sell for over ¥2000. The H470 and Z490 chipsets can support the 11th generation Core, but most people won’t change the CPU until the computer is retired, so I went for the cheap and relatively practical ROG B460I motherboard.</p>
+<p>The ASUS B460I comes with a driver-free wireless card, which is very convenient. The motherboard will remind you to install Armoury Crate after the first boot. This software can control the AURA lighting effects but it is very tough to use, with many bugs, and it took me a long time to finally get it working properly.</p>
+<h2 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h2><p>The B460 chipset only supports up to 2666MHz when using an i5 and 2933MHz when using an i7, so there was no need for me to buy a high-frequency memory stick and I opted for the Illuminated Halberd for aesthetic reasons. However, the light control on the Trident conflicted with the light control on the motherboard. Initially, I didn’t install the Trident’s light control software, so the motherboard didn’t recognize the RGB lighting of the memory, but when I installed the Trident’s light control software, there was an awkward situation where the motherboard’s light control software controlled the light effect of one memory while the Trident’s light control software controlled the other. Only after exiting the Trident’s light control software was the motherboard able to control the light effect of both RAMs. There is one small inevitable issue with choosing memory with light effects, that is, the memory lights will remain illuminated when the computer is in sleep mode, as the memory will remain powered on to hold data during sleep.</p>
+<h2 id="GPU"><a href="#GPU" class="headerlink" title="GPU"></a>GPU</h2><p>For the graphics, I simply used the built-in integrated graphics card in the CPU, which supports up to 4k 60Hz output. The integrated graphics card can dramatically improve learning efficiency, as you can hardly play games with it. In addition, the performance of the integrated graphics card can be increased by 20-30% when working with dual-channel memory, which is better than nothing.</p>
+<h2 id="PSU"><a href="#PSU" class="headerlink" title="PSU"></a>PSU</h2><p>The PSU I used was from Corsair, it is the only SFX PSU using a larger 9cm diameter fan. However, you need to pay attention to the production batch when purchasing, the 1944-2011 batch is found to be defective and many people in Baidu Tieba have reported that the power supply they bought was malfunctioning, mostly in the power off state, and Corsair has just issued a recall notice. I found a shop on Taobao that sells PSU produced early last year, batch 1902. Because the computer’s overall power consumption is quite low, the power supply’s fan hasn’t even worked since I bought it.</p>
+<h2 id="Case"><a href="#Case" class="headerlink" title="Case"></a>Case</h2><p>The case is the core of the ITX accessory selection process. The first thing to determine is the size of the case, as it determines the size of the power supply (SFX or 1U), the height of the CPU cooler (top-down or tower), the way the graphics card is installed (direct or use extender PCIe cable) and so on. Cases with direct plug-in solutions for graphics cards can generally support higher CPU cooler heights but at the cost of increased width. The width of the C24, for example, reaches 155mm, compared to the 130mm width of the other case with the graphics adapter solution, and the width of the case largely determines whether or not it can fit in a backpack, making it a little difficult to fit the C24 into my backpack. Most of the ITX cases on the market today are designed by individual sellers and manufactured by small workshops, making for poor quality control and the need to adjust the cases yourself if there are any flaws. There are very few cases designed for mass production by the major brands, only JONSBO has released a few, but none of them quite fit my requirements. After comparing them I chose the C24 in Yellow, the yellow color scheme was just right for a Pikachu-themed case. The side panel that came with the case was made of tempered glass and was not suitable for moving, so I ordered an acrylic side panel for around 50RMB.</p>
+<h2 id="CPU-Cooler"><a href="#CPU-Cooler" class="headerlink" title="CPU Cooler"></a>CPU Cooler</h2><p>The CPU Cooler I chose was the CR1400 by JONSBO, for only 69 RMB, with quad heat pipes and ARGB support for both the top cover and the fan. This cooler is suitable for 10500 and lower power CPUs, with CPU temperatures around 40°C in the summer (26.5°C room temperature). The temperature will eventually stabilize at 88°C during the benchmark test, when the CPU is running at 4.19GHz on all cores, consuming 110W and drawing a core voltage of around 1.22V. A 10700-level CPU would probably need a 6-heat pipe cooler like the Silver Arrow 130.</p>
+<h2 id="SSD"><a href="#SSD" class="headerlink" title="SSD"></a>SSD</h2><p>For the SSD I used an SM961 removed from my old computer, after all MLC consumer-grade SSDs are no longer available at all, and after 3 years of use the total write volume of the drive was only 15TB, so I guess it could be a family heirloom.</p>
+<p>I’m going to wait until the Taobao shop sale to buy another 1T SSD for the Hackintosh. Since the second M.2 slot on this motherboard of mine is on the back, the thermal conditions are rather poor, so I basically can’t use a high-performance SSD with higher heat generation. The SSDs currently on sale with better temperature control are Western Digital’s SN550, SanDisk’s Supreme High Speed (similar to Western Digital’s, presumably the same product), and KIOXIA’s (Toshiba) RC10, depending on the price.</p>
+<h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><ul>
+<li>It is recommended to install the CPU cooler, RAM, and SSD onto the motherboard before installing the motherboard into the case, as the ITX case is too small and the installation is inconvenient.</li>
+<li>It is also recommended to plug the power cable, case-control cable, and USB cable into the motherboard in advance.</li>
+<li>Pay attention to the compatibility of the cooler and the memory before you buy. If the cooler I have is mounted vertically, the fan will squeeze the memory stick shell and the memory stick will be slightly tilted, but it does not affect the performance of the memory stick.</li>
+<li>If you have enough budget, it is recommended to buy a custom silicone cable or silver-plated cable to replace the original power connection cable, as the original cable is too stiff and difficult to route.</li>
+<li>If you have SATA devices, it is recommended to use a soft SATA cable to connect them. The two hard drive bays on the side of the C24 are very difficult to route, and a normal SATA cable will push up the side panel.</li>
+<li>If you use a C24 case, you must pay attention to the choice of a screwdriver, the number of screws in the C24 is too many and it is easy to slip the wire, I recommend using a PH2 head screwdriver (I wondered for a while that the boss was selling screws as a side business)</li>
+<li>When screwing, use a lighter force, as the C24 can easily lose its paint.</li>
+<li>Don’t over-tighten the motherboard screws to prevent deformation</li>
+</ul>
+<h1 id="Latest-Upgrades"><a href="#Latest-Upgrades" class="headerlink" title="Latest Upgrades"></a>Latest Upgrades</h1><div class="note success"><p>2020.9 Updated: Goodbye HDD</p>
+<p>The HDD was too noisy, so I dismantled it and added the RC10 512G from KIOXIA.</p>
+</div>
+
+<div class="note success"><p>2022.12 Updated: Long live the discrete graphics card</p>
+<p>I’ve been waiting for a long time, but the discrete graphics cards just don’t drop in price, so I finally couldn’t wait any longer and bought a Sapphire 6500xt. As for why I didn’t buy a 6600, one is because there are too many mining cards, and the other is that this case is too strict on the size of the graphics card.</p>
+<p>The best brand in the 6500xt is Asus, but it is 132mm wide, 2mm higher than my case size limit, and the part that protrudes is the heatpipe, if the side panel is padded, it can be installed, but I am worried that the heatpipe is too close to the tempered glass and the tempered glass may blow up due to uneven heating, so I bought a compact 120mm wide Sapphire graphics card.</p>
+<p><img data-src="https://s2.loli.net/2023/06/28/MCqh89UcuiD1PvV.jpg" alt="rx6500xt.jpg"></p>
+</div>
+
+<div class="note success"><p>2022.12 Updated: Duct adjustment</p>
+<p>With a discrete graphics card installed in my case, there was no way to continue with the original vertical ducting solution as the CPU cooler would inhale the hot air emitted by the graphics card. In addition, my two 25mm high bottom intake fans were too close to the graphics card’s fans, which would affect airflow and create wind noise, so I replaced them with a 15mm high JOSEPH HF1215, a 12015 size fan with exactly the same airflow (62CFM) as the two 8025 size fans (31CFM*2), who also support ARGB lighting effects.</p>
+<p>In addition, the two 8025-size fans on top of the case have been changed from 2 simultaneous exhausts to one intake and one exhaust, with the front fan supplying fresh air to the CPU and power supply and the rear one blowing out the heat generated by the CPU.</p>
+<p>The CPU cooler fan has also been replaced with a larger air-pressure fan, the Thermalright TL-C9B, and the original fan has been moved to the rear exhaust port to continue its service.</p>
+</div>
+
+<h1 id="Latest-Configuration-List"><a href="#Latest-Configuration-List" class="headerlink" title="Latest Configuration List"></a>Latest Configuration List</h1><table>
+<thead>
+<tr>
+<th align="left">Component</th>
+<th>Model</th>
+<th>Price(RMB)</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">CPU</td>
+<td>Intel Core i5-10500 @ 3.10GHz 6C12T</td>
+<td>1269</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Motherboard</td>
+<td>ASUS ROG STRIX B460-I GAMING</td>
+<td>1064</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Memory</td>
+<td>G.SKILL Trident Z RGB 16GB*2 DDR4 3000MHz</td>
+<td>1158</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GPU</td>
+<td>SAPPHIRE PULSE Radeon RX 6500 XT 4GB</td>
+<td>1099</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">SSD 0</td>
+<td>Samsung SM961 (256GB)</td>
+<td>0</td>
+<td>Migrate from my old PC</td>
+</tr>
+<tr>
+<td align="left">SSD 1</td>
+<td>KIOXIA RC10 (500GB)</td>
+<td>399</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Wireless NIC</td>
+<td>Intel Wi-Fi 6 AX200 160MHz</td>
+<td>0</td>
+<td>Included in the motherboard</td>
+</tr>
+<tr>
+<td align="left">PSU</td>
+<td>CORSAIR SF450 Platinum</td>
+<td>585</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Case</td>
+<td>Mechanic Master C24（Oxide yellow）</td>
+<td>688</td>
+<td>With custom silicone wire</td>
+</tr>
+<tr>
+<td align="left">Side Panel</td>
+<td>Black side-translucent acrylic (magnetic)</td>
+<td>50</td>
+<td>Custom-made</td>
+</tr>
+<tr>
+<td align="left">Side Panel Padding</td>
+<td>3M magnetic strip + sponge tape + screws</td>
+<td>20</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">CPU Cooler</td>
+<td>Jonsbo CR1400</td>
+<td>69</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Fan 1</td>
+<td>Arctic F8 PWM *4</td>
+<td>122.4</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Fan 2</td>
+<td>Jonsbo HF1215 ARGB</td>
+<td>61.6</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Fan 3</td>
+<td>Thermalright TL-C9B</td>
+<td>38.55</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Fan Splitter</td>
+<td>1 to 4 with ARGB</td>
+<td>15.9</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Display</td>
+<td>DELL P2418D 2K</td>
+<td>1349</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Light Strip</td>
+<td>142mm ARGB</td>
+<td>24.25</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GPU Support Brace</td>
+<td>Jonsbo VC-20mini</td>
+<td>17.9</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Others</td>
+<td>Pikachu Stickers &amp; Models</td>
+<td>47</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Total</td>
+<td></td>
+<td>8077.6</td>
+<td></td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hardware</category>
+      </categories>
+      <tags>
+        <tag>ITX</tag>
+        <tag>DIY</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Bongo Paw Clicker Development Summary</title>
     <url>/en/bongo-paw-blicker.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">This article is a development record of Bongo Paw Clicker, documenting the issues I encountered during the development of the auto clicker.</blockquote>
@@ -1663,302 +1959,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Build An ITX PC</title>
-    <url>/en/build-an-itx.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Finally, I graduated with a degree in architecture and I no longer needed a high-performance rendering PC because it was so power-hungry, it was time to celebrate by building a brand new ITX PC!</blockquote>
-
-<p><img data-src="https://s2.loli.net/2022/05/13/xaY62s4ujwMT1FL.png" alt="ITX"></p>
-<span id="more"></span>
-
-<p>As I am going to the UK soon to do a Masters in Computer Science, I need a decent computer to use. However, I can’t stand the harsh noise from my laptop’s cooling fan under high load conditions, and carrying an ATX-sized PC with me on a plane is not practical. All things considered, I decided to build an ITX-sized PC. However, the entire process was much more complicated than my previous ATX setup, as the market demand is relatively small and thus the choice of ITX-sized computer accessories is very limited and often very expensive. So, I spent a lot of effort comparing various brands of accessories (I had nothing to do after graduating anyway) and ended up with the following configuration list.</p>
-<h1 id="Configuration-List"><a href="#Configuration-List" class="headerlink" title="Configuration List"></a>Configuration List</h1><table>
-<thead>
-<tr>
-<th align="left">Component</th>
-<th>Model</th>
-<th>Price(RMB)</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">CPU</td>
-<td>Intel Core i5-10500 @ 3.10GHz 6C12T</td>
-<td>1269</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">Motherboard</td>
-<td>ASUS ROG STRIX B460-I GAMING</td>
-<td>1064</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">Memory</td>
-<td>G.SKILL Trident Z RGB 16GB*2 DDR4 3000MHz</td>
-<td>1158</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">GPU</td>
-<td>Intel UHD Graphics 630</td>
-<td>0</td>
-<td>Integrated Graphics</td>
-</tr>
-<tr>
-<td align="left">SSD 0</td>
-<td>Samsung SM961 (256GB)</td>
-<td>0</td>
-<td>Migrate from my old PC</td>
-</tr>
-<tr>
-<td align="left">HDD 0</td>
-<td>WD Blue 2.5 (500GB)</td>
-<td>0</td>
-<td>Migrate from my old laptop</td>
-</tr>
-<tr>
-<td align="left">Wireless NIC</td>
-<td>Intel Wi-Fi 6 AX200 160MHz</td>
-<td>0</td>
-<td>Included in the motherboard</td>
-</tr>
-<tr>
-<td align="left">PSU</td>
-<td>CORSAIR SF450 Platinum</td>
-<td>585</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">Case</td>
-<td>Mechanic Master C24（Oxide yellow）</td>
-<td>688</td>
-<td>With custom silicone wire</td>
-</tr>
-<tr>
-<td align="left">Side Panel</td>
-<td>Black side-translucent acrylic (magnetic)</td>
-<td>50</td>
-<td>Custom-made</td>
-</tr>
-<tr>
-<td align="left">CPU Cooler</td>
-<td>Jonsbo CR1400</td>
-<td>69</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">Fans</td>
-<td>Arctic F8 PWM *4</td>
-<td>122.4</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">Display</td>
-<td>DELL P2418D 2K</td>
-<td>1349</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">Others</td>
-<td>Pikachu Stickers &amp; Models</td>
-<td>47</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">Total</td>
-<td></td>
-<td>6401.4</td>
-<td></td>
-</tr>
-</tbody></table>
-<h1 id="Building-Process"><a href="#Building-Process" class="headerlink" title="Building Process"></a>Building Process</h1><p>I initially wanted to buy all the accessories on Jingdong because it has a better product warranty. However, during the Jingdong shop sale on June 18, all the accessories I wanted were out of stock and I had to go to Taobao to buy them.</p>
-<h2 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h2><p>This generation of Intel CPU looks a bit weak compared to AMD’s contemporaries. The 10th generation Cores are still made using the 14nm process, while AMD’s CPUs of the same era are already using TSMC’s 7nm process. But I wanted to install Hackintosh on my computer, and the current AMD CPUs lacked support for Hackintosh, so I eventually chose the Intel CPU.</p>
-<p>The 10th generation Core restores the hyperthreading that was removed in the 9th generation, and from the specs it looks like an upgrade from the 8th generation Core, with the 8th generation i7 becoming the 10th generation i5. The 10500 is essentially the 8700 in a different shell, with the i5 price for the old i7 LOL.</p>
-<p>The Core i5-10500 was released in 2020 with 6 cores and 12 threads. With base clock at 3.1GHz, max speed at 4.5GHz, PL1 at 65W, PL2 at 134W, and 28s Tau. </p>
-<p>In fact, the most cost-effective CPU in the 10th generation Core processors should be the 10600K, with base clock at 4.1GHz, max speed at 4.8GHz, and the brazed thermal conductivity technology used between the CPU core Die and the top cover. Brazing does not deteriorate the thermal conductivity like silicone grease does thus resulting in better durability. However, Intel has kept the 10600k off the shelves in order to clear its 9th generation inventory, but the good news is that the i5 doesn’t produce much heat, thus a quad heatpipe tower cooler is sufficient, so I decided to buy the 10500 with silicone grease filling the CPU core Die and the top cover. If you really want a CPU with brazing technology, you can consider buying a 10400, but it’s like a gamble because there are two models of 10400, one is Q0 stepping (SRH79), which is supposed to be obtained by blocking out four cores from a non-qualified 10-core i9 CPU which uses brazing for thermal conduction; the other is G1 stepping (SRH3D), which is a native 6-core with silicone grease for thermal conduction. Only a few people in the comment section of Jingdong said they got a Q0 stepping CPU, so the probability is very low.</p>
-<h2 id="Motherboard"><a href="#Motherboard" class="headerlink" title="Motherboard"></a>Motherboard</h2><p>Although the Intel CPUs are reasonably priced, the matching motherboards are very expensive. In addition, ITX motherboards are already more expensive than ATX motherboards with the same chipset, which can easily lead to an embarrassing situation where the motherboard is more expensive than the CPU. </p>
-<p>The B460I motherboard is currently only available from ASUS and ASRock, with ASRock’s model being only entry level, priced at ¥749, with only four USB ports, which is not enough. The ASUS model is part of the ROG Strix series and is priced at ¥1299. Although the motherboard has the ROG eye logo on it, the logo is just a sticker without any lighting effects, which is slightly a pity.</p>
-<p>The H470I motherboard is only sold by Gigabyte and ASRock, but Gigabyte sells it for ¥1898, which is too expensive compared to ASRock’s better price&#x2F;performance ratio, and the Z490I motherboard is even more expensive, except for ASRock, which has an entry-level motherboard for ¥1599, while all other brands sell for over ¥2000. The H470 and Z490 chipsets can support the 11th generation Core, but most people won’t change the CPU until the computer is retired, so I went for the cheap and relatively practical ROG B460I motherboard.</p>
-<p>The ASUS B460I comes with a driver-free wireless card, which is very convenient. The motherboard will remind you to install Armoury Crate after the first boot. This software can control the AURA lighting effects but it is very tough to use, with many bugs, and it took me a long time to finally get it working properly.</p>
-<h2 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h2><p>The B460 chipset only supports up to 2666MHz when using an i5 and 2933MHz when using an i7, so there was no need for me to buy a high-frequency memory stick and I opted for the Illuminated Halberd for aesthetic reasons. However, the light control on the Trident conflicted with the light control on the motherboard. Initially, I didn’t install the Trident’s light control software, so the motherboard didn’t recognize the RGB lighting of the memory, but when I installed the Trident’s light control software, there was an awkward situation where the motherboard’s light control software controlled the light effect of one memory while the Trident’s light control software controlled the other. Only after exiting the Trident’s light control software was the motherboard able to control the light effect of both RAMs. There is one small inevitable issue with choosing memory with light effects, that is, the memory lights will remain illuminated when the computer is in sleep mode, as the memory will remain powered on to hold data during sleep.</p>
-<h2 id="GPU"><a href="#GPU" class="headerlink" title="GPU"></a>GPU</h2><p>For the graphics, I simply used the built-in integrated graphics card in the CPU, which supports up to 4k 60Hz output. The integrated graphics card can dramatically improve learning efficiency, as you can hardly play games with it. In addition, the performance of the integrated graphics card can be increased by 20-30% when working with dual-channel memory, which is better than nothing.</p>
-<h2 id="PSU"><a href="#PSU" class="headerlink" title="PSU"></a>PSU</h2><p>The PSU I used was from Corsair, it is the only SFX PSU using a larger 9cm diameter fan. However, you need to pay attention to the production batch when purchasing, the 1944-2011 batch is found to be defective and many people in Baidu Tieba have reported that the power supply they bought was malfunctioning, mostly in the power off state, and Corsair has just issued a recall notice. I found a shop on Taobao that sells PSU produced early last year, batch 1902. Because the computer’s overall power consumption is quite low, the power supply’s fan hasn’t even worked since I bought it.</p>
-<h2 id="Case"><a href="#Case" class="headerlink" title="Case"></a>Case</h2><p>The case is the core of the ITX accessory selection process. The first thing to determine is the size of the case, as it determines the size of the power supply (SFX or 1U), the height of the CPU cooler (top-down or tower), the way the graphics card is installed (direct or use extender PCIe cable) and so on. Cases with direct plug-in solutions for graphics cards can generally support higher CPU cooler heights but at the cost of increased width. The width of the C24, for example, reaches 155mm, compared to the 130mm width of the other case with the graphics adapter solution, and the width of the case largely determines whether or not it can fit in a backpack, making it a little difficult to fit the C24 into my backpack. Most of the ITX cases on the market today are designed by individual sellers and manufactured by small workshops, making for poor quality control and the need to adjust the cases yourself if there are any flaws. There are very few cases designed for mass production by the major brands, only JONSBO has released a few, but none of them quite fit my requirements. After comparing them I chose the C24 in Yellow, the yellow color scheme was just right for a Pikachu-themed case. The side panel that came with the case was made of tempered glass and was not suitable for moving, so I ordered an acrylic side panel for around 50RMB.</p>
-<h2 id="CPU-Cooler"><a href="#CPU-Cooler" class="headerlink" title="CPU Cooler"></a>CPU Cooler</h2><p>The CPU Cooler I chose was the CR1400 by JONSBO, for only 69 RMB, with quad heat pipes and ARGB support for both the top cover and the fan. This cooler is suitable for 10500 and lower power CPUs, with CPU temperatures around 40°C in the summer (26.5°C room temperature). The temperature will eventually stabilize at 88°C during the benchmark test, when the CPU is running at 4.19GHz on all cores, consuming 110W and drawing a core voltage of around 1.22V. A 10700-level CPU would probably need a 6-heat pipe cooler like the Silver Arrow 130.</p>
-<h2 id="SSD"><a href="#SSD" class="headerlink" title="SSD"></a>SSD</h2><p>For the SSD I used an SM961 removed from my old computer, after all MLC consumer-grade SSDs are no longer available at all, and after 3 years of use the total write volume of the drive was only 15TB, so I guess it could be a family heirloom.</p>
-<p>I’m going to wait until the Taobao shop sale to buy another 1T SSD for the Hackintosh. Since the second M.2 slot on this motherboard of mine is on the back, the thermal conditions are rather poor, so I basically can’t use a high-performance SSD with higher heat generation. The SSDs currently on sale with better temperature control are Western Digital’s SN550, SanDisk’s Supreme High Speed (similar to Western Digital’s, presumably the same product), and KIOXIA’s (Toshiba) RC10, depending on the price.</p>
-<h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><ul>
-<li>It is recommended to install the CPU cooler, RAM, and SSD onto the motherboard before installing the motherboard into the case, as the ITX case is too small and the installation is inconvenient.</li>
-<li>It is also recommended to plug the power cable, case-control cable, and USB cable into the motherboard in advance.</li>
-<li>Pay attention to the compatibility of the cooler and the memory before you buy. If the cooler I have is mounted vertically, the fan will squeeze the memory stick shell and the memory stick will be slightly tilted, but it does not affect the performance of the memory stick.</li>
-<li>If you have enough budget, it is recommended to buy a custom silicone cable or silver-plated cable to replace the original power connection cable, as the original cable is too stiff and difficult to route.</li>
-<li>If you have SATA devices, it is recommended to use a soft SATA cable to connect them. The two hard drive bays on the side of the C24 are very difficult to route, and a normal SATA cable will push up the side panel.</li>
-<li>If you use a C24 case, you must pay attention to the choice of a screwdriver, the number of screws in the C24 is too many and it is easy to slip the wire, I recommend using a PH2 head screwdriver (I wondered for a while that the boss was selling screws as a side business)</li>
-<li>When screwing, use a lighter force, as the C24 can easily lose its paint.</li>
-<li>Don’t over-tighten the motherboard screws to prevent deformation</li>
-</ul>
-<h1 id="Latest-Upgrades"><a href="#Latest-Upgrades" class="headerlink" title="Latest Upgrades"></a>Latest Upgrades</h1><div class="note success"><p>2020.9 Updated: Goodbye HDD</p>
-<p>The HDD was too noisy, so I dismantled it and added the RC10 512G from KIOXIA.</p>
-</div>
-
-<div class="note success"><p>2022.12 Updated: Long live the discrete graphics card</p>
-<p>I’ve been waiting for a long time, but the discrete graphics cards just don’t drop in price, so I finally couldn’t wait any longer and bought a Sapphire 6500xt. As for why I didn’t buy a 6600, one is because there are too many mining cards, and the other is that this case is too strict on the size of the graphics card.</p>
-<p>The best brand in the 6500xt is Asus, but it is 132mm wide, 2mm higher than my case size limit, and the part that protrudes is the heatpipe, if the side panel is padded, it can be installed, but I am worried that the heatpipe is too close to the tempered glass and the tempered glass may blow up due to uneven heating, so I bought a compact 120mm wide Sapphire graphics card.</p>
-<p><img data-src="https://s2.loli.net/2023/06/28/MCqh89UcuiD1PvV.jpg" alt="rx6500xt.jpg"></p>
-</div>
-
-<div class="note success"><p>2022.12 Updated: Duct adjustment</p>
-<p>With a discrete graphics card installed in my case, there was no way to continue with the original vertical ducting solution as the CPU cooler would inhale the hot air emitted by the graphics card. In addition, my two 25mm high bottom intake fans were too close to the graphics card’s fans, which would affect airflow and create wind noise, so I replaced them with a 15mm high JOSEPH HF1215, a 12015 size fan with exactly the same airflow (62CFM) as the two 8025 size fans (31CFM*2), who also support ARGB lighting effects.</p>
-<p>In addition, the two 8025-size fans on top of the case have been changed from 2 simultaneous exhausts to one intake and one exhaust, with the front fan supplying fresh air to the CPU and power supply and the rear one blowing out the heat generated by the CPU.</p>
-<p>The CPU cooler fan has also been replaced with a larger air-pressure fan, the Thermalright TL-C9B, and the original fan has been moved to the rear exhaust port to continue its service.</p>
-</div>
-
-<h1 id="Latest-Configuration-List"><a href="#Latest-Configuration-List" class="headerlink" title="Latest Configuration List"></a>Latest Configuration List</h1><table>
-<thead>
-<tr>
-<th align="left">Component</th>
-<th>Model</th>
-<th>Price(RMB)</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">CPU</td>
-<td>Intel Core i5-10500 @ 3.10GHz 6C12T</td>
-<td>1269</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">Motherboard</td>
-<td>ASUS ROG STRIX B460-I GAMING</td>
-<td>1064</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">Memory</td>
-<td>G.SKILL Trident Z RGB 16GB*2 DDR4 3000MHz</td>
-<td>1158</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">GPU</td>
-<td>SAPPHIRE PULSE Radeon RX 6500 XT 4GB</td>
-<td>1099</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">SSD 0</td>
-<td>Samsung SM961 (256GB)</td>
-<td>0</td>
-<td>Migrate from my old PC</td>
-</tr>
-<tr>
-<td align="left">SSD 1</td>
-<td>KIOXIA RC10 (500GB)</td>
-<td>399</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">Wireless NIC</td>
-<td>Intel Wi-Fi 6 AX200 160MHz</td>
-<td>0</td>
-<td>Included in the motherboard</td>
-</tr>
-<tr>
-<td align="left">PSU</td>
-<td>CORSAIR SF450 Platinum</td>
-<td>585</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">Case</td>
-<td>Mechanic Master C24（Oxide yellow）</td>
-<td>688</td>
-<td>With custom silicone wire</td>
-</tr>
-<tr>
-<td align="left">Side Panel</td>
-<td>Black side-translucent acrylic (magnetic)</td>
-<td>50</td>
-<td>Custom-made</td>
-</tr>
-<tr>
-<td align="left">Side Panel Padding</td>
-<td>3M magnetic strip + sponge tape + screws</td>
-<td>20</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">CPU Cooler</td>
-<td>Jonsbo CR1400</td>
-<td>69</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">Fan 1</td>
-<td>Arctic F8 PWM *4</td>
-<td>122.4</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">Fan 2</td>
-<td>Jonsbo HF1215 ARGB</td>
-<td>61.6</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">Fan 3</td>
-<td>Thermalright TL-C9B</td>
-<td>38.55</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">Fan Splitter</td>
-<td>1 to 4 with ARGB</td>
-<td>15.9</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">Display</td>
-<td>DELL P2418D 2K</td>
-<td>1349</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">Light Strip</td>
-<td>142mm ARGB</td>
-<td>24.25</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">GPU Support Brace</td>
-<td>Jonsbo VC-20mini</td>
-<td>17.9</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">Others</td>
-<td>Pikachu Stickers &amp; Models</td>
-<td>47</td>
-<td></td>
-</tr>
-<tr>
-<td align="left">Total</td>
-<td></td>
-<td>8077.6</td>
-<td></td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>Hardware</category>
-      </categories>
-      <tags>
-        <tag>ITX</tag>
-        <tag>DIY</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Change the Installation Path of Adobe Series Software and Disable Auto-Update</title>
     <url>/en/change-adobe-install-path.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">As I still use a 256GB SSD as my main drive and Adobe will stubbornly install their enormously space-consuming software to the C drive without asking me, I decided to find a way to change its installation path, as well as block its auto-update program from networking cause its quite annoying.</blockquote>
@@ -2208,55 +2208,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Solution for Unable to Load Images on GitHub</title>
-    <url>/en/github-cant-load-images.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Yesterday, when I tried to add images on GitHub, I noticed that the images weren't loading properly. Upon investigation, I found out that GitHub's IP addresses were once again blocked by the Great Firewall (GFW). I resolved this issue by modifying my Hosts file. It's worth noting that this method can also be used to address problems with accessing GitHub when it's entirely blocked.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<h1 id="Principle"><a href="#Principle" class="headerlink" title="Principle"></a>Principle</h1><p>When we access a website through its URL, the website’s domain name needs to be resolved to an IP address through <strong>DNS resolution</strong>. One of the reasons why GitHub may not be accessible is due to the Great Firewall’s (GFW) DNS poisoning, which can cause DNS servers to return incorrect IP addresses. As a result, the website cannot be connected to, and resources such as images fail to load. Another reason is direct IP blocking, where the GFW intercepts data packets with specific IP addresses, preventing data transmission.</p>
-<p>In the early days of the internet when it was smaller in scale and DNS did not exist, domain names were mapped to IP addresses using the <code>Hosts</code> file. As the internet rapidly expanded, relying solely on the <code>Hosts</code> file became insufficient, and that’s when DNS servers came into play.</p>
-<p>Although DNS took over much of what the <code>Hosts</code> file used to do, the <code>Hosts</code> file still maintains a higher priority. Before a computer requests DNS resolution, it first checks if there is a mapping between the domain name to be accessed and an IP address in the local <code>Hosts</code> file. If such a mapping exists, the computer doesn’t need to use DNS servers; it can directly access the IP address associated with the domain name. This makes it possible to add <code>Hosts</code> file mapping records to bypass GFW’s DNS poisoning.</p>
-<h1 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h1><p>Here is a solution for <code>Windows systems</code>:</p>
-<ul>
-<li>Right-click on the Windows icon in the Start menu.</li>
-<li>Select Windows PowerShell (Admin).</li>
-<li>Enter <code>notepad.exe</code> and press Enter to open Notepad.<ul>
-<li>The reason for doing this is that modifying the Hosts file requires administrator privileges, and using Notepad directly won’t allow you to save the changes.</li>
-</ul>
-</li>
-<li>In the Notepad menu, click on File, then Open.</li>
-<li>Navigate to the Hosts file in the path C:\Windows\System32\drivers\etc and open it (for Ubuntu and MacOS, the file path is generally &#x2F;etc&#x2F;hosts; make a copy, replace it, and paste it back after making changes).</li>
-<li>Add the following mappings at the bottom of the file:  <figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"># Github</span><br><span class="line"><span class="number">192</span>.<span class="number">30</span>.<span class="number">253</span>.<span class="number">112</span> github.com</span><br><span class="line"><span class="number">140</span>.<span class="number">82</span>.<span class="number">113</span>.<span class="number">19</span> gist.github.com</span><br><span class="line"><span class="number">185</span>.<span class="number">199</span>.<span class="number">108</span>.<span class="number">153</span> assets-cdn.github.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> raw.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> gist.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> cloud.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> camo.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars0.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars1.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars2.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars3.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars4.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars5.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars6.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars7.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars8.githubusercontent.com</span><br></pre></td></tr></table></figure></li>
-<li>Press <code>Ctrl+S</code> to save the file, then refresh the webpage to access it normally.</li>
-<li>If you still can’t access the website, you need to clear the DNS cache and restart your browser:<ul>
-<li>Windows: <code>ipconfig /flushdns</code></li>
-<li>Ubuntu: <code>sudo systemctl restart nscd</code></li>
-<li>MacOS: <code>sudo killall -HUP mDNSResponder</code></li>
-</ul>
-</li>
-</ul>
-<h1 id="Updating-Hosts"><a href="#Updating-Hosts" class="headerlink" title="Updating Hosts"></a>Updating Hosts</h1><p>Because the GFW continually works to block access to these IP addresses, these IP addresses may be blocked again after some time. Therefore, you need to periodically update your Hosts file to access websites that have been blocked.</p>
-<ul>
-<li>Open <a href="https://www.ipaddress.com/">ipaddress</a>.</li>
-<li>Enter each relevant domain name from the Hosts file one by one.</li>
-<li>Replace the old IP address with the new IP address returned by the website.</li>
-<li>Save the changes.</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Geek</category>
-      </categories>
-      <tags>
-        <tag>Windows</tag>
-        <tag>Github</tag>
-        <tag>Hosts</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Tutorial for Making a Paint Job Mod in Euro Truck Simulator  2</title>
     <url>/en/ets2-paintjob.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">You may not believe it, but I started playing ETS2 because I wanted to learn how to drive in the UK, but I couldn't find the perfect paint job for the game, so I made my own.</blockquote>
@@ -2433,6 +2384,55 @@
         <tag>Cloudflare</tag>
         <tag>HTTPS</tag>
         <tag>CDN</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Solution for Unable to Load Images on GitHub</title>
+    <url>/en/github-cant-load-images.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Yesterday, when I tried to add images on GitHub, I noticed that the images weren't loading properly. Upon investigation, I found out that GitHub's IP addresses were once again blocked by the Great Firewall (GFW). I resolved this issue by modifying my Hosts file. It's worth noting that this method can also be used to address problems with accessing GitHub when it's entirely blocked.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<h1 id="Principle"><a href="#Principle" class="headerlink" title="Principle"></a>Principle</h1><p>When we access a website through its URL, the website’s domain name needs to be resolved to an IP address through <strong>DNS resolution</strong>. One of the reasons why GitHub may not be accessible is due to the Great Firewall’s (GFW) DNS poisoning, which can cause DNS servers to return incorrect IP addresses. As a result, the website cannot be connected to, and resources such as images fail to load. Another reason is direct IP blocking, where the GFW intercepts data packets with specific IP addresses, preventing data transmission.</p>
+<p>In the early days of the internet when it was smaller in scale and DNS did not exist, domain names were mapped to IP addresses using the <code>Hosts</code> file. As the internet rapidly expanded, relying solely on the <code>Hosts</code> file became insufficient, and that’s when DNS servers came into play.</p>
+<p>Although DNS took over much of what the <code>Hosts</code> file used to do, the <code>Hosts</code> file still maintains a higher priority. Before a computer requests DNS resolution, it first checks if there is a mapping between the domain name to be accessed and an IP address in the local <code>Hosts</code> file. If such a mapping exists, the computer doesn’t need to use DNS servers; it can directly access the IP address associated with the domain name. This makes it possible to add <code>Hosts</code> file mapping records to bypass GFW’s DNS poisoning.</p>
+<h1 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h1><p>Here is a solution for <code>Windows systems</code>:</p>
+<ul>
+<li>Right-click on the Windows icon in the Start menu.</li>
+<li>Select Windows PowerShell (Admin).</li>
+<li>Enter <code>notepad.exe</code> and press Enter to open Notepad.<ul>
+<li>The reason for doing this is that modifying the Hosts file requires administrator privileges, and using Notepad directly won’t allow you to save the changes.</li>
+</ul>
+</li>
+<li>In the Notepad menu, click on File, then Open.</li>
+<li>Navigate to the Hosts file in the path C:\Windows\System32\drivers\etc and open it (for Ubuntu and MacOS, the file path is generally &#x2F;etc&#x2F;hosts; make a copy, replace it, and paste it back after making changes).</li>
+<li>Add the following mappings at the bottom of the file:  <figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"># Github</span><br><span class="line"><span class="number">192</span>.<span class="number">30</span>.<span class="number">253</span>.<span class="number">112</span> github.com</span><br><span class="line"><span class="number">140</span>.<span class="number">82</span>.<span class="number">113</span>.<span class="number">19</span> gist.github.com</span><br><span class="line"><span class="number">185</span>.<span class="number">199</span>.<span class="number">108</span>.<span class="number">153</span> assets-cdn.github.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> raw.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> gist.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> cloud.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> camo.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars0.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars1.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars2.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars3.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars4.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars5.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars6.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars7.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars8.githubusercontent.com</span><br></pre></td></tr></table></figure></li>
+<li>Press <code>Ctrl+S</code> to save the file, then refresh the webpage to access it normally.</li>
+<li>If you still can’t access the website, you need to clear the DNS cache and restart your browser:<ul>
+<li>Windows: <code>ipconfig /flushdns</code></li>
+<li>Ubuntu: <code>sudo systemctl restart nscd</code></li>
+<li>MacOS: <code>sudo killall -HUP mDNSResponder</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="Updating-Hosts"><a href="#Updating-Hosts" class="headerlink" title="Updating Hosts"></a>Updating Hosts</h1><p>Because the GFW continually works to block access to these IP addresses, these IP addresses may be blocked again after some time. Therefore, you need to periodically update your Hosts file to access websites that have been blocked.</p>
+<ul>
+<li>Open <a href="https://www.ipaddress.com/">ipaddress</a>.</li>
+<li>Enter each relevant domain name from the Hosts file one by one.</li>
+<li>Replace the old IP address with the new IP address returned by the website.</li>
+<li>Save the changes.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Geek</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>Github</tag>
+        <tag>Hosts</tag>
       </tags>
   </entry>
   <entry>
@@ -6949,162 +6949,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Sync Any Local Folder with OneDrive</title>
-    <url>/en/sync-any-local-folder-with-onedrive.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Create symbolic links using the 'mklink' command to synchronize OneDrive and the blog's post folder.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<p>In order to write blog posts on other devices, I initially placed all my blog files on OneDrive. However, I soon realized that this approach led to a significant number of file changes every time I executed ‘hexo cl &amp;&amp; hexo g.’ This wasn’t very friendly to the OneDrive server, especially since I was using it without contributing much. So, I decided to keep only the ‘.&#x2F;source&#x2F;_posts’ folder and manually copy and paste my articles after writing them. </p>
-<p>A few days ago, I had a brilliant idea: could I make OneDrive automatically sync this folder? After some searching, I came across the ‘mklink’ command.</p>
-<div class="note info"><p>Below, there are some explanations about the 'mklink' command. If you don't want to read it, you can skip it by clicking the button below. <a class="btn" href="#CreateSymbolicLinkForOneDrive"><i class="fa fa-forward fa-fw"></i>Skip</a></p></div>
-
-
-<h1 id="Introduction-to-the-‘mklink’-Command"><a href="#Introduction-to-the-‘mklink’-Command" class="headerlink" title="Introduction to the ‘mklink’ Command"></a>Introduction to the ‘mklink’ Command</h1><div class="note primary"><p>The command introduction references content from <a class="btn" href="https://ss64.com/nt/mklink.html"><i class="fa fa-book fa-fw"></i>SS64</a> and <a class="btn" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/mklink"><i class="fa fa-book fa-fw"></i>Microsoft Docs</a>, and was inspired by the article from <a class="btn" href="https://www.icoa.cn/a/910.html"><i class="fa fa-blog fa-fw"></i>逍遥峡谷</a>. Special thanks for the valuable references.</p></div>
-
-<p>The ‘mklink’ command is used to create symbolic or hard links for directories or files. It was introduced starting from Windows Vista and is supported on Windows operating systems from Vista onwards.</p>
-<h2 id="Comparison"><a href="#Comparison" class="headerlink" title="Comparison"></a>Comparison</h2><p>The ‘mklink’ command provides three types of links: ‘Symbolic Link,’ ‘Hard Link,’ and ‘Junction.’ Here’s a comparison of these three types with shortcuts:</p>
-<table>
-<thead>
-<tr>
-<th align="left">Type</th>
-<th align="center">Links Files</th>
-<th align="center">Links Folders</th>
-<th align="center">Cross-Drive Links</th>
-<th align="center">Points to Nonexistent Target</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Shortcut</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-</tr>
-<tr>
-<td align="left">Hard Link</td>
-<td align="center">✅</td>
-<td align="center">❌</td>
-<td align="center">❌</td>
-<td align="center">❌</td>
-</tr>
-<tr>
-<td align="left">Junction (Directory Junction &#x2F; Symbolic Link)</td>
-<td align="center">❌</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-</tr>
-<tr>
-<td align="left">Symbolic Link</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-</tr>
-</tbody></table>
-<blockquote>
-<ul>
-<li>Symbolic links and junctions are based on <a href="https://en.wikipedia.org/wiki/NTFS_reparse_point">NTFS reparse points</a>.</li>
-<li>Hard links are achieved by having multiple file entries pointing to the same inode, similar to Unix hard links. Even if the original filename is deleted, hard links continue to work, as they directly point to the data on the disk.</li>
-<li>It is possible (though not advisable) to create two links that point to each other in a loop or create a link that points to itself. Symbolic links may expose security vulnerabilities in applications that do not handle these situations.</li>
-<li>Both symbolic links and hard links do not support <code>.zip</code> compressed files.</li>
-</ul>
-</blockquote>
-<h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink [[/d] | [/h] | [/j]] &lt;link&gt; &lt;target&gt;</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th align="left">Parameters</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">&#x2F;d</td>
-<td align="left">Create a directory symbolic link. By default, this command creates a file symbolic link.</td>
-</tr>
-<tr>
-<td align="left">&#x2F;h</td>
-<td align="left">Create a hard link instead of a symbolic link.</td>
-</tr>
-<tr>
-<td align="left">&#x2F;j</td>
-<td align="left">Create a junction (directory junction).</td>
-</tr>
-<tr>
-<td align="left">&lt;link&gt;</td>
-<td align="left">Specify the name of the symbolic link to create.</td>
-</tr>
-<tr>
-<td align="left">&lt;target&gt;</td>
-<td align="left">Specify the path (relative or absolute) that the new symbolic link will reference.</td>
-</tr>
-<tr>
-<td align="left">&#x2F;?</td>
-<td align="left">Display help at the command prompt.</td>
-</tr>
-</tbody></table>
-<p>If there are spaces in the <code>&lt;link&gt;</code> and <code>&lt;target&gt;</code> paths, they should be enclosed in double quotation marks <code>&quot;&quot;</code>.</p>
-<h2 id="Elevated-Privileges"><a href="#Elevated-Privileges" class="headerlink" title="Elevated Privileges"></a>Elevated Privileges</h2><blockquote>
-<p>By default, running the <code>mklink</code> command requires administrator privileges. However, starting from <code>Windows 10 build 14972</code>, if ‘Developer Mode’ is enabled, the command can be run without elevation.</p>
-</blockquote>
-<h2 id="Moving-and-Selecting"><a href="#Moving-and-Selecting" class="headerlink" title="Moving and Selecting"></a>Moving and Selecting</h2><blockquote>
-<ul>
-<li>Selecting a ‘Symbolic Link’ in File Explorer will select the source file (or directory).</li>
-<li>Selecting a ‘Junction’ in File Explorer will select the ‘Junction’ itself.</li>
-<li>Dragging a ‘Symbolic Link’ in File Explorer to a new location will only move the ‘Symbolic Link’ itself.</li>
-<li>Dragging a ‘Junction’ in File Explorer to a new location will move the source file directory to the new location.</li>
-</ul>
-</blockquote>
-<h1 id="Demonstration"><a href="#Demonstration" class="headerlink" title="Demonstration"></a>Demonstration</h1><p>Below are the tests I conducted for each type:</p>
-<div class="note primary"><p>For more detailed explanations, you can refer to the article on <a class="btn" href="https://sspai.com/post/66834"><i class="fa fa-blog fa-fw"></i>少数派</a> (in Chinese), which explains it very clearly.</p></div>
-
-<h2 id="File-Symbolic-Link"><a href="#File-Symbolic-Link" class="headerlink" title="File Symbolic Link"></a>File Symbolic Link</h2><p>Create test folders <code>link</code> and <code>target</code> and create a test file <code>./target/target.txt</code>. At this point, the <code>link</code> folder is empty.<br><img data-src="https://s2.loli.net/2022/05/25/cAlHUYMq2W9L7h5.png" alt="File Symbolic Link 1"></p>
-<p>Execute the command:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink E:\Test\link\link.txt E:\Test\target\target.txt</span><br></pre></td></tr></table></figure>
-
-<p>Now, the <code>link</code> folder contains <code>link.txt</code>, which has a file type of <code>.symlink</code>. Its icon is the same as a shortcut, but it is a symbolic link. Any changes made to one file will be synchronized to the other. The symbolic link points to the path of the source file, and the actual file is still located in <code>./target/target.txt</code>.<br><img data-src="https://s2.loli.net/2022/05/25/KJQd7MjVpxwBeo1.png" alt="File Symbolic Link 2"></p>
-<h2 id="Directory-Symbolic-Link"><a href="#Directory-Symbolic-Link" class="headerlink" title="Directory Symbolic Link"></a>Directory Symbolic Link</h2><p>Create test folders and <code>target</code>, and create a test file <code>./target/target.txt</code>.<br><img data-src="https://s2.loli.net/2022/05/25/9DXKw3zxn8p41EB.png" alt="Directory Symbolic Link 1"></p>
-<p>Execute the command:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /d E:\Test\link E:\Test\target</span><br></pre></td></tr></table></figure>
-
-<p>Now, a <code>link</code> folder is created with an icon similar to a shortcut, and its contents are the same as the source folder. Any changes made to one folder will be synchronized to the other. The symbolic link points to the path of the source folder, and the actual storage location is still the <code>target</code> source folder. You can see that the <code>link</code> folder has a different path in the address bar and title bar.<br><img data-src="https://s2.loli.net/2022/05/25/UePih7d86o3OglN.png" alt="Directory Symbolic Link 2"><br><img data-src="https://s2.loli.net/2022/05/25/4WKXoCPbQa8GZ7S.png" alt="Directory Symbolic Link 3"></p>
-<h2 id="File-Hard-Link"><a href="#File-Hard-Link" class="headerlink" title="File Hard Link"></a>File Hard Link</h2><p>Create test folders <code>link</code> and <code>target</code>, and create a test file <code>./target/target.txt</code>. At this point, the <code>link</code> folder is empty.<br><img data-src="https://s2.loli.net/2022/05/25/cAlHUYMq2W9L7h5.png" alt="File Hard Link 1"></p>
-<p>Execute the command:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /h E:\Test\link\link.txt E:\Test\target\target.txt</span><br></pre></td></tr></table></figure>
-
-<p>Now, the <code>link</code> folder contains <code>link.txt</code>, which still has the file type <code>Text Document</code> and the same icon as the source file. A hard link directly points to the file on the disk.<br><img data-src="https://s2.loli.net/2022/05/25/GgYQLRkw6UDWm1y.png" alt="File Hard Link 2"></p>
-<h2 id="Junction-Directory-Junction"><a href="#Junction-Directory-Junction" class="headerlink" title="Junction (Directory Junction)"></a>Junction (Directory Junction)</h2><p>Create test folders and <code>target</code>, and create a test file <code>./target/target.txt</code>.<br><img data-src="https://s2.loli.net/2022/05/25/9DXKw3zxn8p41EB.png" alt="Junction 1"></p>
-<p>Execute the command:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /j E:\Test\link E:\Test\target</span><br></pre></td></tr></table></figure>
-
-<p>The result is similar to a directory symbolic link, with the only difference being that the <code>link</code> folder has the same path in the address bar and title bar. However, the actual storage location of the files is still the <code>target</code> source folder.<br><img data-src="https://s2.loli.net/2022/05/25/hy1fLAiPF48Jwgv.png" alt="Junction 2"></p>
-<h1 id="Creating-Symbolic-Links-for-OneDrive"><a href="#Creating-Symbolic-Links-for-OneDrive" class="headerlink" title="Creating Symbolic Links for OneDrive"></a>Creating Symbolic Links for OneDrive</h1><p>Start by opening OneDrive’s settings and ensure that all items in the “General” and “Notifications” sections are checked.<br><img data-src="https://s2.loli.net/2022/05/25/CUqA9YGWbci2O48.png" alt="OneDrive Settings"></p>
-<p>Next, move the <code>_posts</code> folder from your blog to OneDrive and rename it. It’s essential to move the folder; your blog folder should not contain an <code>_posts</code> folder.</p>
-<p>Then, press <code>Win</code> + <code>S</code>, type <code>cmd</code>, and run it “As Administrator.” Enter the <code>mklink</code> command. Please note that the <code>mklink</code> command can only be run in the <code>cmd</code> prompt; it’s not supported in PowerShell.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /d D:\Siriusq\source\_posts C:\Users\Sun\OneDrive\Siriusq</span><br></pre></td></tr></table></figure>
-
-<p>In this command, the first path is the location of your blog articles, and the second path is the location in OneDrive where you want to store your blog articles. This might seem counterintuitive, with OneDrive as the source folder, but it’s necessary to avoid OneDrive continuously displaying sync as suspended, which can be confusing.</p>
-<p>After executing the command, you’ll receive a prompt:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Symbolic link created for D:\Siriusq\source\_posts &lt;&lt;===&gt;&gt; C:\Users\Sun\OneDrive\Siriusq</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="https://s2.loli.net/2022/05/25/YphRoDOySbv6ixJ.png" alt="Link Created"></p>
-<p>Once the link is created successfully, open your blog folder, and you will see that the address bar shows the current folder’s path while the title bar displays the OneDrive folder’s path. Now, any changes made to either side of the link will be reflected on the other, achieving synchronization.</p>
-]]></content>
-      <categories>
-        <category>Geek</category>
-      </categories>
-      <tags>
-        <tag>Windows</tag>
-        <tag>OneDrive</tag>
-        <tag>mklink</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Stellaris Mod Creation and Upload Log</title>
     <url>/en/stellaris-mod.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">How to become a qualified 4th crisis without using the console.</blockquote>
@@ -7280,6 +7124,162 @@
       <tags>
         <tag>MOD</tag>
         <tag>Stellaris</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Sync Any Local Folder with OneDrive</title>
+    <url>/en/sync-any-local-folder-with-onedrive.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Create symbolic links using the 'mklink' command to synchronize OneDrive and the blog's post folder.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<p>In order to write blog posts on other devices, I initially placed all my blog files on OneDrive. However, I soon realized that this approach led to a significant number of file changes every time I executed ‘hexo cl &amp;&amp; hexo g.’ This wasn’t very friendly to the OneDrive server, especially since I was using it without contributing much. So, I decided to keep only the ‘.&#x2F;source&#x2F;_posts’ folder and manually copy and paste my articles after writing them. </p>
+<p>A few days ago, I had a brilliant idea: could I make OneDrive automatically sync this folder? After some searching, I came across the ‘mklink’ command.</p>
+<div class="note info"><p>Below, there are some explanations about the 'mklink' command. If you don't want to read it, you can skip it by clicking the button below. <a class="btn" href="#CreateSymbolicLinkForOneDrive"><i class="fa fa-forward fa-fw"></i>Skip</a></p></div>
+
+
+<h1 id="Introduction-to-the-‘mklink’-Command"><a href="#Introduction-to-the-‘mklink’-Command" class="headerlink" title="Introduction to the ‘mklink’ Command"></a>Introduction to the ‘mklink’ Command</h1><div class="note primary"><p>The command introduction references content from <a class="btn" href="https://ss64.com/nt/mklink.html"><i class="fa fa-book fa-fw"></i>SS64</a> and <a class="btn" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/mklink"><i class="fa fa-book fa-fw"></i>Microsoft Docs</a>, and was inspired by the article from <a class="btn" href="https://www.icoa.cn/a/910.html"><i class="fa fa-blog fa-fw"></i>逍遥峡谷</a>. Special thanks for the valuable references.</p></div>
+
+<p>The ‘mklink’ command is used to create symbolic or hard links for directories or files. It was introduced starting from Windows Vista and is supported on Windows operating systems from Vista onwards.</p>
+<h2 id="Comparison"><a href="#Comparison" class="headerlink" title="Comparison"></a>Comparison</h2><p>The ‘mklink’ command provides three types of links: ‘Symbolic Link,’ ‘Hard Link,’ and ‘Junction.’ Here’s a comparison of these three types with shortcuts:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="center">Links Files</th>
+<th align="center">Links Folders</th>
+<th align="center">Cross-Drive Links</th>
+<th align="center">Points to Nonexistent Target</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Shortcut</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="left">Hard Link</td>
+<td align="center">✅</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+<tr>
+<td align="left">Junction (Directory Junction &#x2F; Symbolic Link)</td>
+<td align="center">❌</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="left">Symbolic Link</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+</tbody></table>
+<blockquote>
+<ul>
+<li>Symbolic links and junctions are based on <a href="https://en.wikipedia.org/wiki/NTFS_reparse_point">NTFS reparse points</a>.</li>
+<li>Hard links are achieved by having multiple file entries pointing to the same inode, similar to Unix hard links. Even if the original filename is deleted, hard links continue to work, as they directly point to the data on the disk.</li>
+<li>It is possible (though not advisable) to create two links that point to each other in a loop or create a link that points to itself. Symbolic links may expose security vulnerabilities in applications that do not handle these situations.</li>
+<li>Both symbolic links and hard links do not support <code>.zip</code> compressed files.</li>
+</ul>
+</blockquote>
+<h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink [[/d] | [/h] | [/j]] &lt;link&gt; &lt;target&gt;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">Parameters</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">&#x2F;d</td>
+<td align="left">Create a directory symbolic link. By default, this command creates a file symbolic link.</td>
+</tr>
+<tr>
+<td align="left">&#x2F;h</td>
+<td align="left">Create a hard link instead of a symbolic link.</td>
+</tr>
+<tr>
+<td align="left">&#x2F;j</td>
+<td align="left">Create a junction (directory junction).</td>
+</tr>
+<tr>
+<td align="left">&lt;link&gt;</td>
+<td align="left">Specify the name of the symbolic link to create.</td>
+</tr>
+<tr>
+<td align="left">&lt;target&gt;</td>
+<td align="left">Specify the path (relative or absolute) that the new symbolic link will reference.</td>
+</tr>
+<tr>
+<td align="left">&#x2F;?</td>
+<td align="left">Display help at the command prompt.</td>
+</tr>
+</tbody></table>
+<p>If there are spaces in the <code>&lt;link&gt;</code> and <code>&lt;target&gt;</code> paths, they should be enclosed in double quotation marks <code>&quot;&quot;</code>.</p>
+<h2 id="Elevated-Privileges"><a href="#Elevated-Privileges" class="headerlink" title="Elevated Privileges"></a>Elevated Privileges</h2><blockquote>
+<p>By default, running the <code>mklink</code> command requires administrator privileges. However, starting from <code>Windows 10 build 14972</code>, if ‘Developer Mode’ is enabled, the command can be run without elevation.</p>
+</blockquote>
+<h2 id="Moving-and-Selecting"><a href="#Moving-and-Selecting" class="headerlink" title="Moving and Selecting"></a>Moving and Selecting</h2><blockquote>
+<ul>
+<li>Selecting a ‘Symbolic Link’ in File Explorer will select the source file (or directory).</li>
+<li>Selecting a ‘Junction’ in File Explorer will select the ‘Junction’ itself.</li>
+<li>Dragging a ‘Symbolic Link’ in File Explorer to a new location will only move the ‘Symbolic Link’ itself.</li>
+<li>Dragging a ‘Junction’ in File Explorer to a new location will move the source file directory to the new location.</li>
+</ul>
+</blockquote>
+<h1 id="Demonstration"><a href="#Demonstration" class="headerlink" title="Demonstration"></a>Demonstration</h1><p>Below are the tests I conducted for each type:</p>
+<div class="note primary"><p>For more detailed explanations, you can refer to the article on <a class="btn" href="https://sspai.com/post/66834"><i class="fa fa-blog fa-fw"></i>少数派</a> (in Chinese), which explains it very clearly.</p></div>
+
+<h2 id="File-Symbolic-Link"><a href="#File-Symbolic-Link" class="headerlink" title="File Symbolic Link"></a>File Symbolic Link</h2><p>Create test folders <code>link</code> and <code>target</code> and create a test file <code>./target/target.txt</code>. At this point, the <code>link</code> folder is empty.<br><img data-src="https://s2.loli.net/2022/05/25/cAlHUYMq2W9L7h5.png" alt="File Symbolic Link 1"></p>
+<p>Execute the command:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink E:\Test\link\link.txt E:\Test\target\target.txt</span><br></pre></td></tr></table></figure>
+
+<p>Now, the <code>link</code> folder contains <code>link.txt</code>, which has a file type of <code>.symlink</code>. Its icon is the same as a shortcut, but it is a symbolic link. Any changes made to one file will be synchronized to the other. The symbolic link points to the path of the source file, and the actual file is still located in <code>./target/target.txt</code>.<br><img data-src="https://s2.loli.net/2022/05/25/KJQd7MjVpxwBeo1.png" alt="File Symbolic Link 2"></p>
+<h2 id="Directory-Symbolic-Link"><a href="#Directory-Symbolic-Link" class="headerlink" title="Directory Symbolic Link"></a>Directory Symbolic Link</h2><p>Create test folders and <code>target</code>, and create a test file <code>./target/target.txt</code>.<br><img data-src="https://s2.loli.net/2022/05/25/9DXKw3zxn8p41EB.png" alt="Directory Symbolic Link 1"></p>
+<p>Execute the command:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /d E:\Test\link E:\Test\target</span><br></pre></td></tr></table></figure>
+
+<p>Now, a <code>link</code> folder is created with an icon similar to a shortcut, and its contents are the same as the source folder. Any changes made to one folder will be synchronized to the other. The symbolic link points to the path of the source folder, and the actual storage location is still the <code>target</code> source folder. You can see that the <code>link</code> folder has a different path in the address bar and title bar.<br><img data-src="https://s2.loli.net/2022/05/25/UePih7d86o3OglN.png" alt="Directory Symbolic Link 2"><br><img data-src="https://s2.loli.net/2022/05/25/4WKXoCPbQa8GZ7S.png" alt="Directory Symbolic Link 3"></p>
+<h2 id="File-Hard-Link"><a href="#File-Hard-Link" class="headerlink" title="File Hard Link"></a>File Hard Link</h2><p>Create test folders <code>link</code> and <code>target</code>, and create a test file <code>./target/target.txt</code>. At this point, the <code>link</code> folder is empty.<br><img data-src="https://s2.loli.net/2022/05/25/cAlHUYMq2W9L7h5.png" alt="File Hard Link 1"></p>
+<p>Execute the command:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /h E:\Test\link\link.txt E:\Test\target\target.txt</span><br></pre></td></tr></table></figure>
+
+<p>Now, the <code>link</code> folder contains <code>link.txt</code>, which still has the file type <code>Text Document</code> and the same icon as the source file. A hard link directly points to the file on the disk.<br><img data-src="https://s2.loli.net/2022/05/25/GgYQLRkw6UDWm1y.png" alt="File Hard Link 2"></p>
+<h2 id="Junction-Directory-Junction"><a href="#Junction-Directory-Junction" class="headerlink" title="Junction (Directory Junction)"></a>Junction (Directory Junction)</h2><p>Create test folders and <code>target</code>, and create a test file <code>./target/target.txt</code>.<br><img data-src="https://s2.loli.net/2022/05/25/9DXKw3zxn8p41EB.png" alt="Junction 1"></p>
+<p>Execute the command:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /j E:\Test\link E:\Test\target</span><br></pre></td></tr></table></figure>
+
+<p>The result is similar to a directory symbolic link, with the only difference being that the <code>link</code> folder has the same path in the address bar and title bar. However, the actual storage location of the files is still the <code>target</code> source folder.<br><img data-src="https://s2.loli.net/2022/05/25/hy1fLAiPF48Jwgv.png" alt="Junction 2"></p>
+<h1 id="Creating-Symbolic-Links-for-OneDrive"><a href="#Creating-Symbolic-Links-for-OneDrive" class="headerlink" title="Creating Symbolic Links for OneDrive"></a>Creating Symbolic Links for OneDrive</h1><p>Start by opening OneDrive’s settings and ensure that all items in the “General” and “Notifications” sections are checked.<br><img data-src="https://s2.loli.net/2022/05/25/CUqA9YGWbci2O48.png" alt="OneDrive Settings"></p>
+<p>Next, move the <code>_posts</code> folder from your blog to OneDrive and rename it. It’s essential to move the folder; your blog folder should not contain an <code>_posts</code> folder.</p>
+<p>Then, press <code>Win</code> + <code>S</code>, type <code>cmd</code>, and run it “As Administrator.” Enter the <code>mklink</code> command. Please note that the <code>mklink</code> command can only be run in the <code>cmd</code> prompt; it’s not supported in PowerShell.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /d D:\Siriusq\source\_posts C:\Users\Sun\OneDrive\Siriusq</span><br></pre></td></tr></table></figure>
+
+<p>In this command, the first path is the location of your blog articles, and the second path is the location in OneDrive where you want to store your blog articles. This might seem counterintuitive, with OneDrive as the source folder, but it’s necessary to avoid OneDrive continuously displaying sync as suspended, which can be confusing.</p>
+<p>After executing the command, you’ll receive a prompt:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Symbolic link created for D:\Siriusq\source\_posts &lt;&lt;===&gt;&gt; C:\Users\Sun\OneDrive\Siriusq</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://s2.loli.net/2022/05/25/YphRoDOySbv6ixJ.png" alt="Link Created"></p>
+<p>Once the link is created successfully, open your blog folder, and you will see that the address bar shows the current folder’s path while the title bar displays the OneDrive folder’s path. Now, any changes made to either side of the link will be reflected on the other, achieving synchronization.</p>
+]]></content>
+      <categories>
+        <category>Geek</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>OneDrive</tag>
+        <tag>mklink</tag>
       </tags>
   </entry>
   <entry>
@@ -7885,6 +7885,73 @@
       </tags>
   </entry>
   <entry>
+    <title>My Packing List for Studying Abroad in the UK</title>
+    <url>/en/uk-packing-list.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Based on my three-month experience of shopping at British supermarkets, I've compiled a list of recommended items to bring to the UK and items you may want to avoid bringing. For the items not recommended to bring, I've provided purchasing alternatives.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<h1 id="Recommended-to-Bring"><a href="#Recommended-to-Bring" class="headerlink" title="Recommended to Bring"></a>Recommended to Bring</h1><p>This category includes items that are either difficult to find in the UK or are unreasonably expensive.</p>
+<ul>
+<li>Coat hooks ⭐⭐⭐⭐⭐ Coat hooks in the UK are seriously overpriced. You can buy a whole box of them on Taobao for the price of one in the UK.</li>
+<li>Apron ⭐⭐⭐⭐ Aprons are also unreasonably expensive here. For the same price, you can buy ten on Taobao.</li>
+<li>Oil pot ⭐⭐⭐ I searched various supermarkets, but I finally found one in a small corner shop. However, it’s not very functional and tends to leak.</li>
+<li>Backup phone ⭐⭐⭐⭐ It’s always good to have a backup in case your phone breaks. Phones here are quite expensive.</li>
+<li>Hair clippers ⭐⭐⭐ In the UK, getting a haircut is costly. During the pandemic, I didn’t dare to invite a barber home, so I learned to cut my hair.</li>
+<li>Power strip with a British plug ⭐⭐⭐⭐ These are mostly available in Chinese supermarkets, but they can be quite expensive.</li>
+<li>Plug adapters for UK sockets ⭐⭐⭐⭐ Although available in British supermarkets, they tend to be expensive.</li>
+<li>Waterproof jacket ⭐⭐⭐⭐⭐ A must-have for windy and rainy days. Clothing stores are currently closed.</li>
+<li>SIM card ejector tool ⭐⭐⭐⭐ It doesn’t take up much space.</li>
+<li>Power bank ⭐⭐⭐⭐ Prices for power banks are relatively high here.</li>
+</ul>
+<h1 id="Optional-to-Bring"><a href="#Optional-to-Bring" class="headerlink" title="Optional to Bring"></a>Optional to Bring</h1><p>This category includes items that are small, lightweight, and can be purchased in the UK without unreasonable prices.</p>
+<ul>
+<li>Router ⭐⭐⭐ If you need it, it’s best to bring your own as routers in the UK can be quite pricey.</li>
+<li>Ethernet cable ⭐ It’s not much different in price.</li>
+<li>USB mini fan ⭐⭐⭐ Dorms in the UK generally lack air conditioning, so it can get hot in the summer.</li>
+<li>Hygrometer ⭐ If you need one, it’s best to bring it from home as the prices here are relatively high.</li>
+<li>Soap holder ⭐ Pound shops have them, but the designs might not be very appealing.</li>
+<li>USB cables ⭐⭐ Prices for braided cables are similar to those in China.</li>
+<li>Desk lamp ⭐ I have two bright spotlights on my desk in the dorm, so my desk lamp is just collecting dust. Desk lamps here are slightly more expensive.</li>
+<li>Camera tripod ⭐⭐ If needed, bring a portable one; prices here are nearly double.</li>
+<li>Small humidifier ⭐⭐ If it’s small, you can bring one. The cheapest one on eBay costs £7 and is no larger than a roll of toilet paper.</li>
+<li>Chopsticks ⭐ You can find them in Chinese supermarkets, and the prices are reasonable.</li>
+<li>Foldable basin ⭐ Similar basins are available in Chinese supermarkets, and the quality is slightly better.</li>
+<li>Thermos flask ⭐ Prices are similar to those in China.</li>
+<li>Nail clippers ⭐⭐ If needed, they are available, but I’m not sure about the quality.</li>
+<li>Batteries ⭐ Prices are slightly higher here, but they are acceptable. You can bring rechargeable batteries but avoid regular ones.</li>
+<li>Toothbrush holder ⭐ Pound shops have plastic cups that work just fine.</li>
+<li>Vegetable peeler ⭐⭐ Both Chinese and British supermarkets have them, and the prices are reasonable.</li>
+<li>Shoe brush ⭐ Same as above.</li>
+<li>Swiss Army knife ⭐ It can serve as a temporary toolbox. Prices here are quite high.</li>
+<li>USB drive ⭐ Prices are not much higher.</li>
+</ul>
+<h1 id="Not-Recommended-to-Bring"><a href="#Not-Recommended-to-Bring" class="headerlink" title="Not Recommended to Bring"></a>Not Recommended to Bring</h1><p>This category includes items that are too large, heavy, or available at lower prices in the UK.</p>
+<ul>
+<li>Soap ❌ You can buy soap for 80p for two bars at Home Bargains.</li>
+<li>Electric rice cooker ❌❌❌ There’s really no need for this. You can buy a second-hand one or order one online when you arrive. Carrying your own is heavy, takes up space, and requires an adapter plug. The options here may not have as many functions as those in China.</li>
+<li>Hairdryer ❌❌❌ Same as above.</li>
+<li>Large humidifier ❌❌❌ Same as above.</li>
+<li>Foldable kettle ❌ You will use it a few times, and it will collect dust afterward. Buy an electric kettle at a big supermarket or order one online before arrival.</li>
+<li>Kitchen knife ❌❌ It’s too heavy. Chinese supermarkets have them at reasonable prices.</li>
+<li>Electric toothbrush heads ❌ For Oral-B toothbrushes, they are cheaper here than in China.</li>
+<li>Umbrella ❌ The wind here can be quite strong, and umbrellas tend to break easily. You might want to try those designed to withstand typhoons from Taobao.</li>
+<li>Cookware ❌❌❌ Really not necessary. Large supermarkets have a decent selection, and the styles are fine.</li>
+<li>Duvet ❌❌❌ Unless your suitcase is only half full (insert dog head here).</li>
+<li>Window screen ❌❌ You can find them on Amazon, and the windows in student accommodations can only open a small gap; they can’t accommodate screens.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Study in UK</category>
+      </categories>
+      <tags>
+        <tag>Study in UK</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Diary in the UK</title>
     <url>/en/uk-diary.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">Landing in the UK after one month, the I am back again~~~ This might be another lengthy blog post, as I plan to document my life in the UK for this year. It will include guides on BRP, GP, bank cards, and perhaps even a Vlog? (Maybe)</blockquote>
@@ -8391,73 +8458,6 @@ OFFICIAL
 <p>Once you have the card, when booking tickets, choose the <code>Scottish Heritage Member Ticket</code> option, and the payment page will show £0.</p>
 <h1 id="To-Be-Continued…"><a href="#To-Be-Continued…" class="headerlink" title="To Be Continued…"></a>To Be Continued…</h1><p>More content to come, but I’ll be delaying it indefinitely. I gave up on registering with the dentist because the materials used for free dental work seem to be black, so I’ll just wait until I’m back in China to deal with it.</p>
 <h1 id="KC-Room-Tour"><a href="#KC-Room-Tour" class="headerlink" title="KC Room Tour"></a>KC Room Tour</h1><p>This might be postponed indefinitely as well. The apartment staff have locked all the doors to vacant rooms, so I can’t access them for filming. I’ll have to wait until my roommates arrive. (Sigh x4)</p>
-]]></content>
-      <categories>
-        <category>Study in UK</category>
-      </categories>
-      <tags>
-        <tag>Study in UK</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>My Packing List for Studying Abroad in the UK</title>
-    <url>/en/uk-packing-list.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Based on my three-month experience of shopping at British supermarkets, I've compiled a list of recommended items to bring to the UK and items you may want to avoid bringing. For the items not recommended to bring, I've provided purchasing alternatives.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<h1 id="Recommended-to-Bring"><a href="#Recommended-to-Bring" class="headerlink" title="Recommended to Bring"></a>Recommended to Bring</h1><p>This category includes items that are either difficult to find in the UK or are unreasonably expensive.</p>
-<ul>
-<li>Coat hooks ⭐⭐⭐⭐⭐ Coat hooks in the UK are seriously overpriced. You can buy a whole box of them on Taobao for the price of one in the UK.</li>
-<li>Apron ⭐⭐⭐⭐ Aprons are also unreasonably expensive here. For the same price, you can buy ten on Taobao.</li>
-<li>Oil pot ⭐⭐⭐ I searched various supermarkets, but I finally found one in a small corner shop. However, it’s not very functional and tends to leak.</li>
-<li>Backup phone ⭐⭐⭐⭐ It’s always good to have a backup in case your phone breaks. Phones here are quite expensive.</li>
-<li>Hair clippers ⭐⭐⭐ In the UK, getting a haircut is costly. During the pandemic, I didn’t dare to invite a barber home, so I learned to cut my hair.</li>
-<li>Power strip with a British plug ⭐⭐⭐⭐ These are mostly available in Chinese supermarkets, but they can be quite expensive.</li>
-<li>Plug adapters for UK sockets ⭐⭐⭐⭐ Although available in British supermarkets, they tend to be expensive.</li>
-<li>Waterproof jacket ⭐⭐⭐⭐⭐ A must-have for windy and rainy days. Clothing stores are currently closed.</li>
-<li>SIM card ejector tool ⭐⭐⭐⭐ It doesn’t take up much space.</li>
-<li>Power bank ⭐⭐⭐⭐ Prices for power banks are relatively high here.</li>
-</ul>
-<h1 id="Optional-to-Bring"><a href="#Optional-to-Bring" class="headerlink" title="Optional to Bring"></a>Optional to Bring</h1><p>This category includes items that are small, lightweight, and can be purchased in the UK without unreasonable prices.</p>
-<ul>
-<li>Router ⭐⭐⭐ If you need it, it’s best to bring your own as routers in the UK can be quite pricey.</li>
-<li>Ethernet cable ⭐ It’s not much different in price.</li>
-<li>USB mini fan ⭐⭐⭐ Dorms in the UK generally lack air conditioning, so it can get hot in the summer.</li>
-<li>Hygrometer ⭐ If you need one, it’s best to bring it from home as the prices here are relatively high.</li>
-<li>Soap holder ⭐ Pound shops have them, but the designs might not be very appealing.</li>
-<li>USB cables ⭐⭐ Prices for braided cables are similar to those in China.</li>
-<li>Desk lamp ⭐ I have two bright spotlights on my desk in the dorm, so my desk lamp is just collecting dust. Desk lamps here are slightly more expensive.</li>
-<li>Camera tripod ⭐⭐ If needed, bring a portable one; prices here are nearly double.</li>
-<li>Small humidifier ⭐⭐ If it’s small, you can bring one. The cheapest one on eBay costs £7 and is no larger than a roll of toilet paper.</li>
-<li>Chopsticks ⭐ You can find them in Chinese supermarkets, and the prices are reasonable.</li>
-<li>Foldable basin ⭐ Similar basins are available in Chinese supermarkets, and the quality is slightly better.</li>
-<li>Thermos flask ⭐ Prices are similar to those in China.</li>
-<li>Nail clippers ⭐⭐ If needed, they are available, but I’m not sure about the quality.</li>
-<li>Batteries ⭐ Prices are slightly higher here, but they are acceptable. You can bring rechargeable batteries but avoid regular ones.</li>
-<li>Toothbrush holder ⭐ Pound shops have plastic cups that work just fine.</li>
-<li>Vegetable peeler ⭐⭐ Both Chinese and British supermarkets have them, and the prices are reasonable.</li>
-<li>Shoe brush ⭐ Same as above.</li>
-<li>Swiss Army knife ⭐ It can serve as a temporary toolbox. Prices here are quite high.</li>
-<li>USB drive ⭐ Prices are not much higher.</li>
-</ul>
-<h1 id="Not-Recommended-to-Bring"><a href="#Not-Recommended-to-Bring" class="headerlink" title="Not Recommended to Bring"></a>Not Recommended to Bring</h1><p>This category includes items that are too large, heavy, or available at lower prices in the UK.</p>
-<ul>
-<li>Soap ❌ You can buy soap for 80p for two bars at Home Bargains.</li>
-<li>Electric rice cooker ❌❌❌ There’s really no need for this. You can buy a second-hand one or order one online when you arrive. Carrying your own is heavy, takes up space, and requires an adapter plug. The options here may not have as many functions as those in China.</li>
-<li>Hairdryer ❌❌❌ Same as above.</li>
-<li>Large humidifier ❌❌❌ Same as above.</li>
-<li>Foldable kettle ❌ You will use it a few times, and it will collect dust afterward. Buy an electric kettle at a big supermarket or order one online before arrival.</li>
-<li>Kitchen knife ❌❌ It’s too heavy. Chinese supermarkets have them at reasonable prices.</li>
-<li>Electric toothbrush heads ❌ For Oral-B toothbrushes, they are cheaper here than in China.</li>
-<li>Umbrella ❌ The wind here can be quite strong, and umbrellas tend to break easily. You might want to try those designed to withstand typhoons from Taobao.</li>
-<li>Cookware ❌❌❌ Really not necessary. Large supermarkets have a decent selection, and the styles are fine.</li>
-<li>Duvet ❌❌❌ Unless your suitcase is only half full (insert dog head here).</li>
-<li>Window screen ❌❌ You can find them on Amazon, and the windows in student accommodations can only open a small gap; they can’t accommodate screens.</li>
-</ul>
 ]]></content>
       <categories>
         <category>Study in UK</category>
@@ -9638,154 +9638,6 @@ OFFICIAL
       </tags>
   </entry>
   <entry>
-    <title>Installation and Configuration of WSA</title>
-    <url>/en/wsa.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Documenting the process of setting up WSA, establishing an internet connection, configuring a proxy, and installing applications.</blockquote>
-
-<span id="more"></span>
-
-<div class="note danger"><h1 id="Reminder-of-Timeliness"><a href="#Reminder-of-Timeliness" class="headerlink" title="Reminder of Timeliness"></a>Reminder of Timeliness</h1><p>This article was written in June 2022! Please be aware that some of the content may have become outdated!</p>
-</div>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<h1 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h1><div class="note warning"><p>Remember to enable CPU virtualization in BIOS.</p>
-</div>
-
-<h2 id="Windows-Settings-Adjustment"><a href="#Windows-Settings-Adjustment" class="headerlink" title="Windows Settings Adjustment"></a>Windows Settings Adjustment</h2><p>Open <code>Settings</code> - <code>Apps</code> - <code>Optional Features</code> - <code>More Windows Features</code> and check <code>Virtual Machine Platform</code>, then wait for installation and restart.<br><img data-src="https://s2.loli.net/2022/06/02/cdf8ypRustXqS3v.png" alt="wsa2.png"></p>
-<p>Next, go to <code>Settings</code> - <code>Privacy &amp; Security</code> - <code>Developer options</code> - <code>Developer mode</code> and turn on the switch.<br><img data-src="https://s2.loli.net/2022/06/02/P45KeiDczAdgbXh.png" alt="wsa3.png"></p>
-<h2 id="Install-adb"><a href="#Install-adb" class="headerlink" title="Install adb"></a>Install adb</h2><div class="link-grid"><div class="link-grid-container">
-<object class="link-grid-image" data="/images/link/download.webp"></object>
-<p>Download adb</p><p>Download SDK Platform-Tools for Windows</p>
-<a href="https://developer.android.com/studio/releases/platform-tools"></a>
-</div></div>
-
-<ol>
-<li>After downloading, place the installation package in a fixed location and then unzip it because you’ll need to set environment variables below.</li>
-<li>Press <code>Win</code> + <code>S</code>, search for and open <code>Edit the system environment variables</code>.</li>
-<li>In the System variables section, create a variable named <code>adb</code> with the value being the path to the folder you just unzipped, e.g., <code>D:\Program Files\platform-tools</code>.</li>
-<li>Double-click the variable named <code>Path</code> in the System variables section, then add <code>%adb%</code> as a new variable.</li>
-<li>Confirm with OK.</li>
-<li>In the terminal, type <code>adb version</code> to check if it’s set up correctly.</li>
-</ol>
-<p><img data-src="https://s2.loli.net/2022/06/02/NatckrIXWZC5Oxh.png" alt="wsa4.png"></p>
-<h2 id="Install-WSA-Toolbox"><a href="#Install-WSA-Toolbox" class="headerlink" title="Install WSA Toolbox"></a>Install WSA Toolbox</h2><div class="link-grid"><div class="link-grid-container">
-<object class="link-grid-image" data="/images/link/download.webp"></object>
-<p>WSA Toolbox</p><p>Provides utilities & tools for WSA</p>
-<a href="https://apps.microsoft.com/store/detail/wsa-toolbox/9PPSP2MKVTGT?hl=en-us&gl=US"></a>
-</div></div>
-
-<p>This tool has been removed from the Microsoft Store in the Chinese region, so you can only install it through the link above. You’ll need it later to access the Android system settings for WSA.</p>
-<hr>
-<h1 id="Install-WSA"><a href="#Install-WSA" class="headerlink" title="Install WSA"></a>Install WSA</h1><p>Here, I’m using an integrated package that includes root, Magisk, and Google Play, which simplifies the process.</p>
-<div class="link-grid"><div class="link-grid-container">
-<object class="link-grid-image" data="/images/link/github.webp"></object>
-<p>Magisk</p><p>LSPosed Magisk on WSA (with Google Apps)</p>
-<a href="https://github.com/LSPosed/MagiskOnWSA"></a>
-</div></div>
-
-<ol>
-<li>First, fork the code to your own repository, then in the forked repository, click on <code>Actions</code> in the upper left corner.</li>
-<li>In the <code>Workflow</code> section, click on <code>Build WSA</code>.</li>
-<li>Click on <code>Run workflow</code> on the right, and in the dropdown menu, select <code>Build arch</code> as <code>x64</code>, and choose <code>Variants of gapps</code> as <code>pico</code>.</li>
-<li>Finally, click the green <code>Run workflow</code> button, and wait for the build process to complete, which usually takes about five to six minutes.<br><img data-src="https://s2.loli.net/2022/06/02/6SdWlJb9LfIa4cV.png" alt="wsa1.png"></li>
-<li>Download the completed build, and be sure not to use a multi-threaded downloader.</li>
-<li>Unzip the file.</li>
-<li>Right-click on <code>Install.ps1</code>, select <code>Run with PowerShell</code>, and wait for the installation to complete. After installation, the Play Store will open.</li>
-<li>Open <code>Android-based Windows Subsystem for Android Settings</code>, enable <code>Developer mode</code>, and take note of the displayed IP address, which is usually <code>127.0.0.1:58526</code>.<br><img data-src="https://s2.loli.net/2022/06/02/uZAeSJEXPFKyGx3.png" alt="wsa9.png"></li>
-</ol>
-<hr>
-<h1 id="Connectivity-Issues"><a href="#Connectivity-Issues" class="headerlink" title="Connectivity Issues"></a>Connectivity Issues</h1><p>In China, the Play Store cannot be accessed without a proxy. However, you can use the Amazon Appstore to check if you have a network connection. If everything is normal, please skip this section. This section is specifically for users who, like me, encountered connectivity issues.</p>
-<p>After installing WSA, if you can’t connect to the internet and you keep seeing “VritWifi connection is limited,” you can try the following methods, as summarized by Google:</p>
-<h2 id="Change-Firewall-Rules"><a href="#Change-Firewall-Rules" class="headerlink" title="Change Firewall Rules"></a>Change Firewall Rules</h2><p>Run the terminal as an administrator and execute the following command to add a firewall rule:</p>
-<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line"><span class="built_in">New-NetFirewallRule</span> <span class="literal">-DisplayName</span> <span class="string">&quot;WSL&quot;</span> <span class="literal">-Direction</span> Inbound <span class="literal">-InterfaceAlias</span> <span class="string">&quot;vEthernet (WSL)&quot;</span> <span class="literal">-Action</span> Allow</span><br></pre></td></tr></table></figure>
-<p>However, this did not work for me.</p>
-<h2 id="Change-DNS"><a href="#Change-DNS" class="headerlink" title="Change DNS"></a>Change DNS</h2><p>Change the default DNS settings of WSA, but this may not work for everyone.</p>
-<ol>
-<li>Open the previously installed <code>WSA Toolbox</code> and click on <code>Android Settings</code> in the middle.</li>
-<li>Go to <code>Network &amp; Internet</code> &gt; <code>Internet</code> &gt; <code>Wi-Fi</code> &gt; <code>VritWifi</code>.</li>
-<li>Click on the settings icon in the upper right.</li>
-<li>Change <code>DNS 1</code> to <code>8.8.4.4</code> or <code>114.114.115.115</code>, which are commonly used DNS servers.</li>
-</ol>
-<p><img data-src="https://s2.loli.net/2022/06/02/MGDFkbQCelVUPgu.png" alt="wsa5.png"></p>
-<h2 id="adb-Modify-captive-portal"><a href="#adb-Modify-captive-portal" class="headerlink" title="adb Modify captive_portal"></a>adb Modify captive_portal</h2><p>It turns out that this is a misleading solution. Open the terminal and execute the following commands:</p>
-<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">58526</span></span><br><span class="line">adb shell settings put global captive_portal_https_url https://connect.rom.miui.com/generate_204</span><br><span class="line">adb shell settings put global captive_portal_http_url http://connect.rom.miui.com/generate_204</span><br></pre></td></tr></table></figure>
-<p>The only effect of this operation is to remove the annoying prompt when you are already connected to the internet but still receive a “limited network” warning.</p>
-<blockquote>
-<p>A captive portal is a web page presented to newly connected users before they are granted broader access to the network (Internet). It is commonly used to present a landing or login page that may require authentication or acceptance of usage policies. Captive portals are used in a variety of mobile broadband services (wired and wireless), and can also be used for access to enterprise or residential wired networks (such as apartment buildings, hotels, and business centers).</p>
-</blockquote>
-<p>By default, WSA uses Google’s Captive Portal to check for internet connectivity, which doesn’t work in China. Therefore, it displays the “limited network” message. By changing the detection server to one based in China, you can resolve this issue. Here are some alternative servers you can use:</p>
-<ul>
-<li>Apple: <a href="http://www.apple.com/library/test/success.html">http://www.apple.com/library/test/success.html</a></li>
-<li>Huawei: <a href="http://connectivitycheck.platform.hicloud.com/generate_204">http://connectivitycheck.platform.hicloud.com/generate_204</a></li>
-<li>Vivo: <a href="http://wifi.vivo.com.cn/generate_204">http://wifi.vivo.com.cn/generate_204</a></li>
-</ul>
-<h2 id="USB-Tethering"><a href="#USB-Tethering" class="headerlink" title="USB Tethering"></a>USB Tethering</h2><p>This method is a workaround and may need to be reconfigured after a reboot.</p>
-<ol>
-<li>Open the previously installed <code>WSA Toolbox</code> and click on <code>Android Settings</code> in the middle.</li>
-<li>Go to <code>System</code> &gt; <code>Developer options</code>.</li>
-<li>Enable the <code>Developer options</code> toggle.</li>
-<li>Scroll down to <code>Network</code> &gt; <code>Default USB configuration</code>.</li>
-<li>Set it to <code>USB tethering</code>.</li>
-</ol>
-<h2 id="Enable-Hyper-V-Feature"><a href="#Enable-Hyper-V-Feature" class="headerlink" title="Enable Hyper-V Feature"></a>Enable Hyper-V Feature</h2><div class="note primary"><p>I found a <a href="https://zhuanlan.zhihu.com/p/431557897">post</a> on Zhihu by Hilton, which suggested enabling the Hyper-V feature. Surprisingly, it worked, even though the official documentation says it’s not required.</p>
-</div>
-
-<ol>
-<li>Open <code>Settings</code> &gt; <code>Apps</code> &gt; <code>Optional Features</code> &gt; <code>More Windows features</code>.</li>
-<li>Expand <code>Hyper-V</code>.</li>
-<li>Check <code>Hyper-V Platform</code>.</li>
-<li>Wait for the installation to complete.</li>
-</ol>
-<p><img data-src="https://s2.loli.net/2022/06/02/HJIWBZVYlC3pT7s.png" alt="wsa6.png"></p>
-<p>After doing this, magically, you can connect to the internet. I still don’t fully understand why this works. 🤯</p>
-<hr>
-<h1 id="Setting-up-Proxy"><a href="#Setting-up-Proxy" class="headerlink" title="Setting up Proxy"></a>Setting up Proxy</h1><h2 id="Standard-Procedure"><a href="#Standard-Procedure" class="headerlink" title="Standard Procedure"></a>Standard Procedure</h2><p>I’m using the V2rayN client. If you’re using Clash, there are plenty of tutorials available.</p>
-<ol>
-<li>Open V2rayN, go to <code>Settings</code> &gt; <code>Parameter Settings</code> &gt; <code>Basic Settings</code>, and check the box that says <code>Allow connections from the local network</code>.</li>
-<li>Take note of the local HTTP port displayed at the bottom, which is usually <code>10811</code>.<br><img data-src="https://s2.loli.net/2022/06/02/CmPInWYB536VjwS.png" alt="wsa7.png"></li>
-<li>In the terminal, run the following command, but make sure to replace <code>127.0.0.1:58526</code> with the IP you noted from the <code>Windows Subsystem for Android</code> settings, which is typically this IP.<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">58526</span></span><br></pre></td></tr></table></figure></li>
-<li>In the terminal, enter:<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure></li>
-<li>Find the IP address of the network card you’re currently using. In my case, it’s <code>192.168.50.70</code>.<br><img data-src="https://s2.loli.net/2022/06/02/Vh3JBqGuFPoNMd9.png" alt="wsa8.png"></li>
-<li>Run the following command in the terminal, but replace the IP with your network card’s IP:<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb shell settings put global http_proxy <span class="number">192.168</span>.<span class="number">50.70</span>:<span class="number">10811</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>If you want to disable the proxy, you can use the following commands:</p>
-<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb shell settings put global http_proxy :<span class="number">0</span></span><br><span class="line">adb shell settings delete global http_proxy</span><br></pre></td></tr></table></figure>
-
-<h2 id="Alternative-Solution"><a href="#Alternative-Solution" class="headerlink" title="Alternative Solution"></a>Alternative Solution</h2><p>If the above methods don’t work, you can install a proxy configuration app, such as V2rayNG, directly in WSA.</p>
-<div class="link-grid"><div class="link-grid-container">
-<object class="link-grid-image" data="/images/link/github.webp"></object>
-<p>V2rayNG</p><p>A V2Ray client for Android</p>
-<a href="https://github.com/2dust/v2rayNG/releases"></a>
-</div></div>
-
-<h1 id="Sideloading-APKs"><a href="#Sideloading-APKs" class="headerlink" title="Sideloading APKs"></a>Sideloading APKs</h1><p>If you don’t have access to a proxy, you won’t be able to install apps through the Play Store. However, you can sideload apps using the following method:</p>
-<ol>
-<li>In the terminal, run the following command, but make sure to replace <code>127.0.0.1:58526</code> with the IP you noted from the <code>Windows Subsystem for Android</code> settings, which is typically this IP.<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">58526</span></span><br></pre></td></tr></table></figure></li>
-<li>Navigate to the folder where the APK is located.</li>
-<li>Execute the following command:<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb install apk_name</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>I use Coolapk as an alternative app store in China.</p>
-<div class="link-grid"><div class="link-grid-container">
-<object class="link-grid-image" data="/images/link/link.webp"></object>
-<p>Coolapk APP</p><p>Discover the new life of technology</p>
-<a href="https://www.coolapk.com/"></a>
-</div></div>]]></content>
-      <categories>
-        <category>Geek</category>
-      </categories>
-      <tags>
-        <tag>Windows</tag>
-        <tag>WSA</tag>
-        <tag>Android</tag>
-        <tag>V2ray</tag>
-        <tag>Google Play</tag>
-        <tag>Magisk</tag>
-        <tag>adb</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Customizing Windows Terminal</title>
     <url>/en/windows-terminal.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">Something you have to face every day, and if it doesn't look good, it can affect your mood 🐶. (Finally going to finish the overdue blog posts, the diarrhea-style updates are ending.)</blockquote>
@@ -10014,6 +9866,154 @@ OFFICIAL
         <tag>Windows Terminal</tag>
         <tag>Win11</tag>
         <tag>Win10</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Installation and Configuration of WSA</title>
+    <url>/en/wsa.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Documenting the process of setting up WSA, establishing an internet connection, configuring a proxy, and installing applications.</blockquote>
+
+<span id="more"></span>
+
+<div class="note danger"><h1 id="Reminder-of-Timeliness"><a href="#Reminder-of-Timeliness" class="headerlink" title="Reminder of Timeliness"></a>Reminder of Timeliness</h1><p>This article was written in June 2022! Please be aware that some of the content may have become outdated!</p>
+</div>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<h1 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h1><div class="note warning"><p>Remember to enable CPU virtualization in BIOS.</p>
+</div>
+
+<h2 id="Windows-Settings-Adjustment"><a href="#Windows-Settings-Adjustment" class="headerlink" title="Windows Settings Adjustment"></a>Windows Settings Adjustment</h2><p>Open <code>Settings</code> - <code>Apps</code> - <code>Optional Features</code> - <code>More Windows Features</code> and check <code>Virtual Machine Platform</code>, then wait for installation and restart.<br><img data-src="https://s2.loli.net/2022/06/02/cdf8ypRustXqS3v.png" alt="wsa2.png"></p>
+<p>Next, go to <code>Settings</code> - <code>Privacy &amp; Security</code> - <code>Developer options</code> - <code>Developer mode</code> and turn on the switch.<br><img data-src="https://s2.loli.net/2022/06/02/P45KeiDczAdgbXh.png" alt="wsa3.png"></p>
+<h2 id="Install-adb"><a href="#Install-adb" class="headerlink" title="Install adb"></a>Install adb</h2><div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/download.webp"></object>
+<p>Download adb</p><p>Download SDK Platform-Tools for Windows</p>
+<a href="https://developer.android.com/studio/releases/platform-tools"></a>
+</div></div>
+
+<ol>
+<li>After downloading, place the installation package in a fixed location and then unzip it because you’ll need to set environment variables below.</li>
+<li>Press <code>Win</code> + <code>S</code>, search for and open <code>Edit the system environment variables</code>.</li>
+<li>In the System variables section, create a variable named <code>adb</code> with the value being the path to the folder you just unzipped, e.g., <code>D:\Program Files\platform-tools</code>.</li>
+<li>Double-click the variable named <code>Path</code> in the System variables section, then add <code>%adb%</code> as a new variable.</li>
+<li>Confirm with OK.</li>
+<li>In the terminal, type <code>adb version</code> to check if it’s set up correctly.</li>
+</ol>
+<p><img data-src="https://s2.loli.net/2022/06/02/NatckrIXWZC5Oxh.png" alt="wsa4.png"></p>
+<h2 id="Install-WSA-Toolbox"><a href="#Install-WSA-Toolbox" class="headerlink" title="Install WSA Toolbox"></a>Install WSA Toolbox</h2><div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/download.webp"></object>
+<p>WSA Toolbox</p><p>Provides utilities & tools for WSA</p>
+<a href="https://apps.microsoft.com/store/detail/wsa-toolbox/9PPSP2MKVTGT?hl=en-us&gl=US"></a>
+</div></div>
+
+<p>This tool has been removed from the Microsoft Store in the Chinese region, so you can only install it through the link above. You’ll need it later to access the Android system settings for WSA.</p>
+<hr>
+<h1 id="Install-WSA"><a href="#Install-WSA" class="headerlink" title="Install WSA"></a>Install WSA</h1><p>Here, I’m using an integrated package that includes root, Magisk, and Google Play, which simplifies the process.</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/github.webp"></object>
+<p>Magisk</p><p>LSPosed Magisk on WSA (with Google Apps)</p>
+<a href="https://github.com/LSPosed/MagiskOnWSA"></a>
+</div></div>
+
+<ol>
+<li>First, fork the code to your own repository, then in the forked repository, click on <code>Actions</code> in the upper left corner.</li>
+<li>In the <code>Workflow</code> section, click on <code>Build WSA</code>.</li>
+<li>Click on <code>Run workflow</code> on the right, and in the dropdown menu, select <code>Build arch</code> as <code>x64</code>, and choose <code>Variants of gapps</code> as <code>pico</code>.</li>
+<li>Finally, click the green <code>Run workflow</code> button, and wait for the build process to complete, which usually takes about five to six minutes.<br><img data-src="https://s2.loli.net/2022/06/02/6SdWlJb9LfIa4cV.png" alt="wsa1.png"></li>
+<li>Download the completed build, and be sure not to use a multi-threaded downloader.</li>
+<li>Unzip the file.</li>
+<li>Right-click on <code>Install.ps1</code>, select <code>Run with PowerShell</code>, and wait for the installation to complete. After installation, the Play Store will open.</li>
+<li>Open <code>Android-based Windows Subsystem for Android Settings</code>, enable <code>Developer mode</code>, and take note of the displayed IP address, which is usually <code>127.0.0.1:58526</code>.<br><img data-src="https://s2.loli.net/2022/06/02/uZAeSJEXPFKyGx3.png" alt="wsa9.png"></li>
+</ol>
+<hr>
+<h1 id="Connectivity-Issues"><a href="#Connectivity-Issues" class="headerlink" title="Connectivity Issues"></a>Connectivity Issues</h1><p>In China, the Play Store cannot be accessed without a proxy. However, you can use the Amazon Appstore to check if you have a network connection. If everything is normal, please skip this section. This section is specifically for users who, like me, encountered connectivity issues.</p>
+<p>After installing WSA, if you can’t connect to the internet and you keep seeing “VritWifi connection is limited,” you can try the following methods, as summarized by Google:</p>
+<h2 id="Change-Firewall-Rules"><a href="#Change-Firewall-Rules" class="headerlink" title="Change Firewall Rules"></a>Change Firewall Rules</h2><p>Run the terminal as an administrator and execute the following command to add a firewall rule:</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line"><span class="built_in">New-NetFirewallRule</span> <span class="literal">-DisplayName</span> <span class="string">&quot;WSL&quot;</span> <span class="literal">-Direction</span> Inbound <span class="literal">-InterfaceAlias</span> <span class="string">&quot;vEthernet (WSL)&quot;</span> <span class="literal">-Action</span> Allow</span><br></pre></td></tr></table></figure>
+<p>However, this did not work for me.</p>
+<h2 id="Change-DNS"><a href="#Change-DNS" class="headerlink" title="Change DNS"></a>Change DNS</h2><p>Change the default DNS settings of WSA, but this may not work for everyone.</p>
+<ol>
+<li>Open the previously installed <code>WSA Toolbox</code> and click on <code>Android Settings</code> in the middle.</li>
+<li>Go to <code>Network &amp; Internet</code> &gt; <code>Internet</code> &gt; <code>Wi-Fi</code> &gt; <code>VritWifi</code>.</li>
+<li>Click on the settings icon in the upper right.</li>
+<li>Change <code>DNS 1</code> to <code>8.8.4.4</code> or <code>114.114.115.115</code>, which are commonly used DNS servers.</li>
+</ol>
+<p><img data-src="https://s2.loli.net/2022/06/02/MGDFkbQCelVUPgu.png" alt="wsa5.png"></p>
+<h2 id="adb-Modify-captive-portal"><a href="#adb-Modify-captive-portal" class="headerlink" title="adb Modify captive_portal"></a>adb Modify captive_portal</h2><p>It turns out that this is a misleading solution. Open the terminal and execute the following commands:</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">58526</span></span><br><span class="line">adb shell settings put global captive_portal_https_url https://connect.rom.miui.com/generate_204</span><br><span class="line">adb shell settings put global captive_portal_http_url http://connect.rom.miui.com/generate_204</span><br></pre></td></tr></table></figure>
+<p>The only effect of this operation is to remove the annoying prompt when you are already connected to the internet but still receive a “limited network” warning.</p>
+<blockquote>
+<p>A captive portal is a web page presented to newly connected users before they are granted broader access to the network (Internet). It is commonly used to present a landing or login page that may require authentication or acceptance of usage policies. Captive portals are used in a variety of mobile broadband services (wired and wireless), and can also be used for access to enterprise or residential wired networks (such as apartment buildings, hotels, and business centers).</p>
+</blockquote>
+<p>By default, WSA uses Google’s Captive Portal to check for internet connectivity, which doesn’t work in China. Therefore, it displays the “limited network” message. By changing the detection server to one based in China, you can resolve this issue. Here are some alternative servers you can use:</p>
+<ul>
+<li>Apple: <a href="http://www.apple.com/library/test/success.html">http://www.apple.com/library/test/success.html</a></li>
+<li>Huawei: <a href="http://connectivitycheck.platform.hicloud.com/generate_204">http://connectivitycheck.platform.hicloud.com/generate_204</a></li>
+<li>Vivo: <a href="http://wifi.vivo.com.cn/generate_204">http://wifi.vivo.com.cn/generate_204</a></li>
+</ul>
+<h2 id="USB-Tethering"><a href="#USB-Tethering" class="headerlink" title="USB Tethering"></a>USB Tethering</h2><p>This method is a workaround and may need to be reconfigured after a reboot.</p>
+<ol>
+<li>Open the previously installed <code>WSA Toolbox</code> and click on <code>Android Settings</code> in the middle.</li>
+<li>Go to <code>System</code> &gt; <code>Developer options</code>.</li>
+<li>Enable the <code>Developer options</code> toggle.</li>
+<li>Scroll down to <code>Network</code> &gt; <code>Default USB configuration</code>.</li>
+<li>Set it to <code>USB tethering</code>.</li>
+</ol>
+<h2 id="Enable-Hyper-V-Feature"><a href="#Enable-Hyper-V-Feature" class="headerlink" title="Enable Hyper-V Feature"></a>Enable Hyper-V Feature</h2><div class="note primary"><p>I found a <a href="https://zhuanlan.zhihu.com/p/431557897">post</a> on Zhihu by Hilton, which suggested enabling the Hyper-V feature. Surprisingly, it worked, even though the official documentation says it’s not required.</p>
+</div>
+
+<ol>
+<li>Open <code>Settings</code> &gt; <code>Apps</code> &gt; <code>Optional Features</code> &gt; <code>More Windows features</code>.</li>
+<li>Expand <code>Hyper-V</code>.</li>
+<li>Check <code>Hyper-V Platform</code>.</li>
+<li>Wait for the installation to complete.</li>
+</ol>
+<p><img data-src="https://s2.loli.net/2022/06/02/HJIWBZVYlC3pT7s.png" alt="wsa6.png"></p>
+<p>After doing this, magically, you can connect to the internet. I still don’t fully understand why this works. 🤯</p>
+<hr>
+<h1 id="Setting-up-Proxy"><a href="#Setting-up-Proxy" class="headerlink" title="Setting up Proxy"></a>Setting up Proxy</h1><h2 id="Standard-Procedure"><a href="#Standard-Procedure" class="headerlink" title="Standard Procedure"></a>Standard Procedure</h2><p>I’m using the V2rayN client. If you’re using Clash, there are plenty of tutorials available.</p>
+<ol>
+<li>Open V2rayN, go to <code>Settings</code> &gt; <code>Parameter Settings</code> &gt; <code>Basic Settings</code>, and check the box that says <code>Allow connections from the local network</code>.</li>
+<li>Take note of the local HTTP port displayed at the bottom, which is usually <code>10811</code>.<br><img data-src="https://s2.loli.net/2022/06/02/CmPInWYB536VjwS.png" alt="wsa7.png"></li>
+<li>In the terminal, run the following command, but make sure to replace <code>127.0.0.1:58526</code> with the IP you noted from the <code>Windows Subsystem for Android</code> settings, which is typically this IP.<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">58526</span></span><br></pre></td></tr></table></figure></li>
+<li>In the terminal, enter:<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure></li>
+<li>Find the IP address of the network card you’re currently using. In my case, it’s <code>192.168.50.70</code>.<br><img data-src="https://s2.loli.net/2022/06/02/Vh3JBqGuFPoNMd9.png" alt="wsa8.png"></li>
+<li>Run the following command in the terminal, but replace the IP with your network card’s IP:<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb shell settings put global http_proxy <span class="number">192.168</span>.<span class="number">50.70</span>:<span class="number">10811</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>If you want to disable the proxy, you can use the following commands:</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb shell settings put global http_proxy :<span class="number">0</span></span><br><span class="line">adb shell settings delete global http_proxy</span><br></pre></td></tr></table></figure>
+
+<h2 id="Alternative-Solution"><a href="#Alternative-Solution" class="headerlink" title="Alternative Solution"></a>Alternative Solution</h2><p>If the above methods don’t work, you can install a proxy configuration app, such as V2rayNG, directly in WSA.</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/github.webp"></object>
+<p>V2rayNG</p><p>A V2Ray client for Android</p>
+<a href="https://github.com/2dust/v2rayNG/releases"></a>
+</div></div>
+
+<h1 id="Sideloading-APKs"><a href="#Sideloading-APKs" class="headerlink" title="Sideloading APKs"></a>Sideloading APKs</h1><p>If you don’t have access to a proxy, you won’t be able to install apps through the Play Store. However, you can sideload apps using the following method:</p>
+<ol>
+<li>In the terminal, run the following command, but make sure to replace <code>127.0.0.1:58526</code> with the IP you noted from the <code>Windows Subsystem for Android</code> settings, which is typically this IP.<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">58526</span></span><br></pre></td></tr></table></figure></li>
+<li>Navigate to the folder where the APK is located.</li>
+<li>Execute the following command:<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb install apk_name</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>I use Coolapk as an alternative app store in China.</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/link.webp"></object>
+<p>Coolapk APP</p><p>Discover the new life of technology</p>
+<a href="https://www.coolapk.com/"></a>
+</div></div>]]></content>
+      <categories>
+        <category>Geek</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>WSA</tag>
+        <tag>Android</tag>
+        <tag>V2ray</tag>
+        <tag>Google Play</tag>
+        <tag>Magisk</tag>
+        <tag>adb</tag>
       </tags>
   </entry>
 </search>
