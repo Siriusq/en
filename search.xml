@@ -34,6 +34,52 @@
       </tags>
   </entry>
   <entry>
+    <title>Add Windows Terminal to the Right-click Menu</title>
+    <url>/en/add-windows-terminal-to-the-right-click-menu.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Windows Terminal is now available on the Microsoft Store, so I switched from Fluent Terminal to Windows Terminal. Here's a record of the process to add it to the right-click menu.</blockquote>
+
+<span id="more"></span>
+
+<div class="note danger"><p>Windows 11 has now default added 'Open in Terminal' in the right-click menu, so there's no need to add it separately. If you've already added it, you can simply delete [HKEY_CLASSES_ROOT\Directory\Background\shell\wt] from the registry.</p></div>
+
+<h1 id="Adding-an-Icon"><a href="#Adding-an-Icon" class="headerlink" title="Adding an Icon"></a>Adding an Icon</h1><p>First, create a folder named ‘Terminal’ in <code>C:\Users\[YOUR_USER_NAME]\AppData\Local</code>. You can create it directly using the following command. <strong>Make sure to replace [YOUR_USER_NAME] with your own username!</strong></p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> C:\Users\[YOUR_USER_NAME]\AppData\Local\Terminal</span><br></pre></td></tr></table></figure>
+
+<p>Next, download the Windows Terminal icon to the folder you just created. If your browser doesn’t automatically download it, right-click and choose “Save as” to save it as ‘terminal.ico’.</p>
+<a class="btn" href="https://raw.githubusercontent.com/microsoft/terminal/master/res/terminal.ico"><i class="fa fa-arrow-right fa-fw"></i>terminal.ico Download</a>
+
+<h1 id="Registry-Entry"><a href="#Registry-Entry" class="headerlink" title="Registry Entry"></a>Registry Entry</h1><p>Create a new text file and add the following content. Then, change the file extension to <code>.reg</code>. <strong>Remember to replace [YOUR_USER_NAME] with your own username!</strong></p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">Windows Registry Editor Version <span class="number">5</span>.<span class="number">00</span></span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt]</span><br><span class="line">@=&quot;Windows terminal here&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Terminal\\terminal.ico&quot;</span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt\command]</span><br><span class="line">@=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe&quot;</span><br></pre></td></tr></table></figure>
+
+<p>Once done, double-click the file to merge it into the registry.</p>
+<h1 id="Modifying-Configuration"><a href="#Modifying-Configuration" class="headerlink" title="Modifying Configuration"></a>Modifying Configuration</h1><p>At this point, you should already see the ‘Windows terminal here’ option in the right-click menu. However, when you click it, the terminal does not open in the current directory. To change this behavior, you need to modify the configuration file of ‘Windows Terminal.’</p>
+<p>Open ‘Windows Terminal,’ click the top dropdown menu, and select ‘Settings.’ This will open the configuration file named ‘settings.json.’ The section you need to modify is as follows:</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>To launch ‘Windows Terminal’ in the current folder, you need to add <code>&quot;startingDirectory&quot;: &quot;./&quot;</code> below each section you want to modify. After making the changes, it should look like this:</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>After saving these changes, you’ll be able to use the right-click menu to run ‘Windows Terminal’ in the current folder.</p>
+<h1 id="Possible-Issue"><a href="#Possible-Issue" class="headerlink" title="Possible Issue"></a>Possible Issue</h1><p>When using PowerShell, you may encounter an error message that says, “Cannot load file balabala.ps1 because running scripts is disabled on this system. For more information, see…” This is because the default <code>ExecutionPolicy</code> is set to “Restricted,” which means it doesn’t allow the execution of any scripts. </p>
+<p>The solution is to run PowerShell as an administrator and enter the command <code>set-executionpolicy remotesigned</code> to lift the restriction.</p>
+<blockquote>
+<p>References:</p>
+<ol>
+<li><a href="https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461">https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461</a></li>
+<li><a href="https://blog.csdn.net/Jioho_chen/article/details/101159291">https://blog.csdn.net/Jioho_chen/article/details/101159291</a></li>
+</ol>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Geek</category>
+      </categories>
+      <tags>
+        <tag>Software</tag>
+        <tag>Windows</tag>
+        <tag>Windows Terminal</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Solution for ASUS Aura Sync Not Recognizing G.Skill Trident Z RGB</title>
     <url>/en/aura-sync.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">This article is also known as "The Series of Annoying Incidents Caused by My Impulsive Upgrade of Armoury Crate." Now, let's introduce the main characters of this story: ASUS B460-I GAMING and two G.Skill Trident Z RGB sticks.</blockquote>
@@ -92,52 +138,6 @@
         <tag>Trident Z</tag>
         <tag>G.Skill</tag>
         <tag>RGB</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Add Windows Terminal to the Right-click Menu</title>
-    <url>/en/add-windows-terminal-to-the-right-click-menu.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Windows Terminal is now available on the Microsoft Store, so I switched from Fluent Terminal to Windows Terminal. Here's a record of the process to add it to the right-click menu.</blockquote>
-
-<span id="more"></span>
-
-<div class="note danger"><p>Windows 11 has now default added 'Open in Terminal' in the right-click menu, so there's no need to add it separately. If you've already added it, you can simply delete [HKEY_CLASSES_ROOT\Directory\Background\shell\wt] from the registry.</p></div>
-
-<h1 id="Adding-an-Icon"><a href="#Adding-an-Icon" class="headerlink" title="Adding an Icon"></a>Adding an Icon</h1><p>First, create a folder named ‘Terminal’ in <code>C:\Users\[YOUR_USER_NAME]\AppData\Local</code>. You can create it directly using the following command. <strong>Make sure to replace [YOUR_USER_NAME] with your own username!</strong></p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> C:\Users\[YOUR_USER_NAME]\AppData\Local\Terminal</span><br></pre></td></tr></table></figure>
-
-<p>Next, download the Windows Terminal icon to the folder you just created. If your browser doesn’t automatically download it, right-click and choose “Save as” to save it as ‘terminal.ico’.</p>
-<a class="btn" href="https://raw.githubusercontent.com/microsoft/terminal/master/res/terminal.ico"><i class="fa fa-arrow-right fa-fw"></i>terminal.ico Download</a>
-
-<h1 id="Registry-Entry"><a href="#Registry-Entry" class="headerlink" title="Registry Entry"></a>Registry Entry</h1><p>Create a new text file and add the following content. Then, change the file extension to <code>.reg</code>. <strong>Remember to replace [YOUR_USER_NAME] with your own username!</strong></p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">Windows Registry Editor Version <span class="number">5</span>.<span class="number">00</span></span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt]</span><br><span class="line">@=&quot;Windows terminal here&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Terminal\\terminal.ico&quot;</span><br><span class="line"> </span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt\command]</span><br><span class="line">@=&quot;C:\\Users\\[YOUR_USER_NAME]\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe&quot;</span><br></pre></td></tr></table></figure>
-
-<p>Once done, double-click the file to merge it into the registry.</p>
-<h1 id="Modifying-Configuration"><a href="#Modifying-Configuration" class="headerlink" title="Modifying Configuration"></a>Modifying Configuration</h1><p>At this point, you should already see the ‘Windows terminal here’ option in the right-click menu. However, when you click it, the terminal does not open in the current directory. To change this behavior, you need to modify the configuration file of ‘Windows Terminal.’</p>
-<p>Open ‘Windows Terminal,’ click the top dropdown menu, and select ‘Settings.’ This will open the configuration file named ‘settings.json.’ The section you need to modify is as follows:</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
-
-<p>To launch ‘Windows Terminal’ in the current folder, you need to add <code>&quot;startingDirectory&quot;: &quot;./&quot;</code> below each section you want to modify. After making the changes, it should look like this:</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A profile specifies a command to execute paired with information about how it should look and feel.</span></span><br><span class="line"><span class="comment">// Each one of them will appear in the &#x27;New Tab&#x27; dropdown,</span></span><br><span class="line"><span class="comment">//   and can be invoked from the commandline with `wt.exe -p xxx`</span></span><br><span class="line"><span class="comment">// To learn more about profiles, visit https://aka.ms/terminal-profile-settings</span></span><br><span class="line"><span class="attr">&quot;profiles&quot;</span><span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Put settings here that you want to apply to all profiles.</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the powershell.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;powershell.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="comment">// Make changes here to the cmd.exe profile.</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;命令提示符&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;commandline&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;guid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;hidden&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Azure Cloud Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Windows.Terminal.Azure&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;startingDirectory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
-
-<p>After saving these changes, you’ll be able to use the right-click menu to run ‘Windows Terminal’ in the current folder.</p>
-<h1 id="Possible-Issue"><a href="#Possible-Issue" class="headerlink" title="Possible Issue"></a>Possible Issue</h1><p>When using PowerShell, you may encounter an error message that says, “Cannot load file balabala.ps1 because running scripts is disabled on this system. For more information, see…” This is because the default <code>ExecutionPolicy</code> is set to “Restricted,” which means it doesn’t allow the execution of any scripts. </p>
-<p>The solution is to run PowerShell as an administrator and enter the command <code>set-executionpolicy remotesigned</code> to lift the restriction.</p>
-<blockquote>
-<p>References:</p>
-<ol>
-<li><a href="https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461">https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461</a></li>
-<li><a href="https://blog.csdn.net/Jioho_chen/article/details/101159291">https://blog.csdn.net/Jioho_chen/article/details/101159291</a></li>
-</ol>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Geek</category>
-      </categories>
-      <tags>
-        <tag>Software</tag>
-        <tag>Windows</tag>
-        <tag>Windows Terminal</tag>
       </tags>
   </entry>
   <entry>
@@ -301,7 +301,7 @@
 <h1 id="Workflows-Configuration"><a href="#Workflows-Configuration" class="headerlink" title="Workflows Configuration"></a>Workflows Configuration</h1><p>Next, let’s configure workflows for both repositories. The blog repository only requires a simple workflow, while the profile repository needs a script file to be created and identifiers to be added to the README.</p>
 <h2 id="Profile-Repository"><a href="#Profile-Repository" class="headerlink" title="Profile Repository"></a>Profile Repository</h2><p>We’ll start with the settings for the Profile repository. Clone the repository to your local machine, edit it locally, and then push it back to GitHub.</p>
 <h3 id="Create-a-Workflow"><a href="#Create-a-Workflow" class="headerlink" title="Create a Workflow"></a>Create a Workflow</h3><p>Create a file named <code>update-readme.yml</code> in your local directory at <code>./source/.github/workflows/</code>. The <code>./.github/workflows/</code> directory is where GitHub Actions stores workflow files by default. Be sure to include the leading <code>.</code> when creating the directory. Copy the following code into this file:</p>
-<figure class="highlight yml"><figcaption><span>update-readme.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Update</span> <span class="string">Latest</span> <span class="string">Blog</span> <span class="string">Posts</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">repository_dispatch:</span></span><br><span class="line">    <span class="attr">types:</span> [<span class="string">update-my-profile</span>]</span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">update-readme:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Setup</span> <span class="string">Node.js</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/setup-node@v2</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">node-version:</span> <span class="number">14</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">dependencies</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">node-fetch</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">node-fetch</span></span><br><span class="line">      </span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">feedparser</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">feedparser</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Update</span> <span class="string">README</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">node</span> <span class="string">update-readme.mjs</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Commit</span> <span class="string">and</span> <span class="string">push</span> <span class="string">changes</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        git config --local user.email &quot;github-actions@github.com&quot;</span></span><br><span class="line"><span class="string">        git config --local user.name &quot;github-actions&quot;</span></span><br><span class="line"><span class="string">        git add README.md</span></span><br><span class="line"><span class="string">        git commit -m &quot;Update README with latest blog posts&quot;</span></span><br><span class="line"><span class="string">        git push</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><figcaption><span>update-readme.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Update</span> <span class="string">Latest</span> <span class="string">Blog</span> <span class="string">Posts</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">repository_dispatch:</span></span><br><span class="line">    <span class="attr">types:</span> [<span class="string">update-my-profile</span>]</span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">update-readme:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Setup</span> <span class="string">Node.js</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/setup-node@v2</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">node-version:</span> <span class="number">14</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">dependencies</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">node-fetch</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">node-fetch</span></span><br><span class="line">      </span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">feedparser</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">feedparser</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Update</span> <span class="string">README</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">node</span> <span class="string">update-readme.mjs</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Commit</span> <span class="string">and</span> <span class="string">push</span> <span class="string">changes</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        git config --local user.name &#x27;github-actions[bot]&#x27;</span></span><br><span class="line"><span class="string">        git config --local user.email &#x27;github-actions[bot]@users.noreply.github.com&#x27;</span></span><br><span class="line"><span class="string">        git add README.md</span></span><br><span class="line"><span class="string">        git commit -m &quot;Update README with latest blog posts&quot;</span></span><br><span class="line"><span class="string">        git push</span></span><br></pre></td></tr></table></figure>
 
 <p>The purpose of this workflow is as follows:</p>
 <ol>
@@ -2208,6 +2208,55 @@
       </tags>
   </entry>
   <entry>
+    <title>Solution for Unable to Load Images on GitHub</title>
+    <url>/en/github-cant-load-images.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Yesterday, when I tried to add images on GitHub, I noticed that the images weren't loading properly. Upon investigation, I found out that GitHub's IP addresses were once again blocked by the Great Firewall (GFW). I resolved this issue by modifying my Hosts file. It's worth noting that this method can also be used to address problems with accessing GitHub when it's entirely blocked.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<h1 id="Principle"><a href="#Principle" class="headerlink" title="Principle"></a>Principle</h1><p>When we access a website through its URL, the website’s domain name needs to be resolved to an IP address through <strong>DNS resolution</strong>. One of the reasons why GitHub may not be accessible is due to the Great Firewall’s (GFW) DNS poisoning, which can cause DNS servers to return incorrect IP addresses. As a result, the website cannot be connected to, and resources such as images fail to load. Another reason is direct IP blocking, where the GFW intercepts data packets with specific IP addresses, preventing data transmission.</p>
+<p>In the early days of the internet when it was smaller in scale and DNS did not exist, domain names were mapped to IP addresses using the <code>Hosts</code> file. As the internet rapidly expanded, relying solely on the <code>Hosts</code> file became insufficient, and that’s when DNS servers came into play.</p>
+<p>Although DNS took over much of what the <code>Hosts</code> file used to do, the <code>Hosts</code> file still maintains a higher priority. Before a computer requests DNS resolution, it first checks if there is a mapping between the domain name to be accessed and an IP address in the local <code>Hosts</code> file. If such a mapping exists, the computer doesn’t need to use DNS servers; it can directly access the IP address associated with the domain name. This makes it possible to add <code>Hosts</code> file mapping records to bypass GFW’s DNS poisoning.</p>
+<h1 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h1><p>Here is a solution for <code>Windows systems</code>:</p>
+<ul>
+<li>Right-click on the Windows icon in the Start menu.</li>
+<li>Select Windows PowerShell (Admin).</li>
+<li>Enter <code>notepad.exe</code> and press Enter to open Notepad.<ul>
+<li>The reason for doing this is that modifying the Hosts file requires administrator privileges, and using Notepad directly won’t allow you to save the changes.</li>
+</ul>
+</li>
+<li>In the Notepad menu, click on File, then Open.</li>
+<li>Navigate to the Hosts file in the path C:\Windows\System32\drivers\etc and open it (for Ubuntu and MacOS, the file path is generally &#x2F;etc&#x2F;hosts; make a copy, replace it, and paste it back after making changes).</li>
+<li>Add the following mappings at the bottom of the file:  <figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"># Github</span><br><span class="line"><span class="number">192</span>.<span class="number">30</span>.<span class="number">253</span>.<span class="number">112</span> github.com</span><br><span class="line"><span class="number">140</span>.<span class="number">82</span>.<span class="number">113</span>.<span class="number">19</span> gist.github.com</span><br><span class="line"><span class="number">185</span>.<span class="number">199</span>.<span class="number">108</span>.<span class="number">153</span> assets-cdn.github.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> raw.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> gist.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> cloud.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> camo.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars0.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars1.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars2.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars3.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars4.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars5.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars6.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars7.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars8.githubusercontent.com</span><br></pre></td></tr></table></figure></li>
+<li>Press <code>Ctrl+S</code> to save the file, then refresh the webpage to access it normally.</li>
+<li>If you still can’t access the website, you need to clear the DNS cache and restart your browser:<ul>
+<li>Windows: <code>ipconfig /flushdns</code></li>
+<li>Ubuntu: <code>sudo systemctl restart nscd</code></li>
+<li>MacOS: <code>sudo killall -HUP mDNSResponder</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="Updating-Hosts"><a href="#Updating-Hosts" class="headerlink" title="Updating Hosts"></a>Updating Hosts</h1><p>Because the GFW continually works to block access to these IP addresses, these IP addresses may be blocked again after some time. Therefore, you need to periodically update your Hosts file to access websites that have been blocked.</p>
+<ul>
+<li>Open <a href="https://www.ipaddress.com/">ipaddress</a>.</li>
+<li>Enter each relevant domain name from the Hosts file one by one.</li>
+<li>Replace the old IP address with the new IP address returned by the website.</li>
+<li>Save the changes.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Geek</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>Github</tag>
+        <tag>Hosts</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Tutorial for Making a Paint Job Mod in Euro Truck Simulator  2</title>
     <url>/en/ets2-paintjob.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">You may not believe it, but I started playing ETS2 because I wanted to learn how to drive in the UK, but I couldn't find the perfect paint job for the game, so I made my own.</blockquote>
@@ -2317,55 +2366,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Solution for Unable to Load Images on GitHub</title>
-    <url>/en/github-cant-load-images.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Yesterday, when I tried to add images on GitHub, I noticed that the images weren't loading properly. Upon investigation, I found out that GitHub's IP addresses were once again blocked by the Great Firewall (GFW). I resolved this issue by modifying my Hosts file. It's worth noting that this method can also be used to address problems with accessing GitHub when it's entirely blocked.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<h1 id="Principle"><a href="#Principle" class="headerlink" title="Principle"></a>Principle</h1><p>When we access a website through its URL, the website’s domain name needs to be resolved to an IP address through <strong>DNS resolution</strong>. One of the reasons why GitHub may not be accessible is due to the Great Firewall’s (GFW) DNS poisoning, which can cause DNS servers to return incorrect IP addresses. As a result, the website cannot be connected to, and resources such as images fail to load. Another reason is direct IP blocking, where the GFW intercepts data packets with specific IP addresses, preventing data transmission.</p>
-<p>In the early days of the internet when it was smaller in scale and DNS did not exist, domain names were mapped to IP addresses using the <code>Hosts</code> file. As the internet rapidly expanded, relying solely on the <code>Hosts</code> file became insufficient, and that’s when DNS servers came into play.</p>
-<p>Although DNS took over much of what the <code>Hosts</code> file used to do, the <code>Hosts</code> file still maintains a higher priority. Before a computer requests DNS resolution, it first checks if there is a mapping between the domain name to be accessed and an IP address in the local <code>Hosts</code> file. If such a mapping exists, the computer doesn’t need to use DNS servers; it can directly access the IP address associated with the domain name. This makes it possible to add <code>Hosts</code> file mapping records to bypass GFW’s DNS poisoning.</p>
-<h1 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h1><p>Here is a solution for <code>Windows systems</code>:</p>
-<ul>
-<li>Right-click on the Windows icon in the Start menu.</li>
-<li>Select Windows PowerShell (Admin).</li>
-<li>Enter <code>notepad.exe</code> and press Enter to open Notepad.<ul>
-<li>The reason for doing this is that modifying the Hosts file requires administrator privileges, and using Notepad directly won’t allow you to save the changes.</li>
-</ul>
-</li>
-<li>In the Notepad menu, click on File, then Open.</li>
-<li>Navigate to the Hosts file in the path C:\Windows\System32\drivers\etc and open it (for Ubuntu and MacOS, the file path is generally &#x2F;etc&#x2F;hosts; make a copy, replace it, and paste it back after making changes).</li>
-<li>Add the following mappings at the bottom of the file:  <figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"># Github</span><br><span class="line"><span class="number">192</span>.<span class="number">30</span>.<span class="number">253</span>.<span class="number">112</span> github.com</span><br><span class="line"><span class="number">140</span>.<span class="number">82</span>.<span class="number">113</span>.<span class="number">19</span> gist.github.com</span><br><span class="line"><span class="number">185</span>.<span class="number">199</span>.<span class="number">108</span>.<span class="number">153</span> assets-cdn.github.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> raw.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> gist.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> cloud.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> camo.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars0.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars1.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars2.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars3.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars4.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars5.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars6.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">68</span>.<span class="number">133</span> avatars7.githubusercontent.com</span><br><span class="line"><span class="number">199</span>.<span class="number">232</span>.<span class="number">28</span>.<span class="number">133</span> avatars8.githubusercontent.com</span><br></pre></td></tr></table></figure></li>
-<li>Press <code>Ctrl+S</code> to save the file, then refresh the webpage to access it normally.</li>
-<li>If you still can’t access the website, you need to clear the DNS cache and restart your browser:<ul>
-<li>Windows: <code>ipconfig /flushdns</code></li>
-<li>Ubuntu: <code>sudo systemctl restart nscd</code></li>
-<li>MacOS: <code>sudo killall -HUP mDNSResponder</code></li>
-</ul>
-</li>
-</ul>
-<h1 id="Updating-Hosts"><a href="#Updating-Hosts" class="headerlink" title="Updating Hosts"></a>Updating Hosts</h1><p>Because the GFW continually works to block access to these IP addresses, these IP addresses may be blocked again after some time. Therefore, you need to periodically update your Hosts file to access websites that have been blocked.</p>
-<ul>
-<li>Open <a href="https://www.ipaddress.com/">ipaddress</a>.</li>
-<li>Enter each relevant domain name from the Hosts file one by one.</li>
-<li>Replace the old IP address with the new IP address returned by the website.</li>
-<li>Save the changes.</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Geek</category>
-      </categories>
-      <tags>
-        <tag>Windows</tag>
-        <tag>Github</tag>
-        <tag>Hosts</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Enable Cloudflare Acceleration and HTTPS on GitHub Pages</title>
     <url>/en/github-pages-cloudflare-https.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">A few days ago, when transferring the domain, I found that GitHub Pages hadn't fully enabled HTTPS, and the A records set in Cloudflare were also incomplete, so I went through the process again and decided to document it along the way.</blockquote>
@@ -2433,40 +2433,6 @@
         <tag>Cloudflare</tag>
         <tag>HTTPS</tag>
         <tag>CDN</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Adding Google Indexing to Hexo-based Website</title>
-    <url>/en/google-index.html</url>
-    <content><![CDATA[<p>Currently, the website cannot be found through search engines. If you want it to be discoverable, you need to add it to search engine indexing. Here, I’ll use Google as an example for the process.</p>
-<p><strong>The steps include:</strong></p>
-<ul>
-<li>Generating a sitemap</li>
-<li>Verifying the site<span id="more"></span></li>
-</ul>
-<h3 id="Generating-a-Sitemap"><a href="#Generating-a-Sitemap" class="headerlink" title="Generating a Sitemap"></a>Generating a Sitemap</h3><ol>
-<li>Open Git bash in the root directory of your blog.</li>
-<li>Run the command <code>npm install hexo-generator-sitemap --save</code> to install the sitemap generation plugin.</li>
-<li>Open the configuration file <code>_config.yml</code> in the root directory of your blog, add the following content:<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># <span class="title class_">Generate</span> sitemap automatically</span><br><span class="line"><span class="attr">sitemap</span>:</span><br><span class="line">  <span class="attr">path</span>: sitemap.<span class="property">xml</span></span><br></pre></td></tr></table></figure></li>
-<li>Run <code>hexo g</code> to generate the <code>sitemap.xml</code> file in the <code>/public</code> directory of your blog’s root directory.</li>
-</ol>
-<h3 id="Verifying-the-Site"><a href="#Verifying-the-Site" class="headerlink" title="Verifying the Site"></a>Verifying the Site</h3><ol>
-<li>Open <a href="https://www.google.com/webmasters/">Google Search Console</a> and click on “Sign in” at the top right corner.</li>
-<li>Choose a property and enter your site’s domain name, then click “Continue.”</li>
-<li>Download the Google verification file and place it in <code>blog/themes/next/source</code>.</li>
-<li>Execute <code>hexo cl</code>, <code>hexo g</code>, and <code>hexo d</code> consecutively.</li>
-<li>Go back to Google Search Console for verification.</li>
-<li>Search <code>site:domain</code> on Google to see your website.</li>
-</ol>
-<hr>
-<p>Now, your articles and website can be found on Google. Task completed~!</p>
-]]></content>
-      <categories>
-        <category>Website Configuration</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>SEO</tag>
       </tags>
   </entry>
   <entry>
@@ -3076,6 +3042,89 @@
         <tag>Hexo</tag>
         <tag>Next</tag>
         <tag>JSDelivr</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Adding Google Indexing to Hexo-based Website and SEO Configuration</title>
+    <url>/en/hexo-seo.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Just did some SEO for the website and took the opportunity to update an old blog post from 4 years ago. This article covers: installing plugins and generating a sitemap for the website, configuring plugins to exclude pages or files that don't need to be indexed, submitting the website sitemap to Google for index, and using robots.txt for search engine optimization (SEO).</blockquote>
+
+<h1 id="Plugin-Installation-and-Configuration"><a href="#Plugin-Installation-and-Configuration" class="headerlink" title="Plugin Installation and Configuration"></a>Plugin Installation and Configuration</h1><h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>First, we need to install the <a href="https://github.com/hexojs/hexo-generator-sitemap">hexo-generator-sitemap</a> plugin to generate a sitemap for the website. Use the following command:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><p>After installation, open the configuration file of the Hexo framework, <code>./_config.yml</code>, and add the following settings:</p>
+<figure class="highlight yml"><figcaption><span>./_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Sitemap Generator</span></span><br><span class="line"><span class="attr">sitemap:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">sitemap.xml</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><code>path</code> specifies the path for the generated sitemap. For example, if your website URL is <code>https://siriusq.top/</code>, the sitemap will be generated at <code>https://siriusq.top/sitemap.xml</code>.</li>
+<li><code>tags</code> is used to determine whether to include tag-related pages. If you have a large number of tags, you might want to disable this option to prevent an overwhelming number of tag indexes.</li>
+<li><code>categories</code> is used to decide whether to include category-related pages. Enable or disable as needed.</li>
+<li>For more options, please refer to the <a href="https://github.com/hexojs/hexo-generator-sitemap#readme">plugin README page</a>.</li>
+</ul>
+<h2 id="Excluding-Specific-Pages"><a href="#Excluding-Specific-Pages" class="headerlink" title="Excluding Specific Pages"></a>Excluding Specific Pages</h2><p>If you wish to exclude specific pages, such as the 404 page, from appearing in the sitemap, you can add a line <code>sitemap: false</code> in the Front-matter section at the top of the respective Markdown file, separated by <code>---</code>. Here’s an example:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">&quot;404&quot;</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">&quot;404&quot;</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">/404</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2022-04-12 20:38:42</span></span><br><span class="line"><span class="attr">layout:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">comments:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">sitemap:</span> <span class="literal">false</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="string">Page</span> <span class="string">content</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Excluding-Specific-File-Formats"><a href="#Excluding-Specific-File-Formats" class="headerlink" title="Excluding Specific File Formats"></a>Excluding Specific File Formats</h2><p>By default, the plugin excludes <code>js</code> and <code>css</code> file formats. However, if your website contains many <code>json</code> format files, such as Live2D model configuration files, they will be added to the sitemap during page generation. This might result in a large number of entries. As I cannot find a configuration option in the plugin settings to exclude specific file formats, I choose to modify the plugin code directly XD.</p>
+<p>Open the <code>generator.js</code> file located in your blog’s directory under <code>./node_modules/hexo-generator-sitemap/lib/</code>. Find the <code>const skipRenderList</code> and add a line <code>&#39;**/*.json&#39;</code> as shown below. Make sure not to forget the comma at the end of the previous line:</p>
+<figure class="highlight js"><figcaption><span>generator.js</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> skipRenderList = [</span><br><span class="line">    <span class="string">&#x27;**/*.js&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;**/*.css&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;**/*.json&#x27;</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<h1 id="Add-to-Google-Index"><a href="#Add-to-Google-Index" class="headerlink" title="Add to Google Index"></a>Add to Google Index</h1><p>Currently, your website cannot be found through search engines. To enable search engine indexing, I’ll guide you through the process, using Google as an example.</p>
+<ol>
+<li>Go to <a href="https://search.google.com/search-console/">Google Search Console</a>, click “Start now,” and log in with your Google account.</li>
+<li>Select your URL prefix and enter your site’s URL, such as <code>https://siriusq.top</code>, then click “Continue.”<br><img data-src="https://s2.loli.net/2023/10/21/vYKM2V3moj97yhH.webp" alt="01e.webp"></li>
+<li>Choose the HTML tag verification method and copy the meta tag provided by Google, which looks like this:<br><img data-src="https://s2.loli.net/2023/10/21/hxT1erkvf5mU6YJ.webp" alt="02e.webp"><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;google-site-verification&quot;</span> <span class="attr">content</span>=<span class="string">&quot;tcRYfdvRwh-85F9TY63_0TZ4O56GfhgyNGZhgfzsdfgghfg&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Open the Next theme configuration file, <code>_config.next.yml</code>. Use the search function to find <code>google_site_verification:</code> and paste the <code>content</code> part of the meta tag you copied in the previous step. It should look like this:  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">google_site_verification:</span> <span class="string">tcRYfdvRwh-85F9TY63_0TZ4O56GfhgyNGZhgfzsdfgghfg</span></span><br></pre></td></tr></table></figure></li>
+<li>Run <code>hexo cl</code> and <code>hexo g -d</code> commands to regenerate your website’s resources and push them to GitHub. Check your website’s deployment status in the Actions tab of your blog repository.</li>
+<li>After deployment is complete, return to the page from step 3 and click “Verify.”</li>
+<li>Allow some time, possibly up to a month, for Google’s crawlers to index your website. Once indexing is complete, you can search your website on Google using <code>site:domain</code> to see your site in the results.</li>
+<li>I recommend manually submitting a sitemap after verification:<ul>
+<li>Click on “Sitemaps” in the left sidebar of Google Search Console.</li>
+<li>The default URL for your sitemap is <code>https://[your blog domain]/sitemap.xml</code>.</li>
+<li>Paste the URL and click “Submit.”</li>
+</ul>
+</li>
+</ol>
+<h1 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h1><p><code>robots.txt</code> is a text file used to control the access permissions for search engine crawlers. You can place this file in the root directory of your website to specify which pages or directories can be accessed by search engine crawlers and which ones cannot.</p>
+<p>Here are some common elements and rules for <code>robots.txt</code>:</p>
+<ol>
+<li><code>User-agent</code>: Specifies the name of the search engine crawler to which the rules apply. For example, “User-agent: Googlebot” indicates that the following rules apply to the Googlebot crawler. Common crawler names include:<ul>
+<li><code>Googlebot</code> - Google’s search engine crawler.</li>
+<li><code>Bingbot</code> - Microsoft Bing’s search engine crawler.</li>
+<li><code>Slurp</code> - Yahoo’s search engine crawler.</li>
+<li><code>DuckDuckBot</code> - DuckDuckGo’s search engine crawler.</li>
+<li><code>Baiduspider</code> - Baidu’s search engine crawler.</li>
+<li><code>YandexBot</code> - Yandex’s search engine crawler.</li>
+</ul>
+</li>
+<li><code>Disallow</code>: Specifies the pages or directories that the crawler is not allowed to access. For example, “Disallow: &#x2F;private&#x2F;“ means that the “&#x2F;private&#x2F;“ directory is off-limits to crawlers.</li>
+<li><code>Allow</code>: Used to override <code>Disallow</code> rules. If a directory is <code>Disallow</code>-ed but certain files or subdirectories within it need to be crawled, you can use <code>Allow</code> to lift the restriction.</li>
+<li><code>Crawl-delay</code>: Specifies the crawling speed of the crawler. This rule is often used to control the crawl rate to avoid overloading the server.</li>
+<li><code>Sitemap</code>: Informs the search engine about the location of the sitemap, which helps search engines better understand the website’s structure.</li>
+</ol>
+<details class="note primary"><summary><p>Example of robots.txt</p>
+</summary>
+<p>Here’s a simple example of a <code>robots.txt</code> file:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">User-agent: Googlebot</span><br><span class="line">Disallow: /private/</span><br><span class="line">Allow: /public/</span><br><span class="line">Crawl-delay: 10</span><br><span class="line"></span><br><span class="line">User-agent: Bingbot</span><br><span class="line">Disallow: /admin/</span><br></pre></td></tr></table></figure>
+
+<p>In this example, the rules for Googlebot include not allowing access to the “&#x2F;private&#x2F;“ directory but allowing access to the “&#x2F;public&#x2F;“ directory while limiting its crawling speed. For Bingbot, access to the “&#x2F;admin&#x2F;“ directory is disallowed.</p>
+<blockquote>
+<p>Provided by ChatGPT</p>
+</blockquote>
+
+</details>
+
+<p>Below is an example of my <code>robots.txt</code> file. It prohibits Baidu’s crawler from crawling the website and restricts other crawlers from accessing irrelevant directories and the 404 page.</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">User-agent:</span> <span class="string">Baiduspider</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">User-agent:</span> <span class="string">*</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/about/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/archives/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/categories/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/css/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/images/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/js/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/lib/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/live2d-widget/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/live2d_api/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/page/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/tags/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/404.html</span></span><br><span class="line"></span><br><span class="line"><span class="attr">Sitemap:</span> <span class="string">https://siriusq.top/sitemap.xml</span></span><br></pre></td></tr></table></figure>
+
+<p>For more information about <code>robots.txt</code>, please refer to the <a href="https://developers.google.com/search/docs/crawling-indexing/robots/create-robots-txt?hl=en">Google Search Central documentation</a>.</p>
+]]></content>
+      <categories>
+        <category>Website Configuration</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>SEO</tag>
       </tags>
   </entry>
   <entry>
@@ -3994,8 +4043,9 @@
 <h2 id="Monitor"><a href="#Monitor" class="headerlink" title="Monitor"></a>Monitor</h2><p>It is recommended to use with a 4K monitor, preferably supporting Type-C cable direct connection, for the following reasons:</p>
 <ul>
 <li>MBP only has Type-C ports, there are no HDMI and DP, and other common video output ports, if the monitor does not support Type-C you need an adaptation cable or adapter, the one I bought had serious heat issues.</li>
-<li>The font displayed on the 2K monitor is quite narrow, although it can be solved by scaling the font within the software, it is still not as comfortable as HiDPI.</li>
-<li>Non-4K monitors cannot turn on HiDPI properly, there is a <a href="https://github.com/xzhih/one-key-hidpi/blob/master/README-zh.md">plugin to force HiDPI on</a> on GitHub, but it is risky as you might have to go into recovery mode if you fail to force it on. and I cannot get into recovery mode to fix it, so it’s trapped.</li>
+<li>October 2023 update: Discovered a software that turns on HiDPI for 2K monitors <a href="https://github.com/waydabber/BetterDisplay">BetterDisplay</a>, happy now!</li>
+<li><del>The font displayed on the 2K monitor is quite narrow, although it can be solved by scaling the font within the software, it is still not as comfortable as HiDPI.</del></li>
+<li><del>Non-4K monitors cannot turn on HiDPI properly, there is a <a href="https://github.com/xzhih/one-key-hidpi/blob/master/README-zh.md">plugin to force HiDPI on</a> on GitHub, but it is risky as you might have to go into recovery mode if you fail to force it on. and I cannot get into recovery mode to fix it, so it’s trapped.</del></li>
 <li>The brightness of the monitor can’t be adjusted via software, probably because the adaptation cable I’m using doesn’t support the DDC&#x2F;CI protocol.</li>
 </ul>
 <p>Also be careful when selecting your monitor resolution in system settings. I had a 2K monitor that could select 4K output in system settings, I was curious and clicked on it, then the monitor went black and a pop-up said the resolution didn’t match. I ended up clicking around without being able to see anything, and after half a minute of clicking I finally hit the 2K output option.😭😭😭</p>
@@ -5085,6 +5135,7 @@
 <li>Encrypt&#x2F;hide articles.</li>
 <li><del>Some JS and CSS files distributed via JSDelivr.</del></li>
 <li>Brand new 404 page.</li>
+<li>Custom blog post template</li>
 </ul>
 <h1 id="JSDelivr"><a href="#JSDelivr" class="headerlink" title="JSDelivr"></a>JSDelivr</h1><details class="note danger"><summary><p>Well, JSDelivr has been blocked by the GFW (Great Firewall). You can skip this section; the GFW is up to no good.</p>
 </summary>
@@ -5295,6 +5346,10 @@
 <div class="note info"><p><a class="btn" href="https://github.com/D0n9X1n/hexo-blog-encrypt/issues/58"><i class="fa fa-code-branch fa-fw"></i>How to encrypt TOC under NexT theme</a></p></div>
 
 <p>Furthermore, it’s worth mentioning that encrypted posts might still reveal their TOC in the HTML source code, posing a potential security risk. If encryption is a strict requirement for you, consider switching to themes that natively support post encryption, such as <a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README.md">blinkfox</a>.</p>
+<h1 id="Custom-Blog-Post-Template"><a href="#Custom-Blog-Post-Template" class="headerlink" title="Custom Blog Post Template"></a>Custom Blog Post Template</h1><p>Every time I create a new blog post using the <code>hexo new</code> command, there are certain fixed contents (like <code>lang: zh-CN</code>) that need to be manually pasted. To be more efficient, this time I’ve added these contents to the blog post template, so that every time I create a new blog post, it will come with these contents pre-filled.</p>
+<p>The template file for blog posts is <code>./scaffolds/post.md</code>. After my modification, it looks like this:</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">lang: en</span><br><span class="line">tags: []</span><br><span class="line"><span class="section">categories: </span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">blockquote</span> <span class="attr">class</span>=<span class="string">&quot;blockquote-center&quot;</span>&gt;</span></span> <span class="language-xml"><span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">&#123;% note warning %&#125;</span><br><span class="line">Styles</span><br><span class="line">&#123;% endnote %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% grouppicture 6-3 %&#125;</span><br><span class="line">Image Group</span><br><span class="line">&#123;% endgrouppicture %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% linkgrid %&#125;</span><br><span class="line">Name | https://siriusq.top | Description | /images/link/link.webp</span><br><span class="line">&#123;% endlinkgrid %&#125;</span><br></pre></td></tr></table></figure>
+
 <p>And that’s a wrap! 🎉</p>
 ]]></content>
       <categories>
@@ -6894,6 +6949,162 @@
       </tags>
   </entry>
   <entry>
+    <title>Sync Any Local Folder with OneDrive</title>
+    <url>/en/sync-any-local-folder-with-onedrive.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Create symbolic links using the 'mklink' command to synchronize OneDrive and the blog's post folder.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<p>In order to write blog posts on other devices, I initially placed all my blog files on OneDrive. However, I soon realized that this approach led to a significant number of file changes every time I executed ‘hexo cl &amp;&amp; hexo g.’ This wasn’t very friendly to the OneDrive server, especially since I was using it without contributing much. So, I decided to keep only the ‘.&#x2F;source&#x2F;_posts’ folder and manually copy and paste my articles after writing them. </p>
+<p>A few days ago, I had a brilliant idea: could I make OneDrive automatically sync this folder? After some searching, I came across the ‘mklink’ command.</p>
+<div class="note info"><p>Below, there are some explanations about the 'mklink' command. If you don't want to read it, you can skip it by clicking the button below. <a class="btn" href="#CreateSymbolicLinkForOneDrive"><i class="fa fa-forward fa-fw"></i>Skip</a></p></div>
+
+
+<h1 id="Introduction-to-the-‘mklink’-Command"><a href="#Introduction-to-the-‘mklink’-Command" class="headerlink" title="Introduction to the ‘mklink’ Command"></a>Introduction to the ‘mklink’ Command</h1><div class="note primary"><p>The command introduction references content from <a class="btn" href="https://ss64.com/nt/mklink.html"><i class="fa fa-book fa-fw"></i>SS64</a> and <a class="btn" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/mklink"><i class="fa fa-book fa-fw"></i>Microsoft Docs</a>, and was inspired by the article from <a class="btn" href="https://www.icoa.cn/a/910.html"><i class="fa fa-blog fa-fw"></i>逍遥峡谷</a>. Special thanks for the valuable references.</p></div>
+
+<p>The ‘mklink’ command is used to create symbolic or hard links for directories or files. It was introduced starting from Windows Vista and is supported on Windows operating systems from Vista onwards.</p>
+<h2 id="Comparison"><a href="#Comparison" class="headerlink" title="Comparison"></a>Comparison</h2><p>The ‘mklink’ command provides three types of links: ‘Symbolic Link,’ ‘Hard Link,’ and ‘Junction.’ Here’s a comparison of these three types with shortcuts:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="center">Links Files</th>
+<th align="center">Links Folders</th>
+<th align="center">Cross-Drive Links</th>
+<th align="center">Points to Nonexistent Target</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Shortcut</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="left">Hard Link</td>
+<td align="center">✅</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+<tr>
+<td align="left">Junction (Directory Junction &#x2F; Symbolic Link)</td>
+<td align="center">❌</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="left">Symbolic Link</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+</tbody></table>
+<blockquote>
+<ul>
+<li>Symbolic links and junctions are based on <a href="https://en.wikipedia.org/wiki/NTFS_reparse_point">NTFS reparse points</a>.</li>
+<li>Hard links are achieved by having multiple file entries pointing to the same inode, similar to Unix hard links. Even if the original filename is deleted, hard links continue to work, as they directly point to the data on the disk.</li>
+<li>It is possible (though not advisable) to create two links that point to each other in a loop or create a link that points to itself. Symbolic links may expose security vulnerabilities in applications that do not handle these situations.</li>
+<li>Both symbolic links and hard links do not support <code>.zip</code> compressed files.</li>
+</ul>
+</blockquote>
+<h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink [[/d] | [/h] | [/j]] &lt;link&gt; &lt;target&gt;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">Parameters</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">&#x2F;d</td>
+<td align="left">Create a directory symbolic link. By default, this command creates a file symbolic link.</td>
+</tr>
+<tr>
+<td align="left">&#x2F;h</td>
+<td align="left">Create a hard link instead of a symbolic link.</td>
+</tr>
+<tr>
+<td align="left">&#x2F;j</td>
+<td align="left">Create a junction (directory junction).</td>
+</tr>
+<tr>
+<td align="left">&lt;link&gt;</td>
+<td align="left">Specify the name of the symbolic link to create.</td>
+</tr>
+<tr>
+<td align="left">&lt;target&gt;</td>
+<td align="left">Specify the path (relative or absolute) that the new symbolic link will reference.</td>
+</tr>
+<tr>
+<td align="left">&#x2F;?</td>
+<td align="left">Display help at the command prompt.</td>
+</tr>
+</tbody></table>
+<p>If there are spaces in the <code>&lt;link&gt;</code> and <code>&lt;target&gt;</code> paths, they should be enclosed in double quotation marks <code>&quot;&quot;</code>.</p>
+<h2 id="Elevated-Privileges"><a href="#Elevated-Privileges" class="headerlink" title="Elevated Privileges"></a>Elevated Privileges</h2><blockquote>
+<p>By default, running the <code>mklink</code> command requires administrator privileges. However, starting from <code>Windows 10 build 14972</code>, if ‘Developer Mode’ is enabled, the command can be run without elevation.</p>
+</blockquote>
+<h2 id="Moving-and-Selecting"><a href="#Moving-and-Selecting" class="headerlink" title="Moving and Selecting"></a>Moving and Selecting</h2><blockquote>
+<ul>
+<li>Selecting a ‘Symbolic Link’ in File Explorer will select the source file (or directory).</li>
+<li>Selecting a ‘Junction’ in File Explorer will select the ‘Junction’ itself.</li>
+<li>Dragging a ‘Symbolic Link’ in File Explorer to a new location will only move the ‘Symbolic Link’ itself.</li>
+<li>Dragging a ‘Junction’ in File Explorer to a new location will move the source file directory to the new location.</li>
+</ul>
+</blockquote>
+<h1 id="Demonstration"><a href="#Demonstration" class="headerlink" title="Demonstration"></a>Demonstration</h1><p>Below are the tests I conducted for each type:</p>
+<div class="note primary"><p>For more detailed explanations, you can refer to the article on <a class="btn" href="https://sspai.com/post/66834"><i class="fa fa-blog fa-fw"></i>少数派</a> (in Chinese), which explains it very clearly.</p></div>
+
+<h2 id="File-Symbolic-Link"><a href="#File-Symbolic-Link" class="headerlink" title="File Symbolic Link"></a>File Symbolic Link</h2><p>Create test folders <code>link</code> and <code>target</code> and create a test file <code>./target/target.txt</code>. At this point, the <code>link</code> folder is empty.<br><img data-src="https://s2.loli.net/2022/05/25/cAlHUYMq2W9L7h5.png" alt="File Symbolic Link 1"></p>
+<p>Execute the command:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink E:\Test\link\link.txt E:\Test\target\target.txt</span><br></pre></td></tr></table></figure>
+
+<p>Now, the <code>link</code> folder contains <code>link.txt</code>, which has a file type of <code>.symlink</code>. Its icon is the same as a shortcut, but it is a symbolic link. Any changes made to one file will be synchronized to the other. The symbolic link points to the path of the source file, and the actual file is still located in <code>./target/target.txt</code>.<br><img data-src="https://s2.loli.net/2022/05/25/KJQd7MjVpxwBeo1.png" alt="File Symbolic Link 2"></p>
+<h2 id="Directory-Symbolic-Link"><a href="#Directory-Symbolic-Link" class="headerlink" title="Directory Symbolic Link"></a>Directory Symbolic Link</h2><p>Create test folders and <code>target</code>, and create a test file <code>./target/target.txt</code>.<br><img data-src="https://s2.loli.net/2022/05/25/9DXKw3zxn8p41EB.png" alt="Directory Symbolic Link 1"></p>
+<p>Execute the command:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /d E:\Test\link E:\Test\target</span><br></pre></td></tr></table></figure>
+
+<p>Now, a <code>link</code> folder is created with an icon similar to a shortcut, and its contents are the same as the source folder. Any changes made to one folder will be synchronized to the other. The symbolic link points to the path of the source folder, and the actual storage location is still the <code>target</code> source folder. You can see that the <code>link</code> folder has a different path in the address bar and title bar.<br><img data-src="https://s2.loli.net/2022/05/25/UePih7d86o3OglN.png" alt="Directory Symbolic Link 2"><br><img data-src="https://s2.loli.net/2022/05/25/4WKXoCPbQa8GZ7S.png" alt="Directory Symbolic Link 3"></p>
+<h2 id="File-Hard-Link"><a href="#File-Hard-Link" class="headerlink" title="File Hard Link"></a>File Hard Link</h2><p>Create test folders <code>link</code> and <code>target</code>, and create a test file <code>./target/target.txt</code>. At this point, the <code>link</code> folder is empty.<br><img data-src="https://s2.loli.net/2022/05/25/cAlHUYMq2W9L7h5.png" alt="File Hard Link 1"></p>
+<p>Execute the command:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /h E:\Test\link\link.txt E:\Test\target\target.txt</span><br></pre></td></tr></table></figure>
+
+<p>Now, the <code>link</code> folder contains <code>link.txt</code>, which still has the file type <code>Text Document</code> and the same icon as the source file. A hard link directly points to the file on the disk.<br><img data-src="https://s2.loli.net/2022/05/25/GgYQLRkw6UDWm1y.png" alt="File Hard Link 2"></p>
+<h2 id="Junction-Directory-Junction"><a href="#Junction-Directory-Junction" class="headerlink" title="Junction (Directory Junction)"></a>Junction (Directory Junction)</h2><p>Create test folders and <code>target</code>, and create a test file <code>./target/target.txt</code>.<br><img data-src="https://s2.loli.net/2022/05/25/9DXKw3zxn8p41EB.png" alt="Junction 1"></p>
+<p>Execute the command:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /j E:\Test\link E:\Test\target</span><br></pre></td></tr></table></figure>
+
+<p>The result is similar to a directory symbolic link, with the only difference being that the <code>link</code> folder has the same path in the address bar and title bar. However, the actual storage location of the files is still the <code>target</code> source folder.<br><img data-src="https://s2.loli.net/2022/05/25/hy1fLAiPF48Jwgv.png" alt="Junction 2"></p>
+<h1 id="Creating-Symbolic-Links-for-OneDrive"><a href="#Creating-Symbolic-Links-for-OneDrive" class="headerlink" title="Creating Symbolic Links for OneDrive"></a>Creating Symbolic Links for OneDrive</h1><p>Start by opening OneDrive’s settings and ensure that all items in the “General” and “Notifications” sections are checked.<br><img data-src="https://s2.loli.net/2022/05/25/CUqA9YGWbci2O48.png" alt="OneDrive Settings"></p>
+<p>Next, move the <code>_posts</code> folder from your blog to OneDrive and rename it. It’s essential to move the folder; your blog folder should not contain an <code>_posts</code> folder.</p>
+<p>Then, press <code>Win</code> + <code>S</code>, type <code>cmd</code>, and run it “As Administrator.” Enter the <code>mklink</code> command. Please note that the <code>mklink</code> command can only be run in the <code>cmd</code> prompt; it’s not supported in PowerShell.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /d D:\Siriusq\source\_posts C:\Users\Sun\OneDrive\Siriusq</span><br></pre></td></tr></table></figure>
+
+<p>In this command, the first path is the location of your blog articles, and the second path is the location in OneDrive where you want to store your blog articles. This might seem counterintuitive, with OneDrive as the source folder, but it’s necessary to avoid OneDrive continuously displaying sync as suspended, which can be confusing.</p>
+<p>After executing the command, you’ll receive a prompt:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Symbolic link created for D:\Siriusq\source\_posts &lt;&lt;===&gt;&gt; C:\Users\Sun\OneDrive\Siriusq</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://s2.loli.net/2022/05/25/YphRoDOySbv6ixJ.png" alt="Link Created"></p>
+<p>Once the link is created successfully, open your blog folder, and you will see that the address bar shows the current folder’s path while the title bar displays the OneDrive folder’s path. Now, any changes made to either side of the link will be reflected on the other, achieving synchronization.</p>
+]]></content>
+      <categories>
+        <category>Geek</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>OneDrive</tag>
+        <tag>mklink</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Stellaris Mod Creation and Upload Log</title>
     <url>/en/stellaris-mod.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">How to become a qualified 4th crisis without using the console.</blockquote>
@@ -7069,162 +7280,6 @@
       <tags>
         <tag>MOD</tag>
         <tag>Stellaris</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Sync Any Local Folder with OneDrive</title>
-    <url>/en/sync-any-local-folder-with-onedrive.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Create symbolic links using the 'mklink' command to synchronize OneDrive and the blog's post folder.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<p>In order to write blog posts on other devices, I initially placed all my blog files on OneDrive. However, I soon realized that this approach led to a significant number of file changes every time I executed ‘hexo cl &amp;&amp; hexo g.’ This wasn’t very friendly to the OneDrive server, especially since I was using it without contributing much. So, I decided to keep only the ‘.&#x2F;source&#x2F;_posts’ folder and manually copy and paste my articles after writing them. </p>
-<p>A few days ago, I had a brilliant idea: could I make OneDrive automatically sync this folder? After some searching, I came across the ‘mklink’ command.</p>
-<div class="note info"><p>Below, there are some explanations about the 'mklink' command. If you don't want to read it, you can skip it by clicking the button below. <a class="btn" href="#CreateSymbolicLinkForOneDrive"><i class="fa fa-forward fa-fw"></i>Skip</a></p></div>
-
-
-<h1 id="Introduction-to-the-‘mklink’-Command"><a href="#Introduction-to-the-‘mklink’-Command" class="headerlink" title="Introduction to the ‘mklink’ Command"></a>Introduction to the ‘mklink’ Command</h1><div class="note primary"><p>The command introduction references content from <a class="btn" href="https://ss64.com/nt/mklink.html"><i class="fa fa-book fa-fw"></i>SS64</a> and <a class="btn" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/mklink"><i class="fa fa-book fa-fw"></i>Microsoft Docs</a>, and was inspired by the article from <a class="btn" href="https://www.icoa.cn/a/910.html"><i class="fa fa-blog fa-fw"></i>逍遥峡谷</a>. Special thanks for the valuable references.</p></div>
-
-<p>The ‘mklink’ command is used to create symbolic or hard links for directories or files. It was introduced starting from Windows Vista and is supported on Windows operating systems from Vista onwards.</p>
-<h2 id="Comparison"><a href="#Comparison" class="headerlink" title="Comparison"></a>Comparison</h2><p>The ‘mklink’ command provides three types of links: ‘Symbolic Link,’ ‘Hard Link,’ and ‘Junction.’ Here’s a comparison of these three types with shortcuts:</p>
-<table>
-<thead>
-<tr>
-<th align="left">Type</th>
-<th align="center">Links Files</th>
-<th align="center">Links Folders</th>
-<th align="center">Cross-Drive Links</th>
-<th align="center">Points to Nonexistent Target</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Shortcut</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-</tr>
-<tr>
-<td align="left">Hard Link</td>
-<td align="center">✅</td>
-<td align="center">❌</td>
-<td align="center">❌</td>
-<td align="center">❌</td>
-</tr>
-<tr>
-<td align="left">Junction (Directory Junction &#x2F; Symbolic Link)</td>
-<td align="center">❌</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-</tr>
-<tr>
-<td align="left">Symbolic Link</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-<td align="center">✅</td>
-</tr>
-</tbody></table>
-<blockquote>
-<ul>
-<li>Symbolic links and junctions are based on <a href="https://en.wikipedia.org/wiki/NTFS_reparse_point">NTFS reparse points</a>.</li>
-<li>Hard links are achieved by having multiple file entries pointing to the same inode, similar to Unix hard links. Even if the original filename is deleted, hard links continue to work, as they directly point to the data on the disk.</li>
-<li>It is possible (though not advisable) to create two links that point to each other in a loop or create a link that points to itself. Symbolic links may expose security vulnerabilities in applications that do not handle these situations.</li>
-<li>Both symbolic links and hard links do not support <code>.zip</code> compressed files.</li>
-</ul>
-</blockquote>
-<h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink [[/d] | [/h] | [/j]] &lt;link&gt; &lt;target&gt;</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th align="left">Parameters</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">&#x2F;d</td>
-<td align="left">Create a directory symbolic link. By default, this command creates a file symbolic link.</td>
-</tr>
-<tr>
-<td align="left">&#x2F;h</td>
-<td align="left">Create a hard link instead of a symbolic link.</td>
-</tr>
-<tr>
-<td align="left">&#x2F;j</td>
-<td align="left">Create a junction (directory junction).</td>
-</tr>
-<tr>
-<td align="left">&lt;link&gt;</td>
-<td align="left">Specify the name of the symbolic link to create.</td>
-</tr>
-<tr>
-<td align="left">&lt;target&gt;</td>
-<td align="left">Specify the path (relative or absolute) that the new symbolic link will reference.</td>
-</tr>
-<tr>
-<td align="left">&#x2F;?</td>
-<td align="left">Display help at the command prompt.</td>
-</tr>
-</tbody></table>
-<p>If there are spaces in the <code>&lt;link&gt;</code> and <code>&lt;target&gt;</code> paths, they should be enclosed in double quotation marks <code>&quot;&quot;</code>.</p>
-<h2 id="Elevated-Privileges"><a href="#Elevated-Privileges" class="headerlink" title="Elevated Privileges"></a>Elevated Privileges</h2><blockquote>
-<p>By default, running the <code>mklink</code> command requires administrator privileges. However, starting from <code>Windows 10 build 14972</code>, if ‘Developer Mode’ is enabled, the command can be run without elevation.</p>
-</blockquote>
-<h2 id="Moving-and-Selecting"><a href="#Moving-and-Selecting" class="headerlink" title="Moving and Selecting"></a>Moving and Selecting</h2><blockquote>
-<ul>
-<li>Selecting a ‘Symbolic Link’ in File Explorer will select the source file (or directory).</li>
-<li>Selecting a ‘Junction’ in File Explorer will select the ‘Junction’ itself.</li>
-<li>Dragging a ‘Symbolic Link’ in File Explorer to a new location will only move the ‘Symbolic Link’ itself.</li>
-<li>Dragging a ‘Junction’ in File Explorer to a new location will move the source file directory to the new location.</li>
-</ul>
-</blockquote>
-<h1 id="Demonstration"><a href="#Demonstration" class="headerlink" title="Demonstration"></a>Demonstration</h1><p>Below are the tests I conducted for each type:</p>
-<div class="note primary"><p>For more detailed explanations, you can refer to the article on <a class="btn" href="https://sspai.com/post/66834"><i class="fa fa-blog fa-fw"></i>少数派</a> (in Chinese), which explains it very clearly.</p></div>
-
-<h2 id="File-Symbolic-Link"><a href="#File-Symbolic-Link" class="headerlink" title="File Symbolic Link"></a>File Symbolic Link</h2><p>Create test folders <code>link</code> and <code>target</code> and create a test file <code>./target/target.txt</code>. At this point, the <code>link</code> folder is empty.<br><img data-src="https://s2.loli.net/2022/05/25/cAlHUYMq2W9L7h5.png" alt="File Symbolic Link 1"></p>
-<p>Execute the command:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink E:\Test\link\link.txt E:\Test\target\target.txt</span><br></pre></td></tr></table></figure>
-
-<p>Now, the <code>link</code> folder contains <code>link.txt</code>, which has a file type of <code>.symlink</code>. Its icon is the same as a shortcut, but it is a symbolic link. Any changes made to one file will be synchronized to the other. The symbolic link points to the path of the source file, and the actual file is still located in <code>./target/target.txt</code>.<br><img data-src="https://s2.loli.net/2022/05/25/KJQd7MjVpxwBeo1.png" alt="File Symbolic Link 2"></p>
-<h2 id="Directory-Symbolic-Link"><a href="#Directory-Symbolic-Link" class="headerlink" title="Directory Symbolic Link"></a>Directory Symbolic Link</h2><p>Create test folders and <code>target</code>, and create a test file <code>./target/target.txt</code>.<br><img data-src="https://s2.loli.net/2022/05/25/9DXKw3zxn8p41EB.png" alt="Directory Symbolic Link 1"></p>
-<p>Execute the command:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /d E:\Test\link E:\Test\target</span><br></pre></td></tr></table></figure>
-
-<p>Now, a <code>link</code> folder is created with an icon similar to a shortcut, and its contents are the same as the source folder. Any changes made to one folder will be synchronized to the other. The symbolic link points to the path of the source folder, and the actual storage location is still the <code>target</code> source folder. You can see that the <code>link</code> folder has a different path in the address bar and title bar.<br><img data-src="https://s2.loli.net/2022/05/25/UePih7d86o3OglN.png" alt="Directory Symbolic Link 2"><br><img data-src="https://s2.loli.net/2022/05/25/4WKXoCPbQa8GZ7S.png" alt="Directory Symbolic Link 3"></p>
-<h2 id="File-Hard-Link"><a href="#File-Hard-Link" class="headerlink" title="File Hard Link"></a>File Hard Link</h2><p>Create test folders <code>link</code> and <code>target</code>, and create a test file <code>./target/target.txt</code>. At this point, the <code>link</code> folder is empty.<br><img data-src="https://s2.loli.net/2022/05/25/cAlHUYMq2W9L7h5.png" alt="File Hard Link 1"></p>
-<p>Execute the command:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /h E:\Test\link\link.txt E:\Test\target\target.txt</span><br></pre></td></tr></table></figure>
-
-<p>Now, the <code>link</code> folder contains <code>link.txt</code>, which still has the file type <code>Text Document</code> and the same icon as the source file. A hard link directly points to the file on the disk.<br><img data-src="https://s2.loli.net/2022/05/25/GgYQLRkw6UDWm1y.png" alt="File Hard Link 2"></p>
-<h2 id="Junction-Directory-Junction"><a href="#Junction-Directory-Junction" class="headerlink" title="Junction (Directory Junction)"></a>Junction (Directory Junction)</h2><p>Create test folders and <code>target</code>, and create a test file <code>./target/target.txt</code>.<br><img data-src="https://s2.loli.net/2022/05/25/9DXKw3zxn8p41EB.png" alt="Junction 1"></p>
-<p>Execute the command:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /j E:\Test\link E:\Test\target</span><br></pre></td></tr></table></figure>
-
-<p>The result is similar to a directory symbolic link, with the only difference being that the <code>link</code> folder has the same path in the address bar and title bar. However, the actual storage location of the files is still the <code>target</code> source folder.<br><img data-src="https://s2.loli.net/2022/05/25/hy1fLAiPF48Jwgv.png" alt="Junction 2"></p>
-<h1 id="Creating-Symbolic-Links-for-OneDrive"><a href="#Creating-Symbolic-Links-for-OneDrive" class="headerlink" title="Creating Symbolic Links for OneDrive"></a>Creating Symbolic Links for OneDrive</h1><p>Start by opening OneDrive’s settings and ensure that all items in the “General” and “Notifications” sections are checked.<br><img data-src="https://s2.loli.net/2022/05/25/CUqA9YGWbci2O48.png" alt="OneDrive Settings"></p>
-<p>Next, move the <code>_posts</code> folder from your blog to OneDrive and rename it. It’s essential to move the folder; your blog folder should not contain an <code>_posts</code> folder.</p>
-<p>Then, press <code>Win</code> + <code>S</code>, type <code>cmd</code>, and run it “As Administrator.” Enter the <code>mklink</code> command. Please note that the <code>mklink</code> command can only be run in the <code>cmd</code> prompt; it’s not supported in PowerShell.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /d D:\Siriusq\source\_posts C:\Users\Sun\OneDrive\Siriusq</span><br></pre></td></tr></table></figure>
-
-<p>In this command, the first path is the location of your blog articles, and the second path is the location in OneDrive where you want to store your blog articles. This might seem counterintuitive, with OneDrive as the source folder, but it’s necessary to avoid OneDrive continuously displaying sync as suspended, which can be confusing.</p>
-<p>After executing the command, you’ll receive a prompt:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Symbolic link created for D:\Siriusq\source\_posts &lt;&lt;===&gt;&gt; C:\Users\Sun\OneDrive\Siriusq</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="https://s2.loli.net/2022/05/25/YphRoDOySbv6ixJ.png" alt="Link Created"></p>
-<p>Once the link is created successfully, open your blog folder, and you will see that the address bar shows the current folder’s path while the title bar displays the OneDrive folder’s path. Now, any changes made to either side of the link will be reflected on the other, achieving synchronization.</p>
-]]></content>
-      <categories>
-        <category>Geek</category>
-      </categories>
-      <tags>
-        <tag>Windows</tag>
-        <tag>OneDrive</tag>
-        <tag>mklink</tag>
       </tags>
   </entry>
   <entry>
@@ -9583,6 +9638,154 @@ OFFICIAL
       </tags>
   </entry>
   <entry>
+    <title>Installation and Configuration of WSA</title>
+    <url>/en/wsa.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Documenting the process of setting up WSA, establishing an internet connection, configuring a proxy, and installing applications.</blockquote>
+
+<span id="more"></span>
+
+<div class="note danger"><h1 id="Reminder-of-Timeliness"><a href="#Reminder-of-Timeliness" class="headerlink" title="Reminder of Timeliness"></a>Reminder of Timeliness</h1><p>This article was written in June 2022! Please be aware that some of the content may have become outdated!</p>
+</div>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<h1 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h1><div class="note warning"><p>Remember to enable CPU virtualization in BIOS.</p>
+</div>
+
+<h2 id="Windows-Settings-Adjustment"><a href="#Windows-Settings-Adjustment" class="headerlink" title="Windows Settings Adjustment"></a>Windows Settings Adjustment</h2><p>Open <code>Settings</code> - <code>Apps</code> - <code>Optional Features</code> - <code>More Windows Features</code> and check <code>Virtual Machine Platform</code>, then wait for installation and restart.<br><img data-src="https://s2.loli.net/2022/06/02/cdf8ypRustXqS3v.png" alt="wsa2.png"></p>
+<p>Next, go to <code>Settings</code> - <code>Privacy &amp; Security</code> - <code>Developer options</code> - <code>Developer mode</code> and turn on the switch.<br><img data-src="https://s2.loli.net/2022/06/02/P45KeiDczAdgbXh.png" alt="wsa3.png"></p>
+<h2 id="Install-adb"><a href="#Install-adb" class="headerlink" title="Install adb"></a>Install adb</h2><div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/download.webp"></object>
+<p>Download adb</p><p>Download SDK Platform-Tools for Windows</p>
+<a href="https://developer.android.com/studio/releases/platform-tools"></a>
+</div></div>
+
+<ol>
+<li>After downloading, place the installation package in a fixed location and then unzip it because you’ll need to set environment variables below.</li>
+<li>Press <code>Win</code> + <code>S</code>, search for and open <code>Edit the system environment variables</code>.</li>
+<li>In the System variables section, create a variable named <code>adb</code> with the value being the path to the folder you just unzipped, e.g., <code>D:\Program Files\platform-tools</code>.</li>
+<li>Double-click the variable named <code>Path</code> in the System variables section, then add <code>%adb%</code> as a new variable.</li>
+<li>Confirm with OK.</li>
+<li>In the terminal, type <code>adb version</code> to check if it’s set up correctly.</li>
+</ol>
+<p><img data-src="https://s2.loli.net/2022/06/02/NatckrIXWZC5Oxh.png" alt="wsa4.png"></p>
+<h2 id="Install-WSA-Toolbox"><a href="#Install-WSA-Toolbox" class="headerlink" title="Install WSA Toolbox"></a>Install WSA Toolbox</h2><div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/download.webp"></object>
+<p>WSA Toolbox</p><p>Provides utilities & tools for WSA</p>
+<a href="https://apps.microsoft.com/store/detail/wsa-toolbox/9PPSP2MKVTGT?hl=en-us&gl=US"></a>
+</div></div>
+
+<p>This tool has been removed from the Microsoft Store in the Chinese region, so you can only install it through the link above. You’ll need it later to access the Android system settings for WSA.</p>
+<hr>
+<h1 id="Install-WSA"><a href="#Install-WSA" class="headerlink" title="Install WSA"></a>Install WSA</h1><p>Here, I’m using an integrated package that includes root, Magisk, and Google Play, which simplifies the process.</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/github.webp"></object>
+<p>Magisk</p><p>LSPosed Magisk on WSA (with Google Apps)</p>
+<a href="https://github.com/LSPosed/MagiskOnWSA"></a>
+</div></div>
+
+<ol>
+<li>First, fork the code to your own repository, then in the forked repository, click on <code>Actions</code> in the upper left corner.</li>
+<li>In the <code>Workflow</code> section, click on <code>Build WSA</code>.</li>
+<li>Click on <code>Run workflow</code> on the right, and in the dropdown menu, select <code>Build arch</code> as <code>x64</code>, and choose <code>Variants of gapps</code> as <code>pico</code>.</li>
+<li>Finally, click the green <code>Run workflow</code> button, and wait for the build process to complete, which usually takes about five to six minutes.<br><img data-src="https://s2.loli.net/2022/06/02/6SdWlJb9LfIa4cV.png" alt="wsa1.png"></li>
+<li>Download the completed build, and be sure not to use a multi-threaded downloader.</li>
+<li>Unzip the file.</li>
+<li>Right-click on <code>Install.ps1</code>, select <code>Run with PowerShell</code>, and wait for the installation to complete. After installation, the Play Store will open.</li>
+<li>Open <code>Android-based Windows Subsystem for Android Settings</code>, enable <code>Developer mode</code>, and take note of the displayed IP address, which is usually <code>127.0.0.1:58526</code>.<br><img data-src="https://s2.loli.net/2022/06/02/uZAeSJEXPFKyGx3.png" alt="wsa9.png"></li>
+</ol>
+<hr>
+<h1 id="Connectivity-Issues"><a href="#Connectivity-Issues" class="headerlink" title="Connectivity Issues"></a>Connectivity Issues</h1><p>In China, the Play Store cannot be accessed without a proxy. However, you can use the Amazon Appstore to check if you have a network connection. If everything is normal, please skip this section. This section is specifically for users who, like me, encountered connectivity issues.</p>
+<p>After installing WSA, if you can’t connect to the internet and you keep seeing “VritWifi connection is limited,” you can try the following methods, as summarized by Google:</p>
+<h2 id="Change-Firewall-Rules"><a href="#Change-Firewall-Rules" class="headerlink" title="Change Firewall Rules"></a>Change Firewall Rules</h2><p>Run the terminal as an administrator and execute the following command to add a firewall rule:</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line"><span class="built_in">New-NetFirewallRule</span> <span class="literal">-DisplayName</span> <span class="string">&quot;WSL&quot;</span> <span class="literal">-Direction</span> Inbound <span class="literal">-InterfaceAlias</span> <span class="string">&quot;vEthernet (WSL)&quot;</span> <span class="literal">-Action</span> Allow</span><br></pre></td></tr></table></figure>
+<p>However, this did not work for me.</p>
+<h2 id="Change-DNS"><a href="#Change-DNS" class="headerlink" title="Change DNS"></a>Change DNS</h2><p>Change the default DNS settings of WSA, but this may not work for everyone.</p>
+<ol>
+<li>Open the previously installed <code>WSA Toolbox</code> and click on <code>Android Settings</code> in the middle.</li>
+<li>Go to <code>Network &amp; Internet</code> &gt; <code>Internet</code> &gt; <code>Wi-Fi</code> &gt; <code>VritWifi</code>.</li>
+<li>Click on the settings icon in the upper right.</li>
+<li>Change <code>DNS 1</code> to <code>8.8.4.4</code> or <code>114.114.115.115</code>, which are commonly used DNS servers.</li>
+</ol>
+<p><img data-src="https://s2.loli.net/2022/06/02/MGDFkbQCelVUPgu.png" alt="wsa5.png"></p>
+<h2 id="adb-Modify-captive-portal"><a href="#adb-Modify-captive-portal" class="headerlink" title="adb Modify captive_portal"></a>adb Modify captive_portal</h2><p>It turns out that this is a misleading solution. Open the terminal and execute the following commands:</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">58526</span></span><br><span class="line">adb shell settings put global captive_portal_https_url https://connect.rom.miui.com/generate_204</span><br><span class="line">adb shell settings put global captive_portal_http_url http://connect.rom.miui.com/generate_204</span><br></pre></td></tr></table></figure>
+<p>The only effect of this operation is to remove the annoying prompt when you are already connected to the internet but still receive a “limited network” warning.</p>
+<blockquote>
+<p>A captive portal is a web page presented to newly connected users before they are granted broader access to the network (Internet). It is commonly used to present a landing or login page that may require authentication or acceptance of usage policies. Captive portals are used in a variety of mobile broadband services (wired and wireless), and can also be used for access to enterprise or residential wired networks (such as apartment buildings, hotels, and business centers).</p>
+</blockquote>
+<p>By default, WSA uses Google’s Captive Portal to check for internet connectivity, which doesn’t work in China. Therefore, it displays the “limited network” message. By changing the detection server to one based in China, you can resolve this issue. Here are some alternative servers you can use:</p>
+<ul>
+<li>Apple: <a href="http://www.apple.com/library/test/success.html">http://www.apple.com/library/test/success.html</a></li>
+<li>Huawei: <a href="http://connectivitycheck.platform.hicloud.com/generate_204">http://connectivitycheck.platform.hicloud.com/generate_204</a></li>
+<li>Vivo: <a href="http://wifi.vivo.com.cn/generate_204">http://wifi.vivo.com.cn/generate_204</a></li>
+</ul>
+<h2 id="USB-Tethering"><a href="#USB-Tethering" class="headerlink" title="USB Tethering"></a>USB Tethering</h2><p>This method is a workaround and may need to be reconfigured after a reboot.</p>
+<ol>
+<li>Open the previously installed <code>WSA Toolbox</code> and click on <code>Android Settings</code> in the middle.</li>
+<li>Go to <code>System</code> &gt; <code>Developer options</code>.</li>
+<li>Enable the <code>Developer options</code> toggle.</li>
+<li>Scroll down to <code>Network</code> &gt; <code>Default USB configuration</code>.</li>
+<li>Set it to <code>USB tethering</code>.</li>
+</ol>
+<h2 id="Enable-Hyper-V-Feature"><a href="#Enable-Hyper-V-Feature" class="headerlink" title="Enable Hyper-V Feature"></a>Enable Hyper-V Feature</h2><div class="note primary"><p>I found a <a href="https://zhuanlan.zhihu.com/p/431557897">post</a> on Zhihu by Hilton, which suggested enabling the Hyper-V feature. Surprisingly, it worked, even though the official documentation says it’s not required.</p>
+</div>
+
+<ol>
+<li>Open <code>Settings</code> &gt; <code>Apps</code> &gt; <code>Optional Features</code> &gt; <code>More Windows features</code>.</li>
+<li>Expand <code>Hyper-V</code>.</li>
+<li>Check <code>Hyper-V Platform</code>.</li>
+<li>Wait for the installation to complete.</li>
+</ol>
+<p><img data-src="https://s2.loli.net/2022/06/02/HJIWBZVYlC3pT7s.png" alt="wsa6.png"></p>
+<p>After doing this, magically, you can connect to the internet. I still don’t fully understand why this works. 🤯</p>
+<hr>
+<h1 id="Setting-up-Proxy"><a href="#Setting-up-Proxy" class="headerlink" title="Setting up Proxy"></a>Setting up Proxy</h1><h2 id="Standard-Procedure"><a href="#Standard-Procedure" class="headerlink" title="Standard Procedure"></a>Standard Procedure</h2><p>I’m using the V2rayN client. If you’re using Clash, there are plenty of tutorials available.</p>
+<ol>
+<li>Open V2rayN, go to <code>Settings</code> &gt; <code>Parameter Settings</code> &gt; <code>Basic Settings</code>, and check the box that says <code>Allow connections from the local network</code>.</li>
+<li>Take note of the local HTTP port displayed at the bottom, which is usually <code>10811</code>.<br><img data-src="https://s2.loli.net/2022/06/02/CmPInWYB536VjwS.png" alt="wsa7.png"></li>
+<li>In the terminal, run the following command, but make sure to replace <code>127.0.0.1:58526</code> with the IP you noted from the <code>Windows Subsystem for Android</code> settings, which is typically this IP.<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">58526</span></span><br></pre></td></tr></table></figure></li>
+<li>In the terminal, enter:<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure></li>
+<li>Find the IP address of the network card you’re currently using. In my case, it’s <code>192.168.50.70</code>.<br><img data-src="https://s2.loli.net/2022/06/02/Vh3JBqGuFPoNMd9.png" alt="wsa8.png"></li>
+<li>Run the following command in the terminal, but replace the IP with your network card’s IP:<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb shell settings put global http_proxy <span class="number">192.168</span>.<span class="number">50.70</span>:<span class="number">10811</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>If you want to disable the proxy, you can use the following commands:</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb shell settings put global http_proxy :<span class="number">0</span></span><br><span class="line">adb shell settings delete global http_proxy</span><br></pre></td></tr></table></figure>
+
+<h2 id="Alternative-Solution"><a href="#Alternative-Solution" class="headerlink" title="Alternative Solution"></a>Alternative Solution</h2><p>If the above methods don’t work, you can install a proxy configuration app, such as V2rayNG, directly in WSA.</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/github.webp"></object>
+<p>V2rayNG</p><p>A V2Ray client for Android</p>
+<a href="https://github.com/2dust/v2rayNG/releases"></a>
+</div></div>
+
+<h1 id="Sideloading-APKs"><a href="#Sideloading-APKs" class="headerlink" title="Sideloading APKs"></a>Sideloading APKs</h1><p>If you don’t have access to a proxy, you won’t be able to install apps through the Play Store. However, you can sideload apps using the following method:</p>
+<ol>
+<li>In the terminal, run the following command, but make sure to replace <code>127.0.0.1:58526</code> with the IP you noted from the <code>Windows Subsystem for Android</code> settings, which is typically this IP.<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">58526</span></span><br></pre></td></tr></table></figure></li>
+<li>Navigate to the folder where the APK is located.</li>
+<li>Execute the following command:<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb install apk_name</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>I use Coolapk as an alternative app store in China.</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/link.webp"></object>
+<p>Coolapk APP</p><p>Discover the new life of technology</p>
+<a href="https://www.coolapk.com/"></a>
+</div></div>]]></content>
+      <categories>
+        <category>Geek</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>WSA</tag>
+        <tag>Android</tag>
+        <tag>V2ray</tag>
+        <tag>Google Play</tag>
+        <tag>Magisk</tag>
+        <tag>adb</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Customizing Windows Terminal</title>
     <url>/en/windows-terminal.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">Something you have to face every day, and if it doesn't look good, it can affect your mood 🐶. (Finally going to finish the overdue blog posts, the diarrhea-style updates are ending.)</blockquote>
@@ -9811,154 +10014,6 @@ OFFICIAL
         <tag>Windows Terminal</tag>
         <tag>Win11</tag>
         <tag>Win10</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Installation and Configuration of WSA</title>
-    <url>/en/wsa.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Documenting the process of setting up WSA, establishing an internet connection, configuring a proxy, and installing applications.</blockquote>
-
-<span id="more"></span>
-
-<div class="note danger"><h1 id="Reminder-of-Timeliness"><a href="#Reminder-of-Timeliness" class="headerlink" title="Reminder of Timeliness"></a>Reminder of Timeliness</h1><p>This article was written in June 2022! Please be aware that some of the content may have become outdated!</p>
-</div>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<h1 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h1><div class="note warning"><p>Remember to enable CPU virtualization in BIOS.</p>
-</div>
-
-<h2 id="Windows-Settings-Adjustment"><a href="#Windows-Settings-Adjustment" class="headerlink" title="Windows Settings Adjustment"></a>Windows Settings Adjustment</h2><p>Open <code>Settings</code> - <code>Apps</code> - <code>Optional Features</code> - <code>More Windows Features</code> and check <code>Virtual Machine Platform</code>, then wait for installation and restart.<br><img data-src="https://s2.loli.net/2022/06/02/cdf8ypRustXqS3v.png" alt="wsa2.png"></p>
-<p>Next, go to <code>Settings</code> - <code>Privacy &amp; Security</code> - <code>Developer options</code> - <code>Developer mode</code> and turn on the switch.<br><img data-src="https://s2.loli.net/2022/06/02/P45KeiDczAdgbXh.png" alt="wsa3.png"></p>
-<h2 id="Install-adb"><a href="#Install-adb" class="headerlink" title="Install adb"></a>Install adb</h2><div class="link-grid"><div class="link-grid-container">
-<object class="link-grid-image" data="/images/link/download.webp"></object>
-<p>Download adb</p><p>Download SDK Platform-Tools for Windows</p>
-<a href="https://developer.android.com/studio/releases/platform-tools"></a>
-</div></div>
-
-<ol>
-<li>After downloading, place the installation package in a fixed location and then unzip it because you’ll need to set environment variables below.</li>
-<li>Press <code>Win</code> + <code>S</code>, search for and open <code>Edit the system environment variables</code>.</li>
-<li>In the System variables section, create a variable named <code>adb</code> with the value being the path to the folder you just unzipped, e.g., <code>D:\Program Files\platform-tools</code>.</li>
-<li>Double-click the variable named <code>Path</code> in the System variables section, then add <code>%adb%</code> as a new variable.</li>
-<li>Confirm with OK.</li>
-<li>In the terminal, type <code>adb version</code> to check if it’s set up correctly.</li>
-</ol>
-<p><img data-src="https://s2.loli.net/2022/06/02/NatckrIXWZC5Oxh.png" alt="wsa4.png"></p>
-<h2 id="Install-WSA-Toolbox"><a href="#Install-WSA-Toolbox" class="headerlink" title="Install WSA Toolbox"></a>Install WSA Toolbox</h2><div class="link-grid"><div class="link-grid-container">
-<object class="link-grid-image" data="/images/link/download.webp"></object>
-<p>WSA Toolbox</p><p>Provides utilities & tools for WSA</p>
-<a href="https://apps.microsoft.com/store/detail/wsa-toolbox/9PPSP2MKVTGT?hl=en-us&gl=US"></a>
-</div></div>
-
-<p>This tool has been removed from the Microsoft Store in the Chinese region, so you can only install it through the link above. You’ll need it later to access the Android system settings for WSA.</p>
-<hr>
-<h1 id="Install-WSA"><a href="#Install-WSA" class="headerlink" title="Install WSA"></a>Install WSA</h1><p>Here, I’m using an integrated package that includes root, Magisk, and Google Play, which simplifies the process.</p>
-<div class="link-grid"><div class="link-grid-container">
-<object class="link-grid-image" data="/images/link/github.webp"></object>
-<p>Magisk</p><p>LSPosed Magisk on WSA (with Google Apps)</p>
-<a href="https://github.com/LSPosed/MagiskOnWSA"></a>
-</div></div>
-
-<ol>
-<li>First, fork the code to your own repository, then in the forked repository, click on <code>Actions</code> in the upper left corner.</li>
-<li>In the <code>Workflow</code> section, click on <code>Build WSA</code>.</li>
-<li>Click on <code>Run workflow</code> on the right, and in the dropdown menu, select <code>Build arch</code> as <code>x64</code>, and choose <code>Variants of gapps</code> as <code>pico</code>.</li>
-<li>Finally, click the green <code>Run workflow</code> button, and wait for the build process to complete, which usually takes about five to six minutes.<br><img data-src="https://s2.loli.net/2022/06/02/6SdWlJb9LfIa4cV.png" alt="wsa1.png"></li>
-<li>Download the completed build, and be sure not to use a multi-threaded downloader.</li>
-<li>Unzip the file.</li>
-<li>Right-click on <code>Install.ps1</code>, select <code>Run with PowerShell</code>, and wait for the installation to complete. After installation, the Play Store will open.</li>
-<li>Open <code>Android-based Windows Subsystem for Android Settings</code>, enable <code>Developer mode</code>, and take note of the displayed IP address, which is usually <code>127.0.0.1:58526</code>.<br><img data-src="https://s2.loli.net/2022/06/02/uZAeSJEXPFKyGx3.png" alt="wsa9.png"></li>
-</ol>
-<hr>
-<h1 id="Connectivity-Issues"><a href="#Connectivity-Issues" class="headerlink" title="Connectivity Issues"></a>Connectivity Issues</h1><p>In China, the Play Store cannot be accessed without a proxy. However, you can use the Amazon Appstore to check if you have a network connection. If everything is normal, please skip this section. This section is specifically for users who, like me, encountered connectivity issues.</p>
-<p>After installing WSA, if you can’t connect to the internet and you keep seeing “VritWifi connection is limited,” you can try the following methods, as summarized by Google:</p>
-<h2 id="Change-Firewall-Rules"><a href="#Change-Firewall-Rules" class="headerlink" title="Change Firewall Rules"></a>Change Firewall Rules</h2><p>Run the terminal as an administrator and execute the following command to add a firewall rule:</p>
-<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line"><span class="built_in">New-NetFirewallRule</span> <span class="literal">-DisplayName</span> <span class="string">&quot;WSL&quot;</span> <span class="literal">-Direction</span> Inbound <span class="literal">-InterfaceAlias</span> <span class="string">&quot;vEthernet (WSL)&quot;</span> <span class="literal">-Action</span> Allow</span><br></pre></td></tr></table></figure>
-<p>However, this did not work for me.</p>
-<h2 id="Change-DNS"><a href="#Change-DNS" class="headerlink" title="Change DNS"></a>Change DNS</h2><p>Change the default DNS settings of WSA, but this may not work for everyone.</p>
-<ol>
-<li>Open the previously installed <code>WSA Toolbox</code> and click on <code>Android Settings</code> in the middle.</li>
-<li>Go to <code>Network &amp; Internet</code> &gt; <code>Internet</code> &gt; <code>Wi-Fi</code> &gt; <code>VritWifi</code>.</li>
-<li>Click on the settings icon in the upper right.</li>
-<li>Change <code>DNS 1</code> to <code>8.8.4.4</code> or <code>114.114.115.115</code>, which are commonly used DNS servers.</li>
-</ol>
-<p><img data-src="https://s2.loli.net/2022/06/02/MGDFkbQCelVUPgu.png" alt="wsa5.png"></p>
-<h2 id="adb-Modify-captive-portal"><a href="#adb-Modify-captive-portal" class="headerlink" title="adb Modify captive_portal"></a>adb Modify captive_portal</h2><p>It turns out that this is a misleading solution. Open the terminal and execute the following commands:</p>
-<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">58526</span></span><br><span class="line">adb shell settings put global captive_portal_https_url https://connect.rom.miui.com/generate_204</span><br><span class="line">adb shell settings put global captive_portal_http_url http://connect.rom.miui.com/generate_204</span><br></pre></td></tr></table></figure>
-<p>The only effect of this operation is to remove the annoying prompt when you are already connected to the internet but still receive a “limited network” warning.</p>
-<blockquote>
-<p>A captive portal is a web page presented to newly connected users before they are granted broader access to the network (Internet). It is commonly used to present a landing or login page that may require authentication or acceptance of usage policies. Captive portals are used in a variety of mobile broadband services (wired and wireless), and can also be used for access to enterprise or residential wired networks (such as apartment buildings, hotels, and business centers).</p>
-</blockquote>
-<p>By default, WSA uses Google’s Captive Portal to check for internet connectivity, which doesn’t work in China. Therefore, it displays the “limited network” message. By changing the detection server to one based in China, you can resolve this issue. Here are some alternative servers you can use:</p>
-<ul>
-<li>Apple: <a href="http://www.apple.com/library/test/success.html">http://www.apple.com/library/test/success.html</a></li>
-<li>Huawei: <a href="http://connectivitycheck.platform.hicloud.com/generate_204">http://connectivitycheck.platform.hicloud.com/generate_204</a></li>
-<li>Vivo: <a href="http://wifi.vivo.com.cn/generate_204">http://wifi.vivo.com.cn/generate_204</a></li>
-</ul>
-<h2 id="USB-Tethering"><a href="#USB-Tethering" class="headerlink" title="USB Tethering"></a>USB Tethering</h2><p>This method is a workaround and may need to be reconfigured after a reboot.</p>
-<ol>
-<li>Open the previously installed <code>WSA Toolbox</code> and click on <code>Android Settings</code> in the middle.</li>
-<li>Go to <code>System</code> &gt; <code>Developer options</code>.</li>
-<li>Enable the <code>Developer options</code> toggle.</li>
-<li>Scroll down to <code>Network</code> &gt; <code>Default USB configuration</code>.</li>
-<li>Set it to <code>USB tethering</code>.</li>
-</ol>
-<h2 id="Enable-Hyper-V-Feature"><a href="#Enable-Hyper-V-Feature" class="headerlink" title="Enable Hyper-V Feature"></a>Enable Hyper-V Feature</h2><div class="note primary"><p>I found a <a href="https://zhuanlan.zhihu.com/p/431557897">post</a> on Zhihu by Hilton, which suggested enabling the Hyper-V feature. Surprisingly, it worked, even though the official documentation says it’s not required.</p>
-</div>
-
-<ol>
-<li>Open <code>Settings</code> &gt; <code>Apps</code> &gt; <code>Optional Features</code> &gt; <code>More Windows features</code>.</li>
-<li>Expand <code>Hyper-V</code>.</li>
-<li>Check <code>Hyper-V Platform</code>.</li>
-<li>Wait for the installation to complete.</li>
-</ol>
-<p><img data-src="https://s2.loli.net/2022/06/02/HJIWBZVYlC3pT7s.png" alt="wsa6.png"></p>
-<p>After doing this, magically, you can connect to the internet. I still don’t fully understand why this works. 🤯</p>
-<hr>
-<h1 id="Setting-up-Proxy"><a href="#Setting-up-Proxy" class="headerlink" title="Setting up Proxy"></a>Setting up Proxy</h1><h2 id="Standard-Procedure"><a href="#Standard-Procedure" class="headerlink" title="Standard Procedure"></a>Standard Procedure</h2><p>I’m using the V2rayN client. If you’re using Clash, there are plenty of tutorials available.</p>
-<ol>
-<li>Open V2rayN, go to <code>Settings</code> &gt; <code>Parameter Settings</code> &gt; <code>Basic Settings</code>, and check the box that says <code>Allow connections from the local network</code>.</li>
-<li>Take note of the local HTTP port displayed at the bottom, which is usually <code>10811</code>.<br><img data-src="https://s2.loli.net/2022/06/02/CmPInWYB536VjwS.png" alt="wsa7.png"></li>
-<li>In the terminal, run the following command, but make sure to replace <code>127.0.0.1:58526</code> with the IP you noted from the <code>Windows Subsystem for Android</code> settings, which is typically this IP.<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">58526</span></span><br></pre></td></tr></table></figure></li>
-<li>In the terminal, enter:<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure></li>
-<li>Find the IP address of the network card you’re currently using. In my case, it’s <code>192.168.50.70</code>.<br><img data-src="https://s2.loli.net/2022/06/02/Vh3JBqGuFPoNMd9.png" alt="wsa8.png"></li>
-<li>Run the following command in the terminal, but replace the IP with your network card’s IP:<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb shell settings put global http_proxy <span class="number">192.168</span>.<span class="number">50.70</span>:<span class="number">10811</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>If you want to disable the proxy, you can use the following commands:</p>
-<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb shell settings put global http_proxy :<span class="number">0</span></span><br><span class="line">adb shell settings delete global http_proxy</span><br></pre></td></tr></table></figure>
-
-<h2 id="Alternative-Solution"><a href="#Alternative-Solution" class="headerlink" title="Alternative Solution"></a>Alternative Solution</h2><p>If the above methods don’t work, you can install a proxy configuration app, such as V2rayNG, directly in WSA.</p>
-<div class="link-grid"><div class="link-grid-container">
-<object class="link-grid-image" data="/images/link/github.webp"></object>
-<p>V2rayNG</p><p>A V2Ray client for Android</p>
-<a href="https://github.com/2dust/v2rayNG/releases"></a>
-</div></div>
-
-<h1 id="Sideloading-APKs"><a href="#Sideloading-APKs" class="headerlink" title="Sideloading APKs"></a>Sideloading APKs</h1><p>If you don’t have access to a proxy, you won’t be able to install apps through the Play Store. However, you can sideload apps using the following method:</p>
-<ol>
-<li>In the terminal, run the following command, but make sure to replace <code>127.0.0.1:58526</code> with the IP you noted from the <code>Windows Subsystem for Android</code> settings, which is typically this IP.<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">58526</span></span><br></pre></td></tr></table></figure></li>
-<li>Navigate to the folder where the APK is located.</li>
-<li>Execute the following command:<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">adb install apk_name</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>I use Coolapk as an alternative app store in China.</p>
-<div class="link-grid"><div class="link-grid-container">
-<object class="link-grid-image" data="/images/link/link.webp"></object>
-<p>Coolapk APP</p><p>Discover the new life of technology</p>
-<a href="https://www.coolapk.com/"></a>
-</div></div>]]></content>
-      <categories>
-        <category>Geek</category>
-      </categories>
-      <tags>
-        <tag>Windows</tag>
-        <tag>WSA</tag>
-        <tag>Android</tag>
-        <tag>V2ray</tag>
-        <tag>Google Play</tag>
-        <tag>Magisk</tag>
-        <tag>adb</tag>
       </tags>
   </entry>
 </search>

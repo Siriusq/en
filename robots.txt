@@ -1,0 +1,20 @@
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: *
+Disallow: /about/
+Disallow: /archives/
+Disallow: /categories/
+Disallow: /css/
+Disallow: /images/
+Disallow: /js/
+Disallow: /lib/
+Disallow: /live2d-widget/
+Disallow: /live2d_api/
+Disallow: /page/
+Disallow: /tags/
+Disallow: /404.html
+Disallow: /clash.html
+Disallow: /v2ray.html
+
+Sitemap: https://siriusq.top/en/sitemap.xml

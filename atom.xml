@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2023-10-19T13:41:50.233Z</updated>
+  <updated>2023-10-20T12:45:21.835Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://siriusq.top/en/auto-update-profile-latest-blog-posts.html"/>
     <id>https://siriusq.top/en/auto-update-profile-latest-blog-posts.html</id>
     <published>2023-10-17T09:10:55.000Z</published>
-    <updated>2023-10-19T13:41:50.233Z</updated>
+    <updated>2023-10-20T12:45:21.835Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;I&#39;ve added a section on my GitHub custom profile page to display the most recent blog updates. However, it&#39;s quite inconvenient to update it manually every time I publish a new blog post. So, following the principle of &quot;laziness is the mother of invention,&quot; I&#39;ve come up with a method to automatically update the recent blog posts section on my profile page after deploying my blog using GitHub Actions.&lt;/blockquote&gt;</summary>
@@ -159,7 +159,7 @@
     <link href="https://siriusq.top/en/macbook-pro-headless.html"/>
     <id>https://siriusq.top/en/macbook-pro-headless.html</id>
     <published>2023-03-31T13:16:46.000Z</published>
-    <updated>2023-07-07T10:14:12.493Z</updated>
+    <updated>2023-10-20T15:38:49.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Get a Mac at the lowest price XD&lt;/blockquote&gt;
@@ -282,7 +282,7 @@
     <link href="https://siriusq.top/en/clash.html"/>
     <id>https://siriusq.top/en/clash.html</id>
     <published>2022-07-13T08:25:33.000Z</published>
-    <updated>2023-08-13T11:16:24.283Z</updated>
+    <updated>2023-10-21T06:49:44.982Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Recently, my V2RayN has been acting up and frequently disconnecting. I spent quite some time looking through GitHub issues, trying to find solutions to the disconnection problems. Unfortunately, I didn&#39;t find any viable solutions. So, I decided to switch to Clash. However, configuring Clash is a bit more complex than V2RayN. With a lot going on recently, I eventually gave up on fine-tuning it and settled for making it work. Hence, this record from getting started to giving up.&lt;/blockquote&gt;</summary>
