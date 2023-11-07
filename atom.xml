@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2023-10-23T10:40:49.369Z</updated>
+  <updated>2023-11-07T10:19:20.003Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Clash Verge TUN Mode Configuration Guide</title>
+    <link href="https://siriusq.top/en/clash-verge-tun-config.html"/>
+    <id>https://siriusq.top/en/clash-verge-tun-config.html</id>
+    <published>2023-11-04T09:24:07.000Z</published>
+    <updated>2023-11-07T10:19:20.003Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; In this article, I will document the configuration process for Clash Verge, including creating configuration files, switching kernels, enabling TUN mode, and preventing DNS leaks. &lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    
+    
+    <category term="Clash" scheme="https://siriusq.top/en/tags/Clash/"/>
+    
+    <category term="GFW" scheme="https://siriusq.top/en/tags/GFW/"/>
+    
+    <category term="Tun" scheme="https://siriusq.top/en/tags/Tun/"/>
+    
+    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    
+  </entry>
   
   <entry>
     <title>Automatically Update the Recent Blog Posts Section in the Custom Profile README When a GitHub Pages-Based Blog Is Updated.</title>
@@ -282,7 +307,7 @@
     <link href="https://siriusq.top/en/clash.html"/>
     <id>https://siriusq.top/en/clash.html</id>
     <published>2022-07-13T08:25:33.000Z</published>
-    <updated>2023-10-21T06:49:44.982Z</updated>
+    <updated>2023-11-07T10:18:44.073Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Recently, my V2RayN has been acting up and frequently disconnecting. I spent quite some time looking through GitHub issues, trying to find solutions to the disconnection problems. Unfortunately, I didn&#39;t find any viable solutions. So, I decided to switch to Clash. However, configuring Clash is a bit more complex than V2RayN. With a lot going on recently, I eventually gave up on fine-tuning it and settled for making it work. Hence, this record from getting started to giving up.&lt;/blockquote&gt;</summary>
@@ -295,8 +320,6 @@
     <category term="Clash" scheme="https://siriusq.top/en/tags/Clash/"/>
     
     <category term="GFW" scheme="https://siriusq.top/en/tags/GFW/"/>
-    
-    <category term="Freedom" scheme="https://siriusq.top/en/tags/Freedom/"/>
     
     <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
     
@@ -484,29 +507,6 @@
     <category term="Right-Click Menu" scheme="https://siriusq.top/en/tags/Right-Click-Menu/"/>
     
     <category term="Registry" scheme="https://siriusq.top/en/tags/Registry/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Common Commands for npm</title>
-    <link href="https://siriusq.top/en/npm.html"/>
-    <id>https://siriusq.top/en/npm.html</id>
-    <published>2022-05-26T02:19:28.000Z</published>
-    <updated>2023-08-13T12:47:35.131Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;A collection of npm commands, as well as commands commonly used for Next theme upgrades.&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Coding" scheme="https://siriusq.top/en/categories/Coding/"/>
-    
-    
-    <category term="Hexo" scheme="https://siriusq.top/en/tags/Hexo/"/>
-    
-    <category term="Next" scheme="https://siriusq.top/en/tags/Next/"/>
-    
-    <category term="npm" scheme="https://siriusq.top/en/tags/npm/"/>
     
   </entry>
   
