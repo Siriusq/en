@@ -591,9 +591,9 @@
 <p>Onedrive</p><p>A cross-platform file hosting service operated by Microsoft, with 5 GB of storage space free of charge.</p>
 <a href="https://www.microsoft.com/en-us/microsoft-365/onedrive/download"></a>
 </div><div class="link-grid-container">
-<object class="link-grid-image" data="/images/softwareicon/Feem.webp"></object>
-<p>Feem</p><p>Cross-platform file transfer software based on local Wi-Fi. The free version is quite powerful, yet there is also a paid version that offers more functions.</p>
-<a href="https://feem.io/"></a>
+<object class="link-grid-image" data="/images/softwareicon/LocalSend.webp"></object>
+<p>LocalSend</p><p>LocalSend is a cross-platform app that enables secure communication between devices using a REST API and HTTPS encryption. It doesn't require an internet connection or third-party servers.</p>
+<a href="https://localsend.org/#/download"></a>
 </div><div class="link-grid-container">
 <object class="link-grid-image" data="/images/softwareicon/iTunes.webp"></object>
 <p>iTunes</p><p>Transfer files between iOS Devices and Windows PCs.</p>
@@ -2573,6 +2573,248 @@
       </tags>
   </entry>
   <entry>
+    <title>Grasscutter Windows Local Server Configuration Guide</title>
+    <url>/en/grasscutter.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Grasscutter is an experimental server written in Java, designed to simulate the server-side of a certain Anime Game. This article documents the process of configuring the server, including the installation of Grasscutter and Cultivation, the usage of relevant commands, methods for utilizing practical plugins and tools, configuration of gacha pools and shops, as well as the replacement of character models.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>Note: This article is based on the Windows 11 system, where the client and server run on the same PC.</p>
+</div>
+
+<div class="note default"><p>Tip: Please replace <code>[Username]</code> in the provided file paths with your own Windows username.</p>
+</div>
+
+<h1 id="Environment-Setup"><a href="#Environment-Setup" class="headerlink" title="Environment Setup"></a>Environment Setup</h1><p>Grasscutter relies on <code>Java</code> and <code>MongoDB</code> for its operation. It is recommended to install JDK17, and the latest version of MongoDB. Below are the download links:</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/download.webp"></object>
+<p>Java</p><p>Download Java SE Development Kit 17</p>
+<a href="https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html"></a>
+</div><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/download.webp"></object>
+<p>MongoDB Community</p><p>Download MongoDB Community Edition</p>
+<a href="https://www.mongodb.com/try/download/community"></a>
+</div></div>
+
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/11/11/G2KwYIs4yVaM6CT.webp" alt="Download JDK17.webp"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/11/11/FLuEvQB2oUqw13l.webp" alt="Download MongoDB.webp"></div></div></div>
+
+<p><strong>Java Installation:</strong></p>
+<ul>
+<li>Download the Java installation package, selecting either <code>Windows x64 Installer</code> or <code>Windows x64 MSI Installer</code>.</li>
+<li>During installation, proceed with the default options.</li>
+</ul>
+<p><strong>MongoDB Installation:</strong></p>
+<ol>
+<li>Download MongoDB, opting for the community edition in <code>msi</code> format.</li>
+<li>Choose <code>Complete</code> installation during setup.</li>
+<li>In <code>Service Configuration</code>, you can modify file paths (the last two options), keeping the rest as default.</li>
+<li>MongoDB Compass is the graphical user interface for MongoDB, which is optional.</li>
+</ol>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/11/11/rRhxCA4BYDVu25U.webp" alt="Choose Complete.webp"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/11/11/Y4mrh23sL71CUJx.webp" alt="Service Configuration.webp"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/11/11/OgrBZdvYXPmsNfl.webp" alt="MongoDB Compass.webp"></div></div></div>
+
+<h1 id="Client-Download"><a href="#Client-Download" class="headerlink" title="Client Download"></a>Client Download</h1><p>The client download links can be obtained from <code>GI-Download-Library</code>.</p>
+<ul>
+<li>The download link for the main files is available in <code>GI-Download-Library/GenshinImpact/Client/[Version].md</code>. After downloading, unzip the files.</li>
+<li>The download link for voice files can be found in <code>GI-Download-Library/GenshinImpact/Audio/[Version].md</code>. After extracting, copy the folder to the main files’ directory.</li>
+</ul>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/github.webp"></object>
+<p>GI-Download-Library</p><p>Download Main Files and Voice Files</p>
+<a href="https://github.com/MAnggiarMustofa/GI-Download-Library"></a>
+</div></div>
+
+<h1 id="Server-Setup"><a href="#Server-Setup" class="headerlink" title="Server Setup"></a>Server Setup</h1><h2 id="Installation-of-Cultivation"><a href="#Installation-of-Cultivation" class="headerlink" title="Installation of Cultivation"></a>Installation of Cultivation</h2><p>Cultivation is a cross-platform launcher developed by the Grasscutter team, capable of running on Windows, macOS, and Linux. It comes with a built-in proxy function, greatly simplifying the Grasscutter installation process; just a few clicks are needed to run it.</p>
+<p>Download the file with the <code>msi</code> extension from the link below, for example, <code>Cultivation_1.2.0_x64_en-US.msi</code>.</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/github.webp"></object>
+<p>Cultivation</p><p>Cultivation Release Page</p>
+<a href="https://github.com/Grasscutters/Cultivation/releases"></a>
+</div></div>
+
+<p>After installation, restart your computer, and then run Cultivation as an administrator.</p>
+<h2 id="Download-Grasscutter"><a href="#Download-Grasscutter" class="headerlink" title="Download Grasscutter"></a>Download Grasscutter</h2><p>Click on the <code>Download</code> icon in the top right corner of Cultivation,</p>
+<ul>
+<li>Depending on your preferences, download either the <code>All-in-One</code> file. Both downloaded files are pre-built, eliminating the need for manual compilation.<ul>
+<li><code>Grasscutter All-in-One</code> doesn’t include quests, but some scenes require unlocking through commands, such as the wind barrier in the Stormterror’s Lair.</li>
+<li><code>Questing All-in-One</code> includes quests, but be aware that there might be some bugs, occasionally requiring manual input of commands to proceed with tasks. For more details, refer to: <a href="https://docs.google.com/spreadsheets/u/0/d/1uao72LmJ5ZkPswOaceEcgtSMJRKlaoO2WBuf_8uStiQ/htmlview?pli=1#">Common Quest Bugs and Command Handling</a>.</li>
+</ul>
+</li>
+<li>Download <code>Grasscutter Resources</code>.</li>
+</ul>
+<p><img data-src="https://s2.loli.net/2023/11/11/jleJCaPN1iKBFDp.webp" alt="Download Grasscutter.webp"></p>
+<p>If you need resources from a specific version, you can switch to the corresponding branch in the repository below. After downloading, copy the files to the <code>C:\Users\[Username]\AppData\Roaming\cultivation\grasscutter\resources</code> folder.</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/download.webp"></object>
+<p>GC Resources</p><p>GitLab Repository for Resource Files</p>
+<a href="https://gitlab.com/YuukiPS/GC-Resources"></a>
+</div></div>
+
+<h2 id="Configure-Cultivation"><a href="#Configure-Cultivation" class="headerlink" title="Configure Cultivation"></a>Configure Cultivation</h2><p>Upon the first launch, a popup window will prompt you to install the CA certificate. Click <code>Yes</code> to agree to the installation. After installing the certificate, Cultivation’s built-in mitmproxy will be able to proxy the communication between the client and the game server through a Man-in-the-Middle (MITM) attack to the local server.</p>
+<p><img data-src="https://s2.loli.net/2023/11/11/FRVI5289awtUPKT.webp" alt="安装证书.webp"></p>
+<p>Click on the small gear icon in the top right corner of Cultivation to open the settings page,</p>
+<ul>
+<li>At the bottom is the language settings section, supporting multiple languages.</li>
+<li>For the <code>game install path</code>, select the <code>GenshinImpact.exe</code> file in the root directory of the client folder.</li>
+<li>Confirm that the following four options are checked:<ul>
+<li><code>Automatically Patch RSA</code></li>
+<li><code>Use Internal Proxy</code></li>
+<li><code>Automatically Start MongoDB</code></li>
+<li><code>Automatically launch Grasscutter with game</code></li>
+</ul>
+</li>
+<li>Set the custom Java path to <code>C:\Program Files\Java\jdk-17\bin\java.exe</code>.</li>
+<li>Keep other options as default.</li>
+</ul>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/11/11/Cn7RpUYOSiuyWL8.webp" alt="Config1.webp"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/11/11/jIzsNPqfhEFkKo5.webp" alt="Config2.webp"></div></div></div>
+
+<h1 id="XX-Launch"><a href="#XX-Launch" class="headerlink" title="XX, Launch!"></a>XX, Launch!</h1><p>The server is now configured. XX, launch!</p>
+<ol>
+<li>Open Cultivation.</li>
+<li>Click on the <code>small button</code> to the right of the launch button to run Grasscutter.<ul>
+<li>Windows Firewall-related prompts may appear; allow them.</li>
+</ul>
+</li>
+<li>Click the <code>Launch</code> button to launch the game.</li>
+<li>Enter any username and password; the system will automatically create an account.<ul>
+<li>The password is not essential; you can enter any number when logging in next time.</li>
+</ul>
+</li>
+</ol>
+<h1 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h1><p>For commonly used commands, refer to <code>C:\Users\[Username]\AppData\Roaming\cultivation\grasscutter\GM Handbook</code>. Additionally, in the Grasscutter window, you can use the <code>help</code> command to view detailed usage for each command.</p>
+<p>When running commands directly in Grasscutter, you generally need to specify UID. For example, the following command is used to remove the stamina limit for a user with UID 10001:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">/prop ns on @10001</span><br></pre></td></tr></table></figure>
+
+<p>Moreover, you can execute commands in the client using the built-in chat feature:</p>
+<ol>
+<li>Press <code>Enter</code> in the client.</li>
+<li>Click on the <code>Add Conversation</code> in the bottom left corner.</li>
+<li>Click the <code>plus icon</code> to the right of the friend banner to start a conversation.</li>
+<li>Enter the command in the dialog box and send it.</li>
+</ol>
+<p>When directly entering commands in the chat box, keep in mind:</p>
+<ul>
+<li>Commands like account creation cannot be used in the chat box.</li>
+<li>Commands generally do not require specifying UID and apply to the current user by default.</li>
+<li>Note that commands entered in the chat box should start with <code>/</code>.</li>
+<li>For example, <code>/give 223 x1</code> gives the current user 1 pink ball.<ul>
+<li>223 is the ID of the pink ball.</li>
+<li>The number after <code>x</code> represents the quantity of the item.</li>
+</ul>
+</li>
+</ul>
+<h1 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h1><p>Entering commands one by one can be tedious. I recommend using the following tools to generate commands directly. After installing the relevant plugins, you can even execute commands within the tools, eliminating the need for manual copy-pasting.</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/github.webp"></object>
+<p>Grasscutter Tools</p><p>Download Grasscutter Toolbox</p>
+<a href="https://github.com/jie65535/GrasscutterCommandGenerator/releases"></a>
+</div><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/link.webp"></object>
+<p>GC-Tools</p><p>Online tool supporting visual command generation for artifacts</p>
+<a href="https://null-grasscutter-tools.vercel.app/#/artifact/index"></a>
+</div></div>
+
+<h1 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h1><p>Grasscutter supports the installation of plugins. I’ve installed the following two plugins:</p>
+<ul>
+<li><code>Grasscutter-Rollback</code></li>
+<li><code>gc-opencommand-plugin</code></li>
+</ul>
+<p>Place the plugins in the <code>C:\Users\[Username]\AppData\Roaming\cultivation\grasscutter\plugins</code> folder.</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/github.webp"></object>
+<p>Grasscutter-Rollback</p><p>Grasscutter database backup and rollback plugin</p>
+<a href="https://github.com/KingRainbow44/Grasscutter-Rollback"></a>
+</div><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/github.webp"></object>
+<p>gc-opencommand-plugin</p><p>Grasscutter Toolbox remote execution plugin</p>
+<a href="https://github.com/jie65535/gc-opencommand-plugin"></a>
+</div></div>
+
+<h2 id="gc-opencommand-plugin"><a href="#gc-opencommand-plugin" class="headerlink" title="gc-opencommand-plugin"></a>gc-opencommand-plugin</h2><p>gc-opencommand-plugin is a plugin that opens the GC command execution interface for third-party clients. It can be used with Grasscutter Tools to execute relevant commands directly without the need to input them into the in-game chat window.</p>
+<p>Configuration steps:</p>
+<ol>
+<li>Start Grasscutter.</li>
+<li>Open the folder in the <code>plugins</code> directory with the same name as the plugin JAR file and find <code>config.json</code>.</li>
+<li>Copy the <code>token</code> from <code>config.json</code>. Normally, this token is automatically generated. If not, you can randomly create a 32-character one.</li>
+<li>Open <code>Grasscutter Tools</code>.</li>
+<li>Switch to the <code>Settings</code> tab.</li>
+<li>Check the <code>UID</code> option in the program settings.</li>
+<li>Enter the UID for the current account.</li>
+<li>Switch to the <code>Remote</code> tab.</li>
+<li>Click the query button next to the server address.</li>
+<li>Confirm that there is a green checkmark after <code>Server Status - Remote Execution Plugin</code>.</li>
+<li>Click <code>Console</code>, paste the <code>token</code> copied in step 3.</li>
+<li>Click <code>Connect</code>.</li>
+</ol>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/11/11/TPRCVJ4I1OqikyX.webp" alt="opencommand1.webp"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/11/11/7kPdbWUavsKeoDY.webp" alt="opencommand2.webp"></div></div></div>
+
+<h2 id="Grasscutter-Rollback"><a href="#Grasscutter-Rollback" class="headerlink" title="Grasscutter-Rollback"></a>Grasscutter-Rollback</h2><p>Grasscutter-Rollback is a database backup and rollback plugin. It can be used when there are issues with the game data, allowing you to rollback to a previous state.</p>
+<p>Usage:</p>
+<ul>
+<li>Backup the current database: <code>bk</code></li>
+<li>Rollback to the previous database: <code>rb</code></li>
+<li>Backup the current database and rename it: <code>bk [name]</code></li>
+<li>Rollback to a specified database: <code>rb [name]</code></li>
+</ul>
+<h1 id="Banner-Replacement"><a href="#Banner-Replacement" class="headerlink" title="Banner Replacement"></a>Banner Replacement</h1><p>The Grasscutter_Banners repository contains information on all banners from the server’s launch until now. Download the corresponding file, copy it to <code>C:\Users\[Username]\AppData\Roaming\cultivation\grasscutter\data\</code>, replace the original <code>Banners.json</code> file, and then execute the <code>reload</code> command in Grasscutter to change the current banner.</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/github.webp"></object>
+<p>Grasscutter_Banners</p><p>Grasscutter Banners Repository</p>
+<a href="https://github.com/Zhaokugua/Grasscutter_Banners"></a>
+</div></div>
+
+<h1 id="Edit-Shop-Items"><a href="#Edit-Shop-Items" class="headerlink" title="Edit Shop Items"></a>Edit Shop Items</h1><p>By default, the shop contains no items. You need to add a <code>shop.json</code> file to <code>C:\Users\[Username]\AppData\Roaming\cultivation\grasscutter\data\</code>.</p>
+<p>It is recommended to use the <code>Shop Editor</code> in the previously mentioned <code>Grasscutter Tools</code> for editing related files. Here’s how:</p>
+<ol>
+<li>Copy <code>C:\Users\[Username]\AppData\Roaming\cultivation\grasscutter\resources\ExcelBinOutput\ShopGoodsExcelConfigData.json</code> to another folder.</li>
+<li>Open the <code>Shop Editor</code> in Grasscutter Tools.</li>
+<li>Paste the copied file path into Grasscutter Tools and click <code>Load</code>.</li>
+<li>Edit the file. Note that after completing each item, click the <code>Add or Update</code> button at the bottom; otherwise, the changes won’t take effect.</li>
+<li>Click <code>Save</code>. You will be prompted to overwrite the file; allow it.</li>
+<li>Rename the file to <code>shop.json</code>.</li>
+<li>Copy the file to <code>C:\Users\[Username]。\AppData\Roaming\cultivation\grasscutter\data\</code>.</li>
+</ol>
+<h1 id="Character-Model-Replacement"><a href="#Character-Model-Replacement" class="headerlink" title="Character Model Replacement"></a>Character Model Replacement</h1><p>Character model mods can be downloaded from Gamebanana and injected into the game using <code>GI-Model-Importer</code>.</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/link.webp"></object>
+<p>Gamebanana</p><p>Mod Download Site</p>
+<a href="https://gamebanana.com/games/8552"></a>
+</div><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/github.webp"></object>
+<p>GI-Model-Importer</p><p>Genshin Impact custom model import tool based on 3DMigoto</p>
+<a href="https://github.com/SilentNightSound/GI-Model-Importer"></a>
+</div></div>
+
+<p>Here are the specific steps:</p>
+<ol>
+<li>Download <code>GI-Model-Importer</code> from the <a href="https://github.com/SilentNightSound/GI-Model-Importer/releases">Release</a> page and unzip it.<ul>
+<li>Generally, choose <code>3dmigoto-GIMI-for-playing-mods.zip</code>.</li>
+<li>If you want to create your own mod, choose <code>3dmigoto-GIMI-for-development.zip</code>.</li>
+</ul>
+</li>
+<li>Open <code>d3dx.ini</code> with VSCode.</li>
+<li>Quickly locate by searching <code>[Loader]</code> and modify the <code>target</code> under <code>[Loader]</code> to your game installation location, for example, <code>D:\Program Files\GenshinImpact_4.0.1\GenshinImpact.exe</code>.<br><img data-src="https://s2.loli.net/2023/11/08/E3KiqTQy9kJWZb2.webp" alt="Replace Path.webp"></li>
+<li>Save the file.</li>
+<li>Unzip the downloaded mod file and copy it to the <code>Mods</code> folder of GI-Model-Importer.<ul>
+<li>Note: Only one mod can be enabled for each character.</li>
+</ul>
+</li>
+<li>Start <code>3DMigoto Loader.exe</code> first.</li>
+<li>Then start the game through <code>Cultivation</code>.</li>
+<li>If a popup window appears in the lower-left corner of the screen during the loading process as shown in the image below, it indicates a successful launch.<br><img data-src="https://s2.loli.net/2023/11/08/sOvpqaElQIBf47F.webp" alt="Successful Launch Popup.webp"></li>
+</ol>
+<div class="note primary"><p>For more details, please refer to the <a href="https://github.com/SilentNightSound/GI-Model-Importer/blob/main/CN_README.md">Genshin-Impact-Model-Importer documentation</a>.</p>
+</div>
+
+<p><img data-src="https://s2.loli.net/2023/11/11/uoCZmLU3EWQ9aGf.webp" alt="可厉害了.webp"></p>
+]]></content>
+      <categories>
+        <category>Geek</category>
+      </categories>
+      <tags>
+        <tag>Grasscutter</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Grasshopper</title>
     <url>/en/grasshopper.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">I'm summarizing the Grasshopper files I've accumulated from my sophomore year to now, which I've used to create analytical graphics. I'll also provide a simple guide for architects who are interested in using them. If you're interested, why not give a shot at transitioning to a programmer's career? (Just kidding, or am I?)</blockquote>
@@ -3324,50 +3566,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Environment Variables Configuration for Java and C</title>
-    <url>/en/java-c-environment-variables-configuration.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">I reinstalled the system yesterday and upgraded to Win10 2004. I thought I could configure the environment variables for Java and C from memory, but in the end, I had to turn to Google for help. So, I'll document it again.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><ol>
-<li>Simply search for <code>environment variables</code> in the taskbar search box, and you will find <code>Edit the system environment variables.</code></li>
-<li>In the popup window, click on <code>Environment Variables</code> in the bottom right corner.</li>
-<li>Under <code>System variables,</code> create a new system variable with the variable name <code>JAVA_HOME</code> and the variable value as the installation path of JDK, which is typically <code>C:\Program Files\Java\jdk-14.0.2</code> by default.</li>
-<li>Create another system variable named <code>CLASSPATH</code> with the variable value as <code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code>.</li>
-<li>Double-click on the <code>Path</code> variable in the system variables section, and click <code>New</code> in the top right corner.</li>
-<li>Add <code>%JAVA_HOME%\bin</code> and <code>%JAVA_HOME%\jre\bin</code> separately.</li>
-<li>Confirm and return to the desktop.</li>
-<li>Open the terminal and enter <code>java -version</code> to check if it was successful. If successful, it will display the Java version.</li>
-<li>If it’s not successful, try restarting and double-check the variables for correctness.</li>
-</ol>
-<h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><ol>
-<li>In Mingw, select <code>mingw32-base</code> and <code>mingw-gcc-g++,</code> selecting more will lead to a very long installation process. You can select them by right-clicking and choosing <code>Mark for Installation.</code></li>
-<li>Click on <code>Installation</code> in the top right corner and choose <code>Apply Changes.</code></li>
-<li>In the popup window, click <code>Apply</code> to confirm.</li>
-<li>Wait patiently… Potato servers often report installation failures.</li>
-<li>After installation, follow the same steps to open system variables.</li>
-<li>Double-click on the <code>Path</code> variable in the system variables section, and click <code>New</code> in the top right corner.</li>
-<li>Add the installation path for Mingw, which is typically <code>C:\MinGW\bin.</code></li>
-<li>Open the terminal and enter <code>gcc -v</code> to check if it was successful.</li>
-<li>If it’s not successful, try restarting.</li>
-</ol>
-<p>Your environment variables should look something like this after configuration:<br><img data-src="https://s2.loli.net/2022/05/13/O49gVDEHBFZ2kzm.png" alt="1"><br><img data-src="https://s2.loli.net/2022/05/13/uLJnsPYEIiHSA1t.png" alt="2"></p>
-]]></content>
-      <categories>
-        <category>Coding</category>
-      </categories>
-      <tags>
-        <tag>Windows</tag>
-        <tag>Environment Variables</tag>
-        <tag>Java</tag>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Accessing Windows Shared Folders on iPhone.</title>
     <url>/en/ios-windows-file-share.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">Because the local network file transfer software I've been using doesn't work on Win11 anymore, and I couldn't find a good alternative, I decided to resort to the old method of using Windows shared folders to transfer files to iOS devices.</blockquote>
@@ -3429,6 +3627,50 @@
         <tag>Windows</tag>
         <tag>iOS</tag>
         <tag>Shared Folders</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Environment Variables Configuration for Java and C</title>
+    <url>/en/java-c-environment-variables-configuration.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">I reinstalled the system yesterday and upgraded to Win10 2004. I thought I could configure the environment variables for Java and C from memory, but in the end, I had to turn to Google for help. So, I'll document it again.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><ol>
+<li>Simply search for <code>environment variables</code> in the taskbar search box, and you will find <code>Edit the system environment variables.</code></li>
+<li>In the popup window, click on <code>Environment Variables</code> in the bottom right corner.</li>
+<li>Under <code>System variables,</code> create a new system variable with the variable name <code>JAVA_HOME</code> and the variable value as the installation path of JDK, which is typically <code>C:\Program Files\Java\jdk-14.0.2</code> by default.</li>
+<li>Create another system variable named <code>CLASSPATH</code> with the variable value as <code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code>.</li>
+<li>Double-click on the <code>Path</code> variable in the system variables section, and click <code>New</code> in the top right corner.</li>
+<li>Add <code>%JAVA_HOME%\bin</code> and <code>%JAVA_HOME%\jre\bin</code> separately.</li>
+<li>Confirm and return to the desktop.</li>
+<li>Open the terminal and enter <code>java -version</code> to check if it was successful. If successful, it will display the Java version.</li>
+<li>If it’s not successful, try restarting and double-check the variables for correctness.</li>
+</ol>
+<h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><ol>
+<li>In Mingw, select <code>mingw32-base</code> and <code>mingw-gcc-g++,</code> selecting more will lead to a very long installation process. You can select them by right-clicking and choosing <code>Mark for Installation.</code></li>
+<li>Click on <code>Installation</code> in the top right corner and choose <code>Apply Changes.</code></li>
+<li>In the popup window, click <code>Apply</code> to confirm.</li>
+<li>Wait patiently… Potato servers often report installation failures.</li>
+<li>After installation, follow the same steps to open system variables.</li>
+<li>Double-click on the <code>Path</code> variable in the system variables section, and click <code>New</code> in the top right corner.</li>
+<li>Add the installation path for Mingw, which is typically <code>C:\MinGW\bin.</code></li>
+<li>Open the terminal and enter <code>gcc -v</code> to check if it was successful.</li>
+<li>If it’s not successful, try restarting.</li>
+</ol>
+<p>Your environment variables should look something like this after configuration:<br><img data-src="https://s2.loli.net/2022/05/13/O49gVDEHBFZ2kzm.png" alt="1"><br><img data-src="https://s2.loli.net/2022/05/13/uLJnsPYEIiHSA1t.png" alt="2"></p>
+]]></content>
+      <categories>
+        <category>Coding</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>Environment Variables</tag>
+        <tag>Java</tag>
+        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -3521,186 +3763,6 @@
       <tags>
         <tag>Jupyter</tag>
         <tag>Win10</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Quick Setup Guide for LaTeX in VSCode</title>
-    <url>/en/latex-vscode-quick-config.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">A guide on installing the TeX environment and quickly configuring LaTeX in VSCode.</blockquote>
-
-<span id="more"></span>
-
-<h1 id="TeX-Live-Installation"><a href="#TeX-Live-Installation" class="headerlink" title="TeX Live Installation"></a>TeX Live Installation</h1><p>First, go to the <a href="https://www.tug.org/texlive/index.html#concise">TeX Live official website</a> to download the installation files. The links below provide the download pages for both Windows and Mac versions.</p>
-<div class="link-grid"><div class="link-grid-container">
-<object class="link-grid-image" data="/images/link/link.webp"></object>
-<p>TeX Live ISO image</p><p>Acquiring TeX Live as an ISO image</p>
-<a href="https://www.tug.org/texlive/acquire-iso.html"></a>
-</div><div class="link-grid-container">
-<object class="link-grid-image" data="/images/link/link.webp"></object>
-<p>MacTeX.pkg</p><p>MacTeX is a package that installs TeX Live on the Macintosh.</p>
-<a href="https://www.tug.org/mactex/mactex-download.html"></a>
-</div></div>
-
-<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p>For Windows users, it’s recommended to use the <code>ISO</code> file for installation. The ISO file is approximately 4GB and contains all the necessary files, so there’s no need for an online installation. If you have a good internet connection, you can also choose to download <code>install-tl-windows.exe</code>, which is only 20MB. Simply double-click it to start the online installation, which is more convenient. However, please note that when using <code>install-tl-windows.exe</code>, the program estimates that it may take several hours to complete the download and installation, whereas downloading the ISO file only takes a few minutes.</p>
-<p>After opening the download page, choose <code>download from a nearby CTAN mirror</code> to go to the nearest mirror site, then click to download <code>texlive.iso</code>. </p>
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/rtv86aQ3NoJeygY.webp" alt="Download from a nearby CTAN mirror"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/cuwyg4mZVAdPsFJ.webp" alt="Download texlive.iso"></div></div></div>
-
-<p>Once the download is complete, mount the ISO file and run <code>install-tl-windows.bat</code> as administrator. After the installation program finishes loading, click the “Install” button. The installation time depends on your computer’s performance, but it typically takes around 30 minutes. After a successful installation, click the “Close” button to exit the installation program.</p>
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/egBY1N8vUp5fwmV.webp" alt="Installation Root"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/PA9rod7y2NktUEJ.webp" alt="Loading"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/1dfC7RnsILpUJKh.webp" alt="Install"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/A2pZSEaxkrHeR3d.webp" alt="Success"></div></div></div>
-
-<h2 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h2><p>For macOS users, simply click the download link for MacTeX.pkg on the download page. The size of the installation package is 5.2GB. After downloading, double-click the package to open it, and then follow the on-screen instructions to complete the installation.</p>
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/OMBXEcRnWstlv9A.png" alt="Download MacTeX.pkg"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/6AZdueKySU5cvwb.png" alt="Agree"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/2bXlRiMTSBvIZGu.png" alt="Installing"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/cN5oU1z6kZihFJE.png" alt="Success"></div></div></div>
-
-<h1 id="VSCode-Extensions-Installation"><a href="#VSCode-Extensions-Installation" class="headerlink" title="VSCode Extensions Installation"></a>VSCode Extensions Installation</h1><p>Search for and install the <code>LaTeX Workshop</code> and <code>LaTeX Utilities</code> extensions in the VSCode Extension Marketplace. The former adds LaTeX support to VSCode, while the latter provides useful features such as automatic formatting for pasted text and integration with Zotero.</p>
-<p><img data-src="https://s2.loli.net/2023/10/06/xqgKzTueOnMVod9.webp" alt="VSCode Extensions Installation"></p>
-<h1 id="LaTeX-Workshop-Configuration"><a href="#LaTeX-Workshop-Configuration" class="headerlink" title="LaTeX Workshop Configuration"></a>LaTeX Workshop Configuration</h1><p>Open VSCode’s settings using the shortcut <code>Ctrl</code> + <code>,</code>. For the following operations, it’s recommended to use the search bar in the settings to quickly locate them.</p>
-<h2 id="Auto-Build"><a href="#Auto-Build" class="headerlink" title="Auto Build"></a>Auto Build</h2><p><img data-src="https://s2.loli.net/2023/10/06/JmdOsAWTgotPQSh.webp" alt="Auto Build.webp"></p>
-<p>Search for <code>latex run</code> and adjust the <code>Latex-workshop &gt; Latex &gt; Auto Build: Run</code> option. I recommend choosing <code>OnSave</code>.</p>
-<ul>
-<li><code>never</code>: No automatic build .</li>
-<li><code>OnSave</code>: Automatically build when saving a <code>.tex</code> file.</li>
-<li><code>OnFileChange</code>: Automatically build when any file in the dependencies changes, including changes made outside of VSCode.</li>
-</ul>
-<h2 id="Auto-Clean"><a href="#Auto-Clean" class="headerlink" title="Auto Clean"></a>Auto Clean</h2><p>This option automatically cleans (deletes) compiled auxiliary files and output files to ensure that each LaTeX compilation starts from scratch without being affected by previous compilations.</p>
-<p><img data-src="https://s2.loli.net/2023/10/06/c1vBzWIOdTlP7ZQ.webp" alt="Auto Clean.webp"></p>
-<p>Search for <code>latex run</code> and adjust the <code>Latex-workshop &gt; Latex &gt; Auto Clean: Run</code> option. I recommend choosing <code>OnFailed</code>.</p>
-<ul>
-<li><code>never</code>: No automatic cleaning.</li>
-<li><code>OnFailed</code>: Only clean automatically when compilation fails.</li>
-<li><code>OnSucceeded</code>: Only clean automatically when compilation succeeds.</li>
-<li><code>OnBuilt</code>: Clean automatically after compilation, regardless of success.</li>
-</ul>
-<details class="note success"><summary><p>Detailed Explanation</p>
-</summary>
-<p>Specifically, this option serves the following purposes:</p>
-<ol>
-<li><strong>Auto Cleaning</strong>: When you build a LaTeX document, it generates auxiliary files (e.g., <code>.aux</code>, <code>.log</code>, <code>.bbl</code>, <code>.blg</code>, etc.) and the resulting PDF file. These files are typically used to record compilation information, aid in cross-referencing, and generate references, among other tasks. When the “Auto Clean: Run” option is enabled, the plugin automatically deletes these auxiliary files and previously generated PDF files each time you run a LaTeX compilation.</li>
-<li><strong>Avoiding Interference from Old Files</strong>: If you’ve made modifications to your document between different compilations, old auxiliary files might cause issues, such as cross-reference errors or incorrect references. By automatically cleaning these files, you ensure that each compilation starts from a clean slate, reducing potential interference and errors.</li>
-<li><strong>Saving Disk Space</strong>: LaTeX compilations generate many temporary files, and over time, these files can consume a significant amount of disk space. Auto cleaning helps you regularly remove these no longer needed files, saving disk space.</li>
-</ol>
-<p>Please note that when using the “Auto Clean: Run” option, make sure you don’t need to retain the compiled auxiliary files or output files for other purposes (e.g., generating references) because they will be deleted. If you need to keep these files, you can disable this option and manage them manually.</p>
-<blockquote>
-<p>By ChatGPT</p>
-</blockquote>
-
-</details>
-
-<h2 id="Add-Compilation-Recipe"><a href="#Add-Compilation-Recipe" class="headerlink" title="Add Compilation Recipe"></a>Add Compilation Recipe</h2><p>In LaTeX Workshop’s default compilation recipe, there is only one compilation chain that includes <code>bibtex</code>, which is <code>pdflatex -&gt; bibtex -&gt; pdflatex * 2</code>. Now, let’s add another compilation chain containing <code>bibtex</code>: <code>xelatex -&gt; bibtex -&gt; xelatex*2</code>.</p>
-<details class="note success"><summary><p>Difference Between PdfTeX and XeTeX</p>
-</summary>
-<p>PdfTeX and XeTeX are two TeX engines used for typesetting documents, and they have some important differences:</p>
-<ol>
-<li>Font Support:<ul>
-<li>PdfTeX: PdfTeX primarily supports traditional TeX fonts like Computer Modern. Using other fonts often requires complex configuration and font mapping.</li>
-<li>XeTeX: XeTeX is more flexible and can directly use fonts installed on your system, including TrueType and OpenType fonts. This makes handling documents with multiple languages and different font styles easier.</li>
-</ul>
-</li>
-<li>Character Encoding:<ul>
-<li>PdfTeX: PdfTeX typically requires specific input encodings (e.g., UTF-8) to handle non-ASCII characters and has limited support.</li>
-<li>XeTeX: XeTeX natively supports Unicode encoding, making it easy to work with various languages and symbols without additional configuration.</li>
-</ul>
-</li>
-<li>Multilingual Support:<ul>
-<li>PdfTeX: It supports multiple languages but requires careful configuration for handling specific language requirements.</li>
-<li>XeTeX: Provides more direct and straightforward support for multilingual documents, especially those containing multiple languages and scripts.</li>
-</ul>
-</li>
-<li>Output Formats:<ul>
-<li>PdfTeX: Generates output in PDF format.</li>
-<li>XeTeX: Can also generate PDF but supports other formats like DVI and PostScript.</li>
-</ul>
-</li>
-</ol>
-<p>In summary, PdfTeX is suitable for traditional TeX document typesetting tasks, while XeTeX is better for handling multilingual documents, complex font requirements, and Unicode characters. The choice of which engine to use depends on your specific needs and project requirements.</p>
-<blockquote>
-<p>By ChatGPT</p>
-</blockquote>
-
-</details>
-
-<details class="note success"><summary><p>About BibTeX</p>
-</summary>
-<p>BibTeX is a tool for managing citations and references in LaTeX documents. It is typically used alongside LaTeX to create a well-formatted list of references and citations automatically.</p>
-<p>Here’s how BibTeX works:</p>
-<ol>
-<li>Create a Bibliography Database: You create a BibTeX database file (usually with a <code>.bib</code> file extension) that contains information about all the references you want to use. Each reference entry includes metadata such as authors, title, publication details, etc.</li>
-<li>Reference Citations in LaTeX: In your LaTeX document, you use the <code>\cite{key}</code> command to reference these entries, where <code>key</code> is the identifier for a particular reference in your BibTeX database.</li>
-<li>Compile the Document: You compile your LaTeX document, and then run BibTeX, which looks up the citations in the <code>.aux</code> file generated during the first LaTeX compilation. BibTeX uses this information to create a list of references and format the citations.</li>
-<li>Generate the References: BibTeX generates a formatted list of references based on your citations, applying the appropriate citation style (e.g., APA, MLA) and sorting.</li>
-</ol>
-<p>BibTeX’s advantage is its ability to automatically handle citations and formatting, making it convenient for longer papers and academic articles. However, it’s essential to choose the right bibliography style and perform any necessary customizations according to the requirements of your journal or publishing institution.</p>
-<blockquote>
-<p>By ChatGPT</p>
-</blockquote>
-
-</details>
-
-<p><img data-src="https://s2.loli.net/2023/10/06/WbyZSiL5dk1MFGo.webp" alt="Recipes"></p>
-<p>Search for <code>Latex: Recipes</code>, find <code>Latex-workshop &gt; Latex: Recipes</code> and then click on <code>Edit in settings.json</code>. Use <code>Ctrl+F</code> to locate <code>latex-workshop.latex.recipes</code> in settings.json and add a new compilation chain as follows, making sure not to miss the trailing <code>,</code>:</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xelatex -&gt; bibtex -&gt; xelatex*2&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;tools&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;xelatexmk&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;bibtex&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;xelatexmk&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;xelatexmk&quot;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<details class="note success"><summary><p>Why Multiple XeLaTeX Compilations?</p>
-</summary>
-<p>In LaTeX’s compilation chain, it’s common to perform two <code>xelatex</code> compilations for documents that involve bibliographic references (using <code>bibtex</code> or <code>biblatex</code>). Here’s why two <code>xelatex</code> compilations are typically necessary:</p>
-<ol>
-<li>First <code>xelatex</code> Compilation:<ul>
-<li>The first compilation is primarily for processing the document’s content, generating reference labels, and inserting placeholders for citations.</li>
-<li>When you use the <code>\cite{key}</code> command to reference a bibliography entry, the first compilation inserts placeholders like <code>[?]</code> to indicate the citation’s position.</li>
-<li>This step also generates an auxiliary file (usually a <code>.aux</code> file) that contains information about the citations.</li>
-</ul>
-</li>
-<li>Running <code>bibtex</code>:<ul>
-<li>Next, you run the <code>bibtex</code> tool, which reads the citation information from the <code>.aux</code> file and generates the reference list and detailed citation information based on your BibTeX database (typically a <code>.bib</code> file).</li>
-<li>The information generated by <code>bibtex</code> is stored in a <code>.bbl</code> file.</li>
-</ul>
-</li>
-<li>Second <code>xelatex</code> Compilation:<ul>
-<li>The purpose of the second compilation is to insert the generated reference list and detailed citations into the document to replace the placeholders.</li>
-<li>During this compilation, LaTeX knows the details of each citation and formats them correctly in the document.</li>
-<li>This compilation also updates the citation labels in the document.</li>
-</ul>
-</li>
-<li>Third <code>xelatex</code> Compilation (Optional):<ul>
-<li>If your document contains cross-references (such as referencing sections or figures), you may need to run <code>xelatex</code> again to ensure all cross-reference numbers are correct.</li>
-</ul>
-</li>
-</ol>
-<p>So, the multiple <code>xelatex</code> compilations are necessary to ensure that the bibliographic citations and reference list are correctly integrated into the document. This is the standard workflow for handling citations in LaTeX. In some cases, if there are no cross-references or if citations do not affect other parts of the document, only two compilations may be needed without the third.</p>
-<blockquote>
-<p>By ChatGPT</p>
-</blockquote>
-
-</details>
-
-<h2 id="Default-Recipe"><a href="#Default-Recipe" class="headerlink" title="Default Recipe"></a>Default Recipe</h2><p>This option defines the default recipe to be used when no other compilation recipe is explicitly specified, including the automatic compilation set earlier.</p>
-<p><img data-src="https://s2.loli.net/2023/10/06/9CUzAGhcZfNVlLS.webp" alt="Default Recipe.webp"></p>
-<p>Search for <code>latex recipe default</code>, and adjust the <code>Latex-workshop &gt; Latex &gt; Recipe: Default</code> option. I recommend choosing <code>lastUsed</code>.</p>
-<ul>
-<li><code>first</code>: The first compilation option in the configuration file.</li>
-<li><code>lastUsed</code>: The compilation option used last time.</li>
-</ul>
-<h2 id="Disable-Warning-amp-Error-Message"><a href="#Disable-Warning-amp-Error-Message" class="headerlink" title="Disable Warning &amp; Error Message"></a>Disable Warning &amp; Error Message</h2><p>By default, VSCode displays message pop-ups in the lower-right corner when the build fails, which need to be manually closed. Since these messages are also visible in the terminal, you can choose to disable these pop-ups.</p>
-<p>Search for <code>latex message show</code> and uncheck the <code>Latex-workshop &gt; Message &gt; Error: Show</code> and <code>Latex-workshop &gt; Message &gt; Warning: Show</code> options.</p>
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/32T5rc7sRSaAHGf.webp" alt="Warning Message.webp"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/iTOLUpPYsIFB8l4.webp" alt="Error Message.webp"></div></div></div>
-
-<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><p>When you open a <code>.tex</code> file using VSCode, you will see a TEX option in the left sidebar. You can use this option to select compilation options and view the PDF output, among other operations.</p>
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/JMpIfran4KEuPic.webp" alt="Build.webp"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/XGPqzkKINi4AQ6d.webp" alt="PDF&amp;Log.webp"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/v9HR26jTgBYypld.webp" alt="Navigate.webp"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/AiMrFKVxwI3g19P.webp" alt="Citation.webp"></div></div></div>
-
-<blockquote>
-<p>References:</p>
-<ol>
-<li><a href="https://zhuanlan.zhihu.com/p/166523064">Visual Studio Code (vscode)配置LaTeX</a> by <a href="https://www.zhihu.com/people/Ali-loner">Ali-loner</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/108095566">VS Code + LaTeX</a> by <a href="https://www.zhihu.com/people/Thesharing">柏星</a></li>
-<li><a href="https://github.com/James-Yu/LaTeX-Workshop/wiki">LaTeX Workshop Wiki</a> by <a href="https://github.com/James-Yu">James Yu</a></li>
-</ol>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Coding</category>
-      </categories>
-      <tags>
-        <tag>VSCode</tag>
-        <tag>LaTeX</tag>
       </tags>
   </entry>
   <entry>
@@ -4135,6 +4197,186 @@
       <tags>
         <tag>Hackintosh</tag>
         <tag>Multisystem</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Quick Setup Guide for LaTeX in VSCode</title>
+    <url>/en/latex-vscode-quick-config.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">A guide on installing the TeX environment and quickly configuring LaTeX in VSCode.</blockquote>
+
+<span id="more"></span>
+
+<h1 id="TeX-Live-Installation"><a href="#TeX-Live-Installation" class="headerlink" title="TeX Live Installation"></a>TeX Live Installation</h1><p>First, go to the <a href="https://www.tug.org/texlive/index.html#concise">TeX Live official website</a> to download the installation files. The links below provide the download pages for both Windows and Mac versions.</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/link.webp"></object>
+<p>TeX Live ISO image</p><p>Acquiring TeX Live as an ISO image</p>
+<a href="https://www.tug.org/texlive/acquire-iso.html"></a>
+</div><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/link.webp"></object>
+<p>MacTeX.pkg</p><p>MacTeX is a package that installs TeX Live on the Macintosh.</p>
+<a href="https://www.tug.org/mactex/mactex-download.html"></a>
+</div></div>
+
+<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p>For Windows users, it’s recommended to use the <code>ISO</code> file for installation. The ISO file is approximately 4GB and contains all the necessary files, so there’s no need for an online installation. If you have a good internet connection, you can also choose to download <code>install-tl-windows.exe</code>, which is only 20MB. Simply double-click it to start the online installation, which is more convenient. However, please note that when using <code>install-tl-windows.exe</code>, the program estimates that it may take several hours to complete the download and installation, whereas downloading the ISO file only takes a few minutes.</p>
+<p>After opening the download page, choose <code>download from a nearby CTAN mirror</code> to go to the nearest mirror site, then click to download <code>texlive.iso</code>. </p>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/rtv86aQ3NoJeygY.webp" alt="Download from a nearby CTAN mirror"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/cuwyg4mZVAdPsFJ.webp" alt="Download texlive.iso"></div></div></div>
+
+<p>Once the download is complete, mount the ISO file and run <code>install-tl-windows.bat</code> as administrator. After the installation program finishes loading, click the “Install” button. The installation time depends on your computer’s performance, but it typically takes around 30 minutes. After a successful installation, click the “Close” button to exit the installation program.</p>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/egBY1N8vUp5fwmV.webp" alt="Installation Root"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/PA9rod7y2NktUEJ.webp" alt="Loading"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/1dfC7RnsILpUJKh.webp" alt="Install"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/A2pZSEaxkrHeR3d.webp" alt="Success"></div></div></div>
+
+<h2 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h2><p>For macOS users, simply click the download link for MacTeX.pkg on the download page. The size of the installation package is 5.2GB. After downloading, double-click the package to open it, and then follow the on-screen instructions to complete the installation.</p>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/OMBXEcRnWstlv9A.png" alt="Download MacTeX.pkg"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/6AZdueKySU5cvwb.png" alt="Agree"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/2bXlRiMTSBvIZGu.png" alt="Installing"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/cN5oU1z6kZihFJE.png" alt="Success"></div></div></div>
+
+<h1 id="VSCode-Extensions-Installation"><a href="#VSCode-Extensions-Installation" class="headerlink" title="VSCode Extensions Installation"></a>VSCode Extensions Installation</h1><p>Search for and install the <code>LaTeX Workshop</code> and <code>LaTeX Utilities</code> extensions in the VSCode Extension Marketplace. The former adds LaTeX support to VSCode, while the latter provides useful features such as automatic formatting for pasted text and integration with Zotero.</p>
+<p><img data-src="https://s2.loli.net/2023/10/06/xqgKzTueOnMVod9.webp" alt="VSCode Extensions Installation"></p>
+<h1 id="LaTeX-Workshop-Configuration"><a href="#LaTeX-Workshop-Configuration" class="headerlink" title="LaTeX Workshop Configuration"></a>LaTeX Workshop Configuration</h1><p>Open VSCode’s settings using the shortcut <code>Ctrl</code> + <code>,</code>. For the following operations, it’s recommended to use the search bar in the settings to quickly locate them.</p>
+<h2 id="Auto-Build"><a href="#Auto-Build" class="headerlink" title="Auto Build"></a>Auto Build</h2><p><img data-src="https://s2.loli.net/2023/10/06/JmdOsAWTgotPQSh.webp" alt="Auto Build.webp"></p>
+<p>Search for <code>latex run</code> and adjust the <code>Latex-workshop &gt; Latex &gt; Auto Build: Run</code> option. I recommend choosing <code>OnSave</code>.</p>
+<ul>
+<li><code>never</code>: No automatic build .</li>
+<li><code>OnSave</code>: Automatically build when saving a <code>.tex</code> file.</li>
+<li><code>OnFileChange</code>: Automatically build when any file in the dependencies changes, including changes made outside of VSCode.</li>
+</ul>
+<h2 id="Auto-Clean"><a href="#Auto-Clean" class="headerlink" title="Auto Clean"></a>Auto Clean</h2><p>This option automatically cleans (deletes) compiled auxiliary files and output files to ensure that each LaTeX compilation starts from scratch without being affected by previous compilations.</p>
+<p><img data-src="https://s2.loli.net/2023/10/06/c1vBzWIOdTlP7ZQ.webp" alt="Auto Clean.webp"></p>
+<p>Search for <code>latex run</code> and adjust the <code>Latex-workshop &gt; Latex &gt; Auto Clean: Run</code> option. I recommend choosing <code>OnFailed</code>.</p>
+<ul>
+<li><code>never</code>: No automatic cleaning.</li>
+<li><code>OnFailed</code>: Only clean automatically when compilation fails.</li>
+<li><code>OnSucceeded</code>: Only clean automatically when compilation succeeds.</li>
+<li><code>OnBuilt</code>: Clean automatically after compilation, regardless of success.</li>
+</ul>
+<details class="note success"><summary><p>Detailed Explanation</p>
+</summary>
+<p>Specifically, this option serves the following purposes:</p>
+<ol>
+<li><strong>Auto Cleaning</strong>: When you build a LaTeX document, it generates auxiliary files (e.g., <code>.aux</code>, <code>.log</code>, <code>.bbl</code>, <code>.blg</code>, etc.) and the resulting PDF file. These files are typically used to record compilation information, aid in cross-referencing, and generate references, among other tasks. When the “Auto Clean: Run” option is enabled, the plugin automatically deletes these auxiliary files and previously generated PDF files each time you run a LaTeX compilation.</li>
+<li><strong>Avoiding Interference from Old Files</strong>: If you’ve made modifications to your document between different compilations, old auxiliary files might cause issues, such as cross-reference errors or incorrect references. By automatically cleaning these files, you ensure that each compilation starts from a clean slate, reducing potential interference and errors.</li>
+<li><strong>Saving Disk Space</strong>: LaTeX compilations generate many temporary files, and over time, these files can consume a significant amount of disk space. Auto cleaning helps you regularly remove these no longer needed files, saving disk space.</li>
+</ol>
+<p>Please note that when using the “Auto Clean: Run” option, make sure you don’t need to retain the compiled auxiliary files or output files for other purposes (e.g., generating references) because they will be deleted. If you need to keep these files, you can disable this option and manage them manually.</p>
+<blockquote>
+<p>By ChatGPT</p>
+</blockquote>
+
+</details>
+
+<h2 id="Add-Compilation-Recipe"><a href="#Add-Compilation-Recipe" class="headerlink" title="Add Compilation Recipe"></a>Add Compilation Recipe</h2><p>In LaTeX Workshop’s default compilation recipe, there is only one compilation chain that includes <code>bibtex</code>, which is <code>pdflatex -&gt; bibtex -&gt; pdflatex * 2</code>. Now, let’s add another compilation chain containing <code>bibtex</code>: <code>xelatex -&gt; bibtex -&gt; xelatex*2</code>.</p>
+<details class="note success"><summary><p>Difference Between PdfTeX and XeTeX</p>
+</summary>
+<p>PdfTeX and XeTeX are two TeX engines used for typesetting documents, and they have some important differences:</p>
+<ol>
+<li>Font Support:<ul>
+<li>PdfTeX: PdfTeX primarily supports traditional TeX fonts like Computer Modern. Using other fonts often requires complex configuration and font mapping.</li>
+<li>XeTeX: XeTeX is more flexible and can directly use fonts installed on your system, including TrueType and OpenType fonts. This makes handling documents with multiple languages and different font styles easier.</li>
+</ul>
+</li>
+<li>Character Encoding:<ul>
+<li>PdfTeX: PdfTeX typically requires specific input encodings (e.g., UTF-8) to handle non-ASCII characters and has limited support.</li>
+<li>XeTeX: XeTeX natively supports Unicode encoding, making it easy to work with various languages and symbols without additional configuration.</li>
+</ul>
+</li>
+<li>Multilingual Support:<ul>
+<li>PdfTeX: It supports multiple languages but requires careful configuration for handling specific language requirements.</li>
+<li>XeTeX: Provides more direct and straightforward support for multilingual documents, especially those containing multiple languages and scripts.</li>
+</ul>
+</li>
+<li>Output Formats:<ul>
+<li>PdfTeX: Generates output in PDF format.</li>
+<li>XeTeX: Can also generate PDF but supports other formats like DVI and PostScript.</li>
+</ul>
+</li>
+</ol>
+<p>In summary, PdfTeX is suitable for traditional TeX document typesetting tasks, while XeTeX is better for handling multilingual documents, complex font requirements, and Unicode characters. The choice of which engine to use depends on your specific needs and project requirements.</p>
+<blockquote>
+<p>By ChatGPT</p>
+</blockquote>
+
+</details>
+
+<details class="note success"><summary><p>About BibTeX</p>
+</summary>
+<p>BibTeX is a tool for managing citations and references in LaTeX documents. It is typically used alongside LaTeX to create a well-formatted list of references and citations automatically.</p>
+<p>Here’s how BibTeX works:</p>
+<ol>
+<li>Create a Bibliography Database: You create a BibTeX database file (usually with a <code>.bib</code> file extension) that contains information about all the references you want to use. Each reference entry includes metadata such as authors, title, publication details, etc.</li>
+<li>Reference Citations in LaTeX: In your LaTeX document, you use the <code>\cite{key}</code> command to reference these entries, where <code>key</code> is the identifier for a particular reference in your BibTeX database.</li>
+<li>Compile the Document: You compile your LaTeX document, and then run BibTeX, which looks up the citations in the <code>.aux</code> file generated during the first LaTeX compilation. BibTeX uses this information to create a list of references and format the citations.</li>
+<li>Generate the References: BibTeX generates a formatted list of references based on your citations, applying the appropriate citation style (e.g., APA, MLA) and sorting.</li>
+</ol>
+<p>BibTeX’s advantage is its ability to automatically handle citations and formatting, making it convenient for longer papers and academic articles. However, it’s essential to choose the right bibliography style and perform any necessary customizations according to the requirements of your journal or publishing institution.</p>
+<blockquote>
+<p>By ChatGPT</p>
+</blockquote>
+
+</details>
+
+<p><img data-src="https://s2.loli.net/2023/10/06/WbyZSiL5dk1MFGo.webp" alt="Recipes"></p>
+<p>Search for <code>Latex: Recipes</code>, find <code>Latex-workshop &gt; Latex: Recipes</code> and then click on <code>Edit in settings.json</code>. Use <code>Ctrl+F</code> to locate <code>latex-workshop.latex.recipes</code> in settings.json and add a new compilation chain as follows, making sure not to miss the trailing <code>,</code>:</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xelatex -&gt; bibtex -&gt; xelatex*2&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;tools&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;xelatexmk&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;bibtex&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;xelatexmk&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;xelatexmk&quot;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<details class="note success"><summary><p>Why Multiple XeLaTeX Compilations?</p>
+</summary>
+<p>In LaTeX’s compilation chain, it’s common to perform two <code>xelatex</code> compilations for documents that involve bibliographic references (using <code>bibtex</code> or <code>biblatex</code>). Here’s why two <code>xelatex</code> compilations are typically necessary:</p>
+<ol>
+<li>First <code>xelatex</code> Compilation:<ul>
+<li>The first compilation is primarily for processing the document’s content, generating reference labels, and inserting placeholders for citations.</li>
+<li>When you use the <code>\cite{key}</code> command to reference a bibliography entry, the first compilation inserts placeholders like <code>[?]</code> to indicate the citation’s position.</li>
+<li>This step also generates an auxiliary file (usually a <code>.aux</code> file) that contains information about the citations.</li>
+</ul>
+</li>
+<li>Running <code>bibtex</code>:<ul>
+<li>Next, you run the <code>bibtex</code> tool, which reads the citation information from the <code>.aux</code> file and generates the reference list and detailed citation information based on your BibTeX database (typically a <code>.bib</code> file).</li>
+<li>The information generated by <code>bibtex</code> is stored in a <code>.bbl</code> file.</li>
+</ul>
+</li>
+<li>Second <code>xelatex</code> Compilation:<ul>
+<li>The purpose of the second compilation is to insert the generated reference list and detailed citations into the document to replace the placeholders.</li>
+<li>During this compilation, LaTeX knows the details of each citation and formats them correctly in the document.</li>
+<li>This compilation also updates the citation labels in the document.</li>
+</ul>
+</li>
+<li>Third <code>xelatex</code> Compilation (Optional):<ul>
+<li>If your document contains cross-references (such as referencing sections or figures), you may need to run <code>xelatex</code> again to ensure all cross-reference numbers are correct.</li>
+</ul>
+</li>
+</ol>
+<p>So, the multiple <code>xelatex</code> compilations are necessary to ensure that the bibliographic citations and reference list are correctly integrated into the document. This is the standard workflow for handling citations in LaTeX. In some cases, if there are no cross-references or if citations do not affect other parts of the document, only two compilations may be needed without the third.</p>
+<blockquote>
+<p>By ChatGPT</p>
+</blockquote>
+
+</details>
+
+<h2 id="Default-Recipe"><a href="#Default-Recipe" class="headerlink" title="Default Recipe"></a>Default Recipe</h2><p>This option defines the default recipe to be used when no other compilation recipe is explicitly specified, including the automatic compilation set earlier.</p>
+<p><img data-src="https://s2.loli.net/2023/10/06/9CUzAGhcZfNVlLS.webp" alt="Default Recipe.webp"></p>
+<p>Search for <code>latex recipe default</code>, and adjust the <code>Latex-workshop &gt; Latex &gt; Recipe: Default</code> option. I recommend choosing <code>lastUsed</code>.</p>
+<ul>
+<li><code>first</code>: The first compilation option in the configuration file.</li>
+<li><code>lastUsed</code>: The compilation option used last time.</li>
+</ul>
+<h2 id="Disable-Warning-amp-Error-Message"><a href="#Disable-Warning-amp-Error-Message" class="headerlink" title="Disable Warning &amp; Error Message"></a>Disable Warning &amp; Error Message</h2><p>By default, VSCode displays message pop-ups in the lower-right corner when the build fails, which need to be manually closed. Since these messages are also visible in the terminal, you can choose to disable these pop-ups.</p>
+<p>Search for <code>latex message show</code> and uncheck the <code>Latex-workshop &gt; Message &gt; Error: Show</code> and <code>Latex-workshop &gt; Message &gt; Warning: Show</code> options.</p>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/32T5rc7sRSaAHGf.webp" alt="Warning Message.webp"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/iTOLUpPYsIFB8l4.webp" alt="Error Message.webp"></div></div></div>
+
+<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><p>When you open a <code>.tex</code> file using VSCode, you will see a TEX option in the left sidebar. You can use this option to select compilation options and view the PDF output, among other operations.</p>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/JMpIfran4KEuPic.webp" alt="Build.webp"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/XGPqzkKINi4AQ6d.webp" alt="PDF&amp;Log.webp"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/v9HR26jTgBYypld.webp" alt="Navigate.webp"></div><div class="group-picture-column"><img data-src="https://s2.loli.net/2023/10/06/AiMrFKVxwI3g19P.webp" alt="Citation.webp"></div></div></div>
+
+<blockquote>
+<p>References:</p>
+<ol>
+<li><a href="https://zhuanlan.zhihu.com/p/166523064">Visual Studio Code (vscode)配置LaTeX</a> by <a href="https://www.zhihu.com/people/Ali-loner">Ali-loner</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/108095566">VS Code + LaTeX</a> by <a href="https://www.zhihu.com/people/Thesharing">柏星</a></li>
+<li><a href="https://github.com/James-Yu/LaTeX-Workshop/wiki">LaTeX Workshop Wiki</a> by <a href="https://github.com/James-Yu">James Yu</a></li>
+</ol>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Coding</category>
+      </categories>
+      <tags>
+        <tag>VSCode</tag>
+        <tag>LaTeX</tag>
       </tags>
   </entry>
   <entry>
@@ -5514,126 +5756,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Export Outlook Emails</title>
-    <url>/en/outlook-export.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">After graduating, there are no more Outlook deadline reminders, and life is quite relaxing. However, the school's account will be deactivated in June (it's approaching quickly), so let's take advantage of the remaining time to export the emails as a keepsake.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<h1 id="Exporting"><a href="#Exporting" class="headerlink" title="Exporting"></a>Exporting</h1><p>Start by opening Outlook’s ‘Options’ (click on ‘File’ in the upper left corner, then choose ‘Options’ in the lower-left corner). Next, click on ‘Advanced’ and then ‘Export.’<br><img data-src="https://s2.loli.net/2022/05/25/SpfZscu2qKrGhFY.png" alt="Options"></p>
-<p>Select ‘Export to a file’ and then click ‘Next.’<br><img data-src="https://s2.loli.net/2022/05/25/xhowU4E6HMlgFzL.png" alt="Import and Export Wizard"></p>
-<p>Choose ‘Outlook Data File (.pst)’ and click ‘Next.’<br><img data-src="https://s2.loli.net/2022/05/25/Urat5VqPMETOHpS.png" alt="Export to a File"></p>
-<p>Select the content you want to export. If you want to export everything, choose the topmost email address, and then click ‘Next.’<br><img data-src="https://s2.loli.net/2022/05/25/HqKQLYjk6MEUTFx.png" alt="Export Outlook Data File"></p>
-<p>Choose the location where you want to export the file, and then click ‘Finish.’<br><img data-src="https://s2.loli.net/2022/05/25/4YWkOsjAPcnLJaw.png" alt="Select Export File Location"></p>
-<p>Next, you can ‘Create a password for the data file’ if desired.<br><img data-src="https://s2.loli.net/2022/05/25/pAUZCEXmy4M31Vu.png" alt="Add Optional Password"><br><img data-src="https://s2.loli.net/2022/05/25/gUwv1VXuiNjczHI.png" alt="Enter Password"></p>
-<p>At this point, the export process is complete.</p>
-<h1 id="Adding-an-Email-Alias"><a href="#Adding-an-Email-Alias" class="headerlink" title="Adding an Email Alias"></a>Adding an Email Alias</h1><p>After exporting, if you want to import it into your own mailbox (which is a bit whimsical, as you can simply forward all emails to your own mailbox), but if your Microsoft account is registered with a different email, and you have been given a random and unattractive Outlook address, you may want to add an alias.</p>
-<p>Here, I’m using the web version of Outlook. Start by clicking on the settings in the upper right corner, then at the bottom of the right sidebar, click on ‘View all Outlook settings’ in the popup.<br><img data-src="https://s2.loli.net/2022/05/25/WVwLSFP4zClypRG.png" alt="Manage or Choose Primary Alias"></p>
-<p>On the page that opens, select ‘Add email.’<br><img data-src="https://s2.loli.net/2022/05/25/TC2OgrAsRNkYxdl.png" alt="Add Email"></p>
-<p>Adding the alias is now complete.<br><img data-src="https://s2.loli.net/2022/05/25/CGNFuAjmw1YH8qR.png" alt="Add Alias"></p>
-<h1 id="Importing"><a href="#Importing" class="headerlink" title="Importing"></a>Importing</h1><p>Start by clicking on ‘File’ in the upper left corner, then select ‘Open &amp; Export’ - ‘Open Outlook Data File.’<br><img data-src="https://s2.loli.net/2022/05/25/4bJTqcYNexEfs5m.png" alt="Open Outlook Data File"></p>
-<p>Choose ‘Import from another program or file,’ and then simply follow the prompts, entering the password if you set one earlier.<br><img data-src="https://s2.loli.net/2022/05/25/VB5IcH4zpbAo3Rr.png" alt="Import Wizard"></p>
-]]></content>
-      <categories>
-        <category>Geek</category>
-      </categories>
-      <tags>
-        <tag>Outlook</tag>
-        <tag>Backup</tag>
-        <tag>Study in UK</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Common Commands for npm</title>
-    <url>/en/npm.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">A collection of npm commands, as well as commands commonly used for Next theme upgrades.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from <a href="https://siriusq.top/npm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html">my Chinese blog post</a> with the aid of ChatGpt.</p>
-</div>
-
-<p>npm is the default package manager for the JavaScript runtime environment Node.js.</p>
-<h1 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h1><div class="note primary"><p>Reference: <a class="btn" href="https://segmentfault.com/a/1190000019141975"><i class="fa fa-blog fa-fw"></i>jm365</a></p></div>
-
-<h2 id="Help"><a href="#Help" class="headerlink" title="Help"></a>Help</h2><ul>
-<li><code>npm -l</code> View usage information for all commands.</li>
-<li><code>npm &lt;command&gt; -h</code> View usage information for a specific command.</li>
-<li><code>npm help &lt;command&gt;</code> View detailed usage information for a specific command.</li>
-<li><code>npm -v</code> View the installed version of npm.</li>
-<li><code>npm config list -l</code> View the configuration settings for npm.</li>
-<li><code>npm ls</code> View all locally installed modules.</li>
-<li><code>npm ls -g</code> View all globally installed modules.</li>
-<li><code>npm ls &lt;moduleName&gt;</code> View the local installation status of a specific module.</li>
-<li><code>npm ls &lt;moduleName&gt; -g</code> View the global installation status of a specific module.</li>
-<li><code>npm view &lt;moduleName&gt;</code> View information about a specific module in the current registry.</li>
-<li><code>npm view &lt;moduleName&gt; versions</code> View all historical versions of a specific module in the current registry.</li>
-<li><code>npm view &lt;moduleName&gt; version</code> View the latest version of a specific module in the current registry.</li>
-</ul>
-<h2 id="Creating-a-Project"><a href="#Creating-a-Project" class="headerlink" title="Creating a Project"></a>Creating a Project</h2><ul>
-<li><code>npm init</code> Initialize a project in the current directory.</li>
-</ul>
-<h2 id="Installation-x2F-Uninstallation"><a href="#Installation-x2F-Uninstallation" class="headerlink" title="Installation&#x2F;Uninstallation"></a>Installation&#x2F;Uninstallation</h2><ul>
-<li><code>npm i/install &lt;moduleName&gt;</code> Install a module; both <code>i</code> and <code>install</code> have the same function.</li>
-<li><code>npm i &lt;moduleName&gt;@x.x.x</code> Install a specific version of a module.</li>
-<li><code>npm i &lt;moduleName&gt; --save</code> Install and save to the <code>dependencies</code> in the <code>package.json</code> file.</li>
-<li><code>npm i &lt;moduleName&gt; --save-dev</code> Install and save to the <code>devDependencies</code> in the <code>package.json</code> file.</li>
-<li><code>npm i &lt;moduleName&gt; -g</code> Globally install a module.</li>
-</ul>
-<h2 id="Uninstallation"><a href="#Uninstallation" class="headerlink" title="Uninstallation"></a>Uninstallation</h2><ul>
-<li><code>npm uninstall &lt;moduleName&gt;</code> Uninstall a specified local module.</li>
-<li><code>npm uninstall &lt;moduleName&gt; -g</code> Uninstall a specified global module.</li>
-</ul>
-<h2 id="Updating"><a href="#Updating" class="headerlink" title="Updating"></a>Updating</h2><ul>
-<li><code>npm update</code> Update modules according to the descriptions in <code>package.json</code>, and save the updated version descriptions to <code>package.json</code>. <code>^a.b.c</code> updates to the latest version under <code>a</code>, <code>~a.b.c</code> updates to the latest version under <code>a.b</code>, and <code>a.b.c</code> won’t be updated.</li>
-<li><code>npm update &lt;moduleName&gt;</code> Update a specified local module.</li>
-<li><code>npm update &lt;moduleName&gt;@x.x.x</code> Update a specified local module to a specific version.</li>
-<li><code>npm update &lt;moduleName&gt; -g</code> Update a specified global module.</li>
-<li><code>npm update &lt;moduleName&gt;@x.x.x -g</code> Update a specified global module to a specific version.</li>
-</ul>
-<h2 id="npm-Registry"><a href="#npm-Registry" class="headerlink" title="npm Registry"></a>npm Registry</h2><ul>
-<li><code>npm config get registry</code> View the current npm registry address.</li>
-<li><code>npm config set registry &lt;registryAddress&gt;</code> Set the npm registry to the specified address.</li>
-</ul>
-<h1 id="Introduction-to-package-json"><a href="#Introduction-to-package-json" class="headerlink" title="Introduction to package.json"></a>Introduction to package.json</h1><p>The <code>package.json</code> file is the manifest of your project, where <code>npm</code> and <code>yarn</code> store the names and versions of all installed packages. The <code>npm install</code> command uses it to download the required modules. Below are explanations of fields in <code>package.json</code>.</p>
-<ul>
-<li><code>version</code> indicates the current version.</li>
-<li><code>name</code> sets the name of the application&#x2F;package.</li>
-<li><code>description</code> provides a short description of the application&#x2F;package.</li>
-<li><code>main</code> specifies the entry point of the application.</li>
-<li><code>private</code> if set to true, prevents accidental publishing of the application&#x2F;package to npm.</li>
-<li><code>scripts</code> defines a set of runnable Node.js scripts.</li>
-<li><code>dependencies</code> lists npm packages installed as dependencies.</li>
-<li><code>devDependencies</code> lists npm packages installed as development dependencies.</li>
-<li><code>engines</code> specifies the versions of Node.js this package&#x2F;application runs on.</li>
-<li><code>browserslist</code> indicates which browsers (and versions) to support.</li>
-</ul>
-<h1 id="Common-Commands-for-Theme-Upgrades"><a href="#Common-Commands-for-Theme-Upgrades" class="headerlink" title="Common Commands for Theme Upgrades"></a>Common Commands for Theme Upgrades</h1><p>List installed packages:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm ls</span><br></pre></td></tr></table></figure>
-
-<p>Check for packages that need an update:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm-check</span><br></pre></td></tr></table></figure>
-
-<p>Upgrade a theme to the latest version:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-theme-next@latest</span><br></pre></td></tr></table></figure>
-
-<p>Or:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm update hexo-theme-next</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Coding</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Next</tag>
-        <tag>npm</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Next Theme Customization (Version 7.10)</title>
     <url>/en/next-theme-customization.html</url>
     <content><![CDATA[<p>The blog theme has been changed to <a href="https://github.com/theme-next/hexo-theme-next">Next</a>. This blog post is only applicable to the Next 7.10 theme.<br><img data-src="https://s2.loli.net/2022/05/13/wn7zegYd1hSMAqQ.jpg" alt="201904121"></p>
@@ -6161,6 +6283,126 @@
       </tags>
   </entry>
   <entry>
+    <title>Common Commands for npm</title>
+    <url>/en/npm.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">A collection of npm commands, as well as commands commonly used for Next theme upgrades.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from <a href="https://siriusq.top/npm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html">my Chinese blog post</a> with the aid of ChatGpt.</p>
+</div>
+
+<p>npm is the default package manager for the JavaScript runtime environment Node.js.</p>
+<h1 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h1><div class="note primary"><p>Reference: <a class="btn" href="https://segmentfault.com/a/1190000019141975"><i class="fa fa-blog fa-fw"></i>jm365</a></p></div>
+
+<h2 id="Help"><a href="#Help" class="headerlink" title="Help"></a>Help</h2><ul>
+<li><code>npm -l</code> View usage information for all commands.</li>
+<li><code>npm &lt;command&gt; -h</code> View usage information for a specific command.</li>
+<li><code>npm help &lt;command&gt;</code> View detailed usage information for a specific command.</li>
+<li><code>npm -v</code> View the installed version of npm.</li>
+<li><code>npm config list -l</code> View the configuration settings for npm.</li>
+<li><code>npm ls</code> View all locally installed modules.</li>
+<li><code>npm ls -g</code> View all globally installed modules.</li>
+<li><code>npm ls &lt;moduleName&gt;</code> View the local installation status of a specific module.</li>
+<li><code>npm ls &lt;moduleName&gt; -g</code> View the global installation status of a specific module.</li>
+<li><code>npm view &lt;moduleName&gt;</code> View information about a specific module in the current registry.</li>
+<li><code>npm view &lt;moduleName&gt; versions</code> View all historical versions of a specific module in the current registry.</li>
+<li><code>npm view &lt;moduleName&gt; version</code> View the latest version of a specific module in the current registry.</li>
+</ul>
+<h2 id="Creating-a-Project"><a href="#Creating-a-Project" class="headerlink" title="Creating a Project"></a>Creating a Project</h2><ul>
+<li><code>npm init</code> Initialize a project in the current directory.</li>
+</ul>
+<h2 id="Installation-x2F-Uninstallation"><a href="#Installation-x2F-Uninstallation" class="headerlink" title="Installation&#x2F;Uninstallation"></a>Installation&#x2F;Uninstallation</h2><ul>
+<li><code>npm i/install &lt;moduleName&gt;</code> Install a module; both <code>i</code> and <code>install</code> have the same function.</li>
+<li><code>npm i &lt;moduleName&gt;@x.x.x</code> Install a specific version of a module.</li>
+<li><code>npm i &lt;moduleName&gt; --save</code> Install and save to the <code>dependencies</code> in the <code>package.json</code> file.</li>
+<li><code>npm i &lt;moduleName&gt; --save-dev</code> Install and save to the <code>devDependencies</code> in the <code>package.json</code> file.</li>
+<li><code>npm i &lt;moduleName&gt; -g</code> Globally install a module.</li>
+</ul>
+<h2 id="Uninstallation"><a href="#Uninstallation" class="headerlink" title="Uninstallation"></a>Uninstallation</h2><ul>
+<li><code>npm uninstall &lt;moduleName&gt;</code> Uninstall a specified local module.</li>
+<li><code>npm uninstall &lt;moduleName&gt; -g</code> Uninstall a specified global module.</li>
+</ul>
+<h2 id="Updating"><a href="#Updating" class="headerlink" title="Updating"></a>Updating</h2><ul>
+<li><code>npm update</code> Update modules according to the descriptions in <code>package.json</code>, and save the updated version descriptions to <code>package.json</code>. <code>^a.b.c</code> updates to the latest version under <code>a</code>, <code>~a.b.c</code> updates to the latest version under <code>a.b</code>, and <code>a.b.c</code> won’t be updated.</li>
+<li><code>npm update &lt;moduleName&gt;</code> Update a specified local module.</li>
+<li><code>npm update &lt;moduleName&gt;@x.x.x</code> Update a specified local module to a specific version.</li>
+<li><code>npm update &lt;moduleName&gt; -g</code> Update a specified global module.</li>
+<li><code>npm update &lt;moduleName&gt;@x.x.x -g</code> Update a specified global module to a specific version.</li>
+</ul>
+<h2 id="npm-Registry"><a href="#npm-Registry" class="headerlink" title="npm Registry"></a>npm Registry</h2><ul>
+<li><code>npm config get registry</code> View the current npm registry address.</li>
+<li><code>npm config set registry &lt;registryAddress&gt;</code> Set the npm registry to the specified address.</li>
+</ul>
+<h1 id="Introduction-to-package-json"><a href="#Introduction-to-package-json" class="headerlink" title="Introduction to package.json"></a>Introduction to package.json</h1><p>The <code>package.json</code> file is the manifest of your project, where <code>npm</code> and <code>yarn</code> store the names and versions of all installed packages. The <code>npm install</code> command uses it to download the required modules. Below are explanations of fields in <code>package.json</code>.</p>
+<ul>
+<li><code>version</code> indicates the current version.</li>
+<li><code>name</code> sets the name of the application&#x2F;package.</li>
+<li><code>description</code> provides a short description of the application&#x2F;package.</li>
+<li><code>main</code> specifies the entry point of the application.</li>
+<li><code>private</code> if set to true, prevents accidental publishing of the application&#x2F;package to npm.</li>
+<li><code>scripts</code> defines a set of runnable Node.js scripts.</li>
+<li><code>dependencies</code> lists npm packages installed as dependencies.</li>
+<li><code>devDependencies</code> lists npm packages installed as development dependencies.</li>
+<li><code>engines</code> specifies the versions of Node.js this package&#x2F;application runs on.</li>
+<li><code>browserslist</code> indicates which browsers (and versions) to support.</li>
+</ul>
+<h1 id="Common-Commands-for-Theme-Upgrades"><a href="#Common-Commands-for-Theme-Upgrades" class="headerlink" title="Common Commands for Theme Upgrades"></a>Common Commands for Theme Upgrades</h1><p>List installed packages:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm ls</span><br></pre></td></tr></table></figure>
+
+<p>Check for packages that need an update:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm-check</span><br></pre></td></tr></table></figure>
+
+<p>Upgrade a theme to the latest version:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-theme-next@latest</span><br></pre></td></tr></table></figure>
+
+<p>Or:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm update hexo-theme-next</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Coding</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Next</tag>
+        <tag>npm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Export Outlook Emails</title>
+    <url>/en/outlook-export.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">After graduating, there are no more Outlook deadline reminders, and life is quite relaxing. However, the school's account will be deactivated in June (it's approaching quickly), so let's take advantage of the remaining time to export the emails as a keepsake.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<h1 id="Exporting"><a href="#Exporting" class="headerlink" title="Exporting"></a>Exporting</h1><p>Start by opening Outlook’s ‘Options’ (click on ‘File’ in the upper left corner, then choose ‘Options’ in the lower-left corner). Next, click on ‘Advanced’ and then ‘Export.’<br><img data-src="https://s2.loli.net/2022/05/25/SpfZscu2qKrGhFY.png" alt="Options"></p>
+<p>Select ‘Export to a file’ and then click ‘Next.’<br><img data-src="https://s2.loli.net/2022/05/25/xhowU4E6HMlgFzL.png" alt="Import and Export Wizard"></p>
+<p>Choose ‘Outlook Data File (.pst)’ and click ‘Next.’<br><img data-src="https://s2.loli.net/2022/05/25/Urat5VqPMETOHpS.png" alt="Export to a File"></p>
+<p>Select the content you want to export. If you want to export everything, choose the topmost email address, and then click ‘Next.’<br><img data-src="https://s2.loli.net/2022/05/25/HqKQLYjk6MEUTFx.png" alt="Export Outlook Data File"></p>
+<p>Choose the location where you want to export the file, and then click ‘Finish.’<br><img data-src="https://s2.loli.net/2022/05/25/4YWkOsjAPcnLJaw.png" alt="Select Export File Location"></p>
+<p>Next, you can ‘Create a password for the data file’ if desired.<br><img data-src="https://s2.loli.net/2022/05/25/pAUZCEXmy4M31Vu.png" alt="Add Optional Password"><br><img data-src="https://s2.loli.net/2022/05/25/gUwv1VXuiNjczHI.png" alt="Enter Password"></p>
+<p>At this point, the export process is complete.</p>
+<h1 id="Adding-an-Email-Alias"><a href="#Adding-an-Email-Alias" class="headerlink" title="Adding an Email Alias"></a>Adding an Email Alias</h1><p>After exporting, if you want to import it into your own mailbox (which is a bit whimsical, as you can simply forward all emails to your own mailbox), but if your Microsoft account is registered with a different email, and you have been given a random and unattractive Outlook address, you may want to add an alias.</p>
+<p>Here, I’m using the web version of Outlook. Start by clicking on the settings in the upper right corner, then at the bottom of the right sidebar, click on ‘View all Outlook settings’ in the popup.<br><img data-src="https://s2.loli.net/2022/05/25/WVwLSFP4zClypRG.png" alt="Manage or Choose Primary Alias"></p>
+<p>On the page that opens, select ‘Add email.’<br><img data-src="https://s2.loli.net/2022/05/25/TC2OgrAsRNkYxdl.png" alt="Add Email"></p>
+<p>Adding the alias is now complete.<br><img data-src="https://s2.loli.net/2022/05/25/CGNFuAjmw1YH8qR.png" alt="Add Alias"></p>
+<h1 id="Importing"><a href="#Importing" class="headerlink" title="Importing"></a>Importing</h1><p>Start by clicking on ‘File’ in the upper left corner, then select ‘Open &amp; Export’ - ‘Open Outlook Data File.’<br><img data-src="https://s2.loli.net/2022/05/25/4bJTqcYNexEfs5m.png" alt="Open Outlook Data File"></p>
+<p>Choose ‘Import from another program or file,’ and then simply follow the prompts, entering the password if you set one earlier.<br><img data-src="https://s2.loli.net/2022/05/25/VB5IcH4zpbAo3Rr.png" alt="Import Wizard"></p>
+]]></content>
+      <categories>
+        <category>Geek</category>
+      </categories>
+      <tags>
+        <tag>Outlook</tag>
+        <tag>Backup</tag>
+        <tag>Study in UK</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PTE Incomplete Guide</title>
     <url>/en/pte-pte-incomplete-guide.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">I completed the PTE test at Wuhan Hubei University test center on December 27th. After waiting for three days, my scores were released, and you can find my scorecard below. I successfully met the entry requirements for the University of Glasgow. I want to share my preparation experience with you all, and I wish everyone a quick farewell to language exams (IELTS is just a terrible ex, anyway).</blockquote>
@@ -6407,321 +6649,6 @@
       <tags>
         <tag>Study in UK</tag>
         <tag>PTE</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ryzen Hackintosh</title>
-    <url>/en/ryzen-hackintosh.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">After three days of tinkering, I finally managed to successfully install macOS on my PC. I bought a salvaged Apple Wi-Fi card on a popular e-commerce platform, and it works almost perfectly. The installed system is macOS High Sierra (10.13.6 17G65), and yes, I'm writing this article on macOS (feeling proud.jpg).</blockquote>
-
-<p><img data-src="https://s2.loli.net/2022/05/13/TX95J8QoaSFbUHV.jpg" alt="1"></p>
-<p>The method of installing Hackintosh on Ryzen is Vanilla, which involves modifying the config.plist file to achieve a Hackintosh setup. After all, Apple primarily uses Intel processors, so the methods in this article only support certain AMD CPUs.</p>
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<p>The advantage of using this method to install Hackintosh is that you can use features like iMessage, FaceTime, Handoff, and Siri. The drawback is that 32-bit applications cannot be used.</p>
-<p>This method requires downloading several files, so it’s recommended to create a folder to store the related files.</p>
-<p>First, let’s introduce the configuration of the desktop computer. Originally, I wanted to use an NVMe SSD, but the motherboard’s second M.2 slot was not fully functional, so I switched to a more convenient SATA SSD.</p>
-<ul>
-<li>CPU: AMD Ryzen 1700</li>
-<li>GPU: NVIDIA GTX 1060 6GB</li>
-<li>Motherboard: ASRock X370 Killer SLI</li>
-<li>RAM: Apacer Blade 8G*2 DDR4 3000</li>
-<li>SSD1: Samsung SM961 256G (Windows 10)</li>
-<li>SSD2: Plextor M8VG 256G (MacOS)</li>
-<li>HDD: Seagate ST2000DM008 2T</li>
-<li>Bluetooth + Wi-Fi Card: BCM943602CS (a salvaged card from Apple MacBook Pro, plug and play)</li>
-</ul>
-<h1 id="Creating-the-Installation-USB-Drive"><a href="#Creating-the-Installation-USB-Drive" class="headerlink" title="Creating the Installation USB Drive"></a>Creating the Installation USB Drive</h1><h2 id="Preparations"><a href="#Preparations" class="headerlink" title="Preparations"></a>Preparations</h2><p>To create an installation USB drive, you’ll need the following items:</p>
-<ul>
-<li>gibMacOS: A program written in Python for downloading macOS components directly from Apple <a class="btn" href="https://github.com/corpnewt/gibMacOS">Download from Github</a></li>
-<li>AMD Vanilla: Kernel patches for AMD CPUs <a class="btn" href="https://github.com/AMD-OSX/AMD_Vanilla">Download from Github</a></li>
-<li>A USB drive with a capacity of at least <strong>8GB</strong>, USB 3.0 is recommended for faster speeds</li>
-<li>Wired internet connection</li>
-</ul>
-<p>Note that gibMacOS requires a <strong>Python</strong> environment, which you will need to set up yourself or find instructions online.</p>
-<p>AMD Vanilla files are divided into two categories: 15h_16h for FX series and A series CPUs, and 17h for Ryzen, Threadripper, and Athlon 2xxGE series processors. Download the appropriate files based on your CPU model.</p>
-<h2 id="Download-macOS-Installer"><a href="#Download-macOS-Installer" class="headerlink" title="Download macOS Installer"></a>Download macOS Installer</h2><p>Open the <code>gibMacOS</code> folder and run the <code>gibMacOS</code> script. Choose the macOS version you want to install by entering the corresponding number before the version and pressing Enter. The script will start downloading the macOS installer and create a folder structure like <code>gibMacOS/macos Downloads/publicrelease/version</code> in the same directory.</p>
-<ul>
-<li>The official guide suggests entering ‘r’ before selecting the version to speed up the download, but in practice, it doesn’t make a significant difference, and the download is usually quite fast.</li>
-<li>After the download is complete, you’ll see a prompt. If there are any entries under ‘Failed,’ it means those components failed to download, and you may need to run the program again to retry. If it still doesn’t work, consider using a VPN for better success.</li>
-</ul>
-<h2 id="Create-the-USB-Installation-Drive"><a href="#Create-the-USB-Installation-Drive" class="headerlink" title="Create the USB Installation Drive"></a>Create the USB Installation Drive</h2><ul>
-<li>Open the <code>gibMacOS</code> folder and run the <code>MakeInstall</code> script with administrator privileges. The first run will download necessary dependencies, but the download speed may be slow or fail, so you might need a VPN.</li>
-<li>After the download is complete, you’ll be asked to select your USB device. Enter the corresponding number next to your USB drive, and press Enter. Confirm that the selection is correct, and enter ‘y’ and press Enter. Make sure you double-check, as the selected disk will be formatted.</li>
-<li>After formatting, you’ll be prompted to enter the path to the previously downloaded macOS installer. Simply copy and paste the download path and press Enter.</li>
-<li>The writing process takes some time, so be patient. After it’s completed, press Enter and close the script.</li>
-</ul>
-<h1 id="Clover-Configuration"><a href="#Clover-Configuration" class="headerlink" title="Clover Configuration"></a>Clover Configuration</h1><p>After the burning process, you will see a disk named ‘CLOVER’ in your file manager. However, it is not complete yet; you need to add kernel patches and driver files.</p>
-<h2 id="CPU-Kernel-Patch"><a href="#CPU-Kernel-Patch" class="headerlink" title="CPU Kernel Patch"></a>CPU Kernel Patch</h2><p>Copy the <code>config.plist</code> from the downloaded AMD Vanilla corresponding to your version and paste it into the <code>CLOVER/EFI/CLOVER</code> directory. Replace the existing file. You will frequently use this file after installation.</p>
-<h2 id="Bootloader-Patch"><a href="#Bootloader-Patch" class="headerlink" title="Bootloader Patch"></a>Bootloader Patch</h2><p>Depending on the boot method, there are two categories: Legacy and UEFI.</p>
-<ul>
-<li>First, open the <code>CLOVER/EFI/CLOVER/drivers64UEFI</code> folder (or <code>CLOVER/EFI/CLOVER/drivers</code> if not present).</li>
-<li>For UEFI boot, delete the <code>BIOS</code> and <code>off</code> folders. Then, delete all files in the <code>UEFI</code> folder except <code>APFSDriverLoader.efi</code>, <code>HFSPlus.efi</code>, and <code>AptioMemoryFix.efi</code>. Copy these three files to the parent directory.</li>
-<li>For Legacy boot, delete the <code>UEFI</code> and <code>off</code> folders. Then, delete all files in the <code>BIOS</code> folder except <code>APFSDriverLoader</code> and <code>HFSPlus</code>. Copy these two files to the parent directory.</li>
-</ul>
-<h2 id="Kext-Driver-Patch"><a href="#Kext-Driver-Patch" class="headerlink" title="Kext Driver Patch"></a>Kext Driver Patch</h2><p>Kext files are macOS kernel extensions commonly used in Hackintosh (macOS on non-Apple hardware). They are typically used for device drivers and run in the core of the system.</p>
-<p>For this part, you will need to identify your hardware model and Google the required driver file names. The following files are usually sufficient. Files from GitHub should be downloaded from the ‘release’ section.</p>
-<p><strong>After extracting all downloaded files, place them in the <code>CLOVER/EFI/CLOVER/kext/Other</code> directory. Additionally, delete the <code>FakeSMC.kext</code> file in that directory.</strong></p>
-<h3 id="Essential-Files"><a href="#Essential-Files" class="headerlink" title="Essential Files"></a>Essential Files</h3><ul>
-<li><code>VirtualSMC.kext</code>: This file emulates the real SMC functionality on a Mac, making the system think it’s a genuine Mac. Without it, Hackintosh won’t work. <a class="btn" href="https://github.com/acidanthera/VirtualSMC/releases/download/1.0.7/VirtualSMC-1.0.7-RELEASE.zip">Download 1.0.7</a></li>
-<li><code>NullCPUPowerManagement.kext</code>: This file disables CPU power management, which is designed for Intel CPUs. AMD platforms do not support this program. You can find a usable file from <a href="https://space.bilibili.com/319160358?spm_id_from=333.788.b_765f7570696e666f.1">某某大神_</a> <a class="btn" href="https://github.com/corpnewt/NullCPUPowerManagement">Download from Lanzou</a></li>
-</ul>
-<h3 id="Network-Cards"><a href="#Network-Cards" class="headerlink" title="Network Cards"></a>Network Cards</h3><ul>
-<li><a href="https://github.com/Mieze/IntelMausiEthernet">IntelMausiEthernet.kext</a>: For most newer Intel network cards.</li>
-<li><a href="https://sourceforge.net/projects/osx86drivers/">AppleIntelE1000e.kext</a>: For older Intel network cards but may cause issues on newer ones.</li>
-<li><a href="https://github.com/Mieze/AtherosE2200Ethernet">AtherosE2200Ethernet.kext</a>: For most Atheros and Killer network cards.</li>
-<li><a href="https://github.com/Mieze/RTL8111_driver_for_OS_X">RealtekRTL8111.kext</a>: For most gigabit Realtek network cards.</li>
-<li><a href="https://github.com/Mieze/RealtekRTL8100">RealtekRTL8100.kext</a>: For 10&#x2F;100 Realtek network cards.</li>
-<li><a href="https://cdn.discordapp.com/attachments/390417931659378688/556912824228773888/SmallTree-Intel-211-AT-PCIe-GBE.kext.zip">SmallTree-Intel-211-AT-PCIe-GBE.kext</a>: For Intel I211-AT and related network cards.</li>
-<li><a href="http://down2.121down.com:8181/soft/AppleIGB.kext.zip">AppleIGB</a>: This is the one initially used, later replaced with the one above.</li>
-</ul>
-<h3 id="Graphics-Cards"><a href="#Graphics-Cards" class="headerlink" title="Graphics Cards"></a>Graphics Cards</h3><ul>
-<li><a href="https://github.com/acidanthera/WhateverGreen">Whatevergreen.kext</a>: This file fixes various graphics card issues.</li>
-<li><a href="https://github.com/acidanthera/Lilu">Lilu.kext</a>: This file is used as a loader for other files.</li>
-</ul>
-<h3 id="Wi-Fi-and-Bluetooth"><a href="#Wi-Fi-and-Bluetooth" class="headerlink" title="Wi-Fi and Bluetooth"></a>Wi-Fi and Bluetooth</h3><p>This section is only relevant if you’re using a non-native Wi-Fi card. It’s recommended to get a genuine Apple salvaged Wi-Fi card, such as BCM94360CD, BCM943602CS, or BCM94360CS2, as they work seamlessly and unlock features like Airdrop and Handoff.</p>
-<ul>
-<li><a href="https://github.com/acidanthera/AirportBrcmFixup">AirportBrcmFixup.kext</a></li>
-<li><a href="https://github.com/RehabMan/OS-X-BrcmPatchRAM">OS-X-BrcmPatchRAM</a></li>
-</ul>
-<h3 id="Audio"><a href="#Audio" class="headerlink" title="Audio"></a>Audio</h3><ul>
-<li><a href="https://github.com/acidanthera/AppleALC">AppleALC.kext</a>: This file can drive most audio cards.</li>
-</ul>
-<h3 id="Miscellaneous"><a href="#Miscellaneous" class="headerlink" title="Miscellaneous"></a>Miscellaneous</h3><p>Here’s a collection of kext files. You may need to use a VPN to access them.</p>
-<a class="btn" href="https://1drv.ms/f/s!AiP7m5LaOED-m-J8-MLJGnOgAqnjGw">Download from Onedrive</a>
-
-<p>Now your installation drive is ready, and the next step is to proceed with the installation.</p>
-<h1 id="Installation-of-the-System"><a href="#Installation-of-the-System" class="headerlink" title="Installation of the System"></a>Installation of the System</h1><p>This step may encounter various issues, such as freezing or error messages. If that happens, you can try to power off or restart (it can be a bit unpredictable), and you might need to restart multiple times.</p>
-<h2 id="BIOS-Settings"><a href="#BIOS-Settings" class="headerlink" title="BIOS Settings"></a>BIOS Settings</h2><ol>
-<li>Restart your computer and enter the BIOS (search for the shortcut key; usually F2 or DEL). Set all settings to default, save, and exit.</li>
-<li>Re-enter the BIOS and adjust the following settings. These options are for reference; I only loaded the default settings on my motherboard and disabled CSM, leaving others at Auto.<ul>
-<li>AMD-V &#x2F; SVM &#x3D; Disabled</li>
-<li>SATA Ports &#x3D; AHCI</li>
-<li>IOMMU &#x3D; Disabled</li>
-<li>APU &#x3D; Disabled</li>
-<li>HPET &#x3D; Enabled</li>
-<li>EHCI Hands-off &#x3D; Enabled</li>
-<li>XHCI Hands-off &#x3D; Enabled (ignore this if you only have USB 3.0 ports like me)</li>
-<li>Serial Port &#x3D; Disabled</li>
-<li>Parallel Port &#x3D; Disabled</li>
-<li>CSM &#x3D; Disable (for UEFI boot)</li>
-</ul>
-</li>
-<li>Save and exit. After restarting, select the <strong>USB drive</strong> as the preferred <code>Boot Device</code>. The shortcut key to do this varies depending on your motherboard; please search for it or refer to online resources.</li>
-<li>When booting from the USB drive, you’ll enter the Clover menu. Choose <code>Boot macOS Install from OS X Base System</code> and press Enter. Clover usually defaults to verbose mode, which means it will display the status as it loads. Once it completes, you’ll enter the macOS installation program. You might encounter a language selection menu; I only saw it the first time I installed macOS. For subsequent reinstallations, it was in Simplified Chinese by default.</li>
-</ol>
-<h2 id="Disk-Formatting"><a href="#Disk-Formatting" class="headerlink" title="Disk Formatting"></a>Disk Formatting</h2><p>macOS uses a journaling file system different from Windows, so you need to format the target disk before installation.</p>
-<ol>
-<li>Double-click <code>Disk Utility</code>.</li>
-<li>Click the dropdown menu in the top-left corner labeled <code>View</code> and select <code>Show All Devices</code>.</li>
-<li>Click <code>Erase</code> at the top.</li>
-<li>Select the hard drive where you want to install macOS and configure it as follows:<ul>
-<li>Name: (Set the name for your hard drive)</li>
-<li>Format: Mac OS Extended (Journaled)</li>
-<li>Scheme: GUID Partition Map</li>
-</ul>
-</li>
-<li>Click <code>Erase</code> in the bottom right corner.</li>
-<li>Close <code>Disk Utility</code>.</li>
-</ol>
-<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>During this process, you’ll need an internet connection to download components. Note that the server is overseas, so step 2 below may be somewhat unstable. If you encounter issues like <code>failed to download,</code> you may need to shut down and restart, then reformat the hard drive (you might need to format it twice; it’s a bit of a mystical issue). If possible, set up a VPN on your router for smoother downloads.</p>
-<ol>
-<li>Choose <code>Install macOS</code>, then click <code>Continue</code>.</li>
-<li>Click <code>Continue</code> again. At this point, you might receive a prompt about being unable to download something.</li>
-<li>Select the disk where you want to install macOS.</li>
-<li>Wait for about ten to fifteen minutes. After the installation is complete, your computer will automatically restart.</li>
-</ol>
-<h2 id="System-Setup"><a href="#System-Setup" class="headerlink" title="System Setup"></a>System Setup</h2><p>After rebooting, select the USB drive for booting again, enter Clover, and choose <code>Boot macOS from [Your Hard Drive&#39;s Name]</code>. Wait for the Clover verbose mode to complete, and you’ll reach the welcome page. Choose your country, keyboard settings, etc.</p>
-<ul>
-<li><strong>Transfer Information to This Mac</strong>: For now, select <code>Don&#39;t transfer any information.</code></li>
-<li><strong>Sign in with Your Apple ID</strong>: You can skip this for now, but later you might need to change your device model, and after that, sign in again.</li>
-<li><strong>Terms and Conditions</strong>: Agree to all.</li>
-<li><strong>Express Set Up</strong>: Choose <code>Set Up Later</code> and uncheck everything in <code>Analytics</code> to prevent macOS from analyzing.</li>
-</ul>
-<p>After a short wait, you’ll be inside the system.</p>
-<h1 id="System-Configuration"><a href="#System-Configuration" class="headerlink" title="System Configuration"></a>System Configuration</h1><p>We still need to boot through the installation USB drive for this step. Here, we’ll copy the EFI files from the USB drive to the boot drive, eliminating the need for the USB drive.</p>
-<p>First, you’ll need to download the following two pieces of software:</p>
-<ul>
-<li><a href="https://sourceforge.net/projects/cloverefiboot/">Clover EFI bootloader</a></li>
-<li><a href="https://mackie100projects.altervista.org/download-clover-configurator/">Clover Configurator</a></li>
-</ul>
-<h2 id="Clover-EFI-Bootloader-Configuration"><a href="#Clover-EFI-Bootloader-Configuration" class="headerlink" title="Clover EFI Bootloader Configuration"></a>Clover EFI Bootloader Configuration</h2><p>Download and install Clover EFI bootloader. Proceed with the installation and select <code>Customize</code> at the <code>Installation Type</code> step.</p>
-<p><strong>For UEFI Settings</strong></p>
-<ul>
-<li>Install only UEFI version</li>
-<li>Install Clover in the ESP</li>
-<li>In UEFI Drivers, select these three options:<ul>
-<li>AptioMemoryFix</li>
-<li>PartitionDxe</li>
-<li>ApfsLoader</li>
-</ul>
-</li>
-<li>Install RC Scripts on the target volume</li>
-</ul>
-<p><strong>For Legacy Settings</strong></p>
-<ul>
-<li>Boot0ss</li>
-<li>Clover EFI Sata</li>
-<li>Install Clover in the ESP</li>
-<li>In Bios Drivers, 64bit, select <code>ApfsLoader</code></li>
-<li>Install RC Scripts on the target volume</li>
-</ul>
-<h2 id="Replacing-EFI-Files"><a href="#Replacing-EFI-Files" class="headerlink" title="Replacing EFI Files"></a>Replacing EFI Files</h2><ol>
-<li>Download, install, and open Clover Configurator.</li>
-<li>Click on <code>Mount EFI</code> from the left-hand menu.</li>
-<li>In the bottom-right corner, find your macOS installation hard drive and click <code>Mount Partition</code> next to it.</li>
-<li>Click <code>Open Partition,</code> which will open the EFI folder.</li>
-<li>Open your installation USB drive’s <code>CLOVER</code> folder and copy its contents into the previously opened folder.</li>
-<li>You’ll receive a system prompt indicating duplicate files; click <code>Merge.</code></li>
-<li>Replace the <code>./EFI/CLOVER/config.plist</code> on your installation hard drive with the one from your USB drive.</li>
-</ol>
-<p>Now, you can reboot your system, enter the BIOS, and change the preferred boot device to your installation hard drive. You can safely remove the USB drive at this point.</p>
-<h1 id="Driver-Installation"><a href="#Driver-Installation" class="headerlink" title="Driver Installation"></a>Driver Installation</h1><p>Driver installation requires frequent use of the <code>./EFI/CLOVER/config.plist</code> file, which can be opened with Clover Configurator. After installation, restart your system for the changes to take effect.</p>
-<h2 id="Nvidia-Webdriver"><a href="#Nvidia-Webdriver" class="headerlink" title="Nvidia Webdriver"></a>Nvidia Webdriver</h2><p>I only have a GTX 1060, so I’m providing the installation package for 10-series graphics cards here. For other types, please search for the appropriate drivers.</p>
-<a class="btn" href="https://images.nvidia.com/mac/pkg/387/WebDriver-387.10.10.10.40.105.pkg">Download 387.10.10.10.40.105 (17G65)</a>
-
-<ul>
-<li>After downloading and installing, it will ask you to restart. After the restart, open <code>./EFI/CLOVER/config.plist</code>. Right-click in the <code>Arguments</code> section under <code>Boot Parameters</code> and select <code>nvda_drv=1</code>.</li>
-<li>If your screen is still lagging or tearing after the restart, it means the Webdriver is not enabled. You’ll need to find the Nvidia icon in the top bar, click on it, and select the driver from the dropdown menu. Restart to apply the changes.</li>
-</ul>
-<h2 id="Audio-1"><a href="#Audio-1" class="headerlink" title="Audio"></a>Audio</h2><p>You’ve already installed the AppleALC audio driver earlier, but you won’t have sound yet. You need to configure it in the <code>config.plist</code> file:</p>
-<ol>
-<li>Find your audio card’s folder <a href="https://github.com/acidanthera/AppleALC/tree/master/Resources">here</a>. In the folder, you’ll find files starting with <code>layout.</code> Note down any random number from one of these files.</li>
-<li>Open the <code>config.plist</code> file using Clover Configurator.</li>
-<li>Locate <code>Device Properties.</code></li>
-<li>In the top right corner, find <code>Audio.</code> Enter the number you noted down next to <code>Inject.</code></li>
-<li>Check the boxes next to <code>AFG Low Power State</code> and <code>Reset HDA.</code></li>
-</ol>
-<h2 id="USB"><a href="#USB" class="headerlink" title="USB"></a>USB</h2><p>I initially used the following method to install USB drivers, but it can cause issues when you have multiple devices connected, and Bluetooth and the camera might not work:</p>
-<ol>
-<li>Download the <a href="https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/">USBInjectALL</a> driver.</li>
-<li>After downloading, move it to the <code>./EFI/CLOVER/kext/Other</code> directory on your EFI partition.</li>
-<li>Open the <code>config.plist</code> file using Clover Configurator.</li>
-<li>Find <code>Device Properties.</code></li>
-<li>Under the <code>USB</code> section, check the following three options:<ul>
-<li>Inject</li>
-<li>Add ClockID</li>
-<li>Fix Ownership</li>
-</ul>
-</li>
-</ol>
-<p>However, for Ryzen processors, you need to use a specific USB patch. A talented developer on <a href="https://github.com/XLNCs/ryzenusbfix">GitHub</a> has created a script for this. Copy and paste the following command into Terminal, execute it, and then restart:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -s -o ~/Desktop/ryzenusbfix.sh https://raw.githubusercontent.com/XLNCs/ryzenusbfix/master/ryzenusbfix.sh &amp;&amp; chmod +x ~/Desktop/ryzenusbfix.sh &amp;&amp; ~/Desktop/ryzenusbfix.sh</span><br></pre></td></tr></table></figure>
-
-<h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2><p>This section is for reference only, as everyone’s configuration is different. Open <code>./EFI/CLOVER/config.plist</code> and, under <code>Install Drivers,</code> choose other driver files you want to load. Here, I’ve downloaded the following files from the UEFI 64-bit driver section:</p>
-<ul>
-<li>ApfsDriverLoader</li>
-<li>AptioMemoryFix</li>
-<li>EmuVariableUefi</li>
-<li>HFSPlus</li>
-<li>NTFS</li>
-<li>AudioDxe</li>
-</ul>
-<h1 id="Other-Adjustments"><a href="#Other-Adjustments" class="headerlink" title="Other Adjustments"></a>Other Adjustments</h1><h2 id="Change-Clover-Theme"><a href="#Change-Clover-Theme" class="headerlink" title="Change Clover Theme"></a>Change Clover Theme</h2><p>The default Clover boot menu is in text mode, which may not look very appealing. To enhance it with a theme, I found a nice theme on GitHub called <a href="https://github.com/burpsuite/clover_theme">Simple</a>. Here’s how to use it as an example:</p>
-<ol>
-<li>Download and unzip the theme folder, then place it in the <code>./EFI/CLOVER/theme</code> directory. Also, copy the <code>theme.plist</code> file from within the theme folder to the parent directory (the <code>theme</code> folder itself).</li>
-<li>Open the <code>./EFI/CLOVER/config.plist</code> file.</li>
-<li>Navigate to the <code>Boot Screen</code> section and enter the name of the theme, in this case, <code>Simple,</code> into the <code>Theme</code> field.</li>
-<li>Uncheck the <code>Text Mode</code> option below.</li>
-<li>Adjust the resolution as needed (there’s no 21:9 resolution, so I chose 1920x1080, which seemed to work well as it filled the screen).</li>
-</ol>
-<h2 id="Modify-CPU-Model"><a href="#Modify-CPU-Model" class="headerlink" title="Modify CPU Model"></a>Modify CPU Model</h2><p>This step is just for personal satisfaction since macOS can’t recognize Ryzen processors, resulting in the CPU showing up as <code>Unknown</code> in the <code>About This Mac</code> section. What we can do is modify the file corresponding to the <code>Unknown</code> CPU to display custom content.</p>
-<ol>
-<li>Download BBEdit or TextWrangler.</li>
-<li>Open the files in <code>/System/Library/PrivateFrameworks/AppleSystemInfo.framework/Versions/A/Resources/zh_CN.lproj/</code>.</li>
-<li>Find <code>UnknownCPUKind</code> and modify the text <code>未知</code> (Unknown) to whatever you’d like.</li>
-<li>Save the changes. Now, the CPU in <code>About This Mac</code> will display the content you entered.</li>
-</ol>
-<h2 id="Modify-Model-Identifier"><a href="#Modify-Model-Identifier" class="headerlink" title="Modify Model Identifier"></a>Modify Model Identifier</h2><p>Open <code>./EFI/CLOVER/config.plist</code> and under the <code>Model Settings</code> section, select the right-most option with up and down arrows to open a dropdown menu. Choose the model identifier that suits your system.</p>
-<h2 id="Enable-Native-NTFS-Read-x2F-Write"><a href="#Enable-Native-NTFS-Read-x2F-Write" class="headerlink" title="Enable Native NTFS Read&#x2F;Write"></a>Enable Native NTFS Read&#x2F;Write</h2><p>Currently, macOS can only read NTFS-formatted drives but can’t write to them. However, macOS does have the capability to write to NTFS drives, but it’s not enabled by default due to licensing issues (NTFS is a Microsoft format). Here’s how to enable it:</p>
-<ol>
-<li>Open Terminal and enter the command <code>diskutil list</code> to list your drives. Find the drive you want to enable for read and write access and note its <code>NAME</code>.</li>
-<li>Enter the command <code>sudo nano /etc/fstab</code> and press Enter, then enter your password.</li>
-<li>Add the line <code>LABEL=NAME none ntfs rw,auto,nobrowse</code> where <code>NAME</code> is the name of the drive you noted earlier.</li>
-<li>Use <code>Control+X</code> to exit, then press Y to confirm and Enter to save.</li>
-<li>Restart your system, and you should be able to write to the NTFS drive.</li>
-<li>If you can’t see the drive in Finder, you can create a symbolic link to it on your desktop using the command <code>sudo ln -s /Volumes/NAME ~/Desktop/NAME</code>, where <code>NAME</code> is the name of the drive.</li>
-</ol>
-<h2 id="Create-a-macOS-Virtual-Machine"><a href="#Create-a-macOS-Virtual-Machine" class="headerlink" title="Create a macOS Virtual Machine"></a>Create a macOS Virtual Machine</h2><p>This section provides an alternative method in case the installation process fails. If you prefer not to install directly on your disk, you can use a lazy method of creating a virtual machine. Here’s how I did it in the past:</p>
-<ol>
-<li>The virtual machine image is shared by <a href="https://forum.amd-osx.com/viewtopic.php?t=1899">Shamme</a> on the forum. Download and extract it using the following link:<a class="btn" href="https://hackintosher.com/wp-content/uploads/SierraAMD_VM.zip.torrent.zip">Download SierraAMD_VM.zip.torrent.zip</a></li>
-<li>Next, you’ll need to install VMware. Download and install it from the <a href="https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html">VMware official website</a>.</li>
-<li>Open VMware and click on <code>Create a New Virtual Machine.</code></li>
-<li>Select <code>Typical</code> and click Next.</li>
-<li>Check <code>I will install the operating system later</code> and click Next.</li>
-<li>For the guest operating system, select <code>Other</code> and <code>Other (64-bit).</code></li>
-<li>Edit the virtual machine name and choose its location.</li>
-<li>Set the disk size; a larger size like 60GB is recommended, but 40GB should suffice. Choose <code>Store virtual disk as a single file.</code></li>
-<li>Click Finish.</li>
-<li>Click <code>Edit Virtual Machine Settings.</code></li>
-<li>Increase the memory size to 2048MB (2GB) or more.</li>
-<li><strong>Uncheck</strong> <code>Connect at power on</code> under <code>CD/DVD (IDE).</code></li>
-<li>Click on <code>Hard Disk (IDE)</code> and then click the <code>Remove</code> button below.</li>
-<li>Click the <code>Add</code> button.</li>
-<li>Select <code>Hard Disk</code> and click Next.</li>
-<li>Choose <code>SCSI.</code></li>
-<li>Select <code>Use an existing virtual disk.</code></li>
-<li>Click <code>Browse</code> and locate the downloaded file from step 1. Open it.</li>
-<li>Click Finish.</li>
-<li>Choose <code>Keep Existing Format.</code></li>
-<li>Click <code>OK.</code></li>
-<li>Click <code>Power on this virtual machine.</code></li>
-<li>Press Enter twice and wait for it to load to the Welcome page.</li>
-<li>Check <code>Show all</code> and select <code>China,</code> then click <code>Continue.</code></li>
-<li>Choose the appropriate input method.</li>
-<li>Select <code>Don&#39;t transfer any information now.</code></li>
-<li>Click <code>Continue,</code> then choose <code>Don&#39;t use.</code></li>
-<li>Select <code>Don&#39;t sign in,</code> then choose <code>Skip.</code></li>
-<li>Click <code>Agree</code> and then click <code>Agree</code> again.</li>
-<li>Enter your username and password.</li>
-<li>Choose your time zone on the map.</li>
-<li><strong>Uncheck</strong> <code>Share Mac Analytics with Apple,</code> and wait a moment to enter the system.</li>
-</ol>
-<h2 id="About-Software"><a href="#About-Software" class="headerlink" title="About Software"></a>About Software</h2><p>Here’s a list of software I’ve gathered:</p>
-<ul>
-<li>Be cautious - <strong>CPU-S</strong>: Do not install if you have a Ryzen CPU. I tried to test CPU frequency, but it caused my system to crash and restart. After logging in, it continued to restart, and I had to reinstall the system.</li>
-<li>Cloud Sync - <strong>OneDrive</strong>: For synchronizing common documents.</li>
-<li>FTP - <strong>Transmit</strong>: Connects to various cloud services like Dropbox and Google Drive.</li>
-<li>Hardware Monitoring - <strong>iStat Menus</strong>: Monitor your system’s hardware status.</li>
-<li>Backup - <strong>Carbon Copy Cloner</strong>: Use it for backups as Time Machine tends to freeze around 400MB.</li>
-<li>Study tools? - Steam has a macOS client as well.</li>
-<li>Ad Blocker for Browsers - Safari’s <a href="https://safari-extensions.apple.com/details/?id=org.adblockplus.adblockplussafari-GRYYZR985A">Adblock Plus Extension</a>.</li>
-<li>Media Player - <strong>Movist</strong>: Unlike most media players, which are like PowerPoint for video playback, QuickTime’s format support is limited. Movist, based on QuickTime, resolves this issue.</li>
-<li>Note-taking - <strong>OneNote</strong>: Syncs seamlessly across three platforms.</li>
-<li>Uninstaller - <strong>App Cleaner</strong>: A cleaner uninstaller.</li>
-<li>Download Manager - <strong>Free Download Manager</strong>: It’s in the name, free.</li>
-<li>Video Downloader - <strong>Downie</strong>: Download YouTube videos.</li>
-<li>Window Manager - <strong>Magnet</strong>: It’s not related to torrents, but it helps manage windows. Windows has had this feature for a while, but Mac relies on third-party software.</li>
-<li>Translation - <strong>EuDic</strong>: It’s a habit; iOS can sync dictionaries.</li>
-<li>Swiss Army Knife - <strong>VS Code</strong>: Not just for coding; it’s great for Markdown too.</li>
-<li>VPN - <strong>ShadowsocksX-NG</strong>: The small plane version.</li>
-<li>3D Rendering - <strong>VRayX</strong>: For heavyweight tasks.</li>
-<li>Benchmarking - <strong>CINEBENCH</strong>: Ryzen is supposed to score high; why doesn’t it feel that way?</li>
-<li>Office Software - <strong>Office</strong>: Microsoft’s suite works better, with Keynote being the exception.</li>
-<li>Screenshot - <strong>Snipaste</strong>: Capture and annotate.</li>
-<li>Smooth Scrolling - <strong>MOS</strong>: Say goodbye to choppy mouse wheel scrolling.</li>
-<li>Cheat Sheet - <strong>Cheatsheet</strong>: Hold Command to view shortcuts.</li>
-<li>iPhone Touchpad - <strong>FullControl</strong>: Control your Mac with your iPhone.</li>
-<li>Workhorse - <strong>Xcode</strong>: If you’re installing Hackintosh, you probably want to use it.</li>
-</ul>
-<h2 id="Keyboard-Shortcuts"><a href="#Keyboard-Shortcuts" class="headerlink" title="Keyboard Shortcuts"></a>Keyboard Shortcuts</h2><p>Keyboard shortcuts can drive dual-boot users insane. On macOS, copy is <code>Command+C</code>, while on Windows, it’s <code>Ctrl+C</code>. However, the keyboard’s <code>Command</code> key corresponds to the <code>Windows</code> key.</p>
-<ul>
-<li>Most <code>Ctrl</code> shortcuts on Windows work with <code>Command</code> on macOS.</li>
-<li>Show&#x2F;Hide hidden files: <code>Command + Shift + .</code></li>
-</ul>
-<blockquote>
-<p>References: <a href="https://vanilla.amd-osx.com/">AMD OS X Vanilla</a>、<a href="https://hackintosher.com/">Hackintosher</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Hardware</category>
-      </categories>
-      <tags>
-        <tag>Hackintosh</tag>
-        <tag>Multisystem</tag>
       </tags>
   </entry>
   <entry>
@@ -7099,6 +7026,321 @@
       <tags>
         <tag>Study in UK</tag>
         <tag>PTE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ryzen Hackintosh</title>
+    <url>/en/ryzen-hackintosh.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">After three days of tinkering, I finally managed to successfully install macOS on my PC. I bought a salvaged Apple Wi-Fi card on a popular e-commerce platform, and it works almost perfectly. The installed system is macOS High Sierra (10.13.6 17G65), and yes, I'm writing this article on macOS (feeling proud.jpg).</blockquote>
+
+<p><img data-src="https://s2.loli.net/2022/05/13/TX95J8QoaSFbUHV.jpg" alt="1"></p>
+<p>The method of installing Hackintosh on Ryzen is Vanilla, which involves modifying the config.plist file to achieve a Hackintosh setup. After all, Apple primarily uses Intel processors, so the methods in this article only support certain AMD CPUs.</p>
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<p>The advantage of using this method to install Hackintosh is that you can use features like iMessage, FaceTime, Handoff, and Siri. The drawback is that 32-bit applications cannot be used.</p>
+<p>This method requires downloading several files, so it’s recommended to create a folder to store the related files.</p>
+<p>First, let’s introduce the configuration of the desktop computer. Originally, I wanted to use an NVMe SSD, but the motherboard’s second M.2 slot was not fully functional, so I switched to a more convenient SATA SSD.</p>
+<ul>
+<li>CPU: AMD Ryzen 1700</li>
+<li>GPU: NVIDIA GTX 1060 6GB</li>
+<li>Motherboard: ASRock X370 Killer SLI</li>
+<li>RAM: Apacer Blade 8G*2 DDR4 3000</li>
+<li>SSD1: Samsung SM961 256G (Windows 10)</li>
+<li>SSD2: Plextor M8VG 256G (MacOS)</li>
+<li>HDD: Seagate ST2000DM008 2T</li>
+<li>Bluetooth + Wi-Fi Card: BCM943602CS (a salvaged card from Apple MacBook Pro, plug and play)</li>
+</ul>
+<h1 id="Creating-the-Installation-USB-Drive"><a href="#Creating-the-Installation-USB-Drive" class="headerlink" title="Creating the Installation USB Drive"></a>Creating the Installation USB Drive</h1><h2 id="Preparations"><a href="#Preparations" class="headerlink" title="Preparations"></a>Preparations</h2><p>To create an installation USB drive, you’ll need the following items:</p>
+<ul>
+<li>gibMacOS: A program written in Python for downloading macOS components directly from Apple <a class="btn" href="https://github.com/corpnewt/gibMacOS">Download from Github</a></li>
+<li>AMD Vanilla: Kernel patches for AMD CPUs <a class="btn" href="https://github.com/AMD-OSX/AMD_Vanilla">Download from Github</a></li>
+<li>A USB drive with a capacity of at least <strong>8GB</strong>, USB 3.0 is recommended for faster speeds</li>
+<li>Wired internet connection</li>
+</ul>
+<p>Note that gibMacOS requires a <strong>Python</strong> environment, which you will need to set up yourself or find instructions online.</p>
+<p>AMD Vanilla files are divided into two categories: 15h_16h for FX series and A series CPUs, and 17h for Ryzen, Threadripper, and Athlon 2xxGE series processors. Download the appropriate files based on your CPU model.</p>
+<h2 id="Download-macOS-Installer"><a href="#Download-macOS-Installer" class="headerlink" title="Download macOS Installer"></a>Download macOS Installer</h2><p>Open the <code>gibMacOS</code> folder and run the <code>gibMacOS</code> script. Choose the macOS version you want to install by entering the corresponding number before the version and pressing Enter. The script will start downloading the macOS installer and create a folder structure like <code>gibMacOS/macos Downloads/publicrelease/version</code> in the same directory.</p>
+<ul>
+<li>The official guide suggests entering ‘r’ before selecting the version to speed up the download, but in practice, it doesn’t make a significant difference, and the download is usually quite fast.</li>
+<li>After the download is complete, you’ll see a prompt. If there are any entries under ‘Failed,’ it means those components failed to download, and you may need to run the program again to retry. If it still doesn’t work, consider using a VPN for better success.</li>
+</ul>
+<h2 id="Create-the-USB-Installation-Drive"><a href="#Create-the-USB-Installation-Drive" class="headerlink" title="Create the USB Installation Drive"></a>Create the USB Installation Drive</h2><ul>
+<li>Open the <code>gibMacOS</code> folder and run the <code>MakeInstall</code> script with administrator privileges. The first run will download necessary dependencies, but the download speed may be slow or fail, so you might need a VPN.</li>
+<li>After the download is complete, you’ll be asked to select your USB device. Enter the corresponding number next to your USB drive, and press Enter. Confirm that the selection is correct, and enter ‘y’ and press Enter. Make sure you double-check, as the selected disk will be formatted.</li>
+<li>After formatting, you’ll be prompted to enter the path to the previously downloaded macOS installer. Simply copy and paste the download path and press Enter.</li>
+<li>The writing process takes some time, so be patient. After it’s completed, press Enter and close the script.</li>
+</ul>
+<h1 id="Clover-Configuration"><a href="#Clover-Configuration" class="headerlink" title="Clover Configuration"></a>Clover Configuration</h1><p>After the burning process, you will see a disk named ‘CLOVER’ in your file manager. However, it is not complete yet; you need to add kernel patches and driver files.</p>
+<h2 id="CPU-Kernel-Patch"><a href="#CPU-Kernel-Patch" class="headerlink" title="CPU Kernel Patch"></a>CPU Kernel Patch</h2><p>Copy the <code>config.plist</code> from the downloaded AMD Vanilla corresponding to your version and paste it into the <code>CLOVER/EFI/CLOVER</code> directory. Replace the existing file. You will frequently use this file after installation.</p>
+<h2 id="Bootloader-Patch"><a href="#Bootloader-Patch" class="headerlink" title="Bootloader Patch"></a>Bootloader Patch</h2><p>Depending on the boot method, there are two categories: Legacy and UEFI.</p>
+<ul>
+<li>First, open the <code>CLOVER/EFI/CLOVER/drivers64UEFI</code> folder (or <code>CLOVER/EFI/CLOVER/drivers</code> if not present).</li>
+<li>For UEFI boot, delete the <code>BIOS</code> and <code>off</code> folders. Then, delete all files in the <code>UEFI</code> folder except <code>APFSDriverLoader.efi</code>, <code>HFSPlus.efi</code>, and <code>AptioMemoryFix.efi</code>. Copy these three files to the parent directory.</li>
+<li>For Legacy boot, delete the <code>UEFI</code> and <code>off</code> folders. Then, delete all files in the <code>BIOS</code> folder except <code>APFSDriverLoader</code> and <code>HFSPlus</code>. Copy these two files to the parent directory.</li>
+</ul>
+<h2 id="Kext-Driver-Patch"><a href="#Kext-Driver-Patch" class="headerlink" title="Kext Driver Patch"></a>Kext Driver Patch</h2><p>Kext files are macOS kernel extensions commonly used in Hackintosh (macOS on non-Apple hardware). They are typically used for device drivers and run in the core of the system.</p>
+<p>For this part, you will need to identify your hardware model and Google the required driver file names. The following files are usually sufficient. Files from GitHub should be downloaded from the ‘release’ section.</p>
+<p><strong>After extracting all downloaded files, place them in the <code>CLOVER/EFI/CLOVER/kext/Other</code> directory. Additionally, delete the <code>FakeSMC.kext</code> file in that directory.</strong></p>
+<h3 id="Essential-Files"><a href="#Essential-Files" class="headerlink" title="Essential Files"></a>Essential Files</h3><ul>
+<li><code>VirtualSMC.kext</code>: This file emulates the real SMC functionality on a Mac, making the system think it’s a genuine Mac. Without it, Hackintosh won’t work. <a class="btn" href="https://github.com/acidanthera/VirtualSMC/releases/download/1.0.7/VirtualSMC-1.0.7-RELEASE.zip">Download 1.0.7</a></li>
+<li><code>NullCPUPowerManagement.kext</code>: This file disables CPU power management, which is designed for Intel CPUs. AMD platforms do not support this program. You can find a usable file from <a href="https://space.bilibili.com/319160358?spm_id_from=333.788.b_765f7570696e666f.1">某某大神_</a> <a class="btn" href="https://github.com/corpnewt/NullCPUPowerManagement">Download from Lanzou</a></li>
+</ul>
+<h3 id="Network-Cards"><a href="#Network-Cards" class="headerlink" title="Network Cards"></a>Network Cards</h3><ul>
+<li><a href="https://github.com/Mieze/IntelMausiEthernet">IntelMausiEthernet.kext</a>: For most newer Intel network cards.</li>
+<li><a href="https://sourceforge.net/projects/osx86drivers/">AppleIntelE1000e.kext</a>: For older Intel network cards but may cause issues on newer ones.</li>
+<li><a href="https://github.com/Mieze/AtherosE2200Ethernet">AtherosE2200Ethernet.kext</a>: For most Atheros and Killer network cards.</li>
+<li><a href="https://github.com/Mieze/RTL8111_driver_for_OS_X">RealtekRTL8111.kext</a>: For most gigabit Realtek network cards.</li>
+<li><a href="https://github.com/Mieze/RealtekRTL8100">RealtekRTL8100.kext</a>: For 10&#x2F;100 Realtek network cards.</li>
+<li><a href="https://cdn.discordapp.com/attachments/390417931659378688/556912824228773888/SmallTree-Intel-211-AT-PCIe-GBE.kext.zip">SmallTree-Intel-211-AT-PCIe-GBE.kext</a>: For Intel I211-AT and related network cards.</li>
+<li><a href="http://down2.121down.com:8181/soft/AppleIGB.kext.zip">AppleIGB</a>: This is the one initially used, later replaced with the one above.</li>
+</ul>
+<h3 id="Graphics-Cards"><a href="#Graphics-Cards" class="headerlink" title="Graphics Cards"></a>Graphics Cards</h3><ul>
+<li><a href="https://github.com/acidanthera/WhateverGreen">Whatevergreen.kext</a>: This file fixes various graphics card issues.</li>
+<li><a href="https://github.com/acidanthera/Lilu">Lilu.kext</a>: This file is used as a loader for other files.</li>
+</ul>
+<h3 id="Wi-Fi-and-Bluetooth"><a href="#Wi-Fi-and-Bluetooth" class="headerlink" title="Wi-Fi and Bluetooth"></a>Wi-Fi and Bluetooth</h3><p>This section is only relevant if you’re using a non-native Wi-Fi card. It’s recommended to get a genuine Apple salvaged Wi-Fi card, such as BCM94360CD, BCM943602CS, or BCM94360CS2, as they work seamlessly and unlock features like Airdrop and Handoff.</p>
+<ul>
+<li><a href="https://github.com/acidanthera/AirportBrcmFixup">AirportBrcmFixup.kext</a></li>
+<li><a href="https://github.com/RehabMan/OS-X-BrcmPatchRAM">OS-X-BrcmPatchRAM</a></li>
+</ul>
+<h3 id="Audio"><a href="#Audio" class="headerlink" title="Audio"></a>Audio</h3><ul>
+<li><a href="https://github.com/acidanthera/AppleALC">AppleALC.kext</a>: This file can drive most audio cards.</li>
+</ul>
+<h3 id="Miscellaneous"><a href="#Miscellaneous" class="headerlink" title="Miscellaneous"></a>Miscellaneous</h3><p>Here’s a collection of kext files. You may need to use a VPN to access them.</p>
+<a class="btn" href="https://1drv.ms/f/s!AiP7m5LaOED-m-J8-MLJGnOgAqnjGw">Download from Onedrive</a>
+
+<p>Now your installation drive is ready, and the next step is to proceed with the installation.</p>
+<h1 id="Installation-of-the-System"><a href="#Installation-of-the-System" class="headerlink" title="Installation of the System"></a>Installation of the System</h1><p>This step may encounter various issues, such as freezing or error messages. If that happens, you can try to power off or restart (it can be a bit unpredictable), and you might need to restart multiple times.</p>
+<h2 id="BIOS-Settings"><a href="#BIOS-Settings" class="headerlink" title="BIOS Settings"></a>BIOS Settings</h2><ol>
+<li>Restart your computer and enter the BIOS (search for the shortcut key; usually F2 or DEL). Set all settings to default, save, and exit.</li>
+<li>Re-enter the BIOS and adjust the following settings. These options are for reference; I only loaded the default settings on my motherboard and disabled CSM, leaving others at Auto.<ul>
+<li>AMD-V &#x2F; SVM &#x3D; Disabled</li>
+<li>SATA Ports &#x3D; AHCI</li>
+<li>IOMMU &#x3D; Disabled</li>
+<li>APU &#x3D; Disabled</li>
+<li>HPET &#x3D; Enabled</li>
+<li>EHCI Hands-off &#x3D; Enabled</li>
+<li>XHCI Hands-off &#x3D; Enabled (ignore this if you only have USB 3.0 ports like me)</li>
+<li>Serial Port &#x3D; Disabled</li>
+<li>Parallel Port &#x3D; Disabled</li>
+<li>CSM &#x3D; Disable (for UEFI boot)</li>
+</ul>
+</li>
+<li>Save and exit. After restarting, select the <strong>USB drive</strong> as the preferred <code>Boot Device</code>. The shortcut key to do this varies depending on your motherboard; please search for it or refer to online resources.</li>
+<li>When booting from the USB drive, you’ll enter the Clover menu. Choose <code>Boot macOS Install from OS X Base System</code> and press Enter. Clover usually defaults to verbose mode, which means it will display the status as it loads. Once it completes, you’ll enter the macOS installation program. You might encounter a language selection menu; I only saw it the first time I installed macOS. For subsequent reinstallations, it was in Simplified Chinese by default.</li>
+</ol>
+<h2 id="Disk-Formatting"><a href="#Disk-Formatting" class="headerlink" title="Disk Formatting"></a>Disk Formatting</h2><p>macOS uses a journaling file system different from Windows, so you need to format the target disk before installation.</p>
+<ol>
+<li>Double-click <code>Disk Utility</code>.</li>
+<li>Click the dropdown menu in the top-left corner labeled <code>View</code> and select <code>Show All Devices</code>.</li>
+<li>Click <code>Erase</code> at the top.</li>
+<li>Select the hard drive where you want to install macOS and configure it as follows:<ul>
+<li>Name: (Set the name for your hard drive)</li>
+<li>Format: Mac OS Extended (Journaled)</li>
+<li>Scheme: GUID Partition Map</li>
+</ul>
+</li>
+<li>Click <code>Erase</code> in the bottom right corner.</li>
+<li>Close <code>Disk Utility</code>.</li>
+</ol>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>During this process, you’ll need an internet connection to download components. Note that the server is overseas, so step 2 below may be somewhat unstable. If you encounter issues like <code>failed to download,</code> you may need to shut down and restart, then reformat the hard drive (you might need to format it twice; it’s a bit of a mystical issue). If possible, set up a VPN on your router for smoother downloads.</p>
+<ol>
+<li>Choose <code>Install macOS</code>, then click <code>Continue</code>.</li>
+<li>Click <code>Continue</code> again. At this point, you might receive a prompt about being unable to download something.</li>
+<li>Select the disk where you want to install macOS.</li>
+<li>Wait for about ten to fifteen minutes. After the installation is complete, your computer will automatically restart.</li>
+</ol>
+<h2 id="System-Setup"><a href="#System-Setup" class="headerlink" title="System Setup"></a>System Setup</h2><p>After rebooting, select the USB drive for booting again, enter Clover, and choose <code>Boot macOS from [Your Hard Drive&#39;s Name]</code>. Wait for the Clover verbose mode to complete, and you’ll reach the welcome page. Choose your country, keyboard settings, etc.</p>
+<ul>
+<li><strong>Transfer Information to This Mac</strong>: For now, select <code>Don&#39;t transfer any information.</code></li>
+<li><strong>Sign in with Your Apple ID</strong>: You can skip this for now, but later you might need to change your device model, and after that, sign in again.</li>
+<li><strong>Terms and Conditions</strong>: Agree to all.</li>
+<li><strong>Express Set Up</strong>: Choose <code>Set Up Later</code> and uncheck everything in <code>Analytics</code> to prevent macOS from analyzing.</li>
+</ul>
+<p>After a short wait, you’ll be inside the system.</p>
+<h1 id="System-Configuration"><a href="#System-Configuration" class="headerlink" title="System Configuration"></a>System Configuration</h1><p>We still need to boot through the installation USB drive for this step. Here, we’ll copy the EFI files from the USB drive to the boot drive, eliminating the need for the USB drive.</p>
+<p>First, you’ll need to download the following two pieces of software:</p>
+<ul>
+<li><a href="https://sourceforge.net/projects/cloverefiboot/">Clover EFI bootloader</a></li>
+<li><a href="https://mackie100projects.altervista.org/download-clover-configurator/">Clover Configurator</a></li>
+</ul>
+<h2 id="Clover-EFI-Bootloader-Configuration"><a href="#Clover-EFI-Bootloader-Configuration" class="headerlink" title="Clover EFI Bootloader Configuration"></a>Clover EFI Bootloader Configuration</h2><p>Download and install Clover EFI bootloader. Proceed with the installation and select <code>Customize</code> at the <code>Installation Type</code> step.</p>
+<p><strong>For UEFI Settings</strong></p>
+<ul>
+<li>Install only UEFI version</li>
+<li>Install Clover in the ESP</li>
+<li>In UEFI Drivers, select these three options:<ul>
+<li>AptioMemoryFix</li>
+<li>PartitionDxe</li>
+<li>ApfsLoader</li>
+</ul>
+</li>
+<li>Install RC Scripts on the target volume</li>
+</ul>
+<p><strong>For Legacy Settings</strong></p>
+<ul>
+<li>Boot0ss</li>
+<li>Clover EFI Sata</li>
+<li>Install Clover in the ESP</li>
+<li>In Bios Drivers, 64bit, select <code>ApfsLoader</code></li>
+<li>Install RC Scripts on the target volume</li>
+</ul>
+<h2 id="Replacing-EFI-Files"><a href="#Replacing-EFI-Files" class="headerlink" title="Replacing EFI Files"></a>Replacing EFI Files</h2><ol>
+<li>Download, install, and open Clover Configurator.</li>
+<li>Click on <code>Mount EFI</code> from the left-hand menu.</li>
+<li>In the bottom-right corner, find your macOS installation hard drive and click <code>Mount Partition</code> next to it.</li>
+<li>Click <code>Open Partition,</code> which will open the EFI folder.</li>
+<li>Open your installation USB drive’s <code>CLOVER</code> folder and copy its contents into the previously opened folder.</li>
+<li>You’ll receive a system prompt indicating duplicate files; click <code>Merge.</code></li>
+<li>Replace the <code>./EFI/CLOVER/config.plist</code> on your installation hard drive with the one from your USB drive.</li>
+</ol>
+<p>Now, you can reboot your system, enter the BIOS, and change the preferred boot device to your installation hard drive. You can safely remove the USB drive at this point.</p>
+<h1 id="Driver-Installation"><a href="#Driver-Installation" class="headerlink" title="Driver Installation"></a>Driver Installation</h1><p>Driver installation requires frequent use of the <code>./EFI/CLOVER/config.plist</code> file, which can be opened with Clover Configurator. After installation, restart your system for the changes to take effect.</p>
+<h2 id="Nvidia-Webdriver"><a href="#Nvidia-Webdriver" class="headerlink" title="Nvidia Webdriver"></a>Nvidia Webdriver</h2><p>I only have a GTX 1060, so I’m providing the installation package for 10-series graphics cards here. For other types, please search for the appropriate drivers.</p>
+<a class="btn" href="https://images.nvidia.com/mac/pkg/387/WebDriver-387.10.10.10.40.105.pkg">Download 387.10.10.10.40.105 (17G65)</a>
+
+<ul>
+<li>After downloading and installing, it will ask you to restart. After the restart, open <code>./EFI/CLOVER/config.plist</code>. Right-click in the <code>Arguments</code> section under <code>Boot Parameters</code> and select <code>nvda_drv=1</code>.</li>
+<li>If your screen is still lagging or tearing after the restart, it means the Webdriver is not enabled. You’ll need to find the Nvidia icon in the top bar, click on it, and select the driver from the dropdown menu. Restart to apply the changes.</li>
+</ul>
+<h2 id="Audio-1"><a href="#Audio-1" class="headerlink" title="Audio"></a>Audio</h2><p>You’ve already installed the AppleALC audio driver earlier, but you won’t have sound yet. You need to configure it in the <code>config.plist</code> file:</p>
+<ol>
+<li>Find your audio card’s folder <a href="https://github.com/acidanthera/AppleALC/tree/master/Resources">here</a>. In the folder, you’ll find files starting with <code>layout.</code> Note down any random number from one of these files.</li>
+<li>Open the <code>config.plist</code> file using Clover Configurator.</li>
+<li>Locate <code>Device Properties.</code></li>
+<li>In the top right corner, find <code>Audio.</code> Enter the number you noted down next to <code>Inject.</code></li>
+<li>Check the boxes next to <code>AFG Low Power State</code> and <code>Reset HDA.</code></li>
+</ol>
+<h2 id="USB"><a href="#USB" class="headerlink" title="USB"></a>USB</h2><p>I initially used the following method to install USB drivers, but it can cause issues when you have multiple devices connected, and Bluetooth and the camera might not work:</p>
+<ol>
+<li>Download the <a href="https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/">USBInjectALL</a> driver.</li>
+<li>After downloading, move it to the <code>./EFI/CLOVER/kext/Other</code> directory on your EFI partition.</li>
+<li>Open the <code>config.plist</code> file using Clover Configurator.</li>
+<li>Find <code>Device Properties.</code></li>
+<li>Under the <code>USB</code> section, check the following three options:<ul>
+<li>Inject</li>
+<li>Add ClockID</li>
+<li>Fix Ownership</li>
+</ul>
+</li>
+</ol>
+<p>However, for Ryzen processors, you need to use a specific USB patch. A talented developer on <a href="https://github.com/XLNCs/ryzenusbfix">GitHub</a> has created a script for this. Copy and paste the following command into Terminal, execute it, and then restart:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -s -o ~/Desktop/ryzenusbfix.sh https://raw.githubusercontent.com/XLNCs/ryzenusbfix/master/ryzenusbfix.sh &amp;&amp; chmod +x ~/Desktop/ryzenusbfix.sh &amp;&amp; ~/Desktop/ryzenusbfix.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2><p>This section is for reference only, as everyone’s configuration is different. Open <code>./EFI/CLOVER/config.plist</code> and, under <code>Install Drivers,</code> choose other driver files you want to load. Here, I’ve downloaded the following files from the UEFI 64-bit driver section:</p>
+<ul>
+<li>ApfsDriverLoader</li>
+<li>AptioMemoryFix</li>
+<li>EmuVariableUefi</li>
+<li>HFSPlus</li>
+<li>NTFS</li>
+<li>AudioDxe</li>
+</ul>
+<h1 id="Other-Adjustments"><a href="#Other-Adjustments" class="headerlink" title="Other Adjustments"></a>Other Adjustments</h1><h2 id="Change-Clover-Theme"><a href="#Change-Clover-Theme" class="headerlink" title="Change Clover Theme"></a>Change Clover Theme</h2><p>The default Clover boot menu is in text mode, which may not look very appealing. To enhance it with a theme, I found a nice theme on GitHub called <a href="https://github.com/burpsuite/clover_theme">Simple</a>. Here’s how to use it as an example:</p>
+<ol>
+<li>Download and unzip the theme folder, then place it in the <code>./EFI/CLOVER/theme</code> directory. Also, copy the <code>theme.plist</code> file from within the theme folder to the parent directory (the <code>theme</code> folder itself).</li>
+<li>Open the <code>./EFI/CLOVER/config.plist</code> file.</li>
+<li>Navigate to the <code>Boot Screen</code> section and enter the name of the theme, in this case, <code>Simple,</code> into the <code>Theme</code> field.</li>
+<li>Uncheck the <code>Text Mode</code> option below.</li>
+<li>Adjust the resolution as needed (there’s no 21:9 resolution, so I chose 1920x1080, which seemed to work well as it filled the screen).</li>
+</ol>
+<h2 id="Modify-CPU-Model"><a href="#Modify-CPU-Model" class="headerlink" title="Modify CPU Model"></a>Modify CPU Model</h2><p>This step is just for personal satisfaction since macOS can’t recognize Ryzen processors, resulting in the CPU showing up as <code>Unknown</code> in the <code>About This Mac</code> section. What we can do is modify the file corresponding to the <code>Unknown</code> CPU to display custom content.</p>
+<ol>
+<li>Download BBEdit or TextWrangler.</li>
+<li>Open the files in <code>/System/Library/PrivateFrameworks/AppleSystemInfo.framework/Versions/A/Resources/zh_CN.lproj/</code>.</li>
+<li>Find <code>UnknownCPUKind</code> and modify the text <code>未知</code> (Unknown) to whatever you’d like.</li>
+<li>Save the changes. Now, the CPU in <code>About This Mac</code> will display the content you entered.</li>
+</ol>
+<h2 id="Modify-Model-Identifier"><a href="#Modify-Model-Identifier" class="headerlink" title="Modify Model Identifier"></a>Modify Model Identifier</h2><p>Open <code>./EFI/CLOVER/config.plist</code> and under the <code>Model Settings</code> section, select the right-most option with up and down arrows to open a dropdown menu. Choose the model identifier that suits your system.</p>
+<h2 id="Enable-Native-NTFS-Read-x2F-Write"><a href="#Enable-Native-NTFS-Read-x2F-Write" class="headerlink" title="Enable Native NTFS Read&#x2F;Write"></a>Enable Native NTFS Read&#x2F;Write</h2><p>Currently, macOS can only read NTFS-formatted drives but can’t write to them. However, macOS does have the capability to write to NTFS drives, but it’s not enabled by default due to licensing issues (NTFS is a Microsoft format). Here’s how to enable it:</p>
+<ol>
+<li>Open Terminal and enter the command <code>diskutil list</code> to list your drives. Find the drive you want to enable for read and write access and note its <code>NAME</code>.</li>
+<li>Enter the command <code>sudo nano /etc/fstab</code> and press Enter, then enter your password.</li>
+<li>Add the line <code>LABEL=NAME none ntfs rw,auto,nobrowse</code> where <code>NAME</code> is the name of the drive you noted earlier.</li>
+<li>Use <code>Control+X</code> to exit, then press Y to confirm and Enter to save.</li>
+<li>Restart your system, and you should be able to write to the NTFS drive.</li>
+<li>If you can’t see the drive in Finder, you can create a symbolic link to it on your desktop using the command <code>sudo ln -s /Volumes/NAME ~/Desktop/NAME</code>, where <code>NAME</code> is the name of the drive.</li>
+</ol>
+<h2 id="Create-a-macOS-Virtual-Machine"><a href="#Create-a-macOS-Virtual-Machine" class="headerlink" title="Create a macOS Virtual Machine"></a>Create a macOS Virtual Machine</h2><p>This section provides an alternative method in case the installation process fails. If you prefer not to install directly on your disk, you can use a lazy method of creating a virtual machine. Here’s how I did it in the past:</p>
+<ol>
+<li>The virtual machine image is shared by <a href="https://forum.amd-osx.com/viewtopic.php?t=1899">Shamme</a> on the forum. Download and extract it using the following link:<a class="btn" href="https://hackintosher.com/wp-content/uploads/SierraAMD_VM.zip.torrent.zip">Download SierraAMD_VM.zip.torrent.zip</a></li>
+<li>Next, you’ll need to install VMware. Download and install it from the <a href="https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html">VMware official website</a>.</li>
+<li>Open VMware and click on <code>Create a New Virtual Machine.</code></li>
+<li>Select <code>Typical</code> and click Next.</li>
+<li>Check <code>I will install the operating system later</code> and click Next.</li>
+<li>For the guest operating system, select <code>Other</code> and <code>Other (64-bit).</code></li>
+<li>Edit the virtual machine name and choose its location.</li>
+<li>Set the disk size; a larger size like 60GB is recommended, but 40GB should suffice. Choose <code>Store virtual disk as a single file.</code></li>
+<li>Click Finish.</li>
+<li>Click <code>Edit Virtual Machine Settings.</code></li>
+<li>Increase the memory size to 2048MB (2GB) or more.</li>
+<li><strong>Uncheck</strong> <code>Connect at power on</code> under <code>CD/DVD (IDE).</code></li>
+<li>Click on <code>Hard Disk (IDE)</code> and then click the <code>Remove</code> button below.</li>
+<li>Click the <code>Add</code> button.</li>
+<li>Select <code>Hard Disk</code> and click Next.</li>
+<li>Choose <code>SCSI.</code></li>
+<li>Select <code>Use an existing virtual disk.</code></li>
+<li>Click <code>Browse</code> and locate the downloaded file from step 1. Open it.</li>
+<li>Click Finish.</li>
+<li>Choose <code>Keep Existing Format.</code></li>
+<li>Click <code>OK.</code></li>
+<li>Click <code>Power on this virtual machine.</code></li>
+<li>Press Enter twice and wait for it to load to the Welcome page.</li>
+<li>Check <code>Show all</code> and select <code>China,</code> then click <code>Continue.</code></li>
+<li>Choose the appropriate input method.</li>
+<li>Select <code>Don&#39;t transfer any information now.</code></li>
+<li>Click <code>Continue,</code> then choose <code>Don&#39;t use.</code></li>
+<li>Select <code>Don&#39;t sign in,</code> then choose <code>Skip.</code></li>
+<li>Click <code>Agree</code> and then click <code>Agree</code> again.</li>
+<li>Enter your username and password.</li>
+<li>Choose your time zone on the map.</li>
+<li><strong>Uncheck</strong> <code>Share Mac Analytics with Apple,</code> and wait a moment to enter the system.</li>
+</ol>
+<h2 id="About-Software"><a href="#About-Software" class="headerlink" title="About Software"></a>About Software</h2><p>Here’s a list of software I’ve gathered:</p>
+<ul>
+<li>Be cautious - <strong>CPU-S</strong>: Do not install if you have a Ryzen CPU. I tried to test CPU frequency, but it caused my system to crash and restart. After logging in, it continued to restart, and I had to reinstall the system.</li>
+<li>Cloud Sync - <strong>OneDrive</strong>: For synchronizing common documents.</li>
+<li>FTP - <strong>Transmit</strong>: Connects to various cloud services like Dropbox and Google Drive.</li>
+<li>Hardware Monitoring - <strong>iStat Menus</strong>: Monitor your system’s hardware status.</li>
+<li>Backup - <strong>Carbon Copy Cloner</strong>: Use it for backups as Time Machine tends to freeze around 400MB.</li>
+<li>Study tools? - Steam has a macOS client as well.</li>
+<li>Ad Blocker for Browsers - Safari’s <a href="https://safari-extensions.apple.com/details/?id=org.adblockplus.adblockplussafari-GRYYZR985A">Adblock Plus Extension</a>.</li>
+<li>Media Player - <strong>Movist</strong>: Unlike most media players, which are like PowerPoint for video playback, QuickTime’s format support is limited. Movist, based on QuickTime, resolves this issue.</li>
+<li>Note-taking - <strong>OneNote</strong>: Syncs seamlessly across three platforms.</li>
+<li>Uninstaller - <strong>App Cleaner</strong>: A cleaner uninstaller.</li>
+<li>Download Manager - <strong>Free Download Manager</strong>: It’s in the name, free.</li>
+<li>Video Downloader - <strong>Downie</strong>: Download YouTube videos.</li>
+<li>Window Manager - <strong>Magnet</strong>: It’s not related to torrents, but it helps manage windows. Windows has had this feature for a while, but Mac relies on third-party software.</li>
+<li>Translation - <strong>EuDic</strong>: It’s a habit; iOS can sync dictionaries.</li>
+<li>Swiss Army Knife - <strong>VS Code</strong>: Not just for coding; it’s great for Markdown too.</li>
+<li>VPN - <strong>ShadowsocksX-NG</strong>: The small plane version.</li>
+<li>3D Rendering - <strong>VRayX</strong>: For heavyweight tasks.</li>
+<li>Benchmarking - <strong>CINEBENCH</strong>: Ryzen is supposed to score high; why doesn’t it feel that way?</li>
+<li>Office Software - <strong>Office</strong>: Microsoft’s suite works better, with Keynote being the exception.</li>
+<li>Screenshot - <strong>Snipaste</strong>: Capture and annotate.</li>
+<li>Smooth Scrolling - <strong>MOS</strong>: Say goodbye to choppy mouse wheel scrolling.</li>
+<li>Cheat Sheet - <strong>Cheatsheet</strong>: Hold Command to view shortcuts.</li>
+<li>iPhone Touchpad - <strong>FullControl</strong>: Control your Mac with your iPhone.</li>
+<li>Workhorse - <strong>Xcode</strong>: If you’re installing Hackintosh, you probably want to use it.</li>
+</ul>
+<h2 id="Keyboard-Shortcuts"><a href="#Keyboard-Shortcuts" class="headerlink" title="Keyboard Shortcuts"></a>Keyboard Shortcuts</h2><p>Keyboard shortcuts can drive dual-boot users insane. On macOS, copy is <code>Command+C</code>, while on Windows, it’s <code>Ctrl+C</code>. However, the keyboard’s <code>Command</code> key corresponds to the <code>Windows</code> key.</p>
+<ul>
+<li>Most <code>Ctrl</code> shortcuts on Windows work with <code>Command</code> on macOS.</li>
+<li>Show&#x2F;Hide hidden files: <code>Command + Shift + .</code></li>
+</ul>
+<blockquote>
+<p>References: <a href="https://vanilla.amd-osx.com/">AMD OS X Vanilla</a>、<a href="https://hackintosher.com/">Hackintosher</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Hardware</category>
+      </categories>
+      <tags>
+        <tag>Hackintosh</tag>
+        <tag>Multisystem</tag>
       </tags>
   </entry>
   <entry>

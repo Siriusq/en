@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2023-11-07T10:19:20.003Z</updated>
+  <updated>2023-11-11T12:44:26.138Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Grasscutter Windows Local Server Configuration Guide</title>
+    <link href="https://siriusq.top/en/grasscutter.html"/>
+    <id>https://siriusq.top/en/grasscutter.html</id>
+    <published>2023-11-07T13:17:07.000Z</published>
+    <updated>2023-11-11T12:44:26.138Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Grasscutter is an experimental server written in Java, designed to simulate the server-side of a certain Anime Game. This article documents the process of configuring the server, including the installation of Grasscutter and Cultivation, the usage of relevant commands, methods for utilizing practical plugins and tools, configuration of gacha pools and shops, as well as the replacement of character models.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    
+    
+    <category term="Grasscutter" scheme="https://siriusq.top/en/tags/Grasscutter/"/>
+    
+  </entry>
   
   <entry>
     <title>Clash Verge TUN Mode Configuration Guide</title>
@@ -484,29 +503,6 @@
     <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
     
     <category term="Win10" scheme="https://siriusq.top/en/tags/Win10/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Change Windows 11 Right-Click Menu Style Back to Windows 10 Style</title>
-    <link href="https://siriusq.top/en/windows-11-right-click-menu.html"/>
-    <id>https://siriusq.top/en/windows-11-right-click-menu.html</id>
-    <published>2022-05-26T14:58:05.000Z</published>
-    <updated>2023-09-13T10:38:43.241Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Microsoft&#39;s Confusing Move: They turned Windows 11&#39;s right-click menu into a two-level menu, which is very inconvenient. The product manager who suggested this change should be held accountable. Fortunately, you can still use the registry editing method to revert it.&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
-    
-    
-    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
-    
-    <category term="Right-Click Menu" scheme="https://siriusq.top/en/tags/Right-Click-Menu/"/>
-    
-    <category term="Registry" scheme="https://siriusq.top/en/tags/Registry/"/>
     
   </entry>
   
