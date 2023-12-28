@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2023-11-11T12:44:26.138Z</updated>
+  <updated>2023-12-28T13:34:52.491Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution to No Bootable Device Issue After Installing Linux on Acer Laptop</title>
+    <link href="https://siriusq.top/en/linux-no-bootable-device.html"/>
+    <id>https://siriusq.top/en/linux-no-bootable-device.html</id>
+    <published>2023-12-19T10:22:50.000Z</published>
+    <updated>2023-12-28T13:34:52.491Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img data-src=&quot;https://s2.loli.net/2023/12/24/DWFdJTgk742GY3N.webp&quot; alt=&quot;No_Bootable_Device.webp&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Coding" scheme="https://siriusq.top/en/categories/Coding/"/>
+    
+    
+    <category term="Linux" scheme="https://siriusq.top/en/tags/Linux/"/>
+    
+    <category term="UEFI" scheme="https://siriusq.top/en/tags/UEFI/"/>
+    
+  </entry>
   
   <entry>
     <title>Grasscutter Windows Local Server Configuration Guide</title>
@@ -480,29 +501,6 @@
     <category term="Magisk" scheme="https://siriusq.top/en/tags/Magisk/"/>
     
     <category term="adb" scheme="https://siriusq.top/en/tags/adb/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Customizing Windows Terminal</title>
-    <link href="https://siriusq.top/en/windows-terminal.html"/>
-    <id>https://siriusq.top/en/windows-terminal.html</id>
-    <published>2022-05-26T15:40:47.000Z</published>
-    <updated>2023-08-12T12:22:45.470Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Something you have to face every day, and if it doesn&#39;t look good, it can affect your mood 🐶. (Finally going to finish the overdue blog posts, the diarrhea-style updates are ending.)&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
-    
-    
-    <category term="Windows Terminal" scheme="https://siriusq.top/en/tags/Windows-Terminal/"/>
-    
-    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
-    
-    <category term="Win10" scheme="https://siriusq.top/en/tags/Win10/"/>
     
   </entry>
   
