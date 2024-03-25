@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2023-12-28T13:34:52.491Z</updated>
+  <updated>2024-03-25T15:04:47.390Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Rider R2 5.0 ITX Case Review</title>
+    <link href="https://siriusq.top/en/rider-r2.html"/>
+    <id>https://siriusq.top/en/rider-r2.html</id>
+    <published>2024-03-23T08:33:10.000Z</published>
+    <updated>2024-03-25T15:04:47.390Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;After experiencing several fan bearing failures, I developed a psychological aversion to installing FDB fans at the top or bottom of the case. So, whenever I had spare time, I would browse ITX cases on Taobao, intending to switch to a different case. Then, on the second day after Rider R2 5.0 was listed on Taobao, I received a precise recommendation for it. Its power supply placement and other inverted structures were exactly what I had been dreaming of. Without hesitation, I placed an order and replaced my old, stuffy case.&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img data-src=&quot;https://s2.loli.net/2024/03/23/xPpEDrCqBygOb1t.webp&quot; alt=&quot;Cover.webp&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Hardware" scheme="https://siriusq.top/en/categories/Hardware/"/>
+    
+    
+    <category term="ITX" scheme="https://siriusq.top/en/tags/ITX/"/>
+    
+    <category term="DIY" scheme="https://siriusq.top/en/tags/DIY/"/>
+    
+    <category term="Rider R2 5.0" scheme="https://siriusq.top/en/tags/Rider-R2-5-0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ITX Installation Experience Summary</title>
+    <link href="https://siriusq.top/en/itx-summary.html"/>
+    <id>https://siriusq.top/en/itx-summary.html</id>
+    <published>2024-03-16T14:09:03.000Z</published>
+    <updated>2024-03-25T14:54:58.905Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;I&#39;ve been delving into ITX since the end of 2019, and it&#39;s been over four years now. Throughout this time, I&#39;ve assembled and disassembled rigs, encountering quite a few pitfalls along the way. In this blog post, I&#39;ll summarize the experiences I&#39;ve gained in PC building.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Hardware" scheme="https://siriusq.top/en/categories/Hardware/"/>
+    
+    
+    <category term="ITX" scheme="https://siriusq.top/en/tags/ITX/"/>
+    
+    <category term="DIY" scheme="https://siriusq.top/en/tags/DIY/"/>
+    
+  </entry>
   
   <entry>
     <title>Solution to No Bootable Device Issue After Installing Linux on Acer Laptop</title>
@@ -445,62 +491,6 @@
     <category term="Next" scheme="https://siriusq.top/en/tags/Next/"/>
     
     <category term="i18n" scheme="https://siriusq.top/en/tags/i18n/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Transferring Domain Names From Alibaba Cloud to Namesilo</title>
-    <link href="https://siriusq.top/en/transfer-domain.html"/>
-    <id>https://siriusq.top/en/transfer-domain.html</id>
-    <published>2022-06-04T15:02:46.000Z</published>
-    <updated>2023-08-13T12:41:40.399Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Today, on a whim, I decided to look up the WHOIS information for my domain name and discovered that the domain I registered with Alibaba Cloud is in a completely exposed state. My name and province are all publicly visible... After some research, I found out that Alibaba Cloud discontinued WHOIS privacy protection back in 2018, and for three years my domain has been out in the open without my knowledge. With a sense of &quot;better late than never,&quot; combined with the frustrating real-name verification process, I made the decision to transfer my domain out of Alibaba Cloud. The process of transferring was also marred by Alibaba Cloud&#39;s frustrating practices.&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Website Configuration" scheme="https://siriusq.top/en/categories/Website-Configuration/"/>
-    
-    
-    <category term="Aliyun" scheme="https://siriusq.top/en/tags/Aliyun/"/>
-    
-    <category term="NameSilo" scheme="https://siriusq.top/en/tags/NameSilo/"/>
-    
-    <category term="Domain" scheme="https://siriusq.top/en/tags/Domain/"/>
-    
-    <category term="WHOIS" scheme="https://siriusq.top/en/tags/WHOIS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Installation and Configuration of WSA</title>
-    <link href="https://siriusq.top/en/wsa.html"/>
-    <id>https://siriusq.top/en/wsa.html</id>
-    <published>2022-06-02T08:04:48.000Z</published>
-    <updated>2023-09-13T10:16:47.750Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Documenting the process of setting up WSA, establishing an internet connection, configuring a proxy, and installing applications.&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
-    
-    
-    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
-    
-    <category term="WSA" scheme="https://siriusq.top/en/tags/WSA/"/>
-    
-    <category term="Android" scheme="https://siriusq.top/en/tags/Android/"/>
-    
-    <category term="V2ray" scheme="https://siriusq.top/en/tags/V2ray/"/>
-    
-    <category term="Google Play" scheme="https://siriusq.top/en/tags/Google-Play/"/>
-    
-    <category term="Magisk" scheme="https://siriusq.top/en/tags/Magisk/"/>
-    
-    <category term="adb" scheme="https://siriusq.top/en/tags/adb/"/>
     
   </entry>
   
