@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2024-03-25T15:04:47.390Z</updated>
+  <updated>2024-07-18T15:54:28.286Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -15,6 +15,113 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Fix USB Device Detection Issue in VMware Fusion</title>
+    <link href="https://siriusq.top/en/vmware-fusion-usb-fix.html"/>
+    <id>https://siriusq.top/en/vmware-fusion-usb-fix.html</id>
+    <published>2024-07-08T03:40:37.000Z</published>
+    <updated>2024-07-18T15:54:28.286Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Virtual machine installed, 3D acceleration enabled, and XCode all set up — I was ready to dive into some serious iPhone development when suddenly... the virtual machine couldn&#39;t detect my USB devices?! After hours of searching and trial and error, I found the culprit: the vmware-usbarbitrator service. This service is supposed to manage USB device connections to the virtual machine, but for some reason, it wasn&#39;t running when VMware Fusion started. Another quirky bug to tackle! The fix? Setting it to start automatically at system boot.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Virtual Machine" scheme="https://siriusq.top/en/categories/Virtual-Machine/"/>
+    
+    
+    <category term="MacOS" scheme="https://siriusq.top/en/tags/MacOS/"/>
+    
+    <category term="VMware" scheme="https://siriusq.top/en/tags/VMware/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Enable 3D Acceleration for macOS Virtual Machines in VMware Fusion</title>
+    <link href="https://siriusq.top/en/enable-gpu-acceleration-in-macos-vm.html"/>
+    <id>https://siriusq.top/en/enable-gpu-acceleration-in-macos-vm.html</id>
+    <published>2024-07-07T13:26:19.000Z</published>
+    <updated>2024-07-18T15:42:36.995Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; In my last blog post, I installed and configured a macOS Sonoma virtual machine, but without 3D acceleration enabled in the settings, it was painfully laggy. Even a simple window resize animation could freeze the VM for 10 seconds — not bearable. After some serious Googling, I stumbled upon a method on the official site to enable 3D acceleration by tweaking the `.vmx` file.&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Virtual Machine" scheme="https://siriusq.top/en/categories/Virtual-Machine/"/>
+    
+    
+    <category term="MacOS" scheme="https://siriusq.top/en/tags/MacOS/"/>
+    
+    <category term="VMware" scheme="https://siriusq.top/en/tags/VMware/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to Create a macOS Sonoma Virtual Machine in VMware Fusion</title>
+    <link href="https://siriusq.top/en/vmware-fusion-install-macos-sonoma.html"/>
+    <id>https://siriusq.top/en/vmware-fusion-install-macos-sonoma.html</id>
+    <published>2024-07-07T02:19:24.000Z</published>
+    <updated>2024-07-18T15:42:25.862Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; I got backstabbed by Apple! My 2017 MBP can&#39;t upgrade to Sonoma, and since XCode is tied to macOS versions, no system upgrade means no XCode upgrade. The older XCode versions don&#39;t support the latest iOS, so I can&#39;t deploy apps to my iPhone, turning my old Mac into a pretty paperweight. I agonized over installing a Hackintosh, setting up KVM passthrough, or using a virtual machine for ages. In the end, I decided to install the latest XCode on a macOS Sonoma virtual machine. It&#39;s not ideal, but hey, it works!🐶🐶 &lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Virtual Machine" scheme="https://siriusq.top/en/categories/Virtual-Machine/"/>
+    
+    
+    <category term="MacOS" scheme="https://siriusq.top/en/tags/MacOS/"/>
+    
+    <category term="VMware" scheme="https://siriusq.top/en/tags/VMware/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to Download and Create a macOS Sonoma Installation ISO Image</title>
+    <link href="https://siriusq.top/en/create-macos-iso.html"/>
+    <id>https://siriusq.top/en/create-macos-iso.html</id>
+    <published>2024-07-06T08:56:28.000Z</published>
+    <updated>2024-07-18T15:42:07.238Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; This blog post documents the process of downloading the macOS Sonoma installation files on a Mac and converting them into an ISO image. Please note that this method is not applicable for Windows operating systems. &lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Virtual Machine" scheme="https://siriusq.top/en/categories/Virtual-Machine/"/>
+    
+    
+    <category term="MacOS" scheme="https://siriusq.top/en/tags/MacOS/"/>
+    
+    <category term="Reinstallation" scheme="https://siriusq.top/en/tags/Reinstallation/"/>
+    
+    <category term="Hackintosh" scheme="https://siriusq.top/en/tags/Hackintosh/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Fix VMware Bridged Network Not Working on Virtual Machine</title>
+    <link href="https://siriusq.top/en/vmware-workstation-net-fix.html"/>
+    <id>https://siriusq.top/en/vmware-workstation-net-fix.html</id>
+    <published>2024-06-07T14:49:04.000Z</published>
+    <updated>2024-07-18T08:50:20.740Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;The issue arises because VMware automatically selects a network adapter on the host for bridging. If multiple network adapters exist in your OS, especially virtual adapters created by other software like VirtualBox that are not connected to the real network, VMware might get confused and select one of these virtual adapters for bridging, resulting in no network connection. To solve this problem, you need to manually specify the network adapter to bridge to.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Virtual Machine" scheme="https://siriusq.top/en/categories/Virtual-Machine/"/>
+    
+    
+    <category term="VMware" scheme="https://siriusq.top/en/tags/VMware/"/>
+    
+    <category term="Bridged Network" scheme="https://siriusq.top/en/tags/Bridged-Network/"/>
+    
+  </entry>
   
   <entry>
     <title>Rider R2 5.0 ITX Case Review</title>
@@ -107,7 +214,7 @@
     <link href="https://siriusq.top/en/clash-verge-tun-config.html"/>
     <id>https://siriusq.top/en/clash-verge-tun-config.html</id>
     <published>2023-11-04T09:24:07.000Z</published>
-    <updated>2023-11-07T10:19:20.003Z</updated>
+    <updated>2024-04-07T15:45:38.551Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; In this article, I will document the configuration process for Clash Verge, including creating configuration files, switching kernels, enabling TUN mode, and preventing DNS leaks. &lt;/blockquote&gt;</summary>
@@ -360,137 +467,6 @@
     <category term="DP" scheme="https://siriusq.top/en/tags/DP/"/>
     
     <category term="Hot Plug Detection" scheme="https://siriusq.top/en/tags/Hot-Plug-Detection/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Block App Open Screen Ads on iOS</title>
-    <link href="https://siriusq.top/en/block-app-open-screen-ads-on-ios.html"/>
-    <id>https://siriusq.top/en/block-app-open-screen-ads-on-ios.html</id>
-    <published>2022-07-13T16:01:39.000Z</published>
-    <updated>2023-08-12T13:05:42.578Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Chinese internet companies really have no shame. They came up with this shake-to-display ad that redirects you to an advertisement page just by shaking your phone. I almost fell for it, but going back to an older version of the app on iOS is too complicated. I couldn&#39;t stand it anymore, so I eventually decided to capture the network traffic and used Shadowrocket&#39;s rules to block these disgusting ads.&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
-    
-    
-    <category term="iOS" scheme="https://siriusq.top/en/tags/iOS/"/>
-    
-    <category term="Ad Block" scheme="https://siriusq.top/en/tags/Ad-Block/"/>
-    
-    <category term="ShadowRocket" scheme="https://siriusq.top/en/tags/ShadowRocket/"/>
-    
-    <category term="packet analyzer" scheme="https://siriusq.top/en/tags/packet-analyzer/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Clash for Windows - From Starting to Giving Up</title>
-    <link href="https://siriusq.top/en/clash.html"/>
-    <id>https://siriusq.top/en/clash.html</id>
-    <published>2022-07-13T08:25:33.000Z</published>
-    <updated>2023-11-07T10:18:44.073Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Recently, my V2RayN has been acting up and frequently disconnecting. I spent quite some time looking through GitHub issues, trying to find solutions to the disconnection problems. Unfortunately, I didn&#39;t find any viable solutions. So, I decided to switch to Clash. However, configuring Clash is a bit more complex than V2RayN. With a lot going on recently, I eventually gave up on fine-tuning it and settled for making it work. Hence, this record from getting started to giving up.&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
-    
-    
-    <category term="Clash" scheme="https://siriusq.top/en/tags/Clash/"/>
-    
-    <category term="GFW" scheme="https://siriusq.top/en/tags/GFW/"/>
-    
-    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Solution for ASUS Aura Sync Not Recognizing G.Skill Trident Z RGB</title>
-    <link href="https://siriusq.top/en/aura-sync.html"/>
-    <id>https://siriusq.top/en/aura-sync.html</id>
-    <published>2022-07-10T11:34:43.000Z</published>
-    <updated>2023-08-12T12:40:57.904Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;This article is also known as &quot;The Series of Annoying Incidents Caused by My Impulsive Upgrade of Armoury Crate.&quot; Now, let&#39;s introduce the main characters of this story: ASUS B460-I GAMING and two G.Skill Trident Z RGB sticks.&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
-    
-    
-    <category term="ITX" scheme="https://siriusq.top/en/tags/ITX/"/>
-    
-    <category term="DIY" scheme="https://siriusq.top/en/tags/DIY/"/>
-    
-    <category term="Asus" scheme="https://siriusq.top/en/tags/Asus/"/>
-    
-    <category term="Aura Sync" scheme="https://siriusq.top/en/tags/Aura-Sync/"/>
-    
-    <category term="Armoury Crate" scheme="https://siriusq.top/en/tags/Armoury-Crate/"/>
-    
-    <category term="Trident Z" scheme="https://siriusq.top/en/tags/Trident-Z/"/>
-    
-    <category term="G.Skill" scheme="https://siriusq.top/en/tags/G-Skill/"/>
-    
-    <category term="RGB" scheme="https://siriusq.top/en/tags/RGB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Enable Cloudflare Acceleration and HTTPS on GitHub Pages</title>
-    <link href="https://siriusq.top/en/github-pages-cloudflare-https.html"/>
-    <id>https://siriusq.top/en/github-pages-cloudflare-https.html</id>
-    <published>2022-06-11T13:00:07.000Z</published>
-    <updated>2023-09-13T03:03:50.695Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;A few days ago, when transferring the domain, I found that GitHub Pages hadn&#39;t fully enabled HTTPS, and the A records set in Cloudflare were also incomplete, so I went through the process again and decided to document it along the way.&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Website Configuration" scheme="https://siriusq.top/en/categories/Website-Configuration/"/>
-    
-    
-    <category term="Hexo" scheme="https://siriusq.top/en/tags/Hexo/"/>
-    
-    <category term="GitHub Pages" scheme="https://siriusq.top/en/tags/GitHub-Pages/"/>
-    
-    <category term="Cloudflare" scheme="https://siriusq.top/en/tags/Cloudflare/"/>
-    
-    <category term="HTTPS" scheme="https://siriusq.top/en/tags/HTTPS/"/>
-    
-    <category term="CDN" scheme="https://siriusq.top/en/tags/CDN/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo Next 8 Bilingual Switching</title>
-    <link href="https://siriusq.top/en/hexo-hext-8-bilingual-switching.html"/>
-    <id>https://siriusq.top/en/hexo-hext-8-bilingual-switching.html</id>
-    <published>2022-06-07T13:21:18.000Z</published>
-    <updated>2023-09-13T03:04:06.220Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;This blog post provides a solution for switching languages(e.g. Chinese and English) for blogs that use the Hexo framework with the Next theme.&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Website Configuration" scheme="https://siriusq.top/en/categories/Website-Configuration/"/>
-    
-    
-    <category term="HEXO" scheme="https://siriusq.top/en/tags/HEXO/"/>
-    
-    <category term="Next" scheme="https://siriusq.top/en/tags/Next/"/>
-    
-    <category term="i18n" scheme="https://siriusq.top/en/tags/i18n/"/>
     
   </entry>
   
