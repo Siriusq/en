@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2024-07-18T15:54:28.286Z</updated>
+  <updated>2024-08-13T14:48:34.496Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Silently Launch Steam on System Startup</title>
+    <link href="https://siriusq.top/en/steam-silent-startup.html"/>
+    <id>https://siriusq.top/en/steam-silent-startup.html</id>
+    <published>2024-08-13T10:06:11.000Z</published>
+    <updated>2024-08-13T14:48:34.496Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Lately, I&#39;ve been obsessed with switching up wallpapers using Wallpaper Engine. However, every time I want to change a wallpaper, I need to fire up Steam to connect to the Workshop. To make things easier, I decided to set Steam to launch at startup. But there was one annoying issue: Steam would always open up to the store page on launch, and there’s no option in the settings to disable it. After a quick Google search, I discovered that the startup behavior is a bit of a mystery—some people don&#39;t see the store page at all, without changing any settings. It’s quite baffling. The solution, however, is straightforward: just add a startup parameter to Steam&#39;s start menu shortcut. &lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    
+    
+    <category term="Software" scheme="https://siriusq.top/en/tags/Software/"/>
+    
+    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    
+    <category term="Steam" scheme="https://siriusq.top/en/tags/Steam/"/>
+    
+  </entry>
   
   <entry>
     <title>Fix USB Device Detection Issue in VMware Fusion</title>
@@ -63,7 +86,7 @@
     <link href="https://siriusq.top/en/vmware-fusion-install-macos-sonoma.html"/>
     <id>https://siriusq.top/en/vmware-fusion-install-macos-sonoma.html</id>
     <published>2024-07-07T02:19:24.000Z</published>
-    <updated>2024-07-18T15:42:25.862Z</updated>
+    <updated>2024-07-18T16:02:24.103Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; I got backstabbed by Apple! My 2017 MBP can&#39;t upgrade to Sonoma, and since XCode is tied to macOS versions, no system upgrade means no XCode upgrade. The older XCode versions don&#39;t support the latest iOS, so I can&#39;t deploy apps to my iPhone, turning my old Mac into a pretty paperweight. I agonized over installing a Hackintosh, setting up KVM passthrough, or using a virtual machine for ages. In the end, I decided to install the latest XCode on a macOS Sonoma virtual machine. It&#39;s not ideal, but hey, it works!🐶🐶 &lt;/blockquote&gt;</summary>
@@ -442,31 +465,6 @@
     <category term="Bug" scheme="https://siriusq.top/en/tags/Bug/"/>
     
     <category term="Zoom" scheme="https://siriusq.top/en/tags/Zoom/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Solution for Windows waking up from sleep mode with window shifted to the top left corner and reduced in size</title>
-    <link href="https://siriusq.top/en/window-shifted-and-reduce-size-after-wakeup.html"/>
-    <id>https://siriusq.top/en/window-shifted-and-reduce-size-after-wakeup.html</id>
-    <published>2022-07-22T10:04:37.000Z</published>
-    <updated>2023-08-12T12:40:59.894Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Ever since I switched back to a 2K monitor at home, every time I wake the computer from sleep, all open windows end up in the upper-left corner and their size is reduced to half of what it was. Strangely, these windows still appear to be in maximized state. The culprit behind this issue is the DP&#39;s Hot Plug Detection feature.&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
-    
-    
-    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
-    
-    <category term="Win10" scheme="https://siriusq.top/en/tags/Win10/"/>
-    
-    <category term="DP" scheme="https://siriusq.top/en/tags/DP/"/>
-    
-    <category term="Hot Plug Detection" scheme="https://siriusq.top/en/tags/Hot-Plug-Detection/"/>
     
   </entry>
   
