@@ -54,9 +54,9 @@
     <category term="Virtual Machine" scheme="https://siriusq.top/en/categories/Virtual-Machine/"/>
     
     
-    <category term="MacOS" scheme="https://siriusq.top/en/tags/MacOS/"/>
-    
     <category term="VMware" scheme="https://siriusq.top/en/tags/VMware/"/>
+    
+    <category term="MacOS" scheme="https://siriusq.top/en/tags/MacOS/"/>
     
   </entry>
   
@@ -65,7 +65,7 @@
     <link href="https://siriusq.top/en/enable-gpu-acceleration-in-macos-vm.html"/>
     <id>https://siriusq.top/en/enable-gpu-acceleration-in-macos-vm.html</id>
     <published>2024-07-07T13:26:19.000Z</published>
-    <updated>2024-07-18T15:42:36.995Z</updated>
+    <updated>2024-09-12T15:03:34.916Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; In my last blog post, I installed and configured a macOS Sonoma virtual machine, but without 3D acceleration enabled in the settings, it was painfully laggy. Even a simple window resize animation could freeze the VM for 10 seconds — not bearable. After some serious Googling, I stumbled upon a method on the official site to enable 3D acceleration by tweaking the `.vmx` file.&lt;/blockquote&gt;</summary>
@@ -75,7 +75,7 @@
     <category term="Virtual Machine" scheme="https://siriusq.top/en/categories/Virtual-Machine/"/>
     
     
-    <category term="MacOS" scheme="https://siriusq.top/en/tags/MacOS/"/>
+    <category term="macOS" scheme="https://siriusq.top/en/tags/macOS/"/>
     
     <category term="VMware" scheme="https://siriusq.top/en/tags/VMware/"/>
     
@@ -96,9 +96,9 @@
     <category term="Virtual Machine" scheme="https://siriusq.top/en/categories/Virtual-Machine/"/>
     
     
-    <category term="MacOS" scheme="https://siriusq.top/en/tags/MacOS/"/>
-    
     <category term="VMware" scheme="https://siriusq.top/en/tags/VMware/"/>
+    
+    <category term="MacOS" scheme="https://siriusq.top/en/tags/MacOS/"/>
     
   </entry>
   
@@ -107,17 +107,17 @@
     <link href="https://siriusq.top/en/create-macos-iso.html"/>
     <id>https://siriusq.top/en/create-macos-iso.html</id>
     <published>2024-07-06T08:56:28.000Z</published>
-    <updated>2024-07-18T15:42:07.238Z</updated>
+    <updated>2024-09-12T15:13:03.297Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; This blog post documents the process of downloading the macOS Sonoma installation files on a Mac and converting them into an ISO image. Please note that this method is not applicable for Windows operating systems. &lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Virtual Machine" scheme="https://siriusq.top/en/categories/Virtual-Machine/"/>
+    <category term="macOS &amp; Hackintosh" scheme="https://siriusq.top/en/categories/macOS-Hackintosh/"/>
     
     
-    <category term="MacOS" scheme="https://siriusq.top/en/tags/MacOS/"/>
+    <category term="macOS" scheme="https://siriusq.top/en/tags/macOS/"/>
     
     <category term="Reinstallation" scheme="https://siriusq.top/en/tags/Reinstallation/"/>
     
@@ -197,14 +197,14 @@
     <link href="https://siriusq.top/en/linux-no-bootable-device.html"/>
     <id>https://siriusq.top/en/linux-no-bootable-device.html</id>
     <published>2023-12-19T10:22:50.000Z</published>
-    <updated>2023-12-28T13:34:52.491Z</updated>
+    <updated>2024-09-12T15:07:19.188Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;img data-src=&quot;https://s2.loli.net/2023/12/24/DWFdJTgk742GY3N.webp&quot; alt=&quot;No_Bootable_Device.webp&quot;&gt;&lt;/p&gt;</summary>
     
     
     
-    <category term="Coding" scheme="https://siriusq.top/en/categories/Coding/"/>
+    <category term="Linux" scheme="https://siriusq.top/en/categories/Linux/"/>
     
     
     <category term="Linux" scheme="https://siriusq.top/en/tags/Linux/"/>
@@ -218,14 +218,14 @@
     <link href="https://siriusq.top/en/grasscutter.html"/>
     <id>https://siriusq.top/en/grasscutter.html</id>
     <published>2023-11-07T13:17:07.000Z</published>
-    <updated>2023-11-11T12:44:26.138Z</updated>
+    <updated>2024-09-12T15:04:43.072Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Grasscutter is an experimental server written in Java, designed to simulate the server-side of a certain Anime Game. This article documents the process of configuring the server, including the installation of Grasscutter and Cultivation, the usage of relevant commands, methods for utilizing practical plugins and tools, configuration of gacha pools and shops, as well as the replacement of character models.&lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
     
     
     <category term="Grasscutter" scheme="https://siriusq.top/en/tags/Grasscutter/"/>
@@ -237,14 +237,14 @@
     <link href="https://siriusq.top/en/clash-verge-tun-config.html"/>
     <id>https://siriusq.top/en/clash-verge-tun-config.html</id>
     <published>2023-11-04T09:24:07.000Z</published>
-    <updated>2024-04-07T15:45:38.551Z</updated>
+    <updated>2024-09-12T15:03:03.254Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; In this article, I will document the configuration process for Clash Verge, including creating configuration files, switching kernels, enabling TUN mode, and preventing DNS leaks. &lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    <category term="Free Internet" scheme="https://siriusq.top/en/categories/Free-Internet/"/>
     
     
     <category term="Clash" scheme="https://siriusq.top/en/tags/Clash/"/>
@@ -302,18 +302,18 @@
   </entry>
   
   <entry>
-    <title>Accessing Windows Shared Folders on iPhone.</title>
+    <title>Accessing Windows Shared Folders on iPhone</title>
     <link href="https://siriusq.top/en/ios-windows-file-share.html"/>
     <id>https://siriusq.top/en/ios-windows-file-share.html</id>
     <published>2023-09-15T12:34:06.000Z</published>
-    <updated>2023-10-01T08:55:29.100Z</updated>
+    <updated>2024-09-12T15:06:17.969Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Because the local network file transfer software I&#39;ve been using doesn&#39;t work on Win11 anymore, and I couldn&#39;t find a good alternative, I decided to resort to the old method of using Windows shared folders to transfer files to iOS devices.&lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
     
     
     <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
@@ -329,14 +329,14 @@
     <link href="https://siriusq.top/en/stellaris-mod.html"/>
     <id>https://siriusq.top/en/stellaris-mod.html</id>
     <published>2023-08-29T12:33:11.000Z</published>
-    <updated>2023-09-06T10:48:10.444Z</updated>
+    <updated>2024-09-12T15:08:27.663Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;How to become a qualified 4th crisis without using the console.&lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    <category term="Open Source Projects" scheme="https://siriusq.top/en/categories/Open-Source-Projects/"/>
     
     
     <category term="MOD" scheme="https://siriusq.top/en/tags/MOD/"/>
@@ -350,7 +350,7 @@
     <link href="https://siriusq.top/en/bongo-paw-blicker.html"/>
     <id>https://siriusq.top/en/bongo-paw-blicker.html</id>
     <published>2023-08-14T08:02:21.000Z</published>
-    <updated>2023-08-21T13:47:57.034Z</updated>
+    <updated>2024-09-12T15:02:17.917Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;This article is a development record of Bongo Paw Clicker, documenting the issues I encountered during the development of the auto clicker.&lt;/blockquote&gt;
@@ -359,7 +359,7 @@
     
     
     
-    <category term="Coding" scheme="https://siriusq.top/en/categories/Coding/"/>
+    <category term="Open Source Projects" scheme="https://siriusq.top/en/categories/Open-Source-Projects/"/>
     
     
     <category term="WPF" scheme="https://siriusq.top/en/tags/WPF/"/>
@@ -377,14 +377,14 @@
     <link href="https://siriusq.top/en/turn-on-igpu.html"/>
     <id>https://siriusq.top/en/turn-on-igpu.html</id>
     <published>2023-04-30T11:38:12.000Z</published>
-    <updated>2023-07-07T10:25:20.619Z</updated>
+    <updated>2024-09-12T15:08:40.775Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Though practically speaking, the motherboard automatically blocks out the integrated graphics when a discrete graphics is plugged in. Although Intel&#39;s integrated graphics has poorer gaming performance, its video encoding and decoding capabilities are excellent. A graphics without a full encoder like the 6500xt can cause significant stuttering and frame drops when it comes to video clips, or in-game recording and pushing streams, so calling on the integrated graphics can take the burden off the discrete graphics and CPU for a smoother experience.&lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
     
     
     <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
@@ -448,14 +448,14 @@
     <link href="https://siriusq.top/en/utools-file-search.html"/>
     <id>https://siriusq.top/en/utools-file-search.html</id>
     <published>2022-07-23T03:41:49.000Z</published>
-    <updated>2023-09-12T08:16:02.982Z</updated>
+    <updated>2024-09-12T15:08:47.820Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;A few days ago, I discovered that the local search feature of uTools could only load about 20 search results. When I scrolled to the bottom, new search results wouldn&#39;t load. However, when using Everything search separately, the results were normal. After tinkering for a while, I remembered that I had adjusted the system font size. After restoring the font size to the default settings in the system, the issue was resolved.&lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Geek" scheme="https://siriusq.top/en/categories/Geek/"/>
+    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
     
     
     <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
