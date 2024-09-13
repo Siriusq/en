@@ -44,7 +44,7 @@
     <link href="https://siriusq.top/en/vmware-fusion-usb-fix.html"/>
     <id>https://siriusq.top/en/vmware-fusion-usb-fix.html</id>
     <published>2024-07-08T03:40:37.000Z</published>
-    <updated>2024-07-18T15:54:28.286Z</updated>
+    <updated>2024-09-13T15:57:48.493Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Virtual machine installed, 3D acceleration enabled, and XCode all set up — I was ready to dive into some serious iPhone development when suddenly... the virtual machine couldn&#39;t detect my USB devices?! After hours of searching and trial and error, I found the culprit: the vmware-usbarbitrator service. This service is supposed to manage USB device connections to the virtual machine, but for some reason, it wasn&#39;t running when VMware Fusion started. Another quirky bug to tackle! The fix? Setting it to start automatically at system boot.&lt;/blockquote&gt;</summary>
@@ -65,7 +65,7 @@
     <link href="https://siriusq.top/en/enable-gpu-acceleration-in-macos-vm.html"/>
     <id>https://siriusq.top/en/enable-gpu-acceleration-in-macos-vm.html</id>
     <published>2024-07-07T13:26:19.000Z</published>
-    <updated>2024-09-12T15:03:34.916Z</updated>
+    <updated>2024-09-13T16:11:14.893Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; In my last blog post, I installed and configured a macOS Sonoma virtual machine, but without 3D acceleration enabled in the settings, it was painfully laggy. Even a simple window resize animation could freeze the VM for 10 seconds — not bearable. After some serious Googling, I stumbled upon a method on the official site to enable 3D acceleration by tweaking the `.vmx` file.&lt;/blockquote&gt;</summary>
@@ -86,7 +86,7 @@
     <link href="https://siriusq.top/en/vmware-fusion-install-macos-sonoma.html"/>
     <id>https://siriusq.top/en/vmware-fusion-install-macos-sonoma.html</id>
     <published>2024-07-07T02:19:24.000Z</published>
-    <updated>2024-07-18T16:02:24.103Z</updated>
+    <updated>2024-09-13T15:58:25.927Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; I got backstabbed by Apple! My 2017 MBP can&#39;t upgrade to Sonoma, and since XCode is tied to macOS versions, no system upgrade means no XCode upgrade. The older XCode versions don&#39;t support the latest iOS, so I can&#39;t deploy apps to my iPhone, turning my old Mac into a pretty paperweight. I agonized over installing a Hackintosh, setting up KVM passthrough, or using a virtual machine for ages. In the end, I decided to install the latest XCode on a macOS Sonoma virtual machine. It&#39;s not ideal, but hey, it works!🐶🐶 &lt;/blockquote&gt;</summary>
@@ -218,7 +218,7 @@
     <link href="https://siriusq.top/en/grasscutter.html"/>
     <id>https://siriusq.top/en/grasscutter.html</id>
     <published>2023-11-07T13:17:07.000Z</published>
-    <updated>2024-09-12T15:04:43.072Z</updated>
+    <updated>2024-09-13T16:11:06.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Grasscutter is an experimental server written in Java, designed to simulate the server-side of a certain Anime Game. This article documents the process of configuring the server, including the installation of Grasscutter and Cultivation, the usage of relevant commands, methods for utilizing practical plugins and tools, configuration of gacha pools and shops, as well as the replacement of character models.&lt;/blockquote&gt;</summary>
@@ -237,7 +237,7 @@
     <link href="https://siriusq.top/en/clash-verge-tun-config.html"/>
     <id>https://siriusq.top/en/clash-verge-tun-config.html</id>
     <published>2023-11-04T09:24:07.000Z</published>
-    <updated>2024-09-12T15:03:03.254Z</updated>
+    <updated>2024-09-13T16:13:50.996Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; In this article, I will document the configuration process for Clash Verge, including creating configuration files, switching kernels, enabling TUN mode, and preventing DNS leaks. &lt;/blockquote&gt;</summary>
@@ -262,7 +262,7 @@
     <link href="https://siriusq.top/en/auto-update-profile-latest-blog-posts.html"/>
     <id>https://siriusq.top/en/auto-update-profile-latest-blog-posts.html</id>
     <published>2023-10-17T09:10:55.000Z</published>
-    <updated>2023-10-23T10:40:49.369Z</updated>
+    <updated>2024-09-13T16:15:16.974Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;I&#39;ve added a section on my GitHub custom profile page to display the most recent blog updates. However, it&#39;s quite inconvenient to update it manually every time I publish a new blog post. So, following the principle of &quot;laziness is the mother of invention,&quot; I&#39;ve come up with a method to automatically update the recent blog posts section on my profile page after deploying my blog using GitHub Actions.&lt;/blockquote&gt;</summary>
@@ -285,7 +285,7 @@
     <link href="https://siriusq.top/en/latex-vscode-quick-config.html"/>
     <id>https://siriusq.top/en/latex-vscode-quick-config.html</id>
     <published>2023-10-03T13:24:09.000Z</published>
-    <updated>2023-10-06T13:15:43.506Z</updated>
+    <updated>2024-09-13T16:00:53.328Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;A guide on installing the TeX environment and quickly configuring LaTeX in VSCode.&lt;/blockquote&gt;</summary>
@@ -306,7 +306,7 @@
     <link href="https://siriusq.top/en/ios-windows-file-share.html"/>
     <id>https://siriusq.top/en/ios-windows-file-share.html</id>
     <published>2023-09-15T12:34:06.000Z</published>
-    <updated>2024-09-12T15:06:17.969Z</updated>
+    <updated>2024-09-13T16:04:39.858Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Because the local network file transfer software I&#39;ve been using doesn&#39;t work on Win11 anymore, and I couldn&#39;t find a good alternative, I decided to resort to the old method of using Windows shared folders to transfer files to iOS devices.&lt;/blockquote&gt;</summary>

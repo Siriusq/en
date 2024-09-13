@@ -2,6 +2,69 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://siriusq.top/en/auto-update-profile-latest-blog-posts.html</loc>
+    
+    <lastmod>2024-09-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/enable-gpu-acceleration-in-macos-vm.html</loc>
+    
+    <lastmod>2024-09-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/grasscutter.html</loc>
+    
+    <lastmod>2024-09-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/ios-windows-file-share.html</loc>
+    
+    <lastmod>2024-09-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/latex-vscode-quick-config.html</loc>
+    
+    <lastmod>2024-09-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/vmware-fusion-install-macos-sonoma.html</loc>
+    
+    <lastmod>2024-09-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/vmware-fusion-usb-fix.html</loc>
+    
+    <lastmod>2024-09-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://siriusq.top/en/create-macos-iso.html</loc>
     
     <lastmod>2024-09-12</lastmod>
@@ -137,15 +200,6 @@
   </url>
   
   <url>
-    <loc>https://siriusq.top/en/ios-windows-file-share.html</loc>
-    
-    <lastmod>2024-09-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://siriusq.top/en/honor-magic-watch-dial-making.html</loc>
     
     <lastmod>2024-09-12</lastmod>
@@ -164,15 +218,6 @@
   </url>
   
   <url>
-    <loc>https://siriusq.top/en/grasscutter.html</loc>
-    
-    <lastmod>2024-09-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://siriusq.top/en/github-cant-load-images.html</loc>
     
     <lastmod>2024-09-12</lastmod>
@@ -183,15 +228,6 @@
   
   <url>
     <loc>https://siriusq.top/en/ets2-paintjob.html</loc>
-    
-    <lastmod>2024-09-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://siriusq.top/en/enable-gpu-acceleration-in-macos-vm.html</loc>
     
     <lastmod>2024-09-12</lastmod>
     
@@ -254,24 +290,6 @@
   </url>
   
   <url>
-    <loc>https://siriusq.top/en/vmware-fusion-install-macos-sonoma.html</loc>
-    
-    <lastmod>2024-07-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://siriusq.top/en/vmware-fusion-usb-fix.html</loc>
-    
-    <lastmod>2024-07-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://siriusq.top/en/vmware-workstation-net-fix.html</loc>
     
     <lastmod>2024-07-18</lastmod>
@@ -317,15 +335,6 @@
   </url>
   
   <url>
-    <loc>https://siriusq.top/en/auto-update-profile-latest-blog-posts.html</loc>
-    
-    <lastmod>2023-10-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://siriusq.top/en/hexo-seo.html</loc>
     
     <lastmod>2023-10-21</lastmod>
@@ -338,15 +347,6 @@
     <loc>https://siriusq.top/en/macbook-pro-headless.html</loc>
     
     <lastmod>2023-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://siriusq.top/en/latex-vscode-quick-config.html</loc>
-    
-    <lastmod>2023-10-06</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -589,7 +589,7 @@
 
   <url>
     <loc>https://siriusq.top/en</loc>
-    <lastmod>2024-09-12</lastmod>
+    <lastmod>2024-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
