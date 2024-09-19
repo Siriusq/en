@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2024-09-19T15:31:37.907Z</updated>
+  <updated>2024-09-19T16:07:51.135Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NexT 8.20 Update Log</title>
+    <link href="https://siriusq.top/en/next-8-20-update-log.html"/>
+    <id>https://siriusq.top/en/next-8-20-update-log.html</id>
+    <published>2024-09-16T04:01:26.000Z</published>
+    <updated>2024-09-19T16:07:51.135Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Update Log of my blog. This time, there weren&#39;t many adjustments — just a simple refresh of the version number and a slight enhancement of the reading experience. &lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Website Configuration" scheme="https://siriusq.top/en/categories/Website-Configuration/"/>
+    
+    
+    <category term="Hexo" scheme="https://siriusq.top/en/tags/Hexo/"/>
+    
+    <category term="Next" scheme="https://siriusq.top/en/tags/Next/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo Plugin Development</title>
@@ -438,31 +459,6 @@
     <category term="macOS" scheme="https://siriusq.top/en/tags/macOS/"/>
     
     <category term="MacBook Pro" scheme="https://siriusq.top/en/tags/MacBook-Pro/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Change the Installation Path of Adobe Series Software and Disable Auto-Update</title>
-    <link href="https://siriusq.top/en/change-adobe-install-path.html"/>
-    <id>https://siriusq.top/en/change-adobe-install-path.html</id>
-    <published>2022-12-18T09:52:26.000Z</published>
-    <updated>2023-07-16T11:34:44.052Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;As I still use a 256GB SSD as my main drive and Adobe will stubbornly install their enormously space-consuming software to the C drive without asking me, I decided to find a way to change its installation path, as well as block its auto-update program from networking cause its quite annoying.&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
-    
-    
-    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
-    
-    <category term="Adobe" scheme="https://siriusq.top/en/tags/Adobe/"/>
-    
-    <category term="Firewall" scheme="https://siriusq.top/en/tags/Firewall/"/>
-    
-    <category term="bash" scheme="https://siriusq.top/en/tags/bash/"/>
     
   </entry>
   
