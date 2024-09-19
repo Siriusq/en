@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2024-08-13T14:48:34.496Z</updated>
+  <updated>2024-09-19T15:31:37.907Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo Plugin Development</title>
+    <link href="https://siriusq.top/en/hexo-plugin-development.html"/>
+    <id>https://siriusq.top/en/hexo-plugin-development.html</id>
+    <published>2024-09-12T04:00:08.000Z</published>
+    <updated>2024-09-19T15:31:37.907Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Lately, I’ve found myself a little envious of The Verge’s slick image carousel feature. Let’s be real—when you’ve got an organized set of images, a carousel beats a static picture group any day. Unfortunately, Hexo doesn’t have a built-in plugin for that. So, naturally, I took matters into my own hands and whipped up a carousel plugin based on Splide, designed specifically for the NexT theme. Here’s a rundown of the journey from development to release—because why not document the process while you&#39;re at it? &lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Coding" scheme="https://siriusq.top/en/categories/Coding/"/>
+    
+    
+    <category term="Hexo" scheme="https://siriusq.top/en/tags/Hexo/"/>
+    
+    <category term="Plugin" scheme="https://siriusq.top/en/tags/Plugin/"/>
+    
+    <category term="npm" scheme="https://siriusq.top/en/tags/npm/"/>
+    
+  </entry>
   
   <entry>
     <title>Silently Launch Steam on System Startup</title>
@@ -251,9 +274,9 @@
     
     <category term="GFW" scheme="https://siriusq.top/en/tags/GFW/"/>
     
-    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
-    
     <category term="Tun" scheme="https://siriusq.top/en/tags/Tun/"/>
+    
+    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
     
   </entry>
   
@@ -440,31 +463,6 @@
     <category term="Firewall" scheme="https://siriusq.top/en/tags/Firewall/"/>
     
     <category term="bash" scheme="https://siriusq.top/en/tags/bash/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>A Certain Solution for the Issue of Utools Not Displaying All Local Search Results.</title>
-    <link href="https://siriusq.top/en/utools-file-search.html"/>
-    <id>https://siriusq.top/en/utools-file-search.html</id>
-    <published>2022-07-23T03:41:49.000Z</published>
-    <updated>2024-09-12T15:08:47.820Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;A few days ago, I discovered that the local search feature of uTools could only load about 20 search results. When I scrolled to the bottom, new search results wouldn&#39;t load. However, when using Everything search separately, the results were normal. After tinkering for a while, I remembered that I had adjusted the system font size. After restoring the font size to the default settings in the system, the issue was resolved.&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
-    
-    
-    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
-    
-    <category term="utools" scheme="https://siriusq.top/en/tags/utools/"/>
-    
-    <category term="Bug" scheme="https://siriusq.top/en/tags/Bug/"/>
-    
-    <category term="Zoom" scheme="https://siriusq.top/en/tags/Zoom/"/>
     
   </entry>
   
