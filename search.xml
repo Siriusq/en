@@ -80,6 +80,130 @@
       </tags>
   </entry>
   <entry>
+    <title>Block Windows from Automatically Updating AMD GPU Drivers</title>
+    <url>/en/amd-gpu-driver-auto-update-banned.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center"> In a moment of impulse, I updated my AMD graphics driver, only to find that with the new 24.7.1 driver, my GPU started making a horrible whining noise. My case is right next to me, so the sound was like someone sawing through a table leg. I immediately uninstalled the new driver and rolled back to the old, stable 22.5.1 driver, thinking that would be the end of it. But no! Windows Auto Update, in its infinite wisdom, stabbed me in the back while I was grabbing a bite to eat and updated the driver again. After trying multiple methods, I finally got Auto Update to leave my driver alone. Below is the tale of my battle with Windows Auto Update. </blockquote>
+
+<span id="more"></span>
+
+<p>Before we dive in, let’s talk about how Windows Auto Update works. In its infinite wisdom, it only updates the driver and not the Adrenalin control panel, which leads to mismatched versions. Even worse, the driver it installs isn’t necessarily newer than the one you manually installed, but Windows <em>thinks</em> its version is superior and just overwrites yours. Genius.</p>
+<div class="note warning"><p><strong>Pro Tip</strong>: Before you start, <strong>disconnect from the internet</strong>! This is critical — download a stable driver first, then <strong>disconnect</strong>. Windows will otherwise sneak in an automatic update while you’re still in the middle of fixing things.</p>
+</div>
+
+<h1 id="Uninstall-the-Current-Driver"><a href="#Uninstall-the-Current-Driver" class="headerlink" title="Uninstall the Current Driver"></a>Uninstall the Current Driver</h1><p>First, let’s get rid of the driver that Windows installed. I recommend using Display Driver Uninstaller (DDU) to uninstall it. Compared to the Control Panel, DDU does a more thorough job and reduces the chances of issues down the line. You can download it from the following link—usually, the latest Portable version will do.</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/download.webp"></object>
+<p>Download DDU</p><p>Display Driver Uninstaller (DDU) is a driver removal utility that can help you completely uninstall AMD/NVIDIA/INTEL graphics card drivers and packages from your system, trying to remove all leftovers (including registry keys, folders and files, driver store).</p>
+<a href="https://www.wagnardsoft.com/display-driver-uninstaller-DDU-"></a>
+</div></div>
+
+<p>The download is a self-extracting file. Just double-click it, extract, and open the folder. Run <code>Display Driver Uninstaller.exe</code>, select <code>GPU</code> on the right, then <code>AMD</code>, and click <code>Clean and restart</code>. No need to enter Safe Mode. Once it’s done, the system will reboot automatically.</p>
+
+    <div class="carousel-container">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-svbh1kitt">
+        <div class="splide__track">
+          <ul class="splide__list"><li class="splide__slide" data-caption="Clean old driver in DDU.webp"><img data-src="https://s2.loli.net/2024/09/21/xIHsc6bKkwlJ197.webp" alt="Clean old driver in DDU.webp" class="zoomable"></li></ul>
+        </div>
+      </div>
+      <div id="carousel-caption-svbh1kitt" class="carousel-caption"> </div>
+    </div>
+  
+
+<h1 id="Block-Windows-from-Automatically-Updating-the-Graphics-Driver"><a href="#Block-Windows-from-Automatically-Updating-the-Graphics-Driver" class="headerlink" title="Block Windows from Automatically Updating the Graphics Driver"></a>Block Windows from Automatically Updating the Graphics Driver</h1><p>Below are the various methods I tried. While most didn’t work for me, I’m documenting them anyway because, from what I’ve observed, whether these methods work is almost a matter of luck. Some people say these methods helped, while others say they did nothing.</p>
+<h2 id="Group-Policy-Editor"><a href="#Group-Policy-Editor" class="headerlink" title="Group Policy Editor"></a>Group Policy Editor</h2><div class="note primary"><p>This method comes from the Microsoft Community:<a href="https://answers.microsoft.com/zh-hans/windows/forum/all/%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8-windows-10-11/4487dd94-ca23-433b-b8df-d8a61020b34a">如何禁用 Windows 10 (11) 的显卡驱动更新</a></p>
+</div>
+
+<p>Steps:</p>
+<ol>
+<li>Right-click the Start menu and open <code>Device Manager</code>.</li>
+<li>Double-click on your AMD graphics card under <code>Display adapters</code>.</li>
+<li>Switch to the <code>Details</code> tab.</li>
+<li>From the <code>Property</code> dropdown, select <code>Class Guid</code>, and then right-click to copy the <code>Value</code> displayed below.</li>
+<li>Press <code>Windows + R</code>, type <code>gpedit.msc</code>, and press Enter to open the Group Policy Editor.</li>
+<li>Navigate to <code>Computer Configuration</code> → <code>Administrative Templates</code> → <code>System</code> → <code>Device Installation</code> → <code>Device Installation Restrictions</code>.</li>
+<li>On the right, double-click <code>Prevent installation of devices using drivers that match these device setup classes</code>.</li>
+<li>Check <code>Enabled</code>.</li>
+<li>Click <code>Show</code> at the bottom, and paste the graphics card’s <code>Class Guid</code> (copied in step 4) into the <code>Value</code> field.</li>
+<li>Click <code>OK</code> to save changes.</li>
+</ol>
+
+    <div class="carousel-container">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-tf17k0w9e">
+        <div class="splide__track">
+          <ul class="splide__list"><li class="splide__slide" data-caption="Right-click the Start menu and open Device Manager"><img data-src="https://s2.loli.net/2024/09/21/KmTRDB9lhN8tVUF.webp" alt="Right-click the Start menu and open Device Manager" class="zoomable"></li><li class="splide__slide" data-caption="Double-click on your AMD graphics card under Display adapters"><img data-src="https://s2.loli.net/2024/09/21/2walJqWK8Rf9coe.webp" alt="Double-click on your AMD graphics card under Display adapters" class="zoomable"></li><li class="splide__slide" data-caption="Switch to the Details tab, from the Property dropdown, select Class Guid, and then right-click to copy the Value displayed below"><img data-src="https://s2.loli.net/2024/09/21/iZTqVSmxWbnG9AO.webp" alt="Switch to the Details tab, from the Property dropdown, select Class Guid, and then right-click to copy the Value displayed below" class="zoomable"></li><li class="splide__slide" data-caption="Navigate to Computer Configuration → Administrative Templates → System → Device Installation → Device Installation Restrictions, on the right, double-click Prevent installation of devices using drivers that match these device setup classes"><img data-src="https://s2.loli.net/2024/09/21/nAEmNr8BlosLD62.webp" alt="Navigate to Computer Configuration → Administrative Templates → System → Device Installation → Device Installation Restrictions, on the right, double-click Prevent installation of devices using drivers that match these device setup classes" class="zoomable"></li><li class="splide__slide" data-caption="Check Enabled, click Show at the bottom, and paste the graphics card’s Class Guid (copied in step 4) into the Value field, click OK to save changes"><img data-src="https://s2.loli.net/2024/09/21/FohBVXkUisO4tzw.webp" alt="Check Enabled, click Show at the bottom, and paste the graphics card’s Class Guid (copied in step 4) into the Value field, click OK to save changes" class="zoomable"></li></ul>
+        </div>
+      </div>
+      <div id="carousel-caption-tf17k0w9e" class="carousel-caption"> </div>
+    </div>
+  
+
+<p>In my case, this didn’t completely block Windows from installing the driver. The installation process would get almost all the way to the end before failing, leaving me in a weird limbo. Technically, the install failed, but Adrenalin still complained about a mismatched driver version. And the GPU coil whine? Back in full force. I call this the Schrödinger’s driver problem.</p>
+<p>Also, if you’re on the Home edition of Windows, there’s no Group Policy Editor, so this method won’t work for you.</p>
+<h2 id="Block-Updates-with-DDU"><a href="#Block-Updates-with-DDU" class="headerlink" title="Block Updates with DDU"></a>Block Updates with DDU</h2><p>DDU also has a setting to disable driver updates, but it didn’t work on my system — probably because I hadn’t disconnected from the internet at the start.</p>
+<ol>
+<li>Click on <code>Options</code> in the top left corner of DDU.</li>
+<li>Under the advanced settings, check the box for <code>Prevent downloads of drivers from Windows Update when Windows search for a driver for a device</code>.</li>
+</ol>
+
+    <div class="carousel-container">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-1i14zwmp8">
+        <div class="splide__track">
+          <ul class="splide__list"><li class="splide__slide" data-caption="Block updates with DDU"><img data-src="https://s2.loli.net/2024/09/21/LrgjEiJfKNSqp5b.webp" alt="Block updates with DDU" class="zoomable"></li></ul>
+        </div>
+      </div>
+      <div id="carousel-caption-1i14zwmp8" class="carousel-caption"> </div>
+    </div>
+  
+
+<h2 id="Block-Updates-with-Dism"><a href="#Block-Updates-with-Dism" class="headerlink" title="Block Updates with Dism++"></a>Block Updates with Dism++</h2><p>Similarly, the method using Dism++ didn’t work for me either.</p>
+<ol>
+<li>Open the <code>Control Panel</code> in Dism++ and go to the <code>System Optimizer</code> tab.</li>
+<li>Expand the <code>Windows Update</code> menu.</li>
+<li>Enable the option <code>Windows Update don&#39;t include the drivers</code>.</li>
+</ol>
+
+    <div class="carousel-container">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-vuc29xgss">
+        <div class="splide__track">
+          <ul class="splide__list"><li class="splide__slide" data-caption="Block updates with Dism++"><img data-src="https://s2.loli.net/2024/09/21/zFeD6BMWR4159Pp.webp" alt="Block updates with Dism++" class="zoomable"></li></ul>
+        </div>
+      </div>
+      <div id="carousel-caption-vuc29xgss" class="carousel-caption"> </div>
+    </div>
+  
+
+<h2 id="Roll-Back-the-Driver-in-Device-Manager"><a href="#Roll-Back-the-Driver-in-Device-Manager" class="headerlink" title="Roll Back the Driver in Device Manager"></a>Roll Back the Driver in Device Manager</h2><p>This was the method that worked for me, and it’s been stable for the past two months.</p>
+<ol>
+<li>Right-click the Start menu and open <code>Device Manager</code>.</li>
+<li>Double-click your AMD graphics card under <code>Display adapters</code>.</li>
+<li>Click <code>Roll Back Driver</code>.</li>
+</ol>
+
+    <div class="carousel-container">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-s3vebhjqg">
+        <div class="splide__track">
+          <ul class="splide__list"><li class="splide__slide" data-caption="Roll back the driver in Device Manager"><img data-src="https://s2.loli.net/2024/09/21/gnypmV6fcY9EW1k.webp" alt="Roll back the driver in Device Manager" class="zoomable"></li></ul>
+        </div>
+      </div>
+      <div id="carousel-caption-s3vebhjqg" class="carousel-caption"> </div>
+    </div>
+  
+
+<h1 id="Installing-the-New-Driver"><a href="#Installing-the-New-Driver" class="headerlink" title="Installing the New Driver"></a>Installing the New Driver</h1><p>The driver version I ended up with is <a href="https://drivers.amd.com/drivers/WHQL-AMD-Software-Adrenalin-Edition-22.5.1-Win10-Win11-May10.exe">22.5.1</a>, which is the most hassle-free for the 6500XT. Later versions introduced “optimizations” that caused the memory clock to max out when using dual monitors. And when my GPU’s memory clock is maxed out, it starts whining like crazy — loud enough to hurt my ears. Plenty of users have reported this bug, but AMD claims it’s a feature for stability. Yeah, right.</p>
+<p>With version 22.5.1, as long as one screen is connected to the discrete GPU and the other to the integrated GPU, the memory clock can dynamically adjust, so it’s not maxed out all the time. Plus, I haven’t encountered any issues with this version. Ironically, the so-called “more stable” versions that followed have caused driver crashes instead.</p>
+<p>After installing, I recommend turning off the update check in Adrenalin, then restarting your computer.</p>
+]]></content>
+      <categories>
+        <category>Windows</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>GPU</tag>
+        <tag>Driver</tag>
+        <tag>AMD</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Solution for ASUS Aura Sync Not Recognizing G.Skill Trident Z RGB</title>
     <url>/en/aura-sync.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">This article is also known as "The Series of Annoying Incidents Caused by My Impulsive Upgrade of Armoury Crate." Now, let's introduce the main characters of this story: ASUS B460-I GAMING and two G.Skill Trident Z RGB sticks.</blockquote>
@@ -239,12 +363,12 @@
 </ol>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-dugd4x3lt">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-girngan8g">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="1-2.webp"><img data-src="https://s2.loli.net/2023/10/19/MCX8r6medVjocbq.webp" alt="1-2.webp" class="zoomable"></li><li class="splide__slide" data-caption="3.webp"><img data-src="https://s2.loli.net/2023/10/19/nGbz1mhuYMXlEIV.webp" alt="3.webp" class="zoomable"></li><li class="splide__slide" data-caption="4-6.webp"><img data-src="https://s2.loli.net/2023/10/19/HyqLWKu5wg8B3hJ.webp" alt="4-6.webp" class="zoomable"></li><li class="splide__slide" data-caption="7-8.webp"><img data-src="https://s2.loli.net/2023/10/19/8oPj7UqBV4Ynscv.webp" alt="7-8.webp" class="zoomable"></li><li class="splide__slide" data-caption="9.webp"><img data-src="https://s2.loli.net/2023/10/19/y4T2RbD7UEWQY6Z.webp" alt="9.webp" class="zoomable"></li><li class="splide__slide" data-caption="10.webp"><img data-src="https://s2.loli.net/2023/10/19/ZfOqEgM3Yh97oTW.webp" alt="10.webp" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-dugd4x3lt" class="carousel-caption"> </div>
+      <div id="carousel-caption-girngan8g" class="carousel-caption"> </div>
     </div>
   
 
@@ -307,12 +431,12 @@
 </ol>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-l9dr9tbrt">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-511mr3gw2">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="1-3.webp"><img data-src="https://s2.loli.net/2023/10/19/Yb8BGd2ePlEMWRn.webp" alt="1-3.webp" class="zoomable"></li><li class="splide__slide" data-caption="4-6.webp"><img data-src="https://s2.loli.net/2023/10/19/qzHiYgNlOWtyVLw.webp" alt="4-6.webp" class="zoomable"></li><li class="splide__slide" data-caption="a.webp"><img data-src="https://s2.loli.net/2023/10/19/PItMG7ikaYb3CqF.webp" alt="a.webp" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-l9dr9tbrt" class="carousel-caption"> </div>
+      <div id="carousel-caption-511mr3gw2" class="carousel-caption"> </div>
     </div>
   
 
@@ -373,12 +497,12 @@
 </ol>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-8ugkntn82">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-kbk33dorz">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="1-4.webp"><img data-src="https://s2.loli.net/2023/10/19/jUoBOJmAY9utS8h.webp" alt="1-4.webp" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-8ugkntn82" class="carousel-caption"> </div>
+      <div id="carousel-caption-kbk33dorz" class="carousel-caption"> </div>
     </div>
   
 
@@ -467,12 +591,12 @@
 <p>Save your changes, and then run the <code>hexo cl</code> and <code>hexo g -d</code> commands. If all goes well, a few minutes later, you should see your updated Profile automatically.</p>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-5hkoif9l2">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-5oq6dk8i4">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="21.webp"><img data-src="https://s2.loli.net/2023/10/19/oMWf2XS6GavL8jt.webp" alt="21.webp" class="zoomable"></li><li class="splide__slide" data-caption="22.webp"><img data-src="https://s2.loli.net/2023/10/19/4WpxQZuj6IOmcDo.webp" alt="22.webp" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-5hkoif9l2" class="carousel-caption"> </div>
+      <div id="carousel-caption-5oq6dk8i4" class="carousel-caption"> </div>
     </div>
   
 
@@ -2226,12 +2350,12 @@
 </li>
 <li><p><del>Click <code>Restart</code> in the upper right corner.</del></p>
  <div class="carousel-container">
-   <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-khlgo6o06">
+   <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-ktbaq81as">
      <div class="splide__track">
        <ul class="splide__list"><li class="splide__slide" data-caption="Switch Clash Core.webp"><img data-src="https://s2.loli.net/2023/11/07/oxCNTsQD7e1kOr8.webp" alt="Switch Clash Core.webp" class="zoomable"></li><li class="splide__slide" data-caption="Choose Clash Core And Restart.webp"><img data-src="https://s2.loli.net/2023/11/07/3x7UNVTWB9CRyIS.webp" alt="Choose Clash Core And Restart.webp" class="zoomable"></li></ul>
      </div>
    </div>
-   <div id="carousel-caption-khlgo6o06" class="carousel-caption"> </div>
+   <div id="carousel-caption-ktbaq81as" class="carousel-caption"> </div>
  </div></li>
 </ol>
 
@@ -2268,12 +2392,12 @@
 </ol>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-i0bawglix">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-jcv99vckv">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="New Profile.webp"><img data-src="https://s2.loli.net/2023/11/07/Yy6gmS9fWNtMoAn.webp" alt="New Profile.webp" class="zoomable"></li><li class="splide__slide" data-caption="Edit Profile.webp"><img data-src="https://s2.loli.net/2023/11/07/QRPDxwrfScWuedH.webp" alt="Edit Profile.webp" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-i0bawglix" class="carousel-caption"> </div>
+      <div id="carousel-caption-jcv99vckv" class="carousel-caption"> </div>
     </div>
   
 
@@ -2298,12 +2422,12 @@
 </ol>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-j31me22j6">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-cwg6cq7yl">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Install Service Mode.webp"><img data-src="https://s2.loli.net/2023/11/07/MHlXcj5w8BaoSzR.webp" alt="Install Service Mode.webp" class="zoomable"></li><li class="splide__slide" data-caption="Click INSTALL.png"><img data-src="https://s2.loli.net/2023/11/07/f7tDroGg6ki4ABc.png" alt="Click INSTALL.png" class="zoomable"></li><li class="splide__slide" data-caption="Enable/Disable relevant options.webp"><img data-src="https://s2.loli.net/2023/11/07/IcLue7z4wQXbgrE.webp" alt="Enable/Disable relevant options.webp" class="zoomable"></li><li class="splide__slide" data-caption="Select Profile.webp"><img data-src="https://s2.loli.net/2023/11/07/b2xKeHRt9Q1vEhg.webp" alt="Select Profile.webp" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-j31me22j6" class="carousel-caption"> </div>
+      <div id="carousel-caption-cwg6cq7yl" class="carousel-caption"> </div>
     </div>
   
 
@@ -2326,12 +2450,12 @@
 </ol>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-uqke9t8xs">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-l64s31roa">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Search For Edit Group Policy.webp"><img data-src="https://s2.loli.net/2023/11/07/knJhg7UmZ9CiAND.webp" alt="Search For Edit Group Policy.webp" class="zoomable"></li><li class="splide__slide" data-caption="Find Relevant Options.webp"><img data-src="https://s2.loli.net/2023/11/07/C83lsBwJdkQVvUM.webp" alt="Find Relevant Options.webp" class="zoomable"></li><li class="splide__slide" data-caption="Cliick Enabled.webp"><img data-src="https://s2.loli.net/2023/11/07/qGsfuEZ3wkNoQCe.webp" alt="Cliick Enabled.webp" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-uqke9t8xs" class="carousel-caption"> </div>
+      <div id="carousel-caption-l64s31roa" class="carousel-caption"> </div>
     </div>
   
 
@@ -2342,12 +2466,12 @@
 <p>As an example, for Microsoft Edge browser, you can enter <code>edge://flags/#enable-quic</code> in the address bar, which will take you to the <code>Experimental QUIC protocol</code> option. Set it to <code>Disabled</code>.</p>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-cdygvf3eg">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-05ghqk5x8">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Disable QUIC.webp"><img data-src="https://s2.loli.net/2023/11/07/HYdAhQRgjTGiCMt.webp" alt="Disable QUIC.webp" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-cdygvf3eg" class="carousel-caption"> </div>
+      <div id="carousel-caption-05ghqk5x8" class="carousel-caption"> </div>
     </div>
   
 
@@ -2355,12 +2479,12 @@
 <p>Taking Microsoft Edge browser as an example, go to <code>Settings</code> &gt; <code>Privacy, search, and services</code> &gt; <code>Security</code> &gt; <code>Use secure DNS to specify how to look up the network address of websites</code>. Turn off the switch.</p>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-pdiacd5g2">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-45hb0ahui">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Disabl Browser Secure DNS.webp"><img data-src="https://s2.loli.net/2023/11/07/9SWefoV7j5FlQku.webp" alt="Disabl Browser Secure DNS.webp" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-pdiacd5g2" class="carousel-caption"> </div>
+      <div id="carousel-caption-45hb0ahui" class="carousel-caption"> </div>
     </div>
   
 
@@ -2684,12 +2808,12 @@
 </ol>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-f3x1ys6i9">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-kwr5mmvau">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Click Window in the top menu bar of the host machine to open the dropdown menu，the click Virtual Machine Library"><img data-src="https://s2.loli.net/2024/07/17/BZ8AhPlKdEqtzcf.webp" alt="Click Window in the top menu bar of the host machine to open the dropdown menu，the click Virtual Machine Library" class="zoomable"></li><li class="splide__slide" data-caption="Right-click on the relevant virtual machine and select Show in Finder"><img data-src="https://s2.loli.net/2024/07/17/zXIEaTPHY3dsQlm.webp" alt="Right-click on the relevant virtual machine and select Show in Finder" class="zoomable"></li><li class="splide__slide" data-caption="In Finder, right-click the virtual machine file and choose Show Package Contents"><img data-src="https://s2.loli.net/2024/07/17/f3QAHstYKeIRZlX.webp" alt="In Finder, right-click the virtual machine file and choose Show Package Contents" class="zoomable"></li><li class="splide__slide" data-caption="Right-click the xxx.vmx file, where xxx is your virtual machine's name, and select Open With -> TextEdit"><img data-src="https://s2.loli.net/2024/07/17/km7vQ9hjupVt5l4.webp" alt="Right-click the xxx.vmx file, where xxx is your virtual machine's name, and select Open With -> TextEdit" class="zoomable"></li><li class="splide__slide" data-caption="3D acceleration is successfully enabled"><img data-src="https://s2.loli.net/2024/07/17/wPKV7I1XY9Qedyc.webp" alt="3D acceleration is successfully enabled" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-f3x1ys6i9" class="carousel-caption"> </div>
+      <div id="carousel-caption-kwr5mmvau" class="carousel-caption"> </div>
     </div>
   
 
@@ -2965,12 +3089,12 @@
 
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-j27q4mm34">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-uxf4drmdp">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Download JDK17.webp"><img data-src="https://s2.loli.net/2023/11/11/G2KwYIs4yVaM6CT.webp" alt="Download JDK17.webp" class="zoomable"></li><li class="splide__slide" data-caption="Download MongoDB.webp"><img data-src="https://s2.loli.net/2023/11/11/FLuEvQB2oUqw13l.webp" alt="Download MongoDB.webp" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-j27q4mm34" class="carousel-caption"> </div>
+      <div id="carousel-caption-uxf4drmdp" class="carousel-caption"> </div>
     </div>
   
 
@@ -2988,12 +3112,12 @@
 </ol>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-hzxh7nbzv">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-6r9evqo56">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Choose Complete.webp"><img data-src="https://s2.loli.net/2023/11/11/rRhxCA4BYDVu25U.webp" alt="Choose Complete.webp" class="zoomable"></li><li class="splide__slide" data-caption="Service Configuration.webp"><img data-src="https://s2.loli.net/2023/11/11/Y4mrh23sL71CUJx.webp" alt="Service Configuration.webp" class="zoomable"></li><li class="splide__slide" data-caption="MongoDB Compass.webp"><img data-src="https://s2.loli.net/2023/11/11/OgrBZdvYXPmsNfl.webp" alt="MongoDB Compass.webp" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-hzxh7nbzv" class="carousel-caption"> </div>
+      <div id="carousel-caption-6r9evqo56" class="carousel-caption"> </div>
     </div>
   
 
@@ -3028,12 +3152,12 @@
 </ul>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-6on4it6xo">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-2lxip2tg7">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Download Grasscutter.webp"><img data-src="https://s2.loli.net/2023/11/11/jleJCaPN1iKBFDp.webp" alt="Download Grasscutter.webp" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-6on4it6xo" class="carousel-caption"> </div>
+      <div id="carousel-caption-2lxip2tg7" class="carousel-caption"> </div>
     </div>
   
 
@@ -3047,12 +3171,12 @@
 <h2 id="Configure-Cultivation"><a href="#Configure-Cultivation" class="headerlink" title="Configure Cultivation"></a>Configure Cultivation</h2><p>Upon the first launch, a popup window will prompt you to install the CA certificate. Click <code>Yes</code> to agree to the installation. After installing the certificate, Cultivation’s built-in mitmproxy will be able to proxy the communication between the client and the game server through a Man-in-the-Middle (MITM) attack to the local server.</p>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-2gprqa27z">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-1vpbsuvl6">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="安装证书.webp"><img data-src="https://s2.loli.net/2023/11/11/FRVI5289awtUPKT.webp" alt="安装证书.webp" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-2gprqa27z" class="carousel-caption"> </div>
+      <div id="carousel-caption-1vpbsuvl6" class="carousel-caption"> </div>
     </div>
   
 
@@ -3072,12 +3196,12 @@
 </ul>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-2jdp7hhso">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-z6w1tul5b">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Config1.webp"><img data-src="https://s2.loli.net/2023/11/11/Cn7RpUYOSiuyWL8.webp" alt="Config1.webp" class="zoomable"></li><li class="splide__slide" data-caption="Config2.webp"><img data-src="https://s2.loli.net/2023/11/11/jIzsNPqfhEFkKo5.webp" alt="Config2.webp" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-2jdp7hhso" class="carousel-caption"> </div>
+      <div id="carousel-caption-z6w1tul5b" class="carousel-caption"> </div>
     </div>
   
 
@@ -3161,12 +3285,12 @@
 </ol>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-6c3jgclpt">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-tthwsf69v">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="opencommand1.webp"><img data-src="https://s2.loli.net/2023/11/11/TPRCVJ4I1OqikyX.webp" alt="opencommand1.webp" class="zoomable"></li><li class="splide__slide" data-caption="opencommand2.webp"><img data-src="https://s2.loli.net/2023/11/11/7kPdbWUavsKeoDY.webp" alt="opencommand2.webp" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-6c3jgclpt" class="carousel-caption"> </div>
+      <div id="carousel-caption-tthwsf69v" class="carousel-caption"> </div>
     </div>
   
 
@@ -3217,12 +3341,12 @@
 <li>Open <code>d3dx.ini</code> with VSCode.</li>
 <li>Quickly locate by searching <code>[Loader]</code> and modify the <code>target</code> under <code>[Loader]</code> to your game installation location, for example, <code>D:\Program Files\GenshinImpact_4.0.1\GenshinImpact.exe</code>.
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-rp332cnoh">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-w41mdr2xq">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Replace Path.webp"><img data-src="https://s2.loli.net/2023/11/08/E3KiqTQy9kJWZb2.webp" alt="Replace Path.webp" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-rp332cnoh" class="carousel-caption"> </div>
+      <div id="carousel-caption-w41mdr2xq" class="carousel-caption"> </div>
     </div>
      </li>
 <li>Save the file.</li>
@@ -3234,12 +3358,12 @@
 <li>Then start the game through <code>Cultivation</code>.</li>
 <li>If a popup window appears in the lower-left corner of the screen during the loading process as shown in the image below, it indicates a successful launch.   
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-eswn9k93k">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-8e1kpr1va">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Successful Launch Popup.webp"><img data-src="https://s2.loli.net/2023/11/08/sOvpqaElQIBf47F.webp" alt="Successful Launch Popup.webp" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-eswn9k93k" class="carousel-caption"> </div>
+      <div id="carousel-caption-8e1kpr1va" class="carousel-caption"> </div>
     </div>
   </li>
 </ol>
@@ -4026,23 +4150,23 @@
 <li>Push the changes to your repository.</li>
 <li>Open a new pull request.
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-vwr6tvxti">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-lxvlftu3f">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Open pull request"><img data-src="https://s2.loli.net/2024/09/18/njJmexIDHFvWt3i.webp" alt="Open pull request" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-vwr6tvxti" class="carousel-caption"> </div>
+      <div id="carousel-caption-lxvlftu3f" class="carousel-caption"> </div>
     </div>
   </li>
 <li>In the title, describe the changes made, such as <code>Plugin: add plugin hexo-splide-carousel</code>.</li>
 <li>Check the relevant options in the <code>Check List</code>.
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-x3yr7e6qq">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-u82mcslg4">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Check the relevant options"><img data-src="https://s2.loli.net/2024/09/18/MZygx7LwdmqevY4.webp" alt="Check the relevant options" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-x3yr7e6qq" class="carousel-caption"> </div>
+      <div id="carousel-caption-u82mcslg4" class="carousel-caption"> </div>
     </div>
   </li>
 <li>Submit and wait for Hexo to complete the relevant checks.</li>
@@ -4221,12 +4345,12 @@
 <h1 id="Enable-SMB-Protocol"><a href="#Enable-SMB-Protocol" class="headerlink" title="Enable SMB Protocol"></a>Enable SMB Protocol</h1><p>In the search bar above the Start menu, type <code>Turn Windows features on or off</code> and open the corresponding panel. Check the box to enable the <code>SMB Direct</code> feature.</p>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-gtltbvqnf">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-5vzxym3q4">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Search Windows Features"><img data-src="https://s2.loli.net/2023/10/01/wdH34QfKxrvNXPO.png" alt="Search Windows Features" class="zoomable"></li><li class="splide__slide" data-caption="Turn Windows Features on or off"><img data-src="https://s2.loli.net/2023/10/01/rWeC9HaAi8gUkj4.png" alt="Turn Windows Features on or off" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-gtltbvqnf" class="carousel-caption"> </div>
+      <div id="carousel-caption-5vzxym3q4" class="carousel-caption"> </div>
     </div>
   
 
@@ -4240,12 +4364,12 @@
 </ol>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-gk8fpqced">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-2cmq3fcur">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Private network"><img data-src="https://s2.loli.net/2023/10/01/XcbPDRdE8Q9nNWA.png" alt="Private network" class="zoomable"></li><li class="splide__slide" data-caption="Search manage advanced sharing settings"><img data-src="https://s2.loli.net/2023/10/01/YWC9P2HwNFDkc8U.png" alt="Search manage advanced sharing settings" class="zoomable"></li><li class="splide__slide" data-caption="Private section"><img data-src="https://s2.loli.net/2023/10/01/Er5LHzljeNDwtIc.png" alt="Private section" class="zoomable"></li><li class="splide__slide" data-caption="All Networks section"><img data-src="https://s2.loli.net/2023/10/01/EcglzqLx8wDVmuS.png" alt="All Networks section" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-gk8fpqced" class="carousel-caption"> </div>
+      <div id="carousel-caption-2cmq3fcur" class="carousel-caption"> </div>
     </div>
   
 
@@ -4257,12 +4381,12 @@
 </ol>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-ze6hi0odf">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-05vynf4zq">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="New User"><img data-src="https://s2.loli.net/2023/10/01/OyxHUmYL3Zukc6Q.png" alt="New User" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-ze6hi0odf" class="carousel-caption"> </div>
+      <div id="carousel-caption-05vynf4zq" class="carousel-caption"> </div>
     </div>
   
 
@@ -4275,12 +4399,12 @@
 </ol>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-g49az7bg8">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-n5esd0mzf">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Properties"><img data-src="https://s2.loli.net/2023/10/01/tc5XjbV3CqDJ9kZ.png" alt="Properties" class="zoomable"></li><li class="splide__slide" data-caption="Add user and adjust the permission level"><img data-src="https://s2.loli.net/2023/10/01/my45kxnEhQ2qjRX.png" alt="Add user and adjust the permission level" class="zoomable"></li><li class="splide__slide" data-caption="Done"><img data-src="https://s2.loli.net/2023/10/01/jnOV6qGUxz32Peg.png" alt="Done" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-g49az7bg8" class="carousel-caption"> </div>
+      <div id="carousel-caption-n5esd0mzf" class="carousel-caption"> </div>
     </div>
   
 
@@ -4293,12 +4417,12 @@
 </ol>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-bbrilzkje">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-z3k1ncxpl">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="IMG_0094.PNG"><img data-src="https://s2.loli.net/2023/10/01/pYLOv3fgBW2SmoK.png" alt="IMG_0094.PNG" class="zoomable"></li><li class="splide__slide" data-caption="IMG_0095.PNG"><img data-src="https://s2.loli.net/2023/10/01/EISoAvblDFrVCWh.png" alt="IMG_0095.PNG" class="zoomable"></li><li class="splide__slide" data-caption="IMG_0096.PNG"><img data-src="https://s2.loli.net/2023/10/01/8bTf2jBcU7JFDHw.png" alt="IMG_0096.PNG" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-bbrilzkje" class="carousel-caption"> </div>
+      <div id="carousel-caption-z3k1ncxpl" class="carousel-caption"> </div>
     </div>
   
 
@@ -4372,6 +4496,50 @@
       <tags>
         <tag>ITX</tag>
         <tag>DIY</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Environment Variables Configuration for Java and C</title>
+    <url>/en/java-c-environment-variables-configuration.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">I reinstalled the system yesterday and upgraded to Win10 2004. I thought I could configure the environment variables for Java and C from memory, but in the end, I had to turn to Google for help. So, I'll document it again.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
+</div>
+
+<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><ol>
+<li>Simply search for <code>environment variables</code> in the taskbar search box, and you will find <code>Edit the system environment variables.</code></li>
+<li>In the popup window, click on <code>Environment Variables</code> in the bottom right corner.</li>
+<li>Under <code>System variables,</code> create a new system variable with the variable name <code>JAVA_HOME</code> and the variable value as the installation path of JDK, which is typically <code>C:\Program Files\Java\jdk-14.0.2</code> by default.</li>
+<li>Create another system variable named <code>CLASSPATH</code> with the variable value as <code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code>.</li>
+<li>Double-click on the <code>Path</code> variable in the system variables section, and click <code>New</code> in the top right corner.</li>
+<li>Add <code>%JAVA_HOME%\bin</code> and <code>%JAVA_HOME%\jre\bin</code> separately.</li>
+<li>Confirm and return to the desktop.</li>
+<li>Open the terminal and enter <code>java -version</code> to check if it was successful. If successful, it will display the Java version.</li>
+<li>If it’s not successful, try restarting and double-check the variables for correctness.</li>
+</ol>
+<h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><ol>
+<li>In Mingw, select <code>mingw32-base</code> and <code>mingw-gcc-g++,</code> selecting more will lead to a very long installation process. You can select them by right-clicking and choosing <code>Mark for Installation.</code></li>
+<li>Click on <code>Installation</code> in the top right corner and choose <code>Apply Changes.</code></li>
+<li>In the popup window, click <code>Apply</code> to confirm.</li>
+<li>Wait patiently… Potato servers often report installation failures.</li>
+<li>After installation, follow the same steps to open system variables.</li>
+<li>Double-click on the <code>Path</code> variable in the system variables section, and click <code>New</code> in the top right corner.</li>
+<li>Add the installation path for Mingw, which is typically <code>C:\MinGW\bin.</code></li>
+<li>Open the terminal and enter <code>gcc -v</code> to check if it was successful.</li>
+<li>If it’s not successful, try restarting.</li>
+</ol>
+<p>Your environment variables should look something like this after configuration:<br><img data-src="https://s2.loli.net/2022/05/13/O49gVDEHBFZ2kzm.png" alt="1"><br><img data-src="https://s2.loli.net/2022/05/13/uLJnsPYEIiHSA1t.png" alt="2"></p>
+]]></content>
+      <categories>
+        <category>Coding</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>Environment Variables</tag>
+        <tag>Java</tag>
+        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -4464,50 +4632,6 @@
       <tags>
         <tag>Jupyter</tag>
         <tag>Win10</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Environment Variables Configuration for Java and C</title>
-    <url>/en/java-c-environment-variables-configuration.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">I reinstalled the system yesterday and upgraded to Win10 2004. I thought I could configure the environment variables for Java and C from memory, but in the end, I had to turn to Google for help. So, I'll document it again.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from my Chinese blog post with the aid of ChatGpt.</p>
-</div>
-
-<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><ol>
-<li>Simply search for <code>environment variables</code> in the taskbar search box, and you will find <code>Edit the system environment variables.</code></li>
-<li>In the popup window, click on <code>Environment Variables</code> in the bottom right corner.</li>
-<li>Under <code>System variables,</code> create a new system variable with the variable name <code>JAVA_HOME</code> and the variable value as the installation path of JDK, which is typically <code>C:\Program Files\Java\jdk-14.0.2</code> by default.</li>
-<li>Create another system variable named <code>CLASSPATH</code> with the variable value as <code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code>.</li>
-<li>Double-click on the <code>Path</code> variable in the system variables section, and click <code>New</code> in the top right corner.</li>
-<li>Add <code>%JAVA_HOME%\bin</code> and <code>%JAVA_HOME%\jre\bin</code> separately.</li>
-<li>Confirm and return to the desktop.</li>
-<li>Open the terminal and enter <code>java -version</code> to check if it was successful. If successful, it will display the Java version.</li>
-<li>If it’s not successful, try restarting and double-check the variables for correctness.</li>
-</ol>
-<h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><ol>
-<li>In Mingw, select <code>mingw32-base</code> and <code>mingw-gcc-g++,</code> selecting more will lead to a very long installation process. You can select them by right-clicking and choosing <code>Mark for Installation.</code></li>
-<li>Click on <code>Installation</code> in the top right corner and choose <code>Apply Changes.</code></li>
-<li>In the popup window, click <code>Apply</code> to confirm.</li>
-<li>Wait patiently… Potato servers often report installation failures.</li>
-<li>After installation, follow the same steps to open system variables.</li>
-<li>Double-click on the <code>Path</code> variable in the system variables section, and click <code>New</code> in the top right corner.</li>
-<li>Add the installation path for Mingw, which is typically <code>C:\MinGW\bin.</code></li>
-<li>Open the terminal and enter <code>gcc -v</code> to check if it was successful.</li>
-<li>If it’s not successful, try restarting.</li>
-</ol>
-<p>Your environment variables should look something like this after configuration:<br><img data-src="https://s2.loli.net/2022/05/13/O49gVDEHBFZ2kzm.png" alt="1"><br><img data-src="https://s2.loli.net/2022/05/13/uLJnsPYEIiHSA1t.png" alt="2"></p>
-]]></content>
-      <categories>
-        <category>Coding</category>
-      </categories>
-      <tags>
-        <tag>Windows</tag>
-        <tag>Environment Variables</tag>
-        <tag>Java</tag>
-        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -4966,36 +5090,36 @@
 <p>After opening the download page, choose <code>download from a nearby CTAN mirror</code> to go to the nearest mirror site, then click to download <code>texlive.iso</code>. </p>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-erpb9ifka">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-vsjh5o083">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Download from a nearby CTAN mirror"><img data-src="https://s2.loli.net/2023/10/06/rtv86aQ3NoJeygY.webp" alt="Download from a nearby CTAN mirror" class="zoomable"></li><li class="splide__slide" data-caption="Download texlive.iso"><img data-src="https://s2.loli.net/2023/10/06/cuwyg4mZVAdPsFJ.webp" alt="Download texlive.iso" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-erpb9ifka" class="carousel-caption"> </div>
+      <div id="carousel-caption-vsjh5o083" class="carousel-caption"> </div>
     </div>
   
 
 <p>Once the download is complete, mount the ISO file and run <code>install-tl-windows.bat</code> as administrator. After the installation program finishes loading, click the “Install” button. The installation time depends on your computer’s performance, but it typically takes around 30 minutes. After a successful installation, click the “Close” button to exit the installation program.</p>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-d4ovtp51y">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-sciphirvc">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Installation Root"><img data-src="https://s2.loli.net/2023/10/06/egBY1N8vUp5fwmV.webp" alt="Installation Root" class="zoomable"></li><li class="splide__slide" data-caption="Loading"><img data-src="https://s2.loli.net/2023/10/06/PA9rod7y2NktUEJ.webp" alt="Loading" class="zoomable"></li><li class="splide__slide" data-caption="Install"><img data-src="https://s2.loli.net/2023/10/06/1dfC7RnsILpUJKh.webp" alt="Install" class="zoomable"></li><li class="splide__slide" data-caption="Success"><img data-src="https://s2.loli.net/2023/10/06/A2pZSEaxkrHeR3d.webp" alt="Success" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-d4ovtp51y" class="carousel-caption"> </div>
+      <div id="carousel-caption-sciphirvc" class="carousel-caption"> </div>
     </div>
   
 
 <h2 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h2><p>For macOS users, simply click the download link for MacTeX.pkg on the download page. The size of the installation package is 5.2GB. After downloading, double-click the package to open it, and then follow the on-screen instructions to complete the installation.</p>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-wspwgpk7r">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-w4ajy5vwr">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Download MacTeX.pkg"><img data-src="https://s2.loli.net/2023/10/06/OMBXEcRnWstlv9A.png" alt="Download MacTeX.pkg" class="zoomable"></li><li class="splide__slide" data-caption="Agree"><img data-src="https://s2.loli.net/2023/10/06/6AZdueKySU5cvwb.png" alt="Agree" class="zoomable"></li><li class="splide__slide" data-caption="Installing"><img data-src="https://s2.loli.net/2023/10/06/2bXlRiMTSBvIZGu.png" alt="Installing" class="zoomable"></li><li class="splide__slide" data-caption="Success"><img data-src="https://s2.loli.net/2023/10/06/cN5oU1z6kZihFJE.png" alt="Success" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-wspwgpk7r" class="carousel-caption"> </div>
+      <div id="carousel-caption-w4ajy5vwr" class="carousel-caption"> </div>
     </div>
   
 
@@ -5134,12 +5258,12 @@
 <h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><p>When you open a <code>.tex</code> file using VSCode, you will see a TEX option in the left sidebar. You can use this option to select compilation options and view the PDF output, among other operations.</p>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-44u4agv50">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-o75xia0ha">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Build.webp"><img data-src="https://s2.loli.net/2023/10/06/JMpIfran4KEuPic.webp" alt="Build.webp" class="zoomable"></li><li class="splide__slide" data-caption="PDF&Log.webp"><img data-src="https://s2.loli.net/2023/10/06/XGPqzkKINi4AQ6d.webp" alt="PDF&Log.webp" class="zoomable"></li><li class="splide__slide" data-caption="Navigate.webp"><img data-src="https://s2.loli.net/2023/10/06/v9HR26jTgBYypld.webp" alt="Navigate.webp" class="zoomable"></li><li class="splide__slide" data-caption="Citation.webp"><img data-src="https://s2.loli.net/2023/10/06/AiMrFKVxwI3g19P.webp" alt="Citation.webp" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-44u4agv50" class="carousel-caption"> </div>
+      <div id="carousel-caption-o75xia0ha" class="carousel-caption"> </div>
     </div>
   
 
@@ -6680,194 +6804,6 @@
       </tags>
   </entry>
   <entry>
-    <title>NexT 8.20 Update Log</title>
-    <url>/en/next-8-20-update-log.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center"> Update Log of my blog. This time, there weren't many adjustments — just a simple refresh of the version number and a slight enhancement of the reading experience. </blockquote>
-
-<span id="more"></span>
-
-<h1 id="Upgrade-Content"><a href="#Upgrade-Content" class="headerlink" title="Upgrade Content"></a>Upgrade Content</h1><ul>
-<li>Upgraded Hexo version: 6.3.0 → 7.3.0</li>
-<li>Upgraded NexT version: 8.18.2 → 8.20.0</li>
-<li>Changed website icon</li>
-<li>Changed fonts</li>
-<li>Automatically switched background image based on browser theme</li>
-<li>Adjusted pagination settings for archives, directory, and tags</li>
-<li>Redirected some URLs</li>
-<li>Removed click effects on mobile</li>
-<li>Added image carousel functionality</li>
-</ul>
-<h1 id="NPM-Package-Upgrade"><a href="#NPM-Package-Upgrade" class="headerlink" title="NPM Package Upgrade"></a>NPM Package Upgrade</h1><p>During this upgrade, I discovered a very useful package called <a href="https://github.com/raineorshine/npm-check-updates">npm-check-updates</a> that can check which packages can be upgraded.</p>
-<p>Installation command:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm i -g npm-check-updates</span><br></pre></td></tr></table></figure>
-
-<p>To check for upgradable packages:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ncu -u</span><br></pre></td></tr></table></figure>
-
-<p>My output was as follows:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo                   ^6.3.0  →   ^7.3.0</span><br><span class="line">hexo-blog-encrypt      ^3.1.6  →   ^3.1.9</span><br><span class="line">hexo-deployer-git      ^3.0.0  →   ^4.0.0</span><br><span class="line">hexo-generator-index   ^3.0.0  →   ^4.0.0</span><br><span class="line">hexo-hide-posts        ^0.2.0  →   ^0.4.3</span><br><span class="line">hexo-renderer-marked   ^6.0.0  →   ^6.3.0</span><br><span class="line">hexo-renderer-stylus   ^2.1.0  →   ^3.0.1</span><br><span class="line">hexo-theme-next       ^8.18.2  →  ^8.20.0</span><br><span class="line">hexo-word-counter      ^0.1.0  →   ^0.2.0</span><br></pre></td></tr></table></figure>
-
-<p>To upgrade all components directly:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo npm install</span><br></pre></td></tr></table></figure>
-
-<h1 id="Update-Configuration-File"><a href="#Update-Configuration-File" class="headerlink" title="Update Configuration File"></a>Update Configuration File</h1><p>It’s been years since I updated the NexT configuration file. While it doesn’t really affect usage, it triggers my OCD a bit.</p>
-<ol>
-<li>Rename <code>./_config.next.yml</code> to <code>./_old_next_config.yml</code>.</li>
-<li>Copy <code>./node_modules/hexo-theme-next/_config.yml</code> to the blog root directory and rename it to <code>_config.next.yml</code>.</li>
-<li>Open both files in VSCode, hold <code>Shift</code> to select both, right-click the file tabs, and choose “Compare Selected”. Then copy and paste the necessary sections.</li>
-</ol>
-<h1 id="Change-Website-Icon"><a href="#Change-Website-Icon" class="headerlink" title="Change Website Icon"></a>Change Website Icon</h1><p>I’m simply tired of the current icon and want a new one.</p>
-<ol>
-<li>Open Photoshop (PS) and sketch a random design, then export it with a higher resolution.</li>
-<li>Upload the image to <a href="https://realfavicongenerator.net/">Favicon Generator</a> to generate all required icons.</li>
-<li>Place the generated images in the <code>./source/images/</code> directory, replacing the old ones.</li>
-<li>Be sure to update <code>android_manifest</code> in <code>./_config.next.yml</code> to <code>/images/site.webmanifest</code> since the auto-generated filenames might differ.</li>
-</ol>
-<h1 id="Change-Website-Font"><a href="#Change-Website-Font" class="headerlink" title="Change Website Font"></a>Change Website Font</h1><p>I’ve changed the website’s global font to the <strong>Noto Sans</strong>, while the blog content uses the more readable <strong>Noto Serif</strong>. You just need to tweak a few lines in <code>./_config.next.yml</code>.</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Font options:</span></span><br><span class="line"><span class="comment"># `external: true` will load this font family from `host` above.</span></span><br><span class="line"><span class="comment"># `family: Times New Roman`. Without any quotes.</span></span><br><span class="line"><span class="comment"># `size: x.x`. Use `em` as unit. Default: 1 (16px)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Global font settings used for all elements inside &lt;body&gt;.</span></span><br><span class="line"><span class="attr">global:</span></span><br><span class="line">  <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">family:</span> <span class="string">Noto</span> <span class="string">Sans</span></span><br><span class="line">  <span class="attr">size:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Font settings for site title (.site-title).</span></span><br><span class="line"><span class="attr">title:</span></span><br><span class="line">  <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">family:</span></span><br><span class="line">  <span class="attr">size:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Font settings for headlines (&lt;h1&gt; to &lt;h6&gt;).</span></span><br><span class="line"><span class="attr">headings:</span></span><br><span class="line">  <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">family:</span></span><br><span class="line">  <span class="attr">size:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Font settings for posts (.post-body).</span></span><br><span class="line"><span class="attr">posts:</span></span><br><span class="line">  <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">family:</span> <span class="string">Noto</span> <span class="string">Serif</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Font settings for &lt;code&gt; and code blocks.</span></span><br><span class="line"><span class="attr">codes:</span></span><br><span class="line">  <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">family:</span> <span class="string">Fira</span> <span class="string">Code,</span> <span class="string">Noto</span> <span class="string">Serif</span> <span class="string">SC</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="Background-Image-Adjustments"><a href="#Background-Image-Adjustments" class="headerlink" title="Background Image Adjustments"></a>Background Image Adjustments</h1><p>Same reason as before — I’m tired of the old look. Here’s what I’ve changed:</p>
-<ol>
-<li>The original background image was way too bright, especially in dark mode. It felt out of place, and honestly, it was blinding during those late-night sessions. So, I went ahead and set different background images for light and dark modes.   </li>
-<li>No more semi-transparent background images. This should make the text way easier to read.   </li>
-<li>Oh, and I scrapped the gradient background for mobile devices.</li>
-</ol>
-<p>Just add the following styles in <code>D:\Project\Blog\cn_Siriusq\source\_data\styles.styl</code>:</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">// <span class="attribute">Background</span> Image</span><br><span class="line"><span class="comment">/* Desktop Background */</span></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">768px</span>) &#123;</span><br><span class="line">  <span class="comment">/* Light Background */</span></span><br><span class="line">  <span class="keyword">@media</span> (<span class="attribute">prefers-color-scheme</span>: light) &#123;</span><br><span class="line">    <span class="selector-tag">body</span> &#123;</span><br><span class="line">      <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">&#x27;https://s2.loli.net/2024/09/11/ZyWBVcA5F2bodgw.webp&#x27;</span>);</span><br><span class="line">      <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">      <span class="attribute">background-attachment</span>: fixed;</span><br><span class="line">      <span class="attribute">background-size</span>: cover;</span><br><span class="line">      <span class="attribute">background-position</span>: center;</span><br><span class="line">      -webkit-<span class="attribute">background-size</span>: cover;</span><br><span class="line">      -o-<span class="attribute">background-size</span>: cover;</span><br><span class="line">      -moz-<span class="attribute">background-size</span>: cover;</span><br><span class="line">      -ms-<span class="attribute">background-size</span>: cover;</span><br><span class="line">      <span class="selector-tag">footer</span> &gt; <span class="selector-tag">div</span> &gt; <span class="selector-tag">div</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>:<span class="number">#ffffff</span>;//<span class="attribute">Bottom</span> Text Colour</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Dark Background */</span></span><br><span class="line">  <span class="keyword">@media</span> (<span class="attribute">prefers-color-scheme</span>: dark) &#123;</span><br><span class="line">    <span class="selector-tag">body</span> &#123;</span><br><span class="line">      <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">&#x27;https://s2.loli.net/2024/09/11/YHxg9RsTUDKvBPr.webp&#x27;</span>);</span><br><span class="line">      <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">      <span class="attribute">background-attachment</span>: fixed;</span><br><span class="line">      <span class="attribute">background-size</span>: cover;</span><br><span class="line">      <span class="attribute">background-position</span>: center;</span><br><span class="line">      -webkit-<span class="attribute">background-size</span>: cover;</span><br><span class="line">      -o-<span class="attribute">background-size</span>: cover;</span><br><span class="line">      -moz-<span class="attribute">background-size</span>: cover;</span><br><span class="line">      -ms-<span class="attribute">background-size</span>: cover;</span><br><span class="line">      <span class="selector-tag">footer</span> &gt; <span class="selector-tag">div</span> &gt; <span class="selector-tag">div</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>:<span class="number">#dddddd</span>;//<span class="attribute">Bottom</span> Text Colour</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Do not show background image on mobile */</span></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">767px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: none;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Pagination-Adjustments"><a href="#Pagination-Adjustments" class="headerlink" title="Pagination Adjustments"></a>Pagination Adjustments</h1><p>When animations are enabled, the NexT theme uses a waterfall-like effect to gradually reveal elements on the page, including blog post titles in the archives. This creates a bit of a problem: if there are too many titles on one page, the ones at the bottom won’t show up until the animation finishes. I originally had it set to display 50 titles per page, but waiting a few seconds for the animation to complete is just inconvenient. So, I’ve now changed it to display 20 titles per page.</p>
-<p>Adjust the following settings in Hexo’s config file <code>_config.yml</code>:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Archive Pagination</span></span><br><span class="line"><span class="attr">archive_generator:</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Tag Pagination</span></span><br><span class="line"><span class="attr">tag_generator:</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Category Pagination</span></span><br><span class="line"><span class="attr">category_generator:</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="number">20</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="URL-Redirection"><a href="#URL-Redirection" class="headerlink" title="URL Redirection"></a>URL Redirection</h1><p>Currently, the blog URLs are generated based on the filenames of the markdown files. There are a few filenames I’ve been wanting to change for a while, but renaming them directly would result in broken links. To solve this, I installed the <a href="https://github.com/hexojs/hexo-generator-alias">hexo-generator-alias</a> plugin.</p>
-<p>Installation command:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-alias --save</span><br></pre></td></tr></table></figure>
-
-<p>How to use it:</p>
-<ol>
-<li>Rename the relevant markdown files.</li>
-<li>Open the file and add <code>alias: [relative path of the old markdown filename].html</code> in the <code>front-matter</code> section.</li>
-</ol>
-<p>Example:<br>My old filename was <code>Win10-Reinstall-Guide.md</code>, I’d rename it to <code>Windows-Reinstall-Guide.md</code>, then open the file and modify it like this:</p>
-<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="comment">---</span></span><br><span class="line">title: Windows Reinstall Guide</span><br><span class="line">date: 2020-07-13 12:28:34</span><br><span class="line">lang: zh-CN</span><br><span class="line">tags: [Windows, Office, Reinstall]</span><br><span class="line">categories: Windows</span><br><span class="line"><span class="addition">+ alias: Win10-Reinstall-Guide.html</span></span><br><span class="line"><span class="comment">---</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="Remove-Click-Effects-on-Mobile"><a href="#Remove-Click-Effects-on-Mobile" class="headerlink" title="Remove Click Effects on Mobile"></a>Remove Click Effects on Mobile</h1><p>The current click effect is a bit laggy on mobile devices, so I’m removing it for now. Maybe in a few years, when mobile performance improves, I’ll bring it back. To do this, go to the <code>CursorSpecialEffects</code> class in the existing <code>./source/js/firework.js</code> file, and add a conditional statement in the <code>init</code> method: <code>if (window.innerWidth &gt; 768)&#123;&#125;</code>. Then, move the original content inside this block.</p>
-<details class="note success"><summary><p>Complete Guide</p>
-</summary>
-<p><code>./source/js/firework.js</code>：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Circle</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">&#123; origin, speed, color, angle, context &#125;</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">origin</span> = origin</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">position</span> = &#123; ...<span class="variable language_">this</span>.<span class="property">origin</span> &#125;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">color</span> = color</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">speed</span> = speed</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">angle</span> = angle</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">context</span> = context</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">renderCount</span> = <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">draw</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">context</span>.<span class="property">fillStyle</span> = <span class="variable language_">this</span>.<span class="property">color</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">context</span>.<span class="title function_">beginPath</span>()</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">context</span>.<span class="title function_">arc</span>(<span class="variable language_">this</span>.<span class="property">position</span>.<span class="property">x</span>, <span class="variable language_">this</span>.<span class="property">position</span>.<span class="property">y</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="title class_">Math</span>.<span class="property">PI</span> * <span class="number">2</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">context</span>.<span class="title function_">fill</span>()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">move</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">position</span>.<span class="property">x</span> = (<span class="title class_">Math</span>.<span class="title function_">sin</span>(<span class="variable language_">this</span>.<span class="property">angle</span>) * <span class="variable language_">this</span>.<span class="property">speed</span>) + <span class="variable language_">this</span>.<span class="property">position</span>.<span class="property">x</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">position</span>.<span class="property">y</span> = (<span class="title class_">Math</span>.<span class="title function_">cos</span>(<span class="variable language_">this</span>.<span class="property">angle</span>) * <span class="variable language_">this</span>.<span class="property">speed</span>) + <span class="variable language_">this</span>.<span class="property">position</span>.<span class="property">y</span> + (<span class="variable language_">this</span>.<span class="property">renderCount</span> * <span class="number">0.3</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">renderCount</span>++</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Boom</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span> (&#123; origin, context, circleCount = <span class="number">16</span>, area &#125;) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">origin</span> = origin</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">context</span> = context</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">circleCount</span> = circleCount</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">area</span> = area</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">stop</span> = <span class="literal">false</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">circles</span> = []</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">randomArray</span>(<span class="params">range</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> length = range.<span class="property">length</span></span><br><span class="line">    <span class="keyword">const</span> randomIndex = <span class="title class_">Math</span>.<span class="title function_">floor</span>(length * <span class="title class_">Math</span>.<span class="title function_">random</span>())</span><br><span class="line">    <span class="keyword">return</span> range[randomIndex]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">randomColor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> range = [<span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;9&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>, <span class="string">&#x27;F&#x27;</span>]</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;#&#x27;</span> + <span class="variable language_">this</span>.<span class="title function_">randomArray</span>(range) + <span class="variable language_">this</span>.<span class="title function_">randomArray</span>(range) + <span class="variable language_">this</span>.<span class="title function_">randomArray</span>(range) + <span class="variable language_">this</span>.<span class="title function_">randomArray</span>(range) + <span class="variable language_">this</span>.<span class="title function_">randomArray</span>(range) + <span class="variable language_">this</span>.<span class="title function_">randomArray</span>(range)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">randomRange</span>(<span class="params">start, end</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (end - start) * <span class="title class_">Math</span>.<span class="title function_">random</span>() + start</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">init</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="variable language_">this</span>.<span class="property">circleCount</span>; i++) &#123;</span><br><span class="line">      <span class="keyword">const</span> circle = <span class="keyword">new</span> <span class="title class_">Circle</span>(&#123;</span><br><span class="line">        <span class="attr">context</span>: <span class="variable language_">this</span>.<span class="property">context</span>,</span><br><span class="line">        <span class="attr">origin</span>: <span class="variable language_">this</span>.<span class="property">origin</span>,</span><br><span class="line">        <span class="attr">color</span>: <span class="variable language_">this</span>.<span class="title function_">randomColor</span>(),</span><br><span class="line">        <span class="attr">angle</span>: <span class="variable language_">this</span>.<span class="title function_">randomRange</span>(<span class="title class_">Math</span>.<span class="property">PI</span> - <span class="number">1</span>, <span class="title class_">Math</span>.<span class="property">PI</span> + <span class="number">1</span>),</span><br><span class="line">        <span class="attr">speed</span>: <span class="variable language_">this</span>.<span class="title function_">randomRange</span>(<span class="number">1</span>, <span class="number">6</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">circles</span>.<span class="title function_">push</span>(circle)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">move</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">circles</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params">circle, index</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (circle.<span class="property">position</span>.<span class="property">x</span> &gt; <span class="variable language_">this</span>.<span class="property">area</span>.<span class="property">width</span> || circle.<span class="property">position</span>.<span class="property">y</span> &gt; <span class="variable language_">this</span>.<span class="property">area</span>.<span class="property">height</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">circles</span>.<span class="title function_">splice</span>(index, <span class="number">1</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      circle.<span class="title function_">move</span>()</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">circles</span>.<span class="property">length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">stop</span> = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">draw</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">circles</span>.<span class="title function_">forEach</span>(<span class="function"><span class="params">circle</span> =&gt;</span> circle.<span class="title function_">draw</span>())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CursorSpecialEffects</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">computerCanvas</span> = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;canvas&#x27;</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">renderCanvas</span> = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;canvas&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">computerContext</span> = <span class="variable language_">this</span>.<span class="property">computerCanvas</span>.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">renderContext</span> = <span class="variable language_">this</span>.<span class="property">renderCanvas</span>.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">globalWidth</span> = <span class="variable language_">window</span>.<span class="property">innerWidth</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">globalHeight</span> = <span class="variable language_">window</span>.<span class="property">innerHeight</span></span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">booms</span> = []</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">running</span> = <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">handleMouseDown</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> boom = <span class="keyword">new</span> <span class="title class_">Boom</span>(&#123;</span><br><span class="line">      <span class="attr">origin</span>: &#123; <span class="attr">x</span>: e.<span class="property">clientX</span>, <span class="attr">y</span>: e.<span class="property">clientY</span> &#125;,</span><br><span class="line">      <span class="attr">context</span>: <span class="variable language_">this</span>.<span class="property">computerContext</span>,</span><br><span class="line">      <span class="attr">area</span>: &#123;</span><br><span class="line">        <span class="attr">width</span>: <span class="variable language_">this</span>.<span class="property">globalWidth</span>,</span><br><span class="line">        <span class="attr">height</span>: <span class="variable language_">this</span>.<span class="property">globalHeight</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    boom.<span class="title function_">init</span>()</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">booms</span>.<span class="title function_">push</span>(boom)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">running</span> || <span class="variable language_">this</span>.<span class="title function_">run</span>()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">handlePageHide</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">booms</span> = []</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">running</span> = <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">init</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// Only works on the desktop, determines if the screen width is greater than 768px</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">window</span>.<span class="property">innerWidth</span> &gt; <span class="number">768</span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> style = <span class="variable language_">this</span>.<span class="property">renderCanvas</span>.<span class="property">style</span></span><br><span class="line">      style.<span class="property">position</span> = <span class="string">&#x27;fixed&#x27;</span></span><br><span class="line">      style.<span class="property">top</span> = style.<span class="property">left</span> = <span class="number">0</span></span><br><span class="line">      style.<span class="property">zIndex</span> = <span class="string">&#x27;999999999999999999999999999999999999999999&#x27;</span></span><br><span class="line">      style.<span class="property">pointerEvents</span> = <span class="string">&#x27;none&#x27;</span></span><br><span class="line"></span><br><span class="line">      style.<span class="property">width</span> = <span class="variable language_">this</span>.<span class="property">renderCanvas</span>.<span class="property">width</span> = <span class="variable language_">this</span>.<span class="property">computerCanvas</span>.<span class="property">width</span> = <span class="variable language_">this</span>.<span class="property">globalWidth</span></span><br><span class="line">      style.<span class="property">height</span> = <span class="variable language_">this</span>.<span class="property">renderCanvas</span>.<span class="property">height</span> = <span class="variable language_">this</span>.<span class="property">computerCanvas</span>.<span class="property">height</span> = <span class="variable language_">this</span>.<span class="property">globalHeight</span></span><br><span class="line"></span><br><span class="line">      <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">append</span>(<span class="variable language_">this</span>.<span class="property">renderCanvas</span>)</span><br><span class="line"></span><br><span class="line">      <span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;mousedown&#x27;</span>, <span class="variable language_">this</span>.<span class="property">handleMouseDown</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>))</span><br><span class="line">      <span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;pagehide&#x27;</span>, <span class="variable language_">this</span>.<span class="property">handlePageHide</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>))</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">run</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">running</span> = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">booms</span>.<span class="property">length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">running</span> = <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">requestAnimationFrame</span>(<span class="variable language_">this</span>.<span class="property">run</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>))</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">computerContext</span>.<span class="title function_">clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="variable language_">this</span>.<span class="property">globalWidth</span>, <span class="variable language_">this</span>.<span class="property">globalHeight</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">renderContext</span>.<span class="title function_">clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="variable language_">this</span>.<span class="property">globalWidth</span>, <span class="variable language_">this</span>.<span class="property">globalHeight</span>)</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">booms</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params">boom, index</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (boom.<span class="property">stop</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">booms</span>.<span class="title function_">splice</span>(index, <span class="number">1</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      boom.<span class="title function_">move</span>()</span><br><span class="line">      boom.<span class="title function_">draw</span>()</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">renderContext</span>.<span class="title function_">drawImage</span>(<span class="variable language_">this</span>.<span class="property">computerCanvas</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="variable language_">this</span>.<span class="property">globalWidth</span>, <span class="variable language_">this</span>.<span class="property">globalHeight</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cursorSpecialEffects = <span class="keyword">new</span> <span class="title class_">CursorSpecialEffects</span>()</span><br><span class="line">cursorSpecialEffects.<span class="title function_">init</span>()</span><br></pre></td></tr></table></figure>
-
-<p>Then import it in <code>./source/_data/body-end.njk</code>:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;# Click Effect #&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span> <span class="attr">src</span>=<span class="string">&quot;/js/fireworks.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</details>
-
-<h1 id="Add-Image-Carousel-Functionality"><a href="#Add-Image-Carousel-Functionality" class="headerlink" title="Add Image Carousel Functionality"></a>Add Image Carousel Functionality</h1><p>Wrote my own plugin based on Splide: <code>hexo-splide-carousel</code>.</p>
-<div class="link-grid"><div class="link-grid-container">
-<object class="link-grid-image" data="/images/link/link.webp"></object>
-<p>Live Demo</p><p>A package for Hexo blogs using the NexT theme, provides image carousel and zoom functionality using Splide.js and medium-zoom libraries.</p>
-<a href="https://siriusq.top/en/splide-demo.html"></a>
-</div><div class="link-grid-container">
-<object class="link-grid-image" data="/images/link/github.webp"></object>
-<p>Github Repo</p><p>hexo-splide-carousel</p>
-<a href="https://github.com/Siriusq/hexo-splide-carousel"></a>
-</div></div>
-]]></content>
-      <categories>
-        <category>Website Configuration</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Next</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Common Commands for npm</title>
-    <url>/en/npm.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">A collection of npm commands, as well as commands commonly used for Next theme upgrades.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from <a href="https://siriusq.top/npm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html">my Chinese blog post</a> with the aid of ChatGpt.</p>
-</div>
-
-<p>npm is the default package manager for the JavaScript runtime environment Node.js.</p>
-<h1 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h1><div class="note primary"><p>Reference: <a class="btn" href="https://segmentfault.com/a/1190000019141975"><i class="fa fa-blog fa-fw"></i>jm365</a></p></div>
-
-<h2 id="Help"><a href="#Help" class="headerlink" title="Help"></a>Help</h2><ul>
-<li><code>npm -l</code> View usage information for all commands.</li>
-<li><code>npm &lt;command&gt; -h</code> View usage information for a specific command.</li>
-<li><code>npm help &lt;command&gt;</code> View detailed usage information for a specific command.</li>
-<li><code>npm -v</code> View the installed version of npm.</li>
-<li><code>npm config list -l</code> View the configuration settings for npm.</li>
-<li><code>npm ls</code> View all locally installed modules.</li>
-<li><code>npm ls -g</code> View all globally installed modules.</li>
-<li><code>npm ls &lt;moduleName&gt;</code> View the local installation status of a specific module.</li>
-<li><code>npm ls &lt;moduleName&gt; -g</code> View the global installation status of a specific module.</li>
-<li><code>npm view &lt;moduleName&gt;</code> View information about a specific module in the current registry.</li>
-<li><code>npm view &lt;moduleName&gt; versions</code> View all historical versions of a specific module in the current registry.</li>
-<li><code>npm view &lt;moduleName&gt; version</code> View the latest version of a specific module in the current registry.</li>
-</ul>
-<h2 id="Creating-a-Project"><a href="#Creating-a-Project" class="headerlink" title="Creating a Project"></a>Creating a Project</h2><ul>
-<li><code>npm init</code> Initialize a project in the current directory.</li>
-</ul>
-<h2 id="Installation-Uninstallation"><a href="#Installation-Uninstallation" class="headerlink" title="Installation&#x2F;Uninstallation"></a>Installation&#x2F;Uninstallation</h2><ul>
-<li><code>npm i/install &lt;moduleName&gt;</code> Install a module; both <code>i</code> and <code>install</code> have the same function.</li>
-<li><code>npm i &lt;moduleName&gt;@x.x.x</code> Install a specific version of a module.</li>
-<li><code>npm i &lt;moduleName&gt; --save</code> Install and save to the <code>dependencies</code> in the <code>package.json</code> file.</li>
-<li><code>npm i &lt;moduleName&gt; --save-dev</code> Install and save to the <code>devDependencies</code> in the <code>package.json</code> file.</li>
-<li><code>npm i &lt;moduleName&gt; -g</code> Globally install a module.</li>
-</ul>
-<h2 id="Uninstallation"><a href="#Uninstallation" class="headerlink" title="Uninstallation"></a>Uninstallation</h2><ul>
-<li><code>npm uninstall &lt;moduleName&gt;</code> Uninstall a specified local module.</li>
-<li><code>npm uninstall &lt;moduleName&gt; -g</code> Uninstall a specified global module.</li>
-</ul>
-<h2 id="Updating"><a href="#Updating" class="headerlink" title="Updating"></a>Updating</h2><ul>
-<li><code>npm update</code> Update modules according to the descriptions in <code>package.json</code>, and save the updated version descriptions to <code>package.json</code>. <code>^a.b.c</code> updates to the latest version under <code>a</code>, <code>~a.b.c</code> updates to the latest version under <code>a.b</code>, and <code>a.b.c</code> won’t be updated.</li>
-<li><code>npm update &lt;moduleName&gt;</code> Update a specified local module.</li>
-<li><code>npm update &lt;moduleName&gt;@x.x.x</code> Update a specified local module to a specific version.</li>
-<li><code>npm update &lt;moduleName&gt; -g</code> Update a specified global module.</li>
-<li><code>npm update &lt;moduleName&gt;@x.x.x -g</code> Update a specified global module to a specific version.</li>
-</ul>
-<h2 id="npm-Registry"><a href="#npm-Registry" class="headerlink" title="npm Registry"></a>npm Registry</h2><ul>
-<li><code>npm config get registry</code> View the current npm registry address.</li>
-<li><code>npm config set registry &lt;registryAddress&gt;</code> Set the npm registry to the specified address.</li>
-</ul>
-<h1 id="Introduction-to-package-json"><a href="#Introduction-to-package-json" class="headerlink" title="Introduction to package.json"></a>Introduction to package.json</h1><p>The <code>package.json</code> file is the manifest of your project, where <code>npm</code> and <code>yarn</code> store the names and versions of all installed packages. The <code>npm install</code> command uses it to download the required modules. Below are explanations of fields in <code>package.json</code>.</p>
-<ul>
-<li><code>version</code> indicates the current version.</li>
-<li><code>name</code> sets the name of the application&#x2F;package.</li>
-<li><code>description</code> provides a short description of the application&#x2F;package.</li>
-<li><code>main</code> specifies the entry point of the application.</li>
-<li><code>private</code> if set to true, prevents accidental publishing of the application&#x2F;package to npm.</li>
-<li><code>scripts</code> defines a set of runnable Node.js scripts.</li>
-<li><code>dependencies</code> lists npm packages installed as dependencies.</li>
-<li><code>devDependencies</code> lists npm packages installed as development dependencies.</li>
-<li><code>engines</code> specifies the versions of Node.js this package&#x2F;application runs on.</li>
-<li><code>browserslist</code> indicates which browsers (and versions) to support.</li>
-</ul>
-<h1 id="Common-Commands-for-Theme-Upgrades"><a href="#Common-Commands-for-Theme-Upgrades" class="headerlink" title="Common Commands for Theme Upgrades"></a>Common Commands for Theme Upgrades</h1><p>List installed packages:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm ls</span><br></pre></td></tr></table></figure>
-
-<p>Check for packages that need an update:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm-check</span><br></pre></td></tr></table></figure>
-
-<p>Upgrade a theme to the latest version:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-theme-next@latest</span><br></pre></td></tr></table></figure>
-
-<p>Or:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm update hexo-theme-next</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Coding</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Next</tag>
-        <tag>npm</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Next Theme Customization (Version 7.10)</title>
     <url>/en/next-theme-customization.html</url>
     <content><![CDATA[<p>The blog theme has been changed to <a href="https://github.com/theme-next/hexo-theme-next">Next</a>. This blog post is only applicable to the Next 7.10 theme.<br><img data-src="https://s2.loli.net/2022/05/13/wn7zegYd1hSMAqQ.jpg" alt="201904121"></p>
@@ -7392,6 +7328,194 @@
       <tags>
         <tag>Hexo</tag>
         <tag>Next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NexT 8.20 Update Log</title>
+    <url>/en/next-8-20-update-log.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center"> Update Log of my blog. This time, there weren't many adjustments — just a simple refresh of the version number and a slight enhancement of the reading experience. </blockquote>
+
+<span id="more"></span>
+
+<h1 id="Upgrade-Content"><a href="#Upgrade-Content" class="headerlink" title="Upgrade Content"></a>Upgrade Content</h1><ul>
+<li>Upgraded Hexo version: 6.3.0 → 7.3.0</li>
+<li>Upgraded NexT version: 8.18.2 → 8.20.0</li>
+<li>Changed website icon</li>
+<li>Changed fonts</li>
+<li>Automatically switched background image based on browser theme</li>
+<li>Adjusted pagination settings for archives, directory, and tags</li>
+<li>Redirected some URLs</li>
+<li>Removed click effects on mobile</li>
+<li>Added image carousel functionality</li>
+</ul>
+<h1 id="NPM-Package-Upgrade"><a href="#NPM-Package-Upgrade" class="headerlink" title="NPM Package Upgrade"></a>NPM Package Upgrade</h1><p>During this upgrade, I discovered a very useful package called <a href="https://github.com/raineorshine/npm-check-updates">npm-check-updates</a> that can check which packages can be upgraded.</p>
+<p>Installation command:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm i -g npm-check-updates</span><br></pre></td></tr></table></figure>
+
+<p>To check for upgradable packages:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ncu -u</span><br></pre></td></tr></table></figure>
+
+<p>My output was as follows:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo                   ^6.3.0  →   ^7.3.0</span><br><span class="line">hexo-blog-encrypt      ^3.1.6  →   ^3.1.9</span><br><span class="line">hexo-deployer-git      ^3.0.0  →   ^4.0.0</span><br><span class="line">hexo-generator-index   ^3.0.0  →   ^4.0.0</span><br><span class="line">hexo-hide-posts        ^0.2.0  →   ^0.4.3</span><br><span class="line">hexo-renderer-marked   ^6.0.0  →   ^6.3.0</span><br><span class="line">hexo-renderer-stylus   ^2.1.0  →   ^3.0.1</span><br><span class="line">hexo-theme-next       ^8.18.2  →  ^8.20.0</span><br><span class="line">hexo-word-counter      ^0.1.0  →   ^0.2.0</span><br></pre></td></tr></table></figure>
+
+<p>To upgrade all components directly:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo npm install</span><br></pre></td></tr></table></figure>
+
+<h1 id="Update-Configuration-File"><a href="#Update-Configuration-File" class="headerlink" title="Update Configuration File"></a>Update Configuration File</h1><p>It’s been years since I updated the NexT configuration file. While it doesn’t really affect usage, it triggers my OCD a bit.</p>
+<ol>
+<li>Rename <code>./_config.next.yml</code> to <code>./_old_next_config.yml</code>.</li>
+<li>Copy <code>./node_modules/hexo-theme-next/_config.yml</code> to the blog root directory and rename it to <code>_config.next.yml</code>.</li>
+<li>Open both files in VSCode, hold <code>Shift</code> to select both, right-click the file tabs, and choose “Compare Selected”. Then copy and paste the necessary sections.</li>
+</ol>
+<h1 id="Change-Website-Icon"><a href="#Change-Website-Icon" class="headerlink" title="Change Website Icon"></a>Change Website Icon</h1><p>I’m simply tired of the current icon and want a new one.</p>
+<ol>
+<li>Open Photoshop (PS) and sketch a random design, then export it with a higher resolution.</li>
+<li>Upload the image to <a href="https://realfavicongenerator.net/">Favicon Generator</a> to generate all required icons.</li>
+<li>Place the generated images in the <code>./source/images/</code> directory, replacing the old ones.</li>
+<li>Be sure to update <code>android_manifest</code> in <code>./_config.next.yml</code> to <code>/images/site.webmanifest</code> since the auto-generated filenames might differ.</li>
+</ol>
+<h1 id="Change-Website-Font"><a href="#Change-Website-Font" class="headerlink" title="Change Website Font"></a>Change Website Font</h1><p>I’ve changed the website’s global font to the <strong>Noto Sans</strong>, while the blog content uses the more readable <strong>Noto Serif</strong>. You just need to tweak a few lines in <code>./_config.next.yml</code>.</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Font options:</span></span><br><span class="line"><span class="comment"># `external: true` will load this font family from `host` above.</span></span><br><span class="line"><span class="comment"># `family: Times New Roman`. Without any quotes.</span></span><br><span class="line"><span class="comment"># `size: x.x`. Use `em` as unit. Default: 1 (16px)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Global font settings used for all elements inside &lt;body&gt;.</span></span><br><span class="line"><span class="attr">global:</span></span><br><span class="line">  <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">family:</span> <span class="string">Noto</span> <span class="string">Sans</span></span><br><span class="line">  <span class="attr">size:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Font settings for site title (.site-title).</span></span><br><span class="line"><span class="attr">title:</span></span><br><span class="line">  <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">family:</span></span><br><span class="line">  <span class="attr">size:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Font settings for headlines (&lt;h1&gt; to &lt;h6&gt;).</span></span><br><span class="line"><span class="attr">headings:</span></span><br><span class="line">  <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">family:</span></span><br><span class="line">  <span class="attr">size:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Font settings for posts (.post-body).</span></span><br><span class="line"><span class="attr">posts:</span></span><br><span class="line">  <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">family:</span> <span class="string">Noto</span> <span class="string">Serif</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Font settings for &lt;code&gt; and code blocks.</span></span><br><span class="line"><span class="attr">codes:</span></span><br><span class="line">  <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">family:</span> <span class="string">Fira</span> <span class="string">Code,</span> <span class="string">Noto</span> <span class="string">Serif</span> <span class="string">SC</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Background-Image-Adjustments"><a href="#Background-Image-Adjustments" class="headerlink" title="Background Image Adjustments"></a>Background Image Adjustments</h1><p>Same reason as before — I’m tired of the old look. Here’s what I’ve changed:</p>
+<ol>
+<li>The original background image was way too bright, especially in dark mode. It felt out of place, and honestly, it was blinding during those late-night sessions. So, I went ahead and set different background images for light and dark modes.   </li>
+<li>No more semi-transparent background images. This should make the text way easier to read.   </li>
+<li>Oh, and I scrapped the gradient background for mobile devices.</li>
+</ol>
+<p>Just add the following styles in <code>D:\Project\Blog\cn_Siriusq\source\_data\styles.styl</code>:</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">// <span class="attribute">Background</span> Image</span><br><span class="line"><span class="comment">/* Desktop Background */</span></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">768px</span>) &#123;</span><br><span class="line">  <span class="comment">/* Light Background */</span></span><br><span class="line">  <span class="keyword">@media</span> (<span class="attribute">prefers-color-scheme</span>: light) &#123;</span><br><span class="line">    <span class="selector-tag">body</span> &#123;</span><br><span class="line">      <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">&#x27;https://s2.loli.net/2024/09/11/ZyWBVcA5F2bodgw.webp&#x27;</span>);</span><br><span class="line">      <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">      <span class="attribute">background-attachment</span>: fixed;</span><br><span class="line">      <span class="attribute">background-size</span>: cover;</span><br><span class="line">      <span class="attribute">background-position</span>: center;</span><br><span class="line">      -webkit-<span class="attribute">background-size</span>: cover;</span><br><span class="line">      -o-<span class="attribute">background-size</span>: cover;</span><br><span class="line">      -moz-<span class="attribute">background-size</span>: cover;</span><br><span class="line">      -ms-<span class="attribute">background-size</span>: cover;</span><br><span class="line">      <span class="selector-tag">footer</span> &gt; <span class="selector-tag">div</span> &gt; <span class="selector-tag">div</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>:<span class="number">#ffffff</span>;//<span class="attribute">Bottom</span> Text Colour</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Dark Background */</span></span><br><span class="line">  <span class="keyword">@media</span> (<span class="attribute">prefers-color-scheme</span>: dark) &#123;</span><br><span class="line">    <span class="selector-tag">body</span> &#123;</span><br><span class="line">      <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">&#x27;https://s2.loli.net/2024/09/11/YHxg9RsTUDKvBPr.webp&#x27;</span>);</span><br><span class="line">      <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">      <span class="attribute">background-attachment</span>: fixed;</span><br><span class="line">      <span class="attribute">background-size</span>: cover;</span><br><span class="line">      <span class="attribute">background-position</span>: center;</span><br><span class="line">      -webkit-<span class="attribute">background-size</span>: cover;</span><br><span class="line">      -o-<span class="attribute">background-size</span>: cover;</span><br><span class="line">      -moz-<span class="attribute">background-size</span>: cover;</span><br><span class="line">      -ms-<span class="attribute">background-size</span>: cover;</span><br><span class="line">      <span class="selector-tag">footer</span> &gt; <span class="selector-tag">div</span> &gt; <span class="selector-tag">div</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>:<span class="number">#dddddd</span>;//<span class="attribute">Bottom</span> Text Colour</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Do not show background image on mobile */</span></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">767px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: none;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Pagination-Adjustments"><a href="#Pagination-Adjustments" class="headerlink" title="Pagination Adjustments"></a>Pagination Adjustments</h1><p>When animations are enabled, the NexT theme uses a waterfall-like effect to gradually reveal elements on the page, including blog post titles in the archives. This creates a bit of a problem: if there are too many titles on one page, the ones at the bottom won’t show up until the animation finishes. I originally had it set to display 50 titles per page, but waiting a few seconds for the animation to complete is just inconvenient. So, I’ve now changed it to display 20 titles per page.</p>
+<p>Adjust the following settings in Hexo’s config file <code>_config.yml</code>:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Archive Pagination</span></span><br><span class="line"><span class="attr">archive_generator:</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Tag Pagination</span></span><br><span class="line"><span class="attr">tag_generator:</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Category Pagination</span></span><br><span class="line"><span class="attr">category_generator:</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="number">20</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="URL-Redirection"><a href="#URL-Redirection" class="headerlink" title="URL Redirection"></a>URL Redirection</h1><p>Currently, the blog URLs are generated based on the filenames of the markdown files. There are a few filenames I’ve been wanting to change for a while, but renaming them directly would result in broken links. To solve this, I installed the <a href="https://github.com/hexojs/hexo-generator-alias">hexo-generator-alias</a> plugin.</p>
+<p>Installation command:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-alias --save</span><br></pre></td></tr></table></figure>
+
+<p>How to use it:</p>
+<ol>
+<li>Rename the relevant markdown files.</li>
+<li>Open the file and add <code>alias: [relative path of the old markdown filename].html</code> in the <code>front-matter</code> section.</li>
+</ol>
+<p>Example:<br>My old filename was <code>Win10-Reinstall-Guide.md</code>, I’d rename it to <code>Windows-Reinstall-Guide.md</code>, then open the file and modify it like this:</p>
+<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="comment">---</span></span><br><span class="line">title: Windows Reinstall Guide</span><br><span class="line">date: 2020-07-13 12:28:34</span><br><span class="line">lang: zh-CN</span><br><span class="line">tags: [Windows, Office, Reinstall]</span><br><span class="line">categories: Windows</span><br><span class="line"><span class="addition">+ alias: Win10-Reinstall-Guide.html</span></span><br><span class="line"><span class="comment">---</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Remove-Click-Effects-on-Mobile"><a href="#Remove-Click-Effects-on-Mobile" class="headerlink" title="Remove Click Effects on Mobile"></a>Remove Click Effects on Mobile</h1><p>The current click effect is a bit laggy on mobile devices, so I’m removing it for now. Maybe in a few years, when mobile performance improves, I’ll bring it back. To do this, go to the <code>CursorSpecialEffects</code> class in the existing <code>./source/js/firework.js</code> file, and add a conditional statement in the <code>init</code> method: <code>if (window.innerWidth &gt; 768)&#123;&#125;</code>. Then, move the original content inside this block.</p>
+<details class="note success"><summary><p>Complete Guide</p>
+</summary>
+<p><code>./source/js/firework.js</code>：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Circle</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">&#123; origin, speed, color, angle, context &#125;</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">origin</span> = origin</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">position</span> = &#123; ...<span class="variable language_">this</span>.<span class="property">origin</span> &#125;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">color</span> = color</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">speed</span> = speed</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">angle</span> = angle</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">context</span> = context</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">renderCount</span> = <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">draw</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">context</span>.<span class="property">fillStyle</span> = <span class="variable language_">this</span>.<span class="property">color</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">context</span>.<span class="title function_">beginPath</span>()</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">context</span>.<span class="title function_">arc</span>(<span class="variable language_">this</span>.<span class="property">position</span>.<span class="property">x</span>, <span class="variable language_">this</span>.<span class="property">position</span>.<span class="property">y</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="title class_">Math</span>.<span class="property">PI</span> * <span class="number">2</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">context</span>.<span class="title function_">fill</span>()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">move</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">position</span>.<span class="property">x</span> = (<span class="title class_">Math</span>.<span class="title function_">sin</span>(<span class="variable language_">this</span>.<span class="property">angle</span>) * <span class="variable language_">this</span>.<span class="property">speed</span>) + <span class="variable language_">this</span>.<span class="property">position</span>.<span class="property">x</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">position</span>.<span class="property">y</span> = (<span class="title class_">Math</span>.<span class="title function_">cos</span>(<span class="variable language_">this</span>.<span class="property">angle</span>) * <span class="variable language_">this</span>.<span class="property">speed</span>) + <span class="variable language_">this</span>.<span class="property">position</span>.<span class="property">y</span> + (<span class="variable language_">this</span>.<span class="property">renderCount</span> * <span class="number">0.3</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">renderCount</span>++</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Boom</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span> (&#123; origin, context, circleCount = <span class="number">16</span>, area &#125;) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">origin</span> = origin</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">context</span> = context</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">circleCount</span> = circleCount</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">area</span> = area</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">stop</span> = <span class="literal">false</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">circles</span> = []</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">randomArray</span>(<span class="params">range</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> length = range.<span class="property">length</span></span><br><span class="line">    <span class="keyword">const</span> randomIndex = <span class="title class_">Math</span>.<span class="title function_">floor</span>(length * <span class="title class_">Math</span>.<span class="title function_">random</span>())</span><br><span class="line">    <span class="keyword">return</span> range[randomIndex]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">randomColor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> range = [<span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;9&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>, <span class="string">&#x27;F&#x27;</span>]</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;#&#x27;</span> + <span class="variable language_">this</span>.<span class="title function_">randomArray</span>(range) + <span class="variable language_">this</span>.<span class="title function_">randomArray</span>(range) + <span class="variable language_">this</span>.<span class="title function_">randomArray</span>(range) + <span class="variable language_">this</span>.<span class="title function_">randomArray</span>(range) + <span class="variable language_">this</span>.<span class="title function_">randomArray</span>(range) + <span class="variable language_">this</span>.<span class="title function_">randomArray</span>(range)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">randomRange</span>(<span class="params">start, end</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (end - start) * <span class="title class_">Math</span>.<span class="title function_">random</span>() + start</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">init</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="variable language_">this</span>.<span class="property">circleCount</span>; i++) &#123;</span><br><span class="line">      <span class="keyword">const</span> circle = <span class="keyword">new</span> <span class="title class_">Circle</span>(&#123;</span><br><span class="line">        <span class="attr">context</span>: <span class="variable language_">this</span>.<span class="property">context</span>,</span><br><span class="line">        <span class="attr">origin</span>: <span class="variable language_">this</span>.<span class="property">origin</span>,</span><br><span class="line">        <span class="attr">color</span>: <span class="variable language_">this</span>.<span class="title function_">randomColor</span>(),</span><br><span class="line">        <span class="attr">angle</span>: <span class="variable language_">this</span>.<span class="title function_">randomRange</span>(<span class="title class_">Math</span>.<span class="property">PI</span> - <span class="number">1</span>, <span class="title class_">Math</span>.<span class="property">PI</span> + <span class="number">1</span>),</span><br><span class="line">        <span class="attr">speed</span>: <span class="variable language_">this</span>.<span class="title function_">randomRange</span>(<span class="number">1</span>, <span class="number">6</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">circles</span>.<span class="title function_">push</span>(circle)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">move</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">circles</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params">circle, index</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (circle.<span class="property">position</span>.<span class="property">x</span> &gt; <span class="variable language_">this</span>.<span class="property">area</span>.<span class="property">width</span> || circle.<span class="property">position</span>.<span class="property">y</span> &gt; <span class="variable language_">this</span>.<span class="property">area</span>.<span class="property">height</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">circles</span>.<span class="title function_">splice</span>(index, <span class="number">1</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      circle.<span class="title function_">move</span>()</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">circles</span>.<span class="property">length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">stop</span> = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">draw</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">circles</span>.<span class="title function_">forEach</span>(<span class="function"><span class="params">circle</span> =&gt;</span> circle.<span class="title function_">draw</span>())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CursorSpecialEffects</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">computerCanvas</span> = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;canvas&#x27;</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">renderCanvas</span> = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;canvas&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">computerContext</span> = <span class="variable language_">this</span>.<span class="property">computerCanvas</span>.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">renderContext</span> = <span class="variable language_">this</span>.<span class="property">renderCanvas</span>.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">globalWidth</span> = <span class="variable language_">window</span>.<span class="property">innerWidth</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">globalHeight</span> = <span class="variable language_">window</span>.<span class="property">innerHeight</span></span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">booms</span> = []</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">running</span> = <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">handleMouseDown</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> boom = <span class="keyword">new</span> <span class="title class_">Boom</span>(&#123;</span><br><span class="line">      <span class="attr">origin</span>: &#123; <span class="attr">x</span>: e.<span class="property">clientX</span>, <span class="attr">y</span>: e.<span class="property">clientY</span> &#125;,</span><br><span class="line">      <span class="attr">context</span>: <span class="variable language_">this</span>.<span class="property">computerContext</span>,</span><br><span class="line">      <span class="attr">area</span>: &#123;</span><br><span class="line">        <span class="attr">width</span>: <span class="variable language_">this</span>.<span class="property">globalWidth</span>,</span><br><span class="line">        <span class="attr">height</span>: <span class="variable language_">this</span>.<span class="property">globalHeight</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    boom.<span class="title function_">init</span>()</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">booms</span>.<span class="title function_">push</span>(boom)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">running</span> || <span class="variable language_">this</span>.<span class="title function_">run</span>()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">handlePageHide</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">booms</span> = []</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">running</span> = <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">init</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// Only works on the desktop, determines if the screen width is greater than 768px</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">window</span>.<span class="property">innerWidth</span> &gt; <span class="number">768</span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> style = <span class="variable language_">this</span>.<span class="property">renderCanvas</span>.<span class="property">style</span></span><br><span class="line">      style.<span class="property">position</span> = <span class="string">&#x27;fixed&#x27;</span></span><br><span class="line">      style.<span class="property">top</span> = style.<span class="property">left</span> = <span class="number">0</span></span><br><span class="line">      style.<span class="property">zIndex</span> = <span class="string">&#x27;999999999999999999999999999999999999999999&#x27;</span></span><br><span class="line">      style.<span class="property">pointerEvents</span> = <span class="string">&#x27;none&#x27;</span></span><br><span class="line"></span><br><span class="line">      style.<span class="property">width</span> = <span class="variable language_">this</span>.<span class="property">renderCanvas</span>.<span class="property">width</span> = <span class="variable language_">this</span>.<span class="property">computerCanvas</span>.<span class="property">width</span> = <span class="variable language_">this</span>.<span class="property">globalWidth</span></span><br><span class="line">      style.<span class="property">height</span> = <span class="variable language_">this</span>.<span class="property">renderCanvas</span>.<span class="property">height</span> = <span class="variable language_">this</span>.<span class="property">computerCanvas</span>.<span class="property">height</span> = <span class="variable language_">this</span>.<span class="property">globalHeight</span></span><br><span class="line"></span><br><span class="line">      <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">append</span>(<span class="variable language_">this</span>.<span class="property">renderCanvas</span>)</span><br><span class="line"></span><br><span class="line">      <span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;mousedown&#x27;</span>, <span class="variable language_">this</span>.<span class="property">handleMouseDown</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>))</span><br><span class="line">      <span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;pagehide&#x27;</span>, <span class="variable language_">this</span>.<span class="property">handlePageHide</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>))</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">run</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">running</span> = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">booms</span>.<span class="property">length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">running</span> = <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">requestAnimationFrame</span>(<span class="variable language_">this</span>.<span class="property">run</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>))</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">computerContext</span>.<span class="title function_">clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="variable language_">this</span>.<span class="property">globalWidth</span>, <span class="variable language_">this</span>.<span class="property">globalHeight</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">renderContext</span>.<span class="title function_">clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="variable language_">this</span>.<span class="property">globalWidth</span>, <span class="variable language_">this</span>.<span class="property">globalHeight</span>)</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">booms</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params">boom, index</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (boom.<span class="property">stop</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">booms</span>.<span class="title function_">splice</span>(index, <span class="number">1</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      boom.<span class="title function_">move</span>()</span><br><span class="line">      boom.<span class="title function_">draw</span>()</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">renderContext</span>.<span class="title function_">drawImage</span>(<span class="variable language_">this</span>.<span class="property">computerCanvas</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="variable language_">this</span>.<span class="property">globalWidth</span>, <span class="variable language_">this</span>.<span class="property">globalHeight</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cursorSpecialEffects = <span class="keyword">new</span> <span class="title class_">CursorSpecialEffects</span>()</span><br><span class="line">cursorSpecialEffects.<span class="title function_">init</span>()</span><br></pre></td></tr></table></figure>
+
+<p>Then import it in <code>./source/_data/body-end.njk</code>:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;# Click Effect #&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span> <span class="attr">src</span>=<span class="string">&quot;/js/fireworks.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</details>
+
+<h1 id="Add-Image-Carousel-Functionality"><a href="#Add-Image-Carousel-Functionality" class="headerlink" title="Add Image Carousel Functionality"></a>Add Image Carousel Functionality</h1><p>Wrote my own plugin based on Splide: <code>hexo-splide-carousel</code>.</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/link.webp"></object>
+<p>Live Demo</p><p>A package for Hexo blogs using the NexT theme, provides image carousel and zoom functionality using Splide.js and medium-zoom libraries.</p>
+<a href="https://siriusq.top/en/splide-demo.html"></a>
+</div><div class="link-grid-container">
+<object class="link-grid-image" data="/images/link/github.webp"></object>
+<p>Github Repo</p><p>hexo-splide-carousel</p>
+<a href="https://github.com/Siriusq/hexo-splide-carousel"></a>
+</div></div>
+]]></content>
+      <categories>
+        <category>Website Configuration</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Common Commands for npm</title>
+    <url>/en/npm.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">A collection of npm commands, as well as commands commonly used for Next theme upgrades.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from <a href="https://siriusq.top/npm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html">my Chinese blog post</a> with the aid of ChatGpt.</p>
+</div>
+
+<p>npm is the default package manager for the JavaScript runtime environment Node.js.</p>
+<h1 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h1><div class="note primary"><p>Reference: <a class="btn" href="https://segmentfault.com/a/1190000019141975"><i class="fa fa-blog fa-fw"></i>jm365</a></p></div>
+
+<h2 id="Help"><a href="#Help" class="headerlink" title="Help"></a>Help</h2><ul>
+<li><code>npm -l</code> View usage information for all commands.</li>
+<li><code>npm &lt;command&gt; -h</code> View usage information for a specific command.</li>
+<li><code>npm help &lt;command&gt;</code> View detailed usage information for a specific command.</li>
+<li><code>npm -v</code> View the installed version of npm.</li>
+<li><code>npm config list -l</code> View the configuration settings for npm.</li>
+<li><code>npm ls</code> View all locally installed modules.</li>
+<li><code>npm ls -g</code> View all globally installed modules.</li>
+<li><code>npm ls &lt;moduleName&gt;</code> View the local installation status of a specific module.</li>
+<li><code>npm ls &lt;moduleName&gt; -g</code> View the global installation status of a specific module.</li>
+<li><code>npm view &lt;moduleName&gt;</code> View information about a specific module in the current registry.</li>
+<li><code>npm view &lt;moduleName&gt; versions</code> View all historical versions of a specific module in the current registry.</li>
+<li><code>npm view &lt;moduleName&gt; version</code> View the latest version of a specific module in the current registry.</li>
+</ul>
+<h2 id="Creating-a-Project"><a href="#Creating-a-Project" class="headerlink" title="Creating a Project"></a>Creating a Project</h2><ul>
+<li><code>npm init</code> Initialize a project in the current directory.</li>
+</ul>
+<h2 id="Installation-Uninstallation"><a href="#Installation-Uninstallation" class="headerlink" title="Installation&#x2F;Uninstallation"></a>Installation&#x2F;Uninstallation</h2><ul>
+<li><code>npm i/install &lt;moduleName&gt;</code> Install a module; both <code>i</code> and <code>install</code> have the same function.</li>
+<li><code>npm i &lt;moduleName&gt;@x.x.x</code> Install a specific version of a module.</li>
+<li><code>npm i &lt;moduleName&gt; --save</code> Install and save to the <code>dependencies</code> in the <code>package.json</code> file.</li>
+<li><code>npm i &lt;moduleName&gt; --save-dev</code> Install and save to the <code>devDependencies</code> in the <code>package.json</code> file.</li>
+<li><code>npm i &lt;moduleName&gt; -g</code> Globally install a module.</li>
+</ul>
+<h2 id="Uninstallation"><a href="#Uninstallation" class="headerlink" title="Uninstallation"></a>Uninstallation</h2><ul>
+<li><code>npm uninstall &lt;moduleName&gt;</code> Uninstall a specified local module.</li>
+<li><code>npm uninstall &lt;moduleName&gt; -g</code> Uninstall a specified global module.</li>
+</ul>
+<h2 id="Updating"><a href="#Updating" class="headerlink" title="Updating"></a>Updating</h2><ul>
+<li><code>npm update</code> Update modules according to the descriptions in <code>package.json</code>, and save the updated version descriptions to <code>package.json</code>. <code>^a.b.c</code> updates to the latest version under <code>a</code>, <code>~a.b.c</code> updates to the latest version under <code>a.b</code>, and <code>a.b.c</code> won’t be updated.</li>
+<li><code>npm update &lt;moduleName&gt;</code> Update a specified local module.</li>
+<li><code>npm update &lt;moduleName&gt;@x.x.x</code> Update a specified local module to a specific version.</li>
+<li><code>npm update &lt;moduleName&gt; -g</code> Update a specified global module.</li>
+<li><code>npm update &lt;moduleName&gt;@x.x.x -g</code> Update a specified global module to a specific version.</li>
+</ul>
+<h2 id="npm-Registry"><a href="#npm-Registry" class="headerlink" title="npm Registry"></a>npm Registry</h2><ul>
+<li><code>npm config get registry</code> View the current npm registry address.</li>
+<li><code>npm config set registry &lt;registryAddress&gt;</code> Set the npm registry to the specified address.</li>
+</ul>
+<h1 id="Introduction-to-package-json"><a href="#Introduction-to-package-json" class="headerlink" title="Introduction to package.json"></a>Introduction to package.json</h1><p>The <code>package.json</code> file is the manifest of your project, where <code>npm</code> and <code>yarn</code> store the names and versions of all installed packages. The <code>npm install</code> command uses it to download the required modules. Below are explanations of fields in <code>package.json</code>.</p>
+<ul>
+<li><code>version</code> indicates the current version.</li>
+<li><code>name</code> sets the name of the application&#x2F;package.</li>
+<li><code>description</code> provides a short description of the application&#x2F;package.</li>
+<li><code>main</code> specifies the entry point of the application.</li>
+<li><code>private</code> if set to true, prevents accidental publishing of the application&#x2F;package to npm.</li>
+<li><code>scripts</code> defines a set of runnable Node.js scripts.</li>
+<li><code>dependencies</code> lists npm packages installed as dependencies.</li>
+<li><code>devDependencies</code> lists npm packages installed as development dependencies.</li>
+<li><code>engines</code> specifies the versions of Node.js this package&#x2F;application runs on.</li>
+<li><code>browserslist</code> indicates which browsers (and versions) to support.</li>
+</ul>
+<h1 id="Common-Commands-for-Theme-Upgrades"><a href="#Common-Commands-for-Theme-Upgrades" class="headerlink" title="Common Commands for Theme Upgrades"></a>Common Commands for Theme Upgrades</h1><p>List installed packages:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm ls</span><br></pre></td></tr></table></figure>
+
+<p>Check for packages that need an update:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm-check</span><br></pre></td></tr></table></figure>
+
+<p>Upgrade a theme to the latest version:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-theme-next@latest</span><br></pre></td></tr></table></figure>
+
+<p>Or:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm update hexo-theme-next</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Coding</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Next</tag>
+        <tag>npm</tag>
       </tags>
   </entry>
   <entry>
@@ -8908,54 +9032,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Transferring Domain Names From Alibaba Cloud to Namesilo</title>
-    <url>/en/transfer-domain.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">Today, on a whim, I decided to look up the WHOIS information for my domain name and discovered that the domain I registered with Alibaba Cloud is in a completely exposed state. My name and province are all publicly visible... After some research, I found out that Alibaba Cloud discontinued WHOIS privacy protection back in 2018, and for three years my domain has been out in the open without my knowledge. With a sense of "better late than never," combined with the frustrating real-name verification process, I made the decision to transfer my domain out of Alibaba Cloud. The process of transferring was also marred by Alibaba Cloud's frustrating practices.</blockquote>
-
-<span id="more"></span>
-
-<div class="note warning"><p>This post was translated from <a href="https://siriusq.top/%E9%98%BF%E9%87%8C%E4%BA%91%E5%9F%9F%E5%90%8D%E8%BD%AC%E5%87%BA%E8%87%B3NameSilo.html">my Chinese blog post</a> with the aid of ChatGpt.</p>
-</div>
-
-<h1 id="Transferring-from-Alibaba-Cloud"><a href="#Transferring-from-Alibaba-Cloud" class="headerlink" title="Transferring from Alibaba Cloud"></a>Transferring from Alibaba Cloud</h1><p>First, log in to the <a class="btn" href="https://dc.console.aliyun.com/"><i class="fa fa-link fa-fw"></i>Alibaba Cloud Domain Console</a>. Click on the domain name you want to transfer. The option for “Transfer Domain” will appear in the sidebar of the page you’re redirected to. Interestingly, the option to transfer <em>into</em> Alibaba Cloud is conveniently placed on the homepage. To distinguish between the two, let’s refer to the homepage of the domain console as the “Homepage” and the page you’re taken to after clicking on a domain as the “Domain Management Page.”</p>
-<p><img data-src="https://s2.loli.net/2022/06/04/eGpfiLlvtWVKYUd.png" alt="Transfer Domain"></p>
-<p>During the transfer process, you’ll need to verify your email and undergo security authentication. I used Foxmail for this purpose. However, despite several attempts, I didn’t receive any emails from Alibaba Cloud, even in my spam folder. So, I had to change my email address. If, like me, you’re not receiving emails, congratulations, you’ll need to cancel the transfer and start again.</p>
-<h2 id="Changing-Email-Address"><a href="#Changing-Email-Address" class="headerlink" title="Changing Email Address"></a>Changing Email Address</h2><p>To change your email address, you’ll need to access the “Information Template” in the domain console, which is found in the sidebar of the homepage. Surprisingly, the information template also requires real-name verification. Yes, you read that right. It’s not about personal information, but about the information template. If you don’t complete real-name verification for the information template, the checkboxes next to it won’t work, which means you won’t be able to change your email address. Besides verifying the new email, you’ll also need to wait for the verification process to be completed. It took me several tens of minutes to get through the process.</p>
-<p>After updating the template, go to the “Modify Domain Holder Information (Transfer)” in the domain management page to perform a “Fast Transfer” in order to change the email associated with the domain. Make sure to check “Disable ‘Alibaba Cloud Domain Transfer Prohibited within 60 days after successful domain information modification.’” I really don’t understand why changing an email can be so complicated, and why you have to wait for approval when transferring your own domain to yourself… and wait for several tens of minutes.</p>
-<p><img data-src="https://s2.loli.net/2022/06/04/6FMNoGQCEUThOwc.png" alt="Change Email"></p>
-<h2 id="Receiving-the-Transfer-Code"><a href="#Receiving-the-Transfer-Code" class="headerlink" title="Receiving the Transfer Code"></a>Receiving the Transfer Code</h2><p>Once you’ve completed all the changes, return to the domain transfer section. Repeat the email verification and security authentication process, and you’ll receive the password from Alibaba Cloud in your email.</p>
-<p><img data-src="https://s2.loli.net/2022/06/04/PR4bYylMVHf86jW.png" alt="Transfer Code"></p>
-<h1 id="Transferring-to-NameSilo"><a href="#Transferring-to-NameSilo" class="headerlink" title="Transferring to NameSilo"></a>Transferring to NameSilo</h1><p>For transferring my domain registrar, I chose <a class="btn" href="https://www.namesilo.com/login"><i class="fa fa-link fa-fw"></i>NameSilo</a>. The reason I chose them is because of their affordable prices, where renewal fees remain the same as the initial registration, and they also provide free WHOIS privacy protection. My <code>.top</code> domain costs $4.79 per year, just a few dollars more than Alibaba Cloud.</p>
-<p>If you don’t have an account, start by registering one. Then, in the top menu under <code>Domains</code>, select <code>Transfer a Domain</code>. Enter your domain name in the <code>Domain Transfer</code> section and click on the <code>Search</code> button on the right.</p>
-<p><img data-src="https://s2.loli.net/2022/06/04/YKJL695WZuQfHvw.png" alt="Transfer to NameSilo"></p>
-<p>Next, paste the received transfer authorization code into the <code>Authorization Code</code> field and click on <code>Transfer Domains</code> below. You will be redirected to the payment page, where you can use a coupon code on the right side. I used the code <code>vpsss</code> for a $1 discount. Additionally, you’ll notice that NameSilo provides free WHOIS privacy service here, which means the “naked” state is removed. </p>
-<p><img data-src="https://s2.loli.net/2022/06/04/q9Yzv8yQto2kLUE.png" alt="Payment"></p>
-<p>Finally, proceed to <code>checkout</code> to make the payment. Alipay is supported as a payment method.</p>
-<h1 id="Status-Confirmation"><a href="#Status-Confirmation" class="headerlink" title="Status Confirmation"></a>Status Confirmation</h1><p>After successful payment, you will receive three emails:</p>
-<ul>
-<li>The first email is from NameSilo with the subject “Thank you for your order,” confirming that your payment has been received.</li>
-<li>The second email, also from NameSilo, with the subject “Approved Domain Transfers,” confirms that NameSilo has approved your domain transfer request.</li>
-<li>The third email is from Alibaba Cloud with the subject “阿里云域名转出通知邮件 Notice of Transfer-Out,” confirming that Alibaba Cloud has received notice of the domain transfer.</li>
-</ul>
-<p>At this point, if you go back to Alibaba Cloud’s transfer page, you will see that the status is “In Progress.”</p>
-<p><img data-src="https://s2.loli.net/2022/06/04/IpOedSaUN1Xg2rq.png" alt="Alibaba Cloud Status Confirmation"></p>
-<p>On NameSilo’s Account Home Page, you will see a notification: <code>You have transfers that are pending completion.</code> By entering the <code>Transfer Manager</code>, you can see that the domain is in a <code>Pending Transfers</code> status.</p>
-<p><img data-src="https://s2.loli.net/2022/06/04/NZGF4eYkvP6LM1o.png" alt="NameSilo Status Confirmation"></p>
-<p>Once confirmed, all that’s left to do is wait for the domain transfer to complete. This usually takes around 5-7 days.</p>
-<p>If you now perform a WHOIS query, you’ll find that all the private information has been replaced with “REDACTED FOR PRIVACY.” </p>
-<p><img data-src="https://s2.loli.net/2022/06/22/JYEFZWdSr5AHoqG.png" alt="WHOIS"></p>
-]]></content>
-      <categories>
-        <category>Website Configuration</category>
-      </categories>
-      <tags>
-        <tag>Aliyun</tag>
-        <tag>NameSilo</tag>
-        <tag>Domain</tag>
-        <tag>WHOIS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Enabling Integrated Graphics with Discrete Graphics Installed</title>
     <url>/en/turn-on-igpu.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">Though practically speaking, the motherboard automatically blocks out the integrated graphics when a discrete graphics is plugged in. Although Intel's integrated graphics has poorer gaming performance, its video encoding and decoding capabilities are excellent. A graphics without a full encoder like the 6500xt can cause significant stuttering and frame drops when it comes to video clips, or in-game recording and pushing streams, so calling on the integrated graphics can take the burden off the discrete graphics and CPU for a smoother experience.</blockquote>
@@ -9033,9 +9109,9 @@
         <category>Windows</category>
       </categories>
       <tags>
+        <tag>GPU</tag>
         <tag>Win11</tag>
         <tag>PC</tag>
-        <tag>GPU</tag>
       </tags>
   </entry>
   <entry>
@@ -9507,6 +9583,54 @@
         <tag>Study in UK</tag>
         <tag>Conversion Programmes</tag>
         <tag>Master</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Transferring Domain Names From Alibaba Cloud to Namesilo</title>
+    <url>/en/transfer-domain.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">Today, on a whim, I decided to look up the WHOIS information for my domain name and discovered that the domain I registered with Alibaba Cloud is in a completely exposed state. My name and province are all publicly visible... After some research, I found out that Alibaba Cloud discontinued WHOIS privacy protection back in 2018, and for three years my domain has been out in the open without my knowledge. With a sense of "better late than never," combined with the frustrating real-name verification process, I made the decision to transfer my domain out of Alibaba Cloud. The process of transferring was also marred by Alibaba Cloud's frustrating practices.</blockquote>
+
+<span id="more"></span>
+
+<div class="note warning"><p>This post was translated from <a href="https://siriusq.top/%E9%98%BF%E9%87%8C%E4%BA%91%E5%9F%9F%E5%90%8D%E8%BD%AC%E5%87%BA%E8%87%B3NameSilo.html">my Chinese blog post</a> with the aid of ChatGpt.</p>
+</div>
+
+<h1 id="Transferring-from-Alibaba-Cloud"><a href="#Transferring-from-Alibaba-Cloud" class="headerlink" title="Transferring from Alibaba Cloud"></a>Transferring from Alibaba Cloud</h1><p>First, log in to the <a class="btn" href="https://dc.console.aliyun.com/"><i class="fa fa-link fa-fw"></i>Alibaba Cloud Domain Console</a>. Click on the domain name you want to transfer. The option for “Transfer Domain” will appear in the sidebar of the page you’re redirected to. Interestingly, the option to transfer <em>into</em> Alibaba Cloud is conveniently placed on the homepage. To distinguish between the two, let’s refer to the homepage of the domain console as the “Homepage” and the page you’re taken to after clicking on a domain as the “Domain Management Page.”</p>
+<p><img data-src="https://s2.loli.net/2022/06/04/eGpfiLlvtWVKYUd.png" alt="Transfer Domain"></p>
+<p>During the transfer process, you’ll need to verify your email and undergo security authentication. I used Foxmail for this purpose. However, despite several attempts, I didn’t receive any emails from Alibaba Cloud, even in my spam folder. So, I had to change my email address. If, like me, you’re not receiving emails, congratulations, you’ll need to cancel the transfer and start again.</p>
+<h2 id="Changing-Email-Address"><a href="#Changing-Email-Address" class="headerlink" title="Changing Email Address"></a>Changing Email Address</h2><p>To change your email address, you’ll need to access the “Information Template” in the domain console, which is found in the sidebar of the homepage. Surprisingly, the information template also requires real-name verification. Yes, you read that right. It’s not about personal information, but about the information template. If you don’t complete real-name verification for the information template, the checkboxes next to it won’t work, which means you won’t be able to change your email address. Besides verifying the new email, you’ll also need to wait for the verification process to be completed. It took me several tens of minutes to get through the process.</p>
+<p>After updating the template, go to the “Modify Domain Holder Information (Transfer)” in the domain management page to perform a “Fast Transfer” in order to change the email associated with the domain. Make sure to check “Disable ‘Alibaba Cloud Domain Transfer Prohibited within 60 days after successful domain information modification.’” I really don’t understand why changing an email can be so complicated, and why you have to wait for approval when transferring your own domain to yourself… and wait for several tens of minutes.</p>
+<p><img data-src="https://s2.loli.net/2022/06/04/6FMNoGQCEUThOwc.png" alt="Change Email"></p>
+<h2 id="Receiving-the-Transfer-Code"><a href="#Receiving-the-Transfer-Code" class="headerlink" title="Receiving the Transfer Code"></a>Receiving the Transfer Code</h2><p>Once you’ve completed all the changes, return to the domain transfer section. Repeat the email verification and security authentication process, and you’ll receive the password from Alibaba Cloud in your email.</p>
+<p><img data-src="https://s2.loli.net/2022/06/04/PR4bYylMVHf86jW.png" alt="Transfer Code"></p>
+<h1 id="Transferring-to-NameSilo"><a href="#Transferring-to-NameSilo" class="headerlink" title="Transferring to NameSilo"></a>Transferring to NameSilo</h1><p>For transferring my domain registrar, I chose <a class="btn" href="https://www.namesilo.com/login"><i class="fa fa-link fa-fw"></i>NameSilo</a>. The reason I chose them is because of their affordable prices, where renewal fees remain the same as the initial registration, and they also provide free WHOIS privacy protection. My <code>.top</code> domain costs $4.79 per year, just a few dollars more than Alibaba Cloud.</p>
+<p>If you don’t have an account, start by registering one. Then, in the top menu under <code>Domains</code>, select <code>Transfer a Domain</code>. Enter your domain name in the <code>Domain Transfer</code> section and click on the <code>Search</code> button on the right.</p>
+<p><img data-src="https://s2.loli.net/2022/06/04/YKJL695WZuQfHvw.png" alt="Transfer to NameSilo"></p>
+<p>Next, paste the received transfer authorization code into the <code>Authorization Code</code> field and click on <code>Transfer Domains</code> below. You will be redirected to the payment page, where you can use a coupon code on the right side. I used the code <code>vpsss</code> for a $1 discount. Additionally, you’ll notice that NameSilo provides free WHOIS privacy service here, which means the “naked” state is removed. </p>
+<p><img data-src="https://s2.loli.net/2022/06/04/q9Yzv8yQto2kLUE.png" alt="Payment"></p>
+<p>Finally, proceed to <code>checkout</code> to make the payment. Alipay is supported as a payment method.</p>
+<h1 id="Status-Confirmation"><a href="#Status-Confirmation" class="headerlink" title="Status Confirmation"></a>Status Confirmation</h1><p>After successful payment, you will receive three emails:</p>
+<ul>
+<li>The first email is from NameSilo with the subject “Thank you for your order,” confirming that your payment has been received.</li>
+<li>The second email, also from NameSilo, with the subject “Approved Domain Transfers,” confirms that NameSilo has approved your domain transfer request.</li>
+<li>The third email is from Alibaba Cloud with the subject “阿里云域名转出通知邮件 Notice of Transfer-Out,” confirming that Alibaba Cloud has received notice of the domain transfer.</li>
+</ul>
+<p>At this point, if you go back to Alibaba Cloud’s transfer page, you will see that the status is “In Progress.”</p>
+<p><img data-src="https://s2.loli.net/2022/06/04/IpOedSaUN1Xg2rq.png" alt="Alibaba Cloud Status Confirmation"></p>
+<p>On NameSilo’s Account Home Page, you will see a notification: <code>You have transfers that are pending completion.</code> By entering the <code>Transfer Manager</code>, you can see that the domain is in a <code>Pending Transfers</code> status.</p>
+<p><img data-src="https://s2.loli.net/2022/06/04/NZGF4eYkvP6LM1o.png" alt="NameSilo Status Confirmation"></p>
+<p>Once confirmed, all that’s left to do is wait for the domain transfer to complete. This usually takes around 5-7 days.</p>
+<p>If you now perform a WHOIS query, you’ll find that all the private information has been replaced with “REDACTED FOR PRIVACY.” </p>
+<p><img data-src="https://s2.loli.net/2022/06/22/JYEFZWdSr5AHoqG.png" alt="WHOIS"></p>
+]]></content>
+      <categories>
+        <category>Website Configuration</category>
+      </categories>
+      <tags>
+        <tag>Aliyun</tag>
+        <tag>NameSilo</tag>
+        <tag>Domain</tag>
+        <tag>WHOIS</tag>
       </tags>
   </entry>
   <entry>
@@ -10769,12 +10893,12 @@ OFFICIAL
 </ol>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-vsutmk7kw">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-elabk5pfg">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="1.Select create a custom virtual machine"><img data-src="https://s2.loli.net/2024/07/16/4uxgbVHFCcPkQKX.webp" alt="1.Select create a custom virtual machine" class="zoomable"></li><li class="splide__slide" data-caption="2.Select Apple OS X -> macOS 14"><img data-src="https://s2.loli.net/2024/07/16/QjuoCkn1eVqAPS3.webp" alt="2.Select Apple OS X -> macOS 14" class="zoomable"></li><li class="splide__slide" data-caption="3.Select create a new virtual disk"><img data-src="https://s2.loli.net/2024/07/16/g6OytREumQjNBiz.webp" alt="3.Select create a new virtual disk" class="zoomable"></li><li class="splide__slide" data-caption="4.Complete the virtual machine configuration"><img data-src="https://s2.loli.net/2024/07/16/WLXZJ6prOx5sEwq.webp" alt="4.Complete the virtual machine configuration" class="zoomable"></li><li class="splide__slide" data-caption="6.1.Click the Settings button in the top menu bar to configure the VM"><img data-src="https://s2.loli.net/2024/07/16/FeBJZ3WCSLEbVrQ.webp" alt="6.1.Click the Settings button in the top menu bar to configure the VM" class="zoomable"></li><li class="splide__slide" data-caption="6.2.Settings page"><img data-src="https://s2.loli.net/2024/07/16/1AbfjE4vyiazmd3.webp" alt="6.2.Settings page" class="zoomable"></li><li class="splide__slide" data-caption="7.1.Adjust the CPU count and memory size as needed"><img data-src="https://s2.loli.net/2024/07/16/1srgYDVbeQXyWPm.webp" alt="7.1.Adjust the CPU count and memory size as needed" class="zoomable"></li><li class="splide__slide" data-caption="7.2.Adjust the virtual hard disk size as needed"><img data-src="https://s2.loli.net/2024/07/16/j4eJvaHFhYGlUD9.webp" alt="7.2.Adjust the virtual hard disk size as needed" class="zoomable"></li><li class="splide__slide" data-caption="8.Select the macOS installation image"><img data-src="https://s2.loli.net/2024/07/16/Sm3Pb1hQrUIRXw8.webp" alt="8.Select the macOS installation image" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-vsutmk7kw" class="carousel-caption"> </div>
+      <div id="carousel-caption-elabk5pfg" class="carousel-caption"> </div>
     </div>
   
 
@@ -10787,12 +10911,12 @@ OFFICIAL
 </ol>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-x3y52e2c2">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-86zvw2p9d">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="2.Select Disk Utility"><img data-src="https://s2.loli.net/2024/07/16/iHsJgtrIvMnbwkY.webp" alt="2.Select Disk Utility" class="zoomable"></li><li class="splide__slide" data-caption="3.Click the top dropdown menu and choose Show All Devices"><img data-src="https://s2.loli.net/2024/07/16/YtLhyUQxf1VaI8s.webp" alt="3.Click the top dropdown menu and choose Show All Devices" class="zoomable"></li><li class="splide__slide" data-caption="4.Select VMware Virtual SATA Hard Drive Media, rename it, and then erase it, keeping the default format and scheme"><img data-src="https://s2.loli.net/2024/07/16/1C49wUPHtJZ35Yr.webp" alt="4.Select VMware Virtual SATA Hard Drive Media, rename it, and then erase it, keeping the default format and scheme" class="zoomable"></li><li class="splide__slide" data-caption="5.Follow the standard installation steps to install"><img data-src="https://s2.loli.net/2024/07/16/sTrdJ8eSgbW7V6k.webp" alt="5.Follow the standard installation steps to install" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-x3y52e2c2" class="carousel-caption"> </div>
+      <div id="carousel-caption-86zvw2p9d" class="carousel-caption"> </div>
     </div>
   
 
@@ -10805,24 +10929,24 @@ OFFICIAL
 </ol>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-lsm207qed">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-68hou1dkb">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="1.Right-click the installation image at the top right corner of the desktop and eject it"><img data-src="https://s2.loli.net/2024/07/16/Im1tpiVS8FBq9gK.webp" alt="1.Right-click the installation image at the top right corner of the desktop and eject it" class="zoomable"></li><li class="splide__slide" data-caption="2.On the host machine, open the Virtual Machine dropdown menu from the top menu bar and select Install VMware Tools"><img data-src="https://s2.loli.net/2024/07/16/2bjFUndiO6X4JtA.webp" alt="2.On the host machine, open the Virtual Machine dropdown menu from the top menu bar and select Install VMware Tools" class="zoomable"></li><li class="splide__slide" data-caption="3.Double-click Install VMware Tools to start the installation"><img data-src="https://s2.loli.net/2024/07/16/Dl7iQkXY1esW4Ec.webp" alt="3.Double-click Install VMware Tools to start the installation" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-lsm207qed" class="carousel-caption"> </div>
+      <div id="carousel-caption-68hou1dkb" class="carousel-caption"> </div>
     </div>
   
 
 <h1 id="Connect-to-the-Network"><a href="#Connect-to-the-Network" class="headerlink" title="Connect to the Network"></a>Connect to the Network</h1><p>If there is no network connection, click the <code>Settings</code> button in the top menu bar, then select <code>Network Adapter</code>. Choose the <code>Bridged Networking</code> option under <code>Network Connection</code>, select <code>Autodetect</code>, and check the <code>Connect network adapter</code> box.</p>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-i62guwtzc">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-eov1jv5h8">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Settings -> Network Adapter"><img data-src="https://s2.loli.net/2024/07/16/1qihBpKv8aJX3Cz.webp" alt="Settings -> Network Adapter" class="zoomable"></li><li class="splide__slide" data-caption="Choose the Bridged Networking option under Network Connection, select Autodetect, and check the Connect network adapter box"><img data-src="https://s2.loli.net/2024/07/16/qlMkejoZAfKwLmO.webp" alt="Choose the Bridged Networking option under Network Connection, select Autodetect, and check the Connect network adapter box" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-i62guwtzc" class="carousel-caption"> </div>
+      <div id="carousel-caption-eov1jv5h8" class="carousel-caption"> </div>
     </div>
   
 
@@ -10862,12 +10986,12 @@ OFFICIAL
 </ol>
 
     <div class="carousel-container">
-      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-9t29csy85">
+      <div class="splide" data-splide='{"heightRatio":0.618,"lazyLoad":false,"type":"slide","autoplay":false,"interval":3000,"pauseOnHover":true}' data-caption-id="carousel-caption-es3o0ur1w">
         <div class="splide__track">
           <ul class="splide__list"><li class="splide__slide" data-caption="Choose Application as the document type"><img data-src="https://s2.loli.net/2024/07/17/jgYI6M4BVm9Fube.jpg" alt="Choose Application as the document type" class="zoomable"></li><li class="splide__slide" data-caption="In the Utilities category, find Run Shell Script and drag it to the right-hand pane, then paste the following command"><img data-src="https://s2.loli.net/2024/07/17/s56fYbt1OaXBd89.jpg" alt="In the Utilities category, find Run Shell Script and drag it to the right-hand pane, then paste the following command" class="zoomable"></li><li class="splide__slide" data-caption="Open System Preferences -> Users & Groups -> Login Items. Add the application you created in the previous step to the list of programs that open at login"><img data-src="https://s2.loli.net/2024/07/17/KoB1Lk8AHG9wnli.jpg" alt="Open System Preferences -> Users & Groups -> Login Items. Add the application you created in the previous step to the list of programs that open at login" class="zoomable"></li><li class="splide__slide" data-caption="Restart your Mac. Open Activity Monitor again, search for usb, and check if the vmware-usbarbitrator process is running"><img data-src="https://s2.loli.net/2024/07/17/nDKVTAfjF2bwk9q.jpg" alt="Restart your Mac. Open Activity Monitor again, search for usb, and check if the vmware-usbarbitrator process is running" class="zoomable"></li></ul>
         </div>
       </div>
-      <div id="carousel-caption-9t29csy85" class="carousel-caption"> </div>
+      <div id="carousel-caption-es3o0ur1w" class="carousel-caption"> </div>
     </div>
   
 

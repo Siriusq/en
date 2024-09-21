@@ -84,6 +84,31 @@
   </entry>
   
   <entry>
+    <title>Block Windows from Automatically Updating AMD GPU Drivers</title>
+    <link href="https://siriusq.top/en/amd-gpu-driver-auto-update-banned.html"/>
+    <id>https://siriusq.top/en/amd-gpu-driver-auto-update-banned.html</id>
+    <published>2024-08-05T08:06:08.000Z</published>
+    <updated>2024-09-21T15:29:24.857Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; In a moment of impulse, I updated my AMD graphics driver, only to find that with the new 24.7.1 driver, my GPU started making a horrible whining noise. My case is right next to me, so the sound was like someone sawing through a table leg. I immediately uninstalled the new driver and rolled back to the old, stable 22.5.1 driver, thinking that would be the end of it. But no! Windows Auto Update, in its infinite wisdom, stabbed me in the back while I was grabbing a bite to eat and updated the driver again. After trying multiple methods, I finally got Auto Update to leave my driver alone. Below is the tale of my battle with Windows Auto Update. &lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    
+    <category term="GPU" scheme="https://siriusq.top/en/tags/GPU/"/>
+    
+    <category term="Driver" scheme="https://siriusq.top/en/tags/Driver/"/>
+    
+    <category term="AMD" scheme="https://siriusq.top/en/tags/AMD/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Fix USB Device Detection Issue in VMware Fusion</title>
     <link href="https://siriusq.top/en/vmware-fusion-usb-fix.html"/>
     <id>https://siriusq.top/en/vmware-fusion-usb-fix.html</id>
@@ -431,34 +456,11 @@
     <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
     
     
+    <category term="GPU" scheme="https://siriusq.top/en/tags/GPU/"/>
+    
     <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
     
     <category term="PC" scheme="https://siriusq.top/en/tags/PC/"/>
-    
-    <category term="GPU" scheme="https://siriusq.top/en/tags/GPU/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MacBook Pro Headless</title>
-    <link href="https://siriusq.top/en/macbook-pro-headless.html"/>
-    <id>https://siriusq.top/en/macbook-pro-headless.html</id>
-    <published>2023-03-31T13:16:46.000Z</published>
-    <updated>2023-10-20T15:38:49.000Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Get a Mac at the lowest price XD&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img data-src=&quot;https://s2.loli.net/2023/07/01/m29rQx1G8WTtO3A.jpg&quot; alt=&quot;MBPHeadless.jpg&quot;&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Hardware" scheme="https://siriusq.top/en/categories/Hardware/"/>
-    
-    
-    <category term="macOS" scheme="https://siriusq.top/en/tags/macOS/"/>
-    
-    <category term="MacBook Pro" scheme="https://siriusq.top/en/tags/MacBook-Pro/"/>
     
   </entry>
   
