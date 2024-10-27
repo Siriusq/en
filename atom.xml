@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2024-09-19T16:07:51.135Z</updated>
+  <updated>2024-10-25T09:10:29.000Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Fix the OneDrive Icon Issue in the Windows LTSC File Explorer Sidebar</title>
+    <link href="https://siriusq.top/en/onedrive-explorer-icon-bug-fix.html"/>
+    <id>https://siriusq.top/en/onedrive-explorer-icon-bug-fix.html</id>
+    <published>2024-10-24T07:41:25.000Z</published>
+    <updated>2024-10-25T09:10:29.000Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; After installing Windows 11 LTSC, I noticed that the OneDrive icon in the File Explorer sidebar wasn’t working properly. Clicking on it did nothing, and the properties page was completely blank. A quick search revealed that this is an old Microsoft bug. When you install the personal version of OneDrive on the LTSC version of Windows, the installer fails to register the path value pointing to the OneDrive folder for the sidebar icon, resulting in it pointing to a null value. I guess it’s just classic Microsoft—years later, and this bug is still around. &lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    
+    <category term="OneDrive" scheme="https://siriusq.top/en/tags/OneDrive/"/>
+    
+    <category term="LTSC" scheme="https://siriusq.top/en/tags/LTSC/"/>
+    
+    <category term="Bug" scheme="https://siriusq.top/en/tags/Bug/"/>
+    
+  </entry>
+  
+  <entry>
     <title>NexT 8.20 Update Log</title>
     <link href="https://siriusq.top/en/next-8-20-update-log.html"/>
     <id>https://siriusq.top/en/next-8-20-update-log.html</id>
     <published>2024-09-16T04:01:26.000Z</published>
-    <updated>2024-09-19T16:07:51.135Z</updated>
+    <updated>2024-10-25T09:03:22.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Update Log of my blog. This time, there weren&#39;t many adjustments — just a simple refresh of the version number and a slight enhancement of the reading experience. &lt;/blockquote&gt;</summary>
@@ -42,7 +67,7 @@
     <link href="https://siriusq.top/en/hexo-plugin-development.html"/>
     <id>https://siriusq.top/en/hexo-plugin-development.html</id>
     <published>2024-09-12T04:00:08.000Z</published>
-    <updated>2024-09-19T15:31:37.907Z</updated>
+    <updated>2024-09-19T15:31:37.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Lately, I’ve found myself a little envious of The Verge’s slick image carousel feature. Let’s be real—when you’ve got an organized set of images, a carousel beats a static picture group any day. Unfortunately, Hexo doesn’t have a built-in plugin for that. So, naturally, I took matters into my own hands and whipped up a carousel plugin based on Splide, designed specifically for the NexT theme. Here’s a rundown of the journey from development to release—because why not document the process while you&#39;re at it? &lt;/blockquote&gt;</summary>
@@ -65,7 +90,7 @@
     <link href="https://siriusq.top/en/steam-silent-startup.html"/>
     <id>https://siriusq.top/en/steam-silent-startup.html</id>
     <published>2024-08-13T10:06:11.000Z</published>
-    <updated>2024-08-13T14:48:34.496Z</updated>
+    <updated>2024-08-13T14:48:34.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Lately, I&#39;ve been obsessed with switching up wallpapers using Wallpaper Engine. However, every time I want to change a wallpaper, I need to fire up Steam to connect to the Workshop. To make things easier, I decided to set Steam to launch at startup. But there was one annoying issue: Steam would always open up to the store page on launch, and there’s no option in the settings to disable it. After a quick Google search, I discovered that the startup behavior is a bit of a mystery—some people don&#39;t see the store page at all, without changing any settings. It’s quite baffling. The solution, however, is straightforward: just add a startup parameter to Steam&#39;s start menu shortcut. &lt;/blockquote&gt;</summary>
@@ -88,7 +113,7 @@
     <link href="https://siriusq.top/en/amd-gpu-driver-auto-update-banned.html"/>
     <id>https://siriusq.top/en/amd-gpu-driver-auto-update-banned.html</id>
     <published>2024-08-05T08:06:08.000Z</published>
-    <updated>2024-09-21T15:29:24.857Z</updated>
+    <updated>2024-09-21T15:29:24.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; In a moment of impulse, I updated my AMD graphics driver, only to find that with the new 24.7.1 driver, my GPU started making a horrible whining noise. My case is right next to me, so the sound was like someone sawing through a table leg. I immediately uninstalled the new driver and rolled back to the old, stable 22.5.1 driver, thinking that would be the end of it. But no! Windows Auto Update, in its infinite wisdom, stabbed me in the back while I was grabbing a bite to eat and updated the driver again. After trying multiple methods, I finally got Auto Update to leave my driver alone. Below is the tale of my battle with Windows Auto Update. &lt;/blockquote&gt;</summary>
@@ -113,7 +138,7 @@
     <link href="https://siriusq.top/en/vmware-fusion-usb-fix.html"/>
     <id>https://siriusq.top/en/vmware-fusion-usb-fix.html</id>
     <published>2024-07-08T03:40:37.000Z</published>
-    <updated>2024-09-13T15:57:48.493Z</updated>
+    <updated>2024-09-13T15:57:48.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Virtual machine installed, 3D acceleration enabled, and XCode all set up — I was ready to dive into some serious iPhone development when suddenly... the virtual machine couldn&#39;t detect my USB devices?! After hours of searching and trial and error, I found the culprit: the vmware-usbarbitrator service. This service is supposed to manage USB device connections to the virtual machine, but for some reason, it wasn&#39;t running when VMware Fusion started. Another quirky bug to tackle! The fix? Setting it to start automatically at system boot.&lt;/blockquote&gt;</summary>
@@ -134,7 +159,7 @@
     <link href="https://siriusq.top/en/enable-gpu-acceleration-in-macos-vm.html"/>
     <id>https://siriusq.top/en/enable-gpu-acceleration-in-macos-vm.html</id>
     <published>2024-07-07T13:26:19.000Z</published>
-    <updated>2024-09-13T16:11:14.893Z</updated>
+    <updated>2024-09-13T16:11:14.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; In my last blog post, I installed and configured a macOS Sonoma virtual machine, but without 3D acceleration enabled in the settings, it was painfully laggy. Even a simple window resize animation could freeze the VM for 10 seconds — not bearable. After some serious Googling, I stumbled upon a method on the official site to enable 3D acceleration by tweaking the `.vmx` file.&lt;/blockquote&gt;</summary>
@@ -155,7 +180,7 @@
     <link href="https://siriusq.top/en/vmware-fusion-install-macos-sonoma.html"/>
     <id>https://siriusq.top/en/vmware-fusion-install-macos-sonoma.html</id>
     <published>2024-07-07T02:19:24.000Z</published>
-    <updated>2024-09-13T15:58:25.927Z</updated>
+    <updated>2024-09-13T15:58:25.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; I got backstabbed by Apple! My 2017 MBP can&#39;t upgrade to Sonoma, and since XCode is tied to macOS versions, no system upgrade means no XCode upgrade. The older XCode versions don&#39;t support the latest iOS, so I can&#39;t deploy apps to my iPhone, turning my old Mac into a pretty paperweight. I agonized over installing a Hackintosh, setting up KVM passthrough, or using a virtual machine for ages. In the end, I decided to install the latest XCode on a macOS Sonoma virtual machine. It&#39;s not ideal, but hey, it works!🐶🐶 &lt;/blockquote&gt;</summary>
@@ -176,7 +201,7 @@
     <link href="https://siriusq.top/en/create-macos-iso.html"/>
     <id>https://siriusq.top/en/create-macos-iso.html</id>
     <published>2024-07-06T08:56:28.000Z</published>
-    <updated>2024-09-12T15:13:03.297Z</updated>
+    <updated>2024-09-12T15:13:03.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; This blog post documents the process of downloading the macOS Sonoma installation files on a Mac and converting them into an ISO image. Please note that this method is not applicable for Windows operating systems. &lt;/blockquote&gt;</summary>
@@ -199,7 +224,7 @@
     <link href="https://siriusq.top/en/vmware-workstation-net-fix.html"/>
     <id>https://siriusq.top/en/vmware-workstation-net-fix.html</id>
     <published>2024-06-07T14:49:04.000Z</published>
-    <updated>2024-07-18T08:50:20.740Z</updated>
+    <updated>2024-07-18T08:50:20.000Z</updated>
     
     
     <summary type="html">&lt;p&gt;The issue arises because VMware automatically selects a network adapter on the host for bridging. If multiple network adapters exist in your OS, especially virtual adapters created by other software like VirtualBox that are not connected to the real network, VMware might get confused and select one of these virtual adapters for bridging, resulting in no network connection. To solve this problem, you need to manually specify the network adapter to bridge to.&lt;/p&gt;</summary>
@@ -220,7 +245,7 @@
     <link href="https://siriusq.top/en/rider-r2.html"/>
     <id>https://siriusq.top/en/rider-r2.html</id>
     <published>2024-03-23T08:33:10.000Z</published>
-    <updated>2024-03-25T15:04:47.390Z</updated>
+    <updated>2024-03-25T15:04:47.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;After experiencing several fan bearing failures, I developed a psychological aversion to installing FDB fans at the top or bottom of the case. So, whenever I had spare time, I would browse ITX cases on Taobao, intending to switch to a different case. Then, on the second day after Rider R2 5.0 was listed on Taobao, I received a precise recommendation for it. Its power supply placement and other inverted structures were exactly what I had been dreaming of. Without hesitation, I placed an order and replaced my old, stuffy case.&lt;/blockquote&gt;
@@ -245,7 +270,7 @@
     <link href="https://siriusq.top/en/itx-summary.html"/>
     <id>https://siriusq.top/en/itx-summary.html</id>
     <published>2024-03-16T14:09:03.000Z</published>
-    <updated>2024-03-25T14:54:58.905Z</updated>
+    <updated>2024-03-25T14:54:58.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;I&#39;ve been delving into ITX since the end of 2019, and it&#39;s been over four years now. Throughout this time, I&#39;ve assembled and disassembled rigs, encountering quite a few pitfalls along the way. In this blog post, I&#39;ll summarize the experiences I&#39;ve gained in PC building.&lt;/blockquote&gt;</summary>
@@ -266,7 +291,7 @@
     <link href="https://siriusq.top/en/linux-no-bootable-device.html"/>
     <id>https://siriusq.top/en/linux-no-bootable-device.html</id>
     <published>2023-12-19T10:22:50.000Z</published>
-    <updated>2024-09-12T15:07:19.188Z</updated>
+    <updated>2024-09-12T15:07:19.000Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;img data-src=&quot;https://s2.loli.net/2023/12/24/DWFdJTgk742GY3N.webp&quot; alt=&quot;No_Bootable_Device.webp&quot;&gt;&lt;/p&gt;</summary>
@@ -287,7 +312,7 @@
     <link href="https://siriusq.top/en/grasscutter.html"/>
     <id>https://siriusq.top/en/grasscutter.html</id>
     <published>2023-11-07T13:17:07.000Z</published>
-    <updated>2024-09-13T16:11:06.000Z</updated>
+    <updated>2024-09-13T16:11:05.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Grasscutter is an experimental server written in Java, designed to simulate the server-side of a certain Anime Game. This article documents the process of configuring the server, including the installation of Grasscutter and Cultivation, the usage of relevant commands, methods for utilizing practical plugins and tools, configuration of gacha pools and shops, as well as the replacement of character models.&lt;/blockquote&gt;</summary>
@@ -306,7 +331,7 @@
     <link href="https://siriusq.top/en/clash-verge-tun-config.html"/>
     <id>https://siriusq.top/en/clash-verge-tun-config.html</id>
     <published>2023-11-04T09:24:07.000Z</published>
-    <updated>2024-09-13T16:13:50.996Z</updated>
+    <updated>2024-09-13T16:13:50.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; In this article, I will document the configuration process for Clash Verge, including creating configuration files, switching kernels, enabling TUN mode, and preventing DNS leaks. &lt;/blockquote&gt;</summary>
@@ -331,7 +356,7 @@
     <link href="https://siriusq.top/en/auto-update-profile-latest-blog-posts.html"/>
     <id>https://siriusq.top/en/auto-update-profile-latest-blog-posts.html</id>
     <published>2023-10-17T09:10:55.000Z</published>
-    <updated>2024-09-13T16:15:16.974Z</updated>
+    <updated>2024-09-13T16:15:16.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;I&#39;ve added a section on my GitHub custom profile page to display the most recent blog updates. However, it&#39;s quite inconvenient to update it manually every time I publish a new blog post. So, following the principle of &quot;laziness is the mother of invention,&quot; I&#39;ve come up with a method to automatically update the recent blog posts section on my profile page after deploying my blog using GitHub Actions.&lt;/blockquote&gt;</summary>
@@ -354,7 +379,7 @@
     <link href="https://siriusq.top/en/latex-vscode-quick-config.html"/>
     <id>https://siriusq.top/en/latex-vscode-quick-config.html</id>
     <published>2023-10-03T13:24:09.000Z</published>
-    <updated>2024-09-13T16:00:53.328Z</updated>
+    <updated>2024-09-13T16:00:53.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;A guide on installing the TeX environment and quickly configuring LaTeX in VSCode.&lt;/blockquote&gt;</summary>
@@ -375,7 +400,7 @@
     <link href="https://siriusq.top/en/ios-windows-file-share.html"/>
     <id>https://siriusq.top/en/ios-windows-file-share.html</id>
     <published>2023-09-15T12:34:06.000Z</published>
-    <updated>2024-09-13T16:04:39.858Z</updated>
+    <updated>2024-09-13T16:04:39.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Because the local network file transfer software I&#39;ve been using doesn&#39;t work on Win11 anymore, and I couldn&#39;t find a good alternative, I decided to resort to the old method of using Windows shared folders to transfer files to iOS devices.&lt;/blockquote&gt;</summary>
@@ -398,7 +423,7 @@
     <link href="https://siriusq.top/en/stellaris-mod.html"/>
     <id>https://siriusq.top/en/stellaris-mod.html</id>
     <published>2023-08-29T12:33:11.000Z</published>
-    <updated>2024-09-12T15:08:27.663Z</updated>
+    <updated>2024-09-12T15:08:27.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;How to become a qualified 4th crisis without using the console.&lt;/blockquote&gt;</summary>
@@ -419,7 +444,7 @@
     <link href="https://siriusq.top/en/bongo-paw-blicker.html"/>
     <id>https://siriusq.top/en/bongo-paw-blicker.html</id>
     <published>2023-08-14T08:02:21.000Z</published>
-    <updated>2024-09-12T15:02:17.917Z</updated>
+    <updated>2024-09-12T15:02:17.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;This article is a development record of Bongo Paw Clicker, documenting the issues I encountered during the development of the auto clicker.&lt;/blockquote&gt;
@@ -438,29 +463,6 @@
     <category term="Log" scheme="https://siriusq.top/en/tags/Log/"/>
     
     <category term="C#" scheme="https://siriusq.top/en/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Enabling Integrated Graphics with Discrete Graphics Installed</title>
-    <link href="https://siriusq.top/en/turn-on-igpu.html"/>
-    <id>https://siriusq.top/en/turn-on-igpu.html</id>
-    <published>2023-04-30T11:38:12.000Z</published>
-    <updated>2024-09-12T15:08:40.775Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Though practically speaking, the motherboard automatically blocks out the integrated graphics when a discrete graphics is plugged in. Although Intel&#39;s integrated graphics has poorer gaming performance, its video encoding and decoding capabilities are excellent. A graphics without a full encoder like the 6500xt can cause significant stuttering and frame drops when it comes to video clips, or in-game recording and pushing streams, so calling on the integrated graphics can take the burden off the discrete graphics and CPU for a smoother experience.&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
-    
-    
-    <category term="GPU" scheme="https://siriusq.top/en/tags/GPU/"/>
-    
-    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
-    
-    <category term="PC" scheme="https://siriusq.top/en/tags/PC/"/>
     
   </entry>
   

@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://siriusq.top/en/amd-gpu-driver-auto-update-banned.html</loc>
+    <loc>https://siriusq.top/en/onedrive-explorer-icon-bug-fix.html</loc>
     
-    <lastmod>2024-09-21</lastmod>
+    <lastmod>2024-10-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -13,7 +13,16 @@
   <url>
     <loc>https://siriusq.top/en/next-8-20-update-log.html</loc>
     
-    <lastmod>2024-09-19</lastmod>
+    <lastmod>2024-10-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/amd-gpu-driver-auto-update-banned.html</loc>
+    
+    <lastmod>2024-09-21</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -616,7 +625,7 @@
 
   <url>
     <loc>https://siriusq.top/en</loc>
-    <lastmod>2024-09-21</lastmod>
+    <lastmod>2024-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
