@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2024-10-25T09:10:29.000Z</updated>
+  <updated>2024-11-10T09:48:18.190Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -17,11 +17,80 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Setting Delayed Startup for OneDrive on Windows</title>
+    <link href="https://siriusq.top/en/onedrive-delay-startup.html"/>
+    <id>https://siriusq.top/en/onedrive-delay-startup.html</id>
+    <published>2024-11-05T09:24:14.000Z</published>
+    <updated>2024-11-10T09:48:18.190Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; On Windows, both OneDrive and Clash have nearly the same startup time, causing OneDrive to get interrupted by Clash when it tries to log in automatically. This results in OneDrive getting stuck during the login process. At this point, I have to quit and restart OneDrive for it to log in properly, which is quite annoying. To solve this, I decided to set a 1-minute delay for OneDrive&#39;s startup after booting up using the Task Scheduler. Below is the process I followed to set it up. &lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    
+    <category term="OneDrive" scheme="https://siriusq.top/en/tags/OneDrive/"/>
+    
+    <category term="Task Scheduler" scheme="https://siriusq.top/en/tags/Task-Scheduler/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GitHub SSH Remote Connection Configuration and GPG Commit Signature Verification</title>
+    <link href="https://siriusq.top/en/git-ssh-config.html"/>
+    <id>https://siriusq.top/en/git-ssh-config.html</id>
+    <published>2024-11-01T13:43:24.000Z</published>
+    <updated>2024-11-11T13:46:56.351Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; I just reinstalled the operating system and need to configure GitHub&#39;s SSH keys from scratch. Having to search for commands each time is quite tedious, so I decided to record the process for future reference. &lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Coding" scheme="https://siriusq.top/en/categories/Coding/"/>
+    
+    
+    <category term="GitHub" scheme="https://siriusq.top/en/tags/GitHub/"/>
+    
+    <category term="SSH" scheme="https://siriusq.top/en/tags/SSH/"/>
+    
+    <category term="GPG" scheme="https://siriusq.top/en/tags/GPG/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Windows 11 IoT LTSC Reinstallation Guide</title>
+    <link href="https://siriusq.top/en/win-11-iot-ltsc-installation.html"/>
+    <id>https://siriusq.top/en/win-11-iot-ltsc-installation.html</id>
+    <published>2024-10-25T11:57:15.000Z</published>
+    <updated>2024-11-10T15:01:35.378Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; I heard that Microsoft released the public version of Windows 11 LTSC earlier this month, and I was so done with Microsoft stuffing the system with AI clutter every other day! Without hesitation, I immediately installed the new system on all three of my computers. My last Windows reinstallation guide was written four years ago, and many contents are now outdated. So, I decided to take this opportunity to write a new guide focused specifically on reinstalling Windows 11 IoT LTSC. &lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    
+    
+    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    
+    <category term="Reinstallation" scheme="https://siriusq.top/en/tags/Reinstallation/"/>
+    
+    <category term="Office" scheme="https://siriusq.top/en/tags/Office/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Fix the OneDrive Icon Issue in the Windows LTSC File Explorer Sidebar</title>
     <link href="https://siriusq.top/en/onedrive-explorer-icon-bug-fix.html"/>
     <id>https://siriusq.top/en/onedrive-explorer-icon-bug-fix.html</id>
     <published>2024-10-24T07:41:25.000Z</published>
-    <updated>2024-10-25T09:10:29.000Z</updated>
+    <updated>2024-11-07T14:35:29.216Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; After installing Windows 11 LTSC, I noticed that the OneDrive icon in the File Explorer sidebar wasn’t working properly. Clicking on it did nothing, and the properties page was completely blank. A quick search revealed that this is an old Microsoft bug. When you install the personal version of OneDrive on the LTSC version of Windows, the installer fails to register the path value pointing to the OneDrive folder for the sidebar icon, resulting in it pointing to a null value. I guess it’s just classic Microsoft—years later, and this bug is still around. &lt;/blockquote&gt;</summary>
@@ -46,7 +115,7 @@
     <link href="https://siriusq.top/en/next-8-20-update-log.html"/>
     <id>https://siriusq.top/en/next-8-20-update-log.html</id>
     <published>2024-09-16T04:01:26.000Z</published>
-    <updated>2024-10-25T09:03:22.000Z</updated>
+    <updated>2024-11-08T15:53:38.059Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Update Log of my blog. This time, there weren&#39;t many adjustments — just a simple refresh of the version number and a slight enhancement of the reading experience. &lt;/blockquote&gt;</summary>
@@ -331,7 +400,7 @@
     <link href="https://siriusq.top/en/clash-verge-tun-config.html"/>
     <id>https://siriusq.top/en/clash-verge-tun-config.html</id>
     <published>2023-11-04T09:24:07.000Z</published>
-    <updated>2024-09-13T16:13:50.000Z</updated>
+    <updated>2024-10-28T10:22:18.876Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; In this article, I will document the configuration process for Clash Verge, including creating configuration files, switching kernels, enabling TUN mode, and preventing DNS leaks. &lt;/blockquote&gt;</summary>
@@ -345,9 +414,9 @@
     
     <category term="GFW" scheme="https://siriusq.top/en/tags/GFW/"/>
     
-    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
-    
     <category term="Tun" scheme="https://siriusq.top/en/tags/Tun/"/>
+    
+    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
     
   </entry>
   
@@ -392,77 +461,6 @@
     <category term="VSCode" scheme="https://siriusq.top/en/tags/VSCode/"/>
     
     <category term="LaTeX" scheme="https://siriusq.top/en/tags/LaTeX/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Accessing Windows Shared Folders on iPhone</title>
-    <link href="https://siriusq.top/en/ios-windows-file-share.html"/>
-    <id>https://siriusq.top/en/ios-windows-file-share.html</id>
-    <published>2023-09-15T12:34:06.000Z</published>
-    <updated>2024-09-13T16:04:39.000Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;Because the local network file transfer software I&#39;ve been using doesn&#39;t work on Win11 anymore, and I couldn&#39;t find a good alternative, I decided to resort to the old method of using Windows shared folders to transfer files to iOS devices.&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
-    
-    
-    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
-    
-    <category term="iOS" scheme="https://siriusq.top/en/tags/iOS/"/>
-    
-    <category term="Shared Folders" scheme="https://siriusq.top/en/tags/Shared-Folders/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Stellaris Mod Creation and Upload Log</title>
-    <link href="https://siriusq.top/en/stellaris-mod.html"/>
-    <id>https://siriusq.top/en/stellaris-mod.html</id>
-    <published>2023-08-29T12:33:11.000Z</published>
-    <updated>2024-09-12T15:08:27.000Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;How to become a qualified 4th crisis without using the console.&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Open Source Projects" scheme="https://siriusq.top/en/categories/Open-Source-Projects/"/>
-    
-    
-    <category term="MOD" scheme="https://siriusq.top/en/tags/MOD/"/>
-    
-    <category term="Stellaris" scheme="https://siriusq.top/en/tags/Stellaris/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Bongo Paw Clicker Development Summary</title>
-    <link href="https://siriusq.top/en/bongo-paw-blicker.html"/>
-    <id>https://siriusq.top/en/bongo-paw-blicker.html</id>
-    <published>2023-08-14T08:02:21.000Z</published>
-    <updated>2024-09-12T15:02:17.000Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;This article is a development record of Bongo Paw Clicker, documenting the issues I encountered during the development of the auto clicker.&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img data-src=&quot;https://s2.loli.net/2023/08/21/Yv84gpx6mU2TFfK.webp&quot; alt=&quot;en-preview.webp&quot;&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Open Source Projects" scheme="https://siriusq.top/en/categories/Open-Source-Projects/"/>
-    
-    
-    <category term="WPF" scheme="https://siriusq.top/en/tags/WPF/"/>
-    
-    <category term="Bongo Paw Clicker" scheme="https://siriusq.top/en/tags/Bongo-Paw-Clicker/"/>
-    
-    <category term="Log" scheme="https://siriusq.top/en/tags/Log/"/>
-    
-    <category term="C#" scheme="https://siriusq.top/en/tags/C/"/>
     
   </entry>
   

@@ -2,9 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://siriusq.top/en/onedrive-explorer-icon-bug-fix.html</loc>
+    <loc>https://siriusq.top/en/git-ssh-config.html</loc>
     
-    <lastmod>2024-10-25</lastmod>
+    <lastmod>2024-11-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/win-11-iot-ltsc-installation.html</loc>
+    
+    <lastmod>2024-11-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/onedrive-delay-startup.html</loc>
+    
+    <lastmod>2024-11-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/awesome-software.html</loc>
+    
+    <lastmod>2024-11-09</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -13,7 +40,34 @@
   <url>
     <loc>https://siriusq.top/en/next-8-20-update-log.html</loc>
     
-    <lastmod>2024-10-25</lastmod>
+    <lastmod>2024-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/windows-reinstallation.html</loc>
+    
+    <lastmod>2024-11-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/onedrive-explorer-icon-bug-fix.html</loc>
+    
+    <lastmod>2024-11-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/windows-terminal.html</loc>
+    
+    <lastmod>2024-10-28</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -111,24 +165,6 @@
   
   <url>
     <loc>https://siriusq.top/en/wsa.html</loc>
-    
-    <lastmod>2024-09-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://siriusq.top/en/windows-terminal.html</loc>
-    
-    <lastmod>2024-09-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://siriusq.top/en/windows-reinstallation.html</loc>
     
     <lastmod>2024-09-12</lastmod>
     
@@ -282,15 +318,6 @@
   
   <url>
     <loc>https://siriusq.top/en/block-app-open-screen-ads-on-ios.html</loc>
-    
-    <lastmod>2024-09-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://siriusq.top/en/awesome-software.html</loc>
     
     <lastmod>2024-09-12</lastmod>
     
@@ -625,7 +652,7 @@
 
   <url>
     <loc>https://siriusq.top/en</loc>
-    <lastmod>2024-10-27</lastmod>
+    <lastmod>2024-11-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
