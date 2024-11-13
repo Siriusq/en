@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2024-11-10T09:48:18.190Z</updated>
+  <updated>2024-11-13T10:00:04.681Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Use Windows Wireless Display to Turn an Old Device into a Secondary Screen</title>
+    <link href="https://siriusq.top/en/windows-wireless-display.html"/>
+    <id>https://siriusq.top/en/windows-wireless-display.html</id>
+    <published>2024-11-12T12:54:10.000Z</published>
+    <updated>2024-11-13T10:00:04.681Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; It always feels like there aren&#39;t enough monitors for my PC. However, purchasing a new display can be a considerable expense. I have an old Surface 3 sitting around that I rarely use, so why not repurpose it as a secondary screen? But there&#39;s a catch: older devices like this Surface 3 only support video output, not input, so I can&#39;t connect it directly via a video cable. My next thought was to use a video capture card, which could transfer the PC&#39;s screen to the Surface 3 via a USB connection. However, after some research, I found that inexpensive capture cards come with significant lag, while high-quality ones are nearly as costly as a new monitor—hardly worth it. In the end, I opted for the simplest, most affordable solution: using Windows&#39; built-in wireless display feature to transform this old Surface 3 into a secondary screen. &lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    
+    
+    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    
+    <category term="Wireless Display" scheme="https://siriusq.top/en/tags/Wireless-Display/"/>
+    
+    <category term="Surface" scheme="https://siriusq.top/en/tags/Surface/"/>
+    
+  </entry>
   
   <entry>
     <title>Setting Delayed Startup for OneDrive on Windows</title>
@@ -440,27 +463,6 @@
     <category term="GitHub Pages" scheme="https://siriusq.top/en/tags/GitHub-Pages/"/>
     
     <category term="GitHub Actions" scheme="https://siriusq.top/en/tags/GitHub-Actions/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Quick Setup Guide for LaTeX in VSCode</title>
-    <link href="https://siriusq.top/en/latex-vscode-quick-config.html"/>
-    <id>https://siriusq.top/en/latex-vscode-quick-config.html</id>
-    <published>2023-10-03T13:24:09.000Z</published>
-    <updated>2024-09-13T16:00:53.000Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;A guide on installing the TeX environment and quickly configuring LaTeX in VSCode.&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Coding" scheme="https://siriusq.top/en/categories/Coding/"/>
-    
-    
-    <category term="VSCode" scheme="https://siriusq.top/en/tags/VSCode/"/>
-    
-    <category term="LaTeX" scheme="https://siriusq.top/en/tags/LaTeX/"/>
     
   </entry>
   
