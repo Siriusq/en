@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2024-11-13T10:00:04.681Z</updated>
+  <updated>2024-11-19T15:05:14.663Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Enable HEIC Image Preview in Windows</title>
+    <link href="https://siriusq.top/en/windows-heic.html"/>
+    <id>https://siriusq.top/en/windows-heic.html</id>
+    <published>2024-11-19T12:43:51.000Z</published>
+    <updated>2024-11-19T15:05:14.663Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; After reinstalling my system, I found that HEIC images captured by my iPhone could no longer be previewed in Windows File Explorer. Naturally, I searched the Microsoft Store for the necessary extension, only to find that the available option required payment. This puzzled me because I had never purchased such an extension before, yet my previous system handled HEIC previews perfectly fine. &lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    
+    
+    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    
+    <category term="HEIC" scheme="https://siriusq.top/en/tags/HEIC/"/>
+    
+  </entry>
   
   <entry>
     <title>Use Windows Wireless Display to Turn an Old Device into a Secondary Screen</title>
@@ -90,7 +111,7 @@
     <link href="https://siriusq.top/en/win-11-iot-ltsc-installation.html"/>
     <id>https://siriusq.top/en/win-11-iot-ltsc-installation.html</id>
     <published>2024-10-25T11:57:15.000Z</published>
-    <updated>2024-11-10T15:01:35.378Z</updated>
+    <updated>2024-11-19T14:59:11.430Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; I heard that Microsoft released the public version of Windows 11 LTSC earlier this month, and I was so done with Microsoft stuffing the system with AI clutter every other day! Without hesitation, I immediately installed the new system on all three of my computers. My last Windows reinstallation guide was written four years ago, and many contents are now outdated. So, I decided to take this opportunity to write a new guide focused specifically on reinstalling Windows 11 IoT LTSC. &lt;/blockquote&gt;</summary>
@@ -440,29 +461,6 @@
     <category term="Tun" scheme="https://siriusq.top/en/tags/Tun/"/>
     
     <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Automatically Update the Recent Blog Posts Section in the Custom Profile README When a GitHub Pages-Based Blog Is Updated.</title>
-    <link href="https://siriusq.top/en/auto-update-profile-latest-blog-posts.html"/>
-    <id>https://siriusq.top/en/auto-update-profile-latest-blog-posts.html</id>
-    <published>2023-10-17T09:10:55.000Z</published>
-    <updated>2024-09-13T16:15:16.000Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;I&#39;ve added a section on my GitHub custom profile page to display the most recent blog updates. However, it&#39;s quite inconvenient to update it manually every time I publish a new blog post. So, following the principle of &quot;laziness is the mother of invention,&quot; I&#39;ve come up with a method to automatically update the recent blog posts section on my profile page after deploying my blog using GitHub Actions.&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Website Configuration" scheme="https://siriusq.top/en/categories/Website-Configuration/"/>
-    
-    
-    <category term="Hexo" scheme="https://siriusq.top/en/tags/Hexo/"/>
-    
-    <category term="GitHub Pages" scheme="https://siriusq.top/en/tags/GitHub-Pages/"/>
-    
-    <category term="GitHub Actions" scheme="https://siriusq.top/en/tags/GitHub-Actions/"/>
     
   </entry>
   
