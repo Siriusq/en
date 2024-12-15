@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2024-11-19T15:05:14.663Z</updated>
+  <updated>2024-11-19T15:05:14.000Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://siriusq.top/en/windows-heic.html"/>
     <id>https://siriusq.top/en/windows-heic.html</id>
     <published>2024-11-19T12:43:51.000Z</published>
-    <updated>2024-11-19T15:05:14.663Z</updated>
+    <updated>2024-11-19T15:05:14.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; After reinstalling my system, I found that HEIC images captured by my iPhone could no longer be previewed in Windows File Explorer. Naturally, I searched the Microsoft Store for the necessary extension, only to find that the available option required payment. This puzzled me because I had never purchased such an extension before, yet my previous system handled HEIC previews perfectly fine. &lt;/blockquote&gt;</summary>
@@ -42,7 +42,7 @@
     <link href="https://siriusq.top/en/windows-wireless-display.html"/>
     <id>https://siriusq.top/en/windows-wireless-display.html</id>
     <published>2024-11-12T12:54:10.000Z</published>
-    <updated>2024-11-13T10:00:04.681Z</updated>
+    <updated>2024-11-13T10:00:04.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; It always feels like there aren&#39;t enough monitors for my PC. However, purchasing a new display can be a considerable expense. I have an old Surface 3 sitting around that I rarely use, so why not repurpose it as a secondary screen? But there&#39;s a catch: older devices like this Surface 3 only support video output, not input, so I can&#39;t connect it directly via a video cable. My next thought was to use a video capture card, which could transfer the PC&#39;s screen to the Surface 3 via a USB connection. However, after some research, I found that inexpensive capture cards come with significant lag, while high-quality ones are nearly as costly as a new monitor—hardly worth it. In the end, I opted for the simplest, most affordable solution: using Windows&#39; built-in wireless display feature to transform this old Surface 3 into a secondary screen. &lt;/blockquote&gt;</summary>
@@ -65,7 +65,7 @@
     <link href="https://siriusq.top/en/onedrive-delay-startup.html"/>
     <id>https://siriusq.top/en/onedrive-delay-startup.html</id>
     <published>2024-11-05T09:24:14.000Z</published>
-    <updated>2024-11-10T09:48:18.190Z</updated>
+    <updated>2024-11-10T09:48:18.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; On Windows, both OneDrive and Clash have nearly the same startup time, causing OneDrive to get interrupted by Clash when it tries to log in automatically. This results in OneDrive getting stuck during the login process. At this point, I have to quit and restart OneDrive for it to log in properly, which is quite annoying. To solve this, I decided to set a 1-minute delay for OneDrive&#39;s startup after booting up using the Task Scheduler. Below is the process I followed to set it up. &lt;/blockquote&gt;</summary>
@@ -88,7 +88,7 @@
     <link href="https://siriusq.top/en/git-ssh-config.html"/>
     <id>https://siriusq.top/en/git-ssh-config.html</id>
     <published>2024-11-01T13:43:24.000Z</published>
-    <updated>2024-11-11T13:46:56.351Z</updated>
+    <updated>2024-11-11T13:46:56.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; I just reinstalled the operating system and need to configure GitHub&#39;s SSH keys from scratch. Having to search for commands each time is quite tedious, so I decided to record the process for future reference. &lt;/blockquote&gt;</summary>
@@ -111,7 +111,7 @@
     <link href="https://siriusq.top/en/win-11-iot-ltsc-installation.html"/>
     <id>https://siriusq.top/en/win-11-iot-ltsc-installation.html</id>
     <published>2024-10-25T11:57:15.000Z</published>
-    <updated>2024-11-19T14:59:11.430Z</updated>
+    <updated>2024-11-19T14:59:11.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; I heard that Microsoft released the public version of Windows 11 LTSC earlier this month, and I was so done with Microsoft stuffing the system with AI clutter every other day! Without hesitation, I immediately installed the new system on all three of my computers. My last Windows reinstallation guide was written four years ago, and many contents are now outdated. So, I decided to take this opportunity to write a new guide focused specifically on reinstalling Windows 11 IoT LTSC. &lt;/blockquote&gt;</summary>
@@ -134,7 +134,7 @@
     <link href="https://siriusq.top/en/onedrive-explorer-icon-bug-fix.html"/>
     <id>https://siriusq.top/en/onedrive-explorer-icon-bug-fix.html</id>
     <published>2024-10-24T07:41:25.000Z</published>
-    <updated>2024-11-07T14:35:29.216Z</updated>
+    <updated>2024-11-07T14:35:29.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; After installing Windows 11 LTSC, I noticed that the OneDrive icon in the File Explorer sidebar wasn’t working properly. Clicking on it did nothing, and the properties page was completely blank. A quick search revealed that this is an old Microsoft bug. When you install the personal version of OneDrive on the LTSC version of Windows, the installer fails to register the path value pointing to the OneDrive folder for the sidebar icon, resulting in it pointing to a null value. I guess it’s just classic Microsoft—years later, and this bug is still around. &lt;/blockquote&gt;</summary>
@@ -159,7 +159,7 @@
     <link href="https://siriusq.top/en/next-8-20-update-log.html"/>
     <id>https://siriusq.top/en/next-8-20-update-log.html</id>
     <published>2024-09-16T04:01:26.000Z</published>
-    <updated>2024-11-08T15:53:38.059Z</updated>
+    <updated>2024-11-08T15:53:38.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Update Log of my blog. This time, there weren&#39;t many adjustments — just a simple refresh of the version number and a slight enhancement of the reading experience. &lt;/blockquote&gt;</summary>
@@ -444,7 +444,7 @@
     <link href="https://siriusq.top/en/clash-verge-tun-config.html"/>
     <id>https://siriusq.top/en/clash-verge-tun-config.html</id>
     <published>2023-11-04T09:24:07.000Z</published>
-    <updated>2024-10-28T10:22:18.876Z</updated>
+    <updated>2024-10-28T10:22:18.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; In this article, I will document the configuration process for Clash Verge, including creating configuration files, switching kernels, enabling TUN mode, and preventing DNS leaks. &lt;/blockquote&gt;</summary>
