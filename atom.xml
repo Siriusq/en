@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2024-11-19T15:05:14.000Z</updated>
+  <updated>2025-01-18T13:23:41.831Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution to the Prevent Shutdown Issue Caused by Traffic Monitor</title>
+    <link href="https://siriusq.top/en/traffic-monitor-prevent-shutdown.html"/>
+    <id>https://siriusq.top/en/traffic-monitor-prevent-shutdown.html</id>
+    <published>2025-01-14T13:28:12.000Z</published>
+    <updated>2025-01-18T13:23:41.831Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Use task scheduler to force terminate TrafficMonitor.exe during shutdown to solve the issue in Windows 11 &lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    
+    
+    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    
+    <category term="Traffic Monitor" scheme="https://siriusq.top/en/tags/Traffic-Monitor/"/>
+    
+  </entry>
   
   <entry>
     <title>Enable HEIC Image Preview in Windows</title>
@@ -111,7 +132,7 @@
     <link href="https://siriusq.top/en/win-11-iot-ltsc-installation.html"/>
     <id>https://siriusq.top/en/win-11-iot-ltsc-installation.html</id>
     <published>2024-10-25T11:57:15.000Z</published>
-    <updated>2024-11-19T14:59:11.000Z</updated>
+    <updated>2025-01-14T15:33:14.728Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; I heard that Microsoft released the public version of Windows 11 LTSC earlier this month, and I was so done with Microsoft stuffing the system with AI clutter every other day! Without hesitation, I immediately installed the new system on all three of my computers. My last Windows reinstallation guide was written four years ago, and many contents are now outdated. So, I decided to take this opportunity to write a new guide focused specifically on reinstalling Windows 11 IoT LTSC. &lt;/blockquote&gt;</summary>
@@ -436,31 +457,6 @@
     
     
     <category term="Grasscutter" scheme="https://siriusq.top/en/tags/Grasscutter/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Clash Verge TUN Mode Configuration Guide</title>
-    <link href="https://siriusq.top/en/clash-verge-tun-config.html"/>
-    <id>https://siriusq.top/en/clash-verge-tun-config.html</id>
-    <published>2023-11-04T09:24:07.000Z</published>
-    <updated>2024-10-28T10:22:18.000Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; In this article, I will document the configuration process for Clash Verge, including creating configuration files, switching kernels, enabling TUN mode, and preventing DNS leaks. &lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Free Internet" scheme="https://siriusq.top/en/categories/Free-Internet/"/>
-    
-    
-    <category term="Clash" scheme="https://siriusq.top/en/tags/Clash/"/>
-    
-    <category term="GFW" scheme="https://siriusq.top/en/tags/GFW/"/>
-    
-    <category term="Tun" scheme="https://siriusq.top/en/tags/Tun/"/>
-    
-    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
     
   </entry>
   
