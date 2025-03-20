@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2025-03-19T03:26:28.360Z</updated>
+  <updated>2025-03-20T15:24:31.636Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Fix WSA Network Issues Caused by ESET Firewall</title>
+    <link href="https://siriusq.top/en/eset-firewall-block-wsa.html"/>
+    <id>https://siriusq.top/en/eset-firewall-block-wsa.html</id>
+    <published>2025-03-20T12:26:06.000Z</published>
+    <updated>2025-03-20T15:24:31.636Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; This article explains how to resolve the unexpected network blocking issue where ESET Internet Security firewall arbitrarily prevents Windows Subsystem for Android (WSA) from accessing the internet. &lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Virtual Machine" scheme="https://siriusq.top/en/categories/Virtual-Machine/"/>
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    
+    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    
+    <category term="WSA" scheme="https://siriusq.top/en/tags/WSA/"/>
+    
+  </entry>
   
   <entry>
     <title>Fix Windows Time Synchronization Failure</title>
@@ -442,27 +465,6 @@
     <category term="DIY" scheme="https://siriusq.top/en/tags/DIY/"/>
     
     <category term="Rider R2 5.0" scheme="https://siriusq.top/en/tags/Rider-R2-5-0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ITX Installation Experience Summary</title>
-    <link href="https://siriusq.top/en/itx-summary.html"/>
-    <id>https://siriusq.top/en/itx-summary.html</id>
-    <published>2024-03-16T14:09:03.000Z</published>
-    <updated>2024-03-25T14:54:58.000Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;I&#39;ve been delving into ITX since the end of 2019, and it&#39;s been over four years now. Throughout this time, I&#39;ve assembled and disassembled rigs, encountering quite a few pitfalls along the way. In this blog post, I&#39;ll summarize the experiences I&#39;ve gained in PC building.&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Hardware" scheme="https://siriusq.top/en/categories/Hardware/"/>
-    
-    
-    <category term="ITX" scheme="https://siriusq.top/en/tags/ITX/"/>
-    
-    <category term="DIY" scheme="https://siriusq.top/en/tags/DIY/"/>
     
   </entry>
   
