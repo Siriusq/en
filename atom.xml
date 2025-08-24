@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2025-03-20T15:24:31.636Z</updated>
+  <updated>2025-08-24T16:40:11.860Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Building Installation Packages for Various Platforms with Flutter</title>
+    <link href="https://siriusq.top/en/flutter-build-installer.html"/>
+    <id>https://siriusq.top/en/flutter-build-installer.html</id>
+    <published>2025-08-23T15:06:50.000Z</published>
+    <updated>2025-08-24T16:40:11.860Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; This article explains how to build installation packages for your Flutter projects for various platforms without spending a single cent on signing certificates. This includes: Android APK, iOS IPA, macOS DMG, Linux DEB, and Windows MSIX. &lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Coding" scheme="https://siriusq.top/en/categories/Coding/"/>
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    
+    <category term="macOS" scheme="https://siriusq.top/en/tags/macOS/"/>
+    
+    <category term="iOS" scheme="https://siriusq.top/en/tags/iOS/"/>
+    
+    <category term="Flutter" scheme="https://siriusq.top/en/tags/Flutter/"/>
+    
+    <category term="Android" scheme="https://siriusq.top/en/tags/Android/"/>
+    
+    <category term="Linux" scheme="https://siriusq.top/en/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Fix WSA Network Issues Caused by ESET Firewall</title>
@@ -440,31 +469,6 @@
     <category term="VMware" scheme="https://siriusq.top/en/tags/VMware/"/>
     
     <category term="Bridged Network" scheme="https://siriusq.top/en/tags/Bridged-Network/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Rider R2 5.0 ITX Case Review</title>
-    <link href="https://siriusq.top/en/rider-r2.html"/>
-    <id>https://siriusq.top/en/rider-r2.html</id>
-    <published>2024-03-23T08:33:10.000Z</published>
-    <updated>2024-03-25T15:04:47.000Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;After experiencing several fan bearing failures, I developed a psychological aversion to installing FDB fans at the top or bottom of the case. So, whenever I had spare time, I would browse ITX cases on Taobao, intending to switch to a different case. Then, on the second day after Rider R2 5.0 was listed on Taobao, I received a precise recommendation for it. Its power supply placement and other inverted structures were exactly what I had been dreaming of. Without hesitation, I placed an order and replaced my old, stuffy case.&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img data-src=&quot;https://s2.loli.net/2024/03/23/xPpEDrCqBygOb1t.webp&quot; alt=&quot;Cover.webp&quot;&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Hardware" scheme="https://siriusq.top/en/categories/Hardware/"/>
-    
-    
-    <category term="ITX" scheme="https://siriusq.top/en/tags/ITX/"/>
-    
-    <category term="DIY" scheme="https://siriusq.top/en/tags/DIY/"/>
-    
-    <category term="Rider R2 5.0" scheme="https://siriusq.top/en/tags/Rider-R2-5-0/"/>
     
   </entry>
   
