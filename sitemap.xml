@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://siriusq.top/en/awesome-software.html</loc>
+    
+    <lastmod>2025-11-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://siriusq.top/en/flutter-build-installer.html</loc>
     
     <lastmod>2025-08-24</lastmod>
@@ -50,15 +59,6 @@
     <loc>https://siriusq.top/en/traffic-monitor-prevent-shutdown.html</loc>
     
     <lastmod>2025-01-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://siriusq.top/en/awesome-software.html</loc>
-    
-    <lastmod>2025-01-13</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -715,7 +715,7 @@
 
   <url>
     <loc>https://siriusq.top/en</loc>
-    <lastmod>2025-08-24</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
