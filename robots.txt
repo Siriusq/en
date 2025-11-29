@@ -15,5 +15,6 @@ Disallow: /tags/
 Disallow: /404.html
 Disallow: /clash.html
 Disallow: /v2ray.html
+Disallow: /clash-verge-tun-config.html
 
 Sitemap: https://siriusq.top/en/sitemap.xml

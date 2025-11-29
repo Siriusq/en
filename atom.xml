@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2025-08-24T16:40:11.860Z</updated>
+  <updated>2025-11-29T13:33:03.672Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Publishing a Flutter App to the Microsoft Store</title>
+    <link href="https://siriusq.top/en/ms-store-publish.html"/>
+    <id>https://siriusq.top/en/ms-store-publish.html</id>
+    <published>2025-11-25T14:15:23.000Z</published>
+    <updated>2025-11-29T13:33:03.672Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Microsoft Store has finally removed the registration fee for individual developers. They promised this back in June, and I didn’t get it until November. But free is always good — one more distribution channel means I no longer have to hide in the dark corner of GitHub to release my work. &lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Coding" scheme="https://siriusq.top/en/categories/Coding/"/>
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    
+    <category term="Flutter" scheme="https://siriusq.top/en/tags/Flutter/"/>
+    
+    <category term="Microsoft Store" scheme="https://siriusq.top/en/tags/Microsoft-Store/"/>
+    
+  </entry>
   
   <entry>
     <title>Building Installation Packages for Various Platforms with Flutter</title>
@@ -448,27 +471,6 @@
     <category term="Reinstallation" scheme="https://siriusq.top/en/tags/Reinstallation/"/>
     
     <category term="Hackintosh" scheme="https://siriusq.top/en/tags/Hackintosh/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Fix VMware Bridged Network Not Working on Virtual Machine</title>
-    <link href="https://siriusq.top/en/vmware-workstation-net-fix.html"/>
-    <id>https://siriusq.top/en/vmware-workstation-net-fix.html</id>
-    <published>2024-06-07T14:49:04.000Z</published>
-    <updated>2024-07-18T08:50:20.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;The issue arises because VMware automatically selects a network adapter on the host for bridging. If multiple network adapters exist in your OS, especially virtual adapters created by other software like VirtualBox that are not connected to the real network, VMware might get confused and select one of these virtual adapters for bridging, resulting in no network connection. To solve this problem, you need to manually specify the network adapter to bridge to.&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Virtual Machine" scheme="https://siriusq.top/en/categories/Virtual-Machine/"/>
-    
-    
-    <category term="VMware" scheme="https://siriusq.top/en/tags/VMware/"/>
-    
-    <category term="Bridged Network" scheme="https://siriusq.top/en/tags/Bridged-Network/"/>
     
   </entry>
   
