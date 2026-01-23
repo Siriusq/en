@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2025-11-29T13:33:03.672Z</updated>
+  <updated>2026-01-23T12:53:16.891Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Force MuMu Player to Run on Integrated Graphics</title>
+    <link href="https://siriusq.top/en/mumu-igpu.html"/>
+    <id>https://siriusq.top/en/mumu-igpu.html</id>
+    <published>2026-01-23T11:56:39.000Z</published>
+    <updated>2026-01-23T12:53:16.891Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; I’ve been keeping MuMu Emulator running in the background a lot lately. By default, it runs on the discrete GPU, and unfortunately there’s no option in its own settings to choose which GPU to use. The problem is that my discrete GPU is configured with an automatic fan stop/start feature. When MuMu runs in the background, the GPU temperature slowly rises, eventually hitting the threshold where the fans suddenly spin up with a loud *whoosh*. After cooling down, they stop again—over and over. It’s noisy and annoying. So I spent some time tinkering and forced MuMu to run on the integrated GPU instead. After all, the iGPU is just sitting there idle anyway 🐶 &lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    
+    
+    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Publishing a Flutter App to the Microsoft Store</title>
     <link href="https://siriusq.top/en/ms-store-publish.html"/>
     <id>https://siriusq.top/en/ms-store-publish.html</id>
     <published>2025-11-25T14:15:23.000Z</published>
-    <updated>2025-11-29T13:33:03.672Z</updated>
+    <updated>2025-11-29T13:33:03.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Microsoft Store has finally removed the registration fee for individual developers. They promised this back in June, and I didn’t get it until November. But free is always good — one more distribution channel means I no longer have to hide in the dark corner of GitHub to release my work. &lt;/blockquote&gt;</summary>
@@ -44,7 +63,7 @@
     <link href="https://siriusq.top/en/flutter-build-installer.html"/>
     <id>https://siriusq.top/en/flutter-build-installer.html</id>
     <published>2025-08-23T15:06:50.000Z</published>
-    <updated>2025-08-24T16:40:11.860Z</updated>
+    <updated>2025-08-24T16:40:11.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; This article explains how to build installation packages for your Flutter projects for various platforms without spending a single cent on signing certificates. This includes: Android APK, iOS IPA, macOS DMG, Linux DEB, and Windows MSIX. &lt;/blockquote&gt;</summary>
@@ -56,9 +75,9 @@
     
     <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
     
-    <category term="macOS" scheme="https://siriusq.top/en/tags/macOS/"/>
-    
     <category term="iOS" scheme="https://siriusq.top/en/tags/iOS/"/>
+    
+    <category term="macOS" scheme="https://siriusq.top/en/tags/macOS/"/>
     
     <category term="Flutter" scheme="https://siriusq.top/en/tags/Flutter/"/>
     
@@ -73,7 +92,7 @@
     <link href="https://siriusq.top/en/eset-firewall-block-wsa.html"/>
     <id>https://siriusq.top/en/eset-firewall-block-wsa.html</id>
     <published>2025-03-20T12:26:06.000Z</published>
-    <updated>2025-03-20T15:24:31.636Z</updated>
+    <updated>2025-03-20T15:24:31.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; This article explains how to resolve the unexpected network blocking issue where ESET Internet Security firewall arbitrarily prevents Windows Subsystem for Android (WSA) from accessing the internet. &lt;/blockquote&gt;</summary>
@@ -96,7 +115,7 @@
     <link href="https://siriusq.top/en/windows-time-sync-failed.html"/>
     <id>https://siriusq.top/en/windows-time-sync-failed.html</id>
     <published>2025-03-18T12:58:04.000Z</published>
-    <updated>2025-03-19T03:26:28.360Z</updated>
+    <updated>2025-03-19T03:26:28.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Resolve time synchronization failure due to connection timeouts by changing the Windows NTP time synchronization server. &lt;/blockquote&gt;</summary>
@@ -117,7 +136,7 @@
     <link href="https://siriusq.top/en/wsa-vmware-coexist.html"/>
     <id>https://siriusq.top/en/wsa-vmware-coexist.html</id>
     <published>2025-03-10T09:22:28.000Z</published>
-    <updated>2025-03-19T09:29:47.939Z</updated>
+    <updated>2025-03-19T09:29:47.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Resolve VMware startup errors &quot;VMware Workstation does not support virtualized performance counters on this host&quot; and &quot;Module &#39;VPMC&#39; power on failed&quot;, as well as network connection issues in VMware virtual machines after installing WSA. &lt;/blockquote&gt;</summary>
@@ -142,7 +161,7 @@
     <link href="https://siriusq.top/en/traffic-monitor-prevent-shutdown.html"/>
     <id>https://siriusq.top/en/traffic-monitor-prevent-shutdown.html</id>
     <published>2025-01-14T13:28:12.000Z</published>
-    <updated>2025-01-18T13:23:41.831Z</updated>
+    <updated>2025-01-18T13:23:41.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Use task scheduler to force terminate TrafficMonitor.exe during shutdown to solve the issue in Windows 11 &lt;/blockquote&gt;</summary>
@@ -253,7 +272,7 @@
     <link href="https://siriusq.top/en/win-11-iot-ltsc-installation.html"/>
     <id>https://siriusq.top/en/win-11-iot-ltsc-installation.html</id>
     <published>2024-10-25T11:57:15.000Z</published>
-    <updated>2025-02-11T08:43:14.115Z</updated>
+    <updated>2025-02-11T08:43:14.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; I heard that Microsoft released the public version of Windows 11 LTSC earlier this month, and I was so done with Microsoft stuffing the system with AI clutter every other day! Without hesitation, I immediately installed the new system on all three of my computers. My last Windows reinstallation guide was written four years ago, and many contents are now outdated. So, I decided to take this opportunity to write a new guide focused specifically on reinstalling Windows 11 IoT LTSC. &lt;/blockquote&gt;</summary>
@@ -448,29 +467,6 @@
     <category term="VMware" scheme="https://siriusq.top/en/tags/VMware/"/>
     
     <category term="MacOS" scheme="https://siriusq.top/en/tags/MacOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Download and Create a macOS Sonoma Installation ISO Image</title>
-    <link href="https://siriusq.top/en/create-macos-iso.html"/>
-    <id>https://siriusq.top/en/create-macos-iso.html</id>
-    <published>2024-07-06T08:56:28.000Z</published>
-    <updated>2024-09-12T15:13:03.000Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; This blog post documents the process of downloading the macOS Sonoma installation files on a Mac and converting them into an ISO image. Please note that this method is not applicable for Windows operating systems. &lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="macOS &amp; Hackintosh" scheme="https://siriusq.top/en/categories/macOS-Hackintosh/"/>
-    
-    
-    <category term="macOS" scheme="https://siriusq.top/en/tags/macOS/"/>
-    
-    <category term="Reinstallation" scheme="https://siriusq.top/en/tags/Reinstallation/"/>
-    
-    <category term="Hackintosh" scheme="https://siriusq.top/en/tags/Hackintosh/"/>
     
   </entry>
   
