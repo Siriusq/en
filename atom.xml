@@ -6,7 +6,7 @@
   <link href="https://siriusq.top/en/atom.xml" rel="self"/>
   
   <link href="https://siriusq.top/en/"/>
-  <updated>2026-01-23T12:53:16.891Z</updated>
+  <updated>2026-06-26T12:06:11.192Z</updated>
   <id>https://siriusq.top/en/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>New MacBook Setup</title>
+    <link href="https://siriusq.top/en/new-mac-config.html"/>
+    <id>https://siriusq.top/en/new-mac-config.html</id>
+    <published>2026-06-04T10:42:42.000Z</published>
+    <updated>2026-06-26T12:06:11.192Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Record the setup process after getting my new MacBook, including system settings, software  recommendations, accessory selection, usage experience, and other related content. &lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="macOS &amp; Hackintosh" scheme="https://siriusq.top/en/categories/macOS-Hackintosh/"/>
+    
+    
+    <category term="Software" scheme="https://siriusq.top/en/tags/Software/"/>
+    
+    <category term="macOS" scheme="https://siriusq.top/en/tags/macOS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Force MuMu Player to Run on Integrated Graphics</title>
     <link href="https://siriusq.top/en/mumu-igpu.html"/>
     <id>https://siriusq.top/en/mumu-igpu.html</id>
     <published>2026-01-23T11:56:39.000Z</published>
-    <updated>2026-01-23T12:53:16.891Z</updated>
+    <updated>2026-01-23T12:53:16.000Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; I’ve been keeping MuMu Emulator running in the background a lot lately. By default, it runs on the discrete GPU, and unfortunately there’s no option in its own settings to choose which GPU to use. The problem is that my discrete GPU is configured with an automatic fan stop/start feature. When MuMu runs in the background, the GPU temperature slowly rises, eventually hitting the threshold where the fans suddenly spin up with a loud *whoosh*. After cooling down, they stop again—over and over. It’s noisy and annoying. So I spent some time tinkering and forced MuMu to run on the integrated GPU instead. After all, the iGPU is just sitting there idle anyway 🐶 &lt;/blockquote&gt;</summary>
@@ -75,9 +96,9 @@
     
     <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
     
-    <category term="iOS" scheme="https://siriusq.top/en/tags/iOS/"/>
-    
     <category term="macOS" scheme="https://siriusq.top/en/tags/macOS/"/>
+    
+    <category term="iOS" scheme="https://siriusq.top/en/tags/iOS/"/>
     
     <category term="Flutter" scheme="https://siriusq.top/en/tags/Flutter/"/>
     
@@ -446,27 +467,6 @@
     <category term="macOS" scheme="https://siriusq.top/en/tags/macOS/"/>
     
     <category term="VMware" scheme="https://siriusq.top/en/tags/VMware/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Create a macOS Sonoma Virtual Machine in VMware Fusion</title>
-    <link href="https://siriusq.top/en/vmware-fusion-install-macos-sonoma.html"/>
-    <id>https://siriusq.top/en/vmware-fusion-install-macos-sonoma.html</id>
-    <published>2024-07-07T02:19:24.000Z</published>
-    <updated>2024-09-13T15:58:25.000Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; I got backstabbed by Apple! My 2017 MBP can&#39;t upgrade to Sonoma, and since XCode is tied to macOS versions, no system upgrade means no XCode upgrade. The older XCode versions don&#39;t support the latest iOS, so I can&#39;t deploy apps to my iPhone, turning my old Mac into a pretty paperweight. I agonized over installing a Hackintosh, setting up KVM passthrough, or using a virtual machine for ages. In the end, I decided to install the latest XCode on a macOS Sonoma virtual machine. It&#39;s not ideal, but hey, it works!🐶🐶 &lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Virtual Machine" scheme="https://siriusq.top/en/categories/Virtual-Machine/"/>
-    
-    
-    <category term="VMware" scheme="https://siriusq.top/en/tags/VMware/"/>
-    
-    <category term="MacOS" scheme="https://siriusq.top/en/tags/MacOS/"/>
     
   </entry>
   

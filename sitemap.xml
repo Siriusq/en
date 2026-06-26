@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://siriusq.top/en/new-mac-config.html</loc>
+    
+    <lastmod>2026-06-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://siriusq.top/en/mumu-igpu.html</loc>
     
     <lastmod>2026-01-23</lastmod>
@@ -506,6 +515,15 @@
   </url>
   
   <url>
+    <loc>https://siriusq.top/en/live2d-widget/waifu-tips.json</loc>
+    
+    <lastmod>2023-09-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://siriusq.top/en/uk-preparation.html</loc>
     
     <lastmod>2023-09-14</lastmod>
@@ -730,10 +748,838 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model_list.json</loc>
+    
+    <lastmod>2022-05-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/hijiki/hijiki.pose.json</loc>
+    
+    <lastmod>2022-05-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/hijiki/index.json</loc>
+    
+    <lastmod>2022-05-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/tororo/tororo.pose.json</loc>
+    
+    <lastmod>2022-05-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/tororo/index.json</loc>
+    
+    <lastmod>2022-05-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/animal-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/bunny-girl-costume-red/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/cake-costume-choco/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/cake-costume-cream/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/bunny-girl-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/dress-costume-brown/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/animal-costume-racoon/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/default-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/dress-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/elementary-school-costume-navy/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/elementary-school-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/fall-dress-costume-brown/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/frill-bikini-costume-green/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/frill-bikini-costume-purple/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/frill-blouse-costume-red/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/fall-dress-costume-beige/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/frill-blouse-costume-green/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/halloween-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/furisode-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/hanbok-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/hanbok-costume-red/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/hanbok-costume-pink/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/hanbok-costume-skyblue/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/hanbok-costume-yellow/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/healer-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/kids-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/kids-costume-navy/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/maid-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/maid-costume-red/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/new2015-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/new2015-costume-pajamas/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/night-witch-costume-black/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/nightsky-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/overalls-costume-white/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/night-witch-costume-gray/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/overalls-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/pajamas-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/pajamas-costume-pink/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/qipao-costume-pink/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/party-dress-costume-brown/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/party-dress-costume-purple/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/qipao-costume-red/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/ribbon-dress-costume-red/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/sailor-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/ribbon-dress-costume-yellow/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/sakura-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/sakura-costume-navy/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/sailor-costume-black/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/santa-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/sarori-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/school-2017-costume-yellow/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/santa-costume-green/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/school-costume-red/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/school-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/school-2017-costume-gray/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/sfc-uniform-costume-red/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/sfc-uniform-costume-yellow/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/shaman-costume-black/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/sinsiroad-shop-costume-junior/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/sinsiroad-shop-costume-senior/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/sorceress-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/shaman-costume-blue/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/sporty-hood-costume-blue/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/sporty-hood-costume-black/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/star-witch-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/star-witch-costume-brown/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/succubus-costume-black/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/succubus-costume-red/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/summer-dress-costume-blue/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/sukumizu-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/sukumizu-costume-white/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/summer-dress-costume-white/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/swimsuit-2017-costume-navy/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/swimsuit-2017-costume-red/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/tirami1-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/turtleneck-costume-red/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/turtleneck-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/winter-coat-2017-costume-brown/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/valentine-costume-pink/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/valentine-costume-brown/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/winter-coat-2017-costume-white/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/winter-coat-costume-pink/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/winter-coat-costume-white/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/winter-costume-white/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/winter-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/witch-costume/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://siriusq.top/en/live2d_api/model/Pio/witch-costume-white/index.json</loc>
+    
+    <lastmod>2021-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   <url>
     <loc>https://siriusq.top/en</loc>
-    <lastmod>2026-01-23</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
