@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Sirius</title>
-  <icon>https://siriusq.top/en/icon.png</icon>
+  <icon>https://en.siriusq.top/icon.png</icon>
   <subtitle>May the Force be with you</subtitle>
-  <link href="https://siriusq.top/en/atom.xml" rel="self"/>
+  <link href="https://en.siriusq.top/atom.xml" rel="self"/>
   
-  <link href="https://siriusq.top/en/"/>
+  <link href="https://en.siriusq.top/"/>
   <updated>2026-07-27T12:54:49.691Z</updated>
-  <id>https://siriusq.top/en/</id>
+  <id>https://en.siriusq.top/</id>
   
   <author>
     <name>Sirius</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>iptv-vlan</title>
-    <link href="https://siriusq.top/en/iptv-vlan.html"/>
-    <id>https://siriusq.top/en/iptv-vlan.html</id>
+    <link href="https://en.siriusq.top/iptv-vlan.html"/>
+    <id>https://en.siriusq.top/iptv-vlan.html</id>
     <published>2026-07-27T12:51:51.000Z</published>
     <updated>2026-07-27T12:54:49.691Z</updated>
     
@@ -33,8 +33,8 @@
   
   <entry>
     <title>New MacBook Setup</title>
-    <link href="https://siriusq.top/en/new-mac-config.html"/>
-    <id>https://siriusq.top/en/new-mac-config.html</id>
+    <link href="https://en.siriusq.top/new-mac-config.html"/>
+    <id>https://en.siriusq.top/new-mac-config.html</id>
     <published>2026-06-04T10:42:42.000Z</published>
     <updated>2026-06-30T11:40:29.542Z</updated>
     
@@ -43,19 +43,19 @@
     
     
     
-    <category term="macOS &amp; Hackintosh" scheme="https://siriusq.top/en/categories/macOS-Hackintosh/"/>
+    <category term="macOS &amp; Hackintosh" scheme="https://en.siriusq.top/categories/macOS-Hackintosh/"/>
     
     
-    <category term="Software" scheme="https://siriusq.top/en/tags/Software/"/>
+    <category term="Software" scheme="https://en.siriusq.top/tags/Software/"/>
     
-    <category term="macOS" scheme="https://siriusq.top/en/tags/macOS/"/>
+    <category term="macOS" scheme="https://en.siriusq.top/tags/macOS/"/>
     
   </entry>
   
   <entry>
     <title>Force MuMu Player to Run on Integrated Graphics</title>
-    <link href="https://siriusq.top/en/mumu-igpu.html"/>
-    <id>https://siriusq.top/en/mumu-igpu.html</id>
+    <link href="https://en.siriusq.top/mumu-igpu.html"/>
+    <id>https://en.siriusq.top/mumu-igpu.html</id>
     <published>2026-01-23T11:56:39.000Z</published>
     <updated>2026-01-23T12:53:16.000Z</updated>
     
@@ -64,69 +64,69 @@
     
     
     
-    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    <category term="Windows" scheme="https://en.siriusq.top/categories/Windows/"/>
     
     
-    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    <category term="Windows" scheme="https://en.siriusq.top/tags/Windows/"/>
     
   </entry>
   
   <entry>
     <title>Publishing a Flutter App to the Microsoft Store</title>
-    <link href="https://siriusq.top/en/ms-store-publish.html"/>
-    <id>https://siriusq.top/en/ms-store-publish.html</id>
+    <link href="https://en.siriusq.top/ms-store-publish.html"/>
+    <id>https://en.siriusq.top/ms-store-publish.html</id>
     <published>2025-11-25T14:15:23.000Z</published>
-    <updated>2026-07-27T11:29:53.952Z</updated>
+    <updated>2026-07-27T14:36:49.967Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Microsoft Store has finally removed the registration fee for individual developers. They promised this back in June, and I didn’t get it until November. But free is always good — one more distribution channel means I no longer have to hide in the dark corner of GitHub to release my work. &lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Coding" scheme="https://siriusq.top/en/categories/Coding/"/>
+    <category term="Coding" scheme="https://en.siriusq.top/categories/Coding/"/>
     
     
-    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    <category term="Windows" scheme="https://en.siriusq.top/tags/Windows/"/>
     
-    <category term="Flutter" scheme="https://siriusq.top/en/tags/Flutter/"/>
+    <category term="Flutter" scheme="https://en.siriusq.top/tags/Flutter/"/>
     
-    <category term="Microsoft Store" scheme="https://siriusq.top/en/tags/Microsoft-Store/"/>
+    <category term="Microsoft Store" scheme="https://en.siriusq.top/tags/Microsoft-Store/"/>
     
   </entry>
   
   <entry>
     <title>Building Installation Packages for Various Platforms with Flutter</title>
-    <link href="https://siriusq.top/en/flutter-build-installer.html"/>
-    <id>https://siriusq.top/en/flutter-build-installer.html</id>
+    <link href="https://en.siriusq.top/flutter-build-installer.html"/>
+    <id>https://en.siriusq.top/flutter-build-installer.html</id>
     <published>2025-08-23T15:06:50.000Z</published>
-    <updated>2026-07-27T12:23:32.842Z</updated>
+    <updated>2026-07-27T14:34:55.461Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; This article explains how to build installation packages for your Flutter projects for various platforms without spending a single cent on signing certificates. This includes: Android APK, iOS IPA, macOS DMG, Linux DEB, and Windows MSIX. &lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Coding" scheme="https://siriusq.top/en/categories/Coding/"/>
+    <category term="Coding" scheme="https://en.siriusq.top/categories/Coding/"/>
     
     
-    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    <category term="Windows" scheme="https://en.siriusq.top/tags/Windows/"/>
     
-    <category term="macOS" scheme="https://siriusq.top/en/tags/macOS/"/>
+    <category term="iOS" scheme="https://en.siriusq.top/tags/iOS/"/>
     
-    <category term="iOS" scheme="https://siriusq.top/en/tags/iOS/"/>
+    <category term="macOS" scheme="https://en.siriusq.top/tags/macOS/"/>
     
-    <category term="Flutter" scheme="https://siriusq.top/en/tags/Flutter/"/>
+    <category term="Flutter" scheme="https://en.siriusq.top/tags/Flutter/"/>
     
-    <category term="Android" scheme="https://siriusq.top/en/tags/Android/"/>
+    <category term="Android" scheme="https://en.siriusq.top/tags/Android/"/>
     
-    <category term="Linux" scheme="https://siriusq.top/en/tags/Linux/"/>
+    <category term="Linux" scheme="https://en.siriusq.top/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>Fix WSA Network Issues Caused by ESET Firewall</title>
-    <link href="https://siriusq.top/en/eset-firewall-block-wsa.html"/>
-    <id>https://siriusq.top/en/eset-firewall-block-wsa.html</id>
+    <link href="https://en.siriusq.top/eset-firewall-block-wsa.html"/>
+    <id>https://en.siriusq.top/eset-firewall-block-wsa.html</id>
     <published>2025-03-20T12:26:06.000Z</published>
     <updated>2025-03-20T15:24:31.000Z</updated>
     
@@ -135,226 +135,226 @@
     
     
     
-    <category term="Virtual Machine" scheme="https://siriusq.top/en/categories/Virtual-Machine/"/>
+    <category term="Virtual Machine" scheme="https://en.siriusq.top/categories/Virtual-Machine/"/>
     
     
-    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    <category term="Windows" scheme="https://en.siriusq.top/tags/Windows/"/>
     
-    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    <category term="Win11" scheme="https://en.siriusq.top/tags/Win11/"/>
     
-    <category term="WSA" scheme="https://siriusq.top/en/tags/WSA/"/>
+    <category term="WSA" scheme="https://en.siriusq.top/tags/WSA/"/>
     
   </entry>
   
   <entry>
     <title>Fix Windows Time Synchronization Failure</title>
-    <link href="https://siriusq.top/en/windows-time-sync-failed.html"/>
-    <id>https://siriusq.top/en/windows-time-sync-failed.html</id>
+    <link href="https://en.siriusq.top/windows-time-sync-failed.html"/>
+    <id>https://en.siriusq.top/windows-time-sync-failed.html</id>
     <published>2025-03-18T12:58:04.000Z</published>
-    <updated>2026-07-27T12:06:41.131Z</updated>
+    <updated>2026-07-27T14:39:39.544Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Resolve time synchronization failure due to connection timeouts by changing the Windows NTP time synchronization server. &lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    <category term="Windows" scheme="https://en.siriusq.top/categories/Windows/"/>
     
     
-    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    <category term="Windows" scheme="https://en.siriusq.top/tags/Windows/"/>
     
-    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    <category term="Win11" scheme="https://en.siriusq.top/tags/Win11/"/>
     
   </entry>
   
   <entry>
     <title>Fix VMware Startup and Network Issues After Installing WSA</title>
-    <link href="https://siriusq.top/en/wsa-vmware-coexist.html"/>
-    <id>https://siriusq.top/en/wsa-vmware-coexist.html</id>
+    <link href="https://en.siriusq.top/wsa-vmware-coexist.html"/>
+    <id>https://en.siriusq.top/wsa-vmware-coexist.html</id>
     <published>2025-03-10T09:22:28.000Z</published>
-    <updated>2026-07-27T12:10:53.398Z</updated>
+    <updated>2026-07-27T14:39:49.361Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Resolve VMware startup errors &quot;VMware Workstation does not support virtualized performance counters on this host&quot; and &quot;Module &#39;VPMC&#39; power on failed&quot;, as well as network connection issues in VMware virtual machines after installing WSA. &lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Virtual Machine" scheme="https://siriusq.top/en/categories/Virtual-Machine/"/>
+    <category term="Virtual Machine" scheme="https://en.siriusq.top/categories/Virtual-Machine/"/>
     
     
-    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    <category term="Windows" scheme="https://en.siriusq.top/tags/Windows/"/>
     
-    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    <category term="Win11" scheme="https://en.siriusq.top/tags/Win11/"/>
     
-    <category term="WSA" scheme="https://siriusq.top/en/tags/WSA/"/>
+    <category term="VMware" scheme="https://en.siriusq.top/tags/VMware/"/>
     
-    <category term="VMware" scheme="https://siriusq.top/en/tags/VMware/"/>
+    <category term="WSA" scheme="https://en.siriusq.top/tags/WSA/"/>
     
   </entry>
   
   <entry>
     <title>Solution to the Prevent Shutdown Issue Caused by Traffic Monitor</title>
-    <link href="https://siriusq.top/en/traffic-monitor-prevent-shutdown.html"/>
-    <id>https://siriusq.top/en/traffic-monitor-prevent-shutdown.html</id>
+    <link href="https://en.siriusq.top/traffic-monitor-prevent-shutdown.html"/>
+    <id>https://en.siriusq.top/traffic-monitor-prevent-shutdown.html</id>
     <published>2025-01-14T13:28:12.000Z</published>
-    <updated>2026-07-27T11:44:51.831Z</updated>
+    <updated>2026-07-27T14:38:18.394Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Use task scheduler to force terminate TrafficMonitor.exe during shutdown to solve the issue in Windows 11 &lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    <category term="Windows" scheme="https://en.siriusq.top/categories/Windows/"/>
     
     
-    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    <category term="Win11" scheme="https://en.siriusq.top/tags/Win11/"/>
     
-    <category term="Traffic Monitor" scheme="https://siriusq.top/en/tags/Traffic-Monitor/"/>
+    <category term="Traffic Monitor" scheme="https://en.siriusq.top/tags/Traffic-Monitor/"/>
     
   </entry>
   
   <entry>
     <title>Enable HEIC Image Preview in Windows</title>
-    <link href="https://siriusq.top/en/windows-heic.html"/>
-    <id>https://siriusq.top/en/windows-heic.html</id>
+    <link href="https://en.siriusq.top/windows-heic.html"/>
+    <id>https://en.siriusq.top/windows-heic.html</id>
     <published>2024-11-19T12:43:51.000Z</published>
-    <updated>2026-07-27T12:03:50.892Z</updated>
+    <updated>2026-07-27T14:39:31.287Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; After reinstalling my system, I found that HEIC images captured by my iPhone could no longer be previewed in Windows File Explorer. Naturally, I searched the Microsoft Store for the necessary extension, only to find that the available option required payment. This puzzled me because I had never purchased such an extension before, yet my previous system handled HEIC previews perfectly fine. &lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    <category term="Windows" scheme="https://en.siriusq.top/categories/Windows/"/>
     
     
-    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    <category term="Win11" scheme="https://en.siriusq.top/tags/Win11/"/>
     
-    <category term="HEIC" scheme="https://siriusq.top/en/tags/HEIC/"/>
+    <category term="HEIC" scheme="https://en.siriusq.top/tags/HEIC/"/>
     
   </entry>
   
   <entry>
     <title>Use Windows Wireless Display to Turn an Old Device into a Secondary Screen</title>
-    <link href="https://siriusq.top/en/windows-wireless-display.html"/>
-    <id>https://siriusq.top/en/windows-wireless-display.html</id>
+    <link href="https://en.siriusq.top/windows-wireless-display.html"/>
+    <id>https://en.siriusq.top/windows-wireless-display.html</id>
     <published>2024-11-12T12:54:10.000Z</published>
-    <updated>2026-07-27T12:08:23.057Z</updated>
+    <updated>2026-07-27T14:39:46.305Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; It always feels like there aren&#39;t enough monitors for my PC. However, purchasing a new display can be a considerable expense. I have an old Surface 3 sitting around that I rarely use, so why not repurpose it as a secondary screen? But there&#39;s a catch: older devices like this Surface 3 only support video output, not input, so I can&#39;t connect it directly via a video cable. My next thought was to use a video capture card, which could transfer the PC&#39;s screen to the Surface 3 via a USB connection. However, after some research, I found that inexpensive capture cards come with significant lag, while high-quality ones are nearly as costly as a new monitor—hardly worth it. In the end, I opted for the simplest, most affordable solution: using Windows&#39; built-in wireless display feature to transform this old Surface 3 into a secondary screen. &lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    <category term="Windows" scheme="https://en.siriusq.top/categories/Windows/"/>
     
     
-    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    <category term="Win11" scheme="https://en.siriusq.top/tags/Win11/"/>
     
-    <category term="Wireless Display" scheme="https://siriusq.top/en/tags/Wireless-Display/"/>
+    <category term="Wireless Display" scheme="https://en.siriusq.top/tags/Wireless-Display/"/>
     
-    <category term="Surface" scheme="https://siriusq.top/en/tags/Surface/"/>
+    <category term="Surface" scheme="https://en.siriusq.top/tags/Surface/"/>
     
   </entry>
   
   <entry>
     <title>Setting Delayed Startup for OneDrive on Windows</title>
-    <link href="https://siriusq.top/en/onedrive-delay-startup.html"/>
-    <id>https://siriusq.top/en/onedrive-delay-startup.html</id>
+    <link href="https://en.siriusq.top/onedrive-delay-startup.html"/>
+    <id>https://en.siriusq.top/onedrive-delay-startup.html</id>
     <published>2024-11-05T09:24:14.000Z</published>
-    <updated>2026-07-27T11:33:14.660Z</updated>
+    <updated>2026-07-27T14:37:17.716Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; On Windows, both OneDrive and Clash have nearly the same startup time, causing OneDrive to get interrupted by Clash when it tries to log in automatically. This results in OneDrive getting stuck during the login process. At this point, I have to quit and restart OneDrive for it to log in properly, which is quite annoying. To solve this, I decided to set a 1-minute delay for OneDrive&#39;s startup after booting up using the Task Scheduler. Below is the process I followed to set it up. &lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    <category term="Windows" scheme="https://en.siriusq.top/categories/Windows/"/>
     
     
-    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    <category term="Windows" scheme="https://en.siriusq.top/tags/Windows/"/>
     
-    <category term="OneDrive" scheme="https://siriusq.top/en/tags/OneDrive/"/>
+    <category term="OneDrive" scheme="https://en.siriusq.top/tags/OneDrive/"/>
     
-    <category term="Task Scheduler" scheme="https://siriusq.top/en/tags/Task-Scheduler/"/>
+    <category term="Task Scheduler" scheme="https://en.siriusq.top/tags/Task-Scheduler/"/>
     
   </entry>
   
   <entry>
     <title>GitHub SSH Remote Connection Configuration and GPG Commit Signature Verification</title>
-    <link href="https://siriusq.top/en/git-ssh-config.html"/>
-    <id>https://siriusq.top/en/git-ssh-config.html</id>
+    <link href="https://en.siriusq.top/git-ssh-config.html"/>
+    <id>https://en.siriusq.top/git-ssh-config.html</id>
     <published>2024-11-01T13:43:24.000Z</published>
-    <updated>2026-07-27T09:14:49.437Z</updated>
+    <updated>2026-07-27T14:35:01.677Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; I just reinstalled the operating system and need to configure GitHub&#39;s SSH keys from scratch. Having to search for commands each time is quite tedious, so I decided to record the process for future reference. &lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Coding" scheme="https://siriusq.top/en/categories/Coding/"/>
+    <category term="Coding" scheme="https://en.siriusq.top/categories/Coding/"/>
     
     
-    <category term="GitHub" scheme="https://siriusq.top/en/tags/GitHub/"/>
+    <category term="GitHub" scheme="https://en.siriusq.top/tags/GitHub/"/>
     
-    <category term="SSH" scheme="https://siriusq.top/en/tags/SSH/"/>
+    <category term="SSH" scheme="https://en.siriusq.top/tags/SSH/"/>
     
-    <category term="GPG" scheme="https://siriusq.top/en/tags/GPG/"/>
+    <category term="GPG" scheme="https://en.siriusq.top/tags/GPG/"/>
     
   </entry>
   
   <entry>
     <title>Windows 11 IoT LTSC Reinstallation Guide</title>
-    <link href="https://siriusq.top/en/win-11-iot-ltsc-installation.html"/>
-    <id>https://siriusq.top/en/win-11-iot-ltsc-installation.html</id>
+    <link href="https://en.siriusq.top/win-11-iot-ltsc-installation.html"/>
+    <id>https://en.siriusq.top/win-11-iot-ltsc-installation.html</id>
     <published>2024-10-25T11:57:15.000Z</published>
-    <updated>2026-07-27T12:01:12.924Z</updated>
+    <updated>2026-07-27T14:33:05.220Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; I heard that Microsoft released the public version of Windows 11 LTSC earlier this month, and I was so done with Microsoft stuffing the system with AI clutter every other day! Without hesitation, I immediately installed the new system on all three of my computers. My last Windows reinstallation guide was written four years ago, and many contents are now outdated. So, I decided to take this opportunity to write a new guide focused specifically on reinstalling Windows 11 IoT LTSC. &lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    <category term="Windows" scheme="https://en.siriusq.top/categories/Windows/"/>
     
     
-    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    <category term="Win11" scheme="https://en.siriusq.top/tags/Win11/"/>
     
-    <category term="Reinstallation" scheme="https://siriusq.top/en/tags/Reinstallation/"/>
+    <category term="Reinstallation" scheme="https://en.siriusq.top/tags/Reinstallation/"/>
     
-    <category term="Office" scheme="https://siriusq.top/en/tags/Office/"/>
+    <category term="Office" scheme="https://en.siriusq.top/tags/Office/"/>
     
   </entry>
   
   <entry>
     <title>Fix the OneDrive Icon Issue in the Windows LTSC File Explorer Sidebar</title>
-    <link href="https://siriusq.top/en/onedrive-explorer-icon-bug-fix.html"/>
-    <id>https://siriusq.top/en/onedrive-explorer-icon-bug-fix.html</id>
+    <link href="https://en.siriusq.top/onedrive-explorer-icon-bug-fix.html"/>
+    <id>https://en.siriusq.top/onedrive-explorer-icon-bug-fix.html</id>
     <published>2024-10-24T07:41:25.000Z</published>
-    <updated>2026-07-27T11:34:03.414Z</updated>
+    <updated>2026-07-27T14:37:24.031Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; After installing Windows 11 LTSC, I noticed that the OneDrive icon in the File Explorer sidebar wasn’t working properly. Clicking on it did nothing, and the properties page was completely blank. A quick search revealed that this is an old Microsoft bug. When you install the personal version of OneDrive on the LTSC version of Windows, the installer fails to register the path value pointing to the OneDrive folder for the sidebar icon, resulting in it pointing to a null value. I guess it’s just classic Microsoft—years later, and this bug is still around. &lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    <category term="Windows" scheme="https://en.siriusq.top/categories/Windows/"/>
     
     
-    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    <category term="Windows" scheme="https://en.siriusq.top/tags/Windows/"/>
     
-    <category term="OneDrive" scheme="https://siriusq.top/en/tags/OneDrive/"/>
+    <category term="OneDrive" scheme="https://en.siriusq.top/tags/OneDrive/"/>
     
-    <category term="LTSC" scheme="https://siriusq.top/en/tags/LTSC/"/>
+    <category term="LTSC" scheme="https://en.siriusq.top/tags/LTSC/"/>
     
-    <category term="Bug" scheme="https://siriusq.top/en/tags/Bug/"/>
+    <category term="Bug" scheme="https://en.siriusq.top/tags/Bug/"/>
     
   </entry>
   
   <entry>
     <title>NexT 8.20 Update Log</title>
-    <link href="https://siriusq.top/en/next-8-20-update-log.html"/>
-    <id>https://siriusq.top/en/next-8-20-update-log.html</id>
+    <link href="https://en.siriusq.top/next-8-20-update-log.html"/>
+    <id>https://en.siriusq.top/next-8-20-update-log.html</id>
     <published>2024-09-16T04:01:26.000Z</published>
     <updated>2024-11-08T15:53:38.000Z</updated>
     
@@ -363,104 +363,104 @@
     
     
     
-    <category term="Website Configuration" scheme="https://siriusq.top/en/categories/Website-Configuration/"/>
+    <category term="Website Configuration" scheme="https://en.siriusq.top/categories/Website-Configuration/"/>
     
     
-    <category term="Hexo" scheme="https://siriusq.top/en/tags/Hexo/"/>
+    <category term="Hexo" scheme="https://en.siriusq.top/tags/Hexo/"/>
     
-    <category term="Next" scheme="https://siriusq.top/en/tags/Next/"/>
+    <category term="Next" scheme="https://en.siriusq.top/tags/Next/"/>
     
   </entry>
   
   <entry>
     <title>Hexo Plugin Development</title>
-    <link href="https://siriusq.top/en/hexo-plugin-development.html"/>
-    <id>https://siriusq.top/en/hexo-plugin-development.html</id>
+    <link href="https://en.siriusq.top/hexo-plugin-development.html"/>
+    <id>https://en.siriusq.top/hexo-plugin-development.html</id>
     <published>2024-09-12T04:00:08.000Z</published>
-    <updated>2026-07-27T11:14:46.516Z</updated>
+    <updated>2026-07-27T14:35:49.660Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Lately, I’ve found myself a little envious of The Verge’s slick image carousel feature. Let’s be real—when you’ve got an organized set of images, a carousel beats a static picture group any day. Unfortunately, Hexo doesn’t have a built-in plugin for that. So, naturally, I took matters into my own hands and whipped up a carousel plugin based on Splide, designed specifically for the NexT theme. Here’s a rundown of the journey from development to release—because why not document the process while you&#39;re at it? &lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Coding" scheme="https://siriusq.top/en/categories/Coding/"/>
+    <category term="Coding" scheme="https://en.siriusq.top/categories/Coding/"/>
     
     
-    <category term="Hexo" scheme="https://siriusq.top/en/tags/Hexo/"/>
+    <category term="Hexo" scheme="https://en.siriusq.top/tags/Hexo/"/>
     
-    <category term="Plugin" scheme="https://siriusq.top/en/tags/Plugin/"/>
+    <category term="Plugin" scheme="https://en.siriusq.top/tags/Plugin/"/>
     
-    <category term="npm" scheme="https://siriusq.top/en/tags/npm/"/>
+    <category term="npm" scheme="https://en.siriusq.top/tags/npm/"/>
     
   </entry>
   
   <entry>
     <title>Silently Launch Steam on System Startup</title>
-    <link href="https://siriusq.top/en/steam-silent-startup.html"/>
-    <id>https://siriusq.top/en/steam-silent-startup.html</id>
+    <link href="https://en.siriusq.top/steam-silent-startup.html"/>
+    <id>https://en.siriusq.top/steam-silent-startup.html</id>
     <published>2024-08-13T10:06:11.000Z</published>
-    <updated>2026-07-27T11:40:35.152Z</updated>
+    <updated>2026-07-27T14:38:02.627Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Lately, I&#39;ve been obsessed with switching up wallpapers using Wallpaper Engine. However, every time I want to change a wallpaper, I need to fire up Steam to connect to the Workshop. To make things easier, I decided to set Steam to launch at startup. But there was one annoying issue: Steam would always open up to the store page on launch, and there’s no option in the settings to disable it. After a quick Google search, I discovered that the startup behavior is a bit of a mystery—some people don&#39;t see the store page at all, without changing any settings. It’s quite baffling. The solution, however, is straightforward: just add a startup parameter to Steam&#39;s start menu shortcut. &lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    <category term="Windows" scheme="https://en.siriusq.top/categories/Windows/"/>
     
     
-    <category term="Software" scheme="https://siriusq.top/en/tags/Software/"/>
+    <category term="Software" scheme="https://en.siriusq.top/tags/Software/"/>
     
-    <category term="Win11" scheme="https://siriusq.top/en/tags/Win11/"/>
+    <category term="Win11" scheme="https://en.siriusq.top/tags/Win11/"/>
     
-    <category term="Steam" scheme="https://siriusq.top/en/tags/Steam/"/>
+    <category term="Steam" scheme="https://en.siriusq.top/tags/Steam/"/>
     
   </entry>
   
   <entry>
     <title>Block Windows from Automatically Updating AMD GPU Drivers</title>
-    <link href="https://siriusq.top/en/amd-gpu-driver-auto-update-banned.html"/>
-    <id>https://siriusq.top/en/amd-gpu-driver-auto-update-banned.html</id>
+    <link href="https://en.siriusq.top/amd-gpu-driver-auto-update-banned.html"/>
+    <id>https://en.siriusq.top/amd-gpu-driver-auto-update-banned.html</id>
     <published>2024-08-05T08:06:08.000Z</published>
-    <updated>2026-07-27T12:28:52.974Z</updated>
+    <updated>2026-07-27T14:33:15.232Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; In a moment of impulse, I updated my AMD graphics driver, only to find that with the new 24.7.1 driver, my GPU started making a horrible whining noise. My case is right next to me, so the sound was like someone sawing through a table leg. I immediately uninstalled the new driver and rolled back to the old, stable 22.5.1 driver, thinking that would be the end of it. But no! Windows Auto Update, in its infinite wisdom, stabbed me in the back while I was grabbing a bite to eat and updated the driver again. After trying multiple methods, I finally got Auto Update to leave my driver alone. Below is the tale of my battle with Windows Auto Update. &lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Windows" scheme="https://siriusq.top/en/categories/Windows/"/>
+    <category term="Windows" scheme="https://en.siriusq.top/categories/Windows/"/>
     
     
-    <category term="Windows" scheme="https://siriusq.top/en/tags/Windows/"/>
+    <category term="Windows" scheme="https://en.siriusq.top/tags/Windows/"/>
     
-    <category term="GPU" scheme="https://siriusq.top/en/tags/GPU/"/>
+    <category term="GPU" scheme="https://en.siriusq.top/tags/GPU/"/>
     
-    <category term="Driver" scheme="https://siriusq.top/en/tags/Driver/"/>
+    <category term="Driver" scheme="https://en.siriusq.top/tags/Driver/"/>
     
-    <category term="AMD" scheme="https://siriusq.top/en/tags/AMD/"/>
+    <category term="AMD" scheme="https://en.siriusq.top/tags/AMD/"/>
     
   </entry>
   
   <entry>
     <title>Fix USB Device Detection Issue in VMware Fusion</title>
-    <link href="https://siriusq.top/en/vmware-fusion-usb-fix.html"/>
-    <id>https://siriusq.top/en/vmware-fusion-usb-fix.html</id>
+    <link href="https://en.siriusq.top/vmware-fusion-usb-fix.html"/>
+    <id>https://en.siriusq.top/vmware-fusion-usb-fix.html</id>
     <published>2024-07-08T03:40:37.000Z</published>
-    <updated>2026-07-27T11:53:00.541Z</updated>
+    <updated>2026-07-27T14:39:17.507Z</updated>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt; Virtual machine installed, 3D acceleration enabled, and XCode all set up — I was ready to dive into some serious iPhone development when suddenly... the virtual machine couldn&#39;t detect my USB devices?! After hours of searching and trial and error, I found the culprit: the vmware-usbarbitrator service. This service is supposed to manage USB device connections to the virtual machine, but for some reason, it wasn&#39;t running when VMware Fusion started. Another quirky bug to tackle! The fix? Setting it to start automatically at system boot.&lt;/blockquote&gt;</summary>
     
     
     
-    <category term="Virtual Machine" scheme="https://siriusq.top/en/categories/Virtual-Machine/"/>
+    <category term="Virtual Machine" scheme="https://en.siriusq.top/categories/Virtual-Machine/"/>
     
     
-    <category term="VMware" scheme="https://siriusq.top/en/tags/VMware/"/>
+    <category term="VMware" scheme="https://en.siriusq.top/tags/VMware/"/>
     
-    <category term="MacOS" scheme="https://siriusq.top/en/tags/MacOS/"/>
+    <category term="MacOS" scheme="https://en.siriusq.top/tags/MacOS/"/>
     
   </entry>
   

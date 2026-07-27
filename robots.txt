@@ -18,4 +18,4 @@ Disallow: /clash.html
 Disallow: /v2ray.html
 Disallow: /clash-verge-tun-config.html
 
-Sitemap: https://siriusq.top/en/sitemap.xml
+Sitemap: https://en.siriusq.top/sitemap.xml
