@@ -85,8 +85,8 @@
     </author>
     <category term="Coding" scheme="https://en.siriusq.top/categories/Coding/"/>
     <category term="Windows" scheme="https://en.siriusq.top/tags/Windows/"/>
-    <category term="macOS" scheme="https://en.siriusq.top/tags/macOS/"/>
     <category term="iOS" scheme="https://en.siriusq.top/tags/iOS/"/>
+    <category term="macOS" scheme="https://en.siriusq.top/tags/macOS/"/>
     <category term="Flutter" scheme="https://en.siriusq.top/tags/Flutter/"/>
     <category term="Android" scheme="https://en.siriusq.top/tags/Android/"/>
     <category term="Linux" scheme="https://en.siriusq.top/tags/Linux/"/>
@@ -139,8 +139,8 @@
     <category term="Virtual Machine" scheme="https://en.siriusq.top/categories/Virtual-Machine/"/>
     <category term="Windows" scheme="https://en.siriusq.top/tags/Windows/"/>
     <category term="Win11" scheme="https://en.siriusq.top/tags/Win11/"/>
-    <category term="WSA" scheme="https://en.siriusq.top/tags/WSA/"/>
     <category term="VMware" scheme="https://en.siriusq.top/tags/VMware/"/>
+    <category term="WSA" scheme="https://en.siriusq.top/tags/WSA/"/>
     <id>https://en.siriusq.top/wsa-vmware-coexist.html</id>
     <link href="https://en.siriusq.top/wsa-vmware-coexist.html"/>
     <published>2025-03-10T09:22:28.000Z</published>
@@ -238,8 +238,8 @@
       <name>Sirius</name>
     </author>
     <category term="Windows" scheme="https://en.siriusq.top/categories/Windows/"/>
-    <category term="Reinstallation" scheme="https://en.siriusq.top/tags/Reinstallation/"/>
     <category term="Win11" scheme="https://en.siriusq.top/tags/Win11/"/>
+    <category term="Reinstallation" scheme="https://en.siriusq.top/tags/Reinstallation/"/>
     <category term="Office" scheme="https://en.siriusq.top/tags/Office/"/>
     <id>https://en.siriusq.top/win-11-iot-ltsc-installation.html</id>
     <link href="https://en.siriusq.top/win-11-iot-ltsc-installation.html"/>

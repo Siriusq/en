@@ -6,7 +6,6 @@ Disallow: /about/
 Disallow: /archives/
 Disallow: /categories/
 Disallow: /css/
-Disallow: /images/
 Disallow: /js/
 Disallow: /lib/
 Disallow: /live2d-widget/

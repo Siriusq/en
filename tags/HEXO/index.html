@@ -188,4 +188,113 @@ function removeFancyboxFromClones() {
             }
         }
     });
+}</script></body></html>   splide.mount();
+        window.splideInstances.push(splide); // 将实例存储到数组中   
+    });
+}
+
+// 应用主题明暗样式
+function applySplideStyle() {
+    const applyThemeStyles = (theme, splideStyles) => {
+        const borderColor = theme === 'dark' ? splideStyles.borderColor.dark : splideStyles.borderColor.light;
+        const shadowColor = theme === 'dark' ? splideStyles.shadowColor.dark : splideStyles.shadowColor.light;
+        document.documentElement.style.setProperty('--carousel-border-color', borderColor);
+        document.documentElement.style.setProperty('--carousel-shadow-color', shadowColor);
+        document.documentElement.style.setProperty('--carousel-border-radius', splideStyles.borderRadius);
+        document.documentElement.style.setProperty('--carousel-arrow-color', splideStyles.arrowColor);
+        document.documentElement.style.setProperty('--carousel-arrow-hover-color', splideStyles.arrowHoverColor);
+        document.documentElement.style.setProperty('--carousel-pagination-color', splideStyles.paginationColor);
+        document.documentElement.style.setProperty('--carousel-pagination-active-color', splideStyles.paginationActiveColor);
+        document.documentElement.style.setProperty('--carousel-pagination-hover-color', splideStyles.paginationHoverColor);
+    };
+
+    let theme = 'light';
+    if (window.splideDarkMode === 'auto') {
+        theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    } else if (window.splideDarkMode === 'true') {
+        theme = 'dark';
+    }
+    applyThemeStyles(theme, window.splideStyles);
+
+    if (window.splideDarkMode === 'auto') {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            applyThemeStyles(e.matches ? 'dark' : 'light', window.splideStyles);
+        });
+    }
+}
+
+// 初始化非轮播图片的 Medium Zoom
+function initGlobalMediumZoom() {
+    // 检查是否启用 medium-zoom
+    if (!mediumZoomEnabled) {
+        return;
+    }
+    const zoomOutsideCarousel = mediumZoom('img:not(.splide .zoomable)', {
+        background: 'rgba(0, 0, 0, 0.8)',
+        margin: 24
+    });
+}
+
+// 初始化轮播组件中的 Medium Zoom
+function initCarouselMediumZoom() {
+    const zoomCarousel = mediumZoom('.zoomable', {
+        background: 'rgba(0, 0, 0, 0.8)',
+        margin: 24,
+        onOpen: (zoom) => {
+            const img = zoom.target; // 获取正在缩放的图片
+            img.classList.add('zooming'); // 添加一个缩放时的 class
+        },
+        onClose: (zoom) => {
+            const img = zoom.target; // 获取缩放的图片
+            img.classList.remove('zooming'); // 移除缩放时的 class
+        }
+    });
+
+    zoomCarousel.on('open', () => {
+        // 隐藏箭头和分页按钮
+        document.querySelectorAll('.splide__arrow, .splide__pagination').forEach(el => {
+            el.style.display = 'none';
+        });
+    });
+
+    zoomCarousel.on('close', () => {
+        // 重新显示箭头和分页按钮
+        document.querySelectorAll('.splide__arrow, .splide__pagination').forEach(el => {
+            el.style.display = '';
+        });
+    });
+}
+
+// fancybox 兼容调整
+function adjustFancybox() {
+    Fancybox.bind("[data-fancybox]", {
+        placeFocusBack: false,  // 禁止 Fancybox 关闭时滚动回页面的焦点位置
+    });
+
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === "childList") {
+                removeFancyboxFromClones();
+            }
+        });
+    });
+
+    // 观察整个文档的 DOM 变化
+    observer.observe(document, { childList: true, subtree: true });
+}
+
+// 移除克隆 Slide 中的 Fancybox 链接
+function removeFancyboxFromClones() {
+    const cloneSlides = document.querySelectorAll('.splide__slide--clone');
+
+    cloneSlides.forEach((slide) => {
+        const fancyboxLink = slide.querySelector('a.fancybox');
+        if (fancyboxLink) {
+            const img = fancyboxLink.querySelector('img');
+            if (img) {
+                // 将 img 挪出 a 标签
+                fancyboxLink.replaceWith(img);
+            }
+        }
+    });
 }</script></body></html>

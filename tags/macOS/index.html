@@ -188,4 +188,49 @@ function removeFancyboxFromClones() {
             }
         }
     });
+}</script></body></html>ument.querySelectorAll('.splide__arrow, .splide__pagination').forEach(el => {
+            el.style.display = 'none';
+        });
+    });
+
+    zoomCarousel.on('close', () => {
+        // 重新显示箭头和分页按钮
+        document.querySelectorAll('.splide__arrow, .splide__pagination').forEach(el => {
+            el.style.display = '';
+        });
+    });
+}
+
+// fancybox 兼容调整
+function adjustFancybox() {
+    Fancybox.bind("[data-fancybox]", {
+        placeFocusBack: false,  // 禁止 Fancybox 关闭时滚动回页面的焦点位置
+    });
+
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === "childList") {
+                removeFancyboxFromClones();
+            }
+        });
+    });
+
+    // 观察整个文档的 DOM 变化
+    observer.observe(document, { childList: true, subtree: true });
+}
+
+// 移除克隆 Slide 中的 Fancybox 链接
+function removeFancyboxFromClones() {
+    const cloneSlides = document.querySelectorAll('.splide__slide--clone');
+
+    cloneSlides.forEach((slide) => {
+        const fancyboxLink = slide.querySelector('a.fancybox');
+        if (fancyboxLink) {
+            const img = fancyboxLink.querySelector('img');
+            if (img) {
+                // 将 img 挪出 a 标签
+                fancyboxLink.replaceWith(img);
+            }
+        }
+    });
 }</script></body></html>
